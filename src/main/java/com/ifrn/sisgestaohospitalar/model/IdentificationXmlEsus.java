@@ -8,7 +8,8 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElementWrapper;
 
-/**Classe auxiliar para a Leitura do Arquivo XML do ESUS
+/**
+ * Classe auxiliar para a Leitura do Arquivo XML do ESUS
  * @author Leandro Morais
  * @version 1.0
  * @since Release 02 da aplicação
@@ -16,13 +17,13 @@ import javax.xml.bind.annotation.XmlElementWrapper;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 public class IdentificationXmlEsus {
-	
-	/**Mapeia a Lista de Profissionais do Arquivo XML*/
+
+	/** Mapeia a Lista de Profissionais do Arquivo XML */
 	@XmlElementWrapper(name = "PROFISSIONAIS")
 	@XmlElement(name = "DADOS_PROFISSIONAIS")
 	List<Professional> professionals = new ArrayList<Professional>();
-	
-	/**Mapeia a Lista de Dados dos estabelecimentos do Arquivo XML*/
+
+	/** Mapeia a Lista de Dados dos estabelecimentos do Arquivo XML */
 	@XmlElementWrapper(name = "ESTABELECIMENTOS")
 	@XmlElement(name = "DADOS_GERAIS_ESTABELECIMENTOS")
 	List<Establishment> establishments = new ArrayList<Establishment>();

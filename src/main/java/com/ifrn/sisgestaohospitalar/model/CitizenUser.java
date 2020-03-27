@@ -11,77 +11,78 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotBlank;
 
-
-/**Classe para objetos do tipo CidadãoUsuário, onde serão contidos atributos e métodos para o mesmo.
+/**
+ * Classe para objetos do tipo CidadãoUsuário, onde serão contidos atributos e
+ * métodos para o mesmo.
  * @author Leandro Morais
  * @version 1.0
  * @since Release 02 da Aplicação
  */
 @Entity
 public class CitizenUser {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-	
+
 	@Column(nullable = false, length = 30)
 	@NotBlank(message = "É necessário preencher o campo Nome")
 	private String name;
-	
+
 	@Column(nullable = false, length = 15)
 	@NotBlank(message = "É necessário preencher o campo Cartão Nacional de Saúde (CNS)")
 	private String healthcardnumber;
-	
+
 	@Column(nullable = false, length = 8)
 	@NotBlank(message = "É necessário preencher o campo Data de Nascimento")
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date birth;
-	
+
 	@Column(nullable = false, length = 1)
 	@NotBlank(message = "É necessário preencher o campo Sexo")
 	private String sex;
-	
+
 	@Column(nullable = false, length = 100)
 	@NotBlank(message = "É necessário preencher o campo Nome da Mãe")
 	private String mothername;
-	
+
 	@Column(nullable = false, length = 100)
 	@NotBlank(message = "É necessário preencher o campo Nome do Pai")
 	private String fathername;
-	
+
 	@Column(nullable = false, length = 2)
 	@NotBlank(message = "É necessário preencher o campo Códido da Raça")
 	private int racecode;
-	
+
 	@Column(nullable = false, length = 4)
 	private int ethnicitycode;
-	
+
 	@Column(nullable = false, length = 3)
 	private int nationalitycode;
-	
+
 	@Column(nullable = false, length = 6)
 	private int ibgecitycode;
-	
+
 	@Column(nullable = false, length = 2)
 	@NotBlank(message = "É necessário preencher o campo CEP")
 	private int postalcode;
-	
+
 	@Column(nullable = false, length = 2)
 	private int placecode;
-	
+
 	@Column(nullable = false, length = 30)
 	@NotBlank(message = "É necessário preencher o campo Endereço")
 	private String address;
-	
+
 	@Column(nullable = false, length = 10)
 	private String addresscomplement;
-	
+
 	@Column(nullable = false, length = 10)
 	private String addressneighborhood;
-	
+
 	@Column(nullable = false, length = 11)
 	private int telephone;
-	
+
 	@Column(nullable = false, length = 40)
 	private String email;
 

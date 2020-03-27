@@ -7,39 +7,44 @@ import org.springframework.stereotype.Service;
 
 import com.ifrn.sisgestaohospitalar.model.EstablishmentComplexity;
 import com.ifrn.sisgestaohospitalar.repository.EstablishmentComplexityRepository;
-/**Classe que implementa os métodos da Interface EstablishmentComplexityRepository
+
+/**
+ * Classe que implementa os métodos da Interface
+ * EstablishmentComplexityRepository
+ * 
  * @author Leandro Morais
  * @version 1.0
  * @since Release 02 da Aplicação
  */
 @Service
 public class EstablishmentComplexityService {
-	
+
 	@Autowired
 	private EstablishmentComplexityRepository repository;
-	
-	/**Método que permite salvar a Complexidade do Estabelecimento
-	 * @param EstablishmentComplexity*/
+
+	/**
+	 * Salva a Complexidade do Estabelecimento
+	 * @param EstablishmentComplexity
+	 */
 	public void save(EstablishmentComplexity establishmentComplexity) {
 		repository.save(establishmentComplexity);
 	}
-	
-	/**Método que permite recuperar a Complexidade do Estabelecimento a partir do Id
+
+	/**
+	 * Retorna a Complexidade do Estabelecimento a partir do Id
 	 * @param id
-	 * @return EstablishmentComplexity*/
+	 * @return EstablishmentComplexity
+	 */
 	public EstablishmentComplexity findOne(Long id) {
 		return repository.getOne(id);
 	}
-	
-	/**Método que permite recuperar a lista de Complexidade de Estabelecimento
-	 * @return List<EstablishmentComplexity>*/
-	public List<EstablishmentComplexity> listAll(){
+
+	/**
+	 * Retorna a lista de Complexidade de Estabelecimento
+	 * @return List<EstablishmentComplexity>
+	 */
+	public List<EstablishmentComplexity> listAll() {
 		return repository.findAll();
 	}
-	
-	
-	
-	
-	
 
 }

@@ -10,10 +10,12 @@ import com.ifrn.sisgestaohospitalar.model.Workplace;
 
 @Repository
 public interface WorkplaceRepository extends JpaRepository<Workplace, Long> {
-	
-	/**Recupera a lista de Local de Trabalho e Profissional a partir do CBO
+
+	/**
+	 * Recupera a lista de Local de Trabalho e Profissional a partir do CBO
 	 * @param codecbo
-	 * @return List<Workplace>*/
+	 * @return List<Workplace>
+	 */
 	@Query("select w for Workplace w where w.codecbo = ?1")
 	public List<Workplace> findByCodecbo(String codecbo);
 

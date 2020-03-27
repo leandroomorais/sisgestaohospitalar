@@ -8,7 +8,9 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
 
-/**Classe para objetos do tipo AddresEstablishment (Endereço do Estabelecimento), onde serão contidos atributos e métodos para o mesmo.
+/**
+ * Classe para objetos do tipo AddresEstablishment (Endereço do
+ * Estabelecimento), onde serão contidos atributos e métodos para o mesmo.
  * @author Leandro Morais
  * @version 1.0
  * @since Release 02 da Aplicação
@@ -17,32 +19,32 @@ import javax.xml.bind.annotation.XmlAttribute;
 @Entity
 @XmlAccessorType(XmlAccessType.FIELD)
 public class EstablishmentAddress {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-	
+
 	@XmlAttribute(name = "CO_CEP")
 	private String codecep;
-	
+
 	@XmlAttribute(name = "SG_UF")
 	private String sguf;
-	
+
 	@XmlAttribute(name = "CO_IBGE_")
 	private String codeibgecity;
-	
+
 	@XmlAttribute(name = "BAIRRO")
 	private String neighborhood;
-	
+
 	@XmlAttribute(name = "LOGRADOURO")
 	private String publicplace;
-	
+
 	@XmlAttribute(name = "NUMERO")
 	private String number;
-	
+
 	@XmlAttribute(name = "COMPLEMENT")
 	private String complement;
-	
+
 	@XmlAttribute(name = "PONTO_REF")
 	private String referencepoint;
 
@@ -117,5 +119,5 @@ public class EstablishmentAddress {
 	public void setReferencepoint(String referencepoint) {
 		this.referencepoint = referencepoint;
 	}
-	
+
 }

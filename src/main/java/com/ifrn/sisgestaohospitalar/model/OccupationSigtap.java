@@ -1,4 +1,5 @@
 package com.ifrn.sisgestaohospitalar.model;
+
 /**Classe para objetos do tipo Ocupação da Tabela Sigtap, onde serão contidos atributos e métodos para o mesmo.
  * @author Leandro Morais
  * @version 1.0
@@ -12,13 +13,13 @@ import javax.persistence.Id;
 
 @Entity
 public class OccupationSigtap {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-	
+
 	private String codeoccupation;
-	
+
 	private String numberoccupation;
 
 	public Long getId() {

@@ -16,7 +16,9 @@ import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElementWrapper;
 
-/**Classe para Objetos do Tipo Estabelecimento, onde são declarados atributos e métodos do mesmo
+/**
+ * Classe para Objetos do Tipo Estabelecimento, onde são declarados atributos e
+ * métodos do mesmo
  * @author Leandro Morais
  * @version 1.0
  * @since Release 02 da Aplicação
@@ -24,56 +26,56 @@ import javax.xml.bind.annotation.XmlElementWrapper;
 @Entity
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Establishment {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-	
+
 	@XmlAttribute(name = "NM_FANTA")
 	private String fantasyname;
-	
+
 	@XmlAttribute(name = "CNPJ")
 	private String cnpj;
-	
+
 	@XmlAttribute(name = "CNES")
 	private String cnes;
-	
+
 	@XmlAttribute(name = "TP_UNID_ID")
 	private String idtypeunit;
-	
+
 	@XmlAttribute(name = "DS_TP_UNID")
 	private String descripttypeunit;
-	
+
 	@XmlAttribute(name = "TELEFONE1")
 	private String telephone1;
-	
+
 	@XmlAttribute(name = "TELEFONE2")
 	private String telephone2;
-	
+
 	@XmlAttribute(name = "FAX")
 	private String fax;
-	
+
 	@XmlAttribute(name = "E_MAIL")
 	private String email;
-	
-	/** Mapeia e relaciona a Lista de Endereços dos 
-	 * Estabelecimentos contidos no arquivo Xml
+
+	/**
+	 * Mapeia e relaciona a Lista de Endereços dos Estabelecimentos contidos no
+	 * arquivo Xml
 	 */
 	@XmlElementWrapper(name = "ENDERECO")
 	@XmlElement(name = "DADOS_ENDERECO")
 	@ManyToMany(cascade = CascadeType.ALL)
-	@JoinTable(name = "establishment_address_relationship",
-	joinColumns = {@JoinColumn(name="address_id")})
+	@JoinTable(name = "establishment_address_relationship", joinColumns = { @JoinColumn(name = "address_id") })
 	private List<EstablishmentAddress> establishmentAddresses;
-	
-	/** Mapeia e relaciona os dados de complexidade do 
-	 * Estabelecimento contidos no arquivo Xml
+
+	/**
+	 * Mapeia e relaciona os dados de complexidade do Estabelecimento contidos no
+	 * arquivo Xml
 	 */
 	@XmlElementWrapper(name = "COMPLEXIDADE")
 	@XmlElement(name = "DADOS_COMPLEXIDADE")
 	@ManyToMany(cascade = CascadeType.ALL)
-	@JoinTable(name = "establishment_complexity_relationship",
-	joinColumns = {@JoinColumn(name="establishment_id")})
+	@JoinTable(name = "establishment_complexity_relationship", joinColumns = { @JoinColumn(name = "establishment_id") })
 	private List<EstablishmentComplexity> establishmentComplexities;
 
 	public Long getId() {
@@ -172,5 +174,4 @@ public class Establishment {
 		this.establishmentComplexities = establishmentComplexities;
 	}
 
-	
 }

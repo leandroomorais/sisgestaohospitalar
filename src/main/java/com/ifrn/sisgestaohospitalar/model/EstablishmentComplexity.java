@@ -8,7 +8,9 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
 
-/**Classe para objetos do tipo Complexidade do estabelecimento, onde serão contidos atributos e métodos para o mesmo.
+/**
+ * Classe para objetos do tipo Complexidade do estabelecimento, onde serão
+ * contidos atributos e métodos para o mesmo.
  * @author Leandro Morais
  * @version 1.0
  * @since Release 02 da Aplicação
@@ -16,11 +18,11 @@ import javax.xml.bind.annotation.XmlAttribute;
 @Entity
 @XmlAccessorType(XmlAccessType.FIELD)
 public class EstablishmentComplexity {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-	
+
 	@XmlAttribute(name = "SG_COMPLEXIDADE")
 	private String sgcomplexity;
 

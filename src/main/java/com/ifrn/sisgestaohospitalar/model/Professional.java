@@ -19,19 +19,21 @@ import javax.xml.bind.annotation.XmlElementWrapper;
 
 import com.ifrn.sisgestaohospitalar.enums.ProfessionalType;
 
-/**Classe para os objetos do Tipo Professional, onde serão contidos atributos e métodos para o mesmo
+/**
+ * Classe para os objetos do Tipo Professional, onde serão contidos atributos e
+ * métodos para o mesmo
  * @author Leandro Morais
  *
  */
 @Entity
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Professional {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-	
-	@XmlAttribute(name="NM_PROF")
+
+	@XmlAttribute(name = "NM_PROF")
 	@NotBlank(message = "Por favor, preencha o campo nome!")
 	private String nameprof;
 
@@ -62,28 +64,28 @@ public class Professional {
 
 	@XmlAttribute(name = "TELEFONE")
 	private String telephone;
-	
+
 	private ProfessionalType professionaltype;
-	
+
 	private boolean status;
-	
+
 	private boolean enabled;
-	
+
 	private String username;
-	
+
 	private String password;
-	
+
 	private String firstname;
 
-	/**Mapeia e relaciona a Lista de Locais de Trabalho (Lotação)
-	 * dos Profissionais contidos no arquivo XML
+	/**
+	 * Mapeia e relaciona a Lista de Locais de Trabalho (Lotação) dos Profissionais
+	 * contidos no arquivo XML
 	 */
 	@XmlElementWrapper(name = "LOTACOES")
 	@XmlElement(name = "DADOS_LOTACOES")
 	@ManyToMany(cascade = CascadeType.ALL)
-	@JoinTable(name="professional_workplace", 
-	joinColumns= {@JoinColumn(name="professional_id")}, 
-	inverseJoinColumns= {@JoinColumn(name="workplace_id")})
+	@JoinTable(name = "professional_workplace", joinColumns = {
+			@JoinColumn(name = "professional_id") }, inverseJoinColumns = { @JoinColumn(name = "workplace_id") })
 	private List<Workplace> workplaces;
 
 	public Long getId() {
@@ -229,5 +231,5 @@ public class Professional {
 	public void setWorkplaces(List<Workplace> workplaces) {
 		this.workplaces = workplaces;
 	}
-	
+
 }

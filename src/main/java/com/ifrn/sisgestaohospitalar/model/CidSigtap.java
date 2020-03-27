@@ -5,28 +5,30 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-/**Classe para objetos do tipo Cid (Código Internacional de Doenças) da Tabela Sigtap, onde serão contidos atributos e métodos para o mesmo.
+/**
+ * Classe para objetos do tipo Cid (Código Internacional de Doenças) da Tabela
+ * Sigtap, onde serão contidos atributos e métodos para o mesmo.
  * @author Leandro Morais
  * @version 1.0
  * @since Release 02 da Aplicação
  */
 @Entity
 public class CidSigtap {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-	
+
 	private String codecid;
-	
+
 	private String numbercid;
-	
+
 	private char typeAgravo;
-	
+
 	private char typeSexo;
-	
+
 	private char typeEstadio;
-	
+
 	private int valueCamposIrradiados;
 
 	public Long getId() {

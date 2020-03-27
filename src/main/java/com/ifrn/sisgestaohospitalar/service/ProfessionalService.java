@@ -8,7 +8,9 @@ import org.springframework.stereotype.Service;
 import com.ifrn.sisgestaohospitalar.model.Professional;
 import com.ifrn.sisgestaohospitalar.repository.ProfessionalRepository;
 
-/**Classe que implementa os Métodos da Interface ProfessionalRepository
+/**
+ * Classe que implementa os Métodos da Interface ProfessionalRepository
+ * 
  * @author Leandro Morais
  * @version 1.0
  * @since Release 02 da Aplicação
@@ -16,47 +18,59 @@ import com.ifrn.sisgestaohospitalar.repository.ProfessionalRepository;
  */
 @Service
 public class ProfessionalService {
-	
+
 	@Autowired
 	private ProfessionalRepository repository;
-	
-	/**Método que permite salvar o Profissional*/
+
+	/**
+	 * Salva o Profissional
+	 * @param professional
+	 */
 	public void save(Professional professional) {
 		repository.saveAndFlush(professional);
 	}
-	
-	/**Método que permite recuperar o profissional a partir do ID
+
+	/**
+	 * Retorna o profissional a partir do ID 
 	 * @return Professional
-	 * @param Id*/
+	 * @param Id
+	 */
 	public Professional findOne(Long id) {
 		return repository.getOne(id);
 	}
-	
-	/**Método que permite deletar o profissional a partir do ID
-	 * @param id*/
+
+	/**
+	 * Deleta o profissional a partir do ID
+	 * @param id
+	 */
 	public void delete(Long id) {
 		repository.deleteById(id);
 	}
-	
-	/**Método que permite recuperar a lista de todos os Profissionais
-	 * @return List<Professional>*/
-	public List<Professional> listAll(){
+
+	/**
+	 * Retorna a lista de todos os Profissionais
+	 * @return List<Professional>
+	 */
+	public List<Professional> listAll() {
 		return repository.findAll();
 	}
-	
-	/**Método que permite recuperar o profissional a partir do CPF
+
+	/**
+	 * Retorna recuperar o profissional a partir do CPF
 	 * @param cpf
-	 * @return Professional*/
+	 * @return Professional
+	 */
 	public Professional findByCpf(String cpf) {
 		return repository.findByCpf(cpf);
 	}
-	
-	/**Método que permite recuperar o profissional a partir do Email
+
+	/**
+	 * Retorna o profissional a partir do Email
 	 * @param email
-	 * @return Professional*/
+	 * @return Professional
+	 */
 	public Professional findByEmail(String email) {
 		return repository.findByEmail(email);
 	}
-	
 
 }

@@ -8,7 +8,9 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
 
-/**Classe para os objetos do tipo Workplace (local de trabalho), onde estão contidos métodos e atributos do mesmo
+/**
+ * Classe para os objetos do tipo Workplace (local de trabalho), onde estão
+ * contidos métodos e atributos do mesmo
  * @author Leandro Morais
  * @version 1.0
  * @since Release 02 da aplicação
@@ -16,20 +18,20 @@ import javax.xml.bind.annotation.XmlAttribute;
 @Entity
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Workplace {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-	
+
 	@XmlAttribute(name = "CNES")
-	private String  codecnes;
-	
+	private String codecnes;
+
 	@XmlAttribute(name = "CO_INE")
 	private String codeine;
-	
+
 	@XmlAttribute(name = "CO_CBO")
 	private String codecbo;
-	
+
 	@XmlAttribute(name = "MICROAREA")
 	private String microarea;
 
