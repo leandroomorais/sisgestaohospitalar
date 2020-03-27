@@ -26,12 +26,14 @@ public class ProfessionalService {
 	}
 	
 	/**Método que permite recuperar o profissional a partir do ID
-	 * @return Professional*/
+	 * @return Professional
+	 * @param Id*/
 	public Professional findOne(Long id) {
 		return repository.getOne(id);
 	}
 	
-	/**Método que permite deletar o profissional a partir do ID*/
+	/**Método que permite deletar o profissional a partir do ID
+	 * @param id*/
 	public void delete(Long id) {
 		repository.deleteById(id);
 	}
@@ -43,12 +45,14 @@ public class ProfessionalService {
 	}
 	
 	/**Método que permite recuperar o profissional a partir do CPF
+	 * @param cpf
 	 * @return Professional*/
 	public Professional findByCpf(String cpf) {
 		return repository.findByCpf(cpf);
 	}
 	
 	/**Método que permite recuperar o profissional a partir do Email
+	 * @param email
 	 * @return Professional*/
 	public Professional findByEmail(String email) {
 		return repository.findByEmail(email);

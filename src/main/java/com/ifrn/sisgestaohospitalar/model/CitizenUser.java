@@ -16,7 +16,6 @@ import javax.validation.constraints.NotBlank;
  * @author Leandro Morais
  * @version 1.0
  * @since Release 02 da Aplicação
- *
  */
 @Entity
 public class CitizenUser {

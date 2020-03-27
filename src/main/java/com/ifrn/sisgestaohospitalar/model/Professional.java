@@ -1,17 +1,21 @@
 package com.ifrn.sisgestaohospitalar.model;
 
-import java.util.Date;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.validation.constraints.NotBlank;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlElementWrapper;
 
 import com.ifrn.sisgestaohospitalar.enums.ProfessionalType;
 
@@ -39,8 +43,7 @@ public class Professional {
 	private String healthcardnumber;
 
 	@XmlAttribute(name = "DT_NASC")
-	@Temporal(TemporalType.TIMESTAMP)
-	private Date birth;
+	private String birth;
 
 	@XmlAttribute(name = "SEXO")
 	private String sex;
@@ -52,7 +55,7 @@ public class Professional {
 	private String ufemiss;
 
 	@XmlAttribute(name = "NU_REGISTRO")
-	private int registernumber;
+	private String registernumber;
 
 	@XmlAttribute(name = "E_MAIL")
 	private String email;
@@ -71,6 +74,17 @@ public class Professional {
 	private String password;
 	
 	private String firstname;
+
+	/**Mapeia e relaciona a Lista de Locais de Trabalho (Lotação)
+	 * dos Profissionais contidos no arquivo XML
+	 */
+	@XmlElementWrapper(name = "LOTACOES")
+	@XmlElement(name = "DADOS_LOTACOES")
+	@ManyToMany(cascade = CascadeType.ALL)
+	@JoinTable(name="professional_workplace", 
+	joinColumns= {@JoinColumn(name="professional_id")}, 
+	inverseJoinColumns= {@JoinColumn(name="workplace_id")})
+	private List<Workplace> workplaces;
 
 	public Long getId() {
 		return id;
@@ -104,11 +118,11 @@ public class Professional {
 		this.healthcardnumber = healthcardnumber;
 	}
 
-	public Date getBirth() {
+	public String getBirth() {
 		return birth;
 	}
 
-	public void setBirth(Date birth) {
+	public void setBirth(String birth) {
 		this.birth = birth;
 	}
 
@@ -136,11 +150,11 @@ public class Professional {
 		this.ufemiss = ufemiss;
 	}
 
-	public int getRegisternumber() {
+	public String getRegisternumber() {
 		return registernumber;
 	}
 
-	public void setRegisternumber(int registernumber) {
+	public void setRegisternumber(String registernumber) {
 		this.registernumber = registernumber;
 	}
 
@@ -208,5 +222,12 @@ public class Professional {
 		this.firstname = firstname;
 	}
 
+	public List<Workplace> getWorkplaces() {
+		return workplaces;
+	}
+
+	public void setWorkplaces(List<Workplace> workplaces) {
+		this.workplaces = workplaces;
+	}
 	
 }
