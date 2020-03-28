@@ -13,6 +13,12 @@ import com.ifrn.sisgestaohospitalar.model.ProcedureSigtap;
 public interface ProcedureSigtapRepository extends JpaRepository<ProcedureSigtap, Long> {
 
 	/**
+	 * Método que retorna o Procedimento a partir do Código do Procedimento 
+	 * @param codeprocedure
+	 * @return
+	 */
+	public ProcedureSigtap findByCodeprocedure(String codeprocedure);
+	/**
 	 * Método que retorna Lista de String contendo o nome do procedimento
 	 * correspondente ao parâmetro pesquisado "keyword"
 	 * @param keyword

@@ -1,9 +1,18 @@
 package com.ifrn.sisgestaohospitalar.model;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 
 /**
  * Classe para objetos do tipo Procedimento da Tabela Sigtap, onde serão
@@ -50,6 +59,27 @@ public class ProcedureSigtap {
 	private int qtlenghtstay;
 
 	private String datecompetency;
+	
+	@LazyCollection(LazyCollectionOption.FALSE)
+	@ManyToMany(cascade = CascadeType.ALL)
+	@JoinTable(name="proceduresigtap_register_relationship", 
+	joinColumns= {@JoinColumn(name="procedure_id")}, 
+	inverseJoinColumns= {@JoinColumn(name="register_id")})
+	private List<RegisterSigtap> registersSigtap;
+	
+	@LazyCollection(LazyCollectionOption.FALSE)
+	@ManyToMany(cascade = CascadeType.ALL)
+	@JoinTable(name="proceduresigtap_occupation_relationship", 
+	joinColumns= {@JoinColumn(name="procedure_id")}, 
+	inverseJoinColumns= {@JoinColumn(name="occupation_id")})
+	private List<OccupationSigtap> occupationsSigtap;
+	
+	@LazyCollection(LazyCollectionOption.FALSE)
+	@ManyToMany(cascade = CascadeType.ALL)
+	@JoinTable(name="proceduresigtap_cid_relationship", 
+	joinColumns= {@JoinColumn(name="procedure_id")}, 
+	inverseJoinColumns= {@JoinColumn(name="cid_id")})
+	private List<CidSigtap> cidsSigtap;
 
 	public Long getId() {
 		return id;
@@ -185,6 +215,30 @@ public class ProcedureSigtap {
 
 	public void setDatecompetency(String datecompetency) {
 		this.datecompetency = datecompetency;
+	}
+
+	public List<RegisterSigtap> getRegistersSigtap() {
+		return registersSigtap;
+	}
+
+	public void setRegistersSigtap(List<RegisterSigtap> registersSigtap) {
+		this.registersSigtap = registersSigtap;
+	}
+
+	public List<OccupationSigtap> getOccupationsSigtap() {
+		return occupationsSigtap;
+	}
+
+	public void setOccupationsSigtap(List<OccupationSigtap> occupationsSigtap) {
+		this.occupationsSigtap = occupationsSigtap;
+	}
+
+	public List<CidSigtap> getCidsSigtap() {
+		return cidsSigtap;
+	}
+
+	public void setCidsSigtap(List<CidSigtap> cidsSigtap) {
+		this.cidsSigtap = cidsSigtap;
 	}
 
 }
