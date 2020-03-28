@@ -1,0 +1,7 @@
+01Atenção Básica (PAB)                                                                                202003
+02Assistência Farmacêutica                                                                            202003
+04Fundo de Ações Estratégicas e Compensações (FAEC)                                                   202003
+05Incentivo - MAC                                                                                     202003
+06Média e Alta Complexidade (MAC)                                                                     202003
+07Vigilância em Saúde                                                                                 202003
+08Gestão do SUS                                                                                       202003

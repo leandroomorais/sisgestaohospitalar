@@ -1,0 +1,73 @@
+100Serviço de Atenção a Saúde no Sistema Penitenciário                                                                     202003
+101Estratégia de Saúde da Família                                                                                          202003
+102Estratégias de Agentes Comunitário de Saúde                                                                             202003
+103Serviço de Atendimento Móvel de Urgências                                                                               202003
+104Regulação Assistêncial dos Serviços de Saúde                                                                            202003
+105Serviço de Atenção em Neurologia/ Neurocirurgia                                                                         202003
+106Serviço de Atenção a DST/HIV/AIDS                                                                                       202003
+107Serviço de Atenção a Saúde Auditiva                                                                                     202003
+108Serviço de Atenção a Saúde do Trabalhador                                                                               202003
+109Serviço de Atenção a Saúde dos Adolecentes em Conflito com a Lei, em Regime de Internação e Internação Provisória       202003
+110Serviço de Atenção a Saúde Reprodutiva                                                                                  202003
+111Serviço de Atenção ao Paciente com Tuberculose                                                                          202003
+112Serviço de Atenção ao Pré-Natal, Parto e Nascimento                                                                     202003
+113Serviço de Atenção Domiciliar                                                                                           202003
+114Serviço de Atenção em Saúde Bucal                                                                                       202003
+115Serviço de Atenção Psicossocial                                                                                         202003
+116Serviço de Atenção Cardiovascular/Cardiologia                                                                           202003
+117Serviço de Cirurgia Reparadora                                                                                          202003
+118Serviço de Cirurgia Torácica                                                                                            202003
+119Serviço de Controle de Tabagismo                                                                                        202003
+120Serviço de Diagnóstico por Anatomia Patológica e/ou Citopatologia                                                       202003
+121Diagnóstico por Imagem                                                                                                  202003
+122Serviço de Diagnóstico por Métodos Gráficos/Dinâmicos                                                                   202003
+123Serviço de Dispensação de Órteses, Próteses e Materiais Especiais                                                       202003
+124Serviço de Endocrinologia                                                                                               202003
+125Serviço de Farmácia                                                                                                     202003
+126Serviço de Fisioterapia                                                                                                 202003
+127Serviço de Atenção à Obesidade                                                                                          202003
+128Serviço de Hemoterapia                                                                                                  202003
+129Servico de Laboratório de Histocompatibilidade                                                                          202003
+130Atenção à Doença Renal Crônica                                                                                          202003
+131Serviço de Oftalmologia                                                                                                 202003
+132Serviço de Oncologia                                                                                                    202003
+133Serviço de Pneumologia                                                                                                  202003
+134Serviço de Práticas Integrativas e Complementares                                                                       202003
+135Serviço de Reabilitação                                                                                                 202003
+136Serviço de Suporte Nutricional                                                                                          202003
+137Serviço de Telemedicina                                                                                                 202003
+138Serviço de Traumato-Ortopedia                                                                                           202003
+139Serviço de Triagem Neonatal                                                                                             202003
+140Serviço de Urgência e Emergência                                                                                        202003
+141Serviço de Vigilância em Saúde                                                                                          202003
+142Serviço de Endoscopia                                                                                                   202003
+143Serviço Móvel de Urgência (exceto SAMU)                                                                                 202003
+144Serviço Posto de Coleta de Materiais Biológicos                                                                         202003
+145Serviço de Diagnóstico por Laboratório Clínico                                                                          202003
+146Serviço de Videolaparoscopia                                                                                            202003
+147Serviço de Apoio a Saúde da Família                                                                                     202003
+148Hospital-Dia                                                                                                            202003
+149Transplante                                                                                                             202003
+150Cirurgia Vascular                                                                                                       202003
+151Medicina Nuclear                                                                                                        202003
+152Atenção à Saúde da População Indígena                                                                                   202003
+153Atenção Especializada no Processo Transexualizador                                                                      202003
+154Serviço de Banco de Tecidos                                                                                             202003
+155Serviço de Traumatologia  Ortopedia                                                                                     202003
+156Serviço de Atenção á Saúde das Pessoas Ostomizadas                                                                      202003
+157Serviço de Laboratorio de Protese Dentaria                                                                              202003
+158Serviço de Atenção Integral em Hanseniase                                                                               202003
+159Atenção Básica                                                                                                          202003
+160Teleconsultoria                                                                                                         202003
+161Consultório na Rua                                                                                                      202003
+162Serviço de Terapia Intensiva                                                                                            202003
+163Serviço de Cuidados Intermediários                                                                                      202003
+164Serviço de Órteses,Próteses e Materiais Especiais em Reabilitação                                                       202003
+165Atenção às Pessoas em Situação de Violência Sexual                                                                      202003
+166Serviço de  Análise Laboratorial  de Produtos Sujeitos á  Vigilância Sanitária                                          202003
+167Atendimento Itinerante de Asistência e Ensino em Saúde                                                                  202003
+168Atenção Às Pessoas com Doenças Raras                                                                                    202003
+169Serviço de Atenção em Urologia                                                                                          202003
+170Comissões e Comitês                                                                                                     202003
+173Logística de Imunobiológicos                                                                                            202003
+174Imunização                                                                                                              202003

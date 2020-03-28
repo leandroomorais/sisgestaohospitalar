@@ -1,0 +1,4 @@
+01Ambulatorial                                                                                        202003
+02Hospitalar                                                                                          202003
+03Hospital Dia                                                                                        202003
+06Atenção Domiciliar                                                                                  202003

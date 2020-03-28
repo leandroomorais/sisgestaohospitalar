@@ -1,0 +1,404 @@
+165001Referência para Atenção Integral às Pessoas em Situação de Violência Sexual                                                                           202003
+166001Água de Consumo                                                                                                                                       202003
+167001ODONTOLOGIA - PROJETO SAÚDE NA ESCOLA (PSE)                                                                                                           202003
+168001Atenção Especializada Em Doenças Raras                                                                                                                202003
+169001Urologia em Geral                                                                                                                                     202003
+170001Núcleo de Segurança do Paciente                                                                                                                       202003
+173001Recebimento e Inspeção                                                                                                                                202003
+174001Indivíduos em Geral                                                                                                                                   202003
+100001Atendimento em presídio até 100 presos                                                                                                                202003
+101001Saúde da família                                                                                                                                      202003
+102001Estratégia de Agentes Comunitários de Saúde - EACS                                                                                                    202003
+103001Ambulância de transporte                                                                                                                              202003
+104001Central de Regulação de Internações Hospitalares                                                                                                      202003
+105001Neurocirurgia do trauma e anomalias do desenvolvimento                                                                                                202003
+106001Testagem e aconselhamento                                                                                                                             202003
+107001Serviço de Atenção à Saúde Auditiva na Média Complexidade                                                                                             202003
+108001Atendimento/acompanhamento em saúde do trabalhador                                                                                                    202003
+109001Unidade sócio-educativa com até 40 adolecentes                                                                                                        202003
+110001Atenção à infertilidade                                                                                                                               202003
+111001Diagnóstico e tratamento                                                                                                                              202003
+112001Acompanhamento do pré-natal de risco habitual                                                                                                         202003
+113001Assitência Domiciliar                                                                                                                                 202003
+114001Dentística                                                                                                                                            202003
+115001Residência terapêutica em saúde mental                                                                                                                202003
+116001Eletrofisiologia                                                                                                                                      202003
+117001Tratamento da lipodistrofia do portador de HIV / AIDS                                                                                                 202003
+118001Cirurgia torácica                                                                                                                                     202003
+119001Abordagem e tratamento do fumante                                                                                                                     202003
+120001Exames anatomopatológicos                                                                                                                             202003
+121001Radiologia                                                                                                                                            202003
+122001Teste Ergométrico                                                                                                                                     202003
+123001OPM auxiliares de locomoção                                                                                                                           202003
+124001Diagnóstico/Tratamento das doenças endócrinas, metabólicas e nutricionais                                                                             202003
+125001Dispensação de Medicamentos do Componente Especializado da Assistência Farmaceutica.                                                                  202003
+126001Assistência fisioterapêutica em alterações obstétricas, neonatais e uroginecológicas                                                                  202003
+127001Tratamento clínico, cirúrgico, reparador e acompanhamento ao obeso                                                                                    202003
+128001Procedimentos destinados à obtenção do sangue para fins de assitência hemoterápica                                                                    202003
+129001Exames de histocompatibilidade por meio de sorologia                                                                                                  202003
+130001Tratamento Dialítico-Hemodiálise                                                                                                                      202003
+131001Diagnóstico em oftalmologia                                                                                                                           202003
+132001Oncologia pediátrica                                                                                                                                  202003
+133001Tratamento de Doenças das Vias Aéreas Inferiores                                                                                                      202003
+134001Acupuntura                                                                                                                                            202003
+135001Reabilitação Visual                                                                                                                                   202003
+136001Enteral                                                                                                                                               202003
+137001Exame eletrocardiográfico por telemedicina                                                                                                            202003
+138001Diagnóstico e tratamento em cintura escapular                                                                                                         202003
+139001Tratamento de recém-nascido com hipotireoidismo e fenilcetonuria                                                                                      202003
+141001Vigilância epidemiológica                                                                                                                             202003
+142001Do aparelho digestivo                                                                                                                                 202003
+143001Transporte terrestre                                                                                                                                  202003
+144001Coleta realizada fora das estrutura laboratorial                                                                                                      202003
+145001Exames Bioquimicos                                                                                                                                    202003
+146001Diagnóstica                                                                                                                                           202003
+147001NASF 1                                                                                                                                                202003
+148001Saúde mental                                                                                                                                          202003
+149001Rim                                                                                                                                                   202003
+150001Fístula arteriovenosa sem enxerto                                                                                                                     202003
+151001Medicina nuclear in vivo                                                                                                                              202003
+152001Atenção Básica à Populações Indígenas                                                                                                                 202003
+153001Acompanhamento Clínico, pré e pós operatório e hormonioterapia.                                                                                       202003
+154001Banco de valvula cardiaca humana                                                                                                                      202003
+155001Serviço de Traumatologia e Ortopedia                                                                                                                  202003
+156001Atenção as Pessoas Ostomizadas I                                                                                                                      202003
+157001Laboratorio Regional de Protese Dentaria                                                                                                              202003
+158001Serviço de Atenção Integral em Hanseniase Tipo I                                                                                                      202003
+159001Atenção Básica                                                                                                                                        202003
+160001Teleconsultoria Assíncrona                                                                                                                            202003
+161001Equipe de Consultório na Rua - Modalidade I                                                                                                           202003
+162001ADULTO                                                                                                                                                202003
+163001NEONATAL CONVENCIONAL                                                                                                                                 202003
+164001Dispensação de OPM Auxiliares de Locomoção                                                                                                            202003
+100002Atendimento em manicômio até 100 presos                                                                                                               202003
+101002Saúde bucal MI                                                                                                                                        202003
+102002Estratégia de Agentes Comunitários de Saúde com Saúde Bucal - (modalidade I)                                                                          202003
+103002Unidade de suporte básico de vida terrestre (USB)                                                                                                     202003
+104002Cental de Regulação de Consultas e Exames                                                                                                             202003
+105002Coluna e nervos periféricos                                                                                                                           202003
+106002Diagnóstico e tratamento                                                                                                                              202003
+107002Serviço de Atenção à Saúde Auditiva na Alta Complexidade                                                                                              202003
+108002Centro de referência em saúde do trabalhador CEREST estadual                                                                                          202003
+109002Unidade sócio-educativa com de 41 a 100 adolecentes                                                                                                   202003
+110002Contracepção clínica                                                                                                                                  202003
+111002Tratamento multidrogas resistentes                                                                                                                    202003
+112002Acompanhamento do pré-natal de alto risco                                                                                                             202003
+113002Internação Domiciliar                                                                                                                                 202003
+114002Endodontia                                                                                                                                            202003
+115002Atendimento psicossocial                                                                                                                              202003
+116002Cirurgia cardiovascular (adulto)                                                                                                                      202003
+117002Tratamento em queimados                                                                                                                               202003
+120002Exames citopatológicos                                                                                                                                202003
+121002Ultra-sonografia                                                                                                                                      202003
+122002Teste de Holter                                                                                                                                       202003
+123002OPM ortopédicas                                                                                                                                       202003
+124002Cirurgia de glândulas endócrinas                                                                                                                      202003
+125002Farmácia Popular                                                                                                                                      202003
+126002Assistência fisioterapêutica em alterações oncológicas                                                                                                202003
+128002Diagnóstico em hemoterapia                                                                                                                            202003
+129002Exames de histocompatibilidade por sorologia e biologia                                                                                               202003
+131002Tratamento clínico do aparelho da visão                                                                                                               202003
+132002Hematologia                                                                                                                                           202003
+133002Diagnóstico em Pneumologia                                                                                                                            202003
+134002Fitoterapia                                                                                                                                           202003
+135002Reabilitação Intelectual                                                                                                                              202003
+136002Enteral/Parenteral                                                                                                                                    202003
+138002Diagnóstico e tratamento em membros superiores                                                                                                        202003
+139002Tratamento de recém-nascido com doenças falciformes                                                                                                   202003
+141002Vigilância sanitária                                                                                                                                  202003
+142002Do aparelho respiratório                                                                                                                              202003
+143002Transporte aéreo                                                                                                                                      202003
+145002Exames hematológicos e hemostasia                                                                                                                     202003
+146002Cirúrgica                                                                                                                                             202003
+147002NASF 2                                                                                                                                                202003
+148002AIDS                                                                                                                                                  202003
+149002Medula óssea                                                                                                                                          202003
+150002Fístula arteriovenosa com enxerto                                                                                                                     202003
+151002Medicina nuclear in vitro                                                                                                                             202003
+153002Cirurgia e Acompanhamento pré e pós oreratório                                                                                                        202003
+154002Banco de tecido musculo esqueletico                                                                                                                   202003
+155002Serviço de Traumatologia e Ortopedia Pediátrica (até 21 anos de idade)                                                                                202003
+156002Atenção as Pessoas Ostomizadas II                                                                                                                     202003
+158002Serviço de Atenção Integral em Hanseniase Tipo II                                                                                                     202003
+159002Atenção Básica com Saúde Bucal                                                                                                                        202003
+160002Teleconsultoria Síncrona                                                                                                                              202003
+161002Equipe de Consultório na Rua - Modalidade II                                                                                                          202003
+162002NEONATAL                                                                                                                                              202003
+163002NEONATAL CANGURU                                                                                                                                      202003
+164002Manutenção e Adaptação de OPM Auxiliares de Locomoção                                                                                                 202003
+165002Serviço de Referência para Atenção Integral à Saúde de Adolescentes em Situação de Violência Sexual                                                   202003
+166002Água de Ambiental                                                                                                                                     202003
+167002ODONTOLOGIA - PROJETO BRASIL ALFABETIZADO (PBA)                                                                                                       202003
+168002Referência em Doenças Raras                                                                                                                           202003
+169002Litotripsia                                                                                                                                           202003
+173002Armazenamento e Controle                                                                                                                              202003
+174002Grupos Especiais                                                                                                                                      202003
+166003Água de Hemodiálise                                                                                                                                   202003
+116003Cirurgia cardiovascular (Pediátrico)                                                                                                                  202003
+173003Distribuição                                                                                                                                          202003
+136003Enteral/Parenteral, com manipulação/fabricação                                                                                                        202003
+138003Diagnóstico e tratamento em coluna vertebral e caixa torácica                                                                                         202003
+139003Tratamento de recém-nascido com fibrose cística                                                                                                       202003
+141003Vigilância ambiental                                                                                                                                  202003
+142003Do aparelho urinário                                                                                                                                  202003
+143003Transporte marítimo                                                                                                                                   202003
+145003Exames sorológicos e imunológicos                                                                                                                     202003
+147003NASF Intermunicipal                                                                                                                                   202003
+148003Geriátrico                                                                                                                                            202003
+149003Coração                                                                                                                                               202003
+151003Medicina nuclear in vivo por telemedicina                                                                                                             202003
+155003Serviço de Traumatologia e Ortopedia de Urgência                                                                                                      202003
+158003Serviço de Atenção Integral em Hanseniase Tipo III                                                                                                    202003
+159003Academia da Saúde                                                                                                                                     202003
+160003Segunda Opinião Formativa                                                                                                                             202003
+161003Equipe de Consultório na Rua - Modalidade III                                                                                                         202003
+162003PEDIÁTRICO                                                                                                                                            202003
+163003PEDIÁTRICO                                                                                                                                            202003
+164003Dispensação de OPM Ortopédica                                                                                                                         202003
+165003Serviço de Referência para Atenção Integral à Saúde de Crianças em Situação de Violência Sexual                                                       202003
+117003Tratamento da lipoatrofia facial do portador de HIV / AIDS                                                                                            202003
+120003Monitoramento Externo da Qualidade dos Exames Citopatologicos do Colo do Útero                                                                        202003
+121003Tomografia computadorizada                                                                                                                            202003
+122003Exame Eletrocardiográfico                                                                                                                             202003
+123003OPM auditivas                                                                                                                                         202003
+125003Farmácia com manipulação homeopática                                                                                                                  202003
+126003Assistência fisioterapêutica em oftalmologia                                                                                                          202003
+128003Procedimentos especiais em hemoterapia                                                                                                                202003
+130003Confeccção/Intervenção de Acessos para Diálise                                                                                                        202003
+131003Tratamento cirúrgico do aparelho da visão                                                                                                             202003
+132003Oncologia clínica                                                                                                                                     202003
+133003Diagnóstico em Pneumologia por Telemedicina                                                                                                           202003
+134003Outras Práticas em Medicina Tradicional Chinesa                                                                                                       202003
+135003Reabilitação Física                                                                                                                                   202003
+100003Atendimento em presídio acima de 100 presos                                                                                                           202003
+101003Saúde bucal MII                                                                                                                                       202003
+102003Estratégia de Agentes Comunitários de Saúde com Saúde Bucal - (modalidade II)                                                                         202003
+103003Unidade de suporte avançado de vida terrestre (USA)                                                                                                   202003
+104003Central de Regulação de Urgências                                                                                                                     202003
+105003Tumores do sistema nervoso                                                                                                                            202003
+106003Diagnóstico, tratamento e capacitação técnica                                                                                                         202003
+107003Terapia fonoaudiológica                                                                                                                               202003
+108003VIGILÂNCIA EM SAÚDE DO TRABALHADOR (VISAT)                                                                                                            202003
+109003Unidade sócio-educativa com de 101 a 180 adolecentes                                                                                                  202003
+110003Laqueadura                                                                                                                                            202003
+112003Parto em gestação de risco habitual                                                                                                                   202003
+113003Equipe Multidisciplinar de Atenção Domiciliar - EMAD                                                                                                  202003
+114003Periodontia clínica                                                                                                                                   202003
+115003Serviço Hospitalar para Atenção a Saúde Mental                                                                                                        202003
+167003OFTALMOLOGIA - PROJETO SAÚDE NA ESCOLA (PSE)                                                                                                          202003
+166004Água Mineral                                                                                                                                          202003
+116004Cirurgia vascular                                                                                                                                     202003
+173004Transporte                                                                                                                                            202003
+138004Diagnóstico e tratamento em cintura pélvica                                                                                                           202003
+139004Tratamento de recém-nascido com outras doenças congênitas                                                                                             202003
+140004Estabilização de paciente crítico/grave                                                                                                               202003
+141004Núcleo de vigilância hospitalar                                                                                                                       202003
+142004Do aparelho ginecológico                                                                                                                              202003
+145004Exames coprológicos                                                                                                                                   202003
+147004NASF 3                                                                                                                                                202003
+148004Fibrose cística                                                                                                                                       202003
+149004Pulmão                                                                                                                                                202003
+152004Saneamento a Populações Indígenas                                                                                                                     202003
+162004QUEIMADOS                                                                                                                                             202003
+163004ADULTO                                                                                                                                                202003
+164004Manutenção e Adaptação de OPM Ortopédica                                                                                                              202003
+165004Serviço de Referência para Atenção Integral à Saúde de Homens em Situação de Violência Sexual                                                         202003
+121004Ressonância magnética                                                                                                                                 202003
+122004Exame Eletroencefalográfico                                                                                                                           202003
+123004OPM oftalmológicas                                                                                                                                    202003
+125004Dispensação de medicamentos estratégicos                                                                                                              202003
+126004Assistência fisioterapêutica cardiovasculares e pneumo-funcionais                                                                                     202003
+128004Medicina transfusional                                                                                                                                202003
+130004Tratamento Nefrologia em Geral                                                                                                                        202003
+131004Projeto Olhar Brasil                                                                                                                                  202003
+132004Radioterapia                                                                                                                                          202003
+134004Práticas Corpo-mente                                                                                                                                  202003
+135004Reabilitação visual/mental/múltiplas deficiências                                                                                                     202003
+100004Atendimento em manicômio acima de 100 presos                                                                                                          202003
+101004Saúde da Família para a População Ribeirinha                                                                                                          202003
+104004Unidade de autorizações de TFD intermunicipais                                                                                                        202003
+105004Neurocirurgia vascular                                                                                                                                202003
+106004Assistência Domiciliar Terapêutica em AIDS-ADT                                                                                                        202003
+107004Diagnóstico em audiologia/otologia                                                                                                                    202003
+109004Unidade sócio-educativa com mais de 180 adolecentes                                                                                                   202003
+110004Vasectomia                                                                                                                                            202003
+112004Parto em gestação de alto risco                                                                                                                       202003
+113004Equipe Multidisciplinar de Apoio - EMAP                                                                                                               202003
+114004Moldagem/Manutenção                                                                                                                                   202003
+115004Serviço Residencial Terapêutico Tipo I - SRT tipo I                                                                                                   202003
+167004OFTALMOLOGIA - PROJETO BRASIL ALFABETIZADO (PBA)                                                                                                      202003
+165005Serviço de Referência para Atenção Integral à Saúde de Pessoas Idosas em Situação de Violência Sexual                                                 202003
+166005Alimentos                                                                                                                                             202003
+138005Diagnóstico e tratamento em membros inferiores                                                                                                        202003
+139005Acompanhamento a pacientes com diagnósticos de Hiperplasia Adrenal Congênita                                                                          202003
+140005Atendimento ao paciente com Acidente Vascular Cerebral (AVC)                                                                                          202003
+145005Exames de uroanálise                                                                                                                                  202003
+148005Cirúrgico / Diagnóstico                                                                                                                               202003
+149005Córnea / Esclera                                                                                                                                      202003
+152005Atenção Especializada a Populações Indígenas                                                                                                          202003
+162005DOENÇA CORONARIANA (UCO)                                                                                                                              202003
+164005Dispensação de OPM Auditiva                                                                                                                           202003
+116005Cardiologia intervencionista (hemodinâmica)                                                                                                           202003
+122005Teste Ergométrico por Telemedicina                                                                                                                    202003
+123005OPM em gastroenterologia                                                                                                                              202003
+125005Dispensação de medicamentos básicos                                                                                                                   202003
+126005Assistência fisioterapêutica nas disfunções músculo-esqueléticas (todas as origens)                                                                   202003
+130005Tratamento Diálitico Peritonial                                                                                                                       202003
+131005Diagnóstico em Oftalmologia por Telemedicina                                                                                                          202003
+132005Oncologia cirúrgica                                                                                                                                   202003
+134005Homeopatia                                                                                                                                            202003
+135005Reabiliatação Auditiva                                                                                                                                202003
+101005Saúde da Família para a População Ribeirinha-Saúde Bucal MI                                                                                           202003
+103005Unidade de Suporte Básico de vida: Equipe Embarcação                                                                                                  202003
+104005Unidade de autorizações de TFD interestaduais                                                                                                         202003
+105005Tratamento neurocirúrgico da dor funcional                                                                                                            202003
+106005Unidade Dispensadora de Medicamentos - UDM                                                                                                            202003
+107005Implante Coclear                                                                                                                                      202003
+109005Atenção Básica à Adolescentes em Unidade Socioeducativa                                                                                               202003
+112005Centro de parto normal                                                                                                                                202003
+113005Equipe de cuidados domiciliares                                                                                                                       202003
+114005Cirurgia oral                                                                                                                                         202003
+115005Serviço Residencial Terapêutico Tipo II - SRT tipo II                                                                                                 202003
+165006Serviço de referência para interrupção de gravidez nos casos previstos em LEI                                                                         202003
+115006UA Adulto                                                                                                                                             202003
+139006Acompanhamento a pacientes com diagnósticos de Deficiência Biotinidase                                                                                202003
+140006Pronto Atendimento Clínico                                                                                                                            202003
+145006Exames hormonais                                                                                                                                      202003
+148006Acompanhamento pós-transplante de medula óssea                                                                                                        202003
+149006Fígado                                                                                                                                                202003
+164006Manutenção e Adaptação de OPM Auditiva                                                                                                                202003
+116006Cardiologia Endovascular Extracardíaco                                                                                                                202003
+121006Radiologia intervencionista                                                                                                                           202003
+122006Teste Holter por Telemedicina                                                                                                                         202003
+123006OPM em urologia                                                                                                                                       202003
+125006Farmácia Hospitalar                                                                                                                                   202003
+126006Assistência fisioterapêutica em queimados                                                                                                             202003
+130006Tratamento em DRC                                                                                                                                     202003
+131006Projeto Olhar Brasil - Programa Saúde na Escola (PSE)                                                                                                 202003
+134006Termalismo/Crenoterapia                                                                                                                               202003
+101006Saúde da Família Fluvial                                                                                                                              202003
+103006Veículos de intervenção rápida                                                                                                                        202003
+104006Central Estadual de Regulação da Alta Complexidade                                                                                                    202003
+105006Investigação e cirurgia de epilepsia                                                                                                                  202003
+107006Triagem Auditiva Neonatal                                                                                                                             202003
+112006Casa da Gestante, Bebê e Puérpera                                                                                                                     202003
+114006Cirurgia buco-maxilo-facial                                                                                                                           202003
+166006Células, Tecidos e Órgãos                                                                                                                             202003
+165007Atenção Ambulatorial  ás Pessoas em Situação de Violência Sexual                                                                                      202003
+115007UA Infantojuvenil                                                                                                                                     202003
+140007Pronto Atendimento Pediátrico                                                                                                                         202003
+145007Exames de  vigilância epidemiológica e  ambiental                                                                                                     202003
+149007Pâncreas                                                                                                                                              202003
+164007Dispensação de OPM Oftalmológica                                                                                                                      202003
+116007Cardiologia Clínica                                                                                                                                   202003
+121007Radiologia por telemedicina                                                                                                                           202003
+122007Exame Eletrocardiografico por Telemedicina                                                                                                            202003
+123007OPM em odontologia                                                                                                                                    202003
+125007Farmácia Viva                                                                                                                                         202003
+126007Assistência fisioterapêutica nas alterações em neurologia                                                                                             202003
+131007Projeto Olhar Brasil - Programa Brasil Alfabetizado (PBA)                                                                                             202003
+134007Antroposofia Aplicada à Saúde                                                                                                                         202003
+135007Oficina Ortopédica Fixa                                                                                                                               202003
+101007Saúde da Família Fluvial com Saúde Bucal                                                                                                              202003
+103007Outros veículos                                                                                                                                       202003
+104007Regulação Nacional de Alta Complexidade                                                                                                               202003
+105007Tratamento endovascular                                                                                                                               202003
+107007Diagnóstico em Audiologia/Otologia por Telemedicina                                                                                                   202003
+114007Atendimento à pessoa com deficiência                                                                                                                  202003
+166007Medicamentos                                                                                                                                          202003
+165008Coleta de  Vestígios de Violência Sexual                                                                                                              202003
+115008Unidade de Atenção em Regime Residencial                                                                                                              202003
+140008Pronto Atendimento Obstétrico                                                                                                                         202003
+145008Exames toxicológicos ou de monitorização terapêutica                                                                                                  202003
+149008Retirada de orgãos                                                                                                                                    202003
+152008Hospitalidade Indígena                                                                                                                                202003
+164008Manutenção e Adaptação de OPM Oftalmológica                                                                                                           202003
+116008Serviço de Atenção Cardiovascular/Cardiologia Angiologia                                                                                              202003
+121008Ultra-sonografia por telemedicina                                                                                                                     202003
+122008Exame Eletroencefalografico por Telemedicina                                                                                                          202003
+123008OPM buco-maxilo-facial                                                                                                                                202003
+126008Diagnóstico cinético funcional                                                                                                                        202003
+134008Práticas Expressivas                                                                                                                                  202003
+135008Oficina Ortopédica Intinerante Terrestre                                                                                                              202003
+101008ESF Tipo I, II, III, IV ou Transitória                                                                                                                202003
+103008Ambulância de resgate                                                                                                                                 202003
+104008Regulação Ambulatorial de Média Complexidade                                                                                                          202003
+105008Neurocirurgia funcional estereotáxica                                                                                                                 202003
+107008Atenção Especializada às Pessoas com Deficiência Auditiva                                                                                             202003
+166008Saneantes Domissanitários                                                                                                                             202003
+166009Produtos para a Saúde                                                                                                                                 202003
+135009Oficina Ortopédica Intinerante Fluvial                                                                                                                202003
+140009Pronto Atendimento Psiquiátrico                                                                                                                       202003
+145009Exames microbiológicos                                                                                                                                202003
+149009Pele                                                                                                                                                  202003
+152009Gestão da Atenção e Saneamento à Populações Indígenas                                                                                                 202003
+105009Polissonografia                                                                                                                                       202003
+121009Tomografia computadorizada por telemedicina                                                                                                           202003
+122009Exame Eletroneuromiografia                                                                                                                            202003
+123009Substituição/Troca em órteses/próteses                                                                                                                202003
+134009Ayurveda                                                                                                                                              202003
+101009ESF Tipo I, II, III, IV ou Transitória com Saúde Bucal MI                                                                                             202003
+104009Regulação do Acesso a Ações e Serviços de Saúde                                                                                                       202003
+164009Substitução/Troca de OPM                                                                                                                              202003
+152010Saúde Bucal à Populações Indígenas                                                                                                                    202003
+123010OPM em queimados                                                                                                                                      202003
+134010Práticas Naturais                                                                                                                                     202003
+164010OPM em gastroenterologia                                                                                                                              202003
+149010Válvulas cardíacas                                                                                                                                    202003
+103010Motolância                                                                                                                                            202003
+122010Exame videoeletroencefalografia                                                                                                                       202003
+145010Exames em outros líquidos biológicos                                                                                                                  202003
+121010Ressonância magnética por telemedicina                                                                                                                202003
+166010Cosméticos                                                                                                                                            202003
+140010Pronto Atendimento Oftalmológico                                                                                                                      202003
+135010Atenção Fonoaudiológica                                                                                                                               202003
+101010ESF Tipo I, II, III, IV ou Transitória com Saúde Bucal MII                                                                                            202003
+123011OPM em nefrologia                                                                                                                                     202003
+122011Potenciais Evocados                                                                                                                                   202003
+121011Radiologia intervencionista por telemedicina                                                                                                          202003
+103011Unidade de Suporte Avançado de vida: Equipe Embarcação                                                                                                202003
+101011ESF Transitória                                                                                                                                       202003
+166011Desinfestantes                                                                                                                                        202003
+164011OPM em Urologia                                                                                                                                       202003
+149011Osteocondroligamentos                                                                                                                                 202003
+145011Exames de genética                                                                                                                                    202003
+140011Pronto Atendimento Odontológico                                                                                                                       202003
+135011Atenção Fisioterapeutica                                                                                                                              202003
+134011Práticas Manuais                                                                                                                                      202003
+103012Equipe Aeromédico                                                                                                                                     202003
+145012Exames para triagem neonatal                                                                                                                          202003
+134012Práticas Psicodinâmicas                                                                                                                               202003
+135012Atenção à Saúde das Pessoas Ostomizadas I                                                                                                             202003
+122012Potenciais Evocados por Telemedicina                                                                                                                  202003
+149012Separação, avaliação biomicroscópica e conservação da córnea/esclera                                                                                  202003
+166012Imunobiológicos                                                                                                                                       202003
+140012Pronto Socorro Pediátrico                                                                                                                             202003
+123012OPM - Projeto Olhar Brasil                                                                                                                            202003
+101012Saúde da Família para a População Ribeirinha - Saúde Bucal MII                                                                                        202003
+121012Mamografia                                                                                                                                            202003
+140013Pronto Socorro Obstétrico                                                                                                                             202003
+135013Atenção à Saúde das Pessoas Ostomizadas II                                                                                                            202003
+121013Mamografia por Telemedicina                                                                                                                           202003
+123013OPM Projeto Olhar Brasil - Programa Saúde na Escola (PSE)                                                                                             202003
+134013Ozônioterapia                                                                                                                                         202003
+101013ESB MI                                                                                                                                                202003
+149013Contagem endotelial corneana                                                                                                                          202003
+145013Exames imunohematológicos                                                                                                                             202003
+166013Insumos Farmacêuticos                                                                                                                                 202003
+101014ESB MII                                                                                                                                               202003
+140014Pronto Socorro Cardiovascular                                                                                                                         202003
+123014OPM Projeto Olhar Brasil - Programa Brasil Alfabetizado (PBA)                                                                                         202003
+149014Acompanhamento de paciente transplantado                                                                                                              202003
+166014Material Biológico                                                                                                                                    202003
+134014Aromaterapia                                                                                                                                          202003
+166015Sangue e Hemoderivados                                                                                                                                202003
+134015Imposição de Mãos                                                                                                                                     202003
+149015Ações para doação e captação de órgãos e tecidos                                                                                                      202003
+140015Pronto Socorro Neurologia/Neurocirurgia                                                                                                               202003
+166016Surtos de Toxinfecção                                                                                                                                 202003
+140016Pronto Socorro Traumato-Ortopédico                                                                                                                    202003
+149016Retirada de globo ocular humano para transplante                                                                                                      202003
+166017Diversos                                                                                                                                              202003
+140017Pronto Socorro Odontológico                                                                                                                           202003
+140018Pronto Socorro Oftalmológico                                                                                                                          202003
+140019Pronto Socorro Geral/Clínico                                                                                                                          202003

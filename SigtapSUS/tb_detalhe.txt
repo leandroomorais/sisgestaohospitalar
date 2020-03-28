@@ -1,0 +1,38 @@
+001Inclui valor da anestesia                                                                           202003
+003Admite longa permanência                                                                            202003
+004Admite permanência à maior                                                                          202003
+005Admite liberação de quantidade na AIH                                                               202003
+006CNRAC                                                                                               202003
+007Permanência por dia                                                                                 202003
+008Não permite mudança de procedimento                                                                 202003
+009Exige CNS                                                                                           202003
+011Permite alta direta de UTI                                                                          202003
+012Exige idade no BPA (Consolidado)                                                                    202003
+013Verifica habilitação de terceiro                                                                    202003
+014Admite APAC de Continuidade                                                                         202003
+015Admitido apenas em Hosp.Espec/Psiquiatria                                                           202003
+017Exige Informação da OPM                                                                             202003
+020Monitoramento do CEO                                                                                202003
+021Não Exige CBO                                                                                       202003
+022Exige registro na APAC de dados complementares                                                      202003
+023Registro no SISCOLO                                                                                 202003
+024Registro no SISPRENATAL                                                                             202003
+025Registro no SISMAMA                                                                                 202003
+026Registro de Procedimentos Secundário Compativel                                                     202003
+029Admite período maior para a apresentação                                                            202003
+033APAC com validade fixa de 03 competências                                                           202003
+034Não exige CNS                                                                                       202003
+036Exige Autorização                                                                                   202003
+037Exige CNPJ do Fornecedor                                                                            202003
+038Exige Serviço/Classificação                                                                         202003
+040Registro no SISCAN                                                                                  202003
+041APAC com validade fixa de 12 competências                                                           202003
+042Não Admite Liberação de Crítica de Idade                                                            202003
+043Exige registro de CID de causas associadas                                                          202003
+044Cirurgias Eletivas                                                                                  202003
+045Diárias de Leitos Complementares                                                                    202003
+046Tratamento Ambulatorial de Doenças Crônicas                                                         202003
+047Autorização com limite máximo de 6 meses.                                                           202003
+048Exige CID                                                                                           202003
+049Permite Informação de Equipe Cirúrgica                                                              202003
+050Permite o Registro de Informações do CNS do(s) Recém-Nascido(s)                                     202003

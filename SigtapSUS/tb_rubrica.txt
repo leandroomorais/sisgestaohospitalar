@@ -1,0 +1,20 @@
+040009Atendimento/acompanhamento em reabilitação física, mental, visual, auditiva e múltiplas deficiências202003
+040013Atendimento/acompanhamento de diagnóstico de doenças endocrinas/metabólicas e nutricionais          202003
+040017Nefrologia                                                                                          202003
+040024Cirurgia do aparelho digestivo, orgãos anexos e parede abdominal(inclui pré e pós operatório)       202003
+040028Outras cirurgias plásticas/reparadoras                                                              202003
+040030Sequenciais                                                                                         202003
+040032Transplantes de orgãos, tecidos e células                                                           202003
+040033Medicamentos para transplante                                                                       202003
+040038OPM para transplantes                                                                               202003
+040041Central Nacional de Regulação de Alta Complexidade (CNRAC)                                          202003
+040044Redesignação e Acompanhamento                                                                       202003
+040049Implementar Cirg. CV Pediátrica                                                                     202003
+040055Transplante - Histocompatibilidade                                                                  202003
+040062Doenças Raras                                                                                       202003
+040063Cadeiras de Rodas                                                                                   202003
+040065Medicamentos em Urgência                                                                            202003
+040066Cirurgias Eletivas - Componente Único                                                               202003
+040067Atenção Especializada em Saúde Auditiva                                                             202003
+040068Terapias Especializadas em Angiologia                                                               202003
+040069Tratamento de Doença Macular                                                                        202003

@@ -1,0 +1,9 @@
+01BPA (Consolidado)                                 202003
+02BPA (Individualizado)                             202003
+03AIH (Proc. Principal)                             202003
+04AIH (Proc. Especial)                              202003
+05AIH (Proc. Secundário)                            202003
+06APAC (Proc. Principal)                            202003
+07APAC (Proc. Secundário)                           202003
+08RAAS (Atenção Domiciliar)                         202003
+09RAAS (Atenção Psicossocial)                       202003

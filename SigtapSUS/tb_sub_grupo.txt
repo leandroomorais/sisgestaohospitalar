@@ -1,0 +1,59 @@
+0301Consultas / Atendimentos / Acompanhamentos                                                          202003
+0801Ações relacionadas ao estabelecimento                                                               202003
+0201Coleta de material                                                                                  202003
+0101Ações coletivas/individuais em saúde                                                                202003
+0701Órteses, próteses e materiais especiais não relacionados ao ato cirúrgico                           202003
+0601Medicamentos de dispensação excepcional                                                             202003
+0501Coleta e exames para fins de doação de orgãos, tecidos e células e de transplante                   202003
+0401Pequenas cirurgias e cirurgias de pele, tecido subcutâneo e mucosa                                  202003
+0202Diagnóstico em laboratório clínico                                                                  202003
+0102Vigilância em saúde                                                                                 202003
+0802Ações relacionadas ao atendimento                                                                   202003
+0702Órteses, próteses e materiais especiais relacionados ao ato cirúrgico                               202003
+0602Medicamentos estratégicos                                                                           202003
+0502Avaliação de morte encefálica                                                                       202003
+0402Cirurgia de glândulas endócrinas                                                                    202003
+0302Fisioterapia                                                                                        202003
+0203Diagnóstico por anatomia patológica e citopatologia                                                 202003
+0803Autorização / regulação                                                                             202003
+0603Medicamentos de âmbito hospitalar e urgência                                                        202003
+0403Cirurgia do sistema nervoso central e periférico                                                    202003
+0303Tratamentos clínicos (outras especialidades)                                                        202003
+0503Ações relacionadas à doação de orgãos e tecidos para transplante                                    202003
+0504Processamento de tecidos para transplante                                                           202003
+0404Cirurgia das vias aéreas superiores, da face, da cabeça e do pescoço                                202003
+0204Diagnóstico por radiologia                                                                          202003
+0604Componente especializado da assistência farmacêutica                                                202003
+0304Tratamento em oncologia                                                                             202003
+0305Tratamento em nefrologia                                                                            202003
+0405Cirurgia do aparelho da visão                                                                       202003
+0205Diagnóstico por ultrasonografia                                                                     202003
+0505Transplante de orgãos, tecidos e células                                                            202003
+0506Acompanhamento e intercorrências no pré e pós-transplante                                           202003
+0206Diagnóstico por tomografia                                                                          202003
+0406Cirurgia do aparelho circulatório                                                                   202003
+0306Hemoterapia                                                                                         202003
+0307Tratamentos odontológicos                                                                           202003
+0207Diagnóstico por ressonância magnética                                                               202003
+0407Cirurgia do aparelho digestivo, orgãos anexos e parede abdominal                                    202003
+0208Diagnóstico por medicina nuclear in vivo                                                            202003
+0308Tratamento de lesões, envenenamentos e outros, decorrentes de causas externas                       202003
+0408Cirurgia do sistema osteomuscular                                                                   202003
+0409Cirurgia do aparelho geniturinário                                                                  202003
+0309Terapias especializadas                                                                             202003
+0209Diagnóstico por endoscopia                                                                          202003
+0410Cirurgia de mama                                                                                    202003
+0310Parto e nascimento                                                                                  202003
+0210Diagnóstico por radiologia intervencionista                                                         202003
+0411Cirurgia obstétrica                                                                                 202003
+0211Métodos diagnósticos em especialidades                                                              202003
+0412Cirurgia torácica                                                                                   202003
+0212Diagnóstico e procedimentos especiais em hemoterapia                                                202003
+0213Diagnóstico em vigilância epidemiológica e ambiental                                                202003
+0413Cirurgia reparadora                                                                                 202003
+0414Bucomaxilofacial                                                                                    202003
+0214Diagnóstico por teste rápido                                                                        202003
+0415Outras cirurgias                                                                                    202003
+0416Cirurgia em oncologia                                                                               202003
+0417Anestesiologia                                                                                      202003
+0418Cirurgia em nefrologia                                                                              202003
