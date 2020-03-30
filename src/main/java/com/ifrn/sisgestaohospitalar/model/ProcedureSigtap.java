@@ -30,7 +30,7 @@ public class ProcedureSigtap {
 
 	private String codeprocedure;
 
-	private String numberprocedure;
+	private String nameprocedure;
 
 	private char typecomplexity;
 
@@ -97,12 +97,12 @@ public class ProcedureSigtap {
 		this.codeprocedure = codeprocedure;
 	}
 
-	public String getNumberprocedure() {
-		return numberprocedure;
+	public String getNameprocedure() {
+		return nameprocedure;
 	}
 
-	public void setNumberprocedure(String numberprocedure) {
-		this.numberprocedure = numberprocedure;
+	public void setNameprocedure(String nameprocedure) {
+		this.nameprocedure = nameprocedure;
 	}
 
 	public char getTypecomplexity() {

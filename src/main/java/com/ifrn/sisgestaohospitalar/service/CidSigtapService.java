@@ -9,6 +9,7 @@ import com.ifrn.sisgestaohospitalar.repository.CidSigtapRepository;
 
 /**
  * Classe que implementa os Métodos da Interface CidSigtapRepository
+ * 
  * @author Leandro Morais
  * @version 1.0
  * @since Release 02 da Aplicação
@@ -21,6 +22,7 @@ public class CidSigtapService {
 
 	/**
 	 * Salva o CidSigtap
+	 * 
 	 * @param cidSigtap
 	 */
 	public void save(CidSigtap cidSigtap) {
@@ -29,6 +31,7 @@ public class CidSigtapService {
 
 	/**
 	 * Deleta o CidSigtap a partir o id
+	 * 
 	 * @param id
 	 */
 	public void delete(Long id) {
@@ -37,6 +40,7 @@ public class CidSigtapService {
 
 	/**
 	 * Retorna o CidSigtap a partir do id
+	 * 
 	 * @param id
 	 * @return CidSigtap
 	 */
@@ -46,6 +50,7 @@ public class CidSigtapService {
 
 	/**
 	 * Retorna a lista de Cids
+	 * 
 	 * @return List<CidSigtap>
 	 */
 	public List<CidSigtap> listAll() {
@@ -54,6 +59,7 @@ public class CidSigtapService {
 
 	/**
 	 * Retorna o CidSigtap a partir do seu código
+	 * 
 	 * @param codecid
 	 * @return CidSigtap
 	 */

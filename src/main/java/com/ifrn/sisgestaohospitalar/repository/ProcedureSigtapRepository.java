@@ -24,7 +24,7 @@ public interface ProcedureSigtapRepository extends JpaRepository<ProcedureSigtap
 	 * @param keyword
 	 * @return
 	 */
-	@Query("SELECT numberprocedure FROM ProcedureSigtap where numberprocedure like  %:keyword%")
+	@Query("SELECT nameprocedure FROM ProcedureSigtap where nameprocedure like  %:keyword%")
 	public List<String> search(@Param("keyword") String keyword);
 
 	/**
@@ -34,6 +34,6 @@ public interface ProcedureSigtapRepository extends JpaRepository<ProcedureSigtap
 	 * @return
 	 */
 	@Query
-	public List<ProcedureSigtap> findByNumberprocedure(String numberprocedure);
+	public List<ProcedureSigtap> findByNameprocedure(String nameprocedure);
 
 }

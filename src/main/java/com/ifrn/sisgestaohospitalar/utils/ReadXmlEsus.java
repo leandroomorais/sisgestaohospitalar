@@ -25,7 +25,7 @@ import com.ifrn.sisgestaohospitalar.repository.ProfessionalRepository;
  * @since Release 02 da Aplicação
  */
 @Service
-public class ReadXml {
+public class ReadXmlEsus {
 
 	@Autowired
 	private ProfessionalRepository professionalRepository;

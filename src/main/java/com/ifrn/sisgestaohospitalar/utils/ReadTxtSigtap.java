@@ -175,7 +175,7 @@ public class ReadTxtSigtap {
 			ProcedureSigtap procedure = new ProcedureSigtap();
 
 			procedure.setCodeprocedure(CO_PROCEDIMENTO);
-			procedure.setNumberprocedure(NO_PROCEDIMENTO);
+			procedure.setNameprocedure(NO_PROCEDIMENTO);
 			procedure.setTypecomplexity(TP_COMPLEXIDADE);
 			procedure.setTypesex(TP_SEXO);
 			procedure.setQtmaximumexecution(QT_MAXIMA_EXECUCAO);

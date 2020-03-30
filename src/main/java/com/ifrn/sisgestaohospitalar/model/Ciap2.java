@@ -21,9 +21,9 @@ public class Ciap2 {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 
-	private String codeciap2;
-
 	private String title;
+	
+	private String codeciap2;
 
 	public Long getId() {
 		return id;
@@ -33,14 +33,6 @@ public class Ciap2 {
 		this.id = id;
 	}
 
-	public String getCodeciap2() {
-		return codeciap2;
-	}
-
-	public void setCodeciap2(String codeciap2) {
-		this.codeciap2 = codeciap2;
-	}
-
 	public String getTitle() {
 		return title;
 	}
@@ -48,4 +40,13 @@ public class Ciap2 {
 	public void setTitle(String title) {
 		this.title = title;
 	}
+
+	public String getCodeciap2() {
+		return codeciap2;
+	}
+
+	public void setCodeciap2(String codeciap2) {
+		this.codeciap2 = codeciap2;
+	}
+	
 }

@@ -62,5 +62,10 @@ public class ProcedureSigtapService {
 	public List<String> search(String keyword) {
 		return repository.search(keyword);
 	}
+	
+	public List<ProcedureSigtap> findByNameprocedure(String nameprocedure){
+		return repository.findByNameprocedure(nameprocedure);
+	}
+	
 
 }
