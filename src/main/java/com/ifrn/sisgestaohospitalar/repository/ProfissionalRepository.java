@@ -2,7 +2,7 @@ package com.ifrn.sisgestaohospitalar.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-import com.ifrn.sisgestaohospitalar.model.Cidadao;
+import com.ifrn.sisgestaohospitalar.model.Profissional;
 
 /**
  * A interface <code>CidadaoRepository</code> extende a interface JpaRepository
@@ -13,18 +13,18 @@ import com.ifrn.sisgestaohospitalar.model.Cidadao;
  *
  */
 @Repository
-public interface CidadaoRepository extends JpaRepository<Cidadao, Long> {
-	
-	/**
-	 * @param cns
-	 * @return Cidadao
-	 */
-	public Cidadao findByCns(String cns);
+public interface ProfissionalRepository extends JpaRepository<Profissional, Long>{
 	
 	/**
 	 * @param cpf
-	 * @return Cidadao
+	 * @return Profissional
 	 */
-	public Cidadao findByCpf(String cpf);
+	public Profissional findByCpf(String cpf);
+	
+	/**
+	 * @param cns
+	 * @return Profissional
+	 */
+	public Profissional findByCns(String cns);
 
 }

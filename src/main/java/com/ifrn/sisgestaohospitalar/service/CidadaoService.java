@@ -1,10 +1,8 @@
 package com.ifrn.sisgestaohospitalar.service;
 
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import com.ifrn.sisgestaohospitalar.model.Cidadao;
 import com.ifrn.sisgestaohospitalar.repository.CidadaoRepository;
 
