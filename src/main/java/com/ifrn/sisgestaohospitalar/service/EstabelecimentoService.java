@@ -57,8 +57,10 @@ public class EstabelecimentoService {
 	public Estabelecimento findOne(Long id) {
 		return repository.getOne(id);
 	}
-	
-	/**Retorna o objeto Estabelecimento a partir do CNES
+
+	/**
+	 * Retorna o objeto Estabelecimento a partir do CNES
+	 * 
 	 * @param cnes
 	 * @return
 	 */

@@ -20,8 +20,8 @@ public class ImportarXmlEsus {
 
 	@XmlElement(name = "IDENTIFICACAO")
 	public IdentificacaoXmlEsus identificacao;
-	
-	/**Getters and setters*/
+
+	/** Getters and setters */
 
 	public IdentificacaoXmlEsus getIdentificacao() {
 		return identificacao;

@@ -20,8 +20,8 @@ import com.ifrn.sisgestaohospitalar.repository.ProfissionalRepository;
 import com.ifrn.sisgestaohospitalar.service.RoleService;
 
 /**
- * A classe <code>LeitorXmlEsus</code> é um utilitário que contém métodos para
- * a leitura e persistência de dados do arquivo XML do Sistema ESUS
+ * A classe <code>LeitorXmlEsus</code> é um utilitário que contém métodos para a
+ * leitura e persistência de dados do arquivo XML do Sistema ESUS
  * 
  * @author Leandro Morais
  * @version 1.0, 02/11/2019

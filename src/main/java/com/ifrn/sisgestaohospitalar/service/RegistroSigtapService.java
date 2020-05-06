@@ -37,7 +37,7 @@ public class RegistroSigtapService {
 	 * 
 	 * @param id
 	 */
-	public void delete(Long id) {
+	public void delete(String id) {
 		repository.deleteById(id);
 	}
 
@@ -56,7 +56,7 @@ public class RegistroSigtapService {
 	 * @param id
 	 * @return RegistroSigtap
 	 */
-	public RegistroSigtap findOne(Long id) {
+	public RegistroSigtap findOne(String id) {
 		return repository.getOne(id);
 	}
 

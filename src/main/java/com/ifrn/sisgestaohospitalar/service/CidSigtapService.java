@@ -37,7 +37,7 @@ public class CidSigtapService {
 	 * 
 	 * @param id
 	 */
-	public void delete(Long id) {
+	public void delete(String id) {
 		repository.deleteById(id);
 	}
 
@@ -56,10 +56,8 @@ public class CidSigtapService {
 	 * @param id
 	 * @return CidSigtap
 	 */
-	public CidSigtap findOne(Long id) {
+	public CidSigtap findOne(String id) {
 		return repository.getOne(id);
 	}
-	
-	
 
 }

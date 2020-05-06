@@ -17,8 +17,8 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElementWrapper;
 
 /**
- * A classe <code>Estabelecimento</code> representa os objetos do tipo Estabelecimento e contém
- * seus atributos e métodos.
+ * A classe <code>Estabelecimento</code> representa os objetos do tipo
+ * Estabelecimento e contém seus atributos e métodos.
  * 
  * @author Leandro Morais
  * @version 1.0, 02/11/2019
@@ -27,53 +27,57 @@ import javax.xml.bind.annotation.XmlElementWrapper;
 @Entity
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Estabelecimento {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-	
+
 	@XmlAttribute(name = "NM_FANTA")
 	private String nome;
-	
+
 	@XmlAttribute(name = "CNPJ")
 	private String cnpj;
-	
+
 	@XmlAttribute(name = "CNES")
 	private String cnes;
-	
+
 	@XmlAttribute(name = "TP_UNID_ID")
 	private String tipounidadeid;
-	
+
 	@XmlAttribute(name = "DS_TP_UNID")
 	private String descricaotipounidade;
-	
+
 	@XmlAttribute(name = "TELEFONE1")
 	private String telefone1;
-	
+
 	@XmlAttribute(name = "TELEFONE2")
 	private String telefone2;
-	
+
 	@XmlAttribute(name = "FAX")
 	private String fax;
-	
+
 	@XmlAttribute(name = "E_MAIL")
 	private String email;
-	
+
+	/**
+	 * Relacionamento entre os objetos Estabelecimento e Endereco
+	 */
 	@XmlElementWrapper(name = "ENDERECO")
 	@XmlElement(name = "DADOS_ENDERECO")
 	@ManyToMany(cascade = CascadeType.ALL)
-	@JoinTable(name = "estabelecimento_endereco",
-	joinColumns = {@JoinColumn(name="endereco_id")})
+	@JoinTable(name = "estabelecimento_endereco", joinColumns = { @JoinColumn(name = "endereco_id") })
 	private List<Endereco> enderecos;
-	
+
+	/**
+	 * Relacionamento entre os objetos Estabelecimento e Complexidade
+	 */
 	@XmlElementWrapper(name = "COMPLEXIDADE")
 	@XmlElement(name = "DADOS_COMPLEXIDADE")
 	@ManyToMany(cascade = CascadeType.ALL)
-	@JoinTable(name = "estabelecimento_complexidade",
-	joinColumns = {@JoinColumn(name="estabelecimento_id")})
+	@JoinTable(name = "estabelecimento_complexidade", joinColumns = { @JoinColumn(name = "estabelecimento_id") })
 	private List<Complexidade> complexidades;
-	
-	/**Getters and setters*/
+
+	/** Getters and setters */
 
 	public Long getId() {
 		return id;
@@ -170,8 +174,5 @@ public class Estabelecimento {
 	public void setComplexidades(List<Complexidade> complexidades) {
 		this.complexidades = complexidades;
 	}
-	
-	
-	
 
 }

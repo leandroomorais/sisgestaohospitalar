@@ -67,12 +67,12 @@ public class Profissional implements UserDetails {
 	@NotBlank(message = "É necessário preencher o campo CNS")
 	@XmlAttribute(name = "CO_CNS")
 	private String cns;
-	
+
 	@Column(nullable = false)
 	@NotBlank(message = "É necessário preencher o campo DATA DE NASCIMENTO")
 	@XmlAttribute(name = "DT_NASC")
 	private String datanascimento;
-	
+
 	@Column(nullable = false)
 	@NotBlank(message = "É necessário preencher o campo SEXO")
 	@XmlAttribute(name = "SEXO")
@@ -112,16 +112,15 @@ public class Profissional implements UserDetails {
 	@JoinTable(name = "profissional_lotacao", joinColumns = {
 			@JoinColumn(name = "profissional_id") }, inverseJoinColumns = { @JoinColumn(name = "lotacao_id") })
 	private List<Lotacao> lotacoes;
-	
-	
+
 	/**
 	 * Relacionamento entre os objetos Profissional e Role
 	 */
 	@LazyCollection(LazyCollectionOption.FALSE)
 	@ManyToMany
 	private Set<Role> role = new HashSet<Role>();
-	
-	/**Getters and setters*/
+
+	/** Getters and setters */
 
 	public Long getId() {
 		return id;
@@ -155,7 +154,6 @@ public class Profissional implements UserDetails {
 		this.cns = cns;
 	}
 
-
 	public String getDatanascimento() {
 		return datanascimento;
 	}
@@ -172,7 +170,6 @@ public class Profissional implements UserDetails {
 		this.sexo = sexo;
 	}
 
-
 	public int getConselhoid() {
 		return conselhoid;
 	}
@@ -188,7 +185,7 @@ public class Profissional implements UserDetails {
 	public void setSiglaufemissao(String siglaufemissao) {
 		this.siglaufemissao = siglaufemissao;
 	}
-	
+
 	public String getNumeroregistro() {
 		return numeroregistro;
 	}
@@ -212,7 +209,6 @@ public class Profissional implements UserDetails {
 	public void setTelefone(String telefone) {
 		this.telefone = telefone;
 	}
-	
 
 	public TipoProfissional getTipoprofissional() {
 		return tipoprofissional;
@@ -273,8 +269,7 @@ public class Profissional implements UserDetails {
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
-	
-	
+
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		Set<GrantedAuthority> authorities = new HashSet<>();

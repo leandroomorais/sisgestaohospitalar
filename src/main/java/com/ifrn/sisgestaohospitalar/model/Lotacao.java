@@ -8,6 +8,7 @@ import javax.persistence.Id;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
+
 /**
  * A classe <code>Lotacao</code> representa os objetos do tipo Lotação e contém
  * seus atributos e métodos.
@@ -19,26 +20,26 @@ import javax.xml.bind.annotation.XmlAttribute;
 @Entity
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Lotacao {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-	
+
 	@XmlAttribute(name = "CNES")
 	@Column(nullable = false, length = 7)
-	private String  cnes;
-	
+	private String cnes;
+
 	@XmlAttribute(name = "CO_INE")
 	private String codigoine;
-	
+
 	@XmlAttribute(name = "CO_CBO")
 	@Column(nullable = false, length = 6)
 	private String codigocbo;
-	
+
 	@XmlAttribute(name = "MICROAREA")
 	private String microarea;
-	
-	/**Getters and setters*/
+
+	/** Getters and setters */
 
 	public Long getId() {
 		return id;

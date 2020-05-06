@@ -7,9 +7,10 @@ import javax.persistence.Id;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
+
 /**
- * A classe <code>Endereco</code> representa os objetos do
- * tipo Endereco e contém seus atributos e métodos.
+ * A classe <code>Endereco</code> representa os objetos do tipo Endereco e
+ * contém seus atributos e métodos.
  * 
  * @author Leandro Morais
  * @version 1.0, 02/11/2019
@@ -18,36 +19,36 @@ import javax.xml.bind.annotation.XmlAttribute;
 @Entity
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Endereco {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-	
+
 	@XmlAttribute(name = "CO_CEP")
 	private String cep;
-	
+
 	@XmlAttribute(name = "SG_UF")
 	private String siglauf;
-	
+
 	@XmlAttribute(name = "CO_IBGE_")
 	private String codigoibgemunicipio;
-	
+
 	@XmlAttribute(name = "BAIRRO")
 	private String bairro;
-	
+
 	@XmlAttribute(name = "LOGRADOURO")
 	private String logradouro;
-	
+
 	@XmlAttribute(name = "NUMERO")
 	private String numero;
-	
+
 	@XmlAttribute(name = "COMPLEMENT")
 	private String complemento;
-	
+
 	@XmlAttribute(name = "PONTO_REF")
 	private String pontoreferencia;
-	
-	/**Getters and setters*/
+
+	/** Getters and setters */
 
 	public Long getId() {
 		return id;
@@ -120,5 +121,5 @@ public class Endereco {
 	public void setPontoreferencia(String pontoreferencia) {
 		this.pontoreferencia = pontoreferencia;
 	}
-	
+
 }

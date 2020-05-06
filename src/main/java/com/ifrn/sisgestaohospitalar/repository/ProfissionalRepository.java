@@ -13,14 +13,14 @@ import com.ifrn.sisgestaohospitalar.model.Profissional;
  *
  */
 @Repository
-public interface ProfissionalRepository extends JpaRepository<Profissional, Long>{
-	
+public interface ProfissionalRepository extends JpaRepository<Profissional, Long> {
+
 	/**
 	 * @param cpf
 	 * @return Profissional
 	 */
 	public Profissional findByCpf(String cpf);
-	
+
 	/**
 	 * @param cns
 	 * @return Profissional

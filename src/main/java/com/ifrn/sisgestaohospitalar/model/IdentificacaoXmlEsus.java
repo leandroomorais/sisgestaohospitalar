@@ -8,8 +8,9 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElementWrapper;
 
 /**
- * A classe <code>IdentificacaoXmlEsus</code> representa os objetos do tipo IdentificacaoXmlEsus contendo
- * seus atributos e métodos e funcionando como classe auxiliar na leitura do arquivo XML do ESUS
+ * A classe <code>IdentificacaoXmlEsus</code> representa os objetos do tipo
+ * IdentificacaoXmlEsus contendo seus atributos e métodos e funcionando como
+ * classe auxiliar na leitura do arquivo XML do ESUS
  * 
  * @author Leandro Morais
  * @version 1.0, 02/11/2019
@@ -18,16 +19,22 @@ import javax.xml.bind.annotation.XmlElementWrapper;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 public class IdentificacaoXmlEsus {
-	
+
+	/**
+	 * Relacionamento entre a classe auxiliar IdentificacaoXmlEsus e Profissional
+	 */
 	@XmlElementWrapper(name = "PROFISSIONAIS")
 	@XmlElement(name = "DADOS_PROFISSIONAIS")
 	List<Profissional> profissionais = new ArrayList<Profissional>();
-	
+
+	/**
+	 * Relacionamento entre a classe auxiliar IdentificacaoXmlEsus e Estabelecimento
+	 */
 	@XmlElementWrapper(name = "ESTABELECIMENTOS")
 	@XmlElement(name = "DADOS_GERAIS_ESTABELECIMENTOS")
 	List<Estabelecimento> estabelecimentos = new ArrayList<Estabelecimento>();
-	
-	/**Getters and setters*/
+
+	/** Getters and setters */
 
 	public List<Profissional> getProfissionais() {
 		return profissionais;
@@ -44,5 +51,5 @@ public class IdentificacaoXmlEsus {
 	public void setEstabelecimentos(List<Estabelecimento> estabelecimentos) {
 		this.estabelecimentos = estabelecimentos;
 	}
-	
+
 }

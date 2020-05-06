@@ -79,11 +79,11 @@ public class LeitorTxtSigtap {
 	 * entre a tabela de ProcedimentoSigtap e a tabela CidSigtap e persiste as
 	 * informações no Banco de Dados
 	 * 
-	 * @param fileRelationshipProcediment_Cid
+	 * @param arquivoRelacionamentoProcedimento_Cid
 	 * @throws IOException
 	 */
-	public void relacionamentoProcedimento_Cid(String fileRelationshipProcediment_Cid) throws IOException {
-		BufferedReader bufferedReader = Files.newBufferedReader(Paths.get(fileRelationshipProcediment_Cid),
+	public void relacionamentoProcedimento_Cid(String arquivoRelacionamentoProcedimento_Cid) throws IOException {
+		BufferedReader bufferedReader = Files.newBufferedReader(Paths.get(arquivoRelacionamentoProcedimento_Cid),
 				Charset.forName("ISO-8859-1"));
 		String linha;
 
@@ -282,54 +282,21 @@ public class LeitorTxtSigtap {
 		BufferedReader bufferedReader = Files.newBufferedReader(Paths.get(arquivoOcupacao),
 				Charset.forName("ISO-8859-1"));
 
-		String linha;
+		String linha = bufferedReader.readLine();
 
-		while ((linha = bufferedReader.readLine()) != null) {
-			String novaLinha = new String(linha.getBytes("UTF-8"));
+		OcupacaoSigtap ocupacaoSigtap = new OcupacaoSigtap();
+
+		while ((bufferedReader.readLine()) != null) {
+
+			StringBuilder novaLinha = new StringBuilder(linha);
 
 			String CO_OCUPACAO = novaLinha.substring(0, 6);
 			String NO_OCUPACAO = novaLinha.substring(6, 156);
 
-			OcupacaoSigtap ocupacaoSigtap = new OcupacaoSigtap();
 			ocupacaoSigtap.setCodigoocupacao(CO_OCUPACAO);
 			ocupacaoSigtap.setNomeocupacao(NO_OCUPACAO);
 
 			ocupacaoSigtapRepository.save(ocupacaoSigtap);
 		}
-
 	}
-	
-	/**
-	 * Este método realiza a leitura do arquivo TXT que contém o relacionamento
-	 * entre a tabela de ProcedimentoSigtap e a tabela RegistroSigtap e persiste as
-	 * informações no Banco de Dados
-	 * 
-	 * @param arquivoRelacionamentoProcedimento_Registro
-	 * @throws IOException
-	 */
-	public void relacionamentoProcedimento_RegistroTeste(String arquivoRelacionamentoProcedimento_Registro)
-			throws IOException {
-		BufferedReader bufferedReader = Files.newBufferedReader(Paths.get(arquivoRelacionamentoProcedimento_Registro),
-				Charset.forName("ISO-8859-1"));
-		String linha;
-
-		while ((linha = bufferedReader.readLine()) != null) {
-			String novaLinha = new String(linha.getBytes("UTF-8"));
-
-			String CO_PROCEDIMENTO = novaLinha.substring(0, 10);
-			String CO_REGISTRO = novaLinha.substring(10, 12);
-			String DT_COMPETENCIA = novaLinha.substring(12, 18);
-
-			ProcedimentoSigtap procedimentoSigtap = procedimentoSigtapRepository
-					.findByCodigoprocedimento(CO_PROCEDIMENTO);
-			RegistroSigtap registroSigtap = registroSigtapRepository.findByCodigoregistro(CO_REGISTRO);
-
-			procedimentoSigtap.getRegistros().add(registroSigtap);
-
-			if (procedimentoSigtap.getDatacompetencia().equals(DT_COMPETENCIA)) {
-				procedimentoSigtapRepository.saveAndFlush(procedimentoSigtap);
-			}
-		}
-	}
-
 }

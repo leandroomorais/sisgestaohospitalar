@@ -14,13 +14,13 @@ import com.ifrn.sisgestaohospitalar.model.Cidadao;
  */
 @Repository
 public interface CidadaoRepository extends JpaRepository<Cidadao, Long> {
-	
+
 	/**
 	 * @param cns
 	 * @return Cidadao
 	 */
 	public Cidadao findByCns(String cns);
-	
+
 	/**
 	 * @param cpf
 	 * @return Cidadao

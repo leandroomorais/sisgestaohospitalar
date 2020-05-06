@@ -9,8 +9,8 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
 
 /**
- * A classe <code>Complexidade</code> representa os objetos do
- * tipo Complexidade e contém seus atributos e métodos.
+ * A classe <code>Complexidade</code> representa os objetos do tipo Complexidade
+ * e contém seus atributos e métodos.
  * 
  * @author Leandro Morais
  * @version 1.0, 02/11/2019
@@ -26,8 +26,8 @@ public class Complexidade {
 
 	@XmlAttribute(name = "SG_COMPLEXIDADE")
 	private String siglacomplexidade;
-	
-	/**Getters and setters*/
+
+	/** Getters and setters */
 
 	public Long getId() {
 		return id;

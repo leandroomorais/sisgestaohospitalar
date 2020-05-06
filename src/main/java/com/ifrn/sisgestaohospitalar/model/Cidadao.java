@@ -26,7 +26,7 @@ public class Cidadao {
 	@Column(nullable = false, length = 15)
 	@NotBlank(message = "É necessário preencher o campo CNS")
 	private String cns;
-	
+
 	private String cpf;
 
 	@Column(nullable = false, length = 1)

@@ -5,16 +5,16 @@ import org.springframework.stereotype.Repository;
 import com.ifrn.sisgestaohospitalar.model.CidSigtap;
 
 /**
- * A interface <code>CidSigtapRepository</code> extende a interface JpaRepository
- * da API JPA e seus respectivos métodos.
+ * A interface <code>CidSigtapRepository</code> extende a interface
+ * JpaRepository da API JPA e seus respectivos métodos.
  * 
  * @author Leandro Morais
  * @version 1.0, 02/11/2019
  *
  */
 @Repository
-public interface CidSigtapRepository extends JpaRepository<CidSigtap, Long> {
-	
+public interface CidSigtapRepository extends JpaRepository<CidSigtap, String> {
+
 	/**
 	 * @param codigocid
 	 * @return CidSigtap

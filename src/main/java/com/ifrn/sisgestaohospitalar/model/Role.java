@@ -35,8 +35,8 @@ public class Role implements GrantedAuthority {
 	public String getAuthority() {
 		return nome;
 	}
-	
-	/**Getters and setters*/
+
+	/** Getters and setters */
 
 	public Long getId() {
 		return id;

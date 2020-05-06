@@ -4,9 +4,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+
 /**
- * A classe <code>OcupacaoSigtap</code> representa os objetos do tipo OcupacaoSigtap e contém
- * os atributos da tabela de Ocupações da Sigtap SUS.
+ * A classe <code>OcupacaoSigtap</code> representa os objetos do tipo
+ * OcupacaoSigtap e contém os atributos da tabela de Ocupações da Sigtap SUS.
  * 
  * @author Leandro Morais
  * @version 1.0, 02/11/2019
@@ -14,24 +15,16 @@ import javax.persistence.Id;
  */
 @Entity
 public class OcupacaoSigtap {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-	
+
 	private String codigoocupacao;
-	
+
 	private String nomeocupacao;
-	
-	/**Getters and setters*/
 
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
+	/** Getters and setters */
 
 	public String getCodigoocupacao() {
 		return codigoocupacao;
@@ -49,5 +42,12 @@ public class OcupacaoSigtap {
 		this.nomeocupacao = nomeocupacao;
 	}
 
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
 
 }
