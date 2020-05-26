@@ -9,6 +9,9 @@ import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.stereotype.Component;
 
+import com.ifrn.sisgestaohospitalar.model.Role;
+import com.ifrn.sisgestaohospitalar.repository.RoleRepository;
+import com.ifrn.sisgestaohospitalar.service.RoleService;
 import com.ifrn.sisgestaohospitalar.utils.LeitorTxtSigtap;
 import com.ifrn.sisgestaohospitalar.utils.LeitorXlsCiap2;
 import com.ifrn.sisgestaohospitalar.utils.LeitorXmlEsus;
@@ -26,9 +29,20 @@ public class Inicializador implements ApplicationListener<ContextRefreshedEvent>
 	
 	@Autowired
 	private LeitorXlsCiap2 leitorXlsCiap2;
+	
+	@Autowired
+	private RoleService roleService;
 
 	@Override
 	public void onApplicationEvent(ContextRefreshedEvent event) {
+		
+		Role role = new Role();
+		role.setNome("ADM");
+		roleService.save(role);
+		
+		Role rolesuper = new Role();
+		rolesuper.setNome("SUPER");
+		roleService.save(rolesuper);
 
 		String cnes = "2380633";
 		String file = System.getProperty("user.dir") + "/uploads/XmlParaESUS21_241360.xml";
@@ -60,13 +74,13 @@ public class Inicializador implements ApplicationListener<ContextRefreshedEvent>
 
 		try {
 			//leitorTxtSigtap.lerTxtCid(urlCid);
-			leitorTxtSigtap.lerTxtProcedimentos(urlProcedimentos);
+			//leitorTxtSigtap.lerTxtProcedimentos(urlProcedimentos);
 			//leitorTxtSigtap.lerTxtOcupacao(urlOcupacao);
 			leitorTxtSigtap.lerTxtRegistro(urlRegistros);
 
 			//leitorTxtSigtap.relacionamentoProcedimento_Cid(urlRelationProced_Cid);
 			//leitorTxtSigtap.relacionamentoProcedimento_Ocupacao(urlRelationProced_Ocupacao);
-			leitorTxtSigtap.relacionamentoProcedimento_Registro(urlRelationProced_Registro);
+			//leitorTxtSigtap.relacionamentoProcedimento_Registro(urlRelationProced_Registro);
 
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -80,6 +94,8 @@ public class Inicializador implements ApplicationListener<ContextRefreshedEvent>
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
+		
+	
 
 	}
 

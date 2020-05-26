@@ -82,7 +82,7 @@ public class LeitorXmlEsus {
 						profissional.getRole().add(role);
 					} else if (lotacaoProfissional.getCodigocbo().equals("123105")) {
 						profissional.setTipoprofissional(TipoProfissional.ADMINISTRADOR);
-						Role role = roleService.findByNome("ADM");
+						Role role = roleService.findByNome("SUPER");
 						profissional.getRole().add(role);
 					}
 

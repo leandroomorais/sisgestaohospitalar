@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html layout:decorate="~{/layouts/layout-home}">
+<head>
+<meta charset="utf-8">
+<title>SGH - Bem Vindo!</title>
+</head>
+
+<body>
+
+	<div layout:fragment="content">
+		<div class="wrapper overlay-sidebar">
+			<div class="main-panel">
+				<div class="content">
+					<div class="panel-header bg-primary-gradient">
+						<div class="page-inner py-5">
+							<div
+								class="d-flex align-items-left align-items-md-center flex-column flex-md-row">
+								<div>
+									<h2 class="text-white pb-2 fw-bold">Sistema de Gestão
+										Hospitalar</h2>
+									<h5 class="text-white op-7 mb-2">Selecione o módulo que
+										deseja acesso:</h5>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="page-inner mt--5">
+
+						<div class="row">
+							<div class="col-md-12">
+								<div class="card col-md-12">
+									<div class="card-header">
+										<div class="card-head-row">
+											<div class="card-title"></div>
+										</div>
+									</div>
+									<div class="card-body">
+										<div class="row">
+
+											<div class="col-sm-6 col-md-3"
+												sec:authorize="hasAnyAuthority('ADM','SUPER')">
+
+												<div class="card card-stats card-primary card-round">
+													<div class="card-body">
+														<div class="row">
+															<div class="col-3">
+																<div class="icon-big text-center">
+																	<img th:src="@{assets/img/icons/admin-icon.png}"
+																		alt="some text">
+																</div>
+															</div>
+															<div class="col-7 col-stats">
+																<div class="numbers">
+																	<a th:href="@{/administracao/}" class="card-title">Administração</a>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+
+
+											<div class="col-sm-6 col-md-3"
+												sec:authorize="hasAnyAuthority('TEC','SUPER')">
+												<div class="card card-stats card-primary card-round">
+													<div class="card-body">
+														<div class="row">
+															<div class="col-3">
+																<div class="icon-big text-center">
+																	<img th:src="@{assets/img/icons/recepcao-icon.png}"
+																		alt="some text">
+																</div>
+															</div>
+															<div class="col-7 col-stats">
+																<div class="numbers">
+																	<a th:href="@{/recepcao/addpaciente}"
+																		class="card-title">Recepção</a>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+
+
+
+											<div class="col-sm-6 col-md-3"
+												sec:authorize="hasAnyAuthority('ENF','SUPER')">
+
+												<div class="card card-stats card-primary card-round">
+													<div class="card-body">
+														<div class="row">
+															<div class="col-3">
+																<div class="icon-big text-center">
+																	<img th:src="@{assets/img/icons/triagem-icon.png}"
+																		alt="some text">
+																</div>
+															</div>
+															<div class="col-7 col-stats">
+																<div class="numbers">
+																	<a th:href="@{/triagem/list}" class="card-title">Triagem</a>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+
+
+											<div class="col-sm-6 col-md-3"
+												sec:authorize="hasAnyAuthority('MED','SUPER')">
+
+												<div class="card card-stats card-primary card-round">
+													<div class="card-body">
+														<div class="row">
+															<div class="col-3">
+																<div class="icon-big text-center">
+																	<img th:src="@{assets/img/icons/atendimentomedico-icon.png}"
+																		alt="some text">
+																</div>
+															</div>
+															<div class="col-7 col-stats">
+																<div class="numbers">
+																	<a th:href="@{/atendimentoMedico/listarStatusAtdMed}"
+																		class="card-title">Atendimento Médico</a>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+
+
+											<div class="col-sm-6 col-md-3"
+												sec:authorize="hasAnyAuthority('ENF','TEC','SUPER')">
+												<div class="card card-stats card-primary card-round">
+													<div class="card-body">
+														<div class="row">
+															<div class="col-3">
+																<div class="icon-big text-center">
+																	<img th:src="@{assets/img/icons/adminmedicamentos-icon.png}"
+																		alt="some text">
+																</div>
+															</div>
+															<div class="col-7 col-stats">
+																<div class="numbers">
+																	<a th:href="@{/admin-medicamento/list}"
+																		class="card-title">Admin. de Medicamentos</a>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+</body>
+</html>

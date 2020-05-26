@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html layout:decorate="~{/layouts/layout-admin}">
+<head>
+<meta charset="utf-8">
+<title>SGH - Exportar BPA</title>
+</head>
+
+<body>
+
+	<div layout:fragment="content">
+		<div class="main-panel">
+			<div class="content">
+
+				<!-- DIV de Alerta de Sucessos -->
+				<div class="col-md-12" th:if="${sucesso}">
+					<div class="alert alert-success alert-dismissible fade show"
+						role="alert">
+						<strong>Sucesso!</strong><a th:text="${sucesso}"></a><a th:href="${href}">Clique para fazer o download</a>
+						<button type="button" class="close" data-dismiss="alert"
+							aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+				</div>
+
+				<!-- DIV de Alerta de Erros -->
+				<div class="col-md-12" th:if="${erro}">
+					<div class="alert alert-danger alert-dismissible fade show"
+						role="alert">
+						<strong>Erro!</strong> <a th:text="${erro}"></a>
+						<button type="button" class="close" data-dismiss="alert"
+							aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+				</div>
+
+				<!-- DIV de Alerta de Erros -->
+				<div class="col-md-12" th:if="${param.error}">
+					<div class="alert alert-danger alert-dismissible fade show"
+						role="alert">
+						<strong>Erro!</strong> <a th:text="${erro}"></a>
+						<button type="button" class="close" data-dismiss="alert"
+							aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+				</div>
+				<div class="page-header">
+					<ul class="breadcrumbs">
+						<li class="nav-home"><a th:href="@{/administracao/}"> <i
+								class="flaticon-home"></i>
+						</a></li>
+						<li class="separator"><i class="flaticon-right-arrow"></i></li>
+						<li class="nav-item"><a th:href="@{#}">Exportação</a></li>
+						<li class="separator"><i class="flaticon-right-arrow"></i></li>
+						<li class="nav-item"><a th:href="@{/administracao/gerarbpa}">Exportar
+								BPA SIA SUS</a></li>
+					</ul>
+				</div>
+
+				<div class="row">
+					<div class="col-md-12">
+						<div class="card">
+							<div class="card-header">
+								<div class="card-title">Exportar BPA SIA SUS</div>
+							</div>
+							<form th:action="@{/administracao/exportarbpa}" method="post">
+								<div class="card-body">
+									<div class="row">
+										<div class="col-md-4 col-lg-4">
+											<div class="form-group">
+												<div class="input-group mb-3">
+													<div class="input-group-prepend">
+														<span class="input-group-text" id="basic-addon1">MÊS</span>
+													</div>
+													<input type="month" class="form-control"
+														aria-label="Username" name="mes"
+														aria-describedby="basic-addon1">
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="card-action">
+									<button type="submit" class="btn btn-success">Gerar</button>
+									<button type="reset" class="btn btn-danger">Cancelar</button>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</body>
+</html>

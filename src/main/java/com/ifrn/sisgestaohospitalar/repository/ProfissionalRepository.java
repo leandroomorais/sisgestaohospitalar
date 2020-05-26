@@ -1,7 +1,11 @@
 package com.ifrn.sisgestaohospitalar.repository;
 
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
+
+import com.ifrn.sisgestaohospitalar.enums.TipoProfissional;
 import com.ifrn.sisgestaohospitalar.model.Profissional;
 
 /**
@@ -26,5 +30,21 @@ public interface ProfissionalRepository extends JpaRepository<Profissional, Long
 	 * @return Profissional
 	 */
 	public Profissional findByCns(String cns);
+	
+	/**
+	 * @param tipoProfissional
+	 * @return List<Profissional>
+	 */
+	public List<Profissional> findByTipoprofissional(TipoProfissional tipoProfissional);
+	
+	/**
+	 * @param email
+	 * @return Profissional
+	 */
+	public Profissional findByEmail(String email);
+	
+	
+	
+	
 
 }

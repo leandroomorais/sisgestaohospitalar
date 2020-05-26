@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html layout:decorate="~{/layouts/layout-login}">
+<head>
+<meta charset="utf-8">
+<title>SGH - Sistema de Gestão Hospitalar</title>
+</head>
+<body>
+	<div layout:fragment="content" class="background-image">
+		<div class="login-page">
+
+			<div class="form">
+				<th:block th:if="${param.error}">
+					<div class="alert alert-danger">
+						<strong>Erro!</strong><span> Usuário e/ou senha inválidos!</span>
+					</div>
+				</th:block>
+
+				<th:block th:if="${erro}">
+					<div class="alert alert-danger">
+						<strong>Erro!</strong><span th:text="${erro}"></span>
+					</div>
+				</th:block>
+
+				<th:block th:if="${sucesso}">
+					<div class="alert alert-success">
+						<strong>Sucesso!</strong><span th:text="${sucesso}"></span>
+					</div>
+				</th:block>
+
+				<form class="login-form" action="/entrar" method="post">
+					<input type="text" placeholder="CPF" name="username" maxlength="11" />
+					<input type="password" placeholder="Senha" name="password"  />
+				
+					<button type="submit">Entrar</button>
+					<p class="message">
+						Esqueceu sua senha? <a th:href="@{/forget/}">Clique aqui</a>
+					</p>
+				</form>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
