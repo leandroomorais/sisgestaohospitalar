@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html layout:decorate="~{/layouts/layout-recepcao}" lang="pt"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity"
+	xmlns:layout="http://ultraq.net.nz/thymeleaf/layout">
+
+<body>
+	<div class="main-panel" layout:fragment="main-panel">
+		<div class="container">
+			<div class="page-inner">
+				<div class="page-header">
+					<h4 class="page-title">Recepção</h4>
+					<ul class="breadcrumbs">
+						<li class="nav-home"><i class="flaticon-home"></i></li>
+						<li class="separator"><i class="flaticon-right-arrow"></i></li>
+						<li class="nav-item"><a
+							th:href="@{/recepcao/adicionar-cidadao}">Adicionar Cidadão</a></li>
+
+					</ul>
+				</div>
+				<div class="row">
+					<div class="col-md-12">
+						<div class="card">
+							<div class="card-header">
+								<div class="card-title">Dados para pesquisa</div>
+							</div>
+							<div class="card-body">
+								<div class="row" id="form-pesquisa-cns">
+									<div class="col-md-5">
+										<div class="form-group">
+											<label for="cns">CNS</label> <input type="text"
+												class="form-control" id="cns"
+												placeholder="000.0000.0000.0000"><small
+												id="small-cns" class="form-text text-muted">Digite o
+												CNS do Cidadão sem pontos ou traços, somente números</small>
+										</div>
+									</div>
+									<div class="col-md-2 ">
+										<div class="form-group">
+											<label for="search">Pesquisar</label>
+											<div>
+												<button type="submit" id="button-pesquisacns"
+													class="btn btn-icon btn-round btn-primary">
+													<i id="fa-button" class="fa fa-search"></i>
+												</button>
+											</div>
+										</div>
+									</div>
+									<div class="col-md-5">
+										<div class="form-group">
+											<label>Resultado da pesquisa:</label>
+											<p id="resultado-pesquisa" class=""></p>
+										</div>
+
+
+									</div>
+								</div>
+
+								<div class="row" id="form-pesquisa-cpf">
+									<div class="col-md-5">
+										<div class="form-group">
+											<label for="cpf">CPF</label> <input type="text"
+												class="form-control" id="cpf" placeholder="000.000.000-00"><small
+												id="small-cpf" class="form-text text-muted">Digite o
+												CPF do Cidadão sem pontos ou traços, somente números</small>
+										</div>
+									</div>
+									<div class="col-md-2 ">
+										<div class="form-group">
+											<label for="search">Pesquisar</label>
+											<div>
+												<button type="submit" id="button-pesquisacpf"
+													class="btn btn-icon btn-round btn-primary">
+													<i id="fa-button" class="fa fa-search"></i>
+												</button>
+											</div>
+										</div>
+									</div>
+									<div class="col-md-5">
+										<div class="form-group">
+											<label>Resultado da pesquisa:</label>
+											<p id="resultado-pesquisa" class=""></p>
+										</div>
+
+
+									</div>
+								</div>
+
+
+								<div class="form-group">
+									<strong id="cns" class="form-text text-muted">Escolha
+										o parâmetro de pesquisa:
+										<button class="btn btn-primary btn-xs" id="pesquisa-cns">
+											<img th:src="@{/assets/img/icons/icon-bandeira-brasil.png}"
+												width="30"> CNS
+										</button>
+										<button class="btn btn-primary btn-border btn-xs"
+											id="pesquisa-cpf">
+											<img th:src="@{/assets/img/icons/icon-cpf.png}" width="30">
+											CPF
+										</button>
+									</strong>
+								</div>
+							</div>
+						</div>
+
+
+
+						<form method="post" th:action="@{/recepcao/salvar-cidadao}"
+							th:object="${cidadao}" id="form-cidadao">
+							<!-- Input responsável por guardar o ID -->
+							<input id="id" name="id" type="hidden" th:field="*{id}"
+								th:value="*{id}" />
+
+							<!-- Input responsável por guardar o CNS -->
+							<input id="cns-form" name="cns" type="hidden" th:field="*{cns}" />
+
+							<!-- Input responsável por guardar o CPF -->
+							<input id="cpf-form" name="cpf" type="hidden" th:field="*{cpf}" />
+
+							<!-- div reponsável em mostrar os erros -->
+							<div class="form-group row">
+								<div class="col-sm-12 mb-3 mb-sm-0">
+									<div class="alert alert-danger alert-dismissible fade show"
+										role="alert" th:if="${#fields.hasAnyErrors()}">
+
+										<button type="button" class="close" data-dismiss="alert"
+											aria-label="Close">
+											<span aria-hidden="true">&times;</span>
+										</button>
+
+										<div th:each="detailedError : ${#fields.detailedErrors()}">
+											<strong th:text="${detailedError.message}"> </strong>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="card">
+								<div class="card-header">
+									<div class="card-title">Dados do Cidadão</div>
+								</div>
+								<div class="card-body">
+									<div class="row">
+										<div class="col-md-6 col-lg-6"
+											th:classappend="${#fields.hasErrors('nome')}? 'has-error'">
+											<div class="form-group">
+												<label for="nome">Nome</label> <input th:field="*{nome}"
+													type="text" class="form-control" id="nome"
+													placeholder="Digite o nome do Cidadão"> <small
+													id="nome" class="form-text text-muted"></small>
+											</div>
+										</div>
+
+										<div class="col-md-6 col-lg-3">
+											<div class="form-group">
+												<label for="datanascimento">Data de Nascimento</label> <input
+													th:field="*{datanascimento}" type="date"
+													class="form-control" id="datanascimento"> <small
+													id="datanascimento" class="form-text text-muted"></small>
+											</div>
+										</div>
+
+										<div class="col-md-6 col-lg-3"
+											th:classappend="${#fields.hasErrors('sexo')}? 'has-error'">
+											<div class="form-group">
+												<label for="sexo">Sexo</label> <select th:field="*{sexo}"
+													class="form-control" id="sexo">
+													<option th:value="M">MASCULINO</option>
+													<option th:value="F">FEMININO</option>
+												</select> <small id="sexo" class="form-text text-muted"></small>
+											</div>
+										</div>
+
+										<div class="col-md-6 col-lg-6"
+											th:classappend="${#fields.hasErrors('nomemae')}? 'has-error'">
+											<div class="form-group">
+												<label for="nomemae">Nome da mãe</label> <input
+													th:field="*{nomemae}" type="text" class="form-control"
+													id="nomemae" placeholder="Digite o nome da mãe"> <small
+													id="nomemae" class="form-text text-muted"></small>
+											</div>
+										</div>
+
+										<div class="col-md-6 col-lg-6"
+											th:classappend="${#fields.hasErrors('nomepai')}? 'has-error'">
+											<div class="form-group">
+												<label for="nomepai">Nome do pai</label> <input
+													th:field="*{nomepai}" type="text" class="form-control"
+													id="nomepai" placeholder="Digite o nome do pai"> <small
+													id="nomepai" class="form-text text-muted"></small>
+											</div>
+										</div>
+
+										<div class="col-md-6 col-lg-3"
+											th:classappend="${#fields.hasErrors('codigoraca')}? 'has-error'">
+											<div class="form-group">
+												<label for="codigoraca">Raça</label> <select
+													th:field="*{codigoraca}" class="form-control"
+													id="codigoraca">
+													<option th:value="1">BRANCA</option>
+													<option th:value="2">PRETA</option>
+													<option th:value="3">PARDA</option>
+													<option th:value="4">AMARELA</option>
+													<option th:value="5">INDÍGENA</option>
+													<option th:value="99">SEM INFORMAÇÃO</option>
+												</select> <small id="codigoraca" class="form-text text-muted"></small>
+											</div>
+										</div>
+
+										<div class="col-md-6 col-lg-3"
+											th:classappend="${#fields.hasErrors('codigonacionalidade')}? 'has-error'">
+											<div class="form-group">
+												<label for="codigonacionalidade">Nacionalidade</label> <select
+													th:field="*{codigonacionalidade}" class="form-control"
+													id="codigonacionalidade">
+													<option th:value="010">BRASILEIRO</option>
+													<option th:value="020">NATURALIZADO</option>
+													<option th:value="050">ESTRANGEIRO</option>
+												</select><small id="codigonacionalidade" class="form-text text-muted"></small>
+											</div>
+										</div>
+
+									</div>
+								</div>
+							</div>
+
+							<div class="card">
+								<div class="card-header">
+									<div class="card-title">Endereço do Cidadão</div>
+								</div>
+								<div class="card-body">
+									<div class="row">
+										<div class="col-md-6 col-lg-4"
+											th:classappend="${#fields.hasErrors('nomemunicipio')}? 'has-error'">
+											<div class="form-group">
+												<label for="nomemunicipio">Município</label> <input
+													th:field="*{nomemunicipio}" type="text"
+													class="form-control" id="nomemunicipio"> <small
+													id="small-nomemunicipio" class="form-text text-muted"></small>
+											</div>
+										</div>
+
+										<div class="col-md-6 col-lg-2"
+											th:classappend="${#fields.hasErrors('codigologradouro')}? 'has-error'">
+											<div class="form-group">
+												<label for="codigologradouro">Logradouro</label> <select
+													th:field="*{codigologradouro}" class="form-control"
+													id="codigologradouro">
+													<option th:value="081">RUA</option>
+													<option th:value="008">AVENIDA</option>
+													<option th:value="092">SÍTIO</option>
+													<option th:value="999">INVÁLIDO</option>
+												</select> <small id="codigologradouro" class="form-text text-muted"></small>
+											</div>
+										</div>
+
+										<div class="col-md-6 col-lg-4"
+											th:classappend="${#fields.hasErrors('endereco')}? 'has-error'">
+											<div class="form-group">
+												<label for="endereco">Endereço</label> <input
+													th:field="*{endereco}" type="text" class="form-control"
+													id="endereco" placeholder=""> <small id="endereco"
+													class="form-text text-muted"></small>
+											</div>
+										</div>
+
+										<div class="col-md-6 col-lg-2"
+											th:classappend="${#fields.hasErrors('complementoendereco')}? 'has-error'">
+											<div class="form-group">
+												<label for="complementoendereco">Complemento</label> <input
+													th:field="*{complementoendereco}" type="text"
+													class="form-control" id="complementoendereco"
+													placeholder=""> <small id="complementoendereco"
+													class="form-text text-muted"></small>
+											</div>
+										</div>
+
+										<div class="col-md-6 col-lg-2"
+											th:classappend="${#fields.hasErrors('numeroendereco')}? 'has-error'">
+											<div class="form-group">
+												<label for="numeroendereco">Número</label> <input
+													th:field="*{numeroendereco}" type="text"
+													class="form-control" id="numeroendereco" placeholder="">
+												<small id="numeroendereco" class="form-text text-muted"></small>
+											</div>
+										</div>
+
+									</div>
+								</div>
+							</div>
+
+							<div class="card">
+								<div class="card-header">
+									<div class="card-title">Dados de Contato</div>
+								</div>
+								<div class="card-body">
+									<div class="row">
+										<div class="col-md-6 col-lg-4"
+											th:classappend="${#fields.hasErrors('email')}? 'has-error'">
+											<div class="form-group">
+												<label for="email">Email</label> <input type="email"
+													th:field="*{email}" class="form-control" id="email"
+													placeholder=""> <small id="email"
+													class="form-text text-muted"></small>
+											</div>
+										</div>
+
+										<div class="col-md-6 col-lg-4"
+											th:classappend="${#fields.hasErrors('telefone')}? 'has-error'">
+											<div class="form-group">
+												<label for="telefone">Telefone</label> <input type="tel"
+													th:field="*{telefone}" class="form-control" id="telefone">
+												<small id="telefone" class="form-text text-muted"></small>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="card-action">
+								<button type="submit" class="btn btn-success">Adicionar</button>
+								<button type="reset" class="btn btn-danger">Cancelar</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+		<footer class="footer">
+			<div class="container-fluid">
+				<nav class="pull-left">
+					<ul class="nav">
+						<li class="nav-item"><a class="nav-link"
+							href="http://www.themekita.com"> ThemeKita </a></li>
+						<li class="nav-item"><a class="nav-link" href="#"> Help </a></li>
+						<li class="nav-item"><a class="nav-link" href="#">
+								Licenses </a></li>
+					</ul>
+				</nav>
+				<div class="copyright ml-auto">
+					2018, made with <i class="fa fa-heart heart text-danger"></i> by <a
+						href="http://www.themekita.com">ThemeKita</a>
+				</div>
+			</div>
+		</footer>
+	</div>
+</body>
+</html>

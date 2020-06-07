@@ -23,7 +23,7 @@
 @media screen and (min-width: 991px) {
   .main-panel {
     &.full-height {
-      > .content, > .content-full{
+      > .container, > .container-full{
         margin-top: 0;
       }
       .navbar-header {
@@ -171,6 +171,11 @@
       margin-right: 0px;
     }
   }
+  .topbar_open {
+    .logo-header {
+      border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+    }
+  }
   .nav-search {
     width: 100%;
     margin-right: 0 !important;
@@ -184,12 +189,11 @@
   .topbar_open {
     .navbar-header {
       transform: translate3d(0, 61px, 0) !important;
-      padding: 6px;
       .navbar-nav {
         > .nav-item {
           .nav-link {
             i {
-              font-size: 19px;
+              font-size: 16px;
             }
           }
           &:last-child {

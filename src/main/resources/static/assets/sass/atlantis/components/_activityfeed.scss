@@ -27,8 +27,8 @@
   background: $color !important;
 }
 
-.feed-item-default::after {
-  @include feed-item-state($dark-color);
+.feed-item-black::after {
+  @include feed-item-state($black-color);
 }
 
 .feed-item-primary::after {

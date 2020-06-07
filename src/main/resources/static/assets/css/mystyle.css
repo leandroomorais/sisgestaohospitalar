@@ -1,0 +1,26 @@
+span.low {
+	font-size: 09px;
+	align-content: center;
+	text-align: center;
+	position: relative;
+	padding: 0;
+}
+
+span.type-user {
+	padding: 2px;
+	font-size: 10px;
+	text-align: center;
+	font-weight: bold;
+}
+
+.loadersearch, loading:after {
+	display: block;
+	width: 1.5rem;
+	height: 1.5rem;
+	margin: 7px;
+	background: transparent;
+	border: 3px solid #ffffff;
+	border-bottom-color: transparent;
+	border-radius: 50%;
+	animation: 1s spin linear infinite;
+}

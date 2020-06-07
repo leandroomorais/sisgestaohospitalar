@@ -18,8 +18,8 @@
     }
   }
   
-  &.pg-default > li.active {
-    @include pagination-active-state($dark-color);
+  &.pg-black > li.active {
+    @include pagination-active-state($black-color);
   }
   &.pg-primary > li.active {
     @include pagination-active-state($primary-color);

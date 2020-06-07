@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity"
+	xmlns:layout="http://ultraq.net.nz/thymeleaf/layout">
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<title>SGH - Cadastrar uma nova senha</title>
+<meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no'
+	name='viewport' />
+<link rel="icon" th:href="@{/assets/img/favicon.png}"
+	type="image/x-icon" />
+
+<!-- Fonts and icons -->
+<script th:src="@{/assets/js/plugin/webfont/webfont.min.js}"></script>
+<script>
+	WebFont.load({
+		google : {
+			"families" : [ "Lato:300,400,700,900" ]
+		},
+		custom : {
+			"families" : [ "Flaticon", "Font Awesome 5 Solid",
+					"Font Awesome 5 Regular", "Font Awesome 5 Brands",
+					"simple-line-icons" ],
+			urls : [ '../../assets/css/fonts.min.css' ]
+		},
+		active : function() {
+			sessionStorage.fonts = true;
+		}
+	});
+</script>
+
+<!-- CSS Files -->
+<link rel="stylesheet" th:href="@{/assets/css/bootstrap.min.css}">
+<link rel="stylesheet" th:href="@{/assets/css/atlantis.css}">
+<!-- CSS Just for demo purpose, don't include it in your project -->
+<link rel="stylesheet" th:href="@{/assets/css/demo.css}">
+</head>
+<body class="login">
+	<div class="wrapper wrapper-login">
+		<div class="container container-login animated fadeIn">
+
+			<h3 class="text-center">
+				<img alt="" th:src="@{/assets/img/favicon.png}">
+			</h3>
+			<h2 class="text-center">Cadastre uma nova senha</h2>
+			<div class="login-form">
+				<form id="exampleValidation" th:action="@{/cadastra-senha}" method="post">
+					<div class="card-body">
+						<div class="form-group form-show-validation row">
+							<label for="password"
+								class="col-lg-4 col-md-3 col-sm-4 mt-sm-2 text-right">Nova
+								Senha: <span class="required-label">*</span>
+							</label>
+							<div class="col-lg-8 col-md-9 col-sm-8">
+								<input type="password" class="form-control" id="password"
+									name="password" placeholder="Senha" required>
+							</div>
+						</div>
+						<div class="form-group form-show-validation row">
+							<label for="confirmpassword"
+								class="col-lg-4 col-md-3 col-sm-4 mt-sm-2 text-right">Confirme:
+								<span class="required-label">*</span>
+							</label>
+							<div class="col-lg-8 col-md-9 col-sm-8">
+								<input type="password" class="form-control" id="confirmpassword"
+									name="confirmpassword" placeholder="Confirme a nova senha"
+									required>
+							</div>
+							<div class="form-action">
+								<a th:href="@{/entrar}" class="btn btn btn-link btn-login mr-3">entrar</a>
+								<button class="btn btn-primary btn-rounded btn-login">Cadastrar</button>
+							</div>
+						</div>
+					</div>
+				</form>
+
+			</div>
+		</div>
+
+	</div>
+
+	<!--   Core JS Files   -->
+	<script th:src="@{/assets/js/core/jquery.3.2.1.min.js}"></script>
+	<script th:src="@{/assets/js/core/popper.min.js}"></script>
+	<script th:src="@{/assets/js/core/bootstrap.min.js}"></script>
+	<!-- jQuery UI -->
+	<script
+		th:src="@{/assets/js/plugin/jquery-ui-1.12.1.custom/jquery-ui.min.js}"></script>
+	<script
+		th:src="@{/assets/js/plugin/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js}"></script>
+	<!-- Moment JS -->
+	<script th:src="@{/assets/js/plugin/moment/moment.min.js}"></script>
+	<!-- Bootstrap Toggle -->
+	<script
+		th:src="@{/assets/js/plugin/bootstrap-toggle/bootstrap-toggle.min.js}"></script>
+	<!-- jQuery Scrollbar -->
+	<script
+		th:src="@{/assets/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js}"></script>
+	<!-- DateTimePicker -->
+	<script
+		th:src="@{/assets/js/plugin/datepicker/bootstrap-datetimepicker.min.js}"></script>
+	<!-- Select2 -->
+	<script th:src="@{/assets/js/plugin/select2/select2.full.min.js}"></script>
+	<!-- jQuery Validation -->
+	<script
+		th:src="@{/assets/js/plugin/jquery.validate/jquery.validate.min.js}"></script>
+	<!-- Atlantis JS -->
+	<script th:src="@{/assets/js/atlantis.min.js}"></script>
+	<script>
+		$("#exampleValidation").validate(
+				{
+					validClass : "success",
+					rules : {
+						confirmpassword : {
+							equalTo : "#password"
+						},
+					},
+					highlight : function(element) {
+						$(element).closest('.form-group').removeClass(
+								'has-success').addClass('has-error');
+					},
+					success : function(element) {
+						$(element).closest('.form-group').removeClass(
+								'has-error').addClass('has-success');
+					},
+				});
+	</script>
+</body>
+</html>

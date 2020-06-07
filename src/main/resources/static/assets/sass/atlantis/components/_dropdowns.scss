@@ -55,11 +55,11 @@
       }
     }
     .notif-icon {
-      &.notif-default, &.notif-primary, &.notif-secondary, &.notif-info, &.notif-success, &.notif-warning, &.notif-danger {
+      &.notif-black, &.notif-primary, &.notif-secondary, &.notif-info, &.notif-success, &.notif-warning, &.notif-danger {
         color: $white-color !important;
       }
-      &.notif-default {
-        background: $dark-color !important;
+      &.notif-black {
+        background: $black-color !important;
       }
       &.notif-primary {
         background: $primary-color !important;
@@ -211,14 +211,14 @@
     padding: 15px;
     border-radius: 3px 3px 0 0;
     .title {
-      font-size: 18px;
+      font-size: 16px;
     }
     .subtitle {
       font-size: 13px;
     }
   }
   .quick-actions-items {
-    padding: 15px 7.5px;
+    padding: 7.5px 0;
   }
   a {
     &:hover {
@@ -228,28 +228,36 @@
   .quick-actions-item {
     display: flex;
     flex-direction: column;
-    margin: 7.5px 7.5px;
+    margin: 7.5px 10px;
     padding: 10px;
     align-items: center;
     color: #1572E8;
-    border: 1px solid $grey-color;
-    border-bottom: 1px solid $grey-color;
-    border-radius: 3px;
-    transition: all .2s;
-    &:hover {
-      background: #fdfdff;
-      color: $primary-color;
-      box-shadow: 3px 3px 10px #f7f1f1
-    }
     i {
-      color: #7d8c95;
-      font-size: 27px;
+      color: #fff;
+      font-size: 18px;
     }
     .text {
       text-align: center;
-      font-size: 13px;
-      margin-top: 8px;
+      font-size: 14px;
+      margin-top: 12px;
     }
+    &:hover {
+      .avatar-item {
+        transform: scale(1.1);
+      }
+    }
+  }
+  .avatar-item {
+    display: inline-flex;
+    width: 48px;
+    height: 48px;
+    color: #fff;
+    border-radius: .375rem;
+    background-color: $primary-color;
+    align-items: center;
+    justify-content: center;
+    transition: all .15s;
+    box-shadow: 2px 2px 8px 0px rgba(31, 30, 30, 0.13) !important;
   }
   @mixin quick-actions-state($color) {
     &:after {
@@ -262,8 +270,8 @@
       color: $color;
     }
   }
-  &.quick-actions-default {
-    @include quick-actions-state($dark-color);
+  &.quick-actions-black {
+    @include quick-actions-state($black-color);
   }
   &.quick-actions-primary {
     @include quick-actions-state($primary-color);

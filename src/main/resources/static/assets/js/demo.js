@@ -16,18 +16,18 @@ Circles.create({
 })
 
 //Notify
-//$.notify({
-//	icon: 'flaticon-alarm-1',
-//	title: 'Atlantis',
-//	message: 'Premium Bootstrap 4 Admin Dashboard',
-//},{
-//	type: 'secondary',
-//	placement: {
-//		from: "bottom",
-//		align: "right"
-//	},
-//	time: 1000,
-//});
+$.notify({
+	icon: 'flaticon-alarm-1',
+	title: 'Atlantis',
+	message: 'Premium Bootstrap 4 Admin Dashboard',
+},{
+	type: 'secondary',
+	placement: {
+		from: "bottom",
+		align: "right"
+	},
+	time: 1000,
+});
 
 // JQVmap
 $('#map-example').vectorMap(

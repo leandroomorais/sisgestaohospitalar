@@ -94,18 +94,18 @@
 /*      Button States      */
 .btn-white {
   background: $white-color !important;
-  color: $dark-color !important;
+  color: $black-color !important;
   &:hover, &:focus, &:disabled {
     background: $white-color !important;
-    color: $dark-color !important;
+    color: $black-color !important;
   }
 }
 
-.btn-default {
-  background: $dark-color !important;
+.btn-black {
+  background: $black-color !important;
   color: $white-color !important;
   &:hover, &:focus, &:disabled {
-    background: $dark-color !important;
+    background: $black-color !important;
     color: $white-color !important;
   }
 }
@@ -199,8 +199,8 @@
   &.btn-white {
     @include btn-border($white-color);
   }
-  &.btn-default {
-    @include btn-border($dark-color);
+  &.btn-black {
+    @include btn-border($black-color);
   }
   &.btn-primary {
     @include btn-border($primary-color);
@@ -249,8 +249,8 @@
     border: 0 !important;
   }
 
-  &.btn-default {
-    @include btn-link($dark-color);
+  &.btn-black {
+    @include btn-link($black-color);
   }
 
   &.btn-primary {

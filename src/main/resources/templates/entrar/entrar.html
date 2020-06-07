@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity"
+	xmlns:layout="http://ultraq.net.nz/thymeleaf/layout">
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<title>SGH - Entrar</title>
+<meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no'
+	name='viewport' />
+<link rel="icon" th:href="@{/assets/img/favicon.png}"
+	type="image/x-icon" />
+
+<!-- Fonts and icons -->
+<script th:src="@{/assets/js/plugin/webfont/webfont.min.js}"></script>
+<script>
+	WebFont.load({
+		google : {
+			"families" : [ "Lato:300,400,700,900" ]
+		},
+		custom : {
+			"families" : [ "Flaticon", "Font Awesome 5 Solid",
+					"Font Awesome 5 Regular", "Font Awesome 5 Brands",
+					"simple-line-icons" ],
+			urls : [ '../assets/css/fonts.min.css' ]
+		},
+		active : function() {
+			sessionStorage.fonts = true;
+		}
+	});
+</script>
+
+<!-- CSS Files -->
+<link rel="stylesheet" th:href="@{/assets/css/bootstrap.min.css}">
+<link rel="stylesheet" th:href="@{/assets/css/atlantis.css}">
+</head>
+<body class="login">
+	<div class="wrapper wrapper-login">
+		<div class="container container-login animated fadeIn">
+
+			<h3 class="text-center">
+				<img alt="" th:src="@{/assets/img/favicon.png}">
+			</h3>
+			<h2 class="text-center">Faça login para ter acesso</h2>
+			<div class="login-form">
+				<form action="/entrar" method="post">
+					<div class="form-group form-floating-label">
+						<input maxlength="11" id="username" name="username" type="text"
+							class="form-control input-border-bottom" required> <label
+							for="username" class="placeholder">CPF</label>
+					</div>
+					<div class="form-group form-floating-label">
+						<input id="password" name="password" type="password"
+							class="form-control input-border-bottom" required> <label
+							for="password" class="placeholder">Senha</label>
+						<div class="show-password">
+							<i class="icon-eye"></i>
+						</div>
+					</div>
+					<th:block th:if="${param.error}">
+						<div class="form-group">
+							<p class="text-danger">Usuário e/ou senha incorreto(s). Tente
+								novamente ou utilize o recurso "Esqueceu sua senha?"</p>
+						</div>
+					</th:block>
+					<th:block th:if="${sucesso}">
+						<div class="form-group">
+							<p class="text-success" th:text="${sucesso}"></p>
+						</div>
+					</th:block>
+					<div class="form-action mb-3">
+						<button type="submit"
+							class="btn btn-primary btn-rounded btn-login">Entrar</button>
+					</div>
+				</form>
+				<div class="login-account">
+					<span class="msg">Esqueceu sua senha ?</span> <a href="#"
+						id="show-signup" class="link">Clique aqui</a>
+				</div>
+
+			</div>
+		</div>
+
+		<div class="container container-signup animated fadeIn">
+
+			<h3 class="text-center">Recuperação de senha</h3>
+			<div id="loader-form" class=""></div>
+			<form id="form-recuperar-senha">
+				<div class="login-form">
+					<div class="form-group form-floating-label">
+						<input id="email" name="email" type="email"
+							class="form-control input-border-bottom" required> <label
+							for="email" class="placeholder">Por favor digite o seu
+							email cadastrado</label>
+					</div>
+					<div class="form-group">
+						<p id="alert"></p>
+					</div>
+					<div class="form-action">
+						<a href="#" id="show-signin"
+							class="btn btn-danger btn-link btn-login mr-3">Cancelar</a>
+						<button class="btn btn-primary btn-rounded btn-login">Enviar</button>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+
+	<script th:src="@{/assets/js/core/jquery.3.2.1.min.js}"></script>
+	<script
+		th:src="@{/assets/js/plugin/jquery-ui-1.12.1.custom/jquery-ui.min.js}"></script>
+	<script th:src="@{/assets/js/core/popper.min.js}"></script>
+	<script th:src="@{/assets/js/core/bootstrap.min.js}"></script>
+	<script th:src="@{/assets/js/atlantis.min.js}"></script>
+	<script th:src="@{/assets/js/recuperar-senha.js}"></script>
+</body>
+</html>

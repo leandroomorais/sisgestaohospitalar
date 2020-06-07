@@ -4,6 +4,7 @@ import java.security.SecureRandom;
 import java.util.Random;
 
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Primary;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
 
@@ -37,6 +38,7 @@ public class GeradorSenha {
 	 * @return String
 	 */
 	@Bean
+	@Primary
 	public static String senhaAleatoria() {
 		String SALTCHARS = "ABCEFGHIJKLMNOPQRSTUVWXYZ1234567890";
 		StringBuilder salt = new StringBuilder();

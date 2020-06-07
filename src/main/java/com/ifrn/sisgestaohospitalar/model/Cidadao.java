@@ -29,13 +29,15 @@ public class Cidadao {
 
 	private String cpf;
 
-	@Column(nullable = false, length = 1)
+	@Column(nullable = false)
 	@NotBlank(message = "É necessário preencher o campo SEXO")
-	private char sexo;
+	private String sexo;
 
-	@Column(nullable = false, length = 6)
+	private String codigoibgemunicipio;
+	
+	@Column(nullable = false)
 	@NotBlank(message = "É necessário preencher o campo MUNICIPIO")
-	private int codigoibgemunicipio;
+	private String nomemunicipio;
 
 	@Column(length = 3)
 	private int idade;
@@ -44,8 +46,10 @@ public class Cidadao {
 	@NotBlank(message = "É necessário preencher o campo NOME")
 	private String nome;
 
-	@Column(nullable = false, length = 15)
-	@NotBlank(message = "É necessário preencher o campo DATA DE NASCIMENTO")
+	private String nomemae;
+
+	private String nomepai;
+
 	private Date datanascimento;
 
 	@Column(length = 2)
@@ -57,9 +61,7 @@ public class Cidadao {
 	@Column(length = 3)
 	private int codigonacionalidade;
 
-	@Column(nullable = false, length = 8)
-	@NotBlank(message = "É necessário preencher o campo CEP")
-	private int cep;
+	private String cep;
 
 	@Column(length = 3)
 	private int codigologradouro;
@@ -75,16 +77,14 @@ public class Cidadao {
 	@NotBlank(message = "É necessário preencher o campo NUMERO DA CASA")
 	private String numeroendereco;
 
-	@Column(nullable = false, length = 30)
-	@NotBlank(message = "É necessário preencher o campo BAIRRO")
 	private String bairro;
 
 	@Column(length = 11)
-	private int telefone;
+	private String telefone;
 
 	@Column(length = 40)
 	private String email;
-
+	
 	/** Getters e setters */
 
 	public Long getId() {
@@ -111,20 +111,28 @@ public class Cidadao {
 		this.cpf = cpf;
 	}
 
-	public char getSexo() {
+	public String getSexo() {
 		return sexo;
 	}
 
-	public void setSexo(char sexo) {
+	public void setSexo(String sexo) {
 		this.sexo = sexo;
 	}
 
-	public int getCodigoibgemunicipio() {
+	public String getCodigoibgemunicipio() {
 		return codigoibgemunicipio;
 	}
 
-	public void setCodigoibgemunicipio(int codigoibgemunicipio) {
+	public void setCodigoibgemunicipio(String codigoibgemunicipio) {
 		this.codigoibgemunicipio = codigoibgemunicipio;
+	}
+
+	public String getNomemunicipio() {
+		return nomemunicipio;
+	}
+
+	public void setNomemunicipio(String nomemunicipio) {
+		this.nomemunicipio = nomemunicipio;
 	}
 
 	public int getIdade() {
@@ -141,6 +149,22 @@ public class Cidadao {
 
 	public void setNome(String nome) {
 		this.nome = nome;
+	}
+
+	public String getNomemae() {
+		return nomemae;
+	}
+
+	public void setNomemae(String nomemae) {
+		this.nomemae = nomemae;
+	}
+
+	public String getNomepai() {
+		return nomepai;
+	}
+
+	public void setNomepai(String nomepai) {
+		this.nomepai = nomepai;
 	}
 
 	public Date getDatanascimento() {
@@ -175,11 +199,11 @@ public class Cidadao {
 		this.codigonacionalidade = codigonacionalidade;
 	}
 
-	public int getCep() {
+	public String getCep() {
 		return cep;
 	}
 
-	public void setCep(int cep) {
+	public void setCep(String cep) {
 		this.cep = cep;
 	}
 
@@ -223,11 +247,11 @@ public class Cidadao {
 		this.bairro = bairro;
 	}
 
-	public int getTelefone() {
+	public String getTelefone() {
 		return telefone;
 	}
 
-	public void setTelefone(int telefone) {
+	public void setTelefone(String telefone) {
 		this.telefone = telefone;
 	}
 
@@ -238,5 +262,10 @@ public class Cidadao {
 	public void setEmail(String email) {
 		this.email = email;
 	}
+
+	
+
+	
+	
 
 }

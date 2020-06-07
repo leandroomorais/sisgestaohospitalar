@@ -1,5 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity"
+	xmlns:layout="http://ultraq.net.nz/thymeleaf/layout">
 <head>
 <meta charset="utf-8">
 </head>
@@ -15,8 +18,8 @@
 				<div class="info">
 					<a data-toggle="collapse" href="#collapseExample"
 						aria-expanded="true"> <span th:text="${user.firstname}"></span>
-						<span class="user-level" th:text="${user.tipoprofissional}"></span> <span
-						class="caret"></span>
+						<span class="user-level" th:text="${user.tipoprofissional}"></span>
+						<span class="caret"></span>
 					</a>
 					<div class="clearfix"></div>
 
@@ -66,7 +69,8 @@
 				</a>
 					<div class="collapse" id="forms">
 						<ul class="nav nav-collapse">
-							<li><a th:href="@{/administracao/gerarbpa}"> <span class="sub-item">Gerar Arquivo BPA</span>
+							<li><a th:href="@{/administracao/gerarbpa}"> <span
+									class="sub-item">Gerar Arquivo BPA</span>
 							</a></li>
 						</ul>
 					</div></li>
@@ -87,67 +91,42 @@
 </div>
 <!-- End Sidebar -->
 
-<!-- Sidebar -->
-<div th:fragment="sidebar-recepcao" class="sidebar sidebar-style-2">
+<!-- Sidebar Módulos - Recepção, Triagem, Atendimento Médico e Admin de Medicamentos -->
+<div th:fragment="sidebar-modulos" class="sidebar sidebar-style-2">
 	<div class="sidebar-wrapper scrollbar scrollbar-inner">
 		<div class="sidebar-content">
 			<ul class="nav nav-primary">
-
-				<li class="nav-section"><span class="sidebar-mini-icon">
-				</span>
-				<li class="nav-item"><a data-toggle="collapse" href="#base">
-						<span class="avatar-sm float-left mr-2"> <img
-							th:src="@{/assets/img/person-male.png}" alt="..."
-							class="avatar-img rounded-circle">
-					</span>
-						<p th:text="${user.firstname}"></p> <span class="caret"></span>
+				<li class="nav-item"><a data-toggle="collapse"
+					href="#dashboard" class="collapsed" aria-expanded="false"> <img
+						alt="" width="40" th:src="@{/assets/img/person-male.png}"> <span
+						th:text="${user.firstname}" class="low"></span><span
+						class="type-user">ADMINISTRADOR</span> <span class="caret"></span>
 				</a>
-					<div class="collapse" id="base">
+					<div class="collapse" id="dashboard">
 						<ul class="nav nav-collapse">
-							<li><a th:href="@{/profissional/myprofileprof}"> <span
-									class="sub-item">Meu perfil</span>
+							<li><a href="../demo1/index.html"> <span
+									class="sub-item">Meu Perfil</span>
 							</a></li>
 						</ul>
 					</div></li>
-			</ul>
-		</div>
-		<div sec:authorize="hasAnyAuthority('TEC','SUPER')">
-			<ul class="nav nav-primary">
-				<li class="nav-item"><a th:href="@{/recepcao/addpaciente}">
-						<i class="fa fa-user-plus"></i>
-						<p>Adicionar Paciente</p> <span class="badge badge-success"></span>
-				</a></li>
-			</ul>
+				<li class="nav-section"><span class="sidebar-mini-icon">
+						<i class="fa fa-ellipsis-h"></i>
+				</span>
+					<h4 class="text-section">Ações</h4></li>
 
-			<ul class="nav nav-primary">
-				<li class="nav-item"><a th:href="@{/recepcao/listByStatus}">
-						<i class="fa fa-users"></i>
-						<p>Fila de Atendimento</p> <span class="badge badge-success"></span>
+				<li class="nav-item active"><a data-toggle="collapse"
+					th:href="@{/recepcao/adicionar-cidadao}"> <i class="fas fa-user-plus"></i>
+						<p>Adicionar Cidadão</p> <span class="caret"></span>
 				</a></li>
-			</ul>
 
-		</div>
+				<li class="nav-item"><a th:href="@{/recepcao/adicionar-cidadao}"> <i
+						class="fa fa-users"></i>
+						<p>Fila de Atendimento</p>
+				</a></li>
 
-		<div sec:authorize="hasAnyAuthority('ENF','SUPER')">
-			<ul class="nav nav-primary">
-				<li class="nav-item"><a th:href="@{/triagem/list}"> <i
-						class="fa fa-stethoscope"></i>
-						<p>Pacientes para Triagem</p> <span class="badge badge-success"></span>
-				</a></li>
-			</ul>
-		</div>
-		<div sec:authorize="hasAnyAuthority('MED','SUPER')">
-			<ul class="nav nav-primary">
-				<li class="nav-item"><a
-					th:href="@{/atendimentoMedico/listarStatusAtdMed}"> <i
-						class="fa fa-user-md"></i>
-						<p>Pacientes</p> <span
-						class="badge badge-success"></span>
-				</a></li>
 			</ul>
 		</div>
 	</div>
-</div>
 </div>
 <!-- End Sidebar -->
 

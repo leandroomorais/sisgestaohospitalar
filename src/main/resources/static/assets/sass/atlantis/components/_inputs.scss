@@ -274,9 +274,9 @@
   .custom-control-input:checked~.custom-control-label::before{
     background-color: $primary-color;
   }
-  &.checkbox-default{
+  &.checkbox-black{
     .custom-control-input:checked~.custom-control-label::before{
-      background-color: $dark-color;
+      background-color: $black-color;
     }
   }
   &.checkbox-primary{

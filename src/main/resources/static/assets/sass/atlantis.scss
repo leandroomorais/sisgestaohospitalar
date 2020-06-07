@@ -1,7 +1,7 @@
 /*!
 
  =========================================================
- * Atlantis Bootstrap Dashboard (Bootstrap 4)
+ * Atlantis Bootstrap 4 Admin Dashboard (Bootstrap 4)
  =========================================================
 
  * Product Page: http://www.themekita.com/
@@ -55,12 +55,19 @@
 * Plugins
    + jQueryUI
    + jQuery Scrollbar
+   + Toggle
    + Css Animate
    + Full Calendar
    + SweetAlert
    + Datatables
-
+   + DateTimePicker
+   + Select2
+   + Tagsinput
+   + Dropzone
+   + Summernote
 * Responsive
+* 404
+* Login & Register
 
 # [Color codes]
 
@@ -95,6 +102,12 @@ danger-color : #f3545d
 
 //responsive
 @import "atlantis/responsive";
+
+//Login
+@import "atlantis/login";
+
+//404
+@import "atlantis/pagenotfound";
 
 //Background
 @import "atlantis/background";

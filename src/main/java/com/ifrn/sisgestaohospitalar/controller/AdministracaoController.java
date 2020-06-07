@@ -74,7 +74,7 @@ public class AdministracaoController {
 	 */
 	@RequestMapping("/")
 	public ModelAndView inicio(Principal principal) {
-		ModelAndView mv = new ModelAndView("administrador/dashboard-admin");
+		ModelAndView mv = new ModelAndView("administracao/dashboard-admin");
 		String username = principal.getName();
 		Profissional user = profissionalService.findByCpf(username);
 		List<Profissional> profissionais = profissionalService.findAll();
@@ -98,7 +98,7 @@ public class AdministracaoController {
 	 */
 	@RequestMapping("/cadastros")
 	public ModelAndView cadastros() {
-		ModelAndView mv = new ModelAndView("administrador/dashboard_cadastros");
+		ModelAndView mv = new ModelAndView("administracao/dashboard_cadastros");
 		return mv;
 	}
 
@@ -110,7 +110,7 @@ public class AdministracaoController {
 	 */
 	@RequestMapping("/form-upload")
 	public ModelAndView formUpload(Principal principal) {
-		ModelAndView mv = new ModelAndView("administrador/form-upload");
+		ModelAndView mv = new ModelAndView("administracao/form-upload");
 		String username = principal.getName();
 		Profissional user = profissionalService.findByCpf(username);
 		mv.addObject("user", user);
@@ -155,7 +155,7 @@ public class AdministracaoController {
 
 	@RequestMapping("/gerarbpa")
 	public ModelAndView gerarbpa(Principal principal) {
-		ModelAndView mv = new ModelAndView("administrador/gerarbpa");
+		ModelAndView mv = new ModelAndView("administracao/gerarbpa");
 		String username = principal.getName();
 		Profissional user = profissionalService.findByCpf(username);
 		mv.addObject("user", user);

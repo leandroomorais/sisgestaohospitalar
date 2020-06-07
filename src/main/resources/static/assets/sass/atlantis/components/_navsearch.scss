@@ -9,6 +9,11 @@
       border: 1px solid #ddd;
     }
   }
+  &.nav-search-round {
+    .input-group {
+      border-radius: 50px;
+    }
+  }
   .form-control {
     border: 0;
     background: $transparent-bg !important;
@@ -28,5 +33,29 @@
   .btn-search {
     background: $transparent-bg;
     padding: .375rem 1rem;
+  }
+}
+
+/*    Quick Search    */
+
+.quick-search {
+  display: flex;
+  align-items: center;
+  width: 225px;
+  .input-group {
+    background: #eee;
+    border-radius: 5px;
+  }
+  .btn-search {
+    background: transparent;
+    padding: .5rem 1rem; 
+  }
+  .search-icon {
+    font-size: 16px;
+  }
+  input.form-control {
+    background: transparent;
+    border: 0;
+    padding: .5rem 0; 
   }
 }

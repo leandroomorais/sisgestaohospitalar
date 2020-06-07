@@ -105,7 +105,7 @@
       line-height: 50px;
     }
   }
-  &.nav-default, &.nav-primary, &.nav-secondary, &.nav-info, &.nav-warning, &.nav-success, &.nav-danger{
+  &.nav-black, &.nav-primary, &.nav-secondary, &.nav-info, &.nav-warning, &.nav-success, &.nav-danger{
     .nav-link {
       border: 1px solid #eeeeee;
     }
@@ -119,9 +119,9 @@
     border: 1px solid $color;
   }
 
-  &.nav-default .nav-link {
+  &.nav-black .nav-link {
     &.active {
-      @include nav-pills-states-active($dark-color);
+      @include nav-pills-states-active($black-color);
     }
   }
   &.nav-primary .nav-link {
@@ -152,6 +152,126 @@
   &.nav-danger  .nav-link {
     &.active {
       @include nav-pills-states-active($danger-color);
+    }
+  }
+}
+
+/* Nav Line */
+
+.row-nav-line {
+  margin-left: -20px;
+  margin-right: -20px;
+}
+
+.nav{
+  @mixin nav-line-color-style($color){
+    .nav-link{
+      &.active{
+        border-color: $color;
+      }
+    }
+  }
+  @mixin nav-simple-color-style($color) {
+    .nav-link{
+      &:hover, &:focus{
+        color: $color;
+      }
+      &.active{
+        color: $color;
+      }
+    }
+  }
+  &.nav-line, &.nav-simple {
+    // border-bottom: 1px solid $grey-color;
+    .nav-link {
+      padding: 18px 0 !important;
+      margin-right: 40px;
+      color: #6B6D7E;
+      border-width: 0px;
+      font-size: 14px;
+      font-weight: 600;
+      &:hover, &:focus{
+        color: $primary-color;
+        border-width: 0px;
+      }
+      &.active {
+        border-width: 0;
+        background-color: $transparent-bg;
+        color: $primary-color;
+        border-radius: 0px;
+      }
+    }
+  }
+  &.nav-simple {
+    &.nav-color-black {
+      @include nav-simple-color-style($black-color);
+    }
+    &.nav-color-primary {
+      @include nav-simple-color-style($primary-color);
+    }
+    &.nav-color-secondary {
+      @include nav-simple-color-style($secondary-color);
+    }
+    &.nav-color-info {
+      @include nav-simple-color-style($info-color);
+    }
+    &.nav-color-success {
+      @include nav-simple-color-style($success-color);
+    }
+    &.nav-color-danger {
+      @include nav-simple-color-style($danger-color);
+    }
+    &.nav-color-warning {
+      @include nav-simple-color-style($warning-color);
+    }
+    &.nav-color-light {
+      @include nav-simple-color-style($white-color);
+      .nav-link {
+        color: $grey-color;
+      }
+    }
+  }
+  &.nav-line {
+    .nav-link {
+      &.active {
+        border-bottom: 3px solid $primary-color;
+      }
+    }
+
+    &.nav-color-black {
+      @include nav-simple-color-style($black-color);
+      @include nav-line-color-style($black-color);
+    }
+    &.nav-color-primary {
+      @include nav-simple-color-style($primary-color);
+      @include nav-line-color-style($primary-color);
+    }
+    &.nav-color-secondary {
+      @include nav-simple-color-style($secondary-color);
+      @include nav-line-color-style($secondary-color);
+    }
+    &.nav-color-info {
+      @include nav-simple-color-style($info-color);
+      @include nav-line-color-style($info-color);
+    }
+    &.nav-color-success {
+      @include nav-simple-color-style($success-color);
+      @include nav-line-color-style($success-color);
+    }
+    &.nav-color-danger {
+      @include nav-simple-color-style($danger-color);
+      @include nav-line-color-style($danger-color);
+    }
+    &.nav-color-warning {
+      @include nav-simple-color-style($warning-color);
+      @include nav-line-color-style($warning-color);
+    }
+    &.nav-color-light {
+      @include nav-simple-color-style($white-color);
+      @include nav-line-color-style($white-color);
+      .nav-link {
+        color: $grey-color;
+      }
     }
   }
 }

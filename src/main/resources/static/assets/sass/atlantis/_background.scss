@@ -11,7 +11,7 @@ body {
 		background: $grey-color;
 	}
 	&[data-background-color="dark"] {
-		background: $dark-color;
+		background: $black-color;
 		.main-header {
 			box-shadow: 0px 0px 5px #121727;
 		}
@@ -57,7 +57,7 @@ body {
 		.card-category {
 			color: #8b92a9;
 		}
-		.card-default, .card-primary, .card-secondary, .card-info, .card-success, .card-warning, .card-danger {
+		.card-black, .card-primary, .card-secondary, .card-info, .card-success, .card-warning, .card-danger {
 			color: #fff;
 			.card-title, .card-category {
 				color: #fff;
@@ -107,7 +107,7 @@ body {
 			}
 		}
 		.mail-wrapper .mail-content .inbox-body .email-list .email-list-item.unread {
-			background: $dark2-color !important;
+			background: $black2-color !important;
 		}
 		.mail-wrapper .mail-content .inbox-body .email-list .email-list-item:hover {
 			background: #171e2f !important;
@@ -126,12 +126,16 @@ body {
 
 /*   Background   */
 
-.bg-dark {
-	background-color: $dark-color !important;
+.bg-transparent {
+	background: transparent !important;
 }
 
-.bg-dark2 {
-	background-color: $dark2-color !important;
+.bg-black {
+	background-color: $black-color !important;
+}
+
+.bg-black2 {
+	background-color: $black2-color !important;
 }
 
 .bg-primary {
@@ -187,7 +191,7 @@ body {
 }
 
 .bg-grey2 {
-	background: $grey-color;
+	background: $grey-color !important;
 }
 
 @mixin linear-gradient($direction, $color-stops...) {
@@ -196,8 +200,8 @@ body {
 	background: linear-gradient($direction, $color-stops) !important;
 }
 
-.bg-dark-gradient {
-	@include linear-gradient(-45deg, #0A0B11, $dark2-color);
+.bg-black-gradient {
+	@include linear-gradient(-45deg, #0A0B11, $black2-color);
 }
 
 .bg-primary-gradient {

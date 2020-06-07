@@ -40,9 +40,9 @@
 
 /* table bordered states */
 
-.table-bordered-bd-default {
+.table-bordered-bd-black {
   td, th {
-    border: 1px solid $dark-color !important;
+    border: 1px solid $black-color !important;
   }
 }
 
@@ -91,9 +91,9 @@
 
 /* table head background states*/
 
-.table-head-bg-default {
+.table-head-bg-black {
   thead {
-    border: 1px solid $dark-color !important;
+    border: 1px solid $black-color !important;
   }
 }
 
@@ -139,8 +139,8 @@
   border: 0px !important;  
 }
 
-.table-head-bg-default thead th, .table-striped-bg-default tbody tr:nth-of-type(odd) {
-  @include table-bg-state($dark-color);
+.table-head-bg-black thead th, .table-striped-bg-black tbody tr:nth-of-type(odd) {
+  @include table-bg-state($black-color);
 }
 
 .table-head-bg-primary thead th, .table-striped-bg-primary tbody tr:nth-of-type(odd) {

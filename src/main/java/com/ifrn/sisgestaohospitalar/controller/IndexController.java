@@ -6,6 +6,7 @@ import java.util.UUID;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessagePreparator;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -58,7 +59,7 @@ public class IndexController {
 	 */
 	@RequestMapping(method = RequestMethod.GET, path = { "/entrar" })
 	public ModelAndView entrar() {
-		ModelAndView mv = new ModelAndView("login/login");
+		ModelAndView mv = new ModelAndView("entrar/entrar");
 		return mv;
 	}
 
@@ -74,17 +75,6 @@ public class IndexController {
 	}
 
 	/**
-	 * Direciona o usuário para a página de Recuperação de Senha
-	 * 
-	 * @return ModelAndView
-	 */
-	@RequestMapping("/forget")
-	public ModelAndView forget() {
-		ModelAndView mv = new ModelAndView("login/forgetPassword");
-		return mv;
-	}
-
-	/**
 	 * Em caso de sucesso, envia para o usuário email contendo as instruções de
 	 * recuperação de senha, em caso de falha, exibe mensagem ao usuário.
 	 * 
@@ -92,35 +82,35 @@ public class IndexController {
 	 * @param email
 	 * @return ModelAndView
 	 */
-	@RequestMapping("/forgetPassword")
-	public ModelAndView forgetPassword(HttpServletRequest request, @RequestParam("email") String email) {
-		ModelAndView mv = forget();
+	@RequestMapping("/recuperar-senha")
+	public ResponseEntity<Profissional> forgetPassword(HttpServletRequest request,
+			@RequestParam("email") String email) {
+
 		Profissional profissional = profissionalService.findByEmail(email);
 
 		if (profissional == null) {
-			mv.addObject("erro", " Email não encontrado em nossa base de dados.");
-			return mv;
+			return ResponseEntity.badRequest().build();
+		} else {
+			String password = GeradorSenha.senhaAleatoria();
+			String encyptedPassword = GeradorSenha.passwordEncoder().encode(password);
+			profissional.setPassword(encyptedPassword);
+
+			profissionalService.save(profissional);
+
+			String token = UUID.randomUUID().toString();
+			profissionalService.gerarTokenRedefinicao(profissional, token);
+
+			String appUrl = "http://" + request.getServerName() + ":" + request.getServerPort()
+					+ request.getContextPath();
+
+			MimeMessagePreparator newEmail = construtorEmail.emailRedefinicaoSenha(appUrl, request.getLocale(), token,
+					profissional);
+
+			mailSender.send(newEmail);
+
+			return ResponseEntity.ok().build();
 		}
 
-		String password = GeradorSenha.senhaAleatoria();
-		String encyptedPassword = GeradorSenha.passwordEncoder().encode(password);
-		profissional.setPassword(encyptedPassword);
-
-		profissionalService.save(profissional);
-
-		String token = UUID.randomUUID().toString();
-		profissionalService.gerarTokenRedefinicao(profissional, token);
-
-		String appUrl = "http://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath();
-
-		MimeMessagePreparator newEmail = construtorEmail.emailRedefinicaoSenha(appUrl, request.getLocale(), token,
-				profissional);
-
-		mailSender.send(newEmail);
-
-		mv.addObject("sucesso", " Um email foi enviado para " + email + " com as instruções de redefinição de senha.");
-
-		return mv;
 	}
 
 	/**
@@ -131,9 +121,9 @@ public class IndexController {
 	 * @param token
 	 * @return ModelAndView
 	 */
-	@RequestMapping("/new-password")
+	@RequestMapping("/nova-senha")
 	public ModelAndView newPassword(Locale locale, @RequestParam("token") String token) {
-		ModelAndView mv = new ModelAndView("login/new-password");
+		ModelAndView mv = new ModelAndView("entrar/nova-senha");
 		passToken = profissionalService.getTokenRedefinicao(token);
 
 		if (passToken == null || !token.equals(passToken.getToken())) {
@@ -155,7 +145,7 @@ public class IndexController {
 	 * @throws Exception
 	 * @return ModelAndView
 	 */
-	@PostMapping("/update-password")
+	@PostMapping("/cadastra-senha")
 	public ModelAndView updatePassword(@RequestParam("password") String password, Profissional profissional)
 			throws Exception {
 

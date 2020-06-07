@@ -40,7 +40,7 @@ public class ConstrutorEmail {
 	public MimeMessagePreparator emailRedefinicaoSenha(String contextPath, Locale locale, String token,
 			Profissional profissional) {
 
-		String url = contextPath + "/new-password?token=" + token;
+		String url = contextPath + "/nova-senha?token=" + token;
 		String message = "Por favor, clique neste link para verificar seu email e redefinir sua senha: ";
 		Context context = new Context();
 		context.setVariable("profissional", profissional);

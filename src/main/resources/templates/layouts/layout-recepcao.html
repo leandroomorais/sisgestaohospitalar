@@ -1,19 +1,15 @@
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:th="http://www.thymeleaf.org"
 	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity"
 	xmlns:layout="http://ultraq.net.nz/thymeleaf/layout">
 <head>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <title>SGH - Sistema de Gestão Hospitalar</title>
-<meta charset="utf-8">
 <meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no'
 	name='viewport' />
-<link rel="icon" th:href="@{/assets/img/favicon.png}" />
-
-<script th:src="@{https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js}"></script>
-<link rel="stylesheet" th:href="@{https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css}">
-<script th:src="@{https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js}"></script>
+<link rel="icon" th:href="@{/assets/img/favicon.png}"
+	type="image/x-icon" />
 
 <!-- Fonts and icons -->
 <script th:src="@{/assets/js/plugin/webfont/webfont.min.js}"></script>
@@ -26,7 +22,7 @@
 			"families" : [ "Flaticon", "Font Awesome 5 Solid",
 					"Font Awesome 5 Regular", "Font Awesome 5 Brands",
 					"simple-line-icons" ],
-			urls : [ '/assets/css/fonts.min.css' ]
+			urls : [ '../assets/css/fonts.min.css' ]
 		},
 		active : function() {
 			sessionStorage.fonts = true;
@@ -34,11 +30,10 @@
 	});
 </script>
 
-
-
 <!-- CSS Files -->
 <link rel="stylesheet" th:href="@{/assets/css/bootstrap.min.css}">
-<link rel="stylesheet" th:href="@{/assets/css/atlantis.min.css}">
+<link rel="stylesheet" th:href="@{/assets/css/atlantis.css}">
+<link rel="stylesheet" th:href="@{/assets/css/mystyle.css}">
 
 <!-- CSS Just for demo purpose, don't include it in your project -->
 <link rel="stylesheet" th:href="@{/assets/css/demo.css}">
@@ -47,27 +42,32 @@
 	<div class="wrapper compact-wrapper">
 
 		<div th:replace="fragments/main-header::main-header-recepcao"></div>
-
-		<div th:replace="fragments/sidebar::sidebar-recepcao"></div>
-
-		<div layout:fragment="content-modulos"></div>
+		<div th:replace="fragments/sidebar::sidebar-modulos"></div>
+		<div layout:fragment="main-panel"></div>
 
 	</div>
+
 	<!--   Core JS Files   -->
-<!-- 	<script th:src="@{/assets/js/core/jquery.3.2.1.min.js}"></script> -->
+	<script th:src="@{/assets/js/core/jquery.3.2.1.min.js}"></script>
 	<script th:src="@{/assets/js/core/popper.min.js}"></script>
 	<script th:src="@{/assets/js/core/bootstrap.min.js}"></script>
 
-<!-- 	<!-- jQuery UI --> 
-<!-- 	<script -->
-<!-- 		th:src="@{/assets/js/plugin/jquery-ui-1.12.1.custom/jquery-ui.min.js}"></script> -->
-<!-- 	<script -->
-<!-- 		th:src="@{/assets/js/plugin/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js}"></script> -->
+	<!-- jQuery UI -->
+	<script
+		th:src="@{/assets/js/plugin/jquery-ui-1.12.1.custom/jquery-ui.min.js}"></script>
+	<script
+		th:src="@{/assets/js/plugin/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js}"></script>
+
+	<!-- Bootstrap Notify -->
+	<script
+		th:src="@{/assets/js/plugin/bootstrap-notify/bootstrap-notify.min.js}"></script>
 
 	<!-- jQuery Scrollbar -->
 	<script
 		th:src="@{/assets/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js}"></script>
 
+	<!-- Moment JS -->
+	<script th:src="@{/assets/js/plugin/moment/moment.min.js}"></script>
 
 	<!-- Chart JS -->
 	<script th:src="@{/assets/js/plugin/chart.js/chart.min.js}"></script>
@@ -82,13 +82,21 @@
 	<!-- Datatables -->
 	<script th:src="@{/assets/js/plugin/datatables/datatables.min.js}"></script>
 
-	<!-- Bootstrap Notify -->
+	<!-- Bootstrap Toggle -->
 	<script
-		th:src="@{/assets/js/plugin/bootstrap-notify/bootstrap-notify.min.js}"></script>
+		th:src="@{/assets/js/plugin/bootstrap-toggle/bootstrap-toggle.min.js}"></script>
 
 	<!-- jQuery Vector Maps -->
 	<script th:src="@{/assets/js/plugin/jqvmap/jquery.vmap.min.js}"></script>
 	<script th:src="@{/assets/js/plugin/jqvmap/maps/jquery.vmap.world.js}"></script>
+
+	<!-- Jquery Mask -->
+	<script th:src="@{/assets/js/plugin/jquery.mask/jquery.mask.js}"></script>
+
+
+	<!-- jQuery Validation -->
+	<script
+		th:src="@{/assets/js/plugin/jquery.validate/jquery.validate.min.js}"></script>
 
 	<!-- Sweet Alert -->
 	<script th:src="@{/assets/js/plugin/sweetalert/sweetalert.min.js}"></script>
@@ -96,14 +104,9 @@
 	<!-- Atlantis JS -->
 	<script th:src="@{/assets/js/atlantis.min.js}"></script>
 
-	<!-- Atlantis DEMO methods, don't include it in your project! -->
-	<script th:src="@{/assets/js/setting-demo.js}"></script>
-	<script th:src="@{/assets/js/demo.js}"></script>
-<!-- 	<script type="text/javascript" th:src="@{/app/views/TagsView.js}"></script> -->
-<!-- 	<script type="text/javascript" th:src="@{/app/controller/ConsultController.js}"></script> -->
-<!-- 	<script type="text/javascript" th:src="@{/app/controller/RequestController.js}"></script> -->
-<!-- 	<script type="text/javascript" th:src="@{/app/controller/TableController.js}"></script> -->
-<!-- 	<script type="text/javascript" th:src="@{/app/controller/ResponseController.js}"></script> -->
-<!-- 	<script th:src="@{/assets/js/consultaprocedimento.js}"></script> -->
+	<!-- My JS Files -->
+	<script th:src="@{/assets/js/pesquisa-cidadao.js}"></script>
+	<script th:src="@{/assets/js/mascaras.js}"></script>
+
 </body>
 </html>

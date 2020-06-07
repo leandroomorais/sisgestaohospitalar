@@ -59,9 +59,9 @@
 	@extend %loader-borderbottom-color;
 }
 
-.loader-default,
-.is-loading-default:after {
-	@include loader-state($dark-color);
+.loader-black,
+.is-loading-black:after {
+	@include loader-state($black-color);
 }
 
 .loader-primary,
@@ -94,7 +94,7 @@
 	@include loader-state($danger-color);
 }
 
-.btn-default, .card-default {
+.btn-black, .card-black {
 	&.is-loading:after {
 		@extend %loader-btn-and-card-bgnotwhite;
 	}
