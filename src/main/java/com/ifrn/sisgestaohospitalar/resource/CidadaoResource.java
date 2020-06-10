@@ -43,9 +43,6 @@ public class CidadaoResource {
 		String xml = RequisicaoCadsus.respostaXmlCns(cnsDatasus, cns);
 		JSONObject jsonObject = XML.toJSONObject(xml);
 		String retorno = jsonObject.toString();
-		if(cns.equals("111111111111111")) {
-			return ResponseEntity.badRequest().build();
-		}
 		return new ResponseEntity<String>(retorno, HttpStatus.OK);
 	}
 

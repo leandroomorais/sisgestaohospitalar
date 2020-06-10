@@ -1,6 +1,5 @@
 package com.ifrn.sisgestaohospitalar.model;
 
-import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -50,7 +49,7 @@ public class Cidadao {
 
 	private String nomepai;
 
-	private Date datanascimento;
+	private String datanascimento;
 
 	@Column(length = 2)
 	private int codigoraca;
@@ -79,7 +78,6 @@ public class Cidadao {
 
 	private String bairro;
 
-	@Column(length = 11)
 	private String telefone;
 
 	@Column(length = 40)
@@ -167,11 +165,11 @@ public class Cidadao {
 		this.nomepai = nomepai;
 	}
 
-	public Date getDatanascimento() {
+	public String getDatanascimento() {
 		return datanascimento;
 	}
 
-	public void setDatanascimento(Date datanascimento) {
+	public void setDatanascimento(String datanascimento) {
 		this.datanascimento = datanascimento;
 	}
 

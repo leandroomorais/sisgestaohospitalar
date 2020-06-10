@@ -2,15 +2,12 @@ package com.ifrn.sisgestaohospitalar.jobs;
 
 import java.io.IOException;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Date;
-
 import javax.xml.bind.JAXBException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.stereotype.Component;
-
 import com.ifrn.sisgestaohospitalar.model.Cidadao;
 import com.ifrn.sisgestaohospitalar.model.Role;
 import com.ifrn.sisgestaohospitalar.service.CidadaoService;
@@ -39,7 +36,6 @@ public class Inicializador implements ApplicationListener<ContextRefreshedEvent>
 	@Autowired
 	private CidadaoService cidadaoService;
 
-	@SuppressWarnings("deprecation")
 	@Override
 	public void onApplicationEvent(ContextRefreshedEvent event) {
 
@@ -58,7 +54,7 @@ public class Inicializador implements ApplicationListener<ContextRefreshedEvent>
 		Cidadao cidadao = new Cidadao();
 		
 		String datanascimento;
-		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
+//		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
 		
 		datanascimento = "1994/06/20";
 		
@@ -72,12 +68,7 @@ public class Inicializador implements ApplicationListener<ContextRefreshedEvent>
 		cidadao.setCodigologradouro(1);
 		cidadao.setCodigonacionalidade(1);
 		cidadao.setCodigoraca(03);
-		try {
-			cidadao.setDatanascimento(data = dateFormat.parse(datanascimento));
-		} catch (ParseException e2) {
-			// TODO Auto-generated catch block
-			e2.printStackTrace();
-		}
+		cidadao.setDatanascimento(datanascimento);
 		cidadao.setComplementoendereco("Casa");
 		cidadao.setCpf("09814354406");
 		cidadao.setEmail("leandromorais.dev@outlook.com");

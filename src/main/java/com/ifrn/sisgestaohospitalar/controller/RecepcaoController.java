@@ -2,13 +2,9 @@ package com.ifrn.sisgestaohospitalar.controller;
 
 import java.security.Principal;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Collections;
-import java.util.Date;
 import java.util.List;
-
 import javax.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -17,7 +13,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
-
 import com.ifrn.sisgestaohospitalar.enums.StatusAtendimento;
 import com.ifrn.sisgestaohospitalar.enums.TipoProfissional;
 import com.ifrn.sisgestaohospitalar.model.Cidadao;
@@ -89,34 +84,19 @@ public class RecepcaoController {
 	@PostMapping("/salvar-cidadao")
 	public ModelAndView saveCidadao(@Valid Cidadao cidadao, BindingResult result, Principal principal) throws ParseException {
 		if (result.hasErrors()) {
+			addCidadao(cidadao, principal).addObject("erros", "true");
 			return addCidadao(cidadao, principal);
 		}
 
 		String cns = cidadao.getCns();
-		
-		String datanascimento;
-		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
-		
-		datanascimento = cidadao.getDatanascimento().toString().replace('-', '/');
-		System.out.println(datanascimento);
-		
-		Date data;
-
 		cns = cns.replace(".", "");
-		
 		cidadao.setCns(cns);
-		cidadao.setDatanascimento(data = dateFormat.parse(datanascimento));
-		
-
 		GuiaAtendimento guiaAtendimento = new GuiaAtendimento();
-
 		cidadaoService.save(cidadao);
-
 		guiaAtendimento.setCidadao(cidadao);
-
 		guiatendimentoService.save(guiaAtendimento);
-
-		return addGuiaAtendimento(guiaAtendimento, principal);
+		return addCidadao(cidadao, principal);
+		//return addGuiaAtendimento(guiaAtendimento, principal);
 	}
 
 	/**

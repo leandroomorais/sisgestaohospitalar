@@ -52,8 +52,6 @@
 											<label>Resultado da pesquisa:</label>
 											<p id="resultado-pesquisa" class=""></p>
 										</div>
-
-
 									</div>
 								</div>
 
@@ -72,7 +70,7 @@
 											<div>
 												<button type="submit" id="button-pesquisacpf"
 													class="btn btn-icon btn-round btn-primary">
-													<i id="fa-button" class="fa fa-search"></i>
+													<i id="fa-buttoncpf" class="fa fa-search"></i>
 												</button>
 											</div>
 										</div>
@@ -80,14 +78,10 @@
 									<div class="col-md-5">
 										<div class="form-group">
 											<label>Resultado da pesquisa:</label>
-											<p id="resultado-pesquisa" class=""></p>
+											<p id="resultado-pesquisacpf" class=""></p>
 										</div>
-
-
 									</div>
 								</div>
-
-
 								<div class="form-group">
 									<strong id="cns" class="form-text text-muted">Escolha
 										o parâmetro de pesquisa:
@@ -123,7 +117,8 @@
 							<div class="form-group row">
 								<div class="col-sm-12 mb-3 mb-sm-0">
 									<div class="alert alert-danger alert-dismissible fade show"
-										role="alert" th:if="${#fields.hasAnyErrors()}">
+										data-valor="#fields.hasAnyErrors()" role="alert"
+										id="hasAnyErrors" th:if="${#fields.hasAnyErrors()}">
 
 										<button type="button" class="close" data-dismiss="alert"
 											aria-label="Close">
@@ -327,6 +322,8 @@
 				</div>
 			</div>
 		</div>
+		<button onclick="mostraErro()">Aqui</button>
+
 		<footer class="footer">
 			<div class="container-fluid">
 				<nav class="pull-left">
@@ -344,6 +341,15 @@
 				</div>
 			</div>
 		</footer>
+		<script th:inline="javascript">
+     		var error = [[${erros}]];
+     		function mostraErro(){
+     			alert(error);
+     		};		
+     	</script>
 	</div>
+
+
 </body>
+
 </html>
