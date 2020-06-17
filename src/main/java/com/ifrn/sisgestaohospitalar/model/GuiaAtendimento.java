@@ -1,7 +1,8 @@
 package com.ifrn.sisgestaohospitalar.model;
 
-import java.util.Date;
-
+import java.time.LocalDate;
+import java.time.LocalTime;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -9,7 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
-
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.format.annotation.DateTimeFormat.ISO;
 import com.ifrn.sisgestaohospitalar.enums.StatusAtendimento;
 
 /**
@@ -24,16 +26,20 @@ import com.ifrn.sisgestaohospitalar.enums.StatusAtendimento;
 public class GuiaAtendimento {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private Long id;
 
-	private int numeroregistro;
+	private String numeroregistro;
 
 	private String responsavel;
 
 	private StatusAtendimento statusatendimento;
 
-	private Date data;
+	@DateTimeFormat(iso = ISO.DATE, pattern = "")
+	@Column(name = "data", columnDefinition = "DATE")
+	private LocalDate data;
+
+	private LocalTime hora;
 
 	/**
 	 * Relacionamento entre os objetos GuiaAtendimento e Cidadao
@@ -61,6 +67,13 @@ public class GuiaAtendimento {
 	@JoinTable(name = "guiaatendimento_profissional")
 	private Profissional profissional;
 
+	/**
+	 * Relacionamento entre os objetos GuiaAtendimento e Profissional de Destino
+	 */
+	@ManyToOne
+	@JoinTable(name = "guiaatendimento_profissionaldestino")
+	private Profissional profissionaldestino;
+
 	/** Getters and Setters */
 
 	public Long getId() {
@@ -71,11 +84,11 @@ public class GuiaAtendimento {
 		this.id = id;
 	}
 
-	public int getNumeroregistro() {
+	public String getNumeroregistro() {
 		return numeroregistro;
 	}
 
-	public void setNumeroregistro(int numeroregistro) {
+	public void setNumeroregistro(String numeroregistro) {
 		this.numeroregistro = numeroregistro;
 	}
 
@@ -95,12 +108,20 @@ public class GuiaAtendimento {
 		this.statusatendimento = statusatendimento;
 	}
 
-	public Date getData() {
+	public LocalDate getData() {
 		return data;
 	}
 
-	public void setData(Date data) {
+	public void setData(LocalDate data) {
 		this.data = data;
+	}
+
+	public LocalTime getHora() {
+		return hora;
+	}
+
+	public void setHora(LocalTime hora) {
+		this.hora = hora;
 	}
 
 	public Cidadao getCidadao() {
@@ -133,6 +154,14 @@ public class GuiaAtendimento {
 
 	public void setProfissional(Profissional profissional) {
 		this.profissional = profissional;
+	}
+
+	public Profissional getProfissionaldestino() {
+		return profissionaldestino;
+	}
+
+	public void setProfissionaldestino(Profissional profissionaldestino) {
+		this.profissionaldestino = profissionaldestino;
 	}
 
 }

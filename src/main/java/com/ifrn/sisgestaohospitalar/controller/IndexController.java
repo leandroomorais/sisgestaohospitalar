@@ -20,6 +20,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.ifrn.sisgestaohospitalar.model.TokenRedefinicao;
 import com.ifrn.sisgestaohospitalar.repository.TokenRedefinicaoRepository;
 import com.ifrn.sisgestaohospitalar.model.Profissional;
+import com.ifrn.sisgestaohospitalar.service.EstabelecimentoService;
 import com.ifrn.sisgestaohospitalar.service.ProfissionalService;
 import com.ifrn.sisgestaohospitalar.utils.ConstrutorEmail;
 import com.ifrn.sisgestaohospitalar.utils.GeradorSenha;
@@ -44,6 +45,9 @@ public class IndexController {
 
 	@Autowired
 	private JavaMailSender mailSender;
+
+	@Autowired
+	private EstabelecimentoService estabelecimentoService;
 
 	@Autowired
 	private TokenRedefinicaoRepository tokenRedefinicaoRepository;
@@ -71,6 +75,7 @@ public class IndexController {
 	@RequestMapping("/index")
 	public ModelAndView index() {
 		ModelAndView mv = new ModelAndView("index");
+		mv.addObject("estabelecimento", estabelecimentoService.findAll());
 		return mv;
 	}
 

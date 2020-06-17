@@ -2,8 +2,9 @@ package com.ifrn.sisgestaohospitalar.controller;
 
 import java.security.Principal;
 import java.text.ParseException;
-import java.util.Collections;
-import java.util.List;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.Period;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,9 +20,9 @@ import com.ifrn.sisgestaohospitalar.model.Cidadao;
 import com.ifrn.sisgestaohospitalar.model.GuiaAtendimento;
 import com.ifrn.sisgestaohospitalar.model.Profissional;
 import com.ifrn.sisgestaohospitalar.service.CidadaoService;
+import com.ifrn.sisgestaohospitalar.service.EstabelecimentoService;
 import com.ifrn.sisgestaohospitalar.service.GuiaAtendimentoService;
 import com.ifrn.sisgestaohospitalar.service.ProfissionalService;
-import com.ifrn.sisgestaohospitalar.utils.Raca;
 
 /**
  * A classe Controller <code>RecepcaoController</code> possui os métodos de
@@ -45,6 +46,12 @@ public class RecepcaoController {
 
 	@Autowired
 	ProfissionalService profissionalService;
+	
+	@Autowired
+	EstabelecimentoService estabelecimentoService;
+
+	// Contador para Gerador de Número de Registro
+	int i = 0;
 
 	public Profissional user;
 
@@ -59,16 +66,13 @@ public class RecepcaoController {
 	@RequestMapping("/adicionar-cidadao")
 	public ModelAndView addCidadao(Cidadao cidadao, Principal principal) {
 		ModelAndView mv = new ModelAndView("cidadao/form-cidadao");
-
 		String username = principal.getName();
-
 		user = profissionalService.findByCpf(username);
-		
-		List<String> listaRaca = Raca.listaCodigoRacaNome;
-		Collections.sort(listaRaca);
-		mv.addObject("listaRaca", listaRaca);
+		mv.addObject("estabelecimento", estabelecimentoService.findAll());
 		mv.addObject("paciente", cidadao);
 		mv.addObject("user", user);
+		mv.addObject("hasErrors", false);
+		mv.addObject("navItem1", true);
 		return mv;
 	}
 
@@ -79,24 +83,22 @@ public class RecepcaoController {
 	 * @param result
 	 * @param principal
 	 * @return ModelAndView
-	 * @throws ParseException 
+	 * @throws ParseException
 	 */
 	@PostMapping("/salvar-cidadao")
-	public ModelAndView saveCidadao(@Valid Cidadao cidadao, BindingResult result, Principal principal) throws ParseException {
+	public ModelAndView saveCidadao(@Valid Cidadao cidadao, BindingResult result, Principal principal)
+			throws ParseException {
 		if (result.hasErrors()) {
-			addCidadao(cidadao, principal).addObject("erros", "true");
-			return addCidadao(cidadao, principal);
+			return addCidadao(cidadao, principal).addObject("hasErrors", true);
 		}
-
+		cidadao.setIdade(idade(cidadao.getDatanascimento()));
 		String cns = cidadao.getCns();
 		cns = cns.replace(".", "");
 		cidadao.setCns(cns);
-		GuiaAtendimento guiaAtendimento = new GuiaAtendimento();
 		cidadaoService.save(cidadao);
+		GuiaAtendimento guiaAtendimento = new GuiaAtendimento();
 		guiaAtendimento.setCidadao(cidadao);
-		guiatendimentoService.save(guiaAtendimento);
-		return addCidadao(cidadao, principal);
-		//return addGuiaAtendimento(guiaAtendimento, principal);
+		return addGuiaAtendimento(guiaAtendimento, principal).addObject("navItem1", true);
 	}
 
 	/**
@@ -109,13 +111,14 @@ public class RecepcaoController {
 	 */
 	@RequestMapping("/adicionar-guia-atendimento")
 	public ModelAndView addGuiaAtendimento(GuiaAtendimento guiaAtendimento, Principal principal) {
-		ModelAndView mv = new ModelAndView("guiaAtendimento/form-guiaatendimento");
-		mv.addObject("boletim", guiaAtendimento);
-		mv.addObject("boletins", guiatendimentoService.findByStatusatendimento(StatusAtendimento.AGUARDANDOTRIAGEM));
+		ModelAndView mv = new ModelAndView("guiaAtendimento/form-guiaAtendimento");
+		mv.addObject("estabelecimento", estabelecimentoService.findAll());
+		mv.addObject("guiaAtendimento", guiaAtendimento);
 		mv.addObject("profissionais", profissionalService.findByTipoprofissional(TipoProfissional.ENFERMEIRO));
 		String username = principal.getName();
 		user = profissionalService.findByCpf(username);
 		mv.addObject("user", user);
+		mv.addObject("navItem1", true);
 		return mv;
 	}
 
@@ -133,12 +136,12 @@ public class RecepcaoController {
 		if (result.hasErrors()) {
 			return addGuiaAtendimento(guiaAtendimento, principal);
 		}
-
+		guiaAtendimento.setData(LocalDate.now());
+		guiaAtendimento.setHora(LocalTime.now());
+		guiaAtendimento.setNumeroregistro(geradorNumero());
 		guiaAtendimento.setStatusatendimento(StatusAtendimento.AGUARDANDOTRIAGEM);
-
 		guiatendimentoService.save(guiaAtendimento);
-
-		return listarStatusAtd(principal);
+		return listarStatusAtd(principal).addObject("navItem1", true).addObject("navItem2", false);
 	}
 
 	/**
@@ -149,12 +152,13 @@ public class RecepcaoController {
 	 */
 	@RequestMapping("/listar-status")
 	public ModelAndView listarStatusAtd(Principal principal) {
-		ModelAndView mv = new ModelAndView("boletim/boletim-list");
+		ModelAndView mv = new ModelAndView("guiaAtendimento/list-guiaAtendimento");
 		String username = principal.getName();
 		user = profissionalService.findByCpf(username);
+		mv.addObject("estabelecimento", estabelecimentoService.findAll());
 		mv.addObject("user", user);
-		mv.addObject("boletins", guiatendimentoService.findByStatusatendimento(StatusAtendimento.AGUARDANDOTRIAGEM));
-
+		mv.addObject("guiasAtendimento", guiatendimentoService.teste(StatusAtendimento.FINALIZADO));
+		mv.addObject("navItem2", true);
 		return mv;
 	}
 
@@ -167,9 +171,55 @@ public class RecepcaoController {
 	 * @return ModelAndView
 	 */
 	@GetMapping("/editar/{id}")
-	public ModelAndView editarCidadao(@PathVariable("id") Long id, Principal principal,
-			GuiaAtendimento guiaAtendimento) {
+	public ModelAndView editarGuia(@PathVariable("id") Long id, Principal principal, GuiaAtendimento guiaAtendimento) {
 
 		return addGuiaAtendimento(guiatendimentoService.findOne(id), principal);
+	}
+
+	/**
+	 * Detalha a Guia de Atendimento selecionada a partir do Id
+	 * 
+	 * @param id
+	 * @param principal
+	 * @param guiaAtendimento
+	 * @return ModelAndView
+	 */
+	@GetMapping("/detalhar/{id}")
+	public ModelAndView detalharGuia(@PathVariable("id") Long id, Principal principal,
+			GuiaAtendimento guiaAtendimento) {
+		ModelAndView mv = new ModelAndView("guiaAtendimento/detalhe-guiaAtendimento");
+		mv.addObject("estabelecimento", estabelecimentoService.findAll());
+		mv.addObject("guiaAtendimento", guiatendimentoService.findOne(id));
+		String username = principal.getName();
+		user = profissionalService.findByCpf(username);
+		mv.addObject("user", user);
+		return mv;
+	}
+
+	/**
+	 * Retorna a idade do Cidadão a partir da data de nascimento e data atual
+	 * 
+	 * @param datanascimento
+	 * @return
+	 */
+	public int idade(final LocalDate datanascimento) {
+		final LocalDate dataAtual = LocalDate.now();
+		final Period periodo = Period.between(datanascimento, dataAtual);
+		return periodo.getYears();
+	}
+
+	/**
+	 * Gera o número de Registro da Guia de Atendimento
+	 * 
+	 * @param guiaAtendimento
+	 * @return
+	 */
+	public String geradorNumero() {
+		LocalDate localDate = LocalDate.now();
+		String ano = Integer.toString(localDate.getYear());
+		String mes = Integer.toString(localDate.getMonthValue());
+		i++;
+		String id = Integer.toString(i);
+		return "0" + id + "0" + mes + ano;
 	}
 }

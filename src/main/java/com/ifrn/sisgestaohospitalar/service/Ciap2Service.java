@@ -2,6 +2,8 @@ package com.ifrn.sisgestaohospitalar.service;
 
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import com.ifrn.sisgestaohospitalar.model.Ciap2;
 import com.ifrn.sisgestaohospitalar.repository.Ciap2Repository;
 
@@ -13,6 +15,7 @@ import com.ifrn.sisgestaohospitalar.repository.Ciap2Repository;
  * @version 1.0, 02/11/2019
  *
  */
+@Service
 public class Ciap2Service {
 
 	@Autowired

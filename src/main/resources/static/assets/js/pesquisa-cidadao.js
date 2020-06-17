@@ -4,12 +4,18 @@ $(document).ready(
 			// Oculta o formulário de Pesquisa por CPF ao carregar a página
 			$("#form-pesquisa-cpf").hide();
 			
-			
-			
-			// Oculta o formulário com os Dados do Cidadão ao carregar a página
+			//Oculta o formulário do Cidadão ao Carregar a página
 			$("#form-cidadao").hide();
-
-			// Muda o formulário de Pesquisa ao Clicar
+			
+			//Caso a página retorne erro na validação do Formulário exibe o erro e o formulário
+			var getObjeto = document.getElementById("errors");
+			var objetoThymeleaf = getObjeto.dataset.objeto;
+						
+			if(objetoThymeleaf == "true"){
+				$("#form-cidadao").show();
+			}
+			
+			// Muda o formulário de Pesquisa por CPF ao Clicar
 			$("#pesquisa-cpf").click(
 					function() {
 						$("#form-pesquisa-cns").hide();
@@ -19,6 +25,7 @@ $(document).ready(
 						$("#pesquisa-cns").removeClass().addClass("btn btn-primary btn-border btn-xs");
 					});
 
+			//Muda para o formulário de Pesquisa por CNS ao clicar
 			$("#pesquisa-cns").click(
 					function() {
 						$("#form-pesquisa-cpf").hide();
@@ -28,26 +35,34 @@ $(document).ready(
 						"btn btn-primary btn-xs");
 					});
 			
-			// Pesquisa Cidadão pelo CNS
+			// Função que realiza a Pesquisa do Cidadão pelo CNS
 			$("#button-pesquisacns").click(
 					function() {
+						//Pega o parâmetro CNS digitado pelo usuário
 						var param = $("#cns").val();
+						//Substitui a pontuação da Máscara
 						var cns = param.replace(/\D/g, '');
+						//Url raíz do Web Service
 						var rootUrl = "http://localhost:8080/cidadao-resource";
+						//Url da API do IBGE que retorna o nome do município a partir do Código IBGE
 						var apiIbge = "https://servicodados.ibge.gov.br/api/v1/localidades/municipios/";
+						//Verifica se o campo CNS é vazio
 						if (cns == "") {
 							$("#small-cns").text(
 									"O campo CNS não pode ficar em branco")
 									.addClass("text-danger");
 						} else {
+							//Verifica se o CNS contém 15 dígitos
 							var validaCns = /^[0-9]{15}$/;
 							if (validaCns.test(cns)) {
+								//Adiciona o Loader ao botão de pesquisa
 								$("#fa-button").removeClass().addClass("loadersearch");
+								//Realiza consulta ao Banco de Dados local 
 								$.getJSON(rootUrl + "/localCns?cns=" + cns, function(data){
 								}).done(function(data){
 									$("#id").val(data.id);
-									$("#form-cns").val(data.cns);
-									$("#form-cpf").val(data.cpf);
+									$("#cns-form").val(data.cns);
+									$("#cpf-form").val(data.cpf);
 									$("#nome").val(data.nome);
 									$("#datanascimento").val(converteData(data.datanascimento));
 									$("#sexo").val(data.sexo);
@@ -66,6 +81,7 @@ $(document).ready(
 									$("#resultado-pesquisa").addClass("text-success").text("Cidadão encontrado na Base de Dados Local. Confira os dados no formulário abaixo.");
 									$("#form-cidadao").fadeIn(2000);
 								}).fail(function(data){
+									//Realiza consulta ao Barramento do Cadsus
 									$.getJSON(rootUrl + "/cadsusCns?cns=" + cns, function(data){
 									}).done(function(data){
 										$("#nome").val((data["soap:Envelope"]["S:Body"].PRPA_IN201306UV02.controlActProcess.subject.registrationEvent.subject1.patient.patientPerson.name.given));
@@ -78,7 +94,7 @@ $(document).ready(
 										var codigomunicipio = data["soap:Envelope"]["S:Body"].PRPA_IN201306UV02.controlActProcess.subject.registrationEvent.subject1.patient.patientPerson.addr.city;
 										$.getJSON(apiIbge + codigomunicipio + "8", function(dataIbge){
 										}).done(function(data){
-											$("#nomemunicipio").val(data.nome);
+											$("#nomemunicipio").val((data.nome).toUpperCase());
 										}).fail(function(data){
 											$("#small-nomemunicipio").addClass("text-danger").text("Preencha este campo manualmente");
 										});
@@ -101,8 +117,14 @@ $(document).ready(
 										$("#endereco").val(data["soap:Envelope"]["S:Body"].PRPA_IN201306UV02.controlActProcess.subject.registrationEvent.subject1.patient.patientPerson.addr.streetName);
 										$("#complementoendereco").val(data["soap:Envelope"]["S:Body"].PRPA_IN201306UV02.controlActProcess.subject.registrationEvent.subject1.patient.patientPerson.addr.additionalLocator);
 										$("#numeroendereco").val(data["soap:Envelope"]["S:Body"].PRPA_IN201306UV02.controlActProcess.subject.registrationEvent.subject1.patient.patientPerson.addr.houseNumber);
-										$("#email").val(data["soap:Envelope"]["S:Body"].PRPA_IN201306UV02.controlActProcess.subject.registrationEvent.subject1.patient.patientPerson.telecom[1].value);
-										$("#telefone").val(data["soap:Envelope"]["S:Body"].PRPA_IN201306UV02.controlActProcess.subject.registrationEvent.subject1.patient.patientPerson.telecom[2].value);
+										
+										var telecom = data["soap:Envelope"]["S:Body"].PRPA_IN201306UV02.controlActProcess.subject.registrationEvent.subject1.patient.patientPerson.telecom;
+										
+										if(telecom != null){
+											$("#email").val((data["soap:Envelope"]["S:Body"].PRPA_IN201306UV02.controlActProcess.subject.registrationEvent.subject1.patient.patientPerson.telecom[1].value).toLowerCase());
+											$("#telefone").val(data["soap:Envelope"]["S:Body"].PRPA_IN201306UV02.controlActProcess.subject.registrationEvent.subject1.patient.patientPerson.telecom[2].value);
+										}
+										
 										$("#fa-button").removeClass().addClass("fa fa-check");
 										$("#resultado-pesquisa").addClass("text-success").text("Cidadão encontrado na Base de Dados do CADSUS. Confira os dados no formulário abaixo.");
 										$("#form-cidadao").fadeIn(500);
@@ -218,6 +240,7 @@ $(document).ready(
 					});
 			
 			
+			//Função para converter a data recebida pelo Cadsus aos Parâmetros do Sistema
 			function converteData(parametro) {
 				var ano = parametro.toString().substring(0, 4);
 				var mes = parametro.toString().substring(5, 7);

@@ -3,12 +3,15 @@ package com.ifrn.sisgestaohospitalar.model;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
+
 
 /**
  * A classe <code>ProcedimentoSigtap</code> representa os objetos do tipo
@@ -23,6 +26,9 @@ import org.hibernate.annotations.LazyCollectionOption;
 public class ProcedimentoSigtap {
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Long id;
+
 	private String codigoprocedimento;
 
 	private String nomeprocedimento;
@@ -84,6 +90,14 @@ public class ProcedimentoSigtap {
 
 	/** Getters and setters */
 
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
 	public String getCodigoprocedimento() {
 		return codigoprocedimento;
 	}
@@ -96,8 +110,8 @@ public class ProcedimentoSigtap {
 		return nomeprocedimento;
 	}
 
-	public void setNomeprocedimento(String numerorocedimento) {
-		this.nomeprocedimento = numerorocedimento;
+	public void setNomeprocedimento(String nomeprocedimento) {
+		this.nomeprocedimento = nomeprocedimento;
 	}
 
 	public char getTipocomplexidade() {

@@ -36,7 +36,7 @@ public class ProcedimentoSigtapService {
 	 * 
 	 * @param id
 	 */
-	public void delete(String id) {
+	public void delete(Long id) {
 		repository.deleteById(id);
 	}
 
@@ -55,7 +55,7 @@ public class ProcedimentoSigtapService {
 	 * @param id
 	 * @return ProcedimentoSigtap
 	 */
-	public ProcedimentoSigtap findOne(String id) {
+	public ProcedimentoSigtap findOne(Long id) {
 		return repository.getOne(id);
 	}
 

@@ -1,11 +1,10 @@
 package com.ifrn.sisgestaohospitalar.service;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import com.ifrn.sisgestaohospitalar.enums.StatusAtendimento;
 import com.ifrn.sisgestaohospitalar.model.GuiaAtendimento;
 import com.ifrn.sisgestaohospitalar.repository.GuiaAtendimentoRepository;
@@ -80,6 +79,16 @@ public class GuiaAtendimentoService {
 	 */
 	public List<GuiaAtendimento> findByData(Date data) {
 		return repository.findByData(data);
+	}
+
+	public List<GuiaAtendimento> teste(StatusAtendimento statusAtendimento) {
+		List<GuiaAtendimento> atendimentos = new ArrayList<GuiaAtendimento>();
+		for (GuiaAtendimento guiaAtendimento : repository.findAll()) {
+			if (guiaAtendimento.getStatusatendimento() != statusAtendimento) {
+				atendimentos.add(guiaAtendimento);
+			}
+		}
+		return atendimentos;
 	}
 
 }

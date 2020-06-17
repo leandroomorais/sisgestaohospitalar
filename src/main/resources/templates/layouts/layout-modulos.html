@@ -13,7 +13,7 @@
 
 <!-- Fonts and icons -->
 <script th:src="@{/assets/js/plugin/webfont/webfont.min.js}"></script>
-<script>
+<script th:inline="javascript">
 	WebFont.load({
 		google : {
 			"families" : [ "Lato:300,400,700,900" ]
@@ -22,7 +22,7 @@
 			"families" : [ "Flaticon", "Font Awesome 5 Solid",
 					"Font Awesome 5 Regular", "Font Awesome 5 Brands",
 					"simple-line-icons" ],
-			urls : [ '../assets/css/fonts.min.css' ]
+			urls : [ '/assets/css/fonts.min.css' ]
 		},
 		active : function() {
 			sessionStorage.fonts = true;
@@ -47,14 +47,22 @@
 
 	</div>
 
+
+
+
+
 	<!--   Core JS Files   -->
-	<script th:src="@{/assets/js/core/jquery.3.2.1.min.js}"></script>
+	<script
+		th:src="@{https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js}"></script>
+	<!-- 	<script th:src="@{/assets/js/core/jquery.3.2.1.min.js}"></script> -->
 	<script th:src="@{/assets/js/core/popper.min.js}"></script>
 	<script th:src="@{/assets/js/core/bootstrap.min.js}"></script>
 
 	<!-- jQuery UI -->
 	<script
-		th:src="@{/assets/js/plugin/jquery-ui-1.12.1.custom/jquery-ui.min.js}"></script>
+		src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+	<!-- 		<script -->
+	<!-- 			th:src="@{/assets/js/plugin/jquery-ui-1.12.1.custom/jquery-ui.min.js}"></script> -->
 	<script
 		th:src="@{/assets/js/plugin/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js}"></script>
 
@@ -107,6 +115,11 @@
 	<!-- My JS Files -->
 	<script th:src="@{/assets/js/pesquisa-cidadao.js}"></script>
 	<script th:src="@{/assets/js/mascaras.js}"></script>
+	<script th:src="@{/assets/js/datatables-filaAtendimento.js}"></script>
+	<script th:src="@{/assets/js/autocomplete.js}"></script>
+	<script th:src="@{/assets/js/imc.js}"></script>
+	<script th:src="@{/assets/js/procedimentos.js}"></script>
+
 
 </body>
 </html>

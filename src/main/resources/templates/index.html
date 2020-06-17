@@ -56,7 +56,7 @@
 					<ul class="navbar-nav topbar-nav ml-md-auto align-items-center">
 						<li class="nav-item"><a th:href="@{/logout}"
 							class="nav-link quick-sidebar-toggler"> <i
-								class="fafa-sign-out-alt"> </i></a></li>
+								class="fa fa-sign-out-alt"> </i></a></li>
 					</ul>
 				</div>
 			</nav>
@@ -213,8 +213,14 @@
 				</div>
 				<footer class="footer">
 					<div class="container-fluid">
-						<div class="copyright ml-auto">Sistema de Gestão Hospitalar,
-							2020</div>
+						<nav class="pull-left">
+							<th:block th:each="estabelecimento : ${estabelecimento}">
+								<span class="text-primary" th:text="${estabelecimento.nome}"></span>
+							</th:block>
+						</nav>
+						<div class="copyright ml-auto">
+							Sistema de Gestão Hospitalar, 2020.
+						</div>
 					</div>
 				</footer>
 			</div>

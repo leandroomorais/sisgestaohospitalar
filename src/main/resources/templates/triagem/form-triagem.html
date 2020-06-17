@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html layout:decorate="~{/layouts/layout-modulos}" lang="pt"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity"
+	xmlns:layout="http://ultraq.net.nz/thymeleaf/layout">
+
+<body>
+	<div class="main-panel" layout:fragment="main-panel">
+		<div class="container">
+			<div class="page-inner">
+				<div class="page-header">
+					<h4 class="page-title">Triagem</h4>
+					<ul class="breadcrumbs">
+						<li class="nav-home"><i class="flaticon-home"></i></li>
+						<li class="separator"><i class="flaticon-right-arrow"></i></li>
+						<li class="nav-item"><a
+							th:href="@{/triagem/cidadaos-atendimento}">Fila de
+								Atendimento</a></li>
+						<li class="separator"><i class="flaticon-right-arrow"></i></li>
+						<li class="nav-item"><a>Escuta inicial</a></li>
+					</ul>
+				</div>
+				<div class="row">
+					<div class="col-md-12">
+						<div class="card">
+							<div class="card-body">
+								<div class="row">
+									<div class="avatar avatar-lg">
+										<img th:if="${guiaAtendimento.cidadao.sexo == 'M'}"
+											th:src="@{/assets/img/icons/masculino.png}" alt="..."
+											class="avatar-img rounded-circle"> <img
+											th:if="${guiaAtendimento.cidadao.sexo == 'F'}"
+											th:src="@{/assets/img/icons/feminino.png}" alt="..."
+											class="avatar-img rounded-circle">
+									</div>
+									<div class="demo">
+										<span class="h3-info"
+											th:text="${guiaAtendimento.cidadao.nome}"></span><br>
+										<div class="h4-info">
+											<img class="img-info"
+												th:src="@{/assets/img/icons/icon-bandeira-brasil.png}">
+											<span th:text="${guiaAtendimento.cidadao.cns}"></span> , <span
+												th:text="${guiaAtendimento.cidadao.idade}"></span><span>
+												anos,</span><span th:if="${guiaAtendimento.cidadao.sexo == 'M'}">
+												masculino.</span><span
+												th:if="${guiaAtendimento.cidadao.sexo == 'F'}">
+												feminino.</span>
+
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<form method="post"
+						th:action="@{/recepcao/salvar-guia-atendimento}"
+						th:object="${triagem}">
+
+						<!-- Input responsável por guardar o ID -->
+						<input id="id" name="id" type="hidden" th:field="*{id}"
+							th:value="*{id}" />
+
+						<!-- Input responsável por guardar o Profissional -->
+						<input name="" type="hidden" th:field="*{profissional}"
+							th:value="*{profissional}" />
+
+
+						<!-- div reponsável em mostrar os erros -->
+						<div id="errors" class="form-group row"
+							th:data-objeto="${hasErrors}">
+							<div class="col-sm-12 mb-3 mb-sm-0">
+								<div class="alert alert-danger alert-dismissible fade show"
+									data-valor="#fields.hasAnyErrors()" role="alert"
+									id="hasAnyErrors" th:if="${#fields.hasAnyErrors()}">
+
+									<button type="button" class="close" data-dismiss="alert"
+										aria-label="Close">
+										<span aria-hidden="true">&times;</span>
+									</button>
+
+									<div th:each="detailedError : ${#fields.detailedErrors()}">
+										<strong th:text="${detailedError.message}"> </strong>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="card">
+							<div class="card-header">
+								<div class="card-title">Motivo da Consulta</div>
+							</div>
+							<div class="card-body">
+								<div class="row">
+									<div class="col-md-12 col-lg-12"
+										th:classappend="${#fields.hasErrors('motivo')}? 'has-error'">
+										<div class="form-group">
+											<label for="motivo">Motivo(s) da Consulta</label> <input
+												th:field="*{motivo}" type="text" class="form-control"
+												id="motivo"
+												placeholder="Digite o(s) motivo(s) da consulta do cidadão">
+											<small id="consulta" class="form-text text-muted"></small>
+										</div>
+									</div>
+									<div class="col-md-12 col-lg-12"
+										th:classappend="${#fields.hasErrors('motivo')}? 'has-error'">
+										<div class="form-group">
+											<label for="motivo">Descrição do(s) motivo(s)</label>
+											<textarea th:field="*{motivo}" type="text"
+												class="form-control" id="motivo"
+												placeholder="Digite a descrição do(s) motivo(s) da consulta do cidadão"></textarea>
+											<small id="consulta" class="form-text text-muted"></small>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="card">
+							<div class="card-header">
+								<div class="card-title">Antopometria</div>
+							</div>
+							<div class="card-body">
+								<div class="row">
+									<div class="col-md-3"
+										th:classappend="${#fields.hasErrors('perimetrocefalico')}? 'has-error'">
+										<div class="form-group">
+											<label for="perimetrocefalico">Perimetro Cefálico</label><input
+												th:field="*{perimetrocefalico}" type="text"
+												class="form-control" id="perimetrocefalico"> <small
+												id="perimetrocefalico" class="form-text text-muted">cm</small>
+
+										</div>
+									</div>
+
+
+									<div class="col-md-3"
+										th:classappend="${#fields.hasErrors('peso')}? 'has-error'">
+										<div class="form-group">
+											<label for="peso">Peso</label> <input th:field="*{peso}"
+												type="text" class="form-control" id="peso" placeholder="">
+											<small id="peso" class="form-text text-muted">Kg</small>
+
+										</div>
+									</div>
+
+									<div class="col-md-3"
+										th:classappend="${#fields.hasErrors('altura')}? 'has-error'">
+										<div class="form-group">
+											<label for="altura">Altura</label> <input
+												th:field="*{altura}" type="text" class="form-control"
+												id="altura" placeholder=""> <small id="altura"
+												class="form-text text-muted">cm</small>
+
+										</div>
+									</div>
+
+									<div class="col-md-2">
+										<div class="card card-info">
+											<div class="card-body text-center">
+												<div class="card-opening">IMC</div>
+												<div class="card-desc" id="resultado">
+													<h4 class="card-title" id="imc">--.-</h4>
+													<input type="hidden" th:field="*{imc}" id="valor-imc">
+													<div class="card-opening" id="imc-desc"></div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="card">
+							<div class="card-header">
+								<div class="card-title">Sinais vitais</div>
+							</div>
+							<div class="card-body">
+								<div class="row">
+
+									<div class="col-md-2"
+										th:classappend="${#fields.hasErrors('pressaoarterial')}? 'has-error'">
+										<div class="form-group">
+											<label for="pressaoarterial">Pressão Arterial</label><input
+												th:field="*{pressaoarterial}" type="text"
+												class="form-control" id="pressaoarterial"
+												data-mask-reverse="true" placeholder=""> <small
+												id="pressaoarterial" class="form-text text-muted">mmHg</small>
+
+										</div>
+									</div>
+
+
+									<div class="col-md-2"
+										th:classappend="${#fields.hasErrors('frequenciarespiratoria')}? 'has-error'">
+										<div class="form-group">
+											<label for="frequenciarespiratoria">Frequencia
+												Respiratória</label> <input th:field="*{frequenciarespiratoria}"
+												type="text" class="form-control" id="frequenciarespiratoria"
+												placeholder=""> <small id="frequenciarespiratoria"
+												class="form-text text-muted">rpm</small>
+
+										</div>
+									</div>
+
+									<div class="col-md-2"
+										th:classappend="${#fields.hasErrors('frequenciacardiaca')}? 'has-error'">
+										<div class="form-group">
+											<label for="frequenciacardiaca">Frequencia Cardíaca</label> <input
+												th:field="*{frequenciacardiaca}" type="text"
+												class="form-control" id="frequenciacardiaca" placeholder="">
+											<small id="frequenciacardiaca" class="form-text text-muted">bpm</small>
+
+										</div>
+									</div>
+
+									<div class="col-md-2"
+										th:classappend="${#fields.hasErrors('temperaturacorporal')}? 'has-error'">
+										<div class="form-group">
+											<label for="temperaturacorporal">Temperatura</label> <input
+												th:field="*{temperaturacorporal}" type="text"
+												class="form-control" id="temperaturacorporal" placeholder="">
+											<small id="temperaturacorporal" class="form-text text-muted">°C</small>
+
+										</div>
+									</div>
+
+									<div class="col-md-2"
+										th:classappend="${#fields.hasErrors('saturacaooxigenio')}? 'has-error'">
+										<div class="form-group">
+											<label for="saturacaooxigenio">Saturação de O2</label> <input
+												th:field="*{saturacaooxigenio}" type="text"
+												class="form-control" id="saturacaooxigenio" placeholder="">
+											<small id="saturacaooxigenio" class="form-text text-muted">%</small>
+
+										</div>
+									</div>
+
+
+								</div>
+							</div>
+						</div>
+
+						<div class="card">
+							<div class="card-header">
+								<div class="card-title">Glicemia</div>
+							</div>
+							<div class="card-body">
+								<div class="row">
+
+									<div class="col-md-3"
+										th:classappend="${#fields.hasErrors('glicemiacapilar')}? 'has-error'">
+										<div class="form-group">
+											<label for="glicemiacapilar">Glicemia Capilar</label><input
+												th:field="*{glicemiacapilar}" type="text"
+												class="form-control" id="glicemiacapilar"
+												data-mask-reverse="true" placeholder=""> <small
+												id="glicemiacapilar" class="form-text text-muted">mg/dl</small>
+
+										</div>
+									</div>
+									<div class="col-md-4">
+										<div class="form-group">
+											<label for="momentocoleta">Momento da Coleta:</label><select
+												th:field="*{momentocoleta}"
+												class="form-control form-control">
+												<option value="-1">Coleta não realizada</option>
+												<option th:value="@{jejum}">Em jejum</option>
+												<option th:value="@{pre-prandial}">Antes da
+													refeição (pré-prandial)</option>
+												<option th:value="@{pos-prandial}">1 a 2 horas após
+													a refeição (pós-prandial)</option>
+												<option th:value="@{Antes de dormir}">Antes de
+													dormir</option>
+												<option th:value="@{madrugada}">Na madrugada</option>
+											</select> <small id="momentocoleta" class="form-text text-muted"></small>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="card">
+							<div class="card-header">
+								<div class="card-title">Medicações e Alergias</div>
+							</div>
+							<div class="card-body">
+								<div class="row">
+
+									<div class="col-md-6"
+										th:classappend="${#fields.hasErrors('usomedicamentos')}? 'has-error'">
+										<div class="form-group">
+											<label for="usomedicamentos">Medicamentos em uso</label>
+											<textarea th:field="*{usomedicamentos}" type="text"
+												class="form-control" id="usomedicamentos"
+												data-mask-reverse="true" placeholder=""></textarea>
+											<small id="usomedicamentos" class="form-text text-muted"></small>
+										</div>
+									</div>
+									<div class="col-md-6"
+										th:classappend="${#fields.hasErrors('alergiamedicamentos')}? 'has-error'">
+										<div class="form-group">
+											<label for="alergiamedicamentos">Alergia a
+												Medicamentos</label>
+											<textarea th:field="*{alergiamedicamentos}" type="text"
+												class="form-control" id="alergiamedicamentos"
+												data-mask-reverse="true" placeholder=""></textarea>
+											<small id="alergiamedicamentos" class="form-text text-muted"></small>
+
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="card">
+							<div class="card-header">
+								<div class="card-title">Hábitos</div>
+							</div>
+							<div class="card-body">
+								<div class="row">
+
+									<div class="col-md-5">
+										<div class="form-group">
+											<div class="form-check">
+												<label class="form-check-label"> <input
+													class="form-check-input" name="tabagismo" type="checkbox"
+													th:value="true"> <span class="form-check-sign">Tabagismo</span>
+												</label> <label class="form-check-label"> <input
+													name="etilismo" class="form-check-input" type="checkbox"
+													th:value="true"> <span class="form-check-sign">Etilismo</span>
+												</label> <label class="form-check-label"> <input
+													name="drogaslicitas" class="form-check-input"
+													type="checkbox" value="true"> <span
+													class="form-check-sign">Drogas Líticas</span>
+												</label>
+											</div>
+
+										</div>
+									</div>
+
+									<div class="col-md-6"
+										th:classappend="${#fields.hasErrors('outroshabitos')}? 'has-error'">
+										<div class="form-group">
+											<input th:field="*{outroshabitos}" type="text"
+												class="form-control" id="outroshabitos"
+												data-mask-reverse="true" placeholder="Outros"></input> <small
+												id="outroshabitos" class="form-text text-muted"></small>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="card">
+							<div class="card-header">
+								<div class="card-title">Doenças crônicas e comorbidades</div>
+							</div>
+							<div class="card-body">
+								<div class="row">
+									<div class="col-md-12">
+										<div class="form-group">
+											<div class="form-check">
+												<label class="form-check-label"> <input
+													name="hipertensaoarterialsistemica"
+													class="form-check-input" type="checkbox" value="true">
+													<span class="form-check-sign">Hispertensão Arterial
+														Sistêmica (HAS)</span>
+												</label> <label class="form-check-label"> <input
+													name="doençameningococica" class="form-check-input"
+													type="checkbox" value="true"> <span
+													class="form-check-sign">Doença Meningocócica (DM)</span>
+												</label> <label class="form-check-label"> <input name="avc"
+													class="form-check-input" type="checkbox" value="true">
+													<span class="form-check-sign">AVC</span>
+												</label> <label class="form-check-label"> <input
+													name="linfangioliomiomatose" class="form-check-input"
+													type="checkbox" value="true"> <span
+													class="form-check-sign">Linfangioleiomiomatose (LAM)</span>
+												</label> <label class="form-check-label"> <input
+													name="insuficienciarenal" class="form-check-input"
+													type="checkbox" value="true"> <span
+													class="form-check-sign">INS. RENAL</span>
+												</label> <label class="form-check-label"> <input name="dpoc"
+													class="form-check-input" type="checkbox" value="true">
+													<span class="form-check-sign">Doença Pulmonar
+														Obstrutiva Crônica (DPOC)</span>
+												</label> <label class="form-check-label"> <input name="asma"
+													class="form-check-input" type="checkbox" value="true">
+													<span class="form-check-sign">ASMA</span>
+												</label> <label class="form-check-label"> <input name="dlp"
+													class="form-check-input" type="checkbox" value="true">
+													<span class="form-check-sign">Doenças ou Lesões
+														Preexistentes (DLP)</span>
+												</label> <label class="form-check-label"> <input
+													name="insuficienciacardiacacongestiva"
+													class="form-check-input" type="checkbox" value="true">
+													<span class="form-check-sign">Insuficiência Cardíaca
+														Congestiva (ICC)</span>
+												</label> <label class="form-check-label"> <input
+													name="epilepsia" class="form-check-input" type="checkbox"
+													value="true"> <span class="form-check-sign">Epilepsia</span>
+												</label> <label class="form-check-label"> <input
+													name="caneoplasia" class="form-check-input" type="checkbox"
+													value="true"> <span class="form-check-sign">Caneoplasia</span>
+												</label>
+											</div>
+										</div>
+									</div>
+
+									<div class="col-md-6"
+										th:classappend="${#fields.hasErrors('outrasdoenças')}? 'has-error'">
+										<div class="form-group">
+											<input th:field="*{outrasdoenças}" type="text"
+												class="form-control" id="outrasdoenças" placeholder="Outros"></input>
+											<small id="outrasdoenças" class="form-text text-muted"></small>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="card">
+							<div class="card-header">
+								<div class="card-title">Classificação de Risco</div>
+							</div>
+							<div class="card-body">
+								<div class="row">
+									<div class="col-md-12 row"
+										th:classappend="${#fields.hasErrors('classificacaoderisco')}? 'has-error'">
+										<div class="form-group col-md-2">
+											<input th:field="*{classificacaoderisco}" type="radio"
+												class="radio-class" id="control_01" name="vermelho"
+												value="vermelho" checked> <label class="label-input"
+												for="control_01">
+												<h2 style="color: white;">Vermelho</h2>
+												<p></p>
+											</label>
+
+										</div>
+										<div class="form-group col-md-2">
+											<input th:field="*{classificacaoderisco}" type="radio"
+												class="radio-class" id="control_02" name="laranja"
+												value="laranja" checked> <label
+												class="label-input-orange" for="control_02">
+												<h2 style="color: white;">Laranja</h2>
+												<p></p>
+											</label>
+
+										</div>
+										<div class="form-group col-md-2">
+											<input th:field="*{classificacaoderisco}" type="radio"
+												class="radio-class" id="control_03" name="amarelo"
+												value="amarelo" checked> <label
+												class="label-input-yellow" for="control_03">
+												<h2 style="color: white;">Amarelo</h2>
+												<p></p>
+											</label>
+
+										</div>
+										<div class="form-group col-md-2">
+											<input th:field="*{classificacaoderisco}" type="radio"
+												class="radio-class" id="control_04" name="verde"
+												value="verde" checked> <label
+												class="label-input-green" for="control_04">
+												<h2 style="color: white;">Verde</h2>
+												<p></p>
+											</label>
+
+										</div>
+										<div class="form-group col-md-2">
+											<input th:field="*{classificacaoderisco}" type="radio"
+												class="radio-class" id="control_05" name="azul" value="azul"
+												checked> <label class="label-input-blue"
+												for="control_05">
+												<h2 style="color: white;">Azul</h2>
+												<p></p>
+											</label>
+
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="card">
+							<div class="card-header">
+								<div class="card-title">Procedimentos</div>
+							</div>
+							<div class="card-body">
+								<div class="row">
+									<div class="col-md-12">
+										<div class="form-group">
+											<label for="nome">Adicionar Procedimentos:</label> <input
+												id="procedimentos" type="text" class="form-control input-sm">
+										</div>
+									</div>
+									<div class="col-md-12">
+										<div class="form-group">
+											<div class="card">
+												<div class="card-header">
+													<div class="card-title">Procedimentos realizados</div>
+												</div>
+												<div class="card-body">
+													<table class="table table-head-bg-primary mt-4">
+														<thead>
+															<tr>
+																<th scope="col">Código</th>
+																<th scope="col">Procedimento</th>
+															</tr>
+														</thead>
+														<tbody id="table-procedimento">
+														</tbody>
+													</table>
+												</div>
+											</div>
+										</div>
+									</div>
+									<input type="hidden" name="ids_procedimentos"
+										id="ids_procedimentos">
+								</div>
+							</div>
+						</div>
+
+						<div class="card">
+							<div class="card-header">
+								<div class="card-title">Destino do Cidadão</div>
+							</div>
+							<div class="card-body">
+								<div class="row"></div>
+							</div>
+						</div>
+
+
+
+
+						<div class="card-action">
+							<button type="submit" class="btn btn-success">Adicionar</button>
+							<button type="reset" class="btn btn-danger">Cancelar</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+
+		<footer class="footer">
+			<div class="container-fluid">
+				<nav class="pull-left">
+					<th:block th:each="estabelecimento : ${estabelecimento}">
+						<span class="text-primary" th:text="${estabelecimento.nome}"></span>
+					</th:block>
+				</nav>
+				<div class="copyright ml-auto">Sistema de Gestão Hospitalar,
+					2020.</div>
+			</div>
+		</footer>
+	</div>
+
+
+</body>
+
+</html>

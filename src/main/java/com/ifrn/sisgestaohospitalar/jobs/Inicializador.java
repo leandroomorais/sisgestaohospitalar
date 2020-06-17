@@ -2,6 +2,7 @@ package com.ifrn.sisgestaohospitalar.jobs;
 
 import java.io.IOException;
 import java.text.ParseException;
+import java.time.LocalDate;
 import java.util.Date;
 import javax.xml.bind.JAXBException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -68,7 +69,7 @@ public class Inicializador implements ApplicationListener<ContextRefreshedEvent>
 		cidadao.setCodigologradouro(1);
 		cidadao.setCodigonacionalidade(1);
 		cidadao.setCodigoraca(03);
-		cidadao.setDatanascimento(datanascimento);
+		cidadao.setDatanascimento(LocalDate.parse("1994-06-20"));
 		cidadao.setComplementoendereco("Casa");
 		cidadao.setCpf("09814354406");
 		cidadao.setEmail("leandromorais.dev@outlook.com");

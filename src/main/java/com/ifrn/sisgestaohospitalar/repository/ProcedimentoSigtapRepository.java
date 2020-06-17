@@ -14,7 +14,7 @@ import com.ifrn.sisgestaohospitalar.model.ProcedimentoSigtap;
  *
  */
 @Repository
-public interface ProcedimentoSigtapRepository extends JpaRepository<ProcedimentoSigtap, String> {
+public interface ProcedimentoSigtapRepository extends JpaRepository<ProcedimentoSigtap, Long> {
 
 	/**
 	 * @param codigoprocedimento

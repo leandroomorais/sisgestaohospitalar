@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html layout:decorate="~{/layouts/layout-recepcao}" lang="pt"
+<html layout:decorate="~{/layouts/layout-modulos}" lang="pt"
 	xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:th="http://www.thymeleaf.org"
 	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity"
@@ -26,6 +26,7 @@
 								<div class="card-title">Dados para pesquisa</div>
 							</div>
 							<div class="card-body">
+								<!-- Formulário para pesquisa por CNS -->
 								<div class="row" id="form-pesquisa-cns">
 									<div class="col-md-5">
 										<div class="form-group">
@@ -54,7 +55,9 @@
 										</div>
 									</div>
 								</div>
+								<!--Fim do Formulário para pesquisa por CNS -->
 
+								<!-- Formulário para pesquisa por CPF -->
 								<div class="row" id="form-pesquisa-cpf">
 									<div class="col-md-5">
 										<div class="form-group">
@@ -82,6 +85,9 @@
 										</div>
 									</div>
 								</div>
+								<!-- Fim do Formulário para pesquisa por CPF -->
+
+								<!-- Botões para escolha do Parâmetro de Pesquisa -->
 								<div class="form-group">
 									<strong id="cns" class="form-text text-muted">Escolha
 										o parâmetro de pesquisa:
@@ -96,11 +102,11 @@
 										</button>
 									</strong>
 								</div>
+								<!-- Fim dos Botões para escolha do Parâmetro de Pesquisa -->
 							</div>
 						</div>
 
-
-
+						<!-- Formulário para preenchimento dos dados do Cidadão -->
 						<form method="post" th:action="@{/recepcao/salvar-cidadao}"
 							th:object="${cidadao}" id="form-cidadao">
 							<!-- Input responsável por guardar o ID -->
@@ -114,7 +120,8 @@
 							<input id="cpf-form" name="cpf" type="hidden" th:field="*{cpf}" />
 
 							<!-- div reponsável em mostrar os erros -->
-							<div class="form-group row">
+							<div id="errors" class="form-group row"
+								th:data-objeto="${hasErrors}">
 								<div class="col-sm-12 mb-3 mb-sm-0">
 									<div class="alert alert-danger alert-dismissible fade show"
 										data-valor="#fields.hasAnyErrors()" role="alert"
@@ -313,40 +320,29 @@
 									</div>
 								</div>
 							</div>
+							<!-- Botões de ação do Formulário-->
 							<div class="card-action">
 								<button type="submit" class="btn btn-success">Adicionar</button>
 								<button type="reset" class="btn btn-danger">Cancelar</button>
 							</div>
+							<!-- Fim dos Botões de ação do Formulário-->
 						</form>
+						<!-- Fim do Formulário para preenchimento dos dados do Cidadão -->
 					</div>
 				</div>
 			</div>
 		</div>
-		<button onclick="mostraErro()">Aqui</button>
-
 		<footer class="footer">
 			<div class="container-fluid">
 				<nav class="pull-left">
-					<ul class="nav">
-						<li class="nav-item"><a class="nav-link"
-							href="http://www.themekita.com"> ThemeKita </a></li>
-						<li class="nav-item"><a class="nav-link" href="#"> Help </a></li>
-						<li class="nav-item"><a class="nav-link" href="#">
-								Licenses </a></li>
-					</ul>
+					<th:block th:each="estabelecimento : ${estabelecimento}">
+						<span class="text-primary" th:text="${estabelecimento.nome}"></span>
+					</th:block>
 				</nav>
-				<div class="copyright ml-auto">
-					2018, made with <i class="fa fa-heart heart text-danger"></i> by <a
-						href="http://www.themekita.com">ThemeKita</a>
-				</div>
+				<div class="copyright ml-auto">Sistema de Gestão Hospitalar,
+					2020.</div>
 			</div>
 		</footer>
-		<script th:inline="javascript">
-     		var error = [[${erros}]];
-     		function mostraErro(){
-     			alert(error);
-     		};		
-     	</script>
 	</div>
 
 

@@ -30,10 +30,10 @@ public class Triagem {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 
-	private String motivo;
-
 	@Column(nullable = false, length = 100)
 	@NotBlank(message = "É necessário preencher o campo Motivo da Consulta")
+	private String motivo;
+
 	private String descricaomotivo;
 
 	private String pressaoarterial;
@@ -74,7 +74,7 @@ public class Triagem {
 
 	private boolean hipertensaoarterialsistemica;
 
-	private boolean doençameningocócica;
+	private boolean doençameningococica;
 
 	private boolean avc;
 
@@ -119,8 +119,15 @@ public class Triagem {
 	 * Relacionamento entre os objetos Triagem e Profissional
 	 */
 	@OneToOne
-	@JoinColumn(name = "profissionalexecutante_id")
-	private Profissional profissionalexecutante;
+	@JoinColumn(name = "profissional_id")
+	private Profissional profissional;
+	
+	/**
+	 * Relacionamento entre os objetos Triagem e Profissional
+	 */
+	@OneToOne
+	@JoinColumn(name = "profissionaldestino_id")
+	private Profissional profissionaldestino;
 
 	/** Getters and Setters */
 
@@ -300,12 +307,12 @@ public class Triagem {
 		this.hipertensaoarterialsistemica = hipertensaoarterialsistemica;
 	}
 
-	public boolean isDoençameningocócica() {
-		return doençameningocócica;
+	public boolean isDoençameningococica() {
+		return doençameningococica;
 	}
 
-	public void setDoençameningocócica(boolean doençameningocócica) {
-		this.doençameningocócica = doençameningocócica;
+	public void setDoençameningocócica(boolean doençameningococica) {
+		this.doençameningococica = doençameningococica;
 	}
 
 	public boolean isAvc() {
@@ -420,12 +427,24 @@ public class Triagem {
 		this.procedimentos = procedimentos;
 	}
 
-	public Profissional getProfissionalexecutante() {
-		return profissionalexecutante;
+	public Profissional getProfissional() {
+		return profissional;
 	}
 
-	public void setProfissionalexecutante(Profissional profissionalexecutante) {
-		this.profissionalexecutante = profissionalexecutante;
+	public void setProfissional(Profissional profissional) {
+		this.profissional = profissional;
+	}
+
+	public void setDoençameningococica(boolean doençameningococica) {
+		this.doençameningococica = doençameningococica;
+	}
+
+	public Profissional getProfissionaldestino() {
+		return profissionaldestino;
+	}
+
+	public void setProfissionaldestino(Profissional profissionaldestino) {
+		this.profissionaldestino = profissionaldestino;
 	}
 
 }

@@ -37,6 +37,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 				.antMatchers("/adicionar-guia-atendimento").permitAll().antMatchers("/salvar-guia-atendimento").permitAll()
 				.antMatchers("/listar-status").permitAll().antMatchers("/editar/**").permitAll()
 				.antMatchers("/cidadao-resource/**").permitAll().antMatchers("/pesquisaCns/**").permitAll()
+				.antMatchers("/ciap2-resource/***").permitAll()
 				.antMatchers("/api/procedimento/**").permitAll().antMatchers("/ciap2/**").permitAll()
 				.antMatchers("/api/**").hasAnyAuthority("ADM", "ATD", "TEC", "MED", "SUPER").antMatchers("/email/**")
 				.permitAll().antMatchers("http://**").permitAll().antMatchers("https://**").permitAll()

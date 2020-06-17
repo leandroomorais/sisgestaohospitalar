@@ -1,3 +1,4 @@
+/* Estilização de elementos da Sidebar */
 span.low {
 	font-size: 09px;
 	align-content: center;
@@ -12,7 +13,10 @@ span.type-user {
 	text-align: center;
 	font-weight: bold;
 }
+/* Fim da Estilização de elementos da Sidebar */
 
+
+/* Estilização do Loader */
 .loadersearch, loading:after {
 	display: block;
 	width: 1.5rem;
@@ -24,3 +28,370 @@ span.type-user {
 	border-radius: 50%;
 	animation: 1s spin linear infinite;
 }
+/* Fim da estilização do Loader */
+
+.sexo-info {
+	position: relative;
+	display: inline-block;
+	font-size: 30px;
+	margin: 15px;
+}
+
+.cidadao-info {
+	margin: 0;
+	color: #1572e8;
+	font-size: 20px;
+	font-weight: 400;
+	line-height: 1.6;
+}
+
+.cidadao-info a, .card-title a:hover, .card-title a:focus {
+	color: #1572e8;
+	text-decoration: none;
+}
+
+/* Estilização do autocomplete */
+.ui-autocomplete {
+	max-height: 150px;
+	width: 70%;
+	/* prevent horizontal scrollbar */
+	overflow-x: hidden;
+	overflow-y: auto;
+	/* prevent horizontal scrollbar overflow-x : hidden; */
+	background: #F5F5F5;
+}
+/* Estilização do autocomplete */
+
+/* Estilização dos botões de classificação de risco */
+.h1-radio {
+	color: hsla(215, 5%, 10%, 1);
+	margin-bottom: 2rem;
+}
+
+input[class="radio-class"] {
+	display: none; &:
+	not (: disabled)~ label{
+    cursor: pointer;
+}
+
+&
+:disabled ~ label {
+	color: hsla(150, 5%, 75%, 1);
+	border-color: hsla(150, 5%, 75%, 1);
+	box-shadow: none;
+	cursor: not-allowed;
+}
+
+}
+.label-input {
+	height: 100%;
+	display: block;
+	background: #F54545;
+	border-radius: 10px;
+	padding: 1rem;
+	margin-bottom: 1rem; //
+	margin: 1rem;
+	text-align: center;
+	box-shadow: 0px 3px 10px -2px hsla(150, 5%, 65%, 0.5);
+	position: relative;
+}
+
+input[type="radio"]:checked+label {
+	background: red;
+	color: hsla(215, 0%, 100%, 1);
+	box-shadow: 0px 0px 20px #EE4848; &:: after { color : hsla( 215, 5%,
+	25%, 1);
+	font-family: FontAwesome;
+	border: 2px solid hsla(150, 75%, 45%, 1);
+	content: "\f00c";
+	font-size: 24px;
+	position: absolute;
+	top: -25px;
+	left: 50%;
+	transform: translateX(-50%);
+	height: 50px;
+	width: 50px;
+	line-height: 50px;
+	text-align: center;
+	border-radius: 50%;
+	background: white;
+	box-shadow: 0px 2px 5px -2px hsla(0, 0%, 0%, 0.25);
+}
+
+}
+.label-input-orange {
+	height: 100%;
+	display: block;
+	background: #DC9100;
+	border-radius: 10px;
+	padding: 1rem;
+	margin-bottom: 1rem; //
+	margin: 1rem;
+	text-align: center;
+	box-shadow: 0px 3px 10px -2px hsla(150, 5%, 65%, 0.5);
+	position: relative;
+}
+
+input[type="radio"]#control_02:checked+label {
+	background: orange;
+	color: hsla(215, 0%, 100%, 1);
+	box-shadow: 0px 0px 20px #FA8F3D; &:: after { color : hsla( 215, 5%,
+	25%, 1);
+	font-family: FontAwesome;
+	border: 2px solid hsla(150, 75%, 45%, 1);
+	content: "\f00c";
+	font-size: 24px;
+	position: absolute;
+	top: -25px;
+	left: 50%;
+	transform: translateX(-50%);
+	height: 50px;
+	width: 50px;
+	line-height: 50px;
+	text-align: center;
+	border-radius: 50%;
+	background: white;
+	box-shadow: 0px 2px 5px -2px hsla(0, 0%, 0%, 0.25);
+}
+
+}
+.label-input-yellow {
+	height: 100%;
+	display: block;
+	background: #D6D800;
+	border-radius: 10px;
+	padding: 1rem;
+	margin-bottom: 1rem; //
+	margin: 1rem;
+	text-align: center;
+	box-shadow: 0px 3px 10px -2px hsla(150, 5%, 65%, 0.5);
+	position: relative;
+}
+
+input[type="radio"]#control_03:checked+label {
+	background: yellow;
+	color: hsla(215, 0%, 100%, 1);
+	box-shadow: 0px 0px 20px #D6D800; &:: after { color : hsla( 215, 5%,
+	25%, 1);
+	font-family: FontAwesome;
+	border: 2px solid hsla(150, 75%, 45%, 1);
+	content: "\f00c";
+	font-size: 24px;
+	position: absolute;
+	top: -25px;
+	left: 50%;
+	transform: translateX(-50%);
+	height: 50px;
+	width: 50px;
+	line-height: 50px;
+	text-align: center;
+	border-radius: 50%;
+	background: white;
+	box-shadow: 0px 2px 5px -2px hsla(0, 0%, 0%, 0.25);
+}
+
+}
+.label-input-green {
+	height: 100%;
+	display: block;
+	background: #00C000;
+	border-radius: 10px;
+	padding: 1rem;
+	margin-bottom: 1rem; //
+	margin: 1rem;
+	text-align: center;
+	box-shadow: 0px 3px 10px -2px hsla(150, 5%, 65%, 0.5);
+	position: relative;
+}
+
+input[type="radio"]#control_04:checked+label {
+	background: green;
+	color: hsla(215, 0%, 100%, 1);
+	box-shadow: 0px 0px 20px #00C000; &:: after { color : hsla( 215, 5%,
+	25%, 1);
+	font-family: FontAwesome;
+	border: 2px solid hsla(150, 75%, 45%, 1);
+	content: "\f00c";
+	font-size: 24px;
+	position: absolute;
+	top: -25px;
+	left: 50%;
+	transform: translateX(-50%);
+	height: 50px;
+	width: 50px;
+	line-height: 50px;
+	text-align: center;
+	border-radius: 50%;
+	background: white;
+	box-shadow: 0px 2px 5px -2px hsla(0, 0%, 0%, 0.25);
+}
+
+}
+.label-input-blue {
+	height: 100%;
+	display: block;
+	background: #0863CF;
+	border-radius: 10px;
+	padding: 1rem;
+	margin-bottom: 1rem; //
+	margin: 1rem;
+	text-align: center;
+	box-shadow: 0px 3px 10px -2px hsla(150, 5%, 65%, 0.5);
+	position: relative;
+}
+
+input[type="radio"]#control_05:checked+label {
+	background: blue;
+	color: hsla(215, 0%, 100%, 1);
+	box-shadow: 0px 0px 20px #0863CF; &:: after { color : hsla( 215, 5%,
+	25%, 1);
+	font-family: FontAwesome;
+	border: 2px solid hsla(150, 75%, 45%, 1);
+	content: "\f00c";
+	font-size: 24px;
+	position: absolute;
+	top: -25px;
+	left: 50%;
+	transform: translateX(-50%);
+	height: 50px;
+	width: 50px;
+	line-height: 50px;
+	text-align: center;
+	border-radius: 50%;
+	background: white;
+	box-shadow: 0px 2px 5px -2px hsla(0, 0%, 0%, 0.25);
+}
+
+}
+@media only screen and (max-width: 700px) {
+	section {
+		flex-direction: column;
+	}
+}
+
+.background-image {
+	width: 100%;
+	height: 100%;
+}
+
+tr.red {
+	border-bottom-style: solid;
+	border-bottom-color: red;
+}
+
+tr.orange {
+	border-bottom-style: solid;
+	border-bottom-color: orange;
+}
+
+tr.yellow {
+	border-bottom-style: solid;
+	border-bottom-color: yellow;
+}
+
+tr.green {
+	border-bottom-style: solid;
+	border-bottom-color: green;
+}
+
+tr.blue {
+	border-bottom-style: solid;
+	border-bottom-color: blue;
+}
+
+td.red {
+	color: red;
+	text-align: center;
+}
+
+td.orange {
+	color: orange;
+	text-align: center;
+}
+
+td.yellow {
+	color: yellow;
+	text-align: center;
+}
+
+td.green {
+	color: green;
+	text-align: center;
+}
+
+td.blue {
+	color: blue;
+	text-align: center;
+}
+
+a.red {
+	border-bottom-style: solid;
+	border-bottom-color: red;
+}
+
+a.orange {
+	border-bottom-style: solid;
+	border-bottom-color: orange;
+}
+
+a.yellow {
+	border-bottom-style: solid;
+	border-bottom-color: yellow;
+}
+
+a.green {
+	border-bottom-style: solid;
+	border-bottom-color: green;
+}
+
+a.blue {
+	border-bottom-style: solid;
+	border-bottom-color: blue;
+}
+
+a.red {
+	color: red;
+	text-align: center;
+}
+
+a.orange {
+	color: orange;
+	text-align: center;
+}
+
+a.yellow {
+	color: yellow;
+	text-align: center;
+}
+
+a.green {
+	color: green;
+	text-align: center;
+}
+
+a.blue {
+	color: blue;
+	text-align: center;
+}
+/* Fim da Estilização dos botões de classificação de risco */
+
+/* Estilização da barra de informações do Cidadão */
+.h3-info{
+	padding: 5px;
+	margin-left: 3px;
+	font-size: 16px;
+	font-weight: bold;
+	position: absolute;
+}
+
+.h4-info{
+	padding: 5px;
+	margin-left: 3px;
+	font-size: 15px;
+	position: absolute;
+}
+
+.img-info{
+	width: 25px;
+}
+/* Fim Estilização da barra de informações do Cidadão */

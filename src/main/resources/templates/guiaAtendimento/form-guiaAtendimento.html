@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html layout:decorate="~{/layouts/layout-modulos}" lang="pt"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity"
+	xmlns:layout="http://ultraq.net.nz/thymeleaf/layout">
+
+<body>
+	<div class="main-panel" layout:fragment="main-panel">
+		<div class="container">
+			<div class="page-inner">
+				<div class="page-header">
+					<h4 class="page-title">Recepção</h4>
+					<ul class="breadcrumbs">
+						<li class="nav-home"><i class="flaticon-home"></i></li>
+						<li class="separator"><i class="flaticon-right-arrow"></i></li>
+						<li class="nav-item"><a
+							th:href="@{/recepcao/adicionar-cidadao}">Adicionar Cidadão</a></li>
+						<li class="separator"><i class="flaticon-right-arrow"></i></li>
+						<li class="nav-item"><a>Dados Complementares</a></li>
+
+					</ul>
+				</div>
+				<div class="row">
+					<div class="col-md-12">
+						<div class="card">
+							<div class="card-body">
+								<div class="row">
+									<div class="avatar avatar-lg">
+										<img th:if="${guiaAtendimento.cidadao.sexo == 'M'}"
+											th:src="@{/assets/img/icons/masculino.png}" alt="..."
+											class="avatar-img rounded-circle"> <img
+											th:if="${guiaAtendimento.cidadao.sexo == 'F'}"
+											th:src="@{/assets/img/icons/feminino.png}" alt="..."
+											class="avatar-img rounded-circle">
+									</div>
+									<div class="demo">
+										<span class="h3-info"
+											th:text="${guiaAtendimento.cidadao.nome}"></span><br>
+										<div class="h4-info">
+											<img class="img-info"
+												th:src="@{/assets/img/icons/icon-bandeira-brasil.png}">
+											<span th:text="${guiaAtendimento.cidadao.cns}"></span> , <span
+												th:text="${guiaAtendimento.cidadao.idade}"></span><span>
+												anos,</span><span th:if="${guiaAtendimento.cidadao.sexo == 'M'}">
+												masculino.</span><span
+												th:if="${guiaAtendimento.cidadao.sexo == 'F'}">
+												feminino.</span>
+
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-12">
+						<form method="post"
+							th:action="@{/recepcao/salvar-guia-atendimento}"
+							th:object="${guiaAtendimento}">
+
+							<!-- Input responsável por guardar o Id -->
+							<input name="id" type="hidden" th:field="*{id}"
+								th:value="${guiaAtendimento.id}" />
+
+							<!-- Input responsável por guardar o Cidadão -->
+							<input name="" type="hidden" th:field="*{cidadao}"
+								th:value="*{cidadao}" />
+
+							<!-- div reponsável em mostrar os erros -->
+							<div id="errors" class="form-group row"
+								th:data-objeto="${hasErrors}">
+								<div class="col-sm-12 mb-3 mb-sm-0">
+									<div class="alert alert-danger alert-dismissible fade show"
+										data-valor="#fields.hasAnyErrors()" role="alert"
+										id="hasAnyErrors" th:if="${#fields.hasAnyErrors()}">
+
+										<button type="button" class="close" data-dismiss="alert"
+											aria-label="Close">
+											<span aria-hidden="true">&times;</span>
+										</button>
+
+										<div th:each="detailedError : ${#fields.detailedErrors()}">
+											<strong th:text="${detailedError.message}"> </strong>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="card">
+								<div class="card-header">
+									<div class="card-title">Dados complementares</div>
+								</div>
+								<div class="card-body">
+									<div class="row">
+										<div class="col-md-6 col-lg-8">
+											<div class="form-group">
+												<label for="responsavel">Responsável</label> <input
+													th:field="*{responsavel}" type="text" class="form-control"
+													id="responsavel" placeholder=""> <small
+													id="responsavel" class="form-text text-muted">Digite
+													o nome do Responsável pelo Cidadão, caso tenha.</small>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="card">
+								<div class="card-header">
+									<div class="card-title">Profissional de Destino</div>
+								</div>
+								<div class="card-body">
+									<div class="row">
+										<div class="col-md-6 col-lg-8">
+											<div class="form-group">
+												<label for="nome">Profissional de Destino:</label><select
+													th:field="*{profissionaldestino}"
+													class="form-control form-control">
+													<option th:each="profissional : ${profissionais}"
+														th:value="${profissional.id}"
+														th:text="${profissional.nome}"></option>
+												</select>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+
+
+							<div class="card-action">
+								<button type="submit" class="btn btn-success">Adicionar</button>
+								<button type="reset" class="btn btn-danger">Cancelar</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<footer class="footer">
+			<div class="container-fluid">
+				<nav class="pull-left">
+					<th:block th:each="estabelecimento : ${estabelecimento}">
+						<span class="text-primary" th:text="${estabelecimento.nome}"></span>
+					</th:block>
+				</nav>
+				<div class="copyright ml-auto">Sistema de Gestão Hospitalar,
+					2020.</div>
+			</div>
+		</footer>
+	</div>
+</body>
+
+</html>

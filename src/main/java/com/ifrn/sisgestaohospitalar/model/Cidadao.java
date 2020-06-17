@@ -1,11 +1,16 @@
 package com.ifrn.sisgestaohospitalar.model;
 
+import java.time.LocalDate;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.PastOrPresent;
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.format.annotation.DateTimeFormat.ISO;
 
 /**
  * A classe <code>Cidadao</code> representa os objetos do tipo Cidadão e contém
@@ -33,7 +38,7 @@ public class Cidadao {
 	private String sexo;
 
 	private String codigoibgemunicipio;
-	
+
 	@Column(nullable = false)
 	@NotBlank(message = "É necessário preencher o campo MUNICIPIO")
 	private String nomemunicipio;
@@ -49,7 +54,11 @@ public class Cidadao {
 
 	private String nomepai;
 
-	private String datanascimento;
+	@NotNull
+	@PastOrPresent(message = "{PastOrPresent.cidadao.dataEntrada}")
+	@DateTimeFormat(iso = ISO.DATE, pattern = "")
+	@Column(name = "datanascimento", nullable = false, columnDefinition = "DATE")
+	private LocalDate datanascimento;
 
 	@Column(length = 2)
 	private int codigoraca;
@@ -82,7 +91,7 @@ public class Cidadao {
 
 	@Column(length = 40)
 	private String email;
-	
+
 	/** Getters e setters */
 
 	public Long getId() {
@@ -165,11 +174,11 @@ public class Cidadao {
 		this.nomepai = nomepai;
 	}
 
-	public String getDatanascimento() {
+	public LocalDate getDatanascimento() {
 		return datanascimento;
 	}
 
-	public void setDatanascimento(String datanascimento) {
+	public void setDatanascimento(LocalDate datanascimento) {
 		this.datanascimento = datanascimento;
 	}
 
@@ -260,10 +269,5 @@ public class Cidadao {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-
-	
-
-	
-	
 
 }
