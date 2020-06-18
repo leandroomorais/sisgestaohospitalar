@@ -59,4 +59,14 @@ public class ProcedimentoSigtapService {
 		return repository.getOne(id);
 	}
 
+	/**
+	 * Retorna lista de Procedimentos a partir do nome
+	 * 
+	 * @param nomeprocedimento
+	 * @return List<Procedimento>
+	 */
+	public List<ProcedimentoSigtap> findByNomeProcedimento(String nomeprocedimento) {
+		return repository.findByNomeprocedimentoIgnoreCaseContaining(nomeprocedimento);
+	}
+
 }

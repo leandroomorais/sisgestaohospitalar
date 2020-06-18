@@ -1,6 +1,9 @@
 package com.ifrn.sisgestaohospitalar.repository;
 
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import com.ifrn.sisgestaohospitalar.model.ProcedimentoSigtap;
@@ -21,5 +24,12 @@ public interface ProcedimentoSigtapRepository extends JpaRepository<Procedimento
 	 * @return ProcedimentoSigtap
 	 */
 	public ProcedimentoSigtap findByCodigoprocedimento(String codigoprocedimento);
+
+	/**
+	 * @param nomeprocedimento
+	 * @return List<ProcedimentoSigtap>
+	 */
+	@Query
+	public List<ProcedimentoSigtap> findByNomeprocedimentoIgnoreCaseContaining(String nomeprocedimento);
 
 }

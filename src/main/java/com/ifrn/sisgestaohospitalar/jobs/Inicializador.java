@@ -111,7 +111,7 @@ public class Inicializador implements ApplicationListener<ContextRefreshedEvent>
 
 		try {
 			// leitorTxtSigtap.lerTxtCid(urlCid);
-			// leitorTxtSigtap.lerTxtProcedimentos(urlProcedimentos);
+			leitorTxtSigtap.lerTxtProcedimentos(urlProcedimentos);
 			// leitorTxtSigtap.lerTxtOcupacao(urlOcupacao);
 			leitorTxtSigtap.lerTxtRegistro(urlRegistros);
 

@@ -497,23 +497,19 @@
 									</div>
 									<div class="col-md-12">
 										<div class="form-group">
-											<div class="card">
-												<div class="card-header">
-													<div class="card-title">Procedimentos realizados</div>
-												</div>
-												<div class="card-body">
-													<table class="table table-head-bg-primary mt-4">
-														<thead>
-															<tr>
-																<th scope="col">Código</th>
-																<th scope="col">Procedimento</th>
-															</tr>
-														</thead>
-														<tbody id="table-procedimento">
-														</tbody>
-													</table>
-												</div>
-											</div>
+											<div class="card-sub">Procedimentos realizados:</div>
+											<table
+												class="table table-bordered table-bordered-bd-info mt-4">
+												<thead>
+													<tr>
+														<th scope="col">Código</th>
+														<th scope="col">Procedimento</th>
+														<th scope="col">Ações</th>
+													</tr>
+												</thead>
+												<tbody id="table-procedimento">
+												</tbody>
+											</table>
 										</div>
 									</div>
 									<input type="hidden" name="ids_procedimentos"
@@ -524,10 +520,36 @@
 
 						<div class="card">
 							<div class="card-header">
-								<div class="card-title">Destino do Cidadão</div>
+								<div class="card-title">Encaminhamento Interno</div>
 							</div>
 							<div class="card-body">
-								<div class="row"></div>
+								<div class="row">
+									<div class="col-md-12">
+										<div class="form-check">
+											<label class="form-radio-label"> <input id="liberar"
+												class="form-radio-input" type="radio" name="optionsRadios"
+												value="0"> <span class="form-radio-sign">Liberar
+													Cidadão</span>
+											</label> <label class="form-radio-label ml-3"> <input
+												id="adicionar" class="form-radio-input" type="radio"
+												name="optionsRadios" value="1"> <span
+												class="form-radio-sign">Adicionar a Lista de
+													Atendimentos</span>
+											</label>
+										</div>
+									</div>
+									<div class="col-md-5" id="profissional-destino">
+										<div class="form-group">
+											<label for="nome">Profissional de Destino:</label><select
+												th:field="*{profissionaldestino}"
+												class="form-control form-control">
+												<option th:each="profissional : ${profissionais}"
+													th:value="${profissional.id}"
+													th:text="${profissional.nome}"></option>
+											</select>
+										</div>
+									</div>
+								</div>
 							</div>
 						</div>
 
@@ -535,7 +557,7 @@
 
 
 						<div class="card-action">
-							<button type="submit" class="btn btn-success">Adicionar</button>
+							<button type="submit" class="btn btn-success">Concluir</button>
 							<button type="reset" class="btn btn-danger">Cancelar</button>
 						</div>
 					</form>

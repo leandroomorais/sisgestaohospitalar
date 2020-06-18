@@ -27,7 +27,7 @@ $(document)
 											source : function(request, response) {
 												$
 														.getJSON(
-																"http://localhost:8080/ciap2-resource/search",
+																"/ciap2-resource/search",
 																{
 																	term : extractLast(request.term.toUpperCase())
 																}, response);
