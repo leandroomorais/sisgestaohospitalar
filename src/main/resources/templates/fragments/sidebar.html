@@ -115,29 +115,31 @@
 					<h4 class="text-section">Ações</h4></li>
 
 
-				<li class="nav-item" th:classappend="${navItem1} ? active : ''"><a
+				<li sec:authorize="hasAnyAuthority('TEC','SUPER')" class="nav-item"
+					th:classappend="${navItem1} ? active : ''"><a
 					th:href="@{/recepcao/adicionar-cidadao}"> <i
 						class="fas fa-user-plus"></i>
 						<p>Adicionar Cidadão</p> <span class="caret"></span>
 				</a></li>
 
 
-				<li class="nav-item" th:classappend="${navItem2} ? active : ''"><a
+				<li sec:authorize="hasAnyAuthority('TEC','SUPER')" class="nav-item" th:classappend="${navItem2} ? active : ''"><a
 					th:href="@{/recepcao/listar-status}"> <i class="fa fa-users"></i>
 						<p>Fila de Atendimento</p>
 				</a></li>
 
-				<li class="nav-item" th:classappend="${navItem1} ? active : ''"><a
+
+				<li sec:authorize="hasAnyAuthority('ENF','SUPER')" class="nav-item" th:classappend="${navItem1} ? active : ''"><a
 					th:href="@{/triagem/cidadaos-atendimento}"> <i
 						class="fas fa-users"></i>
 						<p>Fila de Atendimento</p> <span class="caret"></span>
 				</a></li>
 
 
-<!-- 				<li class="nav-item" th:classappend="${navItem2} ? active : ''"><a -->
-<!-- 					th:href="@{/triagem/listar-realizadas}"> <i class="fa fa-users"></i> -->
-<!-- 						<p>Realizadas</p> -->
-<!-- 				</a></li> -->
+				<!-- 				<li class="nav-item" th:classappend="${navItem2} ? active : ''"><a -->
+				<!-- 					th:href="@{/triagem/listar-realizadas}"> <i class="fa fa-users"></i> -->
+				<!-- 						<p>Realizadas</p> -->
+				<!-- 				</a></li> -->
 
 			</ul>
 		</div>
