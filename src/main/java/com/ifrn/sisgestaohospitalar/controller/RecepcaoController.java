@@ -46,7 +46,7 @@ public class RecepcaoController {
 
 	@Autowired
 	ProfissionalService profissionalService;
-	
+
 	@Autowired
 	EstabelecimentoService estabelecimentoService;
 
@@ -136,6 +136,9 @@ public class RecepcaoController {
 		if (result.hasErrors()) {
 			return addGuiaAtendimento(guiaAtendimento, principal);
 		}
+
+		String username = principal.getName();
+		guiaAtendimento.setProfissional(profissionalService.findByCpf(username));
 		guiaAtendimento.setData(LocalDate.now());
 		guiaAtendimento.setHora(LocalTime.now());
 		guiaAtendimento.setNumeroregistro(geradorNumero());

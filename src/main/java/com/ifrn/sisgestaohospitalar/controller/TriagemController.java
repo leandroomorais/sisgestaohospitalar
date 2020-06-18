@@ -1,6 +1,8 @@
 package com.ifrn.sisgestaohospitalar.controller;
 
 import java.security.Principal;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 import javax.validation.Valid;
@@ -50,7 +52,7 @@ public class TriagemController {
 
 	@Autowired
 	private ProcedimentoSigtapService procedimentoSigtapService;
-	
+
 	@Autowired
 	private EstabelecimentoService estabelecimentoService;
 
@@ -70,27 +72,7 @@ public class TriagemController {
 		mv.addObject("user", user);
 		mv.addObject("guiasAtendimento",
 				guiaAtendimentoService.findByStatusatendimento(StatusAtendimento.AGUARDANDOTRIAGEM));
-		return mv;
-	}
-
-	/**
-	 * Direciona o usuário para o formulário de Triagem
-	 * 
-	 * @param triagem
-	 * @param principal
-	 * @return
-	 */
-	@RequestMapping("/realizar-triagem")
-	public ModelAndView addTriagem(Triagem triagem, Principal principal) {
-		Long id = triagem.getGuiaatendimento().getId();
-		GuiaAtendimento guiaAtendimento = guiaAtendimentoService.findOne(id);
-		String username = principal.getName();
-		Profissional user = profissionalService.findByCpf(username);
-		ModelAndView mv = new ModelAndView("triagem/form-triagem");
-		mv.addObject("guiaAtendimento", guiaAtendimento);
-		mv.addObject("triagem", triagem);
-		mv.addObject("user", user);
-		mv.addObject("profissionais", profissionalService.findByTipoprofissional(TipoProfissional.MEDICO));
+		mv.addObject("navItem1", true);
 		return mv;
 	}
 
@@ -117,6 +99,7 @@ public class TriagemController {
 		mv.addObject("triagem", triagem);
 		mv.addObject("profissionais", profissionalService.findByTipoprofissional(TipoProfissional.MEDICO));
 		mv.addObject("guiaAtendimento", guiaAtendimento);
+		mv.addObject("navItem1", true);
 		return mv;
 	}
 
@@ -127,16 +110,17 @@ public class TriagemController {
 	 * @param principal
 	 * @return
 	 */
-	@PostMapping("/save")
+	@PostMapping("/salvar-triagem")
 	public ModelAndView save(@Valid Triagem triagem, BindingResult result,
 			@RequestParam("ids_procedimentos") String ids_procedimentos, Principal principal) {
 
+		GuiaAtendimento guiaAtendimento = triagem.getGuiaatendimento();
+
 		if (result.hasErrors()) {
-			return addTriagem(triagem, principal);
+			return addTriagem(guiaAtendimento.getId(), triagem, principal);
 		}
 
-		if (triagem.getDestinocidadao().equals("1")) {
-
+		if (triagem.getDestinocidadao().equals("0")) {
 			triagem.getGuiaatendimento().setStatusatendimento(StatusAtendimento.FINALIZADO);
 		}
 
@@ -149,18 +133,16 @@ public class TriagemController {
 				triagem.setProcedimentos(procedimentos);
 			}
 		}
-
-		GuiaAtendimento guiaAtendimento = triagem.getGuiaatendimento();
 		guiaAtendimento.setStatusatendimento(StatusAtendimento.AGUARDANDOATDMEDICO);
 		guiaAtendimentoService.save(guiaAtendimento);
-
 		String username = principal.getName();
 		Profissional profissional = profissionalService.findByCpf(username);
-
 		triagem.setClassificacaoderisco(triagem.getClassificacaoderisco().toUpperCase());
+		triagem.setData(LocalDate.now());
+		triagem.setHora(LocalTime.now());
 		triagem.setProfissional(profissional);
 		triagemService.save(triagem);
-		return listStatusAddTri(principal);
+		return listStatusAddTri(principal).addObject("navItem1", true);
 	}
 
 }

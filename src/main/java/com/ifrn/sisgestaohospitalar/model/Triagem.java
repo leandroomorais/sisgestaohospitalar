@@ -1,8 +1,8 @@
 package com.ifrn.sisgestaohospitalar.model;
 
-import java.util.Date;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.List;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -13,6 +13,9 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 import javax.validation.constraints.NotBlank;
+
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.format.annotation.DateTimeFormat.ISO;
 
 /**
  * A classe <code>Triagem</code> representa os objetos do tipo Triagem e contém
@@ -96,9 +99,14 @@ public class Triagem {
 
 	private String outrasdoenças;
 
-	private Date data;
+	@DateTimeFormat(iso = ISO.DATE, pattern = "")
+	@Column(name = "data", columnDefinition = "DATE")
+	private LocalDate data;
 
-	@NotBlank(message = "Por favor, informe o destino do Cidadão")
+	private LocalTime hora;
+
+	@Column(nullable = false, length = 100)
+	@NotBlank(message = "É necessário preencher o campo Destino do Cidadão")
 	private String destinocidadao;
 
 	/**
@@ -121,7 +129,7 @@ public class Triagem {
 	@OneToOne
 	@JoinColumn(name = "profissional_id")
 	private Profissional profissional;
-	
+
 	/**
 	 * Relacionamento entre os objetos Triagem e Profissional
 	 */
@@ -395,12 +403,20 @@ public class Triagem {
 		this.outrasdoenças = outrasdoenças;
 	}
 
-	public Date getData() {
+	public LocalDate getData() {
 		return data;
 	}
 
-	public void setData(Date data) {
+	public void setData(LocalDate data) {
 		this.data = data;
+	}
+
+	public LocalTime getHora() {
+		return hora;
+	}
+
+	public void setHora(LocalTime hora) {
+		this.hora = hora;
 	}
 
 	public String getDestinocidadao() {

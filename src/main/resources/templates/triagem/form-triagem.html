@@ -55,16 +55,16 @@
 					</div>
 
 					<form method="post"
-						th:action="@{/recepcao/salvar-guia-atendimento}"
+						th:action="@{/triagem/salvar-triagem}"
 						th:object="${triagem}">
 
 						<!-- Input responsável por guardar o ID -->
 						<input id="id" name="id" type="hidden" th:field="*{id}"
 							th:value="*{id}" />
 
-						<!-- Input responsável por guardar o Profissional -->
-						<input name="" type="hidden" th:field="*{profissional}"
-							th:value="*{profissional}" />
+						<!-- Input responsável por guardar a Guia de Atendimento -->
+						<input name="" type="hidden" th:field="*{guiaatendimento}"
+							value="*{guiaAtendimento}" />
 
 
 						<!-- div reponsável em mostrar os erros -->
@@ -527,12 +527,12 @@
 									<div class="col-md-12">
 										<div class="form-check">
 											<label class="form-radio-label"> <input id="liberar"
-												class="form-radio-input" type="radio" name="optionsRadios"
+											 	class="form-radio-input" type="radio" th:field="*{destinocidadao}"
 												value="0"> <span class="form-radio-sign">Liberar
 													Cidadão</span>
 											</label> <label class="form-radio-label ml-3"> <input
 												id="adicionar" class="form-radio-input" type="radio"
-												name="optionsRadios" value="1"> <span
+												th:field="*{destinocidadao}" value="1"> <span
 												class="form-radio-sign">Adicionar a Lista de
 													Atendimentos</span>
 											</label>
