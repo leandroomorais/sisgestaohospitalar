@@ -42,8 +42,26 @@ public class CidadaoResource {
 		CnsDatasus cnsDatasus = RequisicaoCadsus.cnsDatasus(conexaoDatasusImpl);
 		String xml = RequisicaoCadsus.respostaXmlCns(cnsDatasus, cns);
 		JSONObject jsonObject = XML.toJSONObject(xml);
-		String retorno = jsonObject.toString();
-		return new ResponseEntity<String>(retorno, HttpStatus.OK);
+
+		int value;
+
+		if (jsonObject.isNull("soap:Envelope")) {
+			value = jsonObject.getJSONObject("S:Envelope").getJSONObject("S:Body").getJSONObject("PRPA_IN201306UV02")
+					.getJSONObject("controlActProcess").getJSONObject("queryAck").getJSONObject("resultTotalQuantity")
+					.getInt("value");
+		} else {
+			value = jsonObject.getJSONObject("soap:Envelope").getJSONObject("S:Body").getJSONObject("PRPA_IN201306UV02")
+					.getJSONObject("controlActProcess").getJSONObject("queryAck").getJSONObject("resultTotalQuantity")
+					.getInt("value");
+		}
+
+		if (value == 0) {
+			return ResponseEntity.badRequest().build();
+		} else {
+			String retorno = jsonObject.toString();
+			return new ResponseEntity<String>(retorno, HttpStatus.OK);
+		}
+
 	}
 
 	/**

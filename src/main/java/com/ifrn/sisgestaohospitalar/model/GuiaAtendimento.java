@@ -13,6 +13,7 @@ import javax.persistence.OneToOne;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.format.annotation.DateTimeFormat.ISO;
 import com.ifrn.sisgestaohospitalar.enums.StatusAtendimento;
+import com.ifrn.sisgestaohospitalar.enums.TipoServico;
 
 /**
  * A classe <code>GuiaAtendimento</code> representa os objetos do tipo Guia de
@@ -33,7 +34,11 @@ public class GuiaAtendimento {
 
 	private String responsavel;
 
-	private StatusAtendimento statusatendimento;
+	private TipoServico tipoServico;
+
+	private StatusAtendimento statusAtendimento;
+
+	private String classificacaoDeRisco;
 
 	@DateTimeFormat(iso = ISO.DATE, pattern = "")
 	@Column(name = "data", columnDefinition = "DATE")
@@ -59,6 +64,9 @@ public class GuiaAtendimento {
 	 */
 	@OneToOne(mappedBy = "guiaatendimento")
 	private AtendimentoMedico atendimentomedico;
+
+	@OneToOne(mappedBy = "guiaatendimento")
+	private AdministracaoMedicamento administracaomedicamento;
 
 	/**
 	 * Relacionamento entre os objetos GuiaAtendimento e Profissional
@@ -100,12 +108,20 @@ public class GuiaAtendimento {
 		this.responsavel = responsavel;
 	}
 
-	public StatusAtendimento getStatusatendimento() {
-		return statusatendimento;
+	public TipoServico getTipoServico() {
+		return tipoServico;
 	}
 
-	public void setStatusatendimento(StatusAtendimento statusatendimento) {
-		this.statusatendimento = statusatendimento;
+	public void setTipoServico(TipoServico tipoServico) {
+		this.tipoServico = tipoServico;
+	}
+
+	public StatusAtendimento getStatusAtendimento() {
+		return statusAtendimento;
+	}
+
+	public void setStatusAtendimento(StatusAtendimento statusAtendimento) {
+		this.statusAtendimento = statusAtendimento;
 	}
 
 	public LocalDate getData() {
@@ -162,6 +178,14 @@ public class GuiaAtendimento {
 
 	public void setProfissionaldestino(Profissional profissionaldestino) {
 		this.profissionaldestino = profissionaldestino;
+	}
+
+	public String getClassificacaoDeRisco() {
+		return classificacaoDeRisco;
+	}
+
+	public void setClassificacaoDeRisco(String classificacaoDeRisco) {
+		this.classificacaoDeRisco = classificacaoDeRisco;
 	}
 
 }

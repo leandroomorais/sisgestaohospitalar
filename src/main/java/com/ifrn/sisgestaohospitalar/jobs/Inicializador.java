@@ -44,6 +44,18 @@ public class Inicializador implements ApplicationListener<ContextRefreshedEvent>
 		Role role = new Role();
 		role.setNome("ADM");
 		roleService.save(role);
+		
+		Role roleTec = new Role();
+		roleTec.setNome("TEC");
+		roleService.save(roleTec);
+		
+		Role roleEnf = new Role();
+		roleEnf.setNome("ENF");
+		roleService.save(roleEnf);
+		
+		Role roleMed = new Role();
+		roleMed.setNome("MED");
+		roleService.save(roleMed);
 
 		Role rolesuper = new Role();
 		rolesuper.setNome("SUPER");
@@ -117,7 +129,7 @@ public class Inicializador implements ApplicationListener<ContextRefreshedEvent>
 
 			// leitorTxtSigtap.relacionamentoProcedimento_Cid(urlRelationProced_Cid);
 			// leitorTxtSigtap.relacionamentoProcedimento_Ocupacao(urlRelationProced_Ocupacao);
-			// leitorTxtSigtap.relacionamentoProcedimento_Registro(urlRelationProced_Registro);
+			leitorTxtSigtap.relacionamentoProcedimento_Registro(urlRelationProced_Registro);
 
 		} catch (IOException e) {
 			// TODO Auto-generated catch block

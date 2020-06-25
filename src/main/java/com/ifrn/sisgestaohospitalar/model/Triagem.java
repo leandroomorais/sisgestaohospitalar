@@ -13,7 +13,6 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 import javax.validation.constraints.NotBlank;
-
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.format.annotation.DateTimeFormat.ISO;
 
@@ -77,7 +76,7 @@ public class Triagem {
 
 	private boolean hipertensaoarterialsistemica;
 
-	private boolean doençameningococica;
+	private boolean doencameningococica;
 
 	private boolean avc;
 
@@ -97,7 +96,7 @@ public class Triagem {
 
 	private boolean caneoplasia;
 
-	private String outrasdoenças;
+	private String outrasdoencas;
 
 	@DateTimeFormat(iso = ISO.DATE, pattern = "")
 	@Column(name = "data", columnDefinition = "DATE")
@@ -315,12 +314,13 @@ public class Triagem {
 		this.hipertensaoarterialsistemica = hipertensaoarterialsistemica;
 	}
 
-	public boolean isDoençameningococica() {
-		return doençameningococica;
+
+	public boolean isDoencameningococica() {
+		return doencameningococica;
 	}
 
-	public void setDoençameningocócica(boolean doençameningococica) {
-		this.doençameningococica = doençameningococica;
+	public void setDoencameningococica(boolean doencameningococica) {
+		this.doencameningococica = doencameningococica;
 	}
 
 	public boolean isAvc() {
@@ -395,12 +395,13 @@ public class Triagem {
 		this.caneoplasia = caneoplasia;
 	}
 
-	public String getOutrasdoenças() {
-		return outrasdoenças;
+
+	public String getOutrasdoencas() {
+		return outrasdoencas;
 	}
 
-	public void setOutrasdoenças(String outrasdoenças) {
-		this.outrasdoenças = outrasdoenças;
+	public void setOutrasdoencas(String outrasdoencas) {
+		this.outrasdoencas = outrasdoencas;
 	}
 
 	public LocalDate getData() {
@@ -451,9 +452,6 @@ public class Triagem {
 		this.profissional = profissional;
 	}
 
-	public void setDoençameningococica(boolean doençameningococica) {
-		this.doençameningococica = doençameningococica;
-	}
 
 	public Profissional getProfissionaldestino() {
 		return profissionaldestino;

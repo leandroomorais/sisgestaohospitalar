@@ -107,25 +107,52 @@
 
 							<div class="card">
 								<div class="card-header">
-									<div class="card-title">Profissional de Destino</div>
+									<div class="card-title">Encaminhamento Interno</div>
 								</div>
 								<div class="card-body">
 									<div class="row">
-										<div class="col-md-6 col-lg-8">
-											<div class="form-group">
-												<label for="nome">Profissional de Destino:</label><select
-													th:field="*{profissionaldestino}"
-													class="form-control form-control">
-													<option th:each="profissional : ${profissionais}"
-														th:value="${profissional.id}"
-														th:text="${profissional.nome}"></option>
-												</select>
+										<div class="col-md-12">
+											<div class="row">
+												<div class="col-md-6">
+													<div class="form-group">
+														<label for="nome">Profissional de Destino:</label><select
+															th:field="*{profissionaldestino}"
+															class="form-control form-control">
+															<option th:each="profissional : ${profissionais}"
+																th:value="${profissional.id}"
+																th:text="${profissional.nome}"></option>
+														</select>
+													</div>
+												</div>
+												<div class="col-md-6">
+													<div class="form-check">
+														<label>Tipo de Serviço:</label>
+														<div class="servicos">
+															<div class="row">
+																<label class="form-radio-label"> <input
+																	class="form-radio-input" type="radio"
+																	name="optionsRadios" value="EscutaInicial"> <span
+																	class="form-radio-sign">Escuta Inicial</span>
+																</label>
+																<label class="form-radio-label"> <input
+																	class="form-radio-input" type="radio"
+																	name="optionsRadios" value="AtendimentoMedico"> <span
+																	class="form-radio-sign">AtendimentoMedico</span>
+																</label>
+																 <label class="form-radio-label ml-3"> <input
+																	class="form-radio-input" type="radio"
+																	name="optionsRadios" value="AdminMedicamentos"> <span
+																	class="form-radio-sign">Adm. de Medicamentos</span>
+																</label>
+															</div>
+														</div>
+													</div>
+												</div>
 											</div>
 										</div>
 									</div>
 								</div>
 							</div>
-
 
 							<div class="card-action">
 								<button type="submit" class="btn btn-success">Adicionar</button>

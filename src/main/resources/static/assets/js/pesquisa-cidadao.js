@@ -79,7 +79,7 @@ $(document).ready(
 									$("#telefone").val(data.telefone);
 									$("#fa-button").removeClass().addClass("fa fa-check");
 									$("#resultado-pesquisa").addClass("text-success").text("Cidadão encontrado na Base de Dados Local. Confira os dados no formulário abaixo.");
-									$("#form-cidadao").fadeIn(2000);
+									$("#form-cidadao").fadeIn(1000);
 								}).fail(function(data){
 									//Realiza consulta ao Barramento do Cadsus
 									$.getJSON(rootUrl + "/cadsusCns?cns=" + cns, function(data){

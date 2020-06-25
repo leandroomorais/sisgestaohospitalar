@@ -1,8 +1,8 @@
 package com.ifrn.sisgestaohospitalar.model;
 
-import java.util.Date;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.List;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -13,6 +13,11 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 import javax.validation.constraints.NotBlank;
+
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.format.annotation.DateTimeFormat.ISO;
 
 /**
  * A classe <code>AtendimentoMedico</code> representa os objetos do tipo
@@ -40,11 +45,12 @@ public class AtendimentoMedico {
 
 	private String evolucaoMedica;
 
-	private String medicamentocidadao;
 
-	private String medicamentohospitalar;
+	@DateTimeFormat(iso = ISO.DATE, pattern = "")
+	@Column(name = "data", columnDefinition = "DATE")
+	private LocalDate data;
 
-	private Date data;
+	private LocalTime hora;
 
 	@NotBlank(message = "Por favor, informe o destino do Paciente")
 	private String destinocidadao;
@@ -60,8 +66,15 @@ public class AtendimentoMedico {
 	 * Relacionamento entre os objetos AtendimentoMedico e Profissional
 	 */
 	@OneToOne
-	@JoinColumn(name = "profissionalexecutante_id")
-	private Profissional profissionalexecutante;
+	@JoinColumn(name = "profissional_id")
+	private Profissional profissional;
+
+	/**
+	 * Relacionamento entre os objetos AtendimentoMedico e Profissional
+	 */
+	@OneToOne
+	@JoinColumn(name = "profissionaldestino_id")
+	private Profissional profissionaldestino;
 
 	/**
 	 * Relacionamento entre os objetos AtendimentoMédico e ProcedimentoSigtap
@@ -69,6 +82,15 @@ public class AtendimentoMedico {
 	@ManyToMany
 	@JoinTable(name = "atendimentomedico_procedimentos")
 	private List<ProcedimentoSigtap> procedimentos;
+	
+	
+	/**
+	 * Relacionamento entre os objetos AtendimentoMédico e ProcedimentoSigtap
+	 */
+	@Cascade(CascadeType.ALL)
+	@ManyToMany
+	@JoinTable(name = "atendimentomedico_medicamentos") 
+	private List<Medicamento> medicamentos;
 
 	/** Getters and Setters */
 
@@ -112,22 +134,6 @@ public class AtendimentoMedico {
 		this.evolucaoMedica = evolucaoMedica;
 	}
 
-	public String getMedicamentocidadao() {
-		return medicamentocidadao;
-	}
-
-	public void setMedicamentocidadao(String medicamentocidadao) {
-		this.medicamentocidadao = medicamentocidadao;
-	}
-
-	public String getMedicamentohospitalar() {
-		return medicamentohospitalar;
-	}
-
-	public void setMedicamentohospitalar(String medicamentohospitalar) {
-		this.medicamentohospitalar = medicamentohospitalar;
-	}
-
 	public String getDestinocidadao() {
 		return destinocidadao;
 	}
@@ -144,12 +150,20 @@ public class AtendimentoMedico {
 		this.guiaatendimento = guiaatendimento;
 	}
 
-	public Profissional getProfissionalexecutante() {
-		return profissionalexecutante;
+	public Profissional getProfissional() {
+		return profissional;
 	}
 
-	public void setProfissionalexecutante(Profissional profissionalexecutante) {
-		this.profissionalexecutante = profissionalexecutante;
+	public void setProfissional(Profissional profissional) {
+		this.profissional = profissional;
+	}
+
+	public Profissional getProfissionaldestino() {
+		return profissionaldestino;
+	}
+
+	public void setProfissionaldestino(Profissional profissionaldestino) {
+		this.profissionaldestino = profissionaldestino;
 	}
 
 	public List<ProcedimentoSigtap> getProcedimentos() {
@@ -160,12 +174,28 @@ public class AtendimentoMedico {
 		this.procedimentos = procedimentos;
 	}
 
-	public Date getData() {
+	public LocalDate getData() {
 		return data;
 	}
 
-	public void setData(Date data) {
+	public void setData(LocalDate data) {
 		this.data = data;
+	}
+
+	public LocalTime getHora() {
+		return hora;
+	}
+
+	public void setHora(LocalTime hora) {
+		this.hora = hora;
+	}
+
+	public List<Medicamento> getMedicamentos() {
+		return medicamentos;
+	}
+
+	public void setMedicamentos(List<Medicamento> medicamentos) {
+		this.medicamentos = medicamentos;
 	}
 
 }

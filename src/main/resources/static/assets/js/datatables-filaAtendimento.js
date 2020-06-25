@@ -1,5 +1,6 @@
 $(document).ready(function() {
 		$('#basic-datatables').DataTable({
+			"ordering": false
 		});
 
 		$('#multi-filter-select').DataTable( {

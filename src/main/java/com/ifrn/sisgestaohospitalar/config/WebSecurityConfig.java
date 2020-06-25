@@ -35,6 +35,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 				.antMatchers("/cadastra-senha/**").permitAll().antMatchers("/adicionar-cidadao").permitAll()
 				.antMatchers("/salvar-cidadao").permitAll().antMatchers("/adicionar-guia-atendimento").permitAll()
 				.antMatchers("/salvar-guia-atendimento").permitAll().antMatchers("/listar-status").permitAll()
+				.antMatchers("/medicamento-resource/**").permitAll()
 				.antMatchers("/editar/**").permitAll().antMatchers("/cidadao-resource/**").permitAll()
 				.antMatchers("/pesquisaCns/**").permitAll().antMatchers("/ciap2-resource/***").permitAll()
 				.antMatchers("/procedimento-resource/**").permitAll().antMatchers("/nome/**").permitAll()

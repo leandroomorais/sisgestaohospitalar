@@ -5,6 +5,9 @@ import java.text.ParseException;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.Period;
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,9 +16,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import com.ifrn.sisgestaohospitalar.enums.StatusAtendimento;
 import com.ifrn.sisgestaohospitalar.enums.TipoProfissional;
+import com.ifrn.sisgestaohospitalar.enums.TipoServico;
 import com.ifrn.sisgestaohospitalar.model.Cidadao;
 import com.ifrn.sisgestaohospitalar.model.GuiaAtendimento;
 import com.ifrn.sisgestaohospitalar.model.Profissional;
@@ -114,7 +119,11 @@ public class RecepcaoController {
 		ModelAndView mv = new ModelAndView("guiaAtendimento/form-guiaAtendimento");
 		mv.addObject("estabelecimento", estabelecimentoService.findAll());
 		mv.addObject("guiaAtendimento", guiaAtendimento);
-		mv.addObject("profissionais", profissionalService.findByTipoprofissional(TipoProfissional.ENFERMEIRO));
+		List<Profissional> profissionais = new ArrayList<Profissional>();
+		profissionais.addAll(profissionalService.findByTipoprofissional(TipoProfissional.MEDICO));
+		profissionais.addAll(profissionalService.findByTipoprofissional(TipoProfissional.ENFERMEIRO));
+		profissionais.addAll(profissionalService.findByTipoprofissional(TipoProfissional.TECNICO));
+		mv.addObject("profissionais", profissionais);
 		String username = principal.getName();
 		user = profissionalService.findByCpf(username);
 		mv.addObject("user", user);
@@ -131,7 +140,7 @@ public class RecepcaoController {
 	 * @return ModelAndView
 	 */
 	@PostMapping("/salvar-guia-atendimento")
-	public ModelAndView saveGuiaAtendimento(GuiaAtendimento guiaAtendimento, BindingResult result,
+	public ModelAndView saveGuiaAtendimento(GuiaAtendimento guiaAtendimento, @RequestParam("optionsRadios") TipoServico tipoServico, BindingResult result,
 			Principal principal) {
 		if (result.hasErrors()) {
 			return addGuiaAtendimento(guiaAtendimento, principal);
@@ -142,7 +151,11 @@ public class RecepcaoController {
 		guiaAtendimento.setData(LocalDate.now());
 		guiaAtendimento.setHora(LocalTime.now());
 		guiaAtendimento.setNumeroregistro(geradorNumero());
-		guiaAtendimento.setStatusatendimento(StatusAtendimento.AGUARDANDOTRIAGEM);
+		guiaAtendimento.setTipoServico(tipoServico);
+		if(tipoServico != TipoServico.EscutaInicial) {
+			guiaAtendimento.setClassificacaoDeRisco("AZUL");
+		}
+		
 		guiatendimentoService.save(guiaAtendimento);
 		return listarStatusAtd(principal).addObject("navItem1", true).addObject("navItem2", false);
 	}

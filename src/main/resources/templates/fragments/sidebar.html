@@ -123,14 +123,30 @@
 				</a></li>
 
 
-				<li sec:authorize="hasAnyAuthority('TEC','SUPER')" class="nav-item" th:classappend="${navItem2} ? active : ''"><a
+				<li sec:authorize="hasAnyAuthority('TEC','SUPER')" class="nav-item"
+					th:classappend="${navItem2} ? active : ''"><a
 					th:href="@{/recepcao/listar-status}"> <i class="fa fa-users"></i>
 						<p>Fila de Atendimento</p>
 				</a></li>
 
 
-				<li sec:authorize="hasAnyAuthority('ENF','SUPER')" class="nav-item" th:classappend="${navItem1} ? active : ''"><a
+				<li sec:authorize="hasAnyAuthority('ENF','SUPER')" class="nav-item"
+					th:classappend="${navItem1} ? active : ''"><a
 					th:href="@{/triagem/cidadaos-atendimento}"> <i
+						class="fas fa-users"></i>
+						<p>Fila de Atendimento</p> <span class="caret"></span>
+				</a></li>
+
+				<li sec:authorize="hasAnyAuthority('MED','SUPER')" class="nav-item"
+					th:classappend="${navItem1} ? active : ''"><a
+					th:href="@{/atendimento-medico/cidadaos-atendimento}"> <i
+						class="fas fa-users"></i>
+						<p>Fila de Atendimento</p> <span class="caret"></span>
+				</a></li>
+
+				<li sec:authorize="hasAnyAuthority('TEC','ENF','SUPER')"
+					class="nav-item" th:classappend="${navItem1} ? active : ''"><a
+					th:href="@{/administracao-medicamento/cidadaos-atendimento}"> <i
 						class="fas fa-users"></i>
 						<p>Fila de Atendimento</p> <span class="caret"></span>
 				</a></li>

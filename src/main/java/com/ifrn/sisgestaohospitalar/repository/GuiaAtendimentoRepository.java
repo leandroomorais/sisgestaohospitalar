@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import com.ifrn.sisgestaohospitalar.enums.StatusAtendimento;
+import com.ifrn.sisgestaohospitalar.enums.TipoServico;
 import com.ifrn.sisgestaohospitalar.model.GuiaAtendimento;
 
 /**
@@ -20,7 +21,9 @@ import com.ifrn.sisgestaohospitalar.model.GuiaAtendimento;
 @Repository
 public interface GuiaAtendimentoRepository extends JpaRepository<GuiaAtendimento, Long> {
 
-	public List<GuiaAtendimento> findByStatusatendimento(StatusAtendimento statusAtendimento);
+	public List<GuiaAtendimento> findByStatusAtendimento(StatusAtendimento statusAtendimento);
+	
+	public List<GuiaAtendimento> findByTipoServico(TipoServico tipoServico);
 
 	public List<GuiaAtendimento> findByData(Date data);
 

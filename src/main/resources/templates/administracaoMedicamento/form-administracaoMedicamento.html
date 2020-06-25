@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html layout:decorate="~{/layouts/layout-modulos}" lang="pt"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity"
+	xmlns:layout="http://ultraq.net.nz/thymeleaf/layout">
+
+<body>
+	<div class="main-panel" layout:fragment="main-panel">
+		<div class="container">
+			<div class="page-inner">
+				<div class="page-header">
+					<h4 class="page-title">Administração de Medicamentos</h4>
+					<ul class="breadcrumbs">
+						<li class="nav-home"><i class="flaticon-home"></i></li>
+						<li class="separator"><i class="flaticon-right-arrow"></i></li>
+						<li class="nav-item"><a
+							th:href="@{/administracao-medicamento/cidadaos-atendimento}">Fila
+								de Atendimento</a></li>
+						<li class="separator"><i class="flaticon-right-arrow"></i></li>
+						<li class="nav-item"><a>Atendimento</a></li>
+					</ul>
+				</div>
+				<form
+					th:action="@{/administracao-medicamento/salvar-adminMedicamento}"
+					method="post" th:object="${administracaoMedicamento}">
+					<div class="row">
+						<div class="col-md-12">
+							<div class="card">
+								<div class="card-body">
+									<div class="row">
+										<div class="avatar avatar-lg">
+											<img th:if="${guiaAtendimento.cidadao.sexo == 'M'}"
+												th:src="@{/assets/img/icons/masculino.png}" alt="..."
+												class="avatar-img rounded-circle"> <img
+												th:if="${guiaAtendimento.cidadao.sexo == 'F'}"
+												th:src="@{/assets/img/icons/feminino.png}" alt="..."
+												class="avatar-img rounded-circle">
+										</div>
+										<div class="demo">
+											<span class="h3-info"
+												th:text="${guiaAtendimento.cidadao.nome}"></span><br>
+											<div class="h4-info">
+												<img class="img-info"
+													th:src="@{/assets/img/icons/icon-bandeira-brasil.png}">
+												<span th:text="${guiaAtendimento.cidadao.cns}"></span> , <span
+													th:text="${guiaAtendimento.cidadao.idade}"></span><span>
+													anos,</span><span th:if="${guiaAtendimento.cidadao.sexo == 'M'}">
+													masculino.</span><span
+													th:if="${guiaAtendimento.cidadao.sexo == 'F'}">
+													feminino.</span>
+
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="card">
+								<div class="card-header">
+									<div class="card-title">Medicamento(s) Prescrito(s)</div>
+								</div>
+								<div class="card-body">
+									<div class="row">
+										<div class="col-md-12 col-lg-12">
+											<div class="card-sub">Medicamento(s):</div>
+											<table class="table mt-3">
+												<thead>
+													<tr>
+														<th scope="col">Nome</th>
+														<th scope="col">Concentração</th>
+														<th scope="col">Forma</th>
+														<th scope="col">Posologia</th>
+													</tr>
+												</thead>
+												<tbody th:each="medicamento : ${medicamentos}">
+													<tr>
+														<td th:text="${medicamento.nome}"></td>
+														<td th:text="${medicamento.concentracao}"></td>
+														<td th:text="${medicamento.forma}"></td>
+														<td th:text="${medicamento.posologia}"></td>
+													</tr>
+												</tbody>
+											</table>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="card">
+								<div class="card-header">
+									<div class="card-title">Observações:</div>
+								</div>
+								<div class="card-body">
+									<div class="row">
+										<div class="col-md-12 col-lg-12">
+											<textarea class="form-control" th:field="*{observacoes}"
+												rows="5" cols="">
+										</textarea>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="card">
+								<div class="card-header">
+									<div class="card-title">Confirmação de Realização:</div>
+								</div>
+								<div class="card-body">
+									<div class="row">
+										<div class="col-md-12 col-lg-12">
+											<div class="form-group">
+												<div class="form-check">
+													<label class="form-check-label"> <input
+														name="realizado" class="form-check-input" type="checkbox"
+														value="true"> <span class="form-check-sign">Confirmo
+															a administração do(s) Medicamento(s) Prescrito(s)</span>
+													</label>
+												</div>
+
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="card">
+								<div class="card-header">
+									<div class="card-title">Procedimentos</div>
+								</div>
+								<div class="card-body">
+									<div class="row">
+										<div class="col-md-12">
+											<div class="form-group">
+												<label for="nome">Adicionar Procedimentos:</label> <input
+													id="procedimentos" type="text"
+													class="form-control input-sm">
+											</div>
+										</div>
+										<div class="col-md-12">
+											<div class="form-group">
+												<div class="card-sub">Procedimentos realizados:</div>
+												<table
+													class="table table-bordered table-bordered-bd-info mt-4">
+													<thead>
+														<tr>
+															<th scope="col">Código</th>
+															<th scope="col">Procedimento</th>
+															<th scope="col">Ações</th>
+														</tr>
+													</thead>
+													<tbody id="table-procedimento">
+													</tbody>
+												</table>
+											</div>
+										</div>
+										<input type="hidden" name="ids_procedimentos"
+											id="ids_procedimentos">
+									</div>
+								</div>
+							</div>
+
+							<div class="card">
+								<div class="card-header">
+									<div class="card-title">Encaminhamento Interno</div>
+								</div>
+								<div class="card-body">
+									<div class="row">
+										<div class="col-md-12">
+											<div class="form-check">
+											<input type="hidden" name="optionsRadios" value="">
+												<label class="form-radio-label"> <input id="liberar"
+													class="form-radio-input" type="radio"
+													th:field="*{destinocidadao}" value="0"> <span
+													class="form-radio-sign">Liberar Cidadão</span>
+												</label> <label class="form-radio-label ml-3"> <input
+													id="adicionar" class="form-radio-input" type="radio"
+													th:field="*{destinocidadao}" value="1"> <span
+													class="form-radio-sign">Adicionar a Lista de
+														Atendimentos</span>
+												</label>
+											</div>
+										</div>
+										<div class="col-md-12" id="profissional-destino">
+											<div class="row">
+												<div class="col-md-6">
+													<div class="form-group">
+														<label for="nome">Profissional de Destino:</label><select
+															th:field="*{profissionaldestino}"
+															class="form-control form-control">
+															<option th:each="profissional : ${profissionais}"
+																th:value="${profissional.id}"
+																th:text="${profissional.nome}"></option>
+														</select>
+													</div>
+												</div>
+												<div class="col-md-6">
+													<div class="form-check">
+														<label>Tipo de Serviço:</label>
+														<div class="servicos">
+															<div class="row">
+																<label class="form-radio-label ml-3"> <input
+																	class="form-radio-input" type="radio"
+																	name="optionsRadios" value="AtendimentoMedico">
+																	<span class="form-radio-sign">Atendimento Médico</span>
+																</label>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="card-action">
+								<button type="submit" class="btn btn-success">Concluir</button>
+								<button type="reset" class="btn btn-danger">Cancelar</button>
+							</div>
+						</div>
+
+					</div>
+				</form>
+			</div>
+		</div>
+
+		<footer class="footer">
+			<div class="container-fluid">
+				<nav class="pull-left">
+					<th:block th:each="estabelecimento : ${estabelecimento}">
+						<span class="text-primary" th:text="${estabelecimento.nome}"></span>
+					</th:block>
+				</nav>
+				<div class="copyright ml-auto">Sistema de Gestão Hospitalar,
+					2020.</div>
+			</div>
+		</footer>
+	</div>
+
+
+</body>
+
+</html>

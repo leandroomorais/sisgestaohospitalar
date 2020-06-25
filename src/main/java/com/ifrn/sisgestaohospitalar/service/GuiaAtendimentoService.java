@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.ifrn.sisgestaohospitalar.enums.StatusAtendimento;
+import com.ifrn.sisgestaohospitalar.enums.TipoServico;
 import com.ifrn.sisgestaohospitalar.model.GuiaAtendimento;
 import com.ifrn.sisgestaohospitalar.repository.GuiaAtendimentoRepository;
 
@@ -67,8 +68,18 @@ public class GuiaAtendimentoService {
 	 * @param statusAtendimento
 	 * @return List<GuiaAtendimento>
 	 */
-	public List<GuiaAtendimento> findByStatusatendimento(StatusAtendimento statusAtendimento) {
-		return repository.findByStatusatendimento(statusAtendimento);
+	public List<GuiaAtendimento> findByStatusAtendimento(StatusAtendimento statusAtendimento) {
+		return repository.findByStatusAtendimento(statusAtendimento);
+	}
+	
+	/**
+	 * Retorna a lista de Guias de Atendimento de acordo com o Tipo de Serviço
+	 * 
+	 * @param statusAtendimento
+	 * @return List<GuiaAtendimento>
+	 */
+	public List<GuiaAtendimento> findByTipoServico(TipoServico tipoServico) {
+		return repository.findByTipoServico(tipoServico);
 	}
 
 	/**
@@ -84,7 +95,7 @@ public class GuiaAtendimentoService {
 	public List<GuiaAtendimento> teste(StatusAtendimento statusAtendimento) {
 		List<GuiaAtendimento> atendimentos = new ArrayList<GuiaAtendimento>();
 		for (GuiaAtendimento guiaAtendimento : repository.findAll()) {
-			if (guiaAtendimento.getStatusatendimento() != statusAtendimento) {
+			if (guiaAtendimento.getStatusAtendimento() != statusAtendimento) {
 				atendimentos.add(guiaAtendimento);
 			}
 		}

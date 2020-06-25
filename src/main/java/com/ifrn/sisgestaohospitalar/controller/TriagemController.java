@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import com.ifrn.sisgestaohospitalar.enums.StatusAtendimento;
 import com.ifrn.sisgestaohospitalar.enums.TipoProfissional;
+import com.ifrn.sisgestaohospitalar.enums.TipoServico;
 import com.ifrn.sisgestaohospitalar.model.GuiaAtendimento;
 import com.ifrn.sisgestaohospitalar.model.ProcedimentoSigtap;
 import com.ifrn.sisgestaohospitalar.model.Profissional;
@@ -70,8 +71,7 @@ public class TriagemController {
 		Profissional user = profissionalService.findByCpf(username);
 		mv.addObject("estabelecimento", estabelecimentoService.findAll());
 		mv.addObject("user", user);
-		mv.addObject("guiasAtendimento",
-				guiaAtendimentoService.findByStatusatendimento(StatusAtendimento.AGUARDANDOTRIAGEM));
+		mv.addObject("guiasAtendimento", guiaAtendimentoService.findByTipoServico(TipoServico.EscutaInicial));
 		mv.addObject("navItem1", true);
 		return mv;
 	}
@@ -92,12 +92,16 @@ public class TriagemController {
 		Profissional profissional = profissionalService.findByCpf(username);
 		triagem.setGuiaatendimento(guiaAtendimento);
 		triagem.setProfissional(profissional);
+		List<Profissional> profissionais = new ArrayList<Profissional>();
+		profissionais.addAll(profissionalService.findByTipoprofissional(TipoProfissional.MEDICO));
+		profissionais.addAll(profissionalService.findByTipoprofissional(TipoProfissional.ENFERMEIRO));
+		profissionais.addAll(profissionalService.findByTipoprofissional(TipoProfissional.TECNICO));
 		ModelAndView mv = new ModelAndView("triagem/form-triagem");
 		mv.addObject("estabelecimento", estabelecimentoService.findAll());
 		mv.addObject("user", user);
 		mv.addObject("profissional", profissional);
 		mv.addObject("triagem", triagem);
-		mv.addObject("profissionais", profissionalService.findByTipoprofissional(TipoProfissional.MEDICO));
+		mv.addObject("profissionais", profissionais);
 		mv.addObject("guiaAtendimento", guiaAtendimento);
 		mv.addObject("navItem1", true);
 		return mv;
@@ -112,7 +116,9 @@ public class TriagemController {
 	 */
 	@PostMapping("/salvar-triagem")
 	public ModelAndView save(@Valid Triagem triagem, BindingResult result,
-			@RequestParam("ids_procedimentos") String ids_procedimentos, Principal principal) {
+			@RequestParam("classificacaoDeRisco") String classificacaoDeRisco,
+			@RequestParam("ids_procedimentos") String ids_procedimentos,
+			@RequestParam("optionsRadios") TipoServico tipoServico, Principal principal) {
 
 		GuiaAtendimento guiaAtendimento = triagem.getGuiaatendimento();
 
@@ -121,10 +127,12 @@ public class TriagemController {
 		}
 
 		if (triagem.getDestinocidadao().equals("0")) {
-			triagem.getGuiaatendimento().setStatusatendimento(StatusAtendimento.FINALIZADO);
+			triagem.getGuiaatendimento().setStatusAtendimento(StatusAtendimento.FINALIZADO);
 		}
 
-		if (ids_procedimentos != null) {
+		triagem.getGuiaatendimento().setProfissionaldestino(triagem.getProfissionaldestino());
+
+		if (ids_procedimentos.isEmpty()) {
 			String arrayId[] = ids_procedimentos.split(",");
 			List<ProcedimentoSigtap> procedimentos = new ArrayList<ProcedimentoSigtap>();
 			for (int i = 0; i < arrayId.length; i++) {
@@ -133,11 +141,11 @@ public class TriagemController {
 				triagem.setProcedimentos(procedimentos);
 			}
 		}
-		guiaAtendimento.setStatusatendimento(StatusAtendimento.AGUARDANDOATDMEDICO);
+		guiaAtendimento.setClassificacaoDeRisco(classificacaoDeRisco);
+		guiaAtendimento.setTipoServico(tipoServico);
 		guiaAtendimentoService.save(guiaAtendimento);
 		String username = principal.getName();
 		Profissional profissional = profissionalService.findByCpf(username);
-		triagem.setClassificacaoderisco(triagem.getClassificacaoderisco().toUpperCase());
 		triagem.setData(LocalDate.now());
 		triagem.setHora(LocalTime.now());
 		triagem.setProfissional(profissional);

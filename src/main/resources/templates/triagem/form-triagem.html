@@ -54,8 +54,7 @@
 						</div>
 					</div>
 
-					<form method="post"
-						th:action="@{/triagem/salvar-triagem}"
+					<form method="post" th:action="@{/triagem/salvar-triagem}"
 						th:object="${triagem}">
 
 						<!-- Input responsável por guardar o ID -->
@@ -368,7 +367,7 @@
 													<span class="form-check-sign">Hispertensão Arterial
 														Sistêmica (HAS)</span>
 												</label> <label class="form-check-label"> <input
-													name="doençameningococica" class="form-check-input"
+													name="doencameningococica" class="form-check-input"
 													type="checkbox" value="true"> <span
 													class="form-check-sign">Doença Meningocócica (DM)</span>
 												</label> <label class="form-check-label"> <input name="avc"
@@ -410,11 +409,11 @@
 									</div>
 
 									<div class="col-md-6"
-										th:classappend="${#fields.hasErrors('outrasdoenças')}? 'has-error'">
+										th:classappend="${#fields.hasErrors('outrasdoencas')}? 'has-error'">
 										<div class="form-group">
-											<input th:field="*{outrasdoenças}" type="text"
-												class="form-control" id="outrasdoenças" placeholder="Outros"></input>
-											<small id="outrasdoenças" class="form-text text-muted"></small>
+											<input th:field="*{outrasdoencas}" type="text"
+												class="form-control" id="outrasdoencas" placeholder="Outros"></input>
+											<small id="outrasdoencas" class="form-text text-muted"></small>
 										</div>
 									</div>
 								</div>
@@ -427,42 +426,37 @@
 							</div>
 							<div class="card-body">
 								<div class="row">
-									<div class="col-md-12 row"
-										th:classappend="${#fields.hasErrors('classificacaoderisco')}? 'has-error'">
+									<div class="col-md-12 row">
 										<div class="form-group col-md-2">
-											<input th:field="*{classificacaoderisco}" type="radio"
-												class="radio-class" id="control_01" name="vermelho"
-												value="vermelho" checked> <label class="label-input"
-												for="control_01">
+											<input type="radio" class="radio-class" id="control_01"
+												name="classificacaoDeRisco" value="VERMELHO" checked>
+											<label class="label-input" for="control_01">
 												<h2 style="color: white;">Vermelho</h2>
 												<p></p>
 											</label>
 
 										</div>
 										<div class="form-group col-md-2">
-											<input th:field="*{classificacaoderisco}" type="radio"
-												class="radio-class" id="control_02" name="laranja"
-												value="laranja" checked> <label
-												class="label-input-orange" for="control_02">
+											<input type="radio" class="radio-class" id="control_02"
+												name="classificacaoDeRisco" value="LARANJA" checked>
+											<label class="label-input-orange" for="control_02">
 												<h2 style="color: white;">Laranja</h2>
 												<p></p>
 											</label>
 
 										</div>
 										<div class="form-group col-md-2">
-											<input th:field="*{classificacaoderisco}" type="radio"
-												class="radio-class" id="control_03" name="amarelo"
-												value="amarelo" checked> <label
-												class="label-input-yellow" for="control_03">
+											<input type="radio" class="radio-class" id="control_03"
+												name="classificacaoDeRisco" value="AMARELO" checked>
+											<label class="label-input-yellow" for="control_03">
 												<h2 style="color: white;">Amarelo</h2>
 												<p></p>
 											</label>
 
 										</div>
 										<div class="form-group col-md-2">
-											<input th:field="*{classificacaoderisco}" type="radio"
-												class="radio-class" id="control_04" name="verde"
-												value="verde" checked> <label
+											<input type="radio" class="radio-class" id="control_04"
+												name="classificacaoDeRisco" value="VERDE" checked> <label
 												class="label-input-green" for="control_04">
 												<h2 style="color: white;">Verde</h2>
 												<p></p>
@@ -470,10 +464,9 @@
 
 										</div>
 										<div class="form-group col-md-2">
-											<input th:field="*{classificacaoderisco}" type="radio"
-												class="radio-class" id="control_05" name="azul" value="azul"
-												checked> <label class="label-input-blue"
-												for="control_05">
+											<input type="radio" class="radio-class" id="control_05"
+												name="classificacaoDeRisco" value="AZUL" checked> <label
+												class="label-input-blue" for="control_05">
 												<h2 style="color: white;">Azul</h2>
 												<p></p>
 											</label>
@@ -527,9 +520,9 @@
 									<div class="col-md-12">
 										<div class="form-check">
 											<label class="form-radio-label"> <input id="liberar"
-											 	class="form-radio-input" type="radio" th:field="*{destinocidadao}"
-												value="0"> <span class="form-radio-sign">Liberar
-													Cidadão</span>
+												class="form-radio-input" type="radio"
+												th:field="*{destinocidadao}" value="0"> <span
+												class="form-radio-sign">Liberar Cidadão</span>
 											</label> <label class="form-radio-label ml-3"> <input
 												id="adicionar" class="form-radio-input" type="radio"
 												th:field="*{destinocidadao}" value="1"> <span
@@ -538,24 +531,44 @@
 											</label>
 										</div>
 									</div>
-									<div class="col-md-5" id="profissional-destino">
-										<div class="form-group">
-											<label for="nome">Profissional de Destino:</label><select
-												th:field="*{profissionaldestino}"
-												class="form-control form-control">
-												<option th:each="profissional : ${profissionais}"
-													th:value="${profissional.id}"
-													th:text="${profissional.nome}"></option>
-											</select>
+									<div class="col-md-12" id="profissional-destino">
+										<div class="row">
+											<div class="col-md-6">
+												<div class="form-group">
+													<input type="hiden" name="optionsRadios" value="">
+													<label for="nome">Profissional de Destino:</label><select
+														th:field="*{profissionaldestino}"
+														class="form-control form-control">
+														<option th:each="profissional : ${profissionais}"
+															th:value="${profissional.id}"
+															th:text="${profissional.nome}"></option>
+													</select>
+												</div>
+											</div>
+											<div class="col-md-6">
+												<div class="form-check">
+													<label>Tipo de Serviço:</label>
+													<div class="servicos">
+														<div class="row">
+															<label class="form-radio-label ml-3"> <input
+																class="form-radio-input" type="radio"
+																name="optionsRadios" value="AtendimentoMedico">
+																<span class="form-radio-sign">Atendimento Médico</span>
+															</label> <label class="form-radio-label ml-3"> <input
+																class="form-radio-input" type="radio"
+																name="optionsRadios" value="AdminMedicamentos">
+																<span class="form-radio-sign">Adm. de
+																	Medicamentos</span>
+															</label>
+														</div>
+													</div>
+												</div>
+											</div>
 										</div>
 									</div>
 								</div>
 							</div>
 						</div>
-
-
-
-
 						<div class="card-action">
 							<button type="submit" class="btn btn-success">Concluir</button>
 							<button type="reset" class="btn btn-danger">Cancelar</button>

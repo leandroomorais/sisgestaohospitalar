@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html layout:decorate="~{/layouts/layout-modulos}" lang="pt"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity"
+	xmlns:layout="http://ultraq.net.nz/thymeleaf/layout">
+
+<body>
+	<div class="main-panel" layout:fragment="main-panel">
+		<div class="container">
+			<div class="page-inner">
+				<div class="page-header">
+					<h4 class="page-title">Administração de Medicamentos</h4>
+					<ul class="breadcrumbs">
+						<li class="nav-home"><i class="flaticon-home"></i></li>
+						<li class="separator"><i class="flaticon-right-arrow"></i></li>
+						<li class="nav-item"><a
+							th:href="@{/administracao-medicamento/cidadaos-atendimento}">Fila de
+								Atendimento</a></li>
+
+					</ul>
+				</div>
+
+				<div class="row">
+					<div class="col-md-12">
+						<div class="card">
+							<div class="card-header">
+								<h4 class="card-title">Fila de Atendimento</h4>
+							</div>
+							<div class="card-body">
+								<div class="table-responsive">
+									<table id="basic-datatables"
+										class="display table table-striped table-hover dataTable no-footer">
+										<thead>
+											<tr>
+												<th scope="col"></th>
+												<th scope="col">Nome</th>
+												<th scope="col">Profissional de Destino</th>
+												<th scope="col">Classificação de Risco</th>
+												<th scope="col">Ações</th>
+											</tr>
+										</thead>
+										<tfoot>
+											<tr th:if="${guiasAtendimento.size()} > 5">
+												<th scope="col"></th>
+												<th scope="col">Nome</th>
+												<th scope="col">Profissional de Destino</th>
+												<th scope="col">Classificação de Risco</th>
+												<th scope="col">Ações</th>
+											</tr>
+										</tfoot>
+										<tbody th:each="guiaAtendimento : ${guiasAtendimento}">
+											<tr
+												th:classappend="|${guiaAtendimento.classificacaoDeRisco == 'VERMELHO' ? 'red' : ''} ${guiaAtendimento.classificacaoDeRisco == 'AMARELO' ? 'yellow' : ''}
+										${guiaAtendimento.classificacaoDeRisco == 'AZUL' ? 'blue' : ''} ${guiaAtendimento.classificacaoDeRisco == 'LARANJA' ? 'orange' : ''} ${guiaAtendimento.classificacaoDeRisco == 'VERDE' ? 'green' : ''}|">
+												<td><span
+													th:if="${guiaAtendimento.cidadao.sexo == 'M'}"><i
+														class="fa fa-male"></i></span> <span
+													th:if="${guiaAtendimento.cidadao.sexo == 'F'}"><i
+														class="fa fa-female"></i></span></td>
+												<td th:text="${guiaAtendimento.cidadao.nome}"></td>
+												<td th:text="${guiaAtendimento.profissionaldestino.nome}"></td>
+												<td
+													th:classappend="|${guiaAtendimento.classificacaoDeRisco == 'VERMELHO' ? 'red' : ''} ${guiaAtendimento.classificacaoDeRisco == 'AMARELO' ? 'yellow' : ''}
+										${guiaAtendimento.classificacaoDeRisco == 'AZUL' ? 'blue' : ''} ${guiaAtendimento.classificacaoDeRisco == 'LARANJA' ? 'orange' : ''} ${guiaAtendimento.classificacaoDeRisco == 'VERDE' ? 'green' : ''}|"><i
+													class="fa fa-circle" aria-hidden="true"></i></td>
+												<td><a class="btn btn-primary btn-sm"
+													th:href="@{/administracao-medicamento/realizar-atendimento/{id} (id=${guiaAtendimento.id})}">Realizar
+														Atendimento <i class="fa fa-user-md"></i>
+												</a></td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+
+		<footer class="footer">
+			<div class="container-fluid">
+				<nav class="pull-left">
+					<th:block th:each="estabelecimento : ${estabelecimento}">
+						<span class="text-primary" th:text="${estabelecimento.nome}"></span>
+					</th:block>
+				</nav>
+				<div class="copyright ml-auto">Sistema de Gestão Hospitalar,
+					2020.</div>
+			</div>
+		</footer>
+	</div>
+</body>
+
+</html>
