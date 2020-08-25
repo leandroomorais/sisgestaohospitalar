@@ -77,7 +77,7 @@ A156Pleuris tuberculoso, com confirmação bacteriológica e histológica           
 A157Tuberculose primária das vias respiratórias, com confirmação bacteriológica e histológica           1IN0000
 A158Outras formas de tuberculose das vias respiratórias, com confirmação bacteriológica e histológica   1IN0000
 A159Tuberculose não especificada das vias respiratórias, com confirmação bacteriológica e histológica   1IN0000
-A16 Tuberculose das vias respiratórias sem confirmação bacteriológica ou histológica                    0IN0000
+A16 Tuberculose das vias respiratórias sem confirmação bacteriológica ou histológica                    1IN0000
 A160Tuberculose pulmonar com exames bacteriológico e histológico negativos                              1IN0000
 A161Tuberculose pulmonar, sem realização de exame bacteriológico ou histológico                         1IN0000
 A162Tuberculose pulmonar, sem menção de confirmação bacteriológica ou histológica                       1IN0000
@@ -87,12 +87,12 @@ A165Pleurisia tuberculosa, sem menção de confirmação bacteriológica ou histológi
 A167Tuberculosa respiratória primária sem menção de confirmação bacteriológica ou histológica           1IN0000
 A168Outras formas de tubercul. das vias respirat., sem menção de confirm. bacteriológica ou histológica 1IN0000
 A169Tuberculose respiratória, não especificada, sem menção de confirmação bacteriológica ou histológica 1IN0000
-A17 Meningite tuberculosa                                                                               0IN0000
+A17 Meningite tuberculosa                                                                               1IN0000
 A170Meningite tuberculosa                                                                               1IN0000
 A171Tuberculoma meníngeo                                                                                1IN0000
 A178Outras tuberculoses do sistema nervoso                                                              1IN0000
 A179Tuberculose não especificada do sistema nervoso                                                     1IN0000
-A18 Tuberculose de outros orgãos                                                                        0IN0000
+A18 Tuberculose de outros orgãos                                                                        1IN0000
 A180Tuberculose óssea e das articulações                                                                1IN0000
 A181Tuberculose do aparelho geniturinário                                                               1IN0000
 A182Linfadenopatia tuberculosa periférica                                                               1IN0000
@@ -102,13 +102,13 @@ A185Tuberculose do olho                                                         
 A186Tuberculose do ouvido                                                                               1IN0000
 A187Tuberculose das supra-renais                                                                        1IN0000
 A188Tuberculose de outros órgãos especificados                                                          1IN0000
-A19 Tuberculose miliar                                                                                  0IN0000
+A19 Tuberculose miliar                                                                                  1IN0000
 A190Tuberculose miliar aguda de localização única e especificada                                        1IN0000
 A191Tuberculose miliar aguda de múltiplas localizações                                                  1IN0000
 A192Tuberculose miliar aguda não especificada                                                           1IN0000
 A198Outras tuberculoses miliares                                                                        1IN0000
 A199Tuberculose miliar não especificada                                                                 1IN0000
-A20 Peste                                                                                               0IN0000
+A20 Peste                                                                                               2IN0000
 A200Peste bubônica                                                                                      2IN0000
 A201Peste celulocutânea                                                                                 2IN0000
 A202Peste pneumônica                                                                                    2IN0000
@@ -116,7 +116,7 @@ A203Peste meníngea                                                              
 A207Peste septicêmica                                                                                   2IN0000
 A208Outras formas de peste                                                                              2IN0000
 A209Peste, forma não especificada                                                                       2IN0000
-A21 Tularemia                                                                                           0IN0000
+A21 Tularemia                                                                                           2IN0000
 A210Tularemia ulceroglandular                                                                           2IN0000
 A211Tularemia oculoglandular                                                                            2IN0000
 A212Tularemia pulmonar                                                                                  2IN0000
@@ -124,7 +124,7 @@ A213Tularemia gastrointestinal                                                  
 A217Tularemia generalizada                                                                              2IN0000
 A218Outras formas de tularemia                                                                          2IN0000
 A219Tularemia, forma não especificada                                                                   2IN0000
-A22 Carbúnculo                                                                                          0IN0000
+A22 Carbúnculo                                                                                          2IN0000
 A220Carbúnculo cutâneo                                                                                  2IN0000
 A221Carbúnculo pulmonar                                                                                 2IN0000
 A222Carbúnculo gastrointestinal                                                                         2IN0000
@@ -153,7 +153,7 @@ A260Erisipelóide cutâneo                                                        
 A267Septicemia por Erysipelothrix                                                                       0IN0000
 A268Outras formas de erisipelóide                                                                       0IN0000
 A269Erisipelóide não especificado                                                                       0IN0000
-A27 Leptospirose                                                                                        0IN0000
+A27 Leptospirose                                                                                        1IN0000
 A270Leptopirose icterohemorrágica                                                                       1IN0000
 A278Outras formas de leptospirose                                                                       1IN0000
 A279Leptospirose não especificada                                                                       1IN0000
@@ -163,7 +163,7 @@ A281Doença por arranhadura do gato                                              
 A282Yersiniose extra-intestinal                                                                         0IN0000
 A288Outras doenças bacterianas zoonóticas especificadas não classificadas em outra parte                0IN0000
 A289Doença bacteriana zoonótica não especificada                                                        0IN0000
-A30 Doença de Hansen (lepra)                                                                            0IN0000
+A30 Doença de Hansen (lepra)                                                                            2IN0000
 A300Hanseníase [lepra] indeterminada                                                                    1IN0000
 A301Hanseníase [lepra] tuberculóide                                                                     1IN0000
 A302Hanseníase [lepra] tuberculóide borderline                                                          1IN0000
@@ -186,20 +186,20 @@ A329Listeriose não especificada                                                 
 A33 Tétano do recém-nascido [neonatal]                                                                  1IN0000
 A34 Tétano obstétrico                                                                                   1FN0000
 A35 Outros tipos de tétano                                                                              1IN0000
-A36 Difteria                                                                                            0IN0000
+A36 Difteria                                                                                            1IN0000
 A360Difteria faríngea                                                                                   1IN0000
 A361Difteria nasofaríngea                                                                               1IN0000
 A362Difteria laríngea                                                                                   1IN0000
 A363Difteria cutânea                                                                                    1IN0000
 A368Outras formas de difteria                                                                           1IN0000
 A369Difteria não especificada                                                                           1IN0000
-A37 Coqueluche                                                                                          0IN0000
+A37 Coqueluche                                                                                          1IN0000
 A370Coqueluche por Bordetella Pertussis                                                                 1IN0000
 A371Coqueluche por Bordetella Parapertussis                                                             1IN0000
 A378Coqueluche por outras espécies da Bordetella                                                        1IN0000
 A379Coqueluche não especificada                                                                         1IN0000
 A38 Escarlatina                                                                                         1IN0000
-A39 Infecção meningogócica                                                                              0IN0000
+A39 Infecção meningogócica                                                                              1IN0000
 A390Meningite meningocócica                                                                             1IN0000
 A391Síndrome de Waterhouse-Friderichsen                                                                 1IN0000
 A392Meningococcemia aguda                                                                               1IN0000
@@ -252,11 +252,11 @@ A488Outras doenças bacterianas especificadas                                    
 A49 Infecção bacteriana de localização não especificada                                                 0IN0000
 A490Infecção estafilocócica de localização não especificada                                             0IN0000
 A491Infecção estreptocócica de localização não especificada                                             0IN0000
-A492Infecção por Haemophilus influenzae de localização não especificada                                 0IN0000
+A492Infecção por Haemophilus influenzae de localização não especificada                                 1IN0000
 A493Infecção por Mycoplasma de localização não especificada                                             0IN0000
 A498Outras infecções bacterianas de localização não especificada                                        0IN0000
 A499Infecção bacteriana não especificada                                                                0IN0000
-A50 sífilis congênita                                                                                   0IN0000
+A50 sífilis congênita                                                                                   1IN0000
 A500Sífilis congênita precoce sintomática                                                               1IN0000
 A501Sífilis congênita precoce, forma latente                                                            1IN0000
 A502Sífilis congênita precoce não especificada                                                          1IN0000
@@ -266,7 +266,7 @@ A505Outras formas tardias e sintomáticas da sífilis congênita                   
 A506Sífilis congênita tardia latente                                                                    1IN0000
 A507Sífilis congênita tardia não especificada                                                           1IN0000
 A509Sífilis congênita não especificada                                                                  1IN0000
-A51 sífilis precoce                                                                                     0IN0000
+A51 sífilis precoce                                                                                     1IN0000
 A510Sífilis genital primária                                                                            1IN0000
 A511Sífilis anal primária                                                                               1IN0000
 A512Sífilis primária de outras localizações                                                             1IN0000
@@ -284,7 +284,7 @@ A528Sífilis tardia latente                                                      
 A529Sífilis tardia não especificada                                                                     0IN0000
 A53 Outras formas e as não especificadas da sífilis                                                     0IN0000
 A530Sífilis latente, não especificada se recente ou tardia                                              0IN0000
-A539Sífilis não especificada                                                                            0IN0000
+A539Sífilis não especificada                                                                            1IN0000
 A54 Infecção gonocócica                                                                                 0IN0000
 A540Infecção gonocócica do trato genitur. inferior, sem abscesso periuretral ou das glândulas acessórias0IN0000
 A541Infecção gonocócica do trato genitur. inferior, com abscesso periuretral ou das glândulas acessórias0IN0000
@@ -360,7 +360,7 @@ A751Tifo recrudescente [doença de Brill]                                        
 A752Tifo por Rickettsia Typhi                                                                           0IN0000
 A753Tifo por Rickettsia Tsutsugamuchi                                                                   0IN0000
 A759Tifo não especificado                                                                               0IN0000
-A77 Febre maculosa (rickettsioses transmitidas por carrapatos)                                          0IN0000
+A77 Febre maculosa (rickettsioses transmitidas por carrapatos)                                          2IN0000
 A770Febre maculosa por Rickettsia Richettsii                                                            2IN0000
 A771Febre maculosa por Rickettsia Conorii                                                               2IN0000
 A772Febre maculosa devida à Rickettsia Siberica                                                         1IN0000
@@ -368,12 +368,12 @@ A773Febre maculosa devida à Rickettsia Australis                                
 A778Outras febres maculosas                                                                             1IN0000
 A779Febre maculosa não especificada                                                                     1IN0000
 A78 Febre Q                                                                                             0IN0000
-A79 Outras rickettsioses                                                                                0IN0000
-A790Febre das trincheiras                                                                               0IN0000
-A791Rickettsiose variceliforme devida à rickettsia akari                                                0IN0000
-A798Outros tipos de rickettsioses especificadas                                                         0IN0000
-A799Rickettsiose não especificada                                                                       0IN0000
-A80 Poliomielite aguda                                                                                  0IN0000
+A79 Outras rickettsioses                                                                                2IN0000
+A790Febre das trincheiras                                                                               2IN0000
+A791Rickettsiose variceliforme devida à rickettsia akari                                                2IN0000
+A798Outros tipos de rickettsioses especificadas                                                         2IN0000
+A799Rickettsiose não especificada                                                                       2IN0000
+A80 Poliomielite aguda                                                                                  2IN0000
 A800Poliomielite paralítica aguda, associada ao vírus vacinal                                           2IN0000
 A801Poliomielite paralítica aguda, vírus selvagem importado                                             2IN0000
 A802Poliomielite paralítica aguda, vírus selvagem indígena                                              2IN0000
@@ -386,7 +386,7 @@ A811Panencefalite esclerosante subaguda                                         
 A812Leucoencefalopatia multifocal progressiva                                                           0IN0000
 A818Outras infecções por vírus atípicos do sistema nervoso central                                      0IN0000
 A819Infecção não especificada do sistema nervosos central por vírus atípicos                            0IN0000
-A82 Raiva                                                                                               0IN0000
+A82 Raiva                                                                                               2IN0000
 A820Raiva silvestre                                                                                     2IN0000
 A821Raiva urbana                                                                                        2IN0000
 A829Raiva não especificada                                                                              2IN0000
@@ -442,8 +442,8 @@ A95 Febre amarela                                                               
 A950Febre amarela silvestre                                                                             2IN0000
 A951Febre amarela urbana                                                                                2IN0000
 A959Febre amarela não especificada                                                                      2IN0000
-A96 Febre hemorrágica por arenavírus                                                                    0IN0000
-A960Febre hemorrágica de Junin                                                                          0IN0000
+A96 Febre hemorrágica por arenavírus                                                                    2IN0000
+A960Febre hemorrágica de Junin                                                                          2IN0000
 A961Febre hemorrágica de Machupo                                                                        2IN0000
 A962Febre de Lassa                                                                                      2IN0000
 A968Outras febres hemorrágicas por arenavírus                                                           2IN0000
@@ -467,23 +467,23 @@ B005Afecções oculares devidas ao vírus do herpes                                
 B007Doença disseminada devida ao vírus do herpes                                                        0IN0000
 B008Outras formas de infecção devida ao vírus do herpes                                                 0IN0000
 B009Infecção não especificada devida ao vírus do herpes                                                 0IN0000
-B01 Varicela                                                                                            0IN0000
-B010Meningite por varicela                                                                              0IN0000
-B011Encefalite por varicela                                                                             0IN0000
-B012Pneumopatia varicelosa                                                                              0IN0000
-B018Varicela com outras complicações                                                                    0IN0000
-B019Varicela sem complicação                                                                            0IN0000
-B02 Herpes Zoster (zona)                                                                                0IN0000
-B020Encefalite pelo vírus do herpes zoster                                                              0IN0000
-B021Meningite pelo vírus do herpes zoster                                                               0IN0000
-B022Herpes Zoster acompanhado de outras manifestações neurológicas                                      0IN0000
-B023Herpes Zoster oftálmico                                                                             0IN0000
-B027Herpes Zoster disseminado                                                                           0IN0000
-B028Herpes Zoster com outras complicações                                                               0IN0000
-B029Herpes Zoster sem complicação                                                                       0IN0000
+B01 Varicela                                                                                            1IN0000
+B010Meningite por varicela                                                                              1IN0000
+B011Encefalite por varicela                                                                             1IN0000
+B012Pneumopatia varicelosa                                                                              1IN0000
+B018Varicela com outras complicações                                                                    1IN0000
+B019Varicela sem complicação                                                                            1IN0000
+B02 Herpes Zoster (zona)                                                                                1IN0000
+B020Encefalite pelo vírus do herpes zoster                                                              1IN0000
+B021Meningite pelo vírus do herpes zoster                                                               2IN0000
+B022Herpes Zoster acompanhado de outras manifestações neurológicas                                      1IN0000
+B023Herpes Zoster oftálmico                                                                             1IN0000
+B027Herpes Zoster disseminado                                                                           1IN0000
+B028Herpes Zoster com outras complicações                                                               1IN0000
+B029Herpes Zoster sem complicação                                                                       1IN0000
 B03 Varíola                                                                                             2IN0000
 B04 Varíola dos macacos [Monkeypox]                                                                     2IN0000
-B05 Sarampo                                                                                             0IN0000
+B05 Sarampo                                                                                             2IN0000
 B050Sarampo complicado por encefalite                                                                   2IN0000
 B051Sarampo complicado por meningite                                                                    2IN0000
 B052Sarampo complicado por pneumonia                                                                    1IN0000
@@ -491,7 +491,7 @@ B053Sarampo complicado por otite média                                          
 B054Sarampo com complicações intestinais                                                                2IN0000
 B058Sarampo com outras complicações                                                                     2IN0000
 B059Sarampo sem complicação                                                                             2IN0000
-B06 Rubéola                                                                                             0IN0000
+B06 Rubéola                                                                                             2IN0000
 B060Rubéola com complicações neurológicas                                                               2IN0000
 B068Rubéola com outras complicações                                                                     2IN0000
 B069Rubéola sem complicação                                                                             2IN0000
@@ -505,28 +505,28 @@ B084Estomatite vesicular devida a enterovírus com exantema                      
 B085Faringite vesicular devida a enterovírus                                                            0IN0000
 B088Outras infecções virais especificadas caracterizadas por lesões de pele e das membranas mucosas     0IN0000
 B09 Infecção viral não especificada caracterizada por lesões da pele e membranas mucosas                0IN0000
-B15 Hepatite aguda A                                                                                    0IN0000
-B150Hepatite A com coma hepático                                                                        0IN0000
-B159Hepatite A sem coma hepático                                                                        0IN0000
+B15 Hepatite aguda A                                                                                    1IN0000
+B150Hepatite A com coma hepático                                                                        1IN0000
+B159Hepatite A sem coma hepático                                                                        1IN0000
 B16 Hepatite aguda B                                                                                    0IN0000
 B160Hepatite aguda B com agente delta (co-infecção), com coma hepático                                  1IN0000
 B161Hepatite aguda B com agente delta, (co-infecção), sem coma hepático                                 1IN0000
 B162Hepatite aguda B sem agente delta, com coma hepático                                                1IN0000
 B169Hepatite aguda B sem agente delta e sem coma hepático                                               1IN0000
-B17 Outras hepatites virais agudas                                                                      0IN0000
-B170(Super)Infecção delta aguda de portador de hepatite B                                               0IN0000
+B17 Outras hepatites virais agudas                                                                      1IN0000
+B170(Super)Infecção delta aguda de portador de hepatite B                                               1IN0000
 B171Hepatite aguda C                                                                                    1IN0000
-B172Hepatite aguda E                                                                                    0IN0000
-B178Outras hepatites virais agudas especificadas                                                        0IN0000
+B172Hepatite aguda E                                                                                    1IN0000
+B178Outras hepatites virais agudas especificadas                                                        1IN0000
 B18 Hepatite viral crônica                                                                              0IN0000
 B180Hepatite viral crônica B com agente delta                                                           0IN0000
 B181Hepatite crônica viral B sem agente delta                                                           0IN0000
 B182Hepatite viral crônica C                                                                            0IN0000
 B188Outras hepatites crônicas virais                                                                    0IN0000
 B189Hepatite viral crônica não especificada                                                             0IN0000
-B19 Hepatite viral não especificada                                                                     0IN0000
-B190Hepatite viral, não especificada, com coma                                                          0IN0000
-B199Hepatite viral, não especificada, sem coma                                                          0IN0000
+B19 Hepatite viral não especificada                                                                     1IN0000
+B190Hepatite viral, não especificada, com coma                                                          1IN0000
+B199Hepatite viral, não especificada, sem coma                                                          1IN0000
 B20 Doença pelo HIV resultando em doenças infecciosas e parasitárias                                    0IN0000
 B200Doença pelo HIV resultando em infecções micobacterianas                                             1IN0000
 B201Doença pelo HIV resultando em outras infecções bacterianas                                          1IN0000
@@ -538,7 +538,7 @@ B206Doença pelo HIV resultando em pneumonia por Pneumocystis jirovecii          
 B207Doença pelo HIV resultando em infecções múltiplas                                                   1IN0000
 B208Doença pelo HIV resultando em outras doenças infecciosas e parasitárias                             1IN0000
 B209Doença pelo HIV resultando em doença infecciosa ou parasitária não especificada                     1IN0000
-B21 Doença pelo HIV resultando em neoplasias malígnas                                                   0IN0000
+B21 Doença pelo HIV resultando em neoplasias malígnas                                                   1IN0000
 B210Doença pelo HIV resultando em sarcoma de kaposi                                                     1IN0000
 B211Doença pelo HIV resultando em linfoma de burkitt                                                    1IN0000
 B212Doença pelo HIV resultando em outros tipos de linfoma não-hodgkin                                   1IN0000
@@ -546,12 +546,12 @@ B213Doença pelo HIV resultando em outras neoplasias malignas dos tecidos linf., 
 B217Doença pelo HIV resultando em múltiplas neoplasias malignas                                         1IN0000
 B218Doença pelo HIV resultando em outras neoplasias malignas                                            1IN0000
 B219Doença pelo HIV resultando em neoplasia maligna não especificada                                    1IN0000
-B22 Doença pelo HIV resultando em doenças especificadas                                                 0IN0000
+B22 Doença pelo HIV resultando em doenças especificadas                                                 1IN0000
 B220Doença pelo HIV resultando em encefalopatia                                                         1IN0000
 B221Doença pelo HIV resultando em pneumonite intersticial linfática                                     1IN0000
 B222Doença pelo HIV resultando em síndrome de emaciação                                                 1IN0000
 B227Doença pelo HIV resultando em doenças múltiplas classificadas em outra parte                        1IN0000
-B23 Doença pelo HIV resultando em outras doenças especificadas                                          0IN0000
+B23 Doença pelo HIV resultando em outras doenças especificadas                                          1IN0000
 B230Síndrome de infecção aguda pelo hiv                                                                 1IN0000
 B231Doença pelo HIV resultando em linfadenopatias generalizadas (persistentes)                          1IN0000
 B232Doença pelo HIV resultando em anomalias hematológicas e imunológicas não classificada em out. parte 1IN0000
@@ -704,24 +704,24 @@ B484Penicilose                                                                  
 B487Micoses oportunistas                                                                                0IN0000
 B488Outras micoses especificadas                                                                        0IN0000
 B49 Micose não especificada                                                                             0IN0000
-B50 Malária por plasmodium falciparum                                                                   0IN0000
-B500Malária por Plasmodium Falciparum com complicações cerebrais                                        0IN0000
-B508Outras formas graves e complicadas de malária por Plasmodium falciparum                             0IN0000
-B509Malária não especificada por plasmodium falciparum                                                  0IN0000
-B51 Malária por plasmodium vivax                                                                        0IN0000
-B510Malária por Plasmodium Vivax com rotura do baço                                                     0IN0000
-B518Malária por Plasmodium Vivax com outras complicações                                                0IN0000
-B519Malária por Plasmodium Vivax sem complicações                                                       0IN0000
-B52 Malária por plasmodium maláriae                                                                     0IN0000
-B520Malária por Plasmodium Malariae com nefropatia                                                      0IN0000
-B528Malária por Plasmodium Malariae com outras complicações                                             0IN0000
-B529Malária por Plasmodium Malariae sem complicações                                                    0IN0000
-B53 Outras formas de malária confirmadas por exames parasitológicos                                     0IN0000
-B530Malária por Plasmodium Ovale                                                                        0IN0000
-B531Malária por plasmódios de macacos                                                                   0IN0000
-B538Outras formas de malárias com confirmação parasitológica, não classificadas em outra parte          0IN0000
+B50 Malária por plasmodium falciparum                                                                   1IN0000
+B500Malária por Plasmodium Falciparum com complicações cerebrais                                        1IN0000
+B508Outras formas graves e complicadas de malária por Plasmodium falciparum                             1IN0000
+B509Malária não especificada por plasmodium falciparum                                                  1IN0000
+B51 Malária por plasmodium vivax                                                                        1IN0000
+B510Malária por Plasmodium Vivax com rotura do baço                                                     1IN0000
+B518Malária por Plasmodium Vivax com outras complicações                                                1IN0000
+B519Malária por Plasmodium Vivax sem complicações                                                       1IN0000
+B52 Malária por plasmodium maláriae                                                                     1IN0000
+B520Malária por Plasmodium Malariae com nefropatia                                                      1IN0000
+B528Malária por Plasmodium Malariae com outras complicações                                             1IN0000
+B529Malária por Plasmodium Malariae sem complicações                                                    1IN0000
+B53 Outras formas de malária confirmadas por exames parasitológicos                                     1IN0000
+B530Malária por Plasmodium Ovale                                                                        1IN0000
+B531Malária por plasmódios de macacos                                                                   1IN0000
+B538Outras formas de malárias com confirmação parasitológica, não classificadas em outra parte          1IN0000
 B54 Malária não especificada                                                                            1IN0000
-B55 Leishmaniose                                                                                        0IN0000
+B55 Leishmaniose                                                                                        1IN0000
 B550Leishmaniose visceral                                                                               1IN0000
 B551Leishmaniose cutânea                                                                                1IN0000
 B552Leishmaniose cutâneo-mucosa                                                                         1IN0000
@@ -730,7 +730,7 @@ B56 Tripanossomiase africana                                                    
 B560Tripanossomíase por Trypanosoma Gambiense                                                           0IN0000
 B561Tripanossomíase por Trypanosoma Rhodesiense                                                         0IN0000
 B569Tripanossomíase africana não especificada                                                           0IN0000
-B57 Doença de chagas                                                                                    0IN0000
+B57 Doença de chagas                                                                                    1IN0000
 B570Forma aguda da doença de Chagas, com comprometimento cardíaco                                       2IN0000
 B571Forma aguda da doença de chagas, sem comprometimento cardíaco                                       2IN0000
 B572Doença de Chagas (crônica) com comprometimento cardíaco                                             1IN0000
@@ -2837,7 +2837,7 @@ G003Meningite estafilocócica                                                    
 G008Outras meningites bacterianas                                                                       1IN0000
 G009Meningite bacteriana não especificada                                                               1IN0000
 G01 Meningite em doenças bacterianas classificadas em outra parte                                       0IN0000
-G02 Meningite em outras doenças infecciosas e parasitárias classificadas em outra parte                 0IN0000
+G02 Meningite em outras doenças infecciosas e parasitárias classificadas em outra parte                 1IN0000
 G020Meningite em doenças virais classificadas em outra parte                                            0IN0000
 G021Meningite em micoses                                                                                0IN0000
 G028Meningite em outras doenças infecciosas e parasitárias classificadas em outra parte                 0IN0000
@@ -6866,12 +6866,12 @@ O96 MORTE POR QUALQUER CAUSA OBSTETRICA QUE OCORRE MAIS DE 42 DIAS MAS MENOS DE 
 O97 MORTE POR SEQUELAS DE CAUSAS OBSTETRICAS DIRETAS                                                    0FN0000
 O98 Doença infecciosa parasitária materna cop mas que compliquem a gravidez o parto e o puerpério       0IN0000
 O980Tuberculose complicando a gravidez, o parto e o puerpério                                           0FN0000
-O981Sífilis complicando a gravidez, o parto e o puerpério                                               0FN0000
+O981Sífilis complicando a gravidez, o parto e o puerpério                                               1FN0000
 O982Gonorréia complicando a gravidez, o parto e o puerpério                                             0FN0000
 O983Out infec em que a via de transmissao e predominant sexual complicgravidez o parto e puerperio      0FN0000
 O984Hepatite viral complicando a gravidez, o parto e puerpério                                          0FN0000
 O985Outras doenças virais complicando a gravidez, o parto e o puerpério                                 0FN0000
-O986Doenças causadas por protozoários complicando a gravidez, o parto e o puerpério                     0FN0000
+O986Doenças causadas por protozoários complicando a gravidez, o parto e o puerpério                     1FN0000
 O988Outras doenças infecciosas e parasitárias maternas complicando a gravidez, o parto e o puerpério    0FN0000
 O989Doenças infecciosas e parasitárias maternas, não especif., complic. a gravidez, parto e puerpério   0FN0000
 O99 Doenças da mãe classificadas em outra partemas que complicam a gravidez o parto e o puerpério       0IN0000
@@ -7081,7 +7081,7 @@ P368Outras septicemias bacterianas do recém-nascido                             
 P369Septicemia bacteriana não especificada do recém-nascido                                             0IN0000
 P37 Doenças infecciosas e parasitárias congênitas                                                       0IN0000
 P370Tuberculose congênita                                                                               0IN0000
-P371Toxoplasmose congênita                                                                              0IN0000
+P371Toxoplasmose congênita                                                                              1IN0000
 P372Listeriose neonatal (disseminada)                                                                   0IN0000
 P373Malária falciparum congênita                                                                        0IN0000
 P374Outras malárias congênitas                                                                          0IN0000
@@ -9605,7 +9605,7 @@ T654Efeito tóxico do dissulfeto de carbono                                      
 T655Efeito tóxico da nitroglicerina e outros ácidos e ésteres nítricos                                  0IN0000
 T656Efeito tóxico de tinturas e corantes, não classificadas em outra parte                              0IN0000
 T658Efeito tóxico de outras substâncias especificadas                                                   0IN0000
-T659Efeito tóxico de substância não especificada                                                        0IN0000
+T659Efeito tóxico de substância não especificada                                                        1IN0000
 T66 Efeitos não especificados de radiação                                                               0IN0000
 T67 Efeitos do calor e da luz                                                                           0IN0000
 T670Golpe de calor e insolação                                                                          0IN0000
@@ -9754,8 +9754,8 @@ T874Infecção de coto da amputação                                               
 T875Necrose do coto da amputação                                                                        0IN0000
 T876Outras complicações e as não especificadas do coto de amputação                                     0IN0000
 T88 Outras complicações de cuidados medicos e cirurgicos não classificadas em outra parte               0IN0000
-T880Infecção subseqüente à imunização                                                                   0IN0000
-T881Outras complicações subseqüentes à imunização não classificadas em outra parte                      0IN0000
+T880Infecção subseqüente à imunização                                                                   2IN0000
+T881Outras complicações subseqüentes à imunização não classificadas em outra parte                      2IN0000
 T882Choque devido à anestesia                                                                           0IN0000
 T883Hipertermia maligna devida à anestesia                                                              0IN0000
 T884Entubação falha ou difícil                                                                          0IN0000
@@ -9820,7 +9820,7 @@ T980Seqüelas dos efeitos da penetração de corpo estranho através de orifício nat
 T981Seqüelas em outros efeitos de causas externas e os não especificados                                0IN0000
 T982Seqüelas de algumas complicações precoces de traumatismos                                           0IN0000
 T983Seqüelas de complicações dos cuidados médicos e cirúrgicos não classificados em outra parte         0IN0000
-U04 Síndrome respiratória aguda grave [severe acute respiratory syndrome SARS]                          0IN0000
+U04 Síndrome respiratória aguda grave [severe acute respiratory syndrome SARS]                          2IN0000
 U049Síndrome respiratória aguda grave [Severe acute respiratory syndrome) [SARS], não especificada      2IN0000
 U80 Agente resistente à penicilina e antibióticos relacionados                                          0IN0000
 U800Agente resistente à penicilina                                                                      0IN0000
@@ -11332,17 +11332,17 @@ W586Mordedura ou golpe provocado por crocodilo ou aligátor - áreas industriais e
 W587Mordedura ou golpe provocado por crocodilo ou aligátor - fazenda                                    0IN0000
 W588Mordedura ou golpe provocado por crocodilo ou aligátor - outros locais especificados                0IN0000
 W589Mordedura ou golpe provocado por crocodilo ou aligátor - local não especificado                     0IN0000
-W59 Mordedura ou esmagamento provocado por outros repteis                                               0IN0000
-W590Mordedura ou esmagamento provocado por outros répteis - residência                                  0IN0000
+W59 Mordedura ou esmagamento provocado por outros repteis                                               1IN0000
+W590Mordedura ou esmagamento provocado por outros répteis - residência                                  1IN0000
 W591Mordedura ou esmagamento provocado por outros répteis - habitação coletiva                          0IN0000
-W592Mordedura ou esmagamento provocado por outros répteis - escola, out. instit. e área de adm. pública 0IN0000
-W593Mordedura ou esmagamento provocado por outros répteis - área para a prática de esportes e atletismo 0IN0000
-W594Mordedura ou esmagamento provocado por outros répteis - rua e estrada                               0IN0000
-W595Mordedura ou esmagamento provocado por outros répteis - áreas de comércio e de serviços             0IN0000
-W596Mordedura ou esmagamento provocado por outros répteis - áreas industriais e em construção           0IN0000
-W597Mordedura ou esmagamento provocado por outros répteis - fazenda                                     0IN0000
-W598Mordedura ou esmagamento provocado por outros répteis - outros locais especificados                 0IN0000
-W599Mordedura ou esmagamento provocado por outros répteis - local não especificado                      0IN0000
+W592Mordedura ou esmagamento provocado por outros répteis - escola, out. instit. e área de adm. pública 1IN0000
+W593Mordedura ou esmagamento provocado por outros répteis - área para a prática de esportes e atletismo 1IN0000
+W594Mordedura ou esmagamento provocado por outros répteis - rua e estrada                               1IN0000
+W595Mordedura ou esmagamento provocado por outros répteis - áreas de comércio e de serviços             1IN0000
+W596Mordedura ou esmagamento provocado por outros répteis - áreas industriais e em construção           1IN0000
+W597Mordedura ou esmagamento provocado por outros répteis - fazenda                                     1IN0000
+W598Mordedura ou esmagamento provocado por outros répteis - outros locais especificados                 1IN0000
+W599Mordedura ou esmagamento provocado por outros répteis - local não especificado                      1IN0000
 W60 Contato com espinhos de plantas ou com folhas agucadas                                              0IN0000
 W600Contato com espinhos de plantas ou com folhas aguçadas - residência                                 0IN0000
 W601Contato com espinhos de plantas ou com folhas aguçadas - habitação coletiva                         0IN0000
@@ -11882,39 +11882,39 @@ X196Contato c/outras fontes calor/subst. quentes ñ especif. - áreas industriais 
 X197Contato c/outras fontes calor/subst. quentes ñ especif. - fazenda                                   0IN0000
 X198Contato c/outras fontes calor/subst. quentes ñ especif. - outros locais especificados               0IN0000
 X199Contato c/outras fontes calor/subst. quentes ñ especif. - local não especificado                    0IN0000
-X20 Contato com serpentes e lagartos venenosos                                                          0IN0000
-X200Contato c/serpentes e lagartos venenosos - residência                                               0IN0000
-X201Contato c/serpentes e lagartos venenosos - habitação coletiva                                       0IN0000
-X202Contato c/serpentes e lagartos venenosos - escolas, outras instituições e áreas de administ. pública0IN0000
-X203Contato c/serpentes e lagartos venenosos - área para a prática de esportes e atletismo              0IN0000
-X204Contato c/serpentes e lagartos venenosos - rua e estrada                                            0IN0000
-X205Contato c/serpentes e lagartos venenosos - áreas de comércio e de serviços                          0IN0000
-X206Contato c/serpentes e lagartos venenosos - áreas industriais e em construção                        0IN0000
-X207Contato c/serpentes e lagartos venenosos - fazenda                                                  0IN0000
-X208Contato c/serpentes e lagartos venenosos - outros locais especificados                              0IN0000
-X209Contato c/serpentes e lagartos venenosos - local não especificado                                   0IN0000
-X21 Contato com aranhas venenosas                                                                       0IN0000
-X210Contato c/aranhas venenosas - residência                                                            0IN0000
-X211Contato c/aranhas venenosas - habitação coletiva                                                    0IN0000
-X212Contato c/aranhas venenosas - escolas, outras instituições e áreas de administração pública         0IN0000
-X213Contato c/aranhas venenosas - área para a prática de esportes e atletismo                           0IN0000
-X214Contato c/aranhas venenosas - rua e estrada                                                         0IN0000
-X215Contato c/aranhas venenosas - áreas de comércio e de serviços                                       0IN0000
-X216Contato c/aranhas venenosas - áreas industriais e em construção                                     0IN0000
-X217Contato c/aranhas venenosas - fazenda                                                               0IN0000
-X218Contato c/aranhas venenosas - outros locais especificados                                           0IN0000
-X219Contato c/aranhas venenosas - local não especificado                                                0IN0000
-X22 Contato com escorpioes                                                                              0IN0000
-X220Contato c/escorpiões - residência                                                                   0IN0000
-X221Contato c/escorpiões - habitação coletiva                                                           0IN0000
-X222Contato c/escorpiões - escolas, outras instituições e áreas de administração pública                0IN0000
-X223Contato c/escorpiões - área para a prática de esportes e atletismo                                  0IN0000
-X224Contato c/escorpiões - rua e estrada                                                                0IN0000
-X225Contato c/escorpiões - áreas de comércio e de serviços                                              0IN0000
-X226Contato c/escorpiões - áreas industriais e em construção                                            0IN0000
-X227Contato c/escorpiões - fazenda                                                                      0IN0000
-X228Contato c/escorpiões - outros locais especificados                                                  0IN0000
-X229Contato c/escorpiões - local não especificado                                                       0IN0000
+X20 Contato com serpentes e lagartos venenosos                                                          1IN0000
+X200Contato c/serpentes e lagartos venenosos - residência                                               1IN0000
+X201Contato c/serpentes e lagartos venenosos - habitação coletiva                                       1IN0000
+X202Contato c/serpentes e lagartos venenosos - escolas, outras instituições e áreas de administ. pública1IN0000
+X203Contato c/serpentes e lagartos venenosos - área para a prática de esportes e atletismo              1IN0000
+X204Contato c/serpentes e lagartos venenosos - rua e estrada                                            1IN0000
+X205Contato c/serpentes e lagartos venenosos - áreas de comércio e de serviços                          1IN0000
+X206Contato c/serpentes e lagartos venenosos - áreas industriais e em construção                        1IN0000
+X207Contato c/serpentes e lagartos venenosos - fazenda                                                  1IN0000
+X208Contato c/serpentes e lagartos venenosos - outros locais especificados                              1IN0000
+X209Contato c/serpentes e lagartos venenosos - local não especificado                                   1IN0000
+X21 Contato com aranhas venenosas                                                                       2IN0000
+X210Contato c/aranhas venenosas - residência                                                            1IN0000
+X211Contato c/aranhas venenosas - habitação coletiva                                                    1IN0000
+X212Contato c/aranhas venenosas - escolas, outras instituições e áreas de administração pública         1IN0000
+X213Contato c/aranhas venenosas - área para a prática de esportes e atletismo                           1IN0000
+X214Contato c/aranhas venenosas - rua e estrada                                                         1IN0000
+X215Contato c/aranhas venenosas - áreas de comércio e de serviços                                       1IN0000
+X216Contato c/aranhas venenosas - áreas industriais e em construção                                     1IN0000
+X217Contato c/aranhas venenosas - fazenda                                                               1IN0000
+X218Contato c/aranhas venenosas - outros locais especificados                                           1IN0000
+X219Contato c/aranhas venenosas - local não especificado                                                1IN0000
+X22 Contato com escorpioes                                                                              1IN0000
+X220Contato c/escorpiões - residência                                                                   1IN0000
+X221Contato c/escorpiões - habitação coletiva                                                           1IN0000
+X222Contato c/escorpiões - escolas, outras instituições e áreas de administração pública                1IN0000
+X223Contato c/escorpiões - área para a prática de esportes e atletismo                                  1IN0000
+X224Contato c/escorpiões - rua e estrada                                                                1IN0000
+X225Contato c/escorpiões - áreas de comércio e de serviços                                              1IN0000
+X226Contato c/escorpiões - áreas industriais e em construção                                            1IN0000
+X227Contato c/escorpiões - fazenda                                                                      1IN0000
+X228Contato c/escorpiões - outros locais especificados                                                  1IN0000
+X229Contato c/escorpiões - local não especificado                                                       1IN0000
 X23 Contato com abelhas vespas e vespoes                                                                0IN0000
 X230Contato c/abelhas, vespas e vespões - residência                                                    0IN0000
 X231Contato c/abelhas, vespas e vespões - habitação coletiva                                            0IN0000
@@ -11937,17 +11937,17 @@ X246Contato c/centop. e miriápodes venen. (tropicais) - áreas industriais e em c
 X247Contato c/centop. e miriápodes venen. (tropicais) - fazenda                                         0IN0000
 X248Contato c/centop. e miriápodes venen. (tropicais) - outros locais especificados                     0IN0000
 X249Contato c/centop. e miriápodes venen. (tropicais) - local não especificado                          0IN0000
-X25 Contato com outros artrópodes venenosos                                                             0IN0000
-X250Contato com outros artrópodes venenosos - residência                                                0IN0000
-X251Contato com outros artrópodes venenosos - habitação coletiva                                        0IN0000
-X252Contato com outros artrópodes venenosos - escolas, outras inst. e áreas adm. pública                0IN0000
-X253Contato com outros artrópodes venenosos - área para a prática de esportes e atletismo               0IN0000
-X254Contato com outros artrópodes venenosos - rua e estrada                                             0IN0000
-X255Contato com outros artrópodes venenosos - áreas de comércio e de serviços                           0IN0000
-X256Contato com outros artrópodes venenosos - áreas industriais e em construção                         0IN0000
-X257Contato com outros artrópodes venenosos - fazenda                                                   0IN0000
-X258Contato com outros artrópodes venenosos - outros locais especificados                               0IN0000
-X259Contato com outros artrópodes venenosos - local não especificado                                    0IN0000
+X25 Contato com outros artrópodes venenosos                                                             1IN0000
+X250Contato com outros artrópodes venenosos - residência                                                1IN0000
+X251Contato com outros artrópodes venenosos - habitação coletiva                                        1IN0000
+X252Contato com outros artrópodes venenosos - escolas, outras inst. e áreas adm. pública                1IN0000
+X253Contato com outros artrópodes venenosos - área para a prática de esportes e atletismo               1IN0000
+X254Contato com outros artrópodes venenosos - rua e estrada                                             1IN0000
+X255Contato com outros artrópodes venenosos - áreas de comércio e de serviços                           1IN0000
+X256Contato com outros artrópodes venenosos - áreas industriais e em construção                         1IN0000
+X257Contato com outros artrópodes venenosos - fazenda                                                   1IN0000
+X258Contato com outros artrópodes venenosos - outros locais especificados                               1IN0000
+X259Contato com outros artrópodes venenosos - local não especificado                                    1IN0000
 X26 Contato com animais e plantas marinhos venenosos                                                    0IN0000
 X260Contato c/animais e plantas marinhos venenosos - residência                                         0IN0000
 X261Contato c/animais e plantas marinhos venenosos - habitação coletiva                                 0IN0000
@@ -13631,7 +13631,7 @@ Z205Contato com e exposição à hepatite viral                                    
 Z206Contato com e exposição ao vírus da imunodeficiência humana [HIV]                                   0IN0000
 Z207Contato com e exposição à pediculose, acaríase e outras infestações                                 0IN0000
 Z208Contato com e exposição a outras doenças transmissíveis                                             0IN0000
-Z209Contato com e exposição a doença transmissível não especificada                                     0IN0000
+Z209Contato com e exposição a doença transmissível não especificada                                     1IN0000
 Z21 Estado de infecção assintomática pelo vírus da imunodeficiência humana [HIV]                        0IN0000
 Z22 Doença infecciosa                                                                                   0IN0000
 Z220Portador de febre tifóide                                                                           0IN0000

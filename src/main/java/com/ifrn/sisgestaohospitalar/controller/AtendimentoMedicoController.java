@@ -11,11 +11,13 @@ import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import com.ifrn.sisgestaohospitalar.enums.StatusAtendimento;
 import com.ifrn.sisgestaohospitalar.enums.TipoProfissional;
@@ -59,6 +61,8 @@ public class AtendimentoMedicoController {
 
 	@Autowired
 	private ProcedimentoSigtapService procedimentoSigtapService;
+	
+	List<ProcedimentoSigtap> procedimentos = new ArrayList<ProcedimentoSigtap>();
 
 	/**
 	 * Direciona o usuário a página com a listagem de Cidadãos para atendimento
@@ -71,7 +75,8 @@ public class AtendimentoMedicoController {
 	public ModelAndView listarStatusAddAtd(Principal principal) {
 		ModelAndView mv = new ModelAndView("atendimentoMedico/list-guiaAtendimento");
 		List<GuiaAtendimento> listGuiaAtendimento = new ArrayList<GuiaAtendimento>();
-		List<GuiaAtendimento> guiasAtendimento = guiaAtendimentoService.findByTipoServico(TipoServico.AtendimentoMedico);
+		List<GuiaAtendimento> guiasAtendimento = guiaAtendimentoService
+				.findByTipoServico(TipoServico.AtendimentoMedico);
 		if (guiasAtendimento != null) {
 
 			for (GuiaAtendimento gVerm : guiasAtendimento) {
@@ -109,6 +114,7 @@ public class AtendimentoMedicoController {
 		mv.addObject("estabelecimento", estabelecimentoService.findAll());
 		mv.addObject("user", user);
 		mv.addObject("guiasAtendimento", listGuiaAtendimento);
+		mv.addObject("navItem1",true);
 		return mv;
 	}
 
@@ -123,6 +129,7 @@ public class AtendimentoMedicoController {
 	@GetMapping("/realizar-atendimento/{id}")
 	public ModelAndView addAtdMedico(@PathVariable("id") Long id, AtendimentoMedico atendimentoMedico,
 			Principal principal) {
+		procedimentos.clear();
 		String username = principal.getName();
 		Profissional user = profissionalService.findByCpf(username);
 		GuiaAtendimento guiaAtendimento = guiaAtendimentoService.findOne(id);
@@ -131,13 +138,18 @@ public class AtendimentoMedicoController {
 		List<Profissional> profissionais = new ArrayList<Profissional>();
 		profissionais.addAll(profissionalService.findByTipoprofissional(TipoProfissional.TECNICO));
 		profissionais.addAll(profissionalService.findByTipoprofissional(TipoProfissional.ENFERMEIRO));
+		mv.addObject("estabelecimento", estabelecimentoService.findAll());
 		mv.addObject("user", user);
 		mv.addObject("guiaAtendimento", guiaAtendimento);
 		mv.addObject("atendimentoMedico", atendimentoMedico);
 		mv.addObject("profissionais", profissionais);
-		if (guiaAtendimento.getTriagem().getId().equals(null)) {
-			mv.addObject("getTriagem", true);
-		} else {
+		mv.addObject("navItem1",true);
+
+		try {
+			if (guiaAtendimento.getTriagem().getId() != null) {
+				mv.addObject("getTriagem", true);
+			}
+		} catch (NullPointerException e) {
 			mv.addObject("getTriagem", false);
 		}
 		return mv;
@@ -154,28 +166,22 @@ public class AtendimentoMedicoController {
 	 */
 	@PostMapping("/salvar-atendimento")
 	public ModelAndView save(@Valid AtendimentoMedico atendimentoMedico,
-			@RequestParam("ids_procedimentos") String ids_procedimentos, @RequestParam("orientacao") String orientacao,
-			@RequestParam("medicamento") String medicamentos, @RequestParam("optionsRadios") TipoServico tipoServico,
-			BindingResult result, Principal principal) {
+			@RequestParam("orientacao") String orientacao,
+			@RequestParam(value = "medicamento", required = false) String medicamentos,
+			@RequestParam(value = "optionsRadios", required = false) TipoServico tipoServico, BindingResult result,
+			Principal principal) {
 		if (result.hasErrors()) {
 			return addAtdMedico(atendimentoMedico.getGuiaatendimento().getId(), atendimentoMedico, principal);
 		}
 		if (atendimentoMedico.getDestinocidadao().equals("0")) {
 			atendimentoMedico.getGuiaatendimento().setStatusAtendimento(StatusAtendimento.FINALIZADO);
 		}
-		if (ids_procedimentos != null) {
-			String arrayId[] = ids_procedimentos.split(",");
-			List<ProcedimentoSigtap> procedimentos = new ArrayList<ProcedimentoSigtap>();
-			for (int i = 0; i < arrayId.length; i++) {
-				Long id = Long.parseLong(arrayId[i]);
-				procedimentos.add(procedimentoSigtapService.findOne(id));
-			}
-			atendimentoMedico.setProcedimentos(procedimentos);
-		}
+		
+		atendimentoMedico.setProcedimentos(procedimentos);
 
 		List<Medicamento> medicamentos2 = new ArrayList<Medicamento>();
 
-		if (medicamentos != null) {
+		if (!medicamentos.isEmpty()) {
 			System.out.println("String Array Medicamentos> " + medicamentos);
 			JSONArray jsonArray = new JSONArray(medicamentos);
 			for (int i = 0; i < jsonArray.length(); i++) {
@@ -203,7 +209,38 @@ public class AtendimentoMedicoController {
 		atendimentoMedico.setProfissional(profissional);
 		atendimentoMedico.setMedicamentos(medicamentos2);
 		atendimentoMedicoService.save(atendimentoMedico);
-		return listarStatusAddAtd(principal);
+		return listarStatusAddAtd(principal).addObject("navItem1",true);
+	}
+	
+	
+	@PostMapping("/add-procedimento")
+	@ResponseBody
+	public void addProcedimento(ProcedimentoSigtap procedimentoSigtap) {
+		ProcedimentoSigtap prSigtap = procedimentoSigtapService.findOne(procedimentoSigtap.getId());
+		procedimentos.add(prSigtap);
+		imprimeLista();
+	}
+	
+	@DeleteMapping("/delete-procedimento")
+	@ResponseBody
+	public void deleteProcedimento(ProcedimentoSigtap procedimentoSigtap) {
+		for(int i = 0; i < procedimentos.size(); i++) {
+			if(procedimentos.get(i).getId().equals(procedimentoSigtap.getId())) {
+				procedimentos.remove(i);
+			}
+		}
+		imprimeLista();
+	}
+	
+	@GetMapping("/imprimir")
+	@ResponseBody
+	public void imprimeLista() {
+		if(procedimentos.isEmpty()) {
+			System.out.println("### A lista está vazia ###");
+		}
+		for(int i = 0; i < procedimentos.size(); i++) {
+			System.out.println("PROCEDIMENTO DA LISTA> " + procedimentos.get(i).getNomeprocedimento());
+		}
 	}
 
 }

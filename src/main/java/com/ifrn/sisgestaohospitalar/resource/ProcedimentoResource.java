@@ -29,5 +29,11 @@ public class ProcedimentoResource {
 //		}
 		return ResponseEntity.ok(procedimentoSigtapService.findByNomeProcedimento(request.getParameter("term")));
 	}
+	
+	@RequestMapping(value = "searchByCodigo", method = RequestMethod.GET)
+	@ResponseBody
+	public ResponseEntity<ProcedimentoSigtap> findByCodigo(HttpServletRequest request){
+		return ResponseEntity.ok(procedimentoSigtapService.findByCodigoProcedimento(request.getParameter("term")));
+	}
 
 }

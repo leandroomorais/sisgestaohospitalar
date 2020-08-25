@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html layout:decorate="~{/layouts/layout-admin}" lang="pt"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity"
+	xmlns:layout="http://ultraq.net.nz/thymeleaf/layout">
+
+<body>
+	<div class="main-panel" layout:fragment="main-panel">
+		<div class="container">
+			<div class="page-inner">
+
+				<!-- DIV de Alerta de Sucessos -->
+				<div class="col-md-12" th:if="${sucesso}">
+					<div class="alert alert-success alert-dismissible fade show"
+						role="alert">
+						<strong>Sucesso!</strong><a th:text="${sucesso}"></a>
+						<button type="button" class="close" data-dismiss="alert"
+							aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+				</div>
+
+				<!-- DIV de Alerta de Erros -->
+				<div class="col-md-12" th:if="${erro}">
+					<div class="alert alert-danger alert-dismissible fade show"
+						role="alert">
+						<strong>Erro!</strong> <a th:text="${erro}"></a>
+						<button type="button" class="close" data-dismiss="alert"
+							aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+				</div>
+				<div class="page-header">
+					<h4 class="page-title">Administração</h4>
+					<ul class="breadcrumbs">
+						<li class="nav-home"><i class="flaticon-home"></i></li>
+						<li class="separator"><i class="flaticon-right-arrow"></i></li>
+						<li class="nav-item"><a th:href="@{#}">Consultas</a></li>
+						<li class="separator"><i class="flaticon-right-arrow"></i></li>
+						<li class="nav-item"><a th:href="@{/administracao/listar-profissional}">Profissionais</a></li>
+					</ul>
+				</div>
+
+				<div class="row">
+					<div class="col-md-12">
+						<div class="card">
+							<div class="card-header">
+								<div class="card-title">Listagem de Profissionais</div>
+							</div>
+
+							<div class="card-body">
+								<div class="table-responsive">
+									<table id="basic-datatables"
+										class="display table table table-hover">
+										<thead>
+											<tr>
+												<th>NOME</th>
+												<th>CNS</th>
+												<th>TIPO</th>
+												<th style="width: 20%;">AÇÕES</th>
+											</tr>
+										</thead>
+										<tfoot>
+											<tr>
+												<th>NOME</th>
+												<th>CNS</th>
+												<th>TIPO</th>
+												<th  style="width: 25%;">AÇÕES</th>
+											</tr>
+										</tfoot>
+										<tbody>
+											<tr th:each="profissional : ${profissionais}">
+												<td th:text="${profissional.nome}"></td>
+												<td th:text="${profissional.cns}"></td>
+												<td th:text="${profissional.tipoprofissional}"></td>
+												<td><a class="btn btn-primary btn-sm"
+													th:href="@{/administracao/profissional-detalhe/{id} (id=${profissional.id})}">Detalhes</a>
+
+
+													<a class="btn btn-primary btn-sm"
+													th:href="@{/administracao/profissional-edit/{id} (id=${profissional.id})}">Editar</a>
+
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+
+
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<footer class="footer">
+		<div class="container-fluid">
+			<nav class="pull-left">
+				<th:block th:each="estabelecimento : ${estabelecimento}">
+					<span class="text-primary" th:text="${estabelecimento.nome}"></span>
+				</th:block>
+			</nav>
+			<div class="copyright ml-auto">Sistema de Gestão Hospitalar,
+				2020.</div>
+		</div>
+	</footer>
+	</div>
+</body>
+
+</html>

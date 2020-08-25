@@ -1,39 +1,41 @@
-01Cirúrgico                                                   202003
-02Obstétricos                                                 202003
-03Clínico                                                     202003
-04Crônicos                                                    202003
-05Psiquiatria                                                 202003
-06Pneumologia Sanitária (Tisiologia)                          202003
-07Pediátricos                                                 202003
-08Reabilitação                                                202003
-09Leito Dia / Cirúrgicos                                      202003
-10Leito Dia / Aids                                            202003
-11Leito Dia / Fibrose Cística                                 202003
-12Leito Dia / Intercorrência Pós-Transplante                  202003
-13Leito Dia / Geriatria                                       202003
-14Leito Dia / Saúde Mental                                    202003
-51UTI II Adulto - COVID-19                                    202003
-52UTI II Pediátrica - COVID-19                                202003
-65Unidade Intermediária Neonatal                              202003
-74UTI I                                                       202003
-75UTI Adulto II                                               202003
-76UTI Adulto III                                              202003
-77UTI Infantil I                                              202003
-78UTI Infantil II                                             202003
-79UTI Infantil III                                            202003
-80UTI Neonatal I                                              202003
-81UTI Neonatal II                                             202003
-82UTI Neonatal III                                            202003
-83UTI Queimados                                               202003
-84Acolhimento Noturno                                         202003
-85UTI Coronariana-UCO tipo II                                 202003
-86UTI Coronariana-UCO tipo III                                202003
-87Saúde Mental (Clínico)                                      202003
-88Queimado Adulto (Clínico)                                   202003
-89Queimado Pediátrico (Clínico)                               202003
-90Queimado Adulto (Cirúrgico)                                 202003
-91Queimado Pediátrico (Cirúrgico)                             202003
-92UCI Unidade de Cuidados Intermediarios Neonatal Convencional202003
-93UCI Unidade de Cuidados Intermediarios Neonatal Canguru     202003
-94UCI Unidade de Cuidados Intermediarios Pediatrico           202003
-95UCI Unidade de Cuidados Intermediarios Adulto               202003
+01Cirúrgico                                                   202007
+02Obstétricos                                                 202007
+03Clínico                                                     202007
+04Crônicos                                                    202007
+05Psiquiatria                                                 202007
+06Pneumologia Sanitária (Tisiologia)                          202007
+07Pediátricos                                                 202007
+08Reabilitação                                                202007
+09Leito Dia / Cirúrgicos                                      202007
+10Leito Dia / Aids                                            202007
+11Leito Dia / Fibrose Cística                                 202007
+12Leito Dia / Intercorrência Pós-Transplante                  202007
+13Leito Dia / Geriatria                                       202007
+14Leito Dia / Saúde Mental                                    202007
+17Estabelecimento Exclusivo UTI SUS                           202007
+51UTI II ADULTO-SINDROME RESP. AGUDA GRAVE (SRAG)-COVID-19    202007
+52UTI II PEDIATRICO-SINDROME RESP. AGUDA GRAVE (SRAG)-COVID-19202007
+65Unidade Intermediária Neonatal                              202007
+74UTI I                                                       202007
+75UTI Adulto II                                               202007
+76UTI Adulto III                                              202007
+77UTI Infantil I                                              202007
+78UTI Infantil II                                             202007
+79UTI Infantil III                                            202007
+80UTI Neonatal I                                              202007
+81UTI Neonatal II                                             202007
+82UTI Neonatal III                                            202007
+83UTI Queimados                                               202007
+84Acolhimento Noturno                                         202007
+85UTI Coronariana-UCO tipo II                                 202007
+86UTI Coronariana-UCO tipo III                                202007
+87Saúde Mental (Clínico)                                      202007
+88Queimado Adulto (Clínico)                                   202007
+89Queimado Pediátrico (Clínico)                               202007
+90Queimado Adulto (Cirúrgico)                                 202007
+91Queimado Pediátrico (Cirúrgico)                             202007
+92UCI Unidade de Cuidados Intermediarios Neonatal Convencional202007
+93UCI Unidade de Cuidados Intermediarios Neonatal Canguru     202007
+94UCI Unidade de Cuidados Intermediarios Pediatrico           202007
+95UCI Unidade de Cuidados Intermediarios Adulto               202007
+96Suporte Ventilatório Pulmonar-COVID-19                      202007

@@ -60,6 +60,8 @@ public class ProcedimentoSigtap {
 	private int qtdtempopermanencia;
 
 	private String datacompetencia;
+	
+	private Integer quantidade;
 
 	/**
 	 * Relacionamento entre os objetos ProcedimentoSigtap e RegistroSigtap
@@ -250,4 +252,15 @@ public class ProcedimentoSigtap {
 		this.cids = cids;
 	}
 
+	public Integer getQuantidade() {
+		return quantidade;
+	}
+
+	public void setQuantidade(Integer quantidade) {
+		this.quantidade = quantidade;
+	}
+	
+	public int compare(ProcedimentoSigtap p1, ProcedimentoSigtap p2) {
+		return p1.getCodigoprocedimento().compareToIgnoreCase(p2.getCodigoprocedimento());
+	}
 }

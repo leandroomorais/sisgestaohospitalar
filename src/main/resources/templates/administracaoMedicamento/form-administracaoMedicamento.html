@@ -6,6 +6,40 @@
 	xmlns:layout="http://ultraq.net.nz/thymeleaf/layout">
 
 <body>
+	<!-- Sidebar Módulos - Recepção -->
+	<div layout:fragment="sidebar" class="sidebar sidebar-style-2">
+		<div class="sidebar-wrapper scrollbar scrollbar-inner">
+			<div class="sidebar-content">
+				<ul class="nav nav-primary">
+					<li class="nav-item"><a data-toggle="collapse"
+						href="#dashboard" class="collapsed" aria-expanded="false"> <img
+							alt="" width="40" th:src="@{/assets/img/person-male.png}">
+							<span th:text="${user.firstname}" class="low"></span><span
+							class="type-user" th:text="${user.tipoprofissional}"></span> <span
+							class="caret"></span>
+					</a>
+						<div class="collapse" id="dashboard">
+							<ul class="nav nav-collapse">
+								<li><a href="../demo1/index.html"> <span
+										class="sub-item">Meu Perfil</span>
+								</a></li>
+							</ul>
+						</div></li>
+					<li class="nav-section"><span class="sidebar-mini-icon">
+							<i class="fa fa-ellipsis-h"></i>
+					</span>
+						<h4 class="text-section">Ações</h4></li>
+
+					<li class="nav-item" th:classappend="${navItem1} ? active : ''"><a
+						th:href="@{/administracao-medicamento/cidadaos-atendimento}">
+							<i class="fas fa-users"></i>
+							<p>Fila de Atendimento</p> <span class="caret"></span>
+					</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<!-- End Sidebar -->
 	<div class="main-panel" layout:fragment="main-panel">
 		<div class="container">
 			<div class="page-inner">
@@ -55,6 +89,34 @@
 									</div>
 								</div>
 							</div>
+
+							<!-- Input responsável por guardar o ID -->
+							<input id="id" name="id" type="hidden" th:field="*{id}"
+								th:value="*{id}" />
+							<!-- Input
+						responsável por guardar a Guia de Atendimento  -->
+							<input name="" type="hidden" th:field="*{guiaAtendimento}"
+								value="*{guiaAtendimento}" />
+							<!-- div reponsável em mostrar os erros -->
+							<div id="errors" class="form-group row"
+								th:data-objeto="${hasErrors}">
+								<div class="col-sm-12 mb-3 mb-sm-0">
+									<div class="alert alert-danger alert-dismissible fade show"
+										data-valor="#fields.hasAnyErrors()" role="alert"
+										id="hasAnyErrors" th:if="${#fields.hasAnyErrors()}">
+
+										<button type="button" class="close" data-dismiss="alert"
+											aria-label="Close">
+											<span aria-hidden="true">&times;</span>
+										</button>
+
+										<div th:each="detailedError : ${#fields.detailedErrors()}">
+											<strong th:text="${detailedError.message}"> </strong>
+										</div>
+									</div>
+								</div>
+							</div>
+
 							<div class="card">
 								<div class="card-header">
 									<div class="card-title">Medicamento(s) Prescrito(s)</div>
@@ -129,7 +191,7 @@
 										<div class="col-md-12">
 											<div class="form-group">
 												<label for="nome">Adicionar Procedimentos:</label> <input
-													id="procedimentos" type="text"
+													id="procedimentos-admin-medicamento" type="text"
 													class="form-control input-sm">
 											</div>
 										</div>
@@ -145,13 +207,11 @@
 															<th scope="col">Ações</th>
 														</tr>
 													</thead>
-													<tbody id="table-procedimento">
+													<tbody id="table-procedimento-admin-medicamento">
 													</tbody>
 												</table>
 											</div>
 										</div>
-										<input type="hidden" name="ids_procedimentos"
-											id="ids_procedimentos">
 									</div>
 								</div>
 							</div>
@@ -164,7 +224,7 @@
 									<div class="row">
 										<div class="col-md-12">
 											<div class="form-check">
-											<input type="hidden" name="optionsRadios" value="">
+												<input type="hidden" name="optionsRadios" value="">
 												<label class="form-radio-label"> <input id="liberar"
 													class="form-radio-input" type="radio"
 													th:field="*{destinocidadao}" value="0"> <span

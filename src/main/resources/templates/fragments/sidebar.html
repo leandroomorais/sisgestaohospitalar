@@ -7,7 +7,7 @@
 <meta charset="utf-8">
 </head>
 <!-- Sidebar -->
-<div th:fragment="sidebar" class="sidebar sidebar-style-2">
+<div th:fragment="sidebar" class="sidebar">
 	<div class="sidebar-wrapper scrollbar scrollbar-inner">
 		<div class="sidebar-content">
 			<div class="user">
@@ -17,16 +17,17 @@
 				</div>
 				<div class="info">
 					<a data-toggle="collapse" href="#collapseExample"
-						aria-expanded="true"> <span th:text="${user.firstname}"></span>
-						<span class="user-level" th:text="${user.tipoprofissional}"></span>
-						<span class="caret"></span>
+						aria-expanded="true"> <span class="low"
+						th:text="${user.firstname}"></span> <span class="type-user"
+						th:text="${user.tipoprofissional}"></span>
 					</a>
 					<div class="clearfix"></div>
 
 					<div class="collapse in" id="collapseExample">
 						<ul class="nav">
-							<li><a th:href="@{/profissional/myprofile}"> <span
-									class="link-collapse">Meu perfil</span>
+							<li><a
+								th:href="@{/administracao/meu-perfil/{id} (id=${user.id})}">
+									<span class="link-collapse">Meu perfil</span>
 							</a></li>
 
 						</ul>
@@ -47,8 +48,8 @@
 				</a>
 					<div class="collapse" id="base">
 						<ul class="nav nav-collapse">
-							<li><a th:href="@{/profissional/add}"> <span
-									class="sub-item">Profissionais</span>
+							<li><a th:href="@{/administracao/cadastrar-profissional}">
+									<span class="sub-item">Profissionais</span>
 							</a></li>
 						</ul>
 					</div></li>
@@ -58,19 +59,32 @@
 				</a>
 					<div class="collapse" id="sidebarLayouts">
 						<ul class="nav nav-collapse">
-							<li><a th:href="@{/profissional/list}"> <span
-									class="sub-item">Profissionais</span>
+							<li><a th:href="@{/administracao/listar-profissional}">
+									<span class="sub-item">Profissionais</span>
 							</a></li>
+							
+							<li><a th:href="@{/administracao/buscar-atendimento}">
+									<span class="sub-item">Atendimentos</span>
+							</a></li>
+							
+							<li><a th:href="@{/administracao/buscar-cidadaos}">
+									<span class="sub-item">Cidadãos</span>
+							</a></li>
+							
 						</ul>
-					</div></li>
+					</div>
+
 				<li class="nav-item"><a data-toggle="collapse" href="#forms">
 						<i class="fas fa-download"></i>
-						<p>Exportação</p> <span class="caret"></span>
+						<p>Arquivo BPA</p> <span class="caret"></span>
 				</a>
 					<div class="collapse" id="forms">
 						<ul class="nav nav-collapse">
 							<li><a th:href="@{/administracao/gerarbpa}"> <span
 									class="sub-item">Gerar Arquivo BPA</span>
+							</a></li>
+							<li><a th:href="@{/administracao/listar-bpa}"> <span
+									class="sub-item">Competências Geradas</span>
 							</a></li>
 						</ul>
 					</div></li>
@@ -100,7 +114,8 @@
 					href="#dashboard" class="collapsed" aria-expanded="false"> <img
 						alt="" width="40" th:src="@{/assets/img/person-male.png}"> <span
 						th:text="${user.firstname}" class="low"></span><span
-						class="type-user">ADMINISTRADOR</span> <span class="caret"></span>
+						class="type-user" th:text="${user.tipoprofissional}"></span> <span
+						class="caret"></span>
 				</a>
 					<div class="collapse" id="dashboard">
 						<ul class="nav nav-collapse">
@@ -144,8 +159,8 @@
 						<p>Fila de Atendimento</p> <span class="caret"></span>
 				</a></li>
 
-				<li sec:authorize="hasAnyAuthority('TEC','ENF','SUPER')"
-					class="nav-item" th:classappend="${navItem1} ? active : ''"><a
+				<li sec:authorize="hasAnyAuthority('TEC','SUPER')" class="nav-item"
+					th:classappend="${navItem1} ? active : ''"><a
 					th:href="@{/administracao-medicamento/cidadaos-atendimento}"> <i
 						class="fas fa-users"></i>
 						<p>Fila de Atendimento</p> <span class="caret"></span>

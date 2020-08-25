@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html layout:decorate="~{/layouts/layout-admin}">
+<head>
+<meta charset="utf-8">
+<title>SGH - Bem Vindo!</title>
+</head>
+
+<body>
+	<div layout:fragment="main-panel">
+		<div class="main-panel">
+			<div class="container">
+				<div class="panel-header bg-primary-gradient">
+					<div class="page-inner py-5">
+						<div
+							class="d-flex align-items-left align-items-md-center flex-column flex-md-row">
+							<div>
+								<h2 class="text-white pb-2 fw-bold">Sistema de Gestão
+									Hospitalar</h2>
+								<h5 class="text-white op-7 mb-2">Módulo do Administrador</h5>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="page-inner mt--5">
+					<div class="row mt--2">
+						<div class="col-md-6">
+							<div class="card full-height">
+								<div class="card-body">
+									<div class="card-title-admin">Dados Gerais</div>
+									<div class="card-category">Com base nas informações
+										cadastradas</div>
+									<div class="d-flex flex-wrap justify-content-around pb-2 pt-4">
+										<div class="px-2 pb-2 pb-md-0 text-center">
+											<div id="circles-1"></div>
+											<h6 class="fw-bold mt-3 mb-0">Médicos</h6>
+										</div>
+										<div class="px-2 pb-2 pb-md-0 text-center">
+											<div id="circles-2"></div>
+											<h6 class="fw-bold mt-3 mb-0">Enfermeiros</h6>
+										</div>
+										<div class="px-2 pb-2 pb-md-0 text-center">
+											<div id="circles-3"></div>
+											<h6 class="fw-bold mt-3 mb-0">Técnicos</h6>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="card full-height">
+								<div class="card-body">
+									<div class="card-title-admin">Dados do Estabelecimento</div>
+									<div class="row py-3"
+										th:each="estabelecimento : ${estabelecimentos}">
+										<div
+											class="col-md-7 d-flex flex-column justify-content-around">
+											<div>
+												<h6 class="fw-bold text-uppercase text-success op-8">Nome
+													Fantasia:</h6>
+												<h8 class="fw-bold" th:text="${estabelecimento.nome}"></h8>
+											</div>
+											<div>
+												<h6 class="fw-bold text-uppercase text-success op-8">CNES:</h6>
+												<h8 class="fw-bold" th:text="${estabelecimento.cnes}"></h8>
+											</div>
+										</div>
+										<div class="col-md-5">
+											<div
+												class="col-md-8 d-flex flex-column justify-content-around">
+												<div>
+													<h6 class="fw-bold text-uppercase text-success op-8">Tipo
+														da Unidade:</h6>
+													<h8 class="fw-bold"
+														th:text="${estabelecimento.descricaotipounidade}"></h8>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-md-6">
+							<div class="card full-height">
+								<div class="card-body">
+									<div class="card-title-admin">Atendimentos</div>
+									<div class="card-category">
+										Relativos a hoje: <strong th:text="${dataatual}"></strong>
+									</div>
+									<div class="d-flex flex-wrap justify-content-around pb-2 pt-4">
+										<div class="px-2 pb-2 pb-md-0 text-center">
+											<div id="circles-4"></div>
+											<h6 class="fw-bold mt-3 mb-0">Total</h6>
+										</div>
+										<div class="px-2 pb-2 pb-md-0 text-center">
+											<div id="circles-5"></div>
+											<h6 class="fw-bold mt-3 mb-0">Urgências</h6>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div layout:fragment="scripts">
+		<script th:inline="javascript">
+			Circles.create({
+				id : 'circles-1',
+				radius : 45,
+				value : [[${medicos.size()}]],
+				maxValue : [[${profissionais.size()}]],
+				width : 7,
+				text : [[${medicos.size()}]],
+				colors : [ '#f1f1f1', '#FF9E27' ],
+				duration : 400,
+				wrpClass : 'circles-wrp',
+				textClass : 'circles-text',
+				styleWrapper : true,
+				styleText : true
+			})
+
+			Circles.create({
+				id : 'circles-2',
+				radius : 45,
+				value : [[${enfermeiros.size()}]],
+				maxValue : [[${profissionais.size()}]],
+				width : 7,
+				text : [[${enfermeiros.size()}]],
+				colors : [ '#f1f1f1', '#2BB930' ],
+				duration : 400,
+				wrpClass : 'circles-wrp',
+				textClass : 'circles-text',
+				styleWrapper : true,
+				styleText : true
+			})
+
+			Circles.create({
+				id : 'circles-3',
+				radius : 45,
+				value : [[${tecnicos.size()}]],
+				maxValue : [[${profissionais.size()}]],
+				width : 7,
+				text : [[${tecnicos.size()}]],
+				colors : [ '#f1f1f1', '#F25961' ],
+				duration : 400,
+				wrpClass : 'circles-wrp',
+				textClass : 'circles-text',
+				styleWrapper : true,
+				styleText : true
+			})
+
+			Circles.create({
+				id : 'circles-4',
+				radius : 45,
+				value : [[${totalatd.size()}]],
+				maxValue : [[${totalatd.size()}]],
+				width : 7,
+				text : [[${totalatd.size()}]],
+				colors : [ '#f1f1f1', '#F25961' ],
+				duration : 400,
+				wrpClass : 'circles-wrp',
+				textClass : 'circles-text',
+				styleWrapper : true,
+				styleText : true
+			})
+
+			Circles.create({
+				id : 'circles-5',
+				radius : 45,
+				value : [[${urgencias}]],
+				maxValue : [[${urgencias}]],
+				width : 7,
+				text : [[${urgencias}]],
+				colors : [ '#f1f1f1', '#F25961' ],
+				duration : 400,
+				wrpClass : 'circles-wrp',
+				textClass : 'circles-text',
+				styleWrapper : true,
+				styleText : true
+			})
+		</script>
+
+	</div>
+
+</body>
+</html>

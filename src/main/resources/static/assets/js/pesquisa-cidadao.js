@@ -71,6 +71,9 @@ $(document).ready(
 									$('#codigoraca option[value="' + data.codigoraca + '"]').attr({ selected : "selected" });
 									$('#codigonacionalidade option[value="' + data.codigonacionalidades + '"]').attr({ selected : "selected" });
 									$("#nomemunicipio").val(data.nomemunicipio);
+									$("#cep").val(data.cep);
+									$("#codigoibge").val(data.codigoibgemunicipio);
+									$("#bairro").val(data.bairro);
 									$('#codigologradouro option[value="' + data.codigologradouro + '"]').attr({ selected : "selected" });
 									$("#endereco").val(data.endereco);
 									$("#complementoendereco").val(data.complementoendereco);

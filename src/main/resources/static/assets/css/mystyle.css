@@ -425,3 +425,17 @@ img.info{
 }
 /*Estilização dados da
  Triagem no Formulário de Atendimento Médico */
+ 
+ .card-title-admin {
+    margin: 0;
+    color: #094b9f;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 1.6;
+}
+
+.card-profile .card-header-profile, .card-light-profile .card-header-profile {
+    padding: 1rem 1.25rem;
+    background-color: #ffffff;
+    border-bottom: 1px solid #ebecec !important;
+}

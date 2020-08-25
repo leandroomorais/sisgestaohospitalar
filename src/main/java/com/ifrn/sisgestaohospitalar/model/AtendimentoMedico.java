@@ -16,6 +16,8 @@ import javax.validation.constraints.NotBlank;
 
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.format.annotation.DateTimeFormat.ISO;
 
@@ -79,6 +81,7 @@ public class AtendimentoMedico {
 	/**
 	 * Relacionamento entre os objetos AtendimentoMédico e ProcedimentoSigtap
 	 */
+	@LazyCollection(value = LazyCollectionOption.FALSE)
 	@ManyToMany
 	@JoinTable(name = "atendimentomedico_procedimentos")
 	private List<ProcedimentoSigtap> procedimentos;

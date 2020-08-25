@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html layout:decorate="~{/layouts/layout-admin}" lang="pt"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity"
+	xmlns:layout="http://ultraq.net.nz/thymeleaf/layout">
+
+<body>
+	<div class="main-panel" layout:fragment="main-panel">
+		<div class="container">
+			<div class="page-inner">
+				<div class="page-header">
+					<h4 class="page-title">Administração</h4>
+					<ul class="breadcrumbs">
+						<li class="nav-home"><i class="flaticon-home"></i></li>
+						<li class="separator"><i class="flaticon-right-arrow"></i></li>
+						<li class="nav-item"><a th:href="@{#}">Meu Perfil</a></li>
+					</ul>
+				</div>
+				<div class="row">
+					<div class="col-md-12">
+						<div class="col-md-12">
+							<div class="card card-profile">
+								<div class="card-header">
+									<div class="profile-picture">
+										<div class="avatar">
+											<img th:src="@{/assets/img/person-male.png}" alt="..."
+												class="avatar-img rounded-circle">
+										</div>
+									</div>
+								</div>
+								<div class="card-body">
+									<div class="user-profile text-center">
+										<div class="name" th:text="${profissional.firstname}"></div>
+										<div class="job" th:text="${profissional.tipoprofissional}"></div>
+									</div>
+								</div>
+								<div class="card-footer">
+									<div class="row user-stats">
+
+										<div class="col">
+											<div class="number">Dados Pessoais:</div>
+											<strong>Nome Completo:</strong>
+											<div th:text="${profissional.nome}"></div>
+											<strong>Email:</strong>
+											<div th:text="${profissional.email}"></div>
+											<strong>Nascimento:</strong>
+											<div th:text="${profissional.datanascimento}"></div>
+										</div>
+										<div class="col">
+											<div class="number">Documentações:</div>
+											<strong>CNS:</strong>
+											<div th:text="${profissional.cns}"></div>
+											<strong>CPF:</strong>
+											<div th:text="${profissional.cpf}"></div>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<a
+								th:href="@{/profissional/save-email/{id} (id=${profissional.id})}"
+								class="a-btn a-btn-primary"> <span class="a-btn-label">
+									<i class="fa fa-envelope"></i>
+							</span> Cadastrar/Alterar Email
+							</a> <a th:href="@{/forget}" class="a-btn a-btn-primary"> <span
+								class="a-btn-label"> <i class="fa fa-key"></i>
+							</span> Alterar senha
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<footer class="footer">
+			<div class="container-fluid">
+				<nav class="pull-left">
+					<th:block th:each="estabelecimento : ${estabelecimento}">
+						<span class="text-primary" th:text="${estabelecimento.nome}"></span>
+					</th:block>
+				</nav>
+				<div class="copyright ml-auto">Sistema de Gestão Hospitalar,
+					2020.</div>
+			</div>
+		</footer>
+	</div>
+
+
+</body>
+
+</html>

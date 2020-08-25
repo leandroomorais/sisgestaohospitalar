@@ -1,272 +1,275 @@
-0101Centro de referência em atenção a saúde do idoso                                                                                                      202003
-0202Unidade de alta complexidade ao paciente portador de obesidade grave                                                                                  202003
-0203Assistência em Alta Complexidade ao individuo com Obesidade                                                                                           202003
-0301Centros/Núcleos para realização de implante coclear                                                                                                   202003
-0305Atenção Especializada às Pessoas com Deficiência Auditiva                                                                                             202003
-0401Centro de tratamento da má formação labio-palatal                                                                                                     202003
-0403Centro de Especialidade Odontológica - CEO Tipo I                                                                                                     202003
-0404Centro de Especialidade Odontológica - CEO Tipo II                                                                                                    202003
-0405Centro de Especialidade Odontológica - CEO Tipo III                                                                                                   202003
-0503Unidade de Atenção Especializada em Oftalmologia                                                                                                      202003
-0504Centro de Referência em Oftalmologia                                                                                                                  202003
-0505Projeto Olhar Brasil                                                                                                                                  202003
-0506Tratamento do Glaucoma com medicamentos no âmbito da Política Nacional de Atenção Oftalmológica                                                       202003
-0507Consultório Itinerante de Ensino em Oftalmologia                                                                                                      202003
-0508Tratamento do Glaucoma com medicamentos do Componente Especializado da Assistência Farmacêutica                                                       202003
-0601Psiquiatria - Classe I                                                                                                                                202003
-0602Psiquiatria - Classe II                                                                                                                               202003
-0603Psiquiatria - Classe III                                                                                                                              202003
-0604Psiquiatria - Classe IV                                                                                                                               202003
-0605Psiquiatria - Classe V                                                                                                                                202003
-0606Psiquiatria - Classe VI                                                                                                                               202003
-0607Psiquiatria - Classe VII                                                                                                                              202003
-0608Psiquiatria - Classe VIII                                                                                                                             202003
-0609Psiquiatria - Classe IX                                                                                                                               202003
-0610Psiquiatria - Classe X                                                                                                                                202003
-0611Psiquiatria - Classe XI                                                                                                                               202003
-0612Psiquiatria - Classe XII                                                                                                                              202003
-0613Psiquiatria - Classe XIII                                                                                                                             202003
-0614Psiquiatria - Classe XIV                                                                                                                              202003
-0615PNASS maior que 80%                                                                                                                                   202003
-0616Centro de Atenção Psicossocial - CAPS I                                                                                                               202003
-0617Centro de Atenção Psicossocial - CAPS II                                                                                                              202003
-0618Centro de Atenção Psicossocial - CAPS III                                                                                                             202003
-0619Centro de Atenção Psicossocial Álcool e Drogas - CAPSad                                                                                               202003
-0620Centro de Atenção Psicossocial Infantil - CAPSi                                                                                                       202003
-0621Serviço hospitalar de referência para a atenção integral aos usuários de álcool e outras drogas                                                       202003
-0622Psiquiatria Classe I - PT/GM nº251/02                                                                                                                 202003
-0623Psiquiatria Classe II - PT/GM nº251/02                                                                                                                202003
-0624Psiquiatria Classe III - PT/GM nº251/02                                                                                                               202003
-0625Psiquiatria Classe IV - PT/GM nº 251/02                                                                                                               202003
-0626Psiquiatria Classe V - PT/GM nº251/02                                                                                                                 202003
-0627Psiquiatria Classe VI - PT/GM nº251/02                                                                                                                202003
-0628Psiquiatria Classe VII - PT/GM nº251/02                                                                                                               202003
-0629Psiquiatria Classe VIII - PT/GM nº251/02                                                                                                              202003
-0630Psiquiatria III                                                                                                                                       202003
-0631Nível I                                                                                                                                               202003
-0632Nível II                                                                                                                                              202003
-0633Nível III                                                                                                                                             202003
-0634Nível IV                                                                                                                                              202003
-0635Centro de Atenção Psicossocial Álcool e Drogas - CAPS AD III                                                                                          202003
-0636Atenção a pessoas com sofrimento ou transtorno mental decorrente de alcool e outras drogas.                                                           202003
-0637CAPS AD IV                                                                                                                                            202003
-0801Unidade de assistência de alta complexidade cardiovascular                                                                                            202003
-0802Centro de referência em alta complexidade cardiovascular                                                                                              202003
-0803Cirurgia cardiovascular e procedimentos em cardiologia intervencionista                                                                               202003
-0804Cirurgia cardiovascular pediátrica                                                                                                                    202003
-0805Cirurgia vascular                                                                                                                                     202003
-0806Cirurgia vascular e procedimentos endovasculares extracardíacos                                                                                       202003
-0807Laboratório de eletrofisiologia, cirurgia cardiovascular e procedimentos de cardiologia intervencionista                                              202003
-0808Implante de marcapasso definitivo                                                                                                                     202003
-0809Cirurgia cardíaca                                                                                                                                     202003
-0810Laboratório eletrofisiológico e terapia intervencionista                                                                                              202003
-0901Cuidados prolongados - enfermidades cardiovasculares                                                                                                  202003
-0902Cuidados prolongados - enfermidades pneumológicas                                                                                                     202003
-0903Cuidados prolongados - enfermidades neurológicas                                                                                                      202003
-0904Cuidados prolongados - enfermidades osteomuscular e do tecido conjuntivo                                                                              202003
-0905Cuidados prolongados - enfermidades oncológicas                                                                                                       202003
-0906Cuidados prolongados - enfermidades decorrentes da AIDS                                                                                               202003
-0907Cuidados prolongados - enfermidades devido a causas externas                                                                                          202003
-1001Centro de referência no tratamento da dor crônica                                                                                                     202003
-1101Serviço hospitalar para tratamento AIDS                                                                                                               202003
-1102Laboratório Especializado em Contagem de Linfócitos T CD4+/CD8+ e HIV1 Quant. do RNA                                                                  202003
-1103Tratamento da lipoatrofia facial do portador de HIV/AIDS                                                                                              202003
-1104Tratamento da liopodistrofia do Portador de HIV/AIDS                                                                                                  202003
-1105Laboratório Especializado em Contagem de Linfócitos T CD4+/CD8+                                                                                       202003
-1106Laboratório Especializado em Quantificação do RNA do HIV1                                                                                             202003
-1201Fibrose cística - Hospital Dia                                                                                                                        202003
-1202Hospital Dia - Procedimentos cirúrgicos, diagnósticos ou terapêuticos                                                                                 202003
-1203Hospital Dia - AIDS                                                                                                                                   202003
-1204Hospital Dia em intercorrências pós-transplante de medula óssea e de outros precursores hematopoéticos                                                202003
-1205Hospital Dia - Geriatria                                                                                                                              202003
-1206Hospital Dia - Saúde Mental                                                                                                                           202003
-1301Internação domiciliar                                                                                                                                 202003
-1401Referência hospitalar em atendimento secundário a gestante de alto risco                                                                              202003
-1402Referência hospitalar em atendimento terciário a gestante de alto risco                                                                               202003
-1403Unidade que realiza assistência ao parto sem distócia por enfermeiro obstetra ou obstetriz                                                            202003
-1404Hospital Amigo da Criança                                                                                                                             202003
-1405Centro de referência em triagem neonatal/acompanhamento e tratamento de doenças congênitas - fenilcetonuria/hipotireoidismo congenito                 202003
-1406Centro de referência em triagem neonatal/acompanhamento e tratamento - doenças falciformes e outras hemoglobinopatias                                 202003
-1407Centro de referência em triagem neonatal/acompanhamento e tratamento - fibrose cística                                                                202003
-1408Triagem Neonatal Fase IV                                                                                                                              202003
-1409Diagnóse de Fibrose Cistica                                                                                                                           202003
-1410Unidade de Centro de Parto Normal Intra-Hospitalar Tipo I 3 PPP                                                                                       202003
-1411Unidade de Centro de Parto Normal Intra-Hospitalar Tipo I 5 PPP                                                                                       202003
-1412Unidade de Centro de Parto Normal Peri-Hospitalar 5 PPP                                                                                               202003
-1413Atenção Hospitalar de Referência à Gestação de Alto Risco Tipo 1                                                                                      202003
-1414Atenção Hospitalar de Referência à Gestação de Alto Risco Tipo 2                                                                                      202003
-1415Casa da Gestante, Bebê e Puérpera                                                                                                                     202003
-1416Hospital Amigo da Criança                                                                                                                             202003
-1417Unidade de Centro de Parto Normal Peri-Hospitalar 3 PPP                                                                                               202003
-1418Unidade de Centro de Parto Normal Intra-Hospitalar Tipo II 3 PPP                                                                                      202003
-1419Unidade de Centro de Parto Normal Intra-Hospitalar Tipo II 5 PPP                                                                                      202003
-1501Unidade de assistência de alta complexidade em nefrologia (serviço de nefrologia)                                                                     202003
-1502Centro de referência de alta complexidade em nefrologia                                                                                               202003
-1504Atenção Especializada em DRC com Hemodiálise                                                                                                          202003
-1505Atenção Especializada em DRC com Diálise Peritoneal                                                                                                   202003
-1506Atenção Especializada em DRC nos estágios 4 e 5-PréDialitico                                                                                          202003
-1507Unidade Especializada em DRC com TRS/Diálise Tipo I com Hemodiálise                                                                                   202003
-1508Unidade Especializada em DRC com TRS/Diálise Tipo I com Diálise Peritoneal                                                                            202003
-1509Unidade Especializada em DRC com TRS/Diálise Tipo II com Hemodiálise                                                                                  202003
-1510Unidade Especializada em DRC com TRS/Diálise Tipo II com Diálise Peritoneal                                                                           202003
-1511Unidade Especializada em DRC com TRS/Diálise Tipo III com Hemodiálise                                                                                 202003
-1512Unidade Especializada em DRC com TRS/Diálise Tipo III com Diálise Peritoneal                                                                          202003
-1513Unidade Especializada em DRC com TRS/Diálise Tipo IV com Hemodiálise                                                                                  202003
-1514Unidade Especializada em DRC com TRS/Diálise Tipo IV com Diálise Peritoneal                                                                           202003
-1601Unidade de assistência de alta complexidade em neurologia/neurocirurgia                                                                               202003
-1602Centro de referência de alta complexidade em neurologia/neurocirurgia                                                                                 202003
-1603Trauma e anomalias do desenvolvimento                                                                                                                 202003
-1604Coluna e dos nervos periféricos                                                                                                                       202003
-1605Tumores do sistema nervoso                                                                                                                            202003
-1606Neurocirurgia vascular                                                                                                                                202003
-1607Tratamento neurocirúrgico da dor e funcional                                                                                                          202003
-1608Investigação e cirurgia de epilepsia                                                                                                                  202003
-1609Tratamento neuro-endovascular                                                                                                                         202003
-1610Neurocirurgia funcional esteriotáxica                                                                                                                 202003
-1611Epilepsia                                                                                                                                             202003
-1612Neurocirurgia I                                                                                                                                       202003
-1613Neurocirurgia II                                                                                                                                      202003
-1614Neurocirurgia III                                                                                                                                     202003
-1615Centro de Atendimento de Urgência Tipo I aos Pacientes com AVC                                                                                        202003
-1616Centro de Atendimento de Urgência Tipo II aos Pacientes com AVC                                                                                       202003
-1617Centro de Atendimento de Urgência Tipo III aos Pacientes com AVC                                                                                      202003
-1704Serviço isolado de radioterapia                                                                                                                       202003
-1705Serviço isolado de quimioterapia                                                                                                                      202003
-1706UNACON                                                                                                                                                202003
-1707UNACON com serviço de radioterapia                                                                                                                    202003
-1708UNACON com serviço de hematologia                                                                                                                     202003
-1709UNACON com serviço de oncologia pediátrica                                                                                                            202003
-1710UNACON exclusiva de hematologia                                                                                                                       202003
-1711UNACON exclusiva de oncologia pediátrica                                                                                                              202003
-1712CACON                                                                                                                                                 202003
-1713CACON com serviço de oncologia pediátrica                                                                                                             202003
-1714Hospital Geral com cirurgia oncológica                                                                                                                202003
-1715Serviço de radioterapia de complexo hospitalar                                                                                                        202003
-1716Serviço de Oncologia Clínica de Complexo hospitalar                                                                                                   202003
-1717Oncologia Cirúrgica Hospital Porte A                                                                                                                  202003
-1718Oncologia Cirúrgica Hospital Porte B.                                                                                                                 202003
-1719Serviço de Referência P/Diagnóstico e Trat. de Lesões Precursoras do Câncer do Colo de Útero(SRC)                                                     202003
-1720Serviço de Referência para Diagnóstico de Câncer de Mama (SDM)                                                                                        202003
-1721Hospital Geral com Cirurgia de Câncer de Complexo Hospitalar                                                                                          202003
-1801Centro de referência de tratamento de osteogênesis imperfecta                                                                                         202003
-1901Laqueadura                                                                                                                                            202003
-1902Vasectomia                                                                                                                                            202003
-2001Programa de assistência ventilatoria não invasiva aos portadores de doenças neuromusculares                                                           202003
-2101Unidade de referência em assistência a queimados - média complexidade                                                                                 202003
-2102Centro de referência em assistência a queimados - alta complexidade                                                                                   202003
-2201Centro de referência de reabilitação em medicina fisica                                                                                               202003
-2202Centro de reabilitação fisica - nível intermediário                                                                                                   202003
-2203Centro de Reabilitação Visual                                                                                                                         202003
-2204Centro de Reabilitação Auditiva na Média Complexidade                                                                                                 202003
-2205Centro de Reabilitação Auditiva na Alta Complexidade                                                                                                  202003
-2206Centro de Reabilitação Intelectual                                                                                                                    202003
-2207Centro de Reabilitação dos Transtornos do Spectro do Autismo                                                                                          202003
-2208Centro Especializado em Reabilitação (CER) Modalidade Física                                                                                          202003
-2209Centro Especializado em Reabilitação (CER) Modalidade Intelectual                                                                                     202003
-2210Centro Especializado em Reabilitação (CER) Modalidade Auditiva                                                                                        202003
-2211Centro Especializado em Reabilitação (CER) Modalidade Visual                                                                                          202003
-2301Unidade de assistência de alta complexidade em terapia nutricional                                                                                    202003
-2302Centro de referência de alta complexidade em terapia nutricional                                                                                      202003
-2303Enteral                                                                                                                                               202003
-2304Enteral e parenteral                                                                                                                                  202003
-2305Enteral e parenteral com manipulação e fabricação da fórmula nutricional                                                                              202003
-2306Nutrição enteral                                                                                                                                      202003
-2401Transplante de medula óssea-autogênico                                                                                                                202003
-2402Transplante de medula óssea-alogênico aparentado                                                                                                      202003
-2403Transplante de medula óssea-alogênico não aparentado                                                                                                  202003
-2404Transplante de pâncreas isolado                                                                                                                       202003
-2405Transplante conjugado rim e pâncreas                                                                                                                  202003
-2407Transplante de córnea/esclera                                                                                                                         202003
-2408Transplante renal                                                                                                                                     202003
-2409Transplante de fígado                                                                                                                                 202003
-2410Transplante de pulmão                                                                                                                                 202003
-2411Transplante de coração                                                                                                                                202003
-2412Busca ativa de orgãos                                                                                                                                 202003
-2413Banco de tecido ocular humano                                                                                                                         202003
-2414Banco de válvulas cardíacas                                                                                                                           202003
-2415Banco de tecido músculo-esquelético                                                                                                                   202003
-2416Banco de sangue e cordão umbilical e placentário                                                                                                      202003
-2417Exames de histocompatibilidade atraves de sorologia - Tipo I                                                                                          202003
-2418Exames de histocompatibilidade atraves de sorologia e ou biologia molecular - Tipo II                                                                 202003
-2419Banco de Pele Humana                                                                                                                                  202003
-2420Retirada de Órgãos e Tecidos                                                                                                                          202003
-2421Banco de Multitecidos                                                                                                                                 202003
-2422Transplante de tecido músculo esquelético                                                                                                             202003
-2423Transplante da válvula cardíaca humana                                                                                                                202003
-2424Transplante de pele                                                                                                                                   202003
-2425Cadastramento de doadores voluntários de medula óssea e outros precursores hematopoéticos                                                             202003
-2426Estabelecimento de saúde de Nível A                                                                                                                   202003
-2427Estabelecimento de saúde de Nível B                                                                                                                   202003
-2428Estabelecimento de saúde de Nível C                                                                                                                   202003
-2429Estabelecimento de saúde de Nível D                                                                                                                   202003
-2430Transplante de figado- IHH por febre amarela                                                                                                          202003
-2501Unidade de atenção especializada em traumato-ortopedia                                                                                                202003
-2502Centro de referência de alta complexidade em traumato-ortopedia                                                                                       202003
-2503Coluna                                                                                                                                                202003
-2504Cintura escapular, ombro, braço e cotovelo                                                                                                            202003
-2505Antebraço, punho e mão                                                                                                                                202003
-2506Cintura pélvica, quadril, coxa                                                                                                                        202003
-2507Coxa, joelho e perna                                                                                                                                  202003
-2508Perna, tornozelo e pé                                                                                                                                 202003
-2509Ortopedia infantil                                                                                                                                    202003
-2510Traumatologia ortopédica de urgência                                                                                                                  202003
-2511Ortopedia - Coluna                                                                                                                                    202003
-2512Ortopedia - Ombro                                                                                                                                     202003
-2513Ortopedia - Mão                                                                                                                                       202003
-2514Ortopedia - Quadril                                                                                                                                   202003
-2515Ortopedia - Joelho                                                                                                                                    202003
-2516Ortopedia - Tumor Ósseo                                                                                                                               202003
-2517Outros segmentos ósseos                                                                                                                               202003
-2518Adesão á Estratégia de Aumento do Acesso aos Procedimentos-TOM                                                                                        202003
-2601UTI II - Adulto                                                                                                                                       202003
-2602UTI II - Neonatal                                                                                                                                     202003
-2603UTI II - Pediátrica                                                                                                                                   202003
-2604UTI III - Adulto                                                                                                                                      202003
-2605UTI III - Neonatal                                                                                                                                    202003
-2606UTI III - Pediátrica                                                                                                                                  202003
-2607UTI - Queimados                                                                                                                                       202003
-2608Unidade Terapia Intensiva Coronariana - UCO TIPO II                                                                                                   202003
-2609Unidade Terapia Intensiva Coronariana - UCO TIPO III                                                                                                  202003
-2610Unidade de Terapia Intensiva Neonatal Tipo II - UTIN II                                                                                               202003
-2611Unidade de Terapia Intensiva Neonatal Tipo III - UTIN III                                                                                             202003
-2612UTI II Adulto - COVID-19                                                                                                                              202003
-2613UTI II Pediatrica - COVID-19                                                                                                                          202003
-2696UTI I Adulto                                                                                                                                          202003
-2697UTI I Neonatal                                                                                                                                        202003
-2698UTI I Pediatria                                                                                                                                       202003
-2699UTI I                                                                                                                                                 202003
-2701Hospital Tipo I em Urgência                                                                                                                           202003
-2702Hospital Tipo II em Urgência                                                                                                                          202003
-2703Hospital Tipo III em Urgência                                                                                                                         202003
-2711Administração Pré Hospitalar de Tenectoplase                                                                                                          202003
-2801Unidade de cuidados intermediários neonatal                                                                                                           202003
-2802Unidade de Cuidados Intermediários Neonatal Convencional (UCINCo)                                                                                     202003
-2803Unidade de Cuidados Intermediários Neonatal Canguru (UCINCa)                                                                                          202003
-2901Videocirurgia                                                                                                                                         202003
-3001Unidade de Atenção Especializada no Processo Transexualizador                                                                                         202003
-3002Atenção ao Pré e Pós Operatório (clínico) e Hormonioterapia no Processo Transexualizador                                                              202003
-3003Atenção ao Pré e Pós Operatório e Cirurgias no Processo Transexualizador                                                                              202003
-3101HPP- Hospital de Pequeno Porte                                                                                                                        202003
-3201Unidade de Mamografia Móvel                                                                                                                           202003
-3202Laboratório de Exames Citopatológico do Cólo do Últero-Tipo I                                                                                         202003
-3203Lab. Monitoramento Externo de Qualidade de Exame Citopatológico do Colo do Útero Tipo-II                                                              202003
-3401Centro de Trauma Tipo I                                                                                                                               202003
-3402Centro de Trauma Tipo II                                                                                                                              202003
-3403Centro de Trauma Tipo III                                                                                                                             202003
-3501Atenção Especializada Eixo I DR de Origem Genética: 1-Anomalias Congênitas ou de Manifestação Tardia                                                  202003
-3502Atenção Especializada Eixo I DR de Origem Genética:2-Deficiência Intelectual Associada à Doença Rara                                                  202003
-3503Atenção Especializada Eixo I DR de Origem Genética: 3-Erro Inato do Metabolismo (EIM)                                                                 202003
-3504Atenção Especializada Eixo II DR de Origem não Genética: 1-Doenças Raras Inflamatórias                                                                202003
-3505Atenção Especializada Eixo II DR de Origem não Genética: 2-Doenças Raras Infecciosas                                                                  202003
-3506Atenção Especializada Eixo II DR de Origem não Genética: 3-Doenças Raras Autoimunes                                                                   202003
-3507Serviço de Referência Eixo I DR de Origem Genética:1 Anomalias Congênitas ou de Manifestação Tardia                                                   202003
-3508Serviço de Referência Eixo I DR de Origem Genética:2-Deficiência Intelectual Associada à Doença Rara                                                  202003
-3509Serviço de Referência Eixo I DR de Origem Genética:3-Erro Inato do Metabolismo (EIM)                                                                  202003
-3510Serviço de Referência Eixo II DR de Origem não Genética:3-Doenças Raras Autoimunes                                                                    202003
-3511Serviço de Referência Eixo II DR de Origem não Genética:2-Doenças Raras Inflamatórias                                                                 202003
-3512Serviço de Referência Eixo II DR de Origem não Genética:1-Doenças Raras Infecciosas                                                                   202003
-3513Atenção Especializada Eixo II DR de Origem não Genética:4-Outras DR de Origem não Genética                                                            202003
-3514Serviço de Referência Eixo II DR de Origem não Genética:4-Outras DR de Origem não Genética                                                            202003
-3515Serviço de Aconselhamento Genético                                                                                                                    202003
-3601Sítio Testador de ácidos nucléicos (SIT-NAT)                                                                                                          202003
-3701Coleta de Vestígios de Violência Sexual                                                                                                               202003
+0101Centro de referência em atenção a saúde do idoso                                                                                                      202007
+0202Unidade de alta complexidade ao paciente portador de obesidade grave                                                                                  202007
+0203Assistência em Alta Complexidade ao individuo com Obesidade                                                                                           202007
+0301Centros/Núcleos para realização de implante coclear                                                                                                   202007
+0305Atenção Especializada às Pessoas com Deficiência Auditiva                                                                                             202007
+0401Centro de tratamento da má formação labio-palatal                                                                                                     202007
+0403Centro de Especialidade Odontológica - CEO Tipo I                                                                                                     202007
+0404Centro de Especialidade Odontológica - CEO Tipo II                                                                                                    202007
+0405Centro de Especialidade Odontológica - CEO Tipo III                                                                                                   202007
+0503Unidade de Atenção Especializada em Oftalmologia                                                                                                      202007
+0504Centro de Referência em Oftalmologia                                                                                                                  202007
+0505Projeto Olhar Brasil                                                                                                                                  202007
+0506Tratamento do Glaucoma com medicamentos no âmbito da Política Nacional de Atenção Oftalmológica                                                       202007
+0507Consultório Itinerante de Ensino em Oftalmologia                                                                                                      202007
+0508Tratamento do Glaucoma com medicamentos do Componente Especializado da Assistência Farmacêutica                                                       202007
+0601Psiquiatria - Classe I                                                                                                                                202007
+0602Psiquiatria - Classe II                                                                                                                               202007
+0603Psiquiatria - Classe III                                                                                                                              202007
+0604Psiquiatria - Classe IV                                                                                                                               202007
+0605Psiquiatria - Classe V                                                                                                                                202007
+0606Psiquiatria - Classe VI                                                                                                                               202007
+0607Psiquiatria - Classe VII                                                                                                                              202007
+0608Psiquiatria - Classe VIII                                                                                                                             202007
+0609Psiquiatria - Classe IX                                                                                                                               202007
+0610Psiquiatria - Classe X                                                                                                                                202007
+0611Psiquiatria - Classe XI                                                                                                                               202007
+0612Psiquiatria - Classe XII                                                                                                                              202007
+0613Psiquiatria - Classe XIII                                                                                                                             202007
+0614Psiquiatria - Classe XIV                                                                                                                              202007
+0615PNASS maior que 80%                                                                                                                                   202007
+0616Centro de Atenção Psicossocial - CAPS I                                                                                                               202007
+0617Centro de Atenção Psicossocial - CAPS II                                                                                                              202007
+0618Centro de Atenção Psicossocial - CAPS III                                                                                                             202007
+0619Centro de Atenção Psicossocial Álcool e Drogas - CAPSad                                                                                               202007
+0620Centro de Atenção Psicossocial Infantil - CAPSi                                                                                                       202007
+0621Serviço hospitalar de referência para a atenção integral aos usuários de álcool e outras drogas                                                       202007
+0622Psiquiatria Classe I - PT/GM nº251/02                                                                                                                 202007
+0623Psiquiatria Classe II - PT/GM nº251/02                                                                                                                202007
+0624Psiquiatria Classe III - PT/GM nº251/02                                                                                                               202007
+0625Psiquiatria Classe IV - PT/GM nº 251/02                                                                                                               202007
+0626Psiquiatria Classe V - PT/GM nº251/02                                                                                                                 202007
+0627Psiquiatria Classe VI - PT/GM nº251/02                                                                                                                202007
+0628Psiquiatria Classe VII - PT/GM nº251/02                                                                                                               202007
+0629Psiquiatria Classe VIII - PT/GM nº251/02                                                                                                              202007
+0630Psiquiatria III                                                                                                                                       202007
+0631Nível I                                                                                                                                               202007
+0632Nível II                                                                                                                                              202007
+0633Nível III                                                                                                                                             202007
+0634Nível IV                                                                                                                                              202007
+0635Centro de Atenção Psicossocial Álcool e Drogas - CAPS AD III                                                                                          202007
+0636Atenção a pessoas com sofrimento ou transtorno mental decorrente de alcool e outras drogas.                                                           202007
+0637CAPS AD IV                                                                                                                                            202007
+0801Unidade de assistência de alta complexidade cardiovascular                                                                                            202007
+0802Centro de referência em alta complexidade cardiovascular                                                                                              202007
+0803Cirurgia cardiovascular e procedimentos em cardiologia intervencionista                                                                               202007
+0804Cirurgia cardiovascular pediátrica                                                                                                                    202007
+0805Cirurgia vascular                                                                                                                                     202007
+0806Cirurgia vascular e procedimentos endovasculares extracardíacos                                                                                       202007
+0807Laboratório de eletrofisiologia, cirurgia cardiovascular e procedimentos de cardiologia intervencionista                                              202007
+0808Implante de marcapasso definitivo                                                                                                                     202007
+0809Cirurgia cardíaca                                                                                                                                     202007
+0810Laboratório eletrofisiológico e terapia intervencionista                                                                                              202007
+0901Cuidados prolongados - enfermidades cardiovasculares                                                                                                  202007
+0902Cuidados prolongados - enfermidades pneumológicas                                                                                                     202007
+0903Cuidados prolongados - enfermidades neurológicas                                                                                                      202007
+0904Cuidados prolongados - enfermidades osteomuscular e do tecido conjuntivo                                                                              202007
+0905Cuidados prolongados - enfermidades oncológicas                                                                                                       202007
+0906Cuidados prolongados - enfermidades decorrentes da AIDS                                                                                               202007
+0907Cuidados prolongados - enfermidades devido a causas externas                                                                                          202007
+1001Centro de referência no tratamento da dor crônica                                                                                                     202007
+1101Serviço hospitalar para tratamento AIDS                                                                                                               202007
+1102Laboratório Especializado em Contagem de Linfócitos T CD4+/CD8+ e HIV1 Quant. do RNA                                                                  202007
+1103Tratamento da lipoatrofia facial do portador de HIV/AIDS                                                                                              202007
+1104Tratamento da liopodistrofia do Portador de HIV/AIDS                                                                                                  202007
+1105Laboratório Especializado em Contagem de Linfócitos T CD4+/CD8+                                                                                       202007
+1106Laboratório Especializado em Quantificação do RNA do HIV1                                                                                             202007
+1201Fibrose cística - Hospital Dia                                                                                                                        202007
+1202Hospital Dia - Procedimentos cirúrgicos, diagnósticos ou terapêuticos                                                                                 202007
+1203Hospital Dia - AIDS                                                                                                                                   202007
+1204Hospital Dia em intercorrências pós-transplante de medula óssea e de outros precursores hematopoéticos                                                202007
+1205Hospital Dia - Geriatria                                                                                                                              202007
+1206Hospital Dia - Saúde Mental                                                                                                                           202007
+1301Internação domiciliar                                                                                                                                 202007
+1401Referência hospitalar em atendimento secundário a gestante de alto risco                                                                              202007
+1402Referência hospitalar em atendimento terciário a gestante de alto risco                                                                               202007
+1403Unidade que realiza assistência ao parto sem distócia por enfermeiro obstetra ou obstetriz                                                            202007
+1404Hospital Amigo da Criança                                                                                                                             202007
+1405Centro de referência em triagem neonatal/acompanhamento e tratamento de doenças congênitas - fenilcetonuria/hipotireoidismo congenito                 202007
+1406Centro de referência em triagem neonatal/acompanhamento e tratamento - doenças falciformes e outras hemoglobinopatias                                 202007
+1407Centro de referência em triagem neonatal/acompanhamento e tratamento - fibrose cística                                                                202007
+1408Triagem Neonatal Fase IV                                                                                                                              202007
+1409Diagnóse de Fibrose Cistica                                                                                                                           202007
+1410Unidade de Centro de Parto Normal Intra-Hospitalar Tipo I 3 PPP                                                                                       202007
+1411Unidade de Centro de Parto Normal Intra-Hospitalar Tipo I 5 PPP                                                                                       202007
+1412Unidade de Centro de Parto Normal Peri-Hospitalar 5 PPP                                                                                               202007
+1413Atenção Hospitalar de Referência à Gestação de Alto Risco Tipo 1                                                                                      202007
+1414Atenção Hospitalar de Referência à Gestação de Alto Risco Tipo 2                                                                                      202007
+1415Casa da Gestante, Bebê e Puérpera                                                                                                                     202007
+1416Hospital Amigo da Criança                                                                                                                             202007
+1417Unidade de Centro de Parto Normal Peri-Hospitalar 3 PPP                                                                                               202007
+1418Unidade de Centro de Parto Normal Intra-Hospitalar Tipo II 3 PPP                                                                                      202007
+1419Unidade de Centro de Parto Normal Intra-Hospitalar Tipo II 5 PPP                                                                                      202007
+1501Unidade de assistência de alta complexidade em nefrologia (serviço de nefrologia)                                                                     202007
+1502Centro de referência de alta complexidade em nefrologia                                                                                               202007
+1504Atenção Especializada em DRC com Hemodiálise                                                                                                          202007
+1505Atenção Especializada em DRC com Diálise Peritoneal                                                                                                   202007
+1506Atenção Especializada em DRC nos estágios 4 e 5-PréDialitico                                                                                          202007
+1507Unidade Especializada em DRC com TRS/Diálise Tipo I com Hemodiálise                                                                                   202007
+1508Unidade Especializada em DRC com TRS/Diálise Tipo I com Diálise Peritoneal                                                                            202007
+1509Unidade Especializada em DRC com TRS/Diálise Tipo II com Hemodiálise                                                                                  202007
+1510Unidade Especializada em DRC com TRS/Diálise Tipo II com Diálise Peritoneal                                                                           202007
+1511Unidade Especializada em DRC com TRS/Diálise Tipo III com Hemodiálise                                                                                 202007
+1512Unidade Especializada em DRC com TRS/Diálise Tipo III com Diálise Peritoneal                                                                          202007
+1513Unidade Especializada em DRC com TRS/Diálise Tipo IV com Hemodiálise                                                                                  202007
+1514Unidade Especializada em DRC com TRS/Diálise Tipo IV com Diálise Peritoneal                                                                           202007
+1601Unidade de assistência de alta complexidade em neurologia/neurocirurgia                                                                               202007
+1602Centro de referência de alta complexidade em neurologia/neurocirurgia                                                                                 202007
+1603Trauma e anomalias do desenvolvimento                                                                                                                 202007
+1604Coluna e dos nervos periféricos                                                                                                                       202007
+1605Tumores do sistema nervoso                                                                                                                            202007
+1606Neurocirurgia vascular                                                                                                                                202007
+1607Tratamento neurocirúrgico da dor e funcional                                                                                                          202007
+1608Investigação e cirurgia de epilepsia                                                                                                                  202007
+1609Tratamento neuro-endovascular                                                                                                                         202007
+1610Neurocirurgia funcional esteriotáxica                                                                                                                 202007
+1611Epilepsia                                                                                                                                             202007
+1612Neurocirurgia I                                                                                                                                       202007
+1613Neurocirurgia II                                                                                                                                      202007
+1614Neurocirurgia III                                                                                                                                     202007
+1615Centro de Atendimento de Urgência Tipo I aos Pacientes com AVC                                                                                        202007
+1616Centro de Atendimento de Urgência Tipo II aos Pacientes com AVC                                                                                       202007
+1617Centro de Atendimento de Urgência Tipo III aos Pacientes com AVC                                                                                      202007
+1704Serviço isolado de radioterapia                                                                                                                       202007
+1705Serviço isolado de quimioterapia                                                                                                                      202007
+1706UNACON                                                                                                                                                202007
+1707UNACON com serviço de radioterapia                                                                                                                    202007
+1708UNACON com serviço de hematologia                                                                                                                     202007
+1709UNACON com serviço de oncologia pediátrica                                                                                                            202007
+1710UNACON exclusiva de hematologia                                                                                                                       202007
+1711UNACON exclusiva de oncologia pediátrica                                                                                                              202007
+1712CACON                                                                                                                                                 202007
+1713CACON com serviço de oncologia pediátrica                                                                                                             202007
+1714Hospital Geral com cirurgia oncológica                                                                                                                202007
+1715Serviço de radioterapia de complexo hospitalar                                                                                                        202007
+1716Serviço de Oncologia Clínica de Complexo hospitalar                                                                                                   202007
+1717Oncologia Cirúrgica Hospital Porte A                                                                                                                  202007
+1718Oncologia Cirúrgica Hospital Porte B.                                                                                                                 202007
+1719Serviço de Referência P/Diagnóstico e Trat. de Lesões Precursoras do Câncer do Colo de Útero(SRC)                                                     202007
+1720Serviço de Referência para Diagnóstico de Câncer de Mama (SDM)                                                                                        202007
+1721Hospital Geral com Cirurgia de Câncer de Complexo Hospitalar                                                                                          202007
+1801Centro de referência de tratamento de osteogênesis imperfecta                                                                                         202007
+1901Laqueadura                                                                                                                                            202007
+1902Vasectomia                                                                                                                                            202007
+2001Programa de assistência ventilatoria não invasiva aos portadores de doenças neuromusculares                                                           202007
+2101Unidade de referência em assistência a queimados - média complexidade                                                                                 202007
+2102Centro de referência em assistência a queimados - alta complexidade                                                                                   202007
+2201Centro de referência de reabilitação em medicina fisica                                                                                               202007
+2202Centro de reabilitação fisica - nível intermediário                                                                                                   202007
+2203Centro de Reabilitação Visual                                                                                                                         202007
+2204Centro de Reabilitação Auditiva na Média Complexidade                                                                                                 202007
+2205Centro de Reabilitação Auditiva na Alta Complexidade                                                                                                  202007
+2206Centro de Reabilitação Intelectual                                                                                                                    202007
+2207Centro de Reabilitação dos Transtornos do Spectro do Autismo                                                                                          202007
+2208Centro Especializado em Reabilitação (CER) Modalidade Física                                                                                          202007
+2209Centro Especializado em Reabilitação (CER) Modalidade Intelectual                                                                                     202007
+2210Centro Especializado em Reabilitação (CER) Modalidade Auditiva                                                                                        202007
+2211Centro Especializado em Reabilitação (CER) Modalidade Visual                                                                                          202007
+2301Unidade de assistência de alta complexidade em terapia nutricional                                                                                    202007
+2302Centro de referência de alta complexidade em terapia nutricional                                                                                      202007
+2303Enteral                                                                                                                                               202007
+2304Enteral e parenteral                                                                                                                                  202007
+2305Enteral e parenteral com manipulação e fabricação da fórmula nutricional                                                                              202007
+2306Nutrição enteral                                                                                                                                      202007
+2401Transplante de medula óssea-autogênico                                                                                                                202007
+2402Transplante de medula óssea-alogênico aparentado                                                                                                      202007
+2403Transplante de medula óssea-alogênico não aparentado                                                                                                  202007
+2404Transplante de pâncreas isolado                                                                                                                       202007
+2405Transplante conjugado rim e pâncreas                                                                                                                  202007
+2407Transplante de córnea/esclera                                                                                                                         202007
+2408Transplante renal                                                                                                                                     202007
+2409Transplante de fígado                                                                                                                                 202007
+2410Transplante de pulmão                                                                                                                                 202007
+2411Transplante de coração                                                                                                                                202007
+2412Busca ativa de orgãos                                                                                                                                 202007
+2413Banco de tecido ocular humano                                                                                                                         202007
+2414Banco de válvulas cardíacas                                                                                                                           202007
+2415Banco de tecido músculo-esquelético                                                                                                                   202007
+2416Banco de sangue e cordão umbilical e placentário                                                                                                      202007
+2417Exames de histocompatibilidade atraves de sorologia - Tipo I                                                                                          202007
+2418Exames de histocompatibilidade atraves de sorologia e ou biologia molecular - Tipo II                                                                 202007
+2419Banco de Pele Humana                                                                                                                                  202007
+2420Retirada de Órgãos e Tecidos                                                                                                                          202007
+2421Banco de Multitecidos                                                                                                                                 202007
+2422Transplante de tecido músculo esquelético                                                                                                             202007
+2423Transplante da válvula cardíaca humana                                                                                                                202007
+2424Transplante de pele                                                                                                                                   202007
+2425Cadastramento de doadores voluntários de medula óssea e outros precursores hematopoéticos                                                             202007
+2426Estabelecimento de saúde de Nível A                                                                                                                   202007
+2427Estabelecimento de saúde de Nível B                                                                                                                   202007
+2428Estabelecimento de saúde de Nível C                                                                                                                   202007
+2429Estabelecimento de saúde de Nível D                                                                                                                   202007
+2430Transplante de figado- IHH por febre amarela                                                                                                          202007
+2501Unidade de atenção especializada em traumato-ortopedia                                                                                                202007
+2502Centro de referência de alta complexidade em traumato-ortopedia                                                                                       202007
+2503Coluna                                                                                                                                                202007
+2504Cintura escapular, ombro, braço e cotovelo                                                                                                            202007
+2505Antebraço, punho e mão                                                                                                                                202007
+2506Cintura pélvica, quadril, coxa                                                                                                                        202007
+2507Coxa, joelho e perna                                                                                                                                  202007
+2508Perna, tornozelo e pé                                                                                                                                 202007
+2509Ortopedia infantil                                                                                                                                    202007
+2510Traumatologia ortopédica de urgência                                                                                                                  202007
+2511Ortopedia - Coluna                                                                                                                                    202007
+2512Ortopedia - Ombro                                                                                                                                     202007
+2513Ortopedia - Mão                                                                                                                                       202007
+2514Ortopedia - Quadril                                                                                                                                   202007
+2515Ortopedia - Joelho                                                                                                                                    202007
+2516Ortopedia - Tumor Ósseo                                                                                                                               202007
+2517Outros segmentos ósseos                                                                                                                               202007
+2518Adesão á Estratégia de Aumento do Acesso aos Procedimentos-TOM                                                                                        202007
+2601UTI II - Adulto                                                                                                                                       202007
+2602UTI II - Neonatal                                                                                                                                     202007
+2603UTI II - Pediátrica                                                                                                                                   202007
+2604UTI III - Adulto                                                                                                                                      202007
+2605UTI III - Neonatal                                                                                                                                    202007
+2606UTI III - Pediátrica                                                                                                                                  202007
+2607UTI - Queimados                                                                                                                                       202007
+2608Unidade Terapia Intensiva Coronariana - UCO TIPO II                                                                                                   202007
+2609Unidade Terapia Intensiva Coronariana - UCO TIPO III                                                                                                  202007
+2610Unidade de Terapia Intensiva Neonatal Tipo II - UTIN II                                                                                               202007
+2611Unidade de Terapia Intensiva Neonatal Tipo III - UTIN III                                                                                             202007
+2612UTI II Adulto - Síndrome Respiratória Aguda Grave (SRAG) - COVID-19                                                                                   202007
+2613UTI II Pediátrica - Síndrome Respiratória Aguda Grave (SRAG) - COVID-19                                                                               202007
+2696UTI I Adulto                                                                                                                                          202007
+2697UTI I Neonatal                                                                                                                                        202007
+2698UTI I Pediatria                                                                                                                                       202007
+2699UTI I                                                                                                                                                 202007
+2701Hospital Tipo I em Urgência                                                                                                                           202007
+2702Hospital Tipo II em Urgência                                                                                                                          202007
+2703Hospital Tipo III em Urgência                                                                                                                         202007
+2711Administração Pré Hospitalar de Tenectoplase                                                                                                          202007
+2801Unidade de cuidados intermediários neonatal                                                                                                           202007
+2802Unidade de Cuidados Intermediários Neonatal Convencional (UCINCo)                                                                                     202007
+2803Unidade de Cuidados Intermediários Neonatal Canguru (UCINCa)                                                                                          202007
+2804Unidade de Cuidados Intermediários Adulto                                                                                                             202007
+2805Unidade de Cuidados Intermediários Pediátrica (UCI-P)                                                                                                 202007
+2806Leito de Suporte Ventilatório Pulmonar-COVID-19                                                                                                       202007
+2901Videocirurgia                                                                                                                                         202007
+3001Unidade de Atenção Especializada no Processo Transexualizador                                                                                         202007
+3002Atenção ao Pré e Pós Operatório (clínico) e Hormonioterapia no Processo Transexualizador                                                              202007
+3003Atenção ao Pré e Pós Operatório e Cirurgias no Processo Transexualizador                                                                              202007
+3101HPP- Hospital de Pequeno Porte                                                                                                                        202007
+3201Unidade de Mamografia Móvel                                                                                                                           202007
+3202Laboratório de Exames Citopatológico do Cólo do Últero-Tipo I                                                                                         202007
+3203Lab. Monitoramento Externo de Qualidade de Exame Citopatológico do Colo do Útero Tipo-II                                                              202007
+3401Centro de Trauma Tipo I                                                                                                                               202007
+3402Centro de Trauma Tipo II                                                                                                                              202007
+3403Centro de Trauma Tipo III                                                                                                                             202007
+3501Atenção Especializada Eixo I DR de Origem Genética: 1-Anomalias Congênitas ou de Manifestação Tardia                                                  202007
+3502Atenção Especializada Eixo I DR de Origem Genética:2-Deficiência Intelectual Associada à Doença Rara                                                  202007
+3503Atenção Especializada Eixo I DR de Origem Genética: 3-Erro Inato do Metabolismo (EIM)                                                                 202007
+3504Atenção Especializada Eixo II DR de Origem não Genética: 1-Doenças Raras Inflamatórias                                                                202007
+3505Atenção Especializada Eixo II DR de Origem não Genética: 2-Doenças Raras Infecciosas                                                                  202007
+3506Atenção Especializada Eixo II DR de Origem não Genética: 3-Doenças Raras Autoimunes                                                                   202007
+3507Serviço de Referência Eixo I DR de Origem Genética:1 Anomalias Congênitas ou de Manifestação Tardia                                                   202007
+3508Serviço de Referência Eixo I DR de Origem Genética:2-Deficiência Intelectual Associada à Doença Rara                                                  202007
+3509Serviço de Referência Eixo I DR de Origem Genética:3-Erro Inato do Metabolismo (EIM)                                                                  202007
+3510Serviço de Referência Eixo II DR de Origem não Genética:3-Doenças Raras Autoimunes                                                                    202007
+3511Serviço de Referência Eixo II DR de Origem não Genética:2-Doenças Raras Inflamatórias                                                                 202007
+3512Serviço de Referência Eixo II DR de Origem não Genética:1-Doenças Raras Infecciosas                                                                   202007
+3513Atenção Especializada Eixo II DR de Origem não Genética:4-Outras DR de Origem não Genética                                                            202007
+3514Serviço de Referência Eixo II DR de Origem não Genética:4-Outras DR de Origem não Genética                                                            202007
+3515Serviço de Aconselhamento Genético                                                                                                                    202007
+3601Sítio Testador de ácidos nucléicos (SIT-NAT)                                                                                                          202007
+3701Coleta de Vestígios de Violência Sexual                                                                                                               202007

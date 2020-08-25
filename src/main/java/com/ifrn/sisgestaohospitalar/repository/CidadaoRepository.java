@@ -26,5 +26,11 @@ public interface CidadaoRepository extends JpaRepository<Cidadao, Long> {
 	 * @return Cidadao
 	 */
 	public Cidadao findByCpf(String cpf);
+	
+	/**
+	 * @param nome
+	 * @return Cidadao
+	 */
+	public Cidadao findByNome(String nome);
 
 }

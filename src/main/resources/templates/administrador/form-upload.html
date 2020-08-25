@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html layout:decorate="~{/layouts/layout-admin}">
+<head>
+<meta charset="utf-8">
+<title>SGH - Importar .xml</title>
+</head>
+
+<body>
+
+	<div class="main-panel" layout:fragment="main-panel">
+		<div class="container">
+			<div class="page-inner">
+				<!-- DIV de Alerta de Sucessos  -->
+				<div class="col-md-12" th:if="${sucesso}">
+					<div class="alert alert-success alert-dismissible fade show"
+						role="alert">
+						<strong>Sucesso!</strong><a th:text="${sucesso}"></a>
+						<button type="button" class="close" data-dismiss="alert"
+							aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+				</div>
+
+				<!-- DIV de Alerta de Erros -->
+				<div class="col-md-12" th:if="${erro}">
+					<div class="alert alert-danger alert-dismissible fade show"
+						role="alert">
+						<strong>Erro!</strong> <a th:text="${erro}"></a>
+						<button type="button" class="close" data-dismiss="alert"
+							aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+				</div>
+
+				<!-- DIV de Alerta de Erros -->
+				<div class="col-md-12" th:if="${param.error}">
+					<div class="alert alert-danger alert-dismissible fade show"
+						role="alert">
+						<strong>Erro!</strong> <a th:text="${erro}"></a>
+						<button type="button" class="close" data-dismiss="alert"
+							aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+				</div>
+				<div class="page-header">
+					<ul class="breadcrumbs">
+						<li class="nav-home"><a th:href="@{/administracao/}"> <i
+								class="flaticon-home"></i>
+						</a></li>
+						<li class="separator"><i class="flaticon-right-arrow"></i></li>
+						<li class="nav-item"><a th:href="@{#}">Importação</a></li>
+						<li class="separator"><i class="flaticon-right-arrow"></i></li>
+						<li class="nav-item"><a
+							th:href="@{/administracao/form-upload}">Importar .XML ESUS</a></li>
+					</ul>
+				</div>
+
+				<div class="row">
+					<div class="col-md-12">
+						<div class="card">
+							<div class="card-header">
+								<div class="card-title">Importar .XML ESUS</div>
+							</div>
+
+
+							<form enctype="multipart/form-data" method="post"
+								th:action="@{/administracao/upload}">
+								<div class="card-body">
+									<div class="row">
+										<div class="col-md-6 col-lg-4">
+											<div class="form-group">
+												<label for="exampleFormControlFile1">Selecione um
+													arquivo .XML ESUS válido</label> <input type="file"
+													class="form-control-file" name="file" accept="text/xml"
+													id="exampleFormControlFile1" required="required">
+											</div>
+										</div>
+
+										<div class="col-md-6 col-lg-4">
+											<div class="form-group">
+												<label for="exampleFormControlFile1">Digite o código
+													CNES do Estabelecimento que deseja processar</label> <input
+													required="required" name="cnes" type="text"
+													class="form-control-file" placeholder="Ex.: 0000000"
+													id="exampleFormControlFile1" maxlength="7">
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="card-action">
+									<button type="submit" class="btn btn-success">Enviar</button>
+									<button type="reset" class="btn btn-danger">Cancelar</button>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+	<!-- 	<div layout:fragment="main-panel"> -->
+	<!-- 		<div class="main-panel"> -->
+	<!-- 			<div class="container"> -->
+
+	<!-- 				DIV de Alerta de Sucessos -->
+	<!-- 				<div class="col-md-12" th:if="${sucesso}"> -->
+	<!-- 					<div class="alert alert-success alert-dismissible fade show" -->
+	<!-- 						role="alert"> -->
+	<!-- 						<strong>Sucesso!</strong><a th:text="${sucesso}"></a> -->
+	<!-- 						<button type="button" class="close" data-dismiss="alert" -->
+	<!-- 							aria-label="Close"> -->
+	<!-- 							<span aria-hidden="true">&times;</span> -->
+	<!-- 						</button> -->
+	<!-- 					</div> -->
+	<!-- 				</div> -->
+
+	<!-- 				DIV de Alerta de Erros -->
+	<!-- 				<div class="col-md-12" th:if="${erro}"> -->
+	<!-- 					<div class="alert alert-danger alert-dismissible fade show" -->
+	<!-- 						role="alert"> -->
+	<!-- 						<strong>Erro!</strong> <a th:text="${erro}"></a> -->
+	<!-- 						<button type="button" class="close" data-dismiss="alert" -->
+	<!-- 							aria-label="Close"> -->
+	<!-- 							<span aria-hidden="true">&times;</span> -->
+	<!-- 						</button> -->
+	<!-- 					</div> -->
+	<!-- 				</div> -->
+
+	<!-- 				DIV de Alerta de Erros -->
+	<!-- 				<div class="col-md-12" th:if="${param.error}"> -->
+	<!-- 					<div class="alert alert-danger alert-dismissible fade show" -->
+	<!-- 						role="alert"> -->
+	<!-- 						<strong>Erro!</strong> <a th:text="${erro}"></a> -->
+	<!-- 						<button type="button" class="close" data-dismiss="alert" -->
+	<!-- 							aria-label="Close"> -->
+	<!-- 							<span aria-hidden="true">&times;</span> -->
+	<!-- 						</button> -->
+	<!-- 					</div> -->
+	<!-- 				</div> -->
+	<!-- 				<div class="page-header"> -->
+	<!-- 					<ul class="breadcrumbs"> -->
+	<!-- 						<li class="nav-home"><a th:href="@{/administracao/}"> <i -->
+	<!-- 								class="flaticon-home"></i> -->
+	<!-- 						</a></li> -->
+	<!-- 						<li class="separator"><i class="flaticon-right-arrow"></i></li> -->
+	<!-- 						<li class="nav-item"><a th:href="@{#}">Importação</a></li> -->
+	<!-- 						<li class="separator"><i class="flaticon-right-arrow"></i></li> -->
+	<!-- 						<li class="nav-item"><a -->
+	<!-- 							th:href="@{/administracao/form-upload}">Importar .XML ESUS</a></li> -->
+	<!-- 					</ul> -->
+	<!-- 				</div> -->
+
+	<!-- 				<div class="row"> -->
+	<!-- 					<div class="col-md-12"> -->
+	<!-- 						<div class="card"> -->
+	<!-- 							<div class="card-header"> -->
+	<!-- 								<div class="card-title">Importar .XML ESUS</div> -->
+	<!-- 							</div> -->
+
+
+	<!-- 							<form enctype="multipart/form-data" method="post" -->
+	<!-- 								th:action="@{/administracao/upload}"> -->
+	<!-- 								<div class="card-body"> -->
+	<!-- 									<div class="row"> -->
+	<!-- 										<div class="col-md-6 col-lg-4"> -->
+	<!-- 											<div class="form-group"> -->
+	<!-- 												<label for="exampleFormControlFile1">Selecione um -->
+	<!-- 													arquivo .XML ESUS válido</label> <input type="file" -->
+	<!-- 													class="form-control-file" name="file" accept="text/xml" -->
+	<!-- 													id="exampleFormControlFile1" required="required"> -->
+	<!-- 											</div> -->
+	<!-- 										</div> -->
+
+	<!-- 										<div class="col-md-6 col-lg-4"> -->
+	<!-- 											<div class="form-group"> -->
+	<!-- 												<label for="exampleFormControlFile1">Digite o código -->
+	<!-- 													CNES do Estabelecimento que deseja processar</label> <input -->
+	<!-- 													required="required" name="cnes" type="text" -->
+	<!-- 													class="form-control-file" placeholder="Ex.: 0000000" -->
+	<!-- 													id="exampleFormControlFile1" maxlength="7"> -->
+	<!-- 											</div> -->
+	<!-- 										</div> -->
+	<!-- 									</div> -->
+	<!-- 								</div> -->
+	<!-- 								<div class="card-action"> -->
+	<!-- 									<button type="submit" class="btn btn-success">Enviar</button> -->
+	<!-- 									<button type="reset" class="btn btn-danger">Cancelar</button> -->
+	<!-- 								</div> -->
+	<!-- 							</form> -->
+	<!-- 						</div> -->
+	<!-- 					</div> -->
+	<!-- 				</div> -->
+	<!-- 			</div> -->
+	<!-- 		</div> -->
+	<!-- 	</div> -->
+
+</body>
+</html>

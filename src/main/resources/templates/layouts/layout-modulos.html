@@ -42,7 +42,8 @@
 	<div class="wrapper compact-wrapper">
 
 		<div th:replace="fragments/main-header::main-header-recepcao"></div>
-		<div th:replace="fragments/sidebar::sidebar-modulos"></div>
+		<div layout:fragment="sidebar"></div>
+		<!-- <div th:replace="fragments/sidebar::sidebar-modulos"></div> -->
 		<div layout:fragment="main-panel"></div>
 
 	</div>
@@ -123,10 +124,10 @@
 	<script th:src="@{/assets/js/datatables-filaAtendimento.js}"></script>
 	<script th:src="@{/assets/js/autocomplete.js}"></script>
 	<script th:src="@{/assets/js/imc.js}"></script>
-	<script th:src="@{/assets/js/procedimentos.js}"></script>
+	<script th:src="@{/assets/js/procedimentos-triagem.js}"></script>
+	<script th:src="@{/assets/js/procedimentos-atendimentoMedico.js}"></script>
+	<script th:src="@{/assets/js/procedimentos-administracaoMedicamento.js}"></script>
 	<script th:src="@{/assets/js/destino-cidadao.js}"></script>
 	<script th:src="@{/assets/js/receituario.js}"></script>
-
-
 </body>
 </html>

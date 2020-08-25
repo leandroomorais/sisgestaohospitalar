@@ -188,4 +188,12 @@ public class GuiaAtendimento {
 		this.classificacaoDeRisco = classificacaoDeRisco;
 	}
 
+	public AdministracaoMedicamento getAdministracaomedicamento() {
+		return administracaomedicamento;
+	}
+
+	public void setAdministracaomedicamento(AdministracaoMedicamento administracaomedicamento) {
+		this.administracaomedicamento = administracaomedicamento;
+	}
+
 }

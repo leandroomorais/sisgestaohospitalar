@@ -6,6 +6,40 @@
 	xmlns:layout="http://ultraq.net.nz/thymeleaf/layout">
 
 <body>
+	<!-- Sidebar Módulos - Recepção -->
+	<div layout:fragment="sidebar" class="sidebar sidebar-style-2">
+		<div class="sidebar-wrapper scrollbar scrollbar-inner">
+			<div class="sidebar-content">
+				<ul class="nav nav-primary">
+					<li class="nav-item"><a data-toggle="collapse"
+						href="#dashboard" class="collapsed" aria-expanded="false"> <img
+							alt="" width="40" th:src="@{/assets/img/person-male.png}">
+							<span th:text="${user.firstname}" class="low"></span><span
+							class="type-user" th:text="${user.tipoprofissional}"></span> <span
+							class="caret"></span>
+					</a>
+						<div class="collapse" id="dashboard">
+							<ul class="nav nav-collapse">
+								<li><a href="../demo1/index.html"> <span
+										class="sub-item">Meu Perfil</span>
+								</a></li>
+							</ul>
+						</div></li>
+					<li class="nav-section"><span class="sidebar-mini-icon">
+							<i class="fa fa-ellipsis-h"></i>
+					</span>
+						<h4 class="text-section">Ações</h4></li>
+
+					<li class="nav-item" th:classappend="${navItem1} ? active : ''"><a
+						th:href="@{/atendimento-medico/cidadaos-atendimento}"> <i
+							class="fas fa-users"></i>
+							<p>Fila de Atendimento</p> <span class="caret"></span>
+					</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<!-- End Sidebar -->
 	<div class="main-panel" layout:fragment="main-panel">
 		<div class="container">
 			<div class="page-inner">
@@ -105,7 +139,7 @@
 													aria-selected="true"><i class="fa fa-user-md"></i>
 													Atendimento</a>
 
-												<div th:if="${getTriagem} == false">
+												<div th:if="${getTriagem} == true">
 													<a class="nav-link" id="v-pills-condicoes-tab-nobd"
 														data-toggle="pill" href="#v-pills-condicoes-nobd"
 														role="tab" aria-controls="v-pills-condicoes-nobd"
@@ -197,7 +231,7 @@
 																<div class="col-md-12 col-lg-12"
 																	th:classappend="${#fields.hasErrors('evolucaoMedica')}? 'has-error'">
 																	<div class="form-group">
-																		<label for="evolucaoMedica">Exame Físico</label>
+																		<label for="evolucaoMedica">Evolução Médica</label>
 																		<textarea th:field="*{evolucaoMedica}" type="text"
 																			class="form-control" id="evolucaoMedica"
 																			placeholder=""></textarea>
@@ -219,7 +253,7 @@
 																<div class="col-md-12">
 																	<div class="form-group">
 																		<label for="nome">Adicionar Procedimentos:</label> <input
-																			id="procedimentos" type="text"
+																			id="procedimentos-atendimento-medico" type="text"
 																			class="form-control input-sm">
 																	</div>
 																</div>
@@ -235,19 +269,17 @@
 																					<th scope="col">Ações</th>
 																				</tr>
 																			</thead>
-																			<tbody id="table-procedimento">
+																			<tbody id="table-procedimento-atendimento-medico">
 																			</tbody>
 																		</table>
 																	</div>
 																</div>
-																<input type="hidden" name="ids_procedimentos"
-																	id="ids_procedimentos">
 															</div>
 														</div>
 													</div>
 												</div>
-												<div class="tab-pane fade" id="v-pills-condicoes-nobd"
-													role="tabpanel"
+												<div th:if="${getTriagem} == true" class="tab-pane fade"
+													id="v-pills-condicoes-nobd" role="tabpanel"
 													aria-labelledby="v-pills-condicoes-tab-nobd">
 													<p class="info-triagem-titulo">Motivos da Consulta</p>
 													<hr class="info">

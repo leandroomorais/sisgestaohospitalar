@@ -14,6 +14,9 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
+
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.format.annotation.DateTimeFormat.ISO;
 
@@ -53,6 +56,7 @@ public class AdministracaoMedicamento {
 	@JoinTable(name = "administracaomedicamento_profissional")
 	private Profissional profissional;
 
+	@LazyCollection(value = LazyCollectionOption.FALSE)
 	@ManyToMany
 	@JoinTable(name = "admnistracaomedicamento_procedimento")
 	private List<ProcedimentoSigtap> procedimentos;

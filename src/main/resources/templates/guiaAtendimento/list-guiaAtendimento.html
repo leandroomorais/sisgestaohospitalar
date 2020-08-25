@@ -6,6 +6,47 @@
 	xmlns:layout="http://ultraq.net.nz/thymeleaf/layout">
 
 <body>
+	<!-- Sidebar Módulos - Recepção -->
+	<div layout:fragment="sidebar" class="sidebar sidebar-style-2">
+		<div class="sidebar-wrapper scrollbar scrollbar-inner">
+			<div class="sidebar-content">
+				<ul class="nav nav-primary">
+					<li class="nav-item"><a data-toggle="collapse"
+						href="#dashboard" class="collapsed" aria-expanded="false"> <img
+							alt="" width="40" th:src="@{/assets/img/person-male.png}">
+							<span th:text="${user.firstname}" class="low"></span><span
+							class="type-user" th:text="${user.tipoprofissional}"></span> <span
+							class="caret"></span>
+					</a>
+						<div class="collapse" id="dashboard">
+							<ul class="nav nav-collapse">
+								<li><a href="../demo1/index.html"> <span
+										class="sub-item">Meu Perfil</span>
+								</a></li>
+							</ul>
+						</div></li>
+					<li class="nav-section"><span class="sidebar-mini-icon">
+							<i class="fa fa-ellipsis-h"></i>
+					</span>
+						<h4 class="text-section">Ações</h4></li>
+
+
+					<li class="nav-item" th:classappend="${navItem1} ? active : ''"><a
+						th:href="@{/recepcao/adicionar-cidadao}"> <i
+							class="fas fa-user-plus"></i>
+							<p>Adicionar Cidadão</p> <span class="caret"></span>
+					</a></li>
+
+
+					<li class="nav-item" th:classappend="${navItem2} ? active : ''"><a
+						th:href="@{/recepcao/listar-status}"> <i class="fa fa-users"></i>
+							<p>Fila de Atendimento</p>
+					</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<!-- End Sidebar -->
 	<div class="main-panel" layout:fragment="main-panel">
 		<div class="container">
 			<div class="page-inner">

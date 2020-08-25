@@ -9,11 +9,13 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import com.ifrn.sisgestaohospitalar.enums.StatusAtendimento;
 import com.ifrn.sisgestaohospitalar.enums.TipoProfissional;
@@ -56,6 +58,8 @@ public class TriagemController {
 
 	@Autowired
 	private EstabelecimentoService estabelecimentoService;
+	
+	List<ProcedimentoSigtap> procedimentos = new ArrayList<ProcedimentoSigtap>();
 
 	/**
 	 * Direciona o usuário para a página com a lista de Cidadãos para serem
@@ -86,6 +90,7 @@ public class TriagemController {
 	 */
 	@GetMapping("/realizar-triagem/{id}")
 	public ModelAndView addTriagem(@PathVariable("id") Long id, Triagem triagem, Principal principal) {
+		procedimentos.clear();
 		String username = principal.getName();
 		Profissional user = profissionalService.findByCpf(username);
 		GuiaAtendimento guiaAtendimento = guiaAtendimentoService.findOne(id);
@@ -116,9 +121,8 @@ public class TriagemController {
 	 */
 	@PostMapping("/salvar-triagem")
 	public ModelAndView save(@Valid Triagem triagem, BindingResult result,
-			@RequestParam("classificacaoDeRisco") String classificacaoDeRisco,
-			@RequestParam("ids_procedimentos") String ids_procedimentos,
-			@RequestParam("optionsRadios") TipoServico tipoServico, Principal principal) {
+			@RequestParam(value = "classificacaoDeRisco", required = false) String classificacaoDeRisco,
+			@RequestParam(value = "optionsRadios", required = false) TipoServico tipoServico, Principal principal) {
 
 		GuiaAtendimento guiaAtendimento = triagem.getGuiaatendimento();
 
@@ -131,16 +135,7 @@ public class TriagemController {
 		}
 
 		triagem.getGuiaatendimento().setProfissionaldestino(triagem.getProfissionaldestino());
-
-		if (ids_procedimentos.isEmpty()) {
-			String arrayId[] = ids_procedimentos.split(",");
-			List<ProcedimentoSigtap> procedimentos = new ArrayList<ProcedimentoSigtap>();
-			for (int i = 0; i < arrayId.length; i++) {
-				Long id = Long.parseLong(arrayId[i]);
-				procedimentos.add(procedimentoSigtapService.findOne(id));
-				triagem.setProcedimentos(procedimentos);
-			}
-		}
+		triagem.setProcedimentos(procedimentos);
 		guiaAtendimento.setClassificacaoDeRisco(classificacaoDeRisco);
 		guiaAtendimento.setTipoServico(tipoServico);
 		guiaAtendimentoService.save(guiaAtendimento);
@@ -150,7 +145,38 @@ public class TriagemController {
 		triagem.setHora(LocalTime.now());
 		triagem.setProfissional(profissional);
 		triagemService.save(triagem);
+		procedimentos.clear();
 		return listStatusAddTri(principal).addObject("navItem1", true);
+	}
+	
+	@PostMapping("/add-procedimento")
+	@ResponseBody
+	public void addProcedimento(ProcedimentoSigtap procedimentoSigtap) {
+		ProcedimentoSigtap prSigtap = procedimentoSigtapService.findOne(procedimentoSigtap.getId());
+		procedimentos.add(prSigtap);
+		imprimeLista();
+	}
+	
+	@DeleteMapping("/delete-procedimento")
+	@ResponseBody
+	public void deleteProcedimento(ProcedimentoSigtap procedimentoSigtap) {
+		for(int i = 0; i < procedimentos.size(); i++) {
+			if(procedimentos.get(i).getId().equals(procedimentoSigtap.getId())) {
+				procedimentos.remove(i);
+			}
+		}
+		imprimeLista();
+	}
+	
+	@GetMapping("/imprimir")
+	@ResponseBody
+	public void imprimeLista() {
+		if(procedimentos.isEmpty()) {
+			System.out.println("### A lista está vazia ###");
+		}
+		for(int i = 0; i < procedimentos.size(); i++) {
+			System.out.println("PROCEDIMENTO DA LISTA> " + procedimentos.get(i).getNomeprocedimento());
+		}
 	}
 
 }

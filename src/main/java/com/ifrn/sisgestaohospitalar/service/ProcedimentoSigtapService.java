@@ -68,5 +68,9 @@ public class ProcedimentoSigtapService {
 	public List<ProcedimentoSigtap> findByNomeProcedimento(String nomeprocedimento) {
 		return repository.findByNomeprocedimentoIgnoreCaseContaining(nomeprocedimento);
 	}
+	
+	public ProcedimentoSigtap findByCodigoProcedimento(String codigoprocedimento){
+		return repository.findByCodigoprocedimento(codigoprocedimento);
+	}
 
 }

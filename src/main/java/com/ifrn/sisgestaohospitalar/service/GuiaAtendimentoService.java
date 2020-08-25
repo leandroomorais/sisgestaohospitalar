@@ -1,7 +1,7 @@
 package com.ifrn.sisgestaohospitalar.service;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -88,7 +88,7 @@ public class GuiaAtendimentoService {
 	 * @param data
 	 * @return List<GuiaAtendimento>
 	 */
-	public List<GuiaAtendimento> findByData(Date data) {
+	public List<GuiaAtendimento> findByData(LocalDate data) {
 		return repository.findByData(data);
 	}
 
@@ -100,6 +100,17 @@ public class GuiaAtendimentoService {
 			}
 		}
 		return atendimentos;
+	}
+	
+	
+	/**
+	 * Retorna as Guias de Atendimento por período de Data
+	 * @param dataInicial
+	 * @param dataFinal
+	 * @return
+	 */
+	public List<GuiaAtendimento> findByPeriodo(LocalDate dataInicial, LocalDate dataFinal){
+		return repository.findByPeriodo(dataInicial, dataFinal);
 	}
 
 }

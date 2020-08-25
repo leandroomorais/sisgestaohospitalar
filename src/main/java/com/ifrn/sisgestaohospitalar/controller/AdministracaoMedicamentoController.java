@@ -9,12 +9,16 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+
+import com.ifrn.sisgestaohospitalar.enums.StatusAtendimento;
 import com.ifrn.sisgestaohospitalar.enums.TipoProfissional;
 import com.ifrn.sisgestaohospitalar.enums.TipoServico;
 import com.ifrn.sisgestaohospitalar.model.AdministracaoMedicamento;
@@ -55,6 +59,8 @@ public class AdministracaoMedicamentoController {
 
 	@Autowired
 	ProcedimentoSigtapService procedimentoSigtapService;
+	
+	List<ProcedimentoSigtap> procedimentos = new ArrayList<ProcedimentoSigtap>();
 
 	/**
 	 * Direciona o usuário para a Lista de Cidadãos que estão aguardando Atendimento
@@ -121,10 +127,13 @@ public class AdministracaoMedicamentoController {
 	@GetMapping("/realizar-atendimento/{id}")
 	public ModelAndView addAdminMedicamento(@PathVariable("id") Long id,
 			AdministracaoMedicamento administracaoMedicamento, Principal principal) {
+		procedimentos.clear();
 		String username = principal.getName();
 		Profissional user = profissionalService.findByCpf(username);
 		GuiaAtendimento guiaAtendimento = guiaAtendimentoService.findOne(id);
+		System.out.println("ID DA GUIA DE ATENDIEMTO>" + guiaAtendimento.getId().toString());
 		administracaoMedicamento.setGuiaAtendimento(guiaAtendimento);
+		System.out.println("ID DA GUIA SETADA>" + administracaoMedicamento.getGuiaAtendimento().getId().toString());
 		ModelAndView mv = new ModelAndView("administracaoMedicamento/form-administracaoMedicamento");
 		List<Profissional> profissionais = new ArrayList<Profissional>();
 		profissionais.addAll(profissionalService.findByTipoprofissional(TipoProfissional.MEDICO));
@@ -132,41 +141,36 @@ public class AdministracaoMedicamentoController {
 		profissionais.addAll(profissionalService.findByTipoprofissional(TipoProfissional.ENFERMEIRO));
 		mv.addObject("estabelecimento", estabelecimentoService.findAll());
 		mv.addObject("user", user);
-		mv.addObject("medicamentos", guiaAtendimento.getAtendimentomedico().getMedicamentos());
 		mv.addObject("guiaAtendimento", guiaAtendimento);
 		mv.addObject("administracaoMedicamento", administracaoMedicamento);
 		mv.addObject("profissionais", profissionais);
+		try {
+			if(guiaAtendimento.getAtendimentomedico() != null) {
+				mv.addObject("medicamentos", guiaAtendimento.getAtendimentomedico().getMedicamentos());
+			}
+		}catch(NullPointerException e) {
+			e.printStackTrace();
+		}
 		return mv;
 	}
 
 	@PostMapping("/salvar-adminMedicamento")
 	public ModelAndView save(@Valid AdministracaoMedicamento administracaoMedicamento,
-			@RequestParam("ids_procedimentos") String ids_procedimentos,
-			@RequestParam("optionsRadios") TipoServico tipoServico, BindingResult result, Principal principal) {
+			@RequestParam(value = "optionsRadios", required = false) TipoServico tipoServico, BindingResult result, Principal principal) {
 		if (result.hasErrors()) {
 			return addAdminMedicamento(administracaoMedicamento.getGuiaAtendimento().getId(), administracaoMedicamento,
 					principal);
 		}
-//		if (administracaoMedicamento.getDestinocidadao().equals("0")) {
-//			administracaoMedicamento.getGuiaAtendimento().setStatusAtendimento(StatusAtendimento.FINALIZADO);
-//
-//		}
-		if (ids_procedimentos != null) {
-			String arrayId[] = ids_procedimentos.split(",");
-			List<ProcedimentoSigtap> procedimentos = new ArrayList<ProcedimentoSigtap>();
-			for (int i = 0; i < arrayId.length; i++) {
-				Long id = Long.parseLong(arrayId[i]);
-				procedimentos.add(procedimentoSigtapService.findOne(id));
-			}
-			administracaoMedicamento.setProcedimentos(procedimentos);
-		}
+		if (administracaoMedicamento.getDestinocidadao().equals("0")) {
+			administracaoMedicamento.getGuiaAtendimento().setStatusAtendimento(StatusAtendimento.FINALIZADO);
 
-		//GuiaAtendimento guiaAtendimento = administracaoMedicamento.getGuiaAtendimento();
-		if(tipoServico != null) {
-			administracaoMedicamento.getGuiaAtendimento().setTipoServico(tipoServico);
 		}
 		
-		//guiaAtendimentoService.save(guiaAtendimento);
+		administracaoMedicamento.setProcedimentos(procedimentos);
+
+		GuiaAtendimento guiaAtendimento = administracaoMedicamento.getGuiaAtendimento();
+		guiaAtendimento.setTipoServico(tipoServico);
+		guiaAtendimentoService.save(guiaAtendimento);
 
 		String username = principal.getName();
 		Profissional profissional = profissionalService.findByCpf(username);
@@ -176,6 +180,36 @@ public class AdministracaoMedicamentoController {
 		administracaoMedicamento.setHora(LocalTime.now());
 		administracaoMedicamentoService.save(administracaoMedicamento);
 		return listarStatusAddAtd(principal);
+	}
+	
+	@PostMapping("/add-procedimento")
+	@ResponseBody
+	public void addProcedimento(ProcedimentoSigtap procedimentoSigtap) {
+		ProcedimentoSigtap prSigtap = procedimentoSigtapService.findOne(procedimentoSigtap.getId());
+		procedimentos.add(prSigtap);
+		imprimeLista();
+	}
+	
+	@DeleteMapping("/delete-procedimento")
+	@ResponseBody
+	public void deleteProcedimento(ProcedimentoSigtap procedimentoSigtap) {
+		for(int i = 0; i < procedimentos.size(); i++) {
+			if(procedimentos.get(i).getId().equals(procedimentoSigtap.getId())) {
+				procedimentos.remove(i);
+			}
+		}
+		imprimeLista();
+	}
+	
+	@GetMapping("/imprimir")
+	@ResponseBody
+	public void imprimeLista() {
+		if(procedimentos.isEmpty()) {
+			System.out.println("### A lista está vazia ###");
+		}
+		for(int i = 0; i < procedimentos.size(); i++) {
+			System.out.println("PROCEDIMENTO DA LISTA> " + procedimentos.get(i).getNomeprocedimento());
+		}
 	}
 
 }

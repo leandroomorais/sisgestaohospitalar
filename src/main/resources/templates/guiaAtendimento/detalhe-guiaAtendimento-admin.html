@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html layout:decorate="~{/layouts/layout-admin}" lang="pt"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity"
+	xmlns:layout="http://ultraq.net.nz/thymeleaf/layout">
+
+<body>
+	<div class="main-panel" layout:fragment="main-panel">
+		<div class="container">
+			<div class="page-inner">
+
+				<!-- DIV de Alerta de Sucessos -->
+				<div class="col-md-12" th:if="${sucesso}">
+					<div class="alert alert-success alert-dismissible fade show"
+						role="alert">
+						<strong>Sucesso!</strong><a th:text="${sucesso}"></a>
+						<button type="button" class="close" data-dismiss="alert"
+							aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+				</div>
+
+				<!-- DIV de Alerta de Erros -->
+				<div class="col-md-12" th:if="${erro}">
+					<div class="alert alert-danger alert-dismissible fade show"
+						role="alert">
+						<strong>Erro!</strong> <a th:text="${erro}"></a>
+						<button type="button" class="close" data-dismiss="alert"
+							aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+				</div>
+				<div class="page-header">
+					<h4 class="page-title">Administração</h4>
+					<ul class="breadcrumbs">
+						<li class="nav-home"><i class="flaticon-home"></i></li>
+						<li class="separator"><i class="flaticon-right-arrow"></i></li>
+						<li class="nav-item"><a th:href="@{#}">Consultas</a></li>
+						<li class="separator"><i class="flaticon-right-arrow"></i></li>
+						<li class="nav-item"><a
+							th:href="@{/administracao/buscar-atendimento}">Atendimentos</a></li>
+						<li class="separator"><i class="flaticon-right-arrow"></i></li>
+						<li class="nav-item"><a th:href="@{#}">Detalhes</a></li>
+					</ul>
+				</div>
+
+				<div class="row">
+					<div class="col-md-12">
+						<div class="card">
+							<div class="card-header">
+								<div class="card-title">Detalhes do Atendimento</div>
+							</div>
+
+							<div class="card-body">
+								<div class="card">
+									<div class="card-body">
+										<div class="row">
+											<div class="avatar avatar-lg">
+												<img th:if="${guiaAtendimento.cidadao.sexo == 'M'}"
+													th:src="@{/assets/img/icons/masculino.png}" alt="..."
+													class="avatar-img rounded-circle"> <img
+													th:if="${guiaAtendimento.cidadao.sexo == 'F'}"
+													th:src="@{/assets/img/icons/feminino.png}" alt="..."
+													class="avatar-img rounded-circle">
+											</div>
+											<div class="demo">
+												<span class="h3-info"
+													th:text="${guiaAtendimento.cidadao.nome}"></span><br>
+												<div class="h4-info">
+													<img class="img-info"
+														th:src="@{/assets/img/icons/icon-bandeira-brasil.png}">
+													<span th:text="${guiaAtendimento.cidadao.cns}"></span> , <span
+														th:text="${guiaAtendimento.cidadao.idade}"></span><span>
+														anos,</span><span th:if="${guiaAtendimento.cidadao.sexo == 'M'}">
+														masculino.</span><span
+														th:if="${guiaAtendimento.cidadao.sexo == 'F'}">
+														feminino.</span>
+
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="card">
+								<div class="card-body">
+									<p class="info-triagem-titulo">Data e Hora do Atendimento</p>
+									<hr class="info">
+									<p th:text="${guiaAtendimento.data}"></p>
+									<p th:text="${guiaAtendimento.hora}"></p>
+									<p class="info-triagem-titulo">Profissional Responsável
+										pela Recepção</p>
+									<hr class="info">
+									<p th:text="${guiaAtendimento.profissional.nome}"></p>
+									<a>CNS:</a>
+									<p th:text="${guiaAtendimento.profissional.cns}"></p>
+									<p class="info-triagem-titulo">Profissional Responsável
+										pela Triagem</p>
+									<hr class="info">
+									<p th:text="${guiaAtendimento.triagem.profissional.nome}"></p>
+									<a>CNS:</a>
+									<p th:text="${guiaAtendimento.triagem.profissional.cns}"></p>
+									<p class="info-triagem-titulo">Profissional Responsável
+										pelo Atendimento Médico</p>
+									<hr class="info">
+									<p
+										th:text="${guiaAtendimento.atendimentomedico.profissional.nome}"></p>
+									<a>CNS:</a>
+									<p
+										th:text="${guiaAtendimento.atendimentomedico.profissional.cns}"></p>
+								</div>
+
+
+
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<footer class="footer">
+		<div class="container-fluid">
+			<nav class="pull-left">
+				<th:block th:each="estabelecimento : ${estabelecimento}">
+					<span class="text-primary" th:text="${estabelecimento.nome}"></span>
+				</th:block>
+			</nav>
+			<div class="copyright ml-auto">Sistema de Gestão Hospitalar,
+				2020.</div>
+		</div>
+	</footer>
+</body>
+
+</html>

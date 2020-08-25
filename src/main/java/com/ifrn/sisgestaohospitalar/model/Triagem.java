@@ -13,6 +13,9 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 import javax.validation.constraints.NotBlank;
+
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.format.annotation.DateTimeFormat.ISO;
 
@@ -118,6 +121,7 @@ public class Triagem {
 	/**
 	 * Relacionamento entre os objetos Triagem e ProcedimentoSigtap
 	 */
+	@LazyCollection(value = LazyCollectionOption.FALSE)
 	@ManyToMany
 	@JoinTable(name = "triagem_procedimentos")
 	private List<ProcedimentoSigtap> procedimentos;

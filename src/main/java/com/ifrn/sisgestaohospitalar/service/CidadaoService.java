@@ -78,4 +78,14 @@ public class CidadaoService {
 		return repository.findByCpf(cpf);
 	}
 
+	/**
+	 * Retorna o Cidadao a partir do nome
+	 * 
+	 * @param nome
+	 * @return Cidadao
+	 */
+	public Cidadao findByNome(String nome) {
+		return repository.findByNome(nome);
+	}
+
 }
