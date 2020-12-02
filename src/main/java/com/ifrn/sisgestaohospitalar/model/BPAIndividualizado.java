@@ -1,5 +1,7 @@
 package com.ifrn.sisgestaohospitalar.model;
 
+import java.time.LocalDate;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -140,8 +142,8 @@ public class BPAIndividualizado {
 		return dataAtendimento;
 	}
 
-	public void setDataAtendimento(String dataAtendimento) {
-		this.dataAtendimento = String.format("%-8.8s", dataAtendimento);
+	public void setDataAtendimento(LocalDate dataAtendimento) {
+		this.dataAtendimento = String.format("%-8.8s", dataAtendimento.toString().replace("-", ""));
 	}
 
 	public String getNumeroFolha() {
@@ -237,7 +239,7 @@ public class BPAIndividualizado {
 	}
 
 	public void setOrigemInformacao(String origemInformacao) {
-		this.origemInformacao = String.format("%-3.3s", origemInformacao);
+		this.origemInformacao = origemInformacao;
 	}
 
 	public String getNomePaciente() {
@@ -252,8 +254,8 @@ public class BPAIndividualizado {
 		return dataNascimento;
 	}
 
-	public void setDataNascimento(String dataNascimento) {
-		this.dataNascimento = String.format("%-8.8s", dataNascimento);
+	public void setDataNascimento(LocalDate dataNascimento) {
+		this.dataNascimento = String.format("%-8.8s", dataNascimento.toString().replace("-", ""));
 	}
 
 	public String getRacaCor() {
@@ -374,7 +376,7 @@ public class BPAIndividualizado {
 	}
 
 	public void setTelefonePaciente(String telefonePaciente) {
-		this.telefonePaciente = String.format("%-11.11s", telefonePaciente);
+		this.telefonePaciente = String.format("%-11.11s", telefonePaciente.replace("-", "").replace("+", ""));
 	}
 
 	public String getEmailPaciente() {
@@ -405,7 +407,7 @@ public class BPAIndividualizado {
 	public String toString() {
 		return linhaIdenti + cnes + competencia  + cnsProfissional  + cboProfissional 
 				+ dataAtendimento  + numeroFolha  + numeroLinha  + codigoProcedimento + cnsPaciente
-				+ sexoPaciente + codigoIbge  + cid  + idade +  qtdProcedimento 			+ caraterAtendimento + " " + numeroAutorizacao + " " + origemInformacao + " " + nomePaciente + " "
+				+ sexoPaciente + codigoIbge  + cid  + idade +  qtdProcedimento + caraterAtendimento + numeroAutorizacao + origemInformacao + nomePaciente
 				+ dataNascimento + racaCor + etnia + nacionalidade + codigoServico 
 				+ codigoClassificacao + codigoSequenciaEquipe + codigoAreaEquipe + codigoCnpjEmpresa
 				+ cepPaciente + logradouroPaciente + enderecoPaciente + complementoEndereco

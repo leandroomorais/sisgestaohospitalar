@@ -335,9 +335,6 @@ public class AdministracaoController {
 		String username = principal.getName();
 		Profissional user = profissionalService.findByCpf(username);
 		mv.addObject("user", user);
-		if(arquivoBpaService.findByCompetencia(mes.replace("-", "")) != null) {
-			return mv.addObject("erro","O arquivo BPA para a competência selecionada já foi gerado.");
-		}
 		geradorBpa.geradorBPA(mes, "2380633");
 		mv.addObject("sucesso", "O arquivo BPA para o SIA SUS foi gerado.");
 		return mv;

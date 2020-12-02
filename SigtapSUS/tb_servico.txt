@@ -1,73 +1,67 @@
-100Serviço de Atenção a Saúde no Sistema Penitenciário                                                                     202007
-101Estratégia de Saúde da Família                                                                                          202007
-102Estratégias de Agentes Comunitário de Saúde                                                                             202007
-103Serviço de Atendimento Móvel de Urgências                                                                               202007
-104Regulação Assistêncial dos Serviços de Saúde                                                                            202007
-105Serviço de Atenção em Neurologia/ Neurocirurgia                                                                         202007
-106Serviço de Atenção a DST/HIV/AIDS                                                                                       202007
-107Serviço de Atenção a Saúde Auditiva                                                                                     202007
-108Serviço de Atenção a Saúde do Trabalhador                                                                               202007
-109Serviço de Atenção a Saúde dos Adolecentes em Conflito com a Lei, em Regime de Internação e Internação Provisória       202007
-110Serviço de Atenção a Saúde Reprodutiva                                                                                  202007
-111Serviço de Atenção ao Paciente com Tuberculose                                                                          202007
-112Serviço de Atenção ao Pré-Natal, Parto e Nascimento                                                                     202007
-113Serviço de Atenção Domiciliar                                                                                           202007
-114Serviço de Atenção em Saúde Bucal                                                                                       202007
-115Serviço de Atenção Psicossocial                                                                                         202007
-116Serviço de Atenção Cardiovascular/Cardiologia                                                                           202007
-117Serviço de Cirurgia Reparadora                                                                                          202007
-118Serviço de Cirurgia Torácica                                                                                            202007
-119Serviço de Controle de Tabagismo                                                                                        202007
-120Serviço de Diagnóstico por Anatomia Patológica e/ou Citopatologia                                                       202007
-121Diagnóstico por Imagem                                                                                                  202007
-122Serviço de Diagnóstico por Métodos Gráficos/Dinâmicos                                                                   202007
-123Serviço de Dispensação de Órteses, Próteses e Materiais Especiais                                                       202007
-124Serviço de Endocrinologia                                                                                               202007
-125Serviço de Farmácia                                                                                                     202007
-126Serviço de Fisioterapia                                                                                                 202007
-127Serviço de Atenção à Obesidade                                                                                          202007
-128Serviço de Hemoterapia                                                                                                  202007
-129Servico de Laboratório de Histocompatibilidade                                                                          202007
-130Atenção à Doença Renal Crônica                                                                                          202007
-131Serviço de Oftalmologia                                                                                                 202007
-132Serviço de Oncologia                                                                                                    202007
-133Serviço de Pneumologia                                                                                                  202007
-134Serviço de Práticas Integrativas e Complementares                                                                       202007
-135Serviço de Reabilitação                                                                                                 202007
-136Serviço de Suporte Nutricional                                                                                          202007
-137Serviço de Telemedicina                                                                                                 202007
-138Serviço de Traumato-Ortopedia                                                                                           202007
-139Serviço de Triagem Neonatal                                                                                             202007
-140Serviço de Urgência e Emergência                                                                                        202007
-141Serviço de Vigilância em Saúde                                                                                          202007
-142Serviço de Endoscopia                                                                                                   202007
-143Serviço Móvel de Urgência (exceto SAMU)                                                                                 202007
-144Serviço Posto de Coleta de Materiais Biológicos                                                                         202007
-145Serviço de Diagnóstico por Laboratório Clínico                                                                          202007
-146Serviço de Videolaparoscopia                                                                                            202007
-147Serviço de Apoio a Saúde da Família                                                                                     202007
-148Hospital-Dia                                                                                                            202007
-149Transplante                                                                                                             202007
-150Cirurgia Vascular                                                                                                       202007
-151Medicina Nuclear                                                                                                        202007
-152Atenção à Saúde da População Indígena                                                                                   202007
-153Atenção Especializada no Processo Transexualizador                                                                      202007
-154Serviço de Banco de Tecidos                                                                                             202007
-155Serviço de Traumatologia  Ortopedia                                                                                     202007
-156Serviço de Atenção á Saúde das Pessoas Ostomizadas                                                                      202007
-157Serviço de Laboratorio de Protese Dentaria                                                                              202007
-158Serviço de Atenção Integral em Hanseniase                                                                               202007
-159Atenção Primária                                                                                                        202007
-160Teleconsultoria                                                                                                         202007
-161Consultório na Rua                                                                                                      202007
-162Serviço de Terapia Intensiva                                                                                            202007
-163Serviço de Cuidados Intermediários                                                                                      202007
-164Serviço de Órteses,Próteses e Materiais Especiais em Reabilitação                                                       202007
-165Atenção às Pessoas em Situação de Violência Sexual                                                                      202007
-166Serviço de  Análise Laboratorial  de Produtos Sujeitos á  Vigilância Sanitária                                          202007
-167Atendimento Itinerante de Asistência e Ensino em Saúde                                                                  202007
-168Atenção Às Pessoas com Doenças Raras                                                                                    202007
-169Serviço de Atenção em Urologia                                                                                          202007
-170Comissões e Comitês                                                                                                     202007
-173Logística de Imunobiológicos                                                                                            202007
-174Imunização                                                                                                              202007
+100Serviço de Atenção a Saúde no Sistema Penitenciário                                                                     201903
+101Estratégia de Saúde da Família                                                                                          201903
+102Estratégias de Agentes Comunitário de Saúde                                                                             201903
+103Serviço de Atendimento Móvel de Urgências                                                                               201903
+104Regulação Assistêncial dos Serviços de Saúde                                                                            201903
+105Serviço de Atenção em Neurologia/ Neurocirurgia                                                                         201903
+106Serviço de Atenção a DST/HIV/AIDS                                                                                       201903
+107Serviço de Atenção a Saúde Auditiva                                                                                     201903
+108Serviço de Atenção a Saúde do Trabalhador                                                                               201903
+109Serviço de Atenção a Saúde dos Adolecentes em Conflito com a Lei, em Regime de Internação e Internação Provisória       201903
+110Serviço de Atenção a Saúde Reprodutiva                                                                                  201903
+111Serviço de Atenção ao Paciente com Tuberculose                                                                          201903
+112Serviço de Atenção ao Pré-Natal, Parto e Nascimento                                                                     201903
+113Serviço de Atenção Domiciliar                                                                                           201903
+114Serviço de Atenção em Saúde Bucal                                                                                       201903
+115Serviço de Atenção Psicossocial                                                                                         201903
+116Serviço de Atenção Cardiovascular/Cardiologia                                                                           201903
+117Serviço de Cirurgia Reparadora                                                                                          201903
+118Serviço de Cirurgia Torácica                                                                                            201903
+119Serviço de Controle de Tabagismo                                                                                        201903
+120Serviço de Diagnóstico por Anatomia Patológica e/ou Citopatologia                                                       201903
+121Diagnóstico por Imagem                                                                                                  201903
+122Serviço de Diagnóstico por Métodos Gráficos/Dinâmicos                                                                   201903
+123Serviço de Dispensação de Órteses, Próteses e Materiais Especiais                                                       201903
+124Serviço de Endocrinologia                                                                                               201903
+125Serviço de Farmácia                                                                                                     201903
+126Serviço de Fisioterapia                                                                                                 201903
+127Serviço de Atenção à Obesidade                                                                                          201903
+128Serviço de Hemoterapia                                                                                                  201903
+129Servico de Laboratório de Histocompatibilidade                                                                          201903
+130Atenção à Doença Renal Crônica                                                                                          201903
+131Serviço de Oftalmologia                                                                                                 201903
+132Serviço de Oncologia                                                                                                    201903
+133Serviço de Pneumologia                                                                                                  201903
+134Serviço de Práticas Integrativas e Complementares                                                                       201903
+135Serviço de Reabilitação                                                                                                 201903
+136Serviço de Suporte Nutricional                                                                                          201903
+137Serviço de Telemedicina                                                                                                 201903
+138Serviço de Traumato-Ortopedia                                                                                           201903
+139Serviço de Triagem Neonatal                                                                                             201903
+140Serviço de Urgência e Emergência                                                                                        201903
+141Serviço de Vigilância em Saúde                                                                                          201903
+142Serviço de Endoscopia                                                                                                   201903
+143Serviço Móvel de Urgência (exceto SAMU)                                                                                 201903
+144Serviço Posto de Coleta de Materiais Biológicos                                                                         201903
+145Serviço de Diagnóstico por Laboratório Clínico                                                                          201903
+146Serviço de Videolaparoscopia                                                                                            201903
+147Serviço de Apoio a Saúde da Família                                                                                     201903
+148Hospital-Dia                                                                                                            201903
+149Transplante                                                                                                             201903
+150Cirurgia Vascular                                                                                                       201903
+151Medicina Nuclear                                                                                                        201903
+153Atenção Especializada no Processo Transexualizador                                                                      201903
+154Serviço de Banco de Tecidos                                                                                             201903
+155Serviço de Traumatologia  Ortopedia                                                                                     201903
+156Serviço de Atenção á Saúde das Pessoas Ostomizadas                                                                      201903
+157Serviço de Laboratorio de Protese Dentaria                                                                              201903
+158Serviço de Atenção Integral em Hanseniase                                                                               201903
+159Atenção Básica                                                                                                          201903
+160Teleconsultoria                                                                                                         201903
+162Serviço de Terapia Intensiva                                                                                            201903
+163Serviço de Cuidados Intermediários                                                                                      201903
+164Serviço de Órteses,Próteses e Materiais Especiais em Reabilitação                                                       201903
+165Atenção às Pessoas em Situação de Violência Sexual                                                                      201903
+167Atendimento Itinerante de Asistência e Ensino em Saúde                                                                  201903
+168Atenção Às Pessoas com Doenças Raras                                                                                    201903
+169Serviço de Atenção em Urologia                                                                                          201903

@@ -1,10 +1,9 @@
-01BPA (Consolidado)                                 202007
-02BPA (Individualizado)                             202007
-03AIH (Proc. Principal)                             202007
-04AIH (Proc. Especial)                              202007
-05AIH (Proc. Secundário)                            202007
-06APAC (Proc. Principal)                            202007
-07APAC (Proc. Secundário)                           202007
-08RAAS (Atenção Domiciliar)                         202007
-09RAAS (Atenção Psicossocial)                       202007
-10e-SUS APS (Atenção Primária à Saúde)              202007
+01BPA (Consolidado)                                 201903
+02BPA (Individualizado)                             201903
+03AIH (Proc. Principal)                             201903
+04AIH (Proc. Especial)                              201903
+05AIH (Proc. Secundário)                            201903
+06APAC (Proc. Principal)                            201903
+07APAC (Proc. Secundário)                           201903
+08RAAS (Atenção Domiciliar)                         201903
+09RAAS (Atenção Psicossocial)                       201903

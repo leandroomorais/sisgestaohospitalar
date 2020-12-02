@@ -1,7 +1,7 @@
-01Atenção Básica (PAB)                                                                                202007
-02Assistência Farmacêutica                                                                            202007
-04Fundo de Ações Estratégicas e Compensações (FAEC)                                                   202007
-05Incentivo - MAC                                                                                     202007
-06Média e Alta Complexidade (MAC)                                                                     202007
-07Vigilância em Saúde                                                                                 202007
-08Gestão do SUS                                                                                       202007
+01Atenção Básica (PAB)                                                                                201903
+02Assistência Farmacêutica                                                                            201903
+04Fundo de Ações Estratégicas e Compensações (FAEC)                                                   201903
+05Incentivo - MAC                                                                                     201903
+06Média e Alta Complexidade (MAC)                                                                     201903
+07Vigilância em Saúde                                                                                 201903
+08Gestão do SUS                                                                                       201903

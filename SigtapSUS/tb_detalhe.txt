@@ -1,38 +1,38 @@
-001Inclui valor da anestesia                                                                           202007
-003Admite longa permanência                                                                            202007
-004Admite permanência à maior                                                                          202007
-005Admite liberação de quantidade na AIH                                                               202007
-006CNRAC                                                                                               202007
-007Permanência por dia                                                                                 202007
-008Não permite mudança de procedimento                                                                 202007
-009Exige CNS                                                                                           202007
-011Permite alta direta de UTI                                                                          202007
-012Exige idade no BPA (Consolidado)                                                                    202007
-013Verifica habilitação de terceiro                                                                    202007
-014Admite APAC de Continuidade                                                                         202007
-015Admitido apenas em Hosp.Espec/Psiquiatria                                                           202007
-017Exige Informação da OPM                                                                             202007
-020Monitoramento do CEO                                                                                202007
-021Não Exige CBO                                                                                       202007
-022Exige registro na APAC de dados complementares                                                      202007
-023Registro no SISCOLO                                                                                 202007
-024Registro no SISPRENATAL                                                                             202007
-025Registro no SISMAMA                                                                                 202007
-026Registro de Procedimentos Secundário Compativel                                                     202007
-029Admite período maior para a apresentação                                                            202007
-033APAC com validade fixa de 03 competências                                                           202007
-034Não exige CNS                                                                                       202007
-036Exige Autorização                                                                                   202007
-037Exige CNPJ do Fornecedor                                                                            202007
-038Exige Serviço/Classificação                                                                         202007
-040Registro no SISCAN                                                                                  202007
-041APAC com validade fixa de 12 competências                                                           202007
-042Não Admite Liberação de Crítica de Idade                                                            202007
-043Exige registro de CID de causas associadas                                                          202007
-044Cirurgias Eletivas                                                                                  202007
-045Diárias de Leitos Complementares                                                                    202007
-046Tratamento Ambulatorial de Doenças Crônicas                                                         202007
-047Autorização com limite máximo de 6 meses.                                                           202007
-048Exige CID                                                                                           202007
-049Permite Informação de Equipe Cirúrgica                                                              202007
-050Permite o Registro de Informações do CNS do(s) Recém-Nascido(s)                                     202007
+001Inclui valor da anestesia                                                                           201903
+003Admite longa permanência                                                                            201903
+004Admite permanência à maior                                                                          201903
+005Admite liberação de quantidade na AIH                                                               201903
+006CNRAC                                                                                               201903
+007Permanência por dia                                                                                 201903
+008Não permite mudança de procedimento                                                                 201903
+009Exige CNS                                                                                           201903
+011Permite alta direta de UTI                                                                          201903
+012Exige idade no BPA (Consolidado)                                                                    201903
+013Verifica habilitação de terceiro                                                                    201903
+014Admite APAC de Continuidade                                                                         201903
+015Admitido apenas em Hosp.Espec/Psiquiatria                                                           201903
+017Exige Informação da OPM                                                                             201903
+020Monitoramento do CEO                                                                                201903
+021Não Exige CBO                                                                                       201903
+022Exige registro na APAC de dados complementares                                                      201903
+023Registro no SISCOLO                                                                                 201903
+024Registro no SISPRENATAL                                                                             201903
+025Registro no SISMAMA                                                                                 201903
+026Registro de Procedimentos Secundário Compativel                                                     201903
+029Admite período maior para a apresentação                                                            201903
+033APAC com validade fixa de 03 competências                                                           201903
+034Não exige CNS                                                                                       201903
+036Exige Autorização                                                                                   201903
+037Exige CNPJ do Fornecedor                                                                            201903
+038Exige Serviço/Classificação                                                                         201903
+040Registro no SISCAN                                                                                  201903
+041APAC com validade fixa de 12 competências                                                           201903
+042Não Admite Liberação de Crítica de Idade                                                            201903
+043Exige registro de CID de causas associadas                                                          201903
+044Cirurgias Eletivas                                                                                  201903
+045Diárias de Leitos Complementares                                                                    201903
+046Tratamento Ambulatorial de Doenças Crônicas                                                         201903
+047Autorização com limite máximo de 6 meses.                                                           201903
+048Exige CID                                                                                           201903
+049Permite Informação de Equipe Cirúrgica                                                              201903
+050Permite o Registro de Informações do CNS do(s) Recém-Nascido(s)                                     201903

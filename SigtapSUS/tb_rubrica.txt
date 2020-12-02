@@ -1,20 +1,66 @@
-040009Atendimento/acompanhamento em reabilitação física, mental, visual, auditiva e múltiplas deficiências202007
-040013Atendimento/acompanhamento de diagnóstico de doenças endocrinas/metabólicas e nutricionais          202007
-040017Nefrologia                                                                                          202007
-040024Cirurgia do aparelho digestivo, orgãos anexos e parede abdominal(inclui pré e pós operatório)       202007
-040028Outras cirurgias plásticas/reparadoras                                                              202007
-040030Sequenciais                                                                                         202007
-040032Transplantes de orgãos, tecidos e células                                                           202007
-040033Medicamentos para transplante                                                                       202007
-040038OPM para transplantes                                                                               202007
-040041Central Nacional de Regulação de Alta Complexidade (CNRAC)                                          202007
-040044Redesignação e Acompanhamento                                                                       202007
-040049Implementar Cirg. CV Pediátrica                                                                     202007
-040055Transplante - Histocompatibilidade                                                                  202007
-040062Doenças Raras                                                                                       202007
-040063Cadeiras de Rodas                                                                                   202007
-040065Medicamentos em Urgência                                                                            202007
-040066Cirurgias Eletivas - Componente Único                                                               202007
-040067Atenção Especializada em Saúde Auditiva                                                             202007
-040068Terapias Especializadas em Angiologia                                                               202007
-040069Tratamento de Doença Macular                                                                        202007
+040001Coleta de material                                                                                  201903
+040002Diagnóstico em laboratório clínico                                                                  201903
+040003Coleta/exame anátomo-patológico colo uterino                                                        201903
+040004Diagnóstico em neurologia                                                                           201903
+040005Diagnóstico em otorrinolaringologia/fonoaudiologia                                                  201903
+040006Diagnóstico em psicologia/psiquiatria                                                               201903
+040007Consultas médicas/outros profissionais de nível superior                                            201903
+040008Atenção domiciliar                                                                                  201903
+040009Atendimento/acompanhamento em reabilitação física, mental, visual, auditiva e múltiplas deficiências201903
+040010Atendimento/acompanhamento psicossocial                                                             201903
+040011Atendimento/acompanhamento em saúde do idoso                                                        201903
+040012Atendimento/acompanhamento de queimados                                                             201903
+040013Atendimento/acompanhamento de diagnóstico de doenças endocrinas/metabólicas e nutricionais          201903
+040014Tratamento de doenças do sistema nervoso central e periférico                                       201903
+040015Tratamento de doenças do aparelho da visão                                                          201903
+040016Tratamento em oncologia                                                                             201903
+040017Nefrologia                                                                                          201903
+040018Tratamentos odontológicos                                                                           201903
+040019Cirurgia do sistema nervoso central e periférico                                                    201903
+040020Cirurgias de ouvido, nariz e garganta                                                               201903
+040021Deformidade labio-palatal e crânio-facial                                                           201903
+040022Cirurgia do aparelho da visão                                                                       201903
+040023Cirurgia do aparelho circulatório                                                                   201903
+040024Cirurgia do aparelho digestivo, orgãos anexos e parede abdominal(inclui pré e pós operatório)       201903
+040025Cirurgia do aparelho geniturinário                                                                  201903
+040026Tratamento de queimados                                                                             201903
+040027Cirurgia reparadora para lipodistrofia                                                              201903
+040028Outras cirurgias plásticas/reparadoras                                                              201903
+040029Cirurgia orofacial                                                                                  201903
+040030Sequenciais                                                                                         201903
+040032Transplantes de orgãos, tecidos e células                                                           201903
+040033Medicamentos para transplante                                                                       201903
+040035OPM em odontologia                                                                                  201903
+040036OPM em queimados                                                                                    201903
+040038OPM para transplantes                                                                               201903
+040039Incentivos ao pré-natal e nascimento                                                                201903
+040040Incentivo ao registro cívil de nascimento                                                           201903
+040041Central Nacional de Regulação de Alta Complexidade (CNRAC)                                          201903
+040042Reguladores de Atividade hormonal - Inibidores de prolactina                                        201903
+040043Política Nacional de Cirurgias Eletivas                                                             201903
+040044Redesignação e Acompanhamento                                                                       201903
+040045Projeto Olhar Brasil                                                                                201903
+040046Mamografia para Rastreamento                                                                        201903
+040047Projeto Olhar Brasil - Consulta                                                                     201903
+040048Projeto Olhar Brasil - Óculos                                                                       201903
+040049Implementar Cirg. CV Pediátrica                                                                     201903
+040050Cirurgias Eletivas - Componente I                                                                   201903
+040051Cirurgias Eletivas - Componente II                                                                  201903
+040052Cirurgias Eletivas - Componente III                                                                 201903
+040053Prótese Mamária - Exames                                                                            201903
+040054Prótese Mamária - Cirurgia                                                                          201903
+040055Transplante - Histocompatibilidade                                                                  201903
+040056Triagem Neonatal                                                                                    201903
+040057Controle de qualidade do exame citopatológico do colo de útero                                      201903
+040058Exames do Leite Materno                                                                             201903
+040059Atenção as Pessoas em Situação de Violência Sexual                                                  201903
+040060Sangue e Hemoderivados                                                                              201903
+040061Mamografia para rastreamento em faixa etária recomendada                                            201903
+040062Doenças Raras                                                                                       201903
+040063Cadeiras de Rodas                                                                                   201903
+040064Sistema de Frequencia Modulada Pessoal-FM                                                           201903
+040065Medicamentos em Urgência                                                                            201903
+040066Cirurgias Eletivas - Componente Único                                                               201903
+040067Atenção Especializada em Saúde Auditiva                                                             201903
+040068Terapias Especializadas em Angiologia                                                               201903
+040069Tratamento de Doença Macular                                                                        201903

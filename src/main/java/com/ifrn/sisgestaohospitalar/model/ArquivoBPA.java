@@ -228,10 +228,5 @@ public class ArquivoBPA {
 				+ controleDominio + orgaoResponsavel + siglaOrgaoResponsavel + cnpjOrgaoResponsavel
 				+ orgaoDestino + incadorOrgao + versaoSistema;
 	}
-
-	
-	
-	
-	
 	
 }

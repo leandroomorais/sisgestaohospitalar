@@ -1,8 +1,8 @@
-01Ações de promoção e prevenção em saúde                                                              202007
-02Procedimentos com finalidade diagnóstica                                                            202007
-03Procedimentos clínicos                                                                              202007
-04Procedimentos cirúrgicos                                                                            202007
-05Transplantes de orgãos, tecidos e células                                                           202007
-06Medicamentos                                                                                        202007
-07Órteses, próteses e materiais especiais                                                             202007
-08Ações complementares da atenção à saúde                                                             202007
+01Ações de promoção e prevenção em saúde                                                              201903
+02Procedimentos com finalidade diagnóstica                                                            201903
+03Procedimentos clínicos                                                                              201903
+04Procedimentos cirúrgicos                                                                            201903
+05Transplantes de orgãos, tecidos e células                                                           201903
+06Medicamentos                                                                                        201903
+07Órteses, próteses e materiais especiais                                                             201903
+08Ações complementares da atenção à saúde                                                             201903

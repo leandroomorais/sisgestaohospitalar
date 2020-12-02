@@ -1,411 +1,347 @@
-165001Referência para Atenção Integral às Pessoas em Situação de Violência Sexual                                                                           202007
-166001Água de Consumo                                                                                                                                       202007
-167001ODONTOLOGIA - PROJETO SAÚDE NA ESCOLA (PSE)                                                                                                           202007
-168001Atenção Especializada Em Doenças Raras                                                                                                                202007
-169001Urologia em Geral                                                                                                                                     202007
-170001Núcleo de Segurança do Paciente                                                                                                                       202007
-173001Recebimento e Inspeção                                                                                                                                202007
-174001Indivíduos em Geral                                                                                                                                   202007
-100001Atendimento em presídio até 100 presos                                                                                                                202007
-101001Saúde da família                                                                                                                                      202007
-102001Estratégia de Agentes Comunitários de Saúde - EACS                                                                                                    202007
-103001Ambulância de transporte                                                                                                                              202007
-104001Central de Regulação de Internações Hospitalares                                                                                                      202007
-105001Neurocirurgia do trauma e anomalias do desenvolvimento                                                                                                202007
-106001Testagem e aconselhamento                                                                                                                             202007
-107001Serviço de Atenção à Saúde Auditiva na Média Complexidade                                                                                             202007
-108001Atendimento/acompanhamento em saúde do trabalhador                                                                                                    202007
-109001Unidade sócio-educativa com até 40 adolecentes                                                                                                        202007
-110001Atenção à infertilidade                                                                                                                               202007
-111001Diagnóstico e tratamento                                                                                                                              202007
-112001Acompanhamento do pré-natal de risco habitual                                                                                                         202007
-113001Assitência Domiciliar                                                                                                                                 202007
-114001Dentística                                                                                                                                            202007
-115001Residência terapêutica em saúde mental                                                                                                                202007
-116001Eletrofisiologia                                                                                                                                      202007
-117001Tratamento da lipodistrofia do portador de HIV / AIDS                                                                                                 202007
-118001Cirurgia torácica                                                                                                                                     202007
-119001Abordagem e tratamento do fumante                                                                                                                     202007
-120001Exames anatomopatológicos                                                                                                                             202007
-121001Radiologia                                                                                                                                            202007
-122001Teste Ergométrico                                                                                                                                     202007
-123001OPM auxiliares de locomoção                                                                                                                           202007
-124001Diagnóstico/Tratamento das doenças endócrinas, metabólicas e nutricionais                                                                             202007
-125001Dispensação de Medicamentos do Componente Especializado da Assistência Farmaceutica.                                                                  202007
-126001Assistência fisioterapêutica em alterações obstétricas, neonatais e uroginecológicas                                                                  202007
-127001Tratamento clínico, cirúrgico, reparador e acompanhamento ao obeso                                                                                    202007
-128001Procedimentos destinados à obtenção do sangue para fins de assitência hemoterápica                                                                    202007
-129001Exames de histocompatibilidade por meio de sorologia                                                                                                  202007
-130001Tratamento Dialítico-Hemodiálise                                                                                                                      202007
-131001Diagnóstico em oftalmologia                                                                                                                           202007
-132001Oncologia pediátrica                                                                                                                                  202007
-133001Tratamento de Doenças das Vias Aéreas Inferiores                                                                                                      202007
-134001Acupuntura                                                                                                                                            202007
-135001Reabilitação Visual                                                                                                                                   202007
-136001Enteral                                                                                                                                               202007
-137001Exame eletrocardiográfico por telemedicina                                                                                                            202007
-138001Diagnóstico e tratamento em cintura escapular                                                                                                         202007
-139001Tratamento de recém-nascido com hipotireoidismo e fenilcetonuria                                                                                      202007
-141001Vigilância epidemiológica                                                                                                                             202007
-142001Do aparelho digestivo                                                                                                                                 202007
-143001Transporte terrestre                                                                                                                                  202007
-144001Coleta realizada fora das estrutura laboratorial                                                                                                      202007
-145001Exames Bioquimicos                                                                                                                                    202007
-146001Diagnóstica                                                                                                                                           202007
-147001NASF 1                                                                                                                                                202007
-148001Saúde mental                                                                                                                                          202007
-149001Rim                                                                                                                                                   202007
-150001Fístula arteriovenosa sem enxerto                                                                                                                     202007
-151001Medicina nuclear in vivo                                                                                                                              202007
-152001Atenção Básica à Populações Indígenas                                                                                                                 202007
-153001Acompanhamento Clínico, pré e pós operatório e hormonioterapia.                                                                                       202007
-154001Banco de valvula cardiaca humana                                                                                                                      202007
-155001Serviço de Traumatologia e Ortopedia                                                                                                                  202007
-156001Atenção as Pessoas Ostomizadas I                                                                                                                      202007
-157001Laboratorio Regional de Protese Dentaria                                                                                                              202007
-158001Serviço de Atenção Integral em Hanseniase Tipo I                                                                                                      202007
-159001Atenção Primária                                                                                                                                      202007
-160001Teleconsultoria Assíncrona                                                                                                                            202007
-161001Equipe de Consultório na Rua - Modalidade I                                                                                                           202007
-162001ADULTO                                                                                                                                                202007
-163001NEONATAL CONVENCIONAL                                                                                                                                 202007
-164001Dispensação de OPM Auxiliares de Locomoção                                                                                                            202007
-100002Atendimento em manicômio até 100 presos                                                                                                               202007
-174002Grupos Especiais                                                                                                                                      202007
-102002Estratégia de Agentes Comunitários de Saúde com Saúde Bucal - (modalidade I)                                                                          202007
-103002Unidade de suporte básico de vida terrestre (USB)                                                                                                     202007
-104002Cental de Regulação de Consultas e Exames                                                                                                             202007
-105002Coluna e nervos periféricos                                                                                                                           202007
-106002Diagnóstico e tratamento                                                                                                                              202007
-107002Serviço de Atenção à Saúde Auditiva na Alta Complexidade                                                                                              202007
-108002Centro de referência em saúde do trabalhador CEREST estadual                                                                                          202007
-109002Unidade sócio-educativa com de 41 a 100 adolecentes                                                                                                   202007
-110002Contracepção clínica                                                                                                                                  202007
-111002Tratamento multidrogas resistentes                                                                                                                    202007
-112002Acompanhamento do pré-natal de alto risco                                                                                                             202007
-113002Internação Domiciliar                                                                                                                                 202007
-114002Endodontia                                                                                                                                            202007
-115002Atendimento psicossocial                                                                                                                              202007
-116002Cirurgia cardiovascular (adulto)                                                                                                                      202007
-117002Tratamento em queimados                                                                                                                               202007
-120002Exames citopatológicos                                                                                                                                202007
-121002Ultra-sonografia                                                                                                                                      202007
-122002Teste de Holter                                                                                                                                       202007
-123002OPM ortopédicas                                                                                                                                       202007
-124002Cirurgia de glândulas endócrinas                                                                                                                      202007
-125002Farmácia Popular                                                                                                                                      202007
-126002Assistência fisioterapêutica em alterações oncológicas                                                                                                202007
-128002Diagnóstico em hemoterapia                                                                                                                            202007
-129002Exames de histocompatibilidade por sorologia e biologia                                                                                               202007
-131002Tratamento clínico do aparelho da visão                                                                                                               202007
-132002Hematologia                                                                                                                                           202007
-133002Diagnóstico em Pneumologia                                                                                                                            202007
-134002Fitoterapia                                                                                                                                           202007
-135002Reabilitação Intelectual                                                                                                                              202007
-136002Enteral/Parenteral                                                                                                                                    202007
-138002Diagnóstico e tratamento em membros superiores                                                                                                        202007
-139002Tratamento de recém-nascido com doenças falciformes                                                                                                   202007
-141002Vigilância sanitária                                                                                                                                  202007
-142002Do aparelho respiratório                                                                                                                              202007
-143002Transporte aéreo                                                                                                                                      202007
-145002Exames hematológicos e hemostasia                                                                                                                     202007
-146002Cirúrgica                                                                                                                                             202007
-147002NASF 2                                                                                                                                                202007
-148002AIDS                                                                                                                                                  202007
-149002Medula óssea                                                                                                                                          202007
-150002Fístula arteriovenosa com enxerto                                                                                                                     202007
-151002Medicina nuclear in vitro                                                                                                                             202007
-153002Cirurgia e Acompanhamento pré e pós oreratório                                                                                                        202007
-154002Banco de tecido musculo esqueletico                                                                                                                   202007
-155002Serviço de Traumatologia e Ortopedia Pediátrica (até 21 anos de idade)                                                                                202007
-156002Atenção as Pessoas Ostomizadas II                                                                                                                     202007
-158002Serviço de Atenção Integral em Hanseniase Tipo II                                                                                                     202007
-159002Atenção Básica com Saúde Bucal                                                                                                                        202007
-160002Teleconsultoria Síncrona                                                                                                                              202007
-161002Equipe de Consultório na Rua - Modalidade II                                                                                                          202007
-162002NEONATAL                                                                                                                                              202007
-163002NEONATAL CANGURU                                                                                                                                      202007
-164002Manutenção e Adaptação de OPM Auxiliares de Locomoção                                                                                                 202007
-165002Serviço de Referência para Atenção Integral à Saúde de Adolescentes em Situação de Violência Sexual                                                   202007
-166002Água de Ambiental                                                                                                                                     202007
-167002ODONTOLOGIA - PROJETO BRASIL ALFABETIZADO (PBA)                                                                                                       202007
-168002Referência em Doenças Raras                                                                                                                           202007
-169002Litotripsia                                                                                                                                           202007
-173002Armazenamento e Controle                                                                                                                              202007
-101002Saúde bucal MI                                                                                                                                        202007
-100003Atendimento em presídio acima de 100 presos                                                                                                           202007
-101003Saúde bucal MII                                                                                                                                       202007
-102003Estratégia de Agentes Comunitários de Saúde com Saúde Bucal - (modalidade II)                                                                         202007
-103003Unidade de suporte avançado de vida terrestre (USA)                                                                                                   202007
-104003Central de Regulação de Urgências                                                                                                                     202007
-105003Tumores do sistema nervoso                                                                                                                            202007
-106003Diagnóstico, tratamento e capacitação técnica                                                                                                         202007
-107003Terapia fonoaudiológica                                                                                                                               202007
-108003VIGILÂNCIA EM SAÚDE DO TRABALHADOR (VISAT)                                                                                                            202007
-109003Unidade sócio-educativa com de 101 a 180 adolecentes                                                                                                  202007
-110003Laqueadura                                                                                                                                            202007
-112003Parto em gestação de risco habitual                                                                                                                   202007
-113003Equipe Multidisciplinar de Atenção Domiciliar - EMAD                                                                                                  202007
-114003Periodontia clínica                                                                                                                                   202007
-115003Serviço Hospitalar para Atenção a Saúde Mental                                                                                                        202007
-116003Cirurgia cardiovascular (Pediátrico)                                                                                                                  202007
-117003Tratamento da lipoatrofia facial do portador de HIV / AIDS                                                                                            202007
-120003Monitoramento Externo da Qualidade dos Exames Citopatologicos do Colo do Útero                                                                        202007
-121003Tomografia computadorizada                                                                                                                            202007
-122003Exame Eletrocardiográfico                                                                                                                             202007
-123003OPM auditivas                                                                                                                                         202007
-125003Farmácia com manipulação homeopática                                                                                                                  202007
-126003Assistência fisioterapêutica em oftalmologia                                                                                                          202007
-128003Procedimentos especiais em hemoterapia                                                                                                                202007
-130003Confeccção/Intervenção de Acessos para Diálise                                                                                                        202007
-131003Tratamento cirúrgico do aparelho da visão                                                                                                             202007
-132003Oncologia clínica                                                                                                                                     202007
-133003Diagnóstico em Pneumologia por Telemedicina                                                                                                           202007
-134003Outras Práticas em Medicina Tradicional Chinesa                                                                                                       202007
-135003Reabilitação Física                                                                                                                                   202007
-136003Enteral/Parenteral, com manipulação/fabricação                                                                                                        202007
-138003Diagnóstico e tratamento em coluna vertebral e caixa torácica                                                                                         202007
-139003Tratamento de recém-nascido com fibrose cística                                                                                                       202007
-141003Vigilância ambiental                                                                                                                                  202007
-142003Do aparelho urinário                                                                                                                                  202007
-143003Transporte marítimo                                                                                                                                   202007
-145003Exames sorológicos e imunológicos                                                                                                                     202007
-147003NASF Intermunicipal                                                                                                                                   202007
-148003Geriátrico                                                                                                                                            202007
-149003Coração                                                                                                                                               202007
-151003Medicina nuclear in vivo por telemedicina                                                                                                             202007
-155003Serviço de Traumatologia e Ortopedia de Urgência                                                                                                      202007
-158003Serviço de Atenção Integral em Hanseniase Tipo III                                                                                                    202007
-159003Academia da Saúde                                                                                                                                     202007
-160003Segunda Opinião Formativa                                                                                                                             202007
-161003Equipe de Consultório na Rua - Modalidade III                                                                                                         202007
-162003PEDIÁTRICO                                                                                                                                            202007
-163003PEDIÁTRICO                                                                                                                                            202007
-164003Dispensação de OPM Ortopédica                                                                                                                         202007
-165003Serviço de Referência para Atenção Integral à Saúde de Crianças em Situação de Violência Sexual                                                       202007
-166003Água de Hemodiálise                                                                                                                                   202007
-167003OFTALMOLOGIA - PROJETO SAÚDE NA ESCOLA (PSE)                                                                                                          202007
-173003Distribuição                                                                                                                                          202007
-152004Saneamento a Populações Indígenas                                                                                                                     202007
-159004Estratégia de Saúde da Família                                                                                                                        202007
-162004QUEIMADOS                                                                                                                                             202007
-163004ADULTO                                                                                                                                                202007
-164004Manutenção e Adaptação de OPM Ortopédica                                                                                                              202007
-165004Serviço de Referência para Atenção Integral à Saúde de Homens em Situação de Violência Sexual                                                         202007
-166004Água Mineral                                                                                                                                          202007
-167004OFTALMOLOGIA - PROJETO BRASIL ALFABETIZADO (PBA)                                                                                                      202007
-173004Transporte                                                                                                                                            202007
-125004Dispensação de medicamentos estratégicos                                                                                                              202007
-126004Assistência fisioterapêutica cardiovasculares e pneumo-funcionais                                                                                     202007
-128004Medicina transfusional                                                                                                                                202007
-130004Tratamento Nefrologia em Geral                                                                                                                        202007
-131004Projeto Olhar Brasil                                                                                                                                  202007
-132004Radioterapia                                                                                                                                          202007
-134004Práticas Corpo-mente                                                                                                                                  202007
-135004Reabilitação visual/mental/múltiplas deficiências                                                                                                     202007
-138004Diagnóstico e tratamento em cintura pélvica                                                                                                           202007
-139004Tratamento de recém-nascido com outras doenças congênitas                                                                                             202007
-140004Estabilização de paciente crítico/grave                                                                                                               202007
-141004Núcleo de vigilância hospitalar                                                                                                                       202007
-142004Do aparelho ginecológico                                                                                                                              202007
-145004Exames coprológicos                                                                                                                                   202007
-147004NASF 3                                                                                                                                                202007
-148004Fibrose cística                                                                                                                                       202007
-149004Pulmão                                                                                                                                                202007
-100004Atendimento em manicômio acima de 100 presos                                                                                                          202007
-101004Saúde da Família para a População Ribeirinha                                                                                                          202007
-104004Unidade de autorizações de TFD intermunicipais                                                                                                        202007
-105004Neurocirurgia vascular                                                                                                                                202007
-106004Assistência Domiciliar Terapêutica em AIDS-ADT                                                                                                        202007
-107004Diagnóstico em audiologia/otologia                                                                                                                    202007
-109004Unidade sócio-educativa com mais de 180 adolecentes                                                                                                   202007
-110004Vasectomia                                                                                                                                            202007
-112004Parto em gestação de alto risco                                                                                                                       202007
-113004Equipe Multidisciplinar de Apoio - EMAP                                                                                                               202007
-114004Moldagem/Manutenção                                                                                                                                   202007
-115004Serviço Residencial Terapêutico Tipo I - SRT tipo I                                                                                                   202007
-116004Cirurgia vascular                                                                                                                                     202007
-121004Ressonância magnética                                                                                                                                 202007
-122004Exame Eletroencefalográfico                                                                                                                           202007
-123004OPM oftalmológicas                                                                                                                                    202007
-152005Atenção Especializada a Populações Indígenas                                                                                                          202007
-122005Teste Ergométrico por Telemedicina                                                                                                                    202007
-162005DOENÇA CORONARIANA (UCO)                                                                                                                              202007
-164005Dispensação de OPM Auditiva                                                                                                                           202007
-165005Serviço de Referência para Atenção Integral à Saúde de Pessoas Idosas em Situação de Violência Sexual                                                 202007
-166005Alimentos                                                                                                                                             202007
-123005OPM em gastroenterologia                                                                                                                              202007
-125005Dispensação de medicamentos básicos                                                                                                                   202007
-126005Assistência fisioterapêutica nas disfunções músculo-esqueléticas (todas as origens)                                                                   202007
-130005Tratamento Diálitico Peritonial                                                                                                                       202007
-131005Diagnóstico em Oftalmologia por Telemedicina                                                                                                          202007
-132005Oncologia cirúrgica                                                                                                                                   202007
-134005Homeopatia                                                                                                                                            202007
-135005Reabiliatação Auditiva                                                                                                                                202007
-138005Diagnóstico e tratamento em membros inferiores                                                                                                        202007
-139005Acompanhamento a pacientes com diagnósticos de Hiperplasia Adrenal Congênita                                                                          202007
-140005Atendimento ao paciente com Acidente Vascular Cerebral (AVC)                                                                                          202007
-145005Exames de uroanálise                                                                                                                                  202007
-148005Cirúrgico / Diagnóstico                                                                                                                               202007
-149005Córnea / Esclera                                                                                                                                      202007
-101005Saúde da Família para a População Ribeirinha-Saúde Bucal MI                                                                                           202007
-103005Unidade de Suporte Básico de vida: Equipe Embarcação                                                                                                  202007
-104005Unidade de autorizações de TFD interestaduais                                                                                                         202007
-105005Tratamento neurocirúrgico da dor funcional                                                                                                            202007
-106005Unidade Dispensadora de Medicamentos - UDM                                                                                                            202007
-107005Implante Coclear                                                                                                                                      202007
-109005Atenção Básica à Adolescentes em Unidade Socioeducativa                                                                                               202007
-112005Centro de parto normal                                                                                                                                202007
-113005Equipe de cuidados domiciliares                                                                                                                       202007
-114005Cirurgia oral                                                                                                                                         202007
-115005Serviço Residencial Terapêutico Tipo II - SRT tipo II                                                                                                 202007
-116005Cardiologia intervencionista (hemodinâmica)                                                                                                           202007
-159005Saúde Bucal                                                                                                                                           202007
-159006Núcleo Ampliado de Saúde da Família e Atenção Primária                                                                                                202007
-122006Teste Holter por Telemedicina                                                                                                                         202007
-165006Serviço de referência para interrupção de gravidez nos casos previstos em LEI                                                                         202007
-166006Células, Tecidos e Órgãos                                                                                                                             202007
-123006OPM em urologia                                                                                                                                       202007
-125006Farmácia Hospitalar                                                                                                                                   202007
-126006Assistência fisioterapêutica em queimados                                                                                                             202007
-130006Tratamento em DRC                                                                                                                                     202007
-131006Projeto Olhar Brasil - Programa Saúde na Escola (PSE)                                                                                                 202007
-134006Termalismo/Crenoterapia                                                                                                                               202007
-139006Acompanhamento a pacientes com diagnósticos de Deficiência Biotinidase                                                                                202007
-140006Pronto Atendimento Clínico                                                                                                                            202007
-145006Exames hormonais                                                                                                                                      202007
-148006Acompanhamento pós-transplante de medula óssea                                                                                                        202007
-149006Fígado                                                                                                                                                202007
-101006Saúde da Família Fluvial                                                                                                                              202007
-103006Veículos de intervenção rápida                                                                                                                        202007
-104006Central Estadual de Regulação da Alta Complexidade                                                                                                    202007
-105006Investigação e cirurgia de epilepsia                                                                                                                  202007
-107006Triagem Auditiva Neonatal                                                                                                                             202007
-112006Casa da Gestante, Bebê e Puérpera                                                                                                                     202007
-114006Cirurgia buco-maxilo-facial                                                                                                                           202007
-115006UA Adulto                                                                                                                                             202007
-116006Cardiologia Endovascular Extracardíaco                                                                                                                202007
-121006Radiologia intervencionista                                                                                                                           202007
-164006Manutenção e Adaptação de OPM Auditiva                                                                                                                202007
-159007Atenção Primária para População Ribeirinha                                                                                                            202007
-122007Exame Eletrocardiografico por Telemedicina                                                                                                            202007
-165007Atenção Ambulatorial  ás Pessoas em Situação de Violência Sexual                                                                                      202007
-166007Medicamentos                                                                                                                                          202007
-123007OPM em odontologia                                                                                                                                    202007
-125007Farmácia Viva                                                                                                                                         202007
-126007Assistência fisioterapêutica nas alterações em neurologia                                                                                             202007
-131007Projeto Olhar Brasil - Programa Brasil Alfabetizado (PBA)                                                                                             202007
-134007Antroposofia Aplicada à Saúde                                                                                                                         202007
-135007Oficina Ortopédica Fixa                                                                                                                               202007
-140007Pronto Atendimento Pediátrico                                                                                                                         202007
-145007Exames de  vigilância epidemiológica e  ambiental                                                                                                     202007
-149007Pâncreas                                                                                                                                              202007
-101007Saúde da Família Fluvial com Saúde Bucal                                                                                                              202007
-103007Outros veículos                                                                                                                                       202007
-104007Regulação Nacional de Alta Complexidade                                                                                                               202007
-105007Tratamento endovascular                                                                                                                               202007
-107007Diagnóstico em Audiologia/Otologia por Telemedicina                                                                                                   202007
-114007Atendimento à pessoa com deficiência                                                                                                                  202007
-115007UA Infantojuvenil                                                                                                                                     202007
-116007Cardiologia Clínica                                                                                                                                   202007
-121007Radiologia por telemedicina                                                                                                                           202007
-164007Dispensação de OPM Oftalmológica                                                                                                                      202007
-152008Hospitalidade Indígena                                                                                                                                202007
-122008Exame Eletroencefalografico por Telemedicina                                                                                                          202007
-164008Manutenção e Adaptação de OPM Oftalmológica                                                                                                           202007
-165008Coleta de  Vestígios de Violência Sexual                                                                                                              202007
-166008Saneantes Domissanitários                                                                                                                             202007
-123008OPM buco-maxilo-facial                                                                                                                                202007
-126008Diagnóstico cinético funcional                                                                                                                        202007
-134008Práticas Expressivas                                                                                                                                  202007
-135008Oficina Ortopédica Intinerante Terrestre                                                                                                              202007
-140008Pronto Atendimento Obstétrico                                                                                                                         202007
-145008Exames toxicológicos ou de monitorização terapêutica                                                                                                  202007
-149008Retirada de orgãos                                                                                                                                    202007
-101008ESF Tipo I, II, III, IV ou Transitória                                                                                                                202007
-103008Ambulância de resgate                                                                                                                                 202007
-104008Regulação Ambulatorial de Média Complexidade                                                                                                          202007
-105008Neurocirurgia funcional estereotáxica                                                                                                                 202007
-107008Atenção Especializada às Pessoas com Deficiência Auditiva                                                                                             202007
-115008Unidade de Atenção em Regime Residencial                                                                                                              202007
-116008Serviço de Atenção Cardiovascular/Cardiologia Angiologia                                                                                              202007
-121008Ultra-sonografia por telemedicina                                                                                                                     202007
-159008Consultório na Rua                                                                                                                                    202007
-152009Gestão da Atenção e Saneamento à Populações Indígenas                                                                                                 202007
-122009Exame Eletroneuromiografia                                                                                                                            202007
-164009Substitução/Troca de OPM                                                                                                                              202007
-166009Produtos para a Saúde                                                                                                                                 202007
-123009Substituição/Troca em órteses/próteses                                                                                                                202007
-134009Ayurveda                                                                                                                                              202007
-135009Oficina Ortopédica Intinerante Fluvial                                                                                                                202007
-140009Pronto Atendimento Psiquiátrico                                                                                                                       202007
-145009Exames microbiológicos                                                                                                                                202007
-149009Pele                                                                                                                                                  202007
-101009ESF Tipo I, II, III, IV ou Transitória com Saúde Bucal MI                                                                                             202007
-104009Regulação do Acesso a Ações e Serviços de Saúde                                                                                                       202007
-105009Polissonografia                                                                                                                                       202007
-121009Tomografia computadorizada por telemedicina                                                                                                           202007
-159009Atenção Primária para População Prisional                                                                                                             202007
-134010Práticas Naturais                                                                                                                                     202007
-159010Atenção Primária para Adolescentes em Unidade Socioeducativa                                                                                          202007
-123010OPM em queimados                                                                                                                                      202007
-135010Atenção Fonoaudiológica                                                                                                                               202007
-152010Saúde Bucal à Populações Indígenas                                                                                                                    202007
-103010Motolância                                                                                                                                            202007
-164010OPM em gastroenterologia                                                                                                                              202007
-149010Válvulas cardíacas                                                                                                                                    202007
-121010Ressonância magnética por telemedicina                                                                                                                202007
-166010Cosméticos                                                                                                                                            202007
-145010Exames em outros líquidos biológicos                                                                                                                  202007
-140010Pronto Atendimento Oftalmológico                                                                                                                      202007
-122010Exame videoeletroencefalografia                                                                                                                       202007
-101010ESF Tipo I, II, III, IV ou Transitória com Saúde Bucal MII                                                                                            202007
-123011OPM em nefrologia                                                                                                                                     202007
-122011Potenciais Evocados                                                                                                                                   202007
-121011Radiologia intervencionista por telemedicina                                                                                                          202007
-103011Unidade de Suporte Avançado de vida: Equipe Embarcação                                                                                                202007
-101011ESF Transitória                                                                                                                                       202007
-166011Desinfestantes                                                                                                                                        202007
-164011OPM em Urologia                                                                                                                                       202007
-149011Osteocondroligamentos                                                                                                                                 202007
-145011Exames de genética                                                                                                                                    202007
-140011Pronto Atendimento Odontológico                                                                                                                       202007
-135011Atenção Fisioterapeutica                                                                                                                              202007
-134011Práticas Manuais                                                                                                                                      202007
-135012Atenção à Saúde das Pessoas Ostomizadas I                                                                                                             202007
-123012OPM - Projeto Olhar Brasil                                                                                                                            202007
-103012Equipe Aeromédico                                                                                                                                     202007
-145012Exames para triagem neonatal                                                                                                                          202007
-121012Mamografia                                                                                                                                            202007
-101012Saúde da Família para a População Ribeirinha - Saúde Bucal MII                                                                                        202007
-134012Práticas Psicodinâmicas                                                                                                                               202007
-122012Potenciais Evocados por Telemedicina                                                                                                                  202007
-140012Pronto Socorro Pediátrico                                                                                                                             202007
-166012Imunobiológicos                                                                                                                                       202007
-149012Separação, avaliação biomicroscópica e conservação da córnea/esclera                                                                                  202007
-123013OPM Projeto Olhar Brasil - Programa Saúde na Escola (PSE)                                                                                             202007
-101013ESB MI                                                                                                                                                202007
-140013Pronto Socorro Obstétrico                                                                                                                             202007
-166013Insumos Farmacêuticos                                                                                                                                 202007
-149013Contagem endotelial corneana                                                                                                                          202007
-121013Mamografia por Telemedicina                                                                                                                           202007
-135013Atenção à Saúde das Pessoas Ostomizadas II                                                                                                            202007
-145013Exames imunohematológicos                                                                                                                             202007
-134013Ozônioterapia                                                                                                                                         202007
-149014Acompanhamento de paciente transplantado                                                                                                              202007
-166014Material Biológico                                                                                                                                    202007
-140014Pronto Socorro Cardiovascular                                                                                                                         202007
-123014OPM Projeto Olhar Brasil - Programa Brasil Alfabetizado (PBA)                                                                                         202007
-134014Aromaterapia                                                                                                                                          202007
-101014ESB MII                                                                                                                                               202007
-140015Pronto Socorro Neurologia/Neurocirurgia                                                                                                               202007
-166015Sangue e Hemoderivados                                                                                                                                202007
-134015Imposição de Mãos                                                                                                                                     202007
-149015Ações para doação e captação de órgãos e tecidos                                                                                                      202007
-149016Retirada de globo ocular humano para transplante                                                                                                      202007
-166016Surtos de Toxinfecção                                                                                                                                 202007
-140016Pronto Socorro Traumato-Ortopédico                                                                                                                    202007
-166017Diversos                                                                                                                                              202007
-140017Pronto Socorro Odontológico                                                                                                                           202007
-140018Pronto Socorro Oftalmológico                                                                                                                          202007
-140019Pronto Socorro Geral/Clínico                                                                                                                          202007
+168001Atenção Especializada Em Doenças Raras                                                                                                                201903
+169001Urologia em Geral                                                                                                                                     201903
+100001Atendimento em presídio até 100 presos                                                                                                                201903
+101001Saúde da família                                                                                                                                      201903
+102001Estratégia de Agentes Comunitários de Saúde - EACS                                                                                                    201903
+103001Ambulância de transporte                                                                                                                              201903
+104001Central de Regulação de Internações Hospitalares                                                                                                      201903
+105001Neurocirurgia do trauma e anomalias do desenvolvimento                                                                                                201903
+106001Testagem e aconselhamento                                                                                                                             201903
+107001Serviço de Atenção à Saúde Auditiva na Média Complexidade                                                                                             201903
+108001Atendimento/acompanhamento em saúde do trabalhador                                                                                                    201903
+109001Unidade sócio-educativa com até 40 adolecentes                                                                                                        201903
+110001Atenção à infertilidade                                                                                                                               201903
+111001Diagnóstico e tratamento                                                                                                                              201903
+112001Acompanhamento do pré-natal de risco habitual                                                                                                         201903
+113001Assitência Domiciliar                                                                                                                                 201903
+114001Dentística                                                                                                                                            201903
+115001Residência terapêutica em saúde mental                                                                                                                201903
+116001Eletrofisiologia                                                                                                                                      201903
+117001Tratamento da lipodistrofia do portador de HIV / AIDS                                                                                                 201903
+118001Cirurgia torácica                                                                                                                                     201903
+119001Abordagem e tratamento do fumante                                                                                                                     201903
+120001Exames anatomopatológicos                                                                                                                             201903
+121001Radiologia                                                                                                                                            201903
+122001Teste Ergométrico                                                                                                                                     201903
+123001OPM auxiliares de locomoção                                                                                                                           201903
+124001Diagnóstico/Tratamento das doenças endócrinas, metabólicas e nutricionais                                                                             201903
+125001Dispensação de Medicamentos do Componente Especializado da Assistência Farmaceutica.                                                                  201903
+126001Assistência fisioterapêutica em alterações obstétricas, neonatais e uroginecológicas                                                                  201903
+127001Tratamento clínico, cirúrgico, reparador e acompanhamento ao obeso                                                                                    201903
+128001Procedimentos destinados à obtenção do sangue para fins de assitência hemoterápica                                                                    201903
+129001Exames de histocompatibilidade por meio de sorologia                                                                                                  201903
+130001Tratamento Dialítico-Hemodiálise                                                                                                                      201903
+131001Diagnóstico em oftalmologia                                                                                                                           201903
+132001Oncologia pediátrica                                                                                                                                  201903
+133001Tratamento de Doenças das Vias Aéreas Inferiores                                                                                                      201903
+134001Acupuntura                                                                                                                                            201903
+135001Reabilitação Visual                                                                                                                                   201903
+136001Enteral                                                                                                                                               201903
+137001Exame eletrocardiográfico por telemedicina                                                                                                            201903
+138001Diagnóstico e tratamento em cintura escapular                                                                                                         201903
+139001Tratamento de recém-nascido com hipotireoidismo e fenilcetonuria                                                                                      201903
+141001Vigilância epidemiológica                                                                                                                             201903
+142001Do aparelho digestivo                                                                                                                                 201903
+143001Transporte terrestre                                                                                                                                  201903
+144001Coleta realizada fora das estrutura laboratorial                                                                                                      201903
+145001Exames Bioquimicos                                                                                                                                    201903
+146001Diagnóstica                                                                                                                                           201903
+147001NASF 1                                                                                                                                                201903
+148001Saúde mental                                                                                                                                          201903
+149001Rim                                                                                                                                                   201903
+150001Fístula arteriovenosa sem enxerto                                                                                                                     201903
+151001Medicina nuclear in vivo                                                                                                                              201903
+153001Acompanhamento Clínico, pré e pós operatório e hormonioterapia.                                                                                       201903
+154001Banco de valvula cardiaca humana                                                                                                                      201903
+155001Serviço de Traumatologia e Ortopedia                                                                                                                  201903
+156001Atenção as Pessoas Ostomizadas I                                                                                                                      201903
+157001Laboratorio Regional de Protese Dentaria                                                                                                              201903
+158001Serviço de Atenção Integral em Hanseniase Tipo I                                                                                                      201903
+159001Atenção Básica                                                                                                                                        201903
+160001Teleconsultoria Assíncrona                                                                                                                            201903
+162001ADULTO                                                                                                                                                201903
+163001NEONATAL CONVENCIONAL                                                                                                                                 201903
+164001Dispensação de OPM Auxiliares de Locomoção                                                                                                            201903
+165001Referência para Atenção Integral às Pessoas em Situação de Violência Sexual                                                                           201903
+167001ODONTOLOGIA - PROJETO SAÚDE NA ESCOLA (PSE)                                                                                                           201903
+100002Atendimento em manicômio até 100 presos                                                                                                               201903
+169002Litotripsia                                                                                                                                           201903
+102002Estratégia de Agentes Comunitários de Saúde com Saúde Bucal - (modalidade I)                                                                          201903
+103002Unidade de suporte básico de vida terrestre (USB)                                                                                                     201903
+104002Cental de Regulação de Consultas e Exames                                                                                                             201903
+105002Coluna e nervos periféricos                                                                                                                           201903
+106002Diagnóstico e tratamento                                                                                                                              201903
+107002Serviço de Atenção à Saúde Auditiva na Alta Complexidade                                                                                              201903
+108002Centro de referência em saúde do trabalhador CEREST estadual                                                                                          201903
+109002Unidade sócio-educativa com de 41 a 100 adolecentes                                                                                                   201903
+110002Contracepção clínica                                                                                                                                  201903
+111002Tratamento multidrogas resistentes                                                                                                                    201903
+112002Acompanhamento do pré-natal de alto risco                                                                                                             201903
+113002Internação Domiciliar                                                                                                                                 201903
+114002Endodontia                                                                                                                                            201903
+115002Atendimento psicossocial                                                                                                                              201903
+116002Cirurgia cardiovascular (adulto)                                                                                                                      201903
+117002Tratamento em queimados                                                                                                                               201903
+120002Exames citopatológicos                                                                                                                                201903
+121002Ultra-sonografia                                                                                                                                      201903
+122002Teste de Holter                                                                                                                                       201903
+123002OPM ortopédicas                                                                                                                                       201903
+124002Cirurgia de glândulas endócrinas                                                                                                                      201903
+125002Farmácia Popular                                                                                                                                      201903
+126002Assistência fisioterapêutica em alterações oncológicas                                                                                                201903
+128002Diagnóstico em hemoterapia                                                                                                                            201903
+129002Exames de histocompatibilidade por sorologia e biologia                                                                                               201903
+131002Tratamento clínico do aparelho da visão                                                                                                               201903
+132002Hematologia                                                                                                                                           201903
+133002Diagnóstico em Pneumologia                                                                                                                            201903
+134002Fitoterapia                                                                                                                                           201903
+135002Reabilitação Intelectual                                                                                                                              201903
+136002Enteral/Parenteral                                                                                                                                    201903
+138002Diagnóstico e tratamento em membros superiores                                                                                                        201903
+139002Tratamento de recém-nascido com doenças falciformes                                                                                                   201903
+141002Vigilância sanitária                                                                                                                                  201903
+142002Do aparelho respiratório                                                                                                                              201903
+143002Transporte aéreo                                                                                                                                      201903
+145002Exames hematológicos e hemostasia                                                                                                                     201903
+146002Cirúrgica                                                                                                                                             201903
+147002NASF 2                                                                                                                                                201903
+148002AIDS                                                                                                                                                  201903
+149002Medula óssea                                                                                                                                          201903
+150002Fístula arteriovenosa com enxerto                                                                                                                     201903
+151002Medicina nuclear in vitro                                                                                                                             201903
+153002Cirurgia e Acompanhamento pré e pós oreratório                                                                                                        201903
+154002Banco de tecido musculo esqueletico                                                                                                                   201903
+155002Serviço de Traumatologia e Ortopedia Pediátrica (até 21 anos de idade)                                                                                201903
+156002Atenção as Pessoas Ostomizadas II                                                                                                                     201903
+158002Serviço de Atenção Integral em Hanseniase Tipo II                                                                                                     201903
+159002Atenção Básica com Saúde Bucal                                                                                                                        201903
+160002Teleconsultoria Síncrona                                                                                                                              201903
+162002NEONATAL                                                                                                                                              201903
+163002NEONATAL CANGURU                                                                                                                                      201903
+164002Manutenção e Adaptação de OPM Auxiliares de Locomoção                                                                                                 201903
+165002Atenção Integral à Saúde de Adolescentes em Situação de Violência Sexual                                                                              201903
+167002ODONTOLOGIA - PROJETO BRASIL ALFABETIZADO (PBA)                                                                                                       201903
+168002Referência em Doenças Raras                                                                                                                           201903
+101002Saúde bucal MI                                                                                                                                        201903
+100003Atendimento em presídio acima de 100 presos                                                                                                           201903
+101003Saúde bucal MII                                                                                                                                       201903
+102003Estratégia de Agentes Comunitários de Saúde com Saúde Bucal - (modalidade II)                                                                         201903
+103003Unidade de suporte avançado de vida terrestre (USA)                                                                                                   201903
+104003Central de Regulação de Urgências                                                                                                                     201903
+105003Tumores do sistema nervoso                                                                                                                            201903
+106003Diagnóstico, tratamento e capacitação técnica                                                                                                         201903
+107003Terapia fonoaudiológica                                                                                                                               201903
+108003VIGILÂNCIA EM SAÚDE DO TRABALHADOR (VISAT)                                                                                                            201903
+109003Unidade sócio-educativa com de 101 a 180 adolecentes                                                                                                  201903
+110003Laqueadura                                                                                                                                            201903
+112003Parto em gestação de risco habitual                                                                                                                   201903
+113003Equipe Multidisciplinar de Atenção Domiciliar - EMAD                                                                                                  201903
+114003Periodontia clínica                                                                                                                                   201903
+115003Serviço Hospitalar para Atenção a Saúde Mental                                                                                                        201903
+116003Cirurgia cardiovascular (Pediátrico)                                                                                                                  201903
+117003Tratamento da lipoatrofia facial do portador de HIV / AIDS                                                                                            201903
+120003Monitoramento Externo da Qualidade dos Exames Citopatologicos do Colo do Útero                                                                        201903
+121003Tomografia computadorizada                                                                                                                            201903
+122003Exame Eletrocardiográfico                                                                                                                             201903
+123003OPM auditivas                                                                                                                                         201903
+125003Farmácia com manipulação homeopática                                                                                                                  201903
+126003Assistência fisioterapêutica em oftalmologia                                                                                                          201903
+128003Procedimentos especiais em hemoterapia                                                                                                                201903
+130003Confeccção/Intervenção de Acessos para Diálise                                                                                                        201903
+131003Tratamento cirúrgico do aparelho da visão                                                                                                             201903
+132003Oncologia clínica                                                                                                                                     201903
+133003Diagnóstico em Pneumologia por Telemedicina                                                                                                           201903
+134003Outras Práticas em Medicina Tradicional Chinesa                                                                                                       201903
+135003Reabilitação Física                                                                                                                                   201903
+136003Enteral/Parenteral, com manipulação/fabricação                                                                                                        201903
+138003Diagnóstico e tratamento em coluna vertebral e caixa torácica                                                                                         201903
+139003Tratamento de recém-nascido com fibrose cística                                                                                                       201903
+141003Vigilância ambiental                                                                                                                                  201903
+142003Do aparelho urinário                                                                                                                                  201903
+143003Transporte marítimo                                                                                                                                   201903
+145003Exames sorológicos e imunológicos                                                                                                                     201903
+148003Geriátrico                                                                                                                                            201903
+149003Coração                                                                                                                                               201903
+151003Medicina nuclear in vivo por telemedicina                                                                                                             201903
+155003Serviço de Traumatologia e Ortopedia de Urgência                                                                                                      201903
+158003Serviço de Atenção Integral em Hanseniase Tipo III                                                                                                    201903
+160003Segunda Opinião Formativa                                                                                                                             201903
+162003PEDIÁTRICO                                                                                                                                            201903
+163003PEDIÁTRICO                                                                                                                                            201903
+164003Dispensação de OPM Ortopédica                                                                                                                         201903
+165003Atenção Integral à Saúde de Crianças em Situação de Violência Sexual                                                                                  201903
+167003OFTALMOLOGIA - PROJETO SAÚDE NA ESCOLA (PSE)                                                                                                          201903
+128004Medicina transfusional                                                                                                                                201903
+130004Tratamento Nefrologia em Geral                                                                                                                        201903
+131004Projeto Olhar Brasil                                                                                                                                  201903
+132004Radioterapia                                                                                                                                          201903
+134004Práticas Corpo-mente                                                                                                                                  201903
+135004Reabilitação visual/mental/múltiplas deficiências                                                                                                     201903
+138004Diagnóstico e tratamento em cintura pélvica                                                                                                           201903
+139004Tratamento de recém-nascido com outras doenças congênitas                                                                                             201903
+140004Estabilização de paciente crítico/grave                                                                                                               201903
+141004Núcleo de vigilância hospitalar                                                                                                                       201903
+142004Do aparelho ginecológico                                                                                                                              201903
+145004Exames coprológicos                                                                                                                                   201903
+148004Fibrose cística                                                                                                                                       201903
+149004Pulmão                                                                                                                                                201903
+162004QUEIMADOS                                                                                                                                             201903
+163004ADULTO                                                                                                                                                201903
+164004Manutenção e Adaptação de OPM Ortopédica                                                                                                              201903
+165004Atenção Integral à Saúde de Homens em Situação de Violência Sexual                                                                                    201903
+167004OFTALMOLOGIA - PROJETO BRASIL ALFABETIZADO (PBA)                                                                                                      201903
+100004Atendimento em manicômio acima de 100 presos                                                                                                          201903
+104004Unidade de autorizações de TFD intermunicipais                                                                                                        201903
+105004Neurocirurgia vascular                                                                                                                                201903
+107004Diagnóstico em audiologia/otologia                                                                                                                    201903
+109004Unidade sócio-educativa com mais de 180 adolecentes                                                                                                   201903
+110004Vasectomia                                                                                                                                            201903
+112004Parto em gestação de alto risco                                                                                                                       201903
+113004Equipe Multidisciplinar de Apoio - EMAP                                                                                                               201903
+114004Moldagem/Manutenção                                                                                                                                   201903
+115004Serviço Residencial Terapêutico Tipo I - SRT tipo I                                                                                                   201903
+116004Cirurgia vascular                                                                                                                                     201903
+121004Ressonância magnética                                                                                                                                 201903
+122004Exame Eletroencefalográfico                                                                                                                           201903
+123004OPM oftalmológicas                                                                                                                                    201903
+125004Dispensação de medicamentos estratégicos                                                                                                              201903
+126004Assistência fisioterapêutica cardiovasculares e pneumo-funcionais                                                                                     201903
+130005Tratamento Diálitico Peritonial                                                                                                                       201903
+126005Assistência fisioterapêutica nas disfunções músculo-esqueléticas (todas as origens)                                                                   201903
+132005Oncologia cirúrgica                                                                                                                                   201903
+134005Homeopatia                                                                                                                                            201903
+135005Reabiliatação Auditiva                                                                                                                                201903
+138005Diagnóstico e tratamento em membros inferiores                                                                                                        201903
+139005Acompanhamento a pacientes com diagnósticos de Hiperplasia Adrenal Congênita                                                                          201903
+140005Atendimento ao paciente com Acidente Vascular Cerebral (AVC)                                                                                          201903
+145005Exames de uroanálise                                                                                                                                  201903
+148005Cirúrgico / Diagnóstico                                                                                                                               201903
+149005Córnea / Esclera                                                                                                                                      201903
+162005DOENÇA CORONARIANA (UCO)                                                                                                                              201903
+164005Dispensação de OPM Auditiva                                                                                                                           201903
+165005Atenção Integral à Saúde de Pessoas Idosas em Situação de Violência Sexual                                                                            201903
+103005Unidade de Suporte Básico de vida: Equipe Embarcação                                                                                                  201903
+104005Unidade de autorizações de TFD interestaduais                                                                                                         201903
+105005Tratamento neurocirúrgico da dor funcional                                                                                                            201903
+107005Implante Coclear                                                                                                                                      201903
+112005Centro de parto normal                                                                                                                                201903
+114005Cirurgia oral                                                                                                                                         201903
+115005Serviço Residencial Terapêutico Tipo II - SRT tipo II                                                                                                 201903
+116005Cardiologia intervencionista (hemodinâmica)                                                                                                           201903
+122005Teste Ergométrico por Telemedicina                                                                                                                    201903
+123005OPM em gastroenterologia                                                                                                                              201903
+125005Dispensação de medicamentos básicos                                                                                                                   201903
+131005Diagnóstico em Oftalmologia por Telemedicina                                                                                                          201903
+130006Tratamento em DRC                                                                                                                                     201903
+126006Assistência fisioterapêutica em queimados                                                                                                             201903
+134006Termalismo/Crenoterapia                                                                                                                               201903
+139006Acompanhamento a pacientes com diagnósticos de Deficiência Biotinidase                                                                                201903
+140006Pronto Atendimento Clínico                                                                                                                            201903
+145006Exames hormonais                                                                                                                                      201903
+148006Acompanhamento pós-transplante de medula óssea                                                                                                        201903
+149006Fígado                                                                                                                                                201903
+164006Manutenção e Adaptação de OPM Auditiva                                                                                                                201903
+165006Interrupção de Gravidez nos Casos Previstos em Lei                                                                                                    201903
+103006Veículos de intervenção rápida                                                                                                                        201903
+104006Central Estadual de Regulação da Alta Complexidade                                                                                                    201903
+105006Investigação e cirurgia de epilepsia                                                                                                                  201903
+107006Triagem Auditiva Neonatal                                                                                                                             201903
+112006Casa da Gestante, Bebê e Puérpera                                                                                                                     201903
+114006Cirurgia buco-maxilo-facial                                                                                                                           201903
+115006UA Adulto                                                                                                                                             201903
+116006Cardiologia Endovascular Extracardíaco                                                                                                                201903
+121006Radiologia intervencionista                                                                                                                           201903
+122006Teste Holter por Telemedicina                                                                                                                         201903
+123006OPM em urologia                                                                                                                                       201903
+125006Farmácia Hospitalar                                                                                                                                   201903
+131006Projeto Olhar Brasil - Programa Saúde na Escola (PSE)                                                                                                 201903
+131007Projeto Olhar Brasil - Programa Brasil Alfabetizado (PBA)                                                                                             201903
+126007Assistência fisioterapêutica nas alterações em neurologia                                                                                             201903
+135007Oficina Ortopédica Fixa                                                                                                                               201903
+140007Pronto Atendimento Pediátrico                                                                                                                         201903
+145007Exames de  vigilância epidemiológica e  ambiental                                                                                                     201903
+149007Pâncreas                                                                                                                                              201903
+164007Dispensação de OPM Oftalmológica                                                                                                                      201903
+165007Atenção Ambulatorial às Pessoas em Situação de Violência Sexual                                                                                       201903
+103007Outros veículos                                                                                                                                       201903
+105007Tratamento endovascular                                                                                                                               201903
+107007Diagnóstico em Audiologia/Otologia po Telemedicina                                                                                                    201903
+114007Atendimento à pessoa com deficiência                                                                                                                  201903
+115007UA Infantojuvenil                                                                                                                                     201903
+116007Cardiologia Clínica                                                                                                                                   201903
+121007Radiologia por telemedicina                                                                                                                           201903
+122007Exame Eletrocardiografico por Telemedicina                                                                                                            201903
+123007OPM em odontologia                                                                                                                                    201903
+134007Antroposofia Aplicada à Saúde                                                                                                                         201903
+134008Práticas Expressivas                                                                                                                                  201903
+126008Diagnóstico cinético funcional                                                                                                                        201903
+140008Pronto Atendimento Obstétrico                                                                                                                         201903
+145008Exames toxicológicos ou de monitorização terapêutica                                                                                                  201903
+149008Retirada de orgãos                                                                                                                                    201903
+164008Manutenção e Adaptação de OPM Oftalmológica                                                                                                           201903
+165008Coleta de Vestígios de Violência Sexual                                                                                                               201903
+103008Ambulância de resgate                                                                                                                                 201903
+105008Neurocirurgia funcional estereotáxica                                                                                                                 201903
+107008Atenção Especializada às Pessoas com Deficiência Auditiva                                                                                             201903
+115008Unidade de Atenção em Regime Residencial                                                                                                              201903
+116008Serviço de Atenção Cardiovascular/Cardiologia Angiologia                                                                                              201903
+121008Ultra-sonografia por telemedicina                                                                                                                     201903
+122008Exame Eletroencefalografico por Telemedicina                                                                                                          201903
+123008OPM buco-maxilo-facial                                                                                                                                201903
+135008Oficina Ortopédica Intinerante Terrestre                                                                                                              201903
+134009Ayurveda                                                                                                                                              201903
+135009Oficina Ortopédica Intinerante Fluvial                                                                                                                201903
+140009Pronto Atendimento Psiquiátrico                                                                                                                       201903
+145009Exames microbiológicos                                                                                                                                201903
+123009Substituição/Troca em órteses/próteses                                                                                                                201903
+164009Substitução/Troca de OPM                                                                                                                              201903
+105009Polissonografia                                                                                                                                       201903
+121009Tomografia computadorizada por telemedicina                                                                                                           201903
+122009Exame Eletroneuromiografia                                                                                                                            201903
+149009Pele                                                                                                                                                  201903
+145010Exames em outros líquidos biológicos                                                                                                                  201903
+123010OPM em queimados                                                                                                                                      201903
+134010Práticas Naturais                                                                                                                                     201903
+121010Ressonância magnética por telemedicina                                                                                                                201903
+149010Válvulas cardíacas                                                                                                                                    201903
+140010Pronto Atendimento Oftalmológico                                                                                                                      201903
+135010Atenção Fonoaudiológica                                                                                                                               201903
+122010Exame videoeletroencefalografia                                                                                                                       201903
+103010Motolância                                                                                                                                            201903
+123011OPM em nefrologia                                                                                                                                     201903
+122011Potenciais Evocados                                                                                                                                   201903
+121011Radiologia intervencionista por telemedicina                                                                                                          201903
+103011Unidade de Suporte Avançado de vida: Equipe Embarcação                                                                                                201903
+149011Osteocondroligamentos                                                                                                                                 201903
+145011Exames de genética                                                                                                                                    201903
+140011Pronto Atendimento Odontológico                                                                                                                       201903
+135011Atenção Fisioterapeutica                                                                                                                              201903
+134011Práticas Manuais                                                                                                                                      201903
+103012Equipe Aeromédico                                                                                                                                     201903
+145012Exames para triagem neonatal                                                                                                                          201903
+123012OPM - Projeto Olhar Brasil                                                                                                                            201903
+134012Práticas Psicodinâmicas                                                                                                                               201903
+122012Potenciais Evocados por Telemedicina                                                                                                                  201903
+140012Pronto Socorro Pediátrico                                                                                                                             201903
+121012Mamografia                                                                                                                                            201903
+135012Atenção à Saúde das Pessoas Ostomizadas I                                                                                                             201903
+149012Separação, avaliação biomicroscópica e conservação da córnea/esclera                                                                                  201903
+149013Contagem endotelial corneana                                                                                                                          201903
+134013Ozônioterapia                                                                                                                                         201903
+135013Atenção à Saúde das Pessoas Ostomizadas II                                                                                                            201903
+140013Pronto Socorro Obstétrico                                                                                                                             201903
+145013Exames imunohematológicos                                                                                                                             201903
+121013Mamografia por Telemedicina                                                                                                                           201903
+123013OPM Projeto Olhar Brasil - Programa Saúde na Escola (PSE)                                                                                             201903
+140014Pronto Socorro Cardiovascular                                                                                                                         201903
+134014Aromaterapia                                                                                                                                          201903
+123014OPM Projeto Olhar Brasil - Programa Brasil Alfabetizado (PBA)                                                                                         201903
+149014Acompanhamento de paciente transplantado                                                                                                              201903
+149015Ações para doação e captação de órgãos e tecidos                                                                                                      201903
+140015Pronto Socorro Neurologia/Neurocirurgia                                                                                                               201903
+134015Imposição de Mãos                                                                                                                                     201903
+149016Retirada de globo ocular humano para transplante                                                                                                      201903
+140016Pronto Socorro Traumato-Ortopédico                                                                                                                    201903
+140017Pronto Socorro Odontológico                                                                                                                           201903
+140018Pronto Socorro Oftalmológico                                                                                                                          201903
+140019Pronto Socorro Geral/Clínico                                                                                                                          201903

@@ -45,9 +45,7 @@ public class Inicializador implements ApplicationListener<ContextRefreshedEvent>
 	
 	@Autowired
 	private ProfissionalService profissionalService;
-	
-	//@Autowired
-	//private EscritorTXT escritor;
+
 	
 	@Autowired
 	private GuiaAtendimentoService guiaAtendimentoService;
@@ -55,12 +53,6 @@ public class Inicializador implements ApplicationListener<ContextRefreshedEvent>
 	@Override
 	public void onApplicationEvent(ContextRefreshedEvent event) {
 		
-		
-//		for(int i = 0; i < atendimentos.size(); i++) {
-//			System.out.println("ID DA GUIA > " + atendimentos.get(i).getId());
-//		}
-		
-	//	System.out.println(escritor.getGuiasBPAC("2020-06"));
 		
 
 
@@ -83,25 +75,25 @@ public class Inicializador implements ApplicationListener<ContextRefreshedEvent>
 //		Role rolesuper = new Role();
 //		rolesuper.setNome("SUPER");
 //		roleService.save(rolesuper);
-//
-//		String cnes = "2380633";
-//		String file = System.getProperty("user.dir") + "/uploads/XmlParaESUS21_241360.xml";
+
+		String cnes = "2380633";
+		String file = System.getProperty("user.dir") + "/uploads/XmlParaESUS21_241360.xml";
+
+//		Profissional profissional = new Profissional();
 //		
-////		Profissional profissional = new Profissional();
-////		
-////		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-////		
-////		profissional.setNome("CARLOS AUGUSTO SILVA");
-////		profissional.setCns("781274801470008");
-////		profissional.setCpf("47748001049");
-////		profissional.setDatanascimento("20-06-1994");
-////		profissional.setSexo("M");
-////		profissional.setFirstname("CARLOS AUGUSTO");
-////		profissional.getRole().add(role);
-////		profissional.setPassword(encoder.encode("sgh47748001049"));
-////		
-////		profissionalService.save(profissional);
-//
+//		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+//		
+//		profissional.setNome("CARLOS AUGUSTO SILVA");
+//		profissional.setCns("781274801470008");
+//		profissional.setCpf("47748001049");
+//		profissional.setDatanascimento("20-06-1994");
+//		profissional.setSexo("M");
+//		profissional.setFirstname("CARLOS AUGUSTO");
+//		profissional.getRole().add(role);
+//		profissional.setPassword(encoder.encode("sgh47748001049"));
+		
+		//profissionalService.save(profissional);
+
 //		Cidadao cidadaoMariana = new Cidadao();
 //		Cidadao cidadaoLucia = new Cidadao();
 //		Cidadao cidadaoLucijane = new Cidadao();
@@ -132,7 +124,7 @@ public class Inicializador implements ApplicationListener<ContextRefreshedEvent>
 //		cidadaoMariana.setSexo("F");
 //		cidadaoMariana.setTelefone("84981561303");
 //		cidadaoMariana.setNomemunicipio("MAJOR SALES");
-//		
+		
 //		cidadaoLucia.setBairro("CENTRO");
 //		cidadaoLucia.setCep("59945000");
 //		cidadaoLucia.setCns("187458243740005");
@@ -226,44 +218,44 @@ public class Inicializador implements ApplicationListener<ContextRefreshedEvent>
 //		try {
 //			leitorXmlEsus.lerXmlEsus(file, cnes);
 //		 } catch (JAXBException e) {
-//			// TODO Auto-generated catch block
+//			 //TODO Auto-generated catch block
 //			e.printStackTrace();
 //		} catch (ParseException e) {
-//			// TODO Auto-generated catch block
+//			 //TODO Auto-generated catch block
 //			e.printStackTrace();
 //		}
-//
-//		String urlProcedimentos = System.getProperty("user.dir") + "/SigtapSUS/tb_procedimento.txt";
-//
-//		String urlRegistros = System.getProperty("user.dir") + "/SigtapSUS/tb_registro.txt";
-//
-//		String urlCid = System.getProperty("user.dir") + "/SigtapSUS/tb_cid.txt";
-//
-//		String urlOcupacao = System.getProperty("user.dir") + "/SigtapSUS/tb_ocupacao.txt";
-//
-//		String urlRelationProced_Registro = System.getProperty("user.dir") + "/SigtapSUS/rl_procedimento_registro.txt";
-//
-//		String urlRelationProced_Cid = System.getProperty("user.dir") + "/SigtapSUS/rl_procedimento_cid.txt";
-//
-//		String urlRelationProced_Ocupacao = System.getProperty("user.dir")
-//				+ "/SigtapSUS/rl_procedimento_ocupacaoteste.txt";
-//
+
+		String urlProcedimentos = System.getProperty("user.dir") + "/SigtapSUS/tb_procedimento.txt";
+
+		String urlRegistros = System.getProperty("user.dir") + "/SigtapSUS/tb_registro.txt";
+
+		String urlCid = System.getProperty("user.dir") + "/SigtapSUS/tb_cid.txt";
+
+		String urlOcupacao = System.getProperty("user.dir") + "/SigtapSUS/tb_ocupacao.txt";
+
+		String urlRelationProced_Registro = System.getProperty("user.dir") + "/SigtapSUS/rl_procedimento_registro.txt";
+
+		String urlRelationProced_Cid = System.getProperty("user.dir") + "/SigtapSUS/rl_procedimento_cid.txt";
+
+		String urlRelationProced_Ocupacao = System.getProperty("user.dir")
+				+ "/SigtapSUS/rl_procedimento_ocupacao.txt";
+
 //		try {
 //			// leitorTxtSigtap.lerTxtCid(urlCid);
 //			leitorTxtSigtap.lerTxtProcedimentos(urlProcedimentos);
-//			// leitorTxtSigtap.lerTxtOcupacao(urlOcupacao);
+//			leitorTxtSigtap.lerTxtOcupacao(urlOcupacao);
 //			leitorTxtSigtap.lerTxtRegistro(urlRegistros);
 //
 //			// leitorTxtSigtap.relacionamentoProcedimento_Cid(urlRelationProced_Cid);
-//			// leitorTxtSigtap.relacionamentoProcedimento_Ocupacao(urlRelationProced_Ocupacao);
+//			leitorTxtSigtap.relacionamentoProcedimento_Ocupacao(urlRelationProced_Ocupacao);
 //			leitorTxtSigtap.relacionamentoProcedimento_Registro(urlRelationProced_Registro);
 //
 //		} catch (IOException e) {
 //			// TODO Auto-generated catch block
 //			e.printStackTrace();
 //		}
-//
-//		String urlCiap2 = System.getProperty("user.dir") + "/CIAP2/CIAP_CID_revisado_16_8_2016_xls.xls";
+
+		String urlCiap2 = System.getProperty("user.dir") + "/CIAP2/CIAP_CID_revisado_16_8_2016_xls.xls";
 //		try {
 //			leitorXlsCiap2.lerCiap2(urlCiap2);
 //		} catch (BiffException | IOException e1) {
