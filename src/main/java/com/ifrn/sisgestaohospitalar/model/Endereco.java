@@ -8,14 +8,6 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
 
-/**
- * A classe <code>Endereco</code> representa os objetos do tipo Endereco e
- * contém seus atributos e métodos.
- * 
- * @author Leandro Morais
- * @version 1.0, 02/11/2019
- *
- */
 @Entity
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Endereco {

@@ -37,22 +37,10 @@ import com.ifrn.sisgestaohospitalar.service.EstabelecimentoService;
 import com.ifrn.sisgestaohospitalar.service.GuiaAtendimentoService;
 import com.ifrn.sisgestaohospitalar.service.ProfissionalService;
 import com.ifrn.sisgestaohospitalar.service.TriagemService;
-import com.ifrn.sisgestaohospitalar.utils.GeradorBPA;
+//import com.ifrn.sisgestaohospitalar.utils.GeradorBPA;
 //import com.ifrn.sisgestaohospitalar.utils.EscritorTXT;
 import com.ifrn.sisgestaohospitalar.utils.LeitorXmlEsus;
 
-
-/**
- * A classe Controller <code>AdministracaoController</code> possui os métodos de
- * controle para acesso da página principal do Módulo do Administrador, cadastro
- * de Profissionais de forma individual, upload e processamento do arquivo .xml
- * do ESUS, consultas e geração de relatórios diversos e do arquivo de
- * exportação para o SIA/SUS.
- * 
- * @author Leandro Morais
- * @version 1.0, 02/11/2019
- *
- */
 
 @Controller
 @RequestMapping("/administracao")
@@ -73,8 +61,8 @@ public class AdministracaoController {
 	@Autowired
 	CidadaoService cidadaoService;
 
-	@Autowired
-	GeradorBPA geradorBpa;
+	//@Autowired
+	//GeradorBPA geradorBpa;
 	
 	@Autowired
 	ArquivoBPAService arquivoBpaService;
@@ -335,7 +323,7 @@ public class AdministracaoController {
 		String username = principal.getName();
 		Profissional user = profissionalService.findByCpf(username);
 		mv.addObject("user", user);
-		geradorBpa.geradorBPA(mes, "2380633");
+		//geradorBpa.geradorBPA(mes, "2380633");
 		mv.addObject("sucesso", "O arquivo BPA para o SIA SUS foi gerado.");
 		return mv;
 	}

@@ -23,6 +23,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.csrf().disable().authorizeRequests()
+		.antMatchers("/recepcao/busca-cadsus").permitAll()
 		.antMatchers("/index").hasAnyAuthority("ADM", "MED", "ENF", "TEC", "SUPER")
 		.antMatchers("/administracao/**").hasAnyAuthority("ADM", "SUPER")
 		.antMatchers("/atendimentoMedico/**").hasAnyAuthority("MED", "SUPER")

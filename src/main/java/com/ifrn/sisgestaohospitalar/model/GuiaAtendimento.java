@@ -15,14 +15,6 @@ import org.springframework.format.annotation.DateTimeFormat.ISO;
 import com.ifrn.sisgestaohospitalar.enums.StatusAtendimento;
 import com.ifrn.sisgestaohospitalar.enums.TipoServico;
 
-/**
- * A classe <code>GuiaAtendimento</code> representa os objetos do tipo Guia de
- * atendimento e contém seus atributos e métodos.
- * 
- * @author Leandro Morais
- * @version 1.0, 02/11/2019
- *
- */
 @Entity
 public class GuiaAtendimento {
 

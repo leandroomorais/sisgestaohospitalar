@@ -8,8 +8,10 @@ import java.time.Period;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,20 +26,12 @@ import com.ifrn.sisgestaohospitalar.enums.TipoServico;
 import com.ifrn.sisgestaohospitalar.model.Cidadao;
 import com.ifrn.sisgestaohospitalar.model.GuiaAtendimento;
 import com.ifrn.sisgestaohospitalar.model.Profissional;
+import com.ifrn.sisgestaohospitalar.service.CidadaoCadsusService;
 import com.ifrn.sisgestaohospitalar.service.CidadaoService;
 import com.ifrn.sisgestaohospitalar.service.EstabelecimentoService;
 import com.ifrn.sisgestaohospitalar.service.GuiaAtendimentoService;
 import com.ifrn.sisgestaohospitalar.service.ProfissionalService;
 
-/**
- * A classe Controller <code>RecepcaoController</code> possui os métodos de
- * controle para acesso da página principal do Módulo de Recepção, Adição de
- * Cidadão a Fila de Atendimento e Visualização da Fila de Atendimento
- * 
- * @author Leandro Morais
- * @version 1.0, 02/11/2019
- *
- */
 
 @Controller
 @RequestMapping("/recepcao")
@@ -54,6 +48,9 @@ public class RecepcaoController {
 
 	@Autowired
 	EstabelecimentoService estabelecimentoService;
+	
+	@Autowired
+	CidadaoCadsusService cadsusService;
 
 	// Contador para Gerador de Número de Registro
 	int i = 0;
@@ -96,7 +93,6 @@ public class RecepcaoController {
 		if (result.hasErrors()) {
 			return addCidadao(cidadao, principal).addObject("hasErrors", true);
 		}
-		cidadao.setIdade(idade(cidadao.getDatanascimento()));
 		String cns = cidadao.getCns();
 		cns = cns.replace(".", "");
 		cidadao.setCns(cns);
@@ -210,6 +206,76 @@ public class RecepcaoController {
 		user = profissionalService.findByCpf(username);
 		mv.addObject("user", user);
 		return mv;
+	}
+	
+	@PostMapping("/busca-local")
+	public ResponseEntity<?> buscarCidadao(HttpServletRequest httpServletRequest) {
+
+		String cns = httpServletRequest.getParameter("cns").replace(".", "");
+		String cpf = httpServletRequest.getParameter("cpf").replace(".", "").replace("-", "");
+		String nome = httpServletRequest.getParameter("nome");
+		String dataNascimento = httpServletRequest.getParameter("dataNascimento").replace("-", "");
+
+		if (cns.isEmpty() != true) {
+			Cidadao cidadao = cidadaoService.findByCns(cns);
+			if (cidadao != null) {
+				return ResponseEntity.ok(cidadao);
+			}
+			return ResponseEntity.notFound().build();
+		}
+
+		if (cpf.isEmpty() != true) {
+			Cidadao cidadao = cidadaoService.findByCpf(cpf);
+			if (cidadao != null) {
+				return ResponseEntity.ok(cidadao);
+			}
+			return ResponseEntity.notFound().build();
+		}
+
+		if (nome.isEmpty() != true && dataNascimento.isEmpty() != true) {
+			Cidadao cidadao = cidadaoService.findByNome(nome);
+			if (cidadao != null) {
+				return ResponseEntity.ok(cidadao);
+			}
+			return ResponseEntity.notFound().build();
+		}
+
+		return ResponseEntity.badRequest().build();
+	}
+
+	@PostMapping("/busca-cadsus")
+	public ResponseEntity<?> buscarCidadaoCadsus(HttpServletRequest httpServletRequest) {
+
+		String cns = httpServletRequest.getParameter("cns").replace(".", "");
+		String cpf = httpServletRequest.getParameter("cpf").replace(".", "").replace("-", "");
+		String nome = httpServletRequest.getParameter("nome");
+		String dataNascimento = httpServletRequest.getParameter("dataNascimento").replace("-", "");
+
+		if (cns.isEmpty() != true) {
+			System.out.println(cns);
+			 Cidadao cidadao = cadsusService.consultaCNS(cns);
+			if (cidadao != null) {
+				return ResponseEntity.ok(cidadao);
+			}
+			return ResponseEntity.notFound().build();
+		}
+
+		if (cpf.isEmpty() != true) {
+			Cidadao cidadao = cadsusService.consultaCPF(cpf);
+			if (cidadao != null) {
+				return ResponseEntity.ok(cidadao);
+			}
+			return ResponseEntity.notFound().build();
+		}
+
+		if (nome.isEmpty() != true && dataNascimento.isEmpty() != true) {
+			Cidadao cidadao = cadsusService.consultaNOMEeDN(nome, dataNascimento);
+			if (cidadao != null) {
+				return ResponseEntity.ok(cidadao);
+			}
+			return ResponseEntity.notFound().build();
+		}
+		return ResponseEntity.badRequest().build();
 	}
 
 	/**

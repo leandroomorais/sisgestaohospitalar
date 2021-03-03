@@ -25,15 +25,6 @@ import com.ifrn.sisgestaohospitalar.service.ProfissionalService;
 import com.ifrn.sisgestaohospitalar.utils.ConstrutorEmail;
 import com.ifrn.sisgestaohospitalar.utils.GeradorSenha;
 
-/**
- * A classe Controller <code>IndexController</code> possui os métodos de
- * controle para acesso da página de Login, Página Principal e Recuperação de
- * Senha do Sistema.
- * 
- * @author Leandro Morais
- * @version 1.0, 02/11/2019
- *
- */
 @Controller
 public class IndexController {
 

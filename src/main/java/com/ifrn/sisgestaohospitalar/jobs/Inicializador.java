@@ -15,13 +15,18 @@ import org.springframework.stereotype.Component;
 import com.ifrn.sisgestaohospitalar.model.Cidadao;
 import com.ifrn.sisgestaohospitalar.model.Profissional;
 import com.ifrn.sisgestaohospitalar.model.Role;
+import com.ifrn.sisgestaohospitalar.repository.Cep_IbgeRepository;
+import com.ifrn.sisgestaohospitalar.repository.EstadoRepository;
+import com.ifrn.sisgestaohospitalar.repository.LogradouroRepository;
+import com.ifrn.sisgestaohospitalar.repository.MunicipioRepository;
 import com.ifrn.sisgestaohospitalar.service.CidadaoService;
 import com.ifrn.sisgestaohospitalar.service.GuiaAtendimentoService;
 import com.ifrn.sisgestaohospitalar.service.ProfissionalService;
 import com.ifrn.sisgestaohospitalar.service.RoleService;
 import com.ifrn.sisgestaohospitalar.utils.LeitorTxtSigtap;
-import com.ifrn.sisgestaohospitalar.utils.LeitorXlsCiap2;
 import com.ifrn.sisgestaohospitalar.utils.LeitorXmlEsus;
+import com.ifrn.sisgestaohospitalar.utils.SalvarEstadosEMunicipios;
+import com.ifrn.sisgestaohospitalar.utils.SalvarLogradouros;
 
 import jxl.read.biff.BiffException;
 
@@ -35,9 +40,6 @@ public class Inicializador implements ApplicationListener<ContextRefreshedEvent>
 	private LeitorTxtSigtap leitorTxtSigtap;
 
 	@Autowired
-	private LeitorXlsCiap2 leitorXlsCiap2;
-
-	@Autowired
 	private RoleService roleService;
 
 	@Autowired
@@ -49,6 +51,18 @@ public class Inicializador implements ApplicationListener<ContextRefreshedEvent>
 	
 	@Autowired
 	private GuiaAtendimentoService guiaAtendimentoService;
+	
+	@Autowired
+	private Cep_IbgeRepository cepIbgeRepository;
+	
+	@Autowired
+	private MunicipioRepository municipioRepository;
+	
+	@Autowired
+	private LogradouroRepository logradouroRepository;
+	
+	@Autowired
+	private EstadoRepository estadoRepository;
 
 	@Override
 	public void onApplicationEvent(ContextRefreshedEvent event) {
@@ -63,19 +77,19 @@ public class Inicializador implements ApplicationListener<ContextRefreshedEvent>
 //		Role roleTec = new Role();
 //		roleTec.setNome("TEC");
 //		roleService.save(roleTec);
-//		
+
 //		Role roleEnf = new Role();
 //		roleEnf.setNome("ENF");
 //		roleService.save(roleEnf);
-//		
+		
 //		Role roleMed = new Role();
 //		roleMed.setNome("MED");
 //		roleService.save(roleMed);
-//
+
 //		Role rolesuper = new Role();
 //		rolesuper.setNome("SUPER");
 //		roleService.save(rolesuper);
-
+		
 		String cnes = "2380633";
 		String file = System.getProperty("user.dir") + "/uploads/XmlParaESUS21_241360.xml";
 
@@ -224,7 +238,6 @@ public class Inicializador implements ApplicationListener<ContextRefreshedEvent>
 //			 //TODO Auto-generated catch block
 //			e.printStackTrace();
 //		}
-
 		String urlProcedimentos = System.getProperty("user.dir") + "/SigtapSUS/tb_procedimento.txt";
 
 		String urlRegistros = System.getProperty("user.dir") + "/SigtapSUS/tb_registro.txt";
@@ -241,26 +254,28 @@ public class Inicializador implements ApplicationListener<ContextRefreshedEvent>
 				+ "/SigtapSUS/rl_procedimento_ocupacao.txt";
 
 //		try {
-//			// leitorTxtSigtap.lerTxtCid(urlCid);
+//			leitorTxtSigtap.lerTxtCid(urlCid);
 //			leitorTxtSigtap.lerTxtProcedimentos(urlProcedimentos);
 //			leitorTxtSigtap.lerTxtOcupacao(urlOcupacao);
 //			leitorTxtSigtap.lerTxtRegistro(urlRegistros);
-//
+
 //			// leitorTxtSigtap.relacionamentoProcedimento_Cid(urlRelationProced_Cid);
-//			leitorTxtSigtap.relacionamentoProcedimento_Ocupacao(urlRelationProced_Ocupacao);
+//			//leitorTxtSigtap.relacionamentoProcedimento_Ocupacao(urlRelationProced_Ocupacao);
 //			leitorTxtSigtap.relacionamentoProcedimento_Registro(urlRelationProced_Registro);
 //
 //		} catch (IOException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
+		// TODO Auto-generated catch block
+			//e.printStackTrace();
 //		}
-
-		String urlCiap2 = System.getProperty("user.dir") + "/CIAP2/CIAP_CID_revisado_16_8_2016_xls.xls";
-//		try {
-//			leitorXlsCiap2.lerCiap2(urlCiap2);
-//		} catch (BiffException | IOException e1) {
-//			// TODO Auto-generated catch block
-//			e1.printStackTrace();
-//		}
+		
+//		SalvarEstadosEMunicipios estadosEMunicipios = new SalvarEstadosEMunicipios();
+//		SalvarLogradouros logradouros = new SalvarLogradouros();
+//		
+//		estadosEMunicipios.lerCEP_Codigo(cepIbgeRepository);
+//		estadosEMunicipios.lerCSVEstados(estadoRepository);
+//		estadosEMunicipios.lerCSV(municipioRepository, estadoRepository );
+//		
+//		logradouros.lerCsvLogradouro(logradouroRepository);
+		
 	}
 }

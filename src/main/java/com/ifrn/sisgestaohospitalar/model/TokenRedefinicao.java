@@ -11,15 +11,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 
-/**
- * A classe <code>TokenRedefinicao</code> representa os objetos do tipo
- * TokenRedefinicao e contém seus atributos e métodos.
- * 
- * @author Leandro Morais
- * @version 1.0, 02/11/2019
- *
- */
-
 @Entity
 public class TokenRedefinicao {
 

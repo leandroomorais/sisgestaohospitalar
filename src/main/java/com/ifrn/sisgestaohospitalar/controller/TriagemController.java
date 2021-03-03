@@ -30,15 +30,6 @@ import com.ifrn.sisgestaohospitalar.service.ProcedimentoSigtapService;
 import com.ifrn.sisgestaohospitalar.service.ProfissionalService;
 import com.ifrn.sisgestaohospitalar.service.TriagemService;
 
-/**
- * A classe Controller <code>TriagemController</code> possui os métodos de
- * controle para acesso da página principal do Módulo de Triagem, Adição de
- * Cidadão a Fila de Atendimento do Médico e Visualização da Fila de Atendimento
- * 
- * @author Leandro Morais
- * @version 1.0, 02/11/2019
- *
- */
 
 @Controller
 @RequestMapping("/triagem")

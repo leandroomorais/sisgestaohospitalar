@@ -5,14 +5,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-/**
- * A classe <code>OcupacaoSigtap</code> representa os objetos do tipo
- * OcupacaoSigtap e contém os atributos da tabela de Ocupações da Sigtap SUS.
- * 
- * @author Leandro Morais
- * @version 1.0, 02/11/2019
- *
- */
 @Entity
 public class OcupacaoSigtap {
 

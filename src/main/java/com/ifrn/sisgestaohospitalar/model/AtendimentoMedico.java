@@ -21,14 +21,6 @@ import org.hibernate.annotations.LazyCollectionOption;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.format.annotation.DateTimeFormat.ISO;
 
-/**
- * A classe <code>AtendimentoMedico</code> representa os objetos do tipo
- * Atendimento Médico e contém seus atributos e métodos.
- * 
- * @author Leandro Morais
- * @version 1.0, 02/11/2019
- *
- */
 
 @Entity
 public class AtendimentoMedico {

@@ -19,14 +19,6 @@ import org.hibernate.annotations.LazyCollectionOption;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.format.annotation.DateTimeFormat.ISO;
 
-/**
- * A classe <code>Triagem</code> representa os objetos do tipo Triagem e contém
- * seus atributos e métodos.
- * 
- * @author Leandro Morais
- * @version 1.0, 02/11/2019
- *
- */
 
 @Entity
 public class Triagem {

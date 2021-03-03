@@ -7,15 +7,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import org.springframework.security.core.GrantedAuthority;
 
-/**
- * A classe <code>Role</code> representa os objetos do tipo Role (Regras -
- * Permissões de Acesso), seus atributos e a implementação de Métodos da
- * Interface GrantedAuthority do Spring Security .
- * 
- * @author Leandro Morais
- * @version 1.0, 02/11/2019
- *
- */
 @Entity
 public class Role implements GrantedAuthority {
 

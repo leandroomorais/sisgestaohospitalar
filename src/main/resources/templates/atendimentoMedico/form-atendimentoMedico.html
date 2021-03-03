@@ -1,8 +1,6 @@
 <!DOCTYPE html>
-<html layout:decorate="~{/layouts/layout-modulos}" lang="pt"
-	xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:th="http://www.thymeleaf.org"
-	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity"
+<html layout:decorate="~{/layouts/layout-modulos}" lang="pt" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity"
 	xmlns:layout="http://ultraq.net.nz/thymeleaf/layout">
 
 <body>
@@ -11,30 +9,28 @@
 		<div class="sidebar-wrapper scrollbar scrollbar-inner">
 			<div class="sidebar-content">
 				<ul class="nav nav-primary">
-					<li class="nav-item"><a data-toggle="collapse"
-						href="#dashboard" class="collapsed" aria-expanded="false"> <img
-							alt="" width="40" th:src="@{/assets/img/person-male.png}">
-							<span th:text="${user.firstname}" class="low"></span><span
-							class="type-user" th:text="${user.tipoprofissional}"></span> <span
-							class="caret"></span>
-					</a>
+					<li class="nav-item"><a data-toggle="collapse" href="#dashboard" class="collapsed"
+							aria-expanded="false"> <img alt="" width="40" th:src="@{/assets/img/person-male.png}">
+							<span th:text="${user.firstname}" class="low"></span><span class="type-user"
+								th:text="${user.tipoprofissional}"></span> <span class="caret"></span>
+						</a>
 						<div class="collapse" id="dashboard">
 							<ul class="nav nav-collapse">
-								<li><a href="../demo1/index.html"> <span
-										class="sub-item">Meu Perfil</span>
-								</a></li>
+								<li><a href="../demo1/index.html"> <span class="sub-item">Meu Perfil</span>
+									</a></li>
 							</ul>
-						</div></li>
+						</div>
+					</li>
 					<li class="nav-section"><span class="sidebar-mini-icon">
 							<i class="fa fa-ellipsis-h"></i>
-					</span>
-						<h4 class="text-section">Ações</h4></li>
+						</span>
+						<h4 class="text-section">Ações</h4>
+					</li>
 
 					<li class="nav-item" th:classappend="${navItem1} ? active : ''"><a
-						th:href="@{/atendimento-medico/cidadaos-atendimento}"> <i
-							class="fas fa-users"></i>
+							th:href="@{/atendimento-medico/cidadaos-atendimento}"> <i class="fas fa-users"></i>
 							<p>Fila de Atendimento</p> <span class="caret"></span>
-					</a></li>
+						</a></li>
 				</ul>
 			</div>
 		</div>
@@ -48,138 +44,318 @@
 					<ul class="breadcrumbs">
 						<li class="nav-home"><i class="flaticon-home"></i></li>
 						<li class="separator"><i class="flaticon-right-arrow"></i></li>
-						<li class="nav-item"><a
-							th:href="@{/atendimento-medico/cidadaos-atendimento}">Fila de
+						<li class="nav-item"><a th:href="@{/atendimento-medico/cidadaos-atendimento}">Fila de
 								Atendimento</a></li>
 						<li class="separator"><i class="flaticon-right-arrow"></i></li>
 						<li class="nav-item"><a>Realizar Atendimento</a></li>
 					</ul>
 				</div>
-				<form method="post"
-					th:action="@{/atendimento-medico/salvar-atendimento}"
-					th:object="${atendimentoMedico}">
-					<div class="row">
-						<div class="col-md-12">
-							<div class="card">
-								<div class="card-body">
-									<div class="row">
-										<div class="avatar avatar-lg">
-											<img th:if="${guiaAtendimento.cidadao.sexo == 'M'}"
-												th:src="@{/assets/img/icons/masculino.png}" alt="..."
-												class="avatar-img rounded-circle"> <img
-												th:if="${guiaAtendimento.cidadao.sexo == 'F'}"
-												th:src="@{/assets/img/icons/feminino.png}" alt="..."
-												class="avatar-img rounded-circle">
-										</div>
-										<div class="demo">
-											<span class="h3-info"
-												th:text="${guiaAtendimento.cidadao.nome}"></span><br>
-											<div class="h4-info">
-												<img class="img-info"
-													th:src="@{/assets/img/icons/icon-bandeira-brasil.png}">
-												<span th:text="${guiaAtendimento.cidadao.cns}"></span> , <span
-													th:text="${guiaAtendimento.cidadao.idade}"></span><span>
-													anos,</span><span th:if="${guiaAtendimento.cidadao.sexo == 'M'}">
-													masculino.</span><span
-													th:if="${guiaAtendimento.cidadao.sexo == 'F'}">
-													feminino.</span>
 
-											</div>
+				<div class="row">
+					<div class="col-md-12">
+						<div class="card">
+							<div class="card-body">
+								<div class="row">
+									<div class="avatar avatar-lg">
+										<img th:if="${guiaAtendimento.cidadao.sexo == 'M'}"
+											th:src="@{/assets/img/icons/masculino.png}" alt="..."
+											class="avatar-img rounded-circle"> <img
+											th:if="${guiaAtendimento.cidadao.sexo == 'F'}"
+											th:src="@{/assets/img/icons/feminino.png}" alt="..."
+											class="avatar-img rounded-circle">
+									</div>
+									<div class="demo">
+										<span class="h3-info" th:text="${guiaAtendimento.cidadao.nome}"></span><br>
+										<div class="h4-info">
+											<input type="hidden" id="cpfCidadao" th:value="${guiaAtendimento.cidadao.cpf}">
+											<span th:text="${guiaAtendimento.cidadao.cpf}"></span><span
+												th:if="${guiaAtendimento.cidadao.sexo == 'M'}">
+												masculino.</span><span th:if="${guiaAtendimento.cidadao.sexo == 'F'}">
+												feminino.</span>
+
 										</div>
 									</div>
 								</div>
 							</div>
 						</div>
+					</div>
+				</div>
+
+				<div class="card">
+					<div class="card-header">
+						<h4 class="card-title">Atendimento do Cidadão</h4>
+					</div>
+					<div class="card-body">
+						<form method="post" th:action="@{/atendimento-medico/salvar-atendimento}"
+							th:object="${atendimentoMedico}">
+							<div class="row">
+								<div class="col-5 col-md-2">
+									<div class="nav flex-column nav-pills nav-secondary" id="v-pills-tab" role="tablist"
+										aria-orientation="vertical">
+
+										<a th:if="${getTriagem} == true" class="nav-link active show"
+											id="v-pills-triagem-tab" data-toggle="pill" href="#v-pills-triagem"
+											role="tab" aria-controls="v-pills-triagem" aria-selected="true">Triagem</a>
 
 
+										<a class="nav-link" id="v-pills-home-tab" data-toggle="pill"
+											href="#v-pills-home" role="tab" aria-controls="v-pills-home"
+											aria-selected="false">Histórico</a>
+										<a class="nav-link" id="v-pills-profile-tab" data-toggle="pill"
+											href="#v-pills-profile" role="tab" aria-controls="v-pills-profile"
+											aria-selected="false">Atendimento</a>
+										<a class="nav-link" id="v-pills-messages-tab" data-toggle="pill"
+											href="#v-pills-messages" role="tab" aria-controls="v-pills-messages"
+											aria-selected="false">Receituário</a>
+										<a class="nav-link" id="v-pills-exames-tab" data-toggle="pill"
+											href="#v-pills-exames" role="tab" aria-controls="v-pills-exames"
+											aria-selected="false">Exames</a>
 
-						<!-- Input responsável por guardar o ID -->
-						<input id="id" name="id" type="hidden" th:field="*{id}"
-							th:value="*{id}" />
-						<!-- Input
-						responsável por guardar a Guia de Atendimento  -->
-						<input name="" type="hidden" th:field="*{guiaatendimento}"
-							value="*{guiaAtendimento}" />
-						<!-- div reponsável em mostrar os erros -->
-						<div id="errors" class="form-group row"
-							th:data-objeto="${hasErrors}">
-							<div class="col-sm-12 mb-3 mb-sm-0">
-								<div class="alert alert-danger alert-dismissible fade show"
-									data-valor="#fields.hasAnyErrors()" role="alert"
-									id="hasAnyErrors" th:if="${#fields.hasAnyErrors()}">
-
-									<button type="button" class="close" data-dismiss="alert"
-										aria-label="Close">
-										<span aria-hidden="true">&times;</span>
-									</button>
-
-									<div th:each="detailedError : ${#fields.detailedErrors()}">
-										<strong th:text="${detailedError.message}"> </strong>
+										<a class="nav-link" id="v-pills-finalizar-tab" data-toggle="pill"
+											href="#v-pills-finalizar" role="tab" aria-controls="v-pills-finalizar"
+											aria-selected="false">Finalizar</a>
 									</div>
 								</div>
-							</div>
-						</div>
-						<div class="col-md-12">
-							<div class="card">
-								<div class="card-body">
-									<div class="row">
-										<div class="col-5 col-md-2">
-											<div
-												class="nav flex-column nav-pills nav-secondary nav-pills-no-bd"
-												id="v-pills-tab-without-border" role="tablist"
-												aria-orientation="vertical">
-												<a class="nav-link" id="v-pills-historico-tab-nobd"
-													data-toggle="pill" href="#v-pills-historico-nobd"
-													role="tab" aria-controls="v-pills-historico-nobd"
-													aria-selected="false"><i class="fa fa-history"></i>
-													Histórico</a> <a class="nav-link active show"
-													id="v-pills-atendimento-tab-nobd" data-toggle="pill"
-													href="#v-pills-atendimento-nobd" role="tab"
-													aria-controls="v-pills-atendimento-nobd"
-													aria-selected="true"><i class="fa fa-user-md"></i>
-													Atendimento</a>
+								<div class="col-7 col-md-10">
+									<div class="tab-content" id="v-pills-tabContent">
 
-												<div th:if="${getTriagem} == true">
-													<a class="nav-link" id="v-pills-condicoes-tab-nobd"
-														data-toggle="pill" href="#v-pills-condicoes-nobd"
-														role="tab" aria-controls="v-pills-condicoes-nobd"
-														aria-selected="false"><i class="fa fa-stethoscope"></i>
-														Triagem</a>
-												</div>
-
-
-												<a class="nav-link" id="v-pills-condicoes-tab-nobd"
-													data-toggle="pill" href="#v-pills-receituario-nobd"
-													role="tab" aria-controls="v-pills-receituario-nobd"
-													aria-selected="false"><i class="fa fa-file"></i>
-													Receituário</a> <a class="nav-link"
-													id="v-pills-condicoes-tab-nobd" data-toggle="pill"
-													href="#v-pills-finalizar-nobd" role="tab"
-													aria-controls="v-pills-finalizar-nobd"
-													aria-selected="false"><i class="fa fa-check"></i> |
-													Finalizar</a>
-											</div>
-										</div>
-										<div class="col-7 col-md-10">
-											<div class="tab-content"
-												id="v-pills-without-border-tabContent">
-												<div class="tab-pane fade" id="v-pills-historico-nobd"
-													role="tabpanel"
-													aria-labelledby="v-pills-historico-tab-nobd">
-													<p>Sem registros</p>
-												</div>
-												<div class="tab-pane fade active show"
-													id="v-pills-atendimento-nobd" role="tabpanel"
-													aria-labelledby="v-pills-atendimento-tab-nobd">
-
-													<div class="card">
-														<div class="card-header">
-															<div class="card-title">História Clínica</div>
+										<div th:if="${getTriagem} == true" class="tab-pane fade active show"
+											id="v-pills-triagem" role="tabpanel" aria-labelledby="v-pills-triagem-tab">
+											<p class="info-triagem-titulo">Motivos da Consulta</p>
+											<hr class="info">
+											<p th:text="${guiaAtendimento.triagem.motivo}"></p>
+											<p th:text="${guiaAtendimento.triagem.descricaomotivo}"></p>
+											<p class="info-triagem-titulo">Sinais Vitais</p>
+											<hr class="info">
+											<div class="row">
+												<div class="col-sm-6 col-lg-3">
+													<div class="card p-3">
+														<div class="d-flex align-items-center">
+															<span class="stamp stamp-md bg-warning mr-3"> <img
+																	class="info"
+																	th:src="@{/assets/img/icons/pa.icon.png}">
+															</span>
+															<div>
+																<h5 class="mb-1">
+																	<b><small class="info">Pressão Arterial</small></b>
+																</h5>
+																<a class="info"
+																	th:text="${guiaAtendimento.triagem.pressaoarterial}"></a><small>
+																	mmHg</small>
+															</div>
 														</div>
-														<div class="card-body">
-															<div class="row">
-																<div class="col-md-12 col-lg-12"
-																	th:classappend="${#fields.hasErrors('historiaclinica')}? 'has-error'">
+													</div>
+												</div>
+
+												<div class="col-sm-6 col-lg-3">
+													<div class="card p-3">
+														<div class="d-flex align-items-center">
+															<span class="stamp stamp-md bg-warning mr-3"> <i
+																	class="fa fa-heartbeat"></i>
+															</span>
+															<div>
+																<h5 class="mb-1">
+																	<b><small class="info">Freq. Cardíaca</small></b>
+																</h5>
+																<a class="info"
+																	th:text="${guiaAtendimento.triagem.frequenciacardiaca}"></a><small>
+																	bpm</small>
+															</div>
+														</div>
+													</div>
+												</div>
+
+												<div class="col-sm-6 col-lg-3">
+													<div class="card p-3">
+														<div class="d-flex align-items-center">
+															<span class="stamp stamp-md bg-warning mr-3"> <i
+																	class="fa fa-thermometer"></i>
+															</span>
+															<div>
+																<h5 class="mb-1">
+																	<b><small class="info">Temperatura</small></b>
+																</h5>
+																<a class="info"
+																	th:text="${guiaAtendimento.triagem.temperaturacorporal}"></a><small>
+																	ºC</small>
+															</div>
+														</div>
+													</div>
+												</div>
+
+												<div class="col-sm-6 col-lg-3">
+													<div class="card p-3">
+														<div class="d-flex align-items-center">
+															<span class="stamp stamp-md bg-warning mr-3"><img
+																	class="info"
+																	th:src="@{/assets/img/icons/oxi.icon.png}"> </span>
+															<div>
+																<h5 class="mb-1">
+																	<b><small class="info">Saturação de O²</small></b>
+																</h5>
+																<a class="info"
+																	th:text="${guiaAtendimento.triagem.saturacaooxigenio}"></a><small>
+																	%</small>
+															</div>
+														</div>
+													</div>
+												</div>
+
+												<div class="col-sm-6 col-lg-3">
+													<div class="card p-3">
+														<div class="d-flex align-items-center">
+															<span class="stamp stamp-md bg-warning mr-3"> <img
+																	class="info"
+																	th:src="@{/assets/img/icons/pulmao.icon.png}">
+															</span>
+															<div>
+																<h5 class="mb-1">
+																	<b><small class="info">Freq. Resp.</small></b>
+																</h5>
+																<a class="info"
+																	th:text="${guiaAtendimento.triagem.frequenciarespiratoria}"></a><small>
+																	%</small>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+											<p class="info-triagem-titulo">Antopometria</p>
+											<hr class="info">
+											<div class="row">
+												<div class="col-sm-6 col-lg-3">
+													<div class="card p-3">
+														<div class="d-flex align-items-center">
+															<span class="stamp stamp-md bg-warning mr-3"> <img
+																	class="info"
+																	th:src="@{/assets/img/icons/head.icon.png}">
+															</span>
+															<div>
+																<h5 class="mb-1">
+																	<b><small class="info">Per. Cefálico</small></b>
+																</h5>
+																<a class="info"
+																	th:text="${guiaAtendimento.triagem.perimetrocefalico}"></a><small>
+																	cm</small>
+															</div>
+														</div>
+													</div>
+												</div>
+
+												<div class="col-sm-6 col-lg-3">
+													<div class="card p-3">
+														<div class="d-flex align-items-center">
+															<span class="stamp stamp-md bg-warning mr-3"> <i
+																	class="fa fa-balance-scale"></i>
+															</span>
+															<div>
+																<h5 class="mb-1">
+																	<b><small class="info">Peso</small></b>
+																</h5>
+																<a class="info"
+																	th:text="${guiaAtendimento.triagem.peso}"></a><small>
+																	Kg</small>
+															</div>
+														</div>
+													</div>
+												</div>
+
+												<div class="col-sm-6 col-lg-3">
+													<div class="card p-3">
+														<div class="d-flex align-items-center">
+															<span class="stamp stamp-md bg-warning mr-3"> <img
+																	class="info"
+																	th:src="@{/assets/img/icons/altura.icon.png}">
+															</span>
+															<div>
+																<h5 class="mb-1">
+																	<b><small class="info">Altura</small></b>
+																</h5>
+																<a class="info"
+																	th:text="${guiaAtendimento.triagem.altura}"></a><small>
+																	cm</small>
+															</div>
+														</div>
+													</div>
+												</div>
+
+												<div class="col-sm-6 col-lg-3">
+													<div class="card p-3">
+														<div class="d-flex align-items-center">
+															<span class="stamp stamp-md bg-warning mr-3">
+																IMC </span>
+															<div>
+																<h5 class="mb-1">
+																	<b><small class="info">IMC</small></b>
+																</h5>
+																<a class="info"
+																	th:text="${guiaAtendimento.triagem.imc}"></a>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+											<p class="info-triagem-titulo">Alergias a Medicamentos
+											</p>
+											<hr class="info">
+											<p th:text="${guiaAtendimento.triagem.alergiamedicamentos}"></p>
+											<p class="info-triagem-titulo">Medicamentos em Uso</p>
+											<hr class="info">
+											<p th:text="${guiaAtendimento.triagem.usomedicamentos}"></p>
+											<p class="info-triagem-titulo">Comorbidades</p>
+											<hr class="info">
+											<a th:if="${guiaAtendimento.triagem.hipertensaoarterialsistemica == true}">Hispertensão
+												Arterial Sistêmica (HAS),</a><a
+												th:if="${guiaAtendimento.triagem.doencameningococica == true}">
+												Doença Meningocócica (DM),</a><a
+												th:if="${guiaAtendimento.triagem.avc == true}"> AVC,</a><a
+												th:if="${guiaAtendimento.triagem.linfangioliomiomatose == true}">
+												Linfangioleiomiomatose (LAM),</a> <a
+												th:if="${guiaAtendimento.triagem.insuficienciarenal == true}">
+												Insuficiência Renal,</a><a
+												th:if="${guiaAtendimento.triagem.dpoc == true}">
+												Doença Pulmonar Obstrutiva Crônica (DPOC),</a><a
+												th:if="${guiaAtendimento.triagem.asma == true}"> ASMA,</a><a
+												th:if="${guiaAtendimento.triagem.dlp == true}">
+												Doenças ou Lesões Preexistentes (DLP),</a><a
+												th:if="${guiaAtendimento.triagem.insuficienciacardiacacongestiva == true}">
+												Insuficiência Cardíaca Congestiva (ICC),</a><a
+												th:if="${guiaAtendimento.triagem.epilepsia == true}">
+												Epilepsia,</a><a
+												th:if="${guiaAtendimento.triagem.caneoplasia == 'true'}">
+												Caneoplasia,</a><a
+												th:text="${guiaAtendimento.triagem.outrasdoencas}"></a>
+
+											<p class="info-triagem-titulo">Hábitos</p>
+											<hr class="info">
+											<a th:if="${guiaAtendimento.triagem.tabagismo == true}">Tabagismo,
+											</a><a th:if="${guiaAtendimento.triagem.etilismo == true}">Etilismo,
+											</a><a th:if="${guiaAtendimento.triagem.drogaslicitas == true}">Drogas
+												Lícitas, </a><a th:text="${guiaAtendimento.triagem.outroshabitos}"></a>
+										</div>
+
+										<div class="tab-pane fade" id="v-pills-home" role="tabpanel"
+											aria-labelledby="v-pills-home-tab">
+											<p class="info-triagem-titulo">Histórico da Atenção Básica - ESUS</p>
+											<hr class="info">
+											<a href="#" id="medicamentosPrescritos" class="badge badge-primary">Medicamentos prescritos</a>
+											<a href="#" id="examesSolicitados" class="badge badge-primary">Exames solicitados</a>
+											<a href="#" class="badge badge-primary">Resultado de Exames</a>
+											<hr class="info">
+											<div id="conteudo" class="info-historico row">
+												
+											</div>
+										</div>
+										<div class="tab-pane fade" id="v-pills-profile" role="tabpanel"
+											aria-labelledby="v-pills-profile-tab">
+
+											<div class="card">
+												<div class="card-header">
+													<div class="card-title">História Clínica</div>
+												</div>
+												<div class="card-body">
+													<div class="row">
+														<div class="col-md-12 col-lg-12" th:classappend="${#fields.hasErrors('historiaclinica')}? 'has-error'">
 																	<div class="form-group">
 																		<label for="historiaclinica">Histórica Clínica</label>
 																		<input th:field="*{historiaclinica}" type="text"
@@ -277,233 +453,10 @@
 															</div>
 														</div>
 													</div>
-												</div>
-												<div th:if="${getTriagem} == true" class="tab-pane fade"
-													id="v-pills-condicoes-nobd" role="tabpanel"
-													aria-labelledby="v-pills-condicoes-tab-nobd">
-													<p class="info-triagem-titulo">Motivos da Consulta</p>
-													<hr class="info">
-													<p th:text="${guiaAtendimento.triagem.motivo}"></p>
-													<p th:text="${guiaAtendimento.triagem.descricaomotivo}"></p>
-													<p class="info-triagem-titulo">Sinais Vitais</p>
-													<hr class="info">
-													<div class="row">
-														<div class="col-sm-6 col-lg-3">
-															<div class="card p-3">
-																<div class="d-flex align-items-center">
-																	<span class="stamp stamp-md bg-warning mr-3"> <img
-																		class="info" th:src="@{/assets/img/icons/pa.icon.png}">
-																	</span>
-																	<div>
-																		<h5 class="mb-1">
-																			<b><small class="info">Pressão Arterial</small></b>
-																		</h5>
-																		<a class="info"
-																			th:text="${guiaAtendimento.triagem.pressaoarterial}"></a><small>
-																			mmHg</small>
-																	</div>
-																</div>
-															</div>
-														</div>
-
-														<div class="col-sm-6 col-lg-3">
-															<div class="card p-3">
-																<div class="d-flex align-items-center">
-																	<span class="stamp stamp-md bg-warning mr-3"> <i
-																		class="fa fa-heartbeat"></i>
-																	</span>
-																	<div>
-																		<h5 class="mb-1">
-																			<b><small class="info">Freq. Cardíaca</small></b>
-																		</h5>
-																		<a class="info"
-																			th:text="${guiaAtendimento.triagem.frequenciacardiaca}"></a><small>
-																			bpm</small>
-																	</div>
-																</div>
-															</div>
-														</div>
-
-														<div class="col-sm-6 col-lg-3">
-															<div class="card p-3">
-																<div class="d-flex align-items-center">
-																	<span class="stamp stamp-md bg-warning mr-3"> <i
-																		class="fa fa-thermometer"></i>
-																	</span>
-																	<div>
-																		<h5 class="mb-1">
-																			<b><small class="info">Temperatura</small></b>
-																		</h5>
-																		<a class="info"
-																			th:text="${guiaAtendimento.triagem.temperaturacorporal}"></a><small>
-																			ºC</small>
-																	</div>
-																</div>
-															</div>
-														</div>
-
-														<div class="col-sm-6 col-lg-3">
-															<div class="card p-3">
-																<div class="d-flex align-items-center">
-																	<span class="stamp stamp-md bg-warning mr-3"><img
-																		class="info"
-																		th:src="@{/assets/img/icons/oxi.icon.png}"> </span>
-																	<div>
-																		<h5 class="mb-1">
-																			<b><small class="info">Saturação de O²</small></b>
-																		</h5>
-																		<a class="info"
-																			th:text="${guiaAtendimento.triagem.saturacaooxigenio}"></a><small>
-																			%</small>
-																	</div>
-																</div>
-															</div>
-														</div>
-
-														<div class="col-sm-6 col-lg-3">
-															<div class="card p-3">
-																<div class="d-flex align-items-center">
-																	<span class="stamp stamp-md bg-warning mr-3"> <img
-																		class="info"
-																		th:src="@{/assets/img/icons/pulmao.icon.png}">
-																	</span>
-																	<div>
-																		<h5 class="mb-1">
-																			<b><small class="info">Freq. Resp.</small></b>
-																		</h5>
-																		<a class="info"
-																			th:text="${guiaAtendimento.triagem.frequenciarespiratoria}"></a><small>
-																			%</small>
-																	</div>
-																</div>
-															</div>
-														</div>
-													</div>
-													<p class="info-triagem-titulo">Antopometria</p>
-													<hr class="info">
-													<div class="row">
-														<div class="col-sm-6 col-lg-3">
-															<div class="card p-3">
-																<div class="d-flex align-items-center">
-																	<span class="stamp stamp-md bg-warning mr-3"> <img
-																		class="info"
-																		th:src="@{/assets/img/icons/head.icon.png}">
-																	</span>
-																	<div>
-																		<h5 class="mb-1">
-																			<b><small class="info">Per. Cefálico</small></b>
-																		</h5>
-																		<a class="info"
-																			th:text="${guiaAtendimento.triagem.perimetrocefalico}"></a><small>
-																			cm</small>
-																	</div>
-																</div>
-															</div>
-														</div>
-
-														<div class="col-sm-6 col-lg-3">
-															<div class="card p-3">
-																<div class="d-flex align-items-center">
-																	<span class="stamp stamp-md bg-warning mr-3"> <i
-																		class="fa fa-balance-scale"></i>
-																	</span>
-																	<div>
-																		<h5 class="mb-1">
-																			<b><small class="info">Peso</small></b>
-																		</h5>
-																		<a class="info"
-																			th:text="${guiaAtendimento.triagem.peso}"></a><small>
-																			Kg</small>
-																	</div>
-																</div>
-															</div>
-														</div>
-
-														<div class="col-sm-6 col-lg-3">
-															<div class="card p-3">
-																<div class="d-flex align-items-center">
-																	<span class="stamp stamp-md bg-warning mr-3"> <img
-																		class="info"
-																		th:src="@{/assets/img/icons/altura.icon.png}">
-																	</span>
-																	<div>
-																		<h5 class="mb-1">
-																			<b><small class="info">Altura</small></b>
-																		</h5>
-																		<a class="info"
-																			th:text="${guiaAtendimento.triagem.altura}"></a><small>
-																			cm</small>
-																	</div>
-																</div>
-															</div>
-														</div>
-
-														<div class="col-sm-6 col-lg-3">
-															<div class="card p-3">
-																<div class="d-flex align-items-center">
-																	<span class="stamp stamp-md bg-warning mr-3">
-																		IMC </span>
-																	<div>
-																		<h5 class="mb-1">
-																			<b><small class="info">IMC</small></b>
-																		</h5>
-																		<a class="info"
-																			th:text="${guiaAtendimento.triagem.imc}"></a>
-																	</div>
-																</div>
-															</div>
-														</div>
-													</div>
-													<p class="info-triagem-titulo">Alergias a Medicamentos
-													</p>
-													<hr class="info">
-													<p th:text="${guiaAtendimento.triagem.alergiamedicamentos}"></p>
-													<p class="info-triagem-titulo">Medicamentos em Uso</p>
-													<hr class="info">
-													<p th:text="${guiaAtendimento.triagem.usomedicamentos}"></p>
-													<p class="info-triagem-titulo">Comorbidades</p>
-													<hr class="info">
-													<a
-														th:if="${guiaAtendimento.triagem.hipertensaoarterialsistemica == true}">Hispertensão
-														Arterial Sistêmica (HAS),</a><a
-														th:if="${guiaAtendimento.triagem.doencameningococica == true}">
-														Doença Meningocócica (DM),</a><a
-														th:if="${guiaAtendimento.triagem.avc == true}"> AVC,</a><a
-														th:if="${guiaAtendimento.triagem.linfangioliomiomatose == true}">
-														Linfangioleiomiomatose (LAM),</a> <a
-														th:if="${guiaAtendimento.triagem.insuficienciarenal == true}">
-														Insuficiência Renal,</a><a
-														th:if="${guiaAtendimento.triagem.dpoc == true}">
-														Doença Pulmonar Obstrutiva Crônica (DPOC),</a><a
-														th:if="${guiaAtendimento.triagem.asma == true}"> ASMA,</a><a
-														th:if="${guiaAtendimento.triagem.dlp == true}">
-														Doenças ou Lesões Preexistentes (DLP),</a><a
-														th:if="${guiaAtendimento.triagem.insuficienciacardiacacongestiva == true}">
-														Insuficiência Cardíaca Congestiva (ICC),</a><a
-														th:if="${guiaAtendimento.triagem.epilepsia == true}">
-														Epilepsia,</a><a
-														th:if="${guiaAtendimento.triagem.caneoplasia == 'true'}">
-														Caneoplasia,</a><a
-														th:text="${guiaAtendimento.triagem.outrasdoencas}"></a>
-
-													<p class="info-triagem-titulo">Hábitos</p>
-													<hr class="info">
-													<a th:if="${guiaAtendimento.triagem.tabagismo == true}">Tabagismo,
-													</a><a th:if="${guiaAtendimento.triagem.etilismo == true}">Etilismo,
-													</a><a th:if="${guiaAtendimento.triagem.drogaslicitas == true}">Drogas
-														Lícitas, </a><a
-														th:text="${guiaAtendimento.triagem.outroshabitos}"></a>
-												</div>
-												<div th:if="${getTriagem} == 'true'" class="tab-pane fade"
-													id="v-pills-condicoes-nobd" role="tabpanel"
-													aria-labelledby="v-pills-condicoes-tab-nobd">
-													<p class="info-triagem-titulo">Triagem não realizada</p>
-
-												</div>
-												<div class="tab-pane fade" id="v-pills-receituario-nobd"
-													role="tabpanel"
-													aria-labelledby="v-pills-receituario-tab-nobd">
-													<h4 class="page-title">Receita</h4>
+									</div>
+									<div class="tab-pane fade" id="v-pills-messages" role="tabpanel"
+										aria-labelledby="v-pills-messages-tab">
+										<h4 class="page-title">Receita</h4>
 
 													<div class="form-group">
 														<button data-toggle="modal"
@@ -608,11 +561,20 @@
 															</div>
 														</div>
 													</div>
-												</div>
-												<div class="tab-pane fade" id="v-pills-finalizar-nobd"
-													role="tabpanel"
-													aria-labelledby="v-pills-finalizar-tab-nobd">
-													<div class="card">
+									</div>
+									<div class="tab-pane fade" id="v-pills-exames" role="tabpanel"
+										aria-labelledby="v-pills-exames-tab">
+										<p>Exames do Cidadão</p>
+
+										<p> But nothing the copy said could convince her and so it didn’t take long
+											until a few insidious Copy Writers ambushed her, made her drunk with Longe
+											and Parole and dragged her into their agency, where they abused her for
+											their</p>
+									</div>
+
+									<div class="tab-pane fade" id="v-pills-finalizar" role="tabpanel"
+										aria-labelledby="v-pills-finalizar-tab">
+											<div class="card">
 														<div class="card-header">
 															<div class="card-title">Encaminhamento Interno</div>
 														</div>
@@ -675,15 +637,17 @@
 														<button type="submit" class="btn btn-success">Concluir</button>
 														<button type="reset" class="btn btn-danger">Cancelar</button>
 													</div>
-												</div>
-											</div>
-										</div>
 									</div>
 								</div>
 							</div>
 						</div>
+						</form>
 					</div>
-				</form>
+					
+				</div>
+
+
+
 			</div>
 		</div>
 

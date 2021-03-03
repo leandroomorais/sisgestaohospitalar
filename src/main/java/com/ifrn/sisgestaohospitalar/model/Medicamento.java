@@ -5,14 +5,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-/**
- * A classe <code>Medicamento</code> representa os objetos do tipo Medicamento
- * seus atributos e métodos.
- * 
- * @author Leandro Morais
- * @version 1.0, 02/11/2019
- *
- */
 @Entity
 public class Medicamento {
 

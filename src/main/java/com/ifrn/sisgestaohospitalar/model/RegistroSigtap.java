@@ -3,15 +3,6 @@ package com.ifrn.sisgestaohospitalar.model;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
-/**
- * A classe <code>RegistroSigtap</code> representa os objetos do tipo
- * RegistroSigtap e contém os atributos dos tipos de registros da Tabela Sigtap
- * SUS.
- * 
- * @author Leandro Morais
- * @version 1.0, 02/11/2019
- *
- */
 @Entity
 public class RegistroSigtap {
 

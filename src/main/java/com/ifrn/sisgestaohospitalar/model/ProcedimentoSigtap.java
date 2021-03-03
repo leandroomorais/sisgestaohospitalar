@@ -13,15 +13,6 @@ import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 
 
-/**
- * A classe <code>ProcedimentoSigtap</code> representa os objetos do tipo
- * ProcedimentoSigtap e contém os atributos da Tabela de Procedimentos do SUS
- * Sigtap.
- * 
- * @author Leandro Morais
- * @version 1.0, 02/11/2019
- *
- */
 @Entity
 public class ProcedimentoSigtap {
 

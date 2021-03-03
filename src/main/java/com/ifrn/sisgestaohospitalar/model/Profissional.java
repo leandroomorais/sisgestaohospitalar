@@ -25,14 +25,6 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import com.ifrn.sisgestaohospitalar.enums.TipoProfissional;
 
-/**
- * A classe <code>Profissional</code> representa os objetos do tipo Profissional
- * e contém seus atributos e métodos.
- * 
- * @author Leandro Morais
- * @version 1.0, 02/11/2019
- *
- */
 @Entity
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Profissional implements UserDetails {

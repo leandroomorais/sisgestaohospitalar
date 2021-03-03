@@ -16,14 +16,6 @@ import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElementWrapper;
 
-/**
- * A classe <code>Estabelecimento</code> representa os objetos do tipo
- * Estabelecimento e contém seus atributos e métodos.
- * 
- * @author Leandro Morais
- * @version 1.0, 02/11/2019
- *
- */
 @Entity
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Estabelecimento {

@@ -3,15 +3,6 @@ package com.ifrn.sisgestaohospitalar.model;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
-/**
- * A classe <code>CidSigtap</code> representa os objetos do tipo CidSigtap e
- * contém os atributos da tabela de Código Internacional de Doenças CID da
- * Tabela Sigtap.
- * 
- * @author Leandro Morais
- * @version 1.0, 02/11/2019
- *
- */
 @Entity
 public class CidSigtap {
 

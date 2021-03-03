@@ -1,3 +1,15 @@
+.info-historico{
+	border-bottom: 1px;
+	border-color: black;
+	border-bottom-style: solid;
+	padding: 3px;
+}
+
+
+.svg-status{
+	width: 180px;
+	margin-left: -100px;
+}
 /* Estilização de elementos da Sidebar */
 span.low {
 	font-size: 09px;
@@ -49,16 +61,7 @@ span.type-user {
 }
 
 /* Estilização do autocomplete */
-.ui-autocomplete {
-	max-height: 150px;
-	max-width: 50em;
-	/* prevent horizontal scrollbar */
-	overflow-x: hidden;
-	overflow-y: auto;
-	/* prevent horizontal scrollbar overflow-x : hidden; */
-	background: #F5F5F5;
-	z-index: 1050 !important;
-}
+
 /* Estilização do autocomplete */
 
 /* Estilização dos botões de classificação de risco */

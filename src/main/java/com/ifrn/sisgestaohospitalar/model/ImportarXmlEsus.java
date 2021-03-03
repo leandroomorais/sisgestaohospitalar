@@ -5,14 +5,6 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
-/**
- * A classe <code>ImportarXmlEsus</code> representa os objetos do tipo
- * ImportarXmlEsus é uma classe auxiliar para a leitura do arquivo XML do ESUS
- * 
- * @author Leandro Morais
- * @version 1.0, 02/11/2019
- *
- */
 
 @XmlRootElement(name = "ImportarXMLCNES")
 @XmlAccessorType(XmlAccessType.FIELD)
