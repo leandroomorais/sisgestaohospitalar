@@ -25,6 +25,8 @@ $(document).ready(
 
 		$("#svg-status").hide();
 
+		$("#info-cidadao").hide();
+
 
 		//Muda o formulário ao clicar no botão de pesquisa por CPF
 		$("#button-cpf").click(function () {
@@ -135,6 +137,8 @@ $("#form-busca").submit(function (evt) {
 			});
 
 			$("#info-cidadao").fadeIn(500);
+
+			$("#idCidadao").val(data.id);
 
 			if (data.nome != null) {
 				$("#info-nome").text(data.nome);
