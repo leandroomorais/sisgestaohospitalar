@@ -33,10 +33,68 @@ var divExames = $('' +
         '   <p id="dataHoraSolicitacao"></p>' +
     '   </div>', '<hr />');
 
-$("#medicamentosPrescritos").click(function () {
+$("#diagnosticos").click(function () {
+    const father = clear();
+
+    $.ajax({
+        url: "http://localhost:9090/api/avaliacoes/cpf/" + cpf,
+        success: function (data){
+            const len = data.length;
+            $.each(data, function (pos, object) {
+                console.log(object)
+                const row = createElement('div', father, [{key: 'class', value: 'row'}], '');
+
+                const {atendimentoProfissional, ciap, cid10} = object;
+                const {dataFim, dataInicio} = atendimentoProfissional;
+                const {dsCiap, codicoCiap, sexo, codCid10Encaminhamento} = ciap;
+
+                createElement("div", row, [{key: 'class', value: 'col-md-4'}],
+                    `<strong>Diagnóstico: </strong><p>${dsCiap}</p>`)
+                createElement('div', row, [{key: 'class', value: 'col-md-4'}],
+                    `<strong>Sexo: </strong><p>${sexo}</p>`)
+                createElement('div', row, [{key: 'class', value: 'col-md-4'}],
+                    `<strong>Código CIAP: </strong><p>${codicoCiap}</p>`)
+                createElement('div', row, [{key: 'class', value: 'col-md-4'}],
+                    `<strong>Código Cid10 encaminhamento: </strong><p>${codCid10Encaminhamento}</p>`)
+
+                const dateFimForm = new Date(dataFim);
+                const dateInicioForm = new Date(dataInicio)
+                createElement('div', row, [{key: 'class', value: 'col-md-4'}],
+                    `<strong>Data inicial do Atendimento: </strong><p>${formDateTime(dateInicioForm)}</p>`)
+
+                createElement('div', row, [{key: 'class', value: 'col-md-4'}],
+                    `<strong>Data final do Atendimento: </strong><p>${formDateTime(dateFimForm)}</p>`)
+
+                if (cid10 != null){ 
+                    const {nuCid, noCid10} = cid10;
+                    createElement('div', row, [{key: 'class', value: 'col-md-4'}],
+                        `<strong>Nome Cid10: </strong><p>${noCid10}</p>`)
+
+                    createElement('div', row, [{key: 'class', value: 'col-md-4'}],
+                        `<strong>Número Cid10: </strong><p>${nuCid}</p>`)
+
+                    createElement('div', row, [{key: 'class', value: 'col-md-4'}],
+                        `<strong>Sexo Cid10: </strong><p>${cid10.sexo}</p>`)
+                }
+
+                if (pos < len-1){
+                    createElement('hr', father, [{key: 'class', value: 'col-md-11'}], '');
+                }
+            })
+        }
+    })
+});
+
+function clear(){
     const father = document.getElementById('conteudo');
 
     father.innerHTML = "";
+
+    return father;
+}
+
+$("#medicamentosPrescritos").click(function () {
+    const father = clear();
     $.ajax({
         url: "http://localhost:9090/api/receitamedicamentos/cpf/" + cpf,
         error: function(){
@@ -50,7 +108,6 @@ $("#medicamentosPrescritos").click(function () {
                 const {nomeFormaFarmaceutica} = medicamento.formaFarmaceutica;
                 const row = createElement('div', father, [{key: 'class', value: 'row'}], '');
 
-
                 createElement("div", row, [{key: 'class', value: 'col-md-4'}], `<strong>Principio ativo: </strong><p>${principio_ativo}</p>`)
                 createElement('div', row, [{key: 'class', value: 'col-md-3'}],  `<strong>Forma: </strong>
                                                      <p>${nomeFormaFarmaceutica}</p>`);
@@ -61,10 +118,9 @@ $("#medicamentosPrescritos").click(function () {
                 createElement('div', row, [{key: 'class', value: 'col-md-4'}], `<strong>Posologia: </strong>
                                                      <p>${posologia}</p>`);
                 const dataPrescicao = new Date(object.atendimentoProfissional.dataFim);
-                const dateForm = checkNumber(dataPrescicao.getDate()) + "/" + checkNumber(dataPrescicao.getMonth() + 1) + "/" + dataPrescicao.getFullYear() + " | " + checkNumber(dataPrescicao.getHours()) + ':'
-                    + checkNumber(dataPrescicao.getMinutes()) + ":" + checkNumber(dataPrescicao.getSeconds())
+
                 createElement('div', row, [{key: 'class', value: 'col-md-4'}], `<strong>Data e hora prescrição: </strong>
-                                                     <p>${dateForm}</p>`);
+                                                     <p>${formDateTime(dataPrescicao)}</p>`);
 
                 createElement('div', row, [{key: 'class', value: 'col-md-6'}], `<strong>Orientações: </strong>
                                                      <p>${object.recomendacao}</p>`);
@@ -94,9 +150,7 @@ function createElement(tagName, father, options, value){
 }
 
 function exames(url){
-    const father = document.getElementById('conteudo');
-
-    father.innerHTML = "";
+    const father =  clear();
 
     $.ajax({
         url: url + cpf,
@@ -106,7 +160,6 @@ function exames(url){
         success: function (data) {
             const len = data.length;
             $.each(data, function (pos, object) {
-                console.log(object)
                 const row = createElement('div', father, [{key: 'class', value: 'row'}], '');
                 const {nomeProcedimento, dtCompetencia, procedimentoFormaOrganizacional, procedimentoSubGrupo} = object.procedimento;
 
@@ -125,20 +178,13 @@ function exames(url){
 
                 const date = new Date(object.dataSolicitacao);
 
-                const dateForm = checkNumber(date.getDate()) + "/"
-                    + checkNumber(date.getMonth() + 1) + "/"+ date.getFullYear()
-
                 createElement('div', row, [{key: 'class', value: 'col-md-4'}], `<strong>Data da Solicitação: </strong>
-                                                     <p>${dateForm}</p>`);
+                                                     <p>${formDate(date)}</p>`);
 
                 if (object.dataResultado != null){
                     const date = new Date(object.dataResultado);
-
-                    const dateFormResult = checkNumber(date.getDate()) + "/"
-                        + checkNumber(date.getMonth() + 1) + "/"+ date.getFullYear()
-
                     createElement('div', row, [{key: 'class', value: 'col-md-4'}], `<strong>Data do Resultado: </strong>
-                                                     <p>${dateFormResult}</p>`)
+                                                     <p>${formDate(date)}</p>`)
 
                     createElement('div', row, [{key: 'class', value: 'col-md-6'}], `<strong>Resultado: </strong>
                                                      <p>${object.resultado}</p>`)
@@ -169,6 +215,28 @@ function checkNumber(value){
     return value;
 }
 
+function formDate(date){
+    try {
+        const dateForm = new Date(date);
+        return checkNumber(dateForm.getDate())
+            + "/" + checkNumber(dateForm.getMonth() + 1)
+            + "/" + dateForm.getFullYear();
+    }catch (e) {
+        throw new DOMException('Informe um objeto data válido');
+    }
+}
+
+function formDateTime(date){
+    try {
+        const dateForm = new Date(date);
+        return formDate(dateForm) + " | "
+            + checkNumber(dateForm.getHours()) + ":" + checkNumber(dateForm.getMinutes()) + ":"
+            + checkNumber(dateForm.getSeconds());
+    }catch (e) {
+        throw new DOMException('Informe um objeto data válido');
+    }
+}
+
 $(document).ready(function () {
     // Autocomplete dos Procedimentos
     $(function () {
@@ -178,7 +246,7 @@ $(document).ready(function () {
                     return $("<option>").append("<div>"
                         + item.codigoprocedimento
                         + " - "
-                        + item.nomeprocedimento
+                        + item.nomeprocedimentoo
                         + "</div>").appendTo(select);
                 };
             })
