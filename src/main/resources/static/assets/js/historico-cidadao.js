@@ -1,5 +1,6 @@
 /*variaveis globais*/
 var cpf = $("#cpfCidadao").val();
+var user = {};
 var examesResult = [];
 var examesSolicitations = [];
 var receitas = [];
@@ -28,5 +29,6 @@ $(document).ready(function () {
     request(uriAvaliacao, cpf, (data) => avaliacoes = data, () => avaliacoes = [])
     request(uriReceita, cpf, (data) => receitas = data, () => receitas = [])
     request(uriResult, cpf, (data) => examesResult = data, () => examesResult = [])
+    request('/cidadao-resource/cpf/', cpf, (data) => user = data, () => user = {})
 })
 /*-----------------------------------------*/

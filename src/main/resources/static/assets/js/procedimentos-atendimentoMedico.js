@@ -217,6 +217,15 @@ function formDate(date){
     }
 }
 
+function formTime(date){
+    try {
+        const dateForm = new Date(date);
+        return checkNumber(dateForm.getHours()) + ":" + checkNumber(dateForm.getMinutes()) + ":";
+    }catch (e) {
+        throw new DOMException('Informe um objeto data válido');
+    }
+}
+
 function formDateTime(date){
     try {
         const dateForm = new Date(date);

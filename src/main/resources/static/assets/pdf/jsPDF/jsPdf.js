@@ -1554,7 +1554,6 @@
                     x = text;
                     text = tmp;
                 }
-
                 var flags = arguments[3];
                 var angle = arguments[4];
                 var align = arguments[5];
@@ -1626,7 +1625,6 @@
 
                 //multiline
                 var maxWidth = options.maxWidth || 0;
-
                 if (maxWidth > 0) {
                     if (typeof text === 'string') {
                         text = scope.splitTextToSize(text, maxWidth);
@@ -1648,8 +1646,8 @@
                         activeFontSize: activeFontSize
                     }
                 };
-                events.publish('preProcessText', payload);
 
+                events.publish('preProcessText', payload);
                 text = payload.text;
                 options = payload.options;
                 //angle
@@ -1658,7 +1656,6 @@
                 var k = scope.internal.scaleFactor;
                 var curY = (scope.internal.pageSize.getHeight() - y) * k;
                 var transformationMatrix = [];
-
                 if (angle) {
                     angle *= Math.PI / 180;
                     var c = Math.cos(angle),
@@ -1751,7 +1748,6 @@
                 var lineWidths;
                 var flags = {};
                 var wordSpacingPerLine = [];
-
                 if (Object.prototype.toString.call(text) === '[object Array]') {
                     var da = transformTextToSpecialArray(text);
                     var newY;
@@ -2171,6 +2167,7 @@
              */
             API.setProperties = function(properties) {
                 // copying only those properties we can render.
+                console.log(documentProperties);
                 for (var property in documentProperties) {
                     if (documentProperties.hasOwnProperty(property) && properties[property]) {
                         documentProperties[property] = properties[property];

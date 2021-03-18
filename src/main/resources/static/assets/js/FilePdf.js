@@ -9,9 +9,9 @@ const topFile = 3;
 const leftFile = 2;
 let page = 1;
 let headerConf = {left: pdf.internal.pageSize.getWidth() / 2, top: 3};
-let footer = {left: headerConf.left, bottom: pdf.internal.pageSize.getHeight() - 3};
+let footer = {left: headerConf.left, bottom: pdf.internal.pageSize.getHeight() - 2.70};
 let subFooter = {left: headerConf.left, bottom: footer.bottom + 2}
-
+let isCreateTable = false;
 
 let incrementSubFooter = 1;
 let totalSheetsAtual = 0;
@@ -19,14 +19,14 @@ let incrementFooterSubTable = 1;
 let footers = [];
 let footerInsert = [];
 
-let incrementFooter = 1;
+let incrementFooter = 0.5;
 
 function isNotFooterInsert(array, pag){
-    if(array.length == 0){
+    if(array.length === 0){
         return false;
     }
     for(let i = 0; i < array.length; i++){
-        if(array[i].pag == pag){
+        if(array[i].pag === pag){
             return true;
         }
     }
@@ -52,20 +52,26 @@ file.insertHeader = function (text){
 }
 
 file.insertFooter = function(text, options){
-    pdf.setFont('Times New Roman');
-    pdf.setFontSize('10');
-    pdf.setFontStyle('bold');
-    pdf.text(text, footer.left,  footer.bottom + incrementFooter, options !== undefined ? options : 'center');
-    ++incrementFooter;
+    if (options === undefined){
+        pdf.setFont('Times New Roman');
+        pdf.setFontSize('10');
+        pdf.setFontStyle('bold');
+        pdf.text(text, footer.left,  footer.bottom + incrementFooter, "center");
+    } else {
+        pdf.setFont(options.fontName);
+        pdf.setFontSize(options.fontSize);
+        pdf.setFontStyle(options.fontStyle);
+        pdf.text(text, options.align === 'center' ? center.left : leftFile,
+            footer.bottom + incrementFooter,
+            options.align
+        );
+    }
+    incrementFooter = incrementFooter + 0.5;
 }
 
-file.insertTextAuto = function (text, options){
-    pdf.autoTableText(text, options.align === 'center' ? center.left : leftFile,
-        incremet === 0 ? topFile : topFile + incremet,
-        options)
-}
 
 file.insertText = function (text, options){
+    const y = pdf.autoTable.previous.cursor !== undefined && isCreateTable ? pdf.autoTable.previous.cursor.y : 0;
     if(options === undefined){
         pdf.setFont('Times New Roman');
         pdf.setFontSize('12');
@@ -81,10 +87,11 @@ file.insertText = function (text, options){
         pdf.setFontSize(options.fontSize);
         pdf.setFontStyle(options.fontStyle);
         pdf.text(text, options.align === 'center' ? center.left : leftFile,
-            incremet === 0 ? topFile : topFile + incremet,
+            incremet === 0 ? topFile : isCreateTable ? y + (topFile - 2) : topFile + incremet,
             options.align
         );
     }
+    isCreateTable = false;
     ++incremet;
 }
 
@@ -94,6 +101,7 @@ file.totalSheets = function(){
 
 
 file.insertTableDefault = function (heades, bodys, option){
+    isCreateTable = true;
     pdf.autoTable({
         margin: option,
         head: [heades],
@@ -128,6 +136,7 @@ file.insertImageHeader = function (text, img, format, x, y, w, h, alias, compres
 }
 
 file.insertSubTable = function(heades, bodys, option){
+    isCreateTable = true;
     let lines = [];
     let i = 0;
     while(i < heades.length){
@@ -161,6 +170,7 @@ file.insertSubTable = function(heades, bodys, option){
 
 file.insertTable = function(heades, bodys, descrition){
     file.insertHeader(descrition);
+    isCreateTable = true;
     let lines = [];
     let i = 0;
     while(i < heades.length){
@@ -207,8 +217,4 @@ file.save = function (name){
     incrementFooter = 1;
     incrementSubFooter = 1;
     incrementFooterSubTable = 1;
-}
-
-file.clear = function (){
-    pdf = new jsPDF('p', 'cm', 'a4');
 }

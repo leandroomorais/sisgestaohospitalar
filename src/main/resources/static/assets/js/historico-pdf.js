@@ -1,54 +1,109 @@
 
-function extractObjectExameSol(objects){
-    const objectsPrint = [];
-
-    for (let object of objects){
-        objectsPrint.push([
-            object.procedimento.nomeProcedimento,
-            object.procedimento.dtCompetencia,
-            object.procedimento.procedimentoFormaOrganizacional.noProcedFormaOrganizacional,
-            object.procedimento.procedimentoSubGrupo.noProcedSubGrupo,
-            object.dataSolicitacao,
-        ]);
-    }
-
-    return objectsPrint
-}
-
-
 $("#historico-pdf").click(function () {
-    const examesS = extractObjectExameSol(examesResult);
-    file.insertHeader('MUNICÍPIO DE MODELO\n' +
+    const examesS = PDFUtil.extractOfArray(examesSolicitations, {
+        procedimento: {
+            nomeProcedimento: '',
+            dtCompetencia: '',
+            procedimentoFormaOrganizacional: {
+                noProcedFormaOrganizacional: ''
+            },
+            procedimentoSubGrupo: {
+                noProcedSubGrupo: ''
+            },
+        },
+        dataSolicitacao: ''
+    });
+    const examesR = PDFUtil.extractOfArray(examesResult, {
+        procedimento: {
+            nomeProcedimento: '',
+            dtCompetencia: '',
+            procedimentoFormaOrganizacional: {
+                noProcedFormaOrganizacional: ''
+            },
+            procedimentoSubGrupo: {
+                noProcedSubGrupo: ''
+            },
+        },
+        dataSolicitacao: '',
+        dataResultado: '',
+        resultado: ''
+    });
+    const medicamentoPres = PDFUtil.extractOfArray(receitas, {
+        medicamento:{
+            principio_ativo: '',
+            concentracao: '',
+            formaFarmaceutica: {
+                nomeFormaFarmaceutica: '',
+            }
+        }
+    })
+
+    PDF.config(PDFConfig.orientation.p, PDFConfig.unit.cm, PDFConfig.format.a4)
+
+    PDF.createHeader('MUNICÍPIO DE MODELO\n' +
         'SECRETARIA MUNICIPAL DE SAÚDE\n' +
-        'HOSPITAL MUNICIPAL DE MODELO');
-    file.space();
-    file.space();
-    file.insertText('CIDADÃO: FRANCISCO LEANDRO DE MORAIS PINTO',
+        'HOSPITAL MUNICIPAL DE MODELO')
+
+    PDF.createSpace();
+
+    PDF.createSpace();
+
+    PDF.createText(`CIDADÃO: ${user.nome}`.toUpperCase(),
         {fontStyle: 'bold', fontName: 'Times New Roman', fontSize: '12', align: 'left'});
-    file.insertText("CPF.: 098.143.544-06\tCNS.: 789.2154.8765.5646\tDATA NASCIMENTO: 20/06/1994",
+
+    PDF.createText(`CPF.: ${user.cpf}\tCNS.: ${user.cns}\tDATA NASCIMENTO: ${user.datanascimento}`,
         {fontStyle: 'bold', fontName: 'Times New Roman', fontSize: '12', align: 'left'});
-    file.space();
-    file.insertText('HISTÓRICO DE ATENDIMENTO NA ATENÇÃO BÁSICA',
+
+    PDF.createText('HISTÓRICO DE ATENDIMENTO NA ATENÇÃO BÁSICA',
         {fontStyle: 'bold', fontName: 'Times New Roman', fontSize: '12', align: 'center'})
-    file.space();
-    file.insertText('EXAMES SOLICITADOS',
+
+    PDF.createText('EXAMES SOLICITADOS',
         {fontStyle: 'bold', fontName: 'Times New Roman', fontSize: '12', align: 'left'})
 
-     file.insertTableDefault([
-        'Procedimento'.toUpperCase(),
-        'Procedimento de Forma Organizacional'.toUpperCase(),
-        'Procedimento Sub Grupo'.toUpperCase(),
-        'Data Competencia do Procedimento'.toUpperCase(),
+    PDF.createTableDefault([
+        'Proc.'.toUpperCase(),
+        'Proc. de Forma Org.'.toUpperCase(),
+        'Proc. Sub Grupo'.toUpperCase(),
+        'Data Competencia do Proc'.toUpperCase(),
         'Data da Solicitação'.toUpperCase(),
     ], examesS);
-    console.log(pdf)
-    file.insertText('RESULTADOS DE EXAMES',
-        {fontStyle: 'bold', fontName: 'Times New Roman', fontSize: '12', align: 'left'})
-    file.insertFooter('cep: 59900-00 - pau dos ferros - rn'.toUpperCase(),
-        {align: 'left'});
-    file.insertFooter('rua: José paiva lourdes'.toUpperCase(),
-        {align: 'left'});
-    file.save('TESTE');
 
-    file.clear();
+    PDF.createSpace();
+
+    PDF.createText('RESULTADOS DE EXAMES',
+        {fontStyle: 'bold', fontName: 'Times New Roman', fontSize: '12', align: 'left'})
+    
+    PDF.createTableDefault([
+        'Proc.'.toUpperCase(),
+        'Proc. de Forma Org.'.toUpperCase(),
+        'Proc. Sub Grupo'.toUpperCase(),
+        'Data Competencia do Proc.'.toUpperCase(),
+        'Data da Solicitação'.toUpperCase(),
+        'Data do Resultado'.toUpperCase(),
+        'Resultado'.toUpperCase()
+    ], examesR);
+
+    PDF.createSpace();
+
+    PDF.createText("medicamentos prescritos".toUpperCase(),
+        {fontStyle: 'bold', fontName: 'Times New Roman', fontSize: '12', align: 'left'})
+    PDF.createTableDefault([
+        'Principio ativo'.toUpperCase(),
+        'Concentração'.toUpperCase(),
+        'Forma'.toUpperCase(),
+    ], medicamentoPres);
+
+    PDF.createFooter('SGH - Versão 1.0 Beta SGH -',
+        {fontStyle: 'bold', fontName: 'Times New Roman', fontSize: '10', align: 'left'});
+
+    PDF.createFooter('Relatorio Emitido às '+formTime(new Date())+'MIN do dia '+formDate(new Date())+'.',
+        {fontStyle: 'bold', fontName: 'Times New Roman', fontSize: '10', align: 'left'});
+
+    PDF.createFooter('OBSERVAÇÃO:',
+        {fontStyle: 'bold', fontName: 'Times New Roman', fontSize: '10', align: 'left'});
+
+    PDF.createFooter('DADOS CONSULTADOS NA BASE DE DADOS DO E-SUS',
+        {fontStyle: 'bold', fontName: 'Times New Roman', fontSize: '10', align: 'left'});
+
+    PDF.save('TESTE');
 });
