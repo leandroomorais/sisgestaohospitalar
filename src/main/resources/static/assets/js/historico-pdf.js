@@ -1,6 +1,6 @@
 
 $("#historico-pdf").click(function () {
-    const examesS = PDFUtil.extractOfArray(examesSolicitations, {
+    const examesS = PDFUtil.extractOfArrayToKey(examesSolicitations, {
         procedimento: {
             nomeProcedimento: '',
             dtCompetencia: '',
@@ -13,7 +13,7 @@ $("#historico-pdf").click(function () {
         },
         dataSolicitacao: ''
     });
-    const examesR = PDFUtil.extractOfArray(examesResult, {
+    const examesR = PDFUtil.extractOfArrayToKey(examesResult, {
         procedimento: {
             nomeProcedimento: '',
             dtCompetencia: '',
@@ -28,7 +28,7 @@ $("#historico-pdf").click(function () {
         dataResultado: '',
         resultado: ''
     });
-    const medicamentoPres = PDFUtil.extractOfArray(receitas, {
+    const medicamentoPres = PDFUtil.extractOfArrayToKey(receitas, {
         medicamento:{
             principio_ativo: '',
             concentracao: '',
@@ -40,9 +40,12 @@ $("#historico-pdf").click(function () {
 
     PDF.config(PDFConfig.orientation.p, PDFConfig.unit.cm, PDFConfig.format.a4)
 
-    PDF.createHeader('MUNICÍPIO DE MODELO\n' +
+    PDF.createTitle('MUNICÍPIO DE MODELO\n' +
         'SECRETARIA MUNICIPAL DE SAÚDE\n' +
-        'HOSPITAL MUNICIPAL DE MODELO')
+        'HOSPITAL MUNICIPAL DE MODELO', {
+        align: 'center',
+        fontStyle: 'bold'
+    })
 
     PDF.createSpace();
 
@@ -60,38 +63,46 @@ $("#historico-pdf").click(function () {
     PDF.createText('EXAMES SOLICITADOS',
         {fontStyle: 'bold', fontName: 'Times New Roman', fontSize: '12', align: 'left'})
 
-    PDF.createTableDefault([
-        'Proc.'.toUpperCase(),
-        'Proc. de Forma Org.'.toUpperCase(),
-        'Proc. Sub Grupo'.toUpperCase(),
-        'Data Competencia do Proc'.toUpperCase(),
+    PDF.createTable(Extract.extractToKey([
+        'Procedimento'.toUpperCase(),
+        'Procedimento de Forma Organizacional'.toUpperCase(),
+        'Procedimento Sub Grupo'.toUpperCase(),
+        'Data Competencia do Procedimento'.toUpperCase(),
         'Data da Solicitação'.toUpperCase(),
-    ], examesS);
+    ]), examesS);
 
     PDF.createSpace();
 
     PDF.createText('RESULTADOS DE EXAMES',
         {fontStyle: 'bold', fontName: 'Times New Roman', fontSize: '12', align: 'left'})
-    
-    PDF.createTableDefault([
-        'Proc.'.toUpperCase(),
-        'Proc. de Forma Org.'.toUpperCase(),
-        'Proc. Sub Grupo'.toUpperCase(),
-        'Data Competencia do Proc.'.toUpperCase(),
+
+    PDF.createTable(Extract.extractToKey([
+        'Procedimento'.toUpperCase(),
+        'Procedimento de Forma Organizacional'.toUpperCase(),
+        'Procedimento Sub Grupo'.toUpperCase(),
+        'Data Competencia do Procedimento'.toUpperCase(),
         'Data da Solicitação'.toUpperCase(),
         'Data do Resultado'.toUpperCase(),
         'Resultado'.toUpperCase()
-    ], examesR);
-
-    PDF.createSpace();
+    ]), examesR, {
+        text: 'Conteúdo do Resultado de Exame',
+        options: {
+            auto: true,
+        }
+    });
 
     PDF.createText("medicamentos prescritos".toUpperCase(),
         {fontStyle: 'bold', fontName: 'Times New Roman', fontSize: '12', align: 'left'})
-    PDF.createTableDefault([
+    PDF.createTable(Extract.extractToKey([
         'Principio ativo'.toUpperCase(),
         'Concentração'.toUpperCase(),
         'Forma'.toUpperCase(),
-    ], medicamentoPres);
+    ]), medicamentoPres, {
+        text: 'Conteúdo Medicamento prescrito',
+        options: {
+            auto: true,
+        }
+    });
 
     PDF.createFooter('SGH - Versão 1.0 Beta SGH -',
         {fontStyle: 'bold', fontName: 'Times New Roman', fontSize: '10', align: 'left'});

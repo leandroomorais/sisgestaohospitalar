@@ -14,6 +14,8 @@ import javax.validation.constraints.PastOrPresent;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.format.annotation.DateTimeFormat.ISO;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 @Entity
 public class Cidadao {
 
@@ -24,7 +26,7 @@ public class Cidadao {
 	@Column(nullable = false, length = 15)
 	@NotBlank(message = "É necessário preencher o campo CNS")
 	private String cns;
-
+	
 	private String cpf;
 
 	@Column(nullable = false)
@@ -42,6 +44,7 @@ public class Cidadao {
 	@NotNull
 	@PastOrPresent(message = "{PastOrPresent.cidadao.dataEntrada}")
 	@DateTimeFormat(iso = ISO.DATE, pattern = "")
+	@JsonFormat(pattern = "dd/MM/yyyy")
 	@Column(name = "datanascimento", nullable = false, columnDefinition = "DATE")
 	private LocalDate datanascimento;
 

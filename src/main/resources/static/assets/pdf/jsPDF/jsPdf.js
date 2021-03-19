@@ -1816,7 +1816,7 @@
                             text.push([da[i], newX, newY]);
                         }
                     } else {
-                        throw new Error('Unrecognized alignment option, use "left", "center", "right" or "justify".');
+                        throw new Error('Unrecognized alignment option, use "left", "position", "right" or "justify".');
                     }
                 }
 
@@ -5677,7 +5677,7 @@
             var height = this.internal.getLineHeight() / this.internal.scaleFactor;
             this.text(text, x, y);
             //TODO We really need the text baseline height to do this correctly.
-            // Or ability to draw text on top, bottom, center, or baseline.
+            // Or ability to draw text on top, bottom, position, or baseline.
             y += height * .2;
             this.link(x, y - height, width, height, options);
             return width;
@@ -8712,7 +8712,7 @@
 
                     if (style['text-align'] === 'right') {
                         lines[i][0][1]['margin-left'] = space;
-                        //if alignment is not right, it has to be center so split the space to the left and the right
+                        //if alignment is not right, it has to be position so split the space to the left and the right
                     } else if (style['text-align'] === 'center') {
                         lines[i][0][1]['margin-left'] = space / 2;
                         //if justify was set, calculate the word spacing and define in by using the css property

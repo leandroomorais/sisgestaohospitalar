@@ -18,12 +18,28 @@ class PDF {
         PDFUtil.createSpace();
     }
 
-    static createHeader(text){
-        PDFUtil.createHeader(text);
+    static createTitle(text, options){
+        PDFUtil.createTitle(text, options);
+    }
+
+    static createLineVertical(lw){
+        PDFUtil.lineVertical(lw);
+    }
+
+    static createTitleAndLine(text, options, type){
+        PDFUtil.createTitleAndLine(text, options, type)
+    }
+
+    static createLineHorizontal(lw){
+        PDFUtil.lineHorizontal(lw);
     }
 
     static createTableDefault(heades, bodys, option){
         PDFUtil.createTableDefault(heades, bodys, option);
+    }
+
+    static createTable(heades, bodys, title, option){
+        PDFUtil.createTable(heades, bodys, title, option);
     }
 
     static createFooter(text, options) {
