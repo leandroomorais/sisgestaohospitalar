@@ -3,26 +3,26 @@ $("#historico-pdf").click(function () {
     const examesS = PDFUtil.extractOfArrayToKey(examesSolicitations, {
         procedimento: {
             nomeProcedimento: '',
-            dtCompetencia: '',
             procedimentoFormaOrganizacional: {
                 noProcedFormaOrganizacional: ''
             },
             procedimentoSubGrupo: {
                 noProcedSubGrupo: ''
             },
+            dtCompetencia: '',
         },
         dataSolicitacao: ''
     });
     const examesR = PDFUtil.extractOfArrayToKey(examesResult, {
         procedimento: {
             nomeProcedimento: '',
-            dtCompetencia: '',
             procedimentoFormaOrganizacional: {
                 noProcedFormaOrganizacional: ''
             },
             procedimentoSubGrupo: {
                 noProcedSubGrupo: ''
             },
+            dtCompetencia: '',
         },
         dataSolicitacao: '',
         dataResultado: '',
@@ -35,10 +35,12 @@ $("#historico-pdf").click(function () {
             formaFarmaceutica: {
                 nomeFormaFarmaceutica: '',
             }
-        }
+        },
+        posologia: '',
+        recomendacao: ''
     })
 
-    PDF.config(PDFConfig.orientation.p, PDFConfig.unit.cm, PDFConfig.format.a4)
+    PDF.config()
 
     PDF.createFooterAutoPage([
         {
@@ -121,6 +123,8 @@ $("#historico-pdf").click(function () {
         'Principio ativo'.toUpperCase(),
         'Concentração'.toUpperCase(),
         'Forma'.toUpperCase(),
+        'Posologia'.toUpperCase(),
+        'recomendação'.toUpperCase(),
     ]), medicamentoPres, {
         text: 'Conteúdo Medicamento prescrito',
         options: {

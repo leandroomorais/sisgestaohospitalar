@@ -160,15 +160,12 @@ function createExame(data, father){
         createElement('div', row, [{key: 'class', value: 'col-md-4'}], `<strong>Data Competencia do Procedimento: </strong>
                                                      <p>${dtCompetencia}</p>`);
 
-        const date = new Date(object.dataSolicitacao);
-
         createElement('div', row, [{key: 'class', value: 'col-md-4'}], `<strong>Data da Solicitação: </strong>
-                                                     <p>${formDate(date)}</p>`);
+                                                     <p>${object.dataSolicitacao}</p>`);
 
-        if (object.dataResultado != null){
-            const date = new Date(object.dataResultado);
+        if (object.dataResultado != null){ 
             createElement('div', row, [{key: 'class', value: 'col-md-4'}], `<strong>Data do Resultado: </strong>
-                                                     <p>${formDate(date)}</p>`)
+                                                     <p>${object.dataResultado}</p>`)
 
             createElement('div', row, [{key: 'class', value: 'col-md-6'}], `<strong>Resultado: </strong>
                                                      <p>${object.resultado}</p>`)

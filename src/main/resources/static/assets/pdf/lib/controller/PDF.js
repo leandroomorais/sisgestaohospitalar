@@ -2,8 +2,8 @@
 
 class PDF {
 
-    static config(orientation, unit, format){
-        PDFUtil.config(orientation, unit, format);
+    static config(optionPagination){
+        PDFUtil.config(PDFConfig.orientation.p, PDFConfig.unit.cm, PDFConfig.format.a4, optionPagination);
     }
 
     static createText(text, options){

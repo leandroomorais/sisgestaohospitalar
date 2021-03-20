@@ -5,6 +5,8 @@ let sizeCurrent = 0;
 let increment = 0;
 let position = null;
 const topFile = 3;
+const topPage = 1;
+const leftPageOfTop = 1;
 const leftFile = 2;
 let page = 1;
 let titleConf = null;
@@ -21,6 +23,8 @@ let incrementFooter = footerLength;
 let lengthTable = 0;
 let incrementDoc = 0.2;
 let sizeTable = 0;
+let pagination = 0;
+let optionPaginatation = {};
 /*funcao util para evitar a duplicação no rodapé*/
 function isNotFooterInsert(array, pag){
     if(array.length === 0){
@@ -33,9 +37,33 @@ function isNotFooterInsert(array, pag){
     }
     return false;
 }
+
+function checkPagination() {
+    if (optionPaginatation !== undefined && optionPaginatation != null){
+        if (optionPaginatation.startPage !== undefined){
+            if (optionPaginatation.startPage > 0){
+                if (PDFUtil.sizeSheets() === optionPaginatation.startPage){
+                    pagination = optionPaginatation.startPage
+                }
+            } else {
+                if (pagination === 0){
+                    pagination = 1;
+                }
+            }
+        } else {
+            if (pagination === 0){
+                pagination = 1
+            }
+        }
+        if (pagination > 0){
+            pagination = PDFUtil.sizeSheets();
+            PDFUtil.pagination()
+        }
+    }
+}
+
 /*funcao util para setar o footer na pagina no arquivo .pdf*/
 function loadFooter() {
-    console.log(footers)
     if(footers !== undefined && footers != null){
         if(footers.length > 0){
             if(!isNotFooterInsert(footerInsert, PDFUtil.sizeSheets())){
@@ -44,12 +72,23 @@ function loadFooter() {
                 for (let ft of footers){
                     PDFUtil.createFooter(ft.text, ft.options);
                 }
+                checkPagination()
             }
         }
     }
+
+
 }
 /*classe util para manipular os elementos no arquivo pdf*/
 class PDFUtil {
+
+    static defaults = {
+        topFile: 3,
+        leftFile: 2,
+        footerLength: 0.5,
+        position: {},
+    }
+
     static formTime(date){
         try {
             const dateForm = new Date(date);
@@ -94,16 +133,38 @@ class PDFUtil {
     }
     /*funcao util para setar as variaveis globais*/
     static variables(pdf){
+        this.defaults.position = {left: this.defaults.leftFile, center: pdf.internal.pageSize.getWidth() / 2, top: this.defaults.topFile, right: pdf.internal.pageSize.getWidth() - 2};
+        this.defaults.rightPageOfTop = this.defaults.position.right;
         sizeSheet = pdf.internal.pageSize.getHeight() - 5.70;
-        position = {left: leftFile, center: pdf.internal.pageSize.getWidth() / 2, top: topFile, right: pdf.internal.pageSize.getWidth() - 2};
-        titleConf = {left: position.left, center: position.center, top: position.top, right: position.right};
-        footer = {left: position.left, center: position.center, bottom: pdf.internal.pageSize.getHeight() - 2.70, right: position.right};
-        subFooter = {left: position.left, center: position.center, bottom: footer.bottom + 2};
+        titleConf = {left: this.defaults.position.left, center: this.defaults.position.center, top: this.defaults.position.top, right: this.defaults.position.right};
+        footer = {left: this.defaults.position.left, center: this.defaults.position.center,
+            bottom: pdf.internal.pageSize.getHeight() - 2.70, right: this.defaults.position.right};
+        subFooter = {left: this.defaults.position.left, center: this.defaults.position.center,
+            bottom: footer.bottom + 2};
     }
     /*funcao util para setar a configuracao do arquivo PDF*/
-    static config(orientation, unit, format){
+    static config(orientation, unit, format, opPaginatation){
         pdf = new jsPDF(orientation, unit, format);
+        if (opPaginatation !== undefined && opPaginatation != null){
+            if (opPaginatation.isPage){
+                optionPaginatation = {
+                    ...opPaginatation,
+                };
+            }
+        }
         this.variables(pdf)
+    }
+
+    static pagination(){
+        if (optionPaginatation.isPage){
+            if (optionPaginatation.position === 'top'){
+                CheckOptions.on(optionPaginatation.style)
+                pdf.text(pagination.toString(), CheckOptions.alignPagination(optionPaginatation), this.defaults.topFile - 1, optionPaginatation.align)
+            } else if (optionPaginatation.position === 'bottom') {
+                CheckOptions.default()
+                pdf.text(pagination.toString(), CheckOptions.alignPagination(optionPaginatation), footer.bottom + 0.5, optionPaginatation.align)
+            }
+        }
     }
     /*funcao util para retornar a posicao atual do ultimo elemento do arquivo*/
     static get(){
@@ -156,7 +217,7 @@ class PDFUtil {
             return titleConf.top;
         }
 
-        return (pdf.autoTable.previous.cursor.y) + 1.5;
+        return (pdf.autoTable.previous.cursor.y) + 1.79999999;
     }
     /*funcao util para inserir um texto na tabela*/
     static createText(text, options){
@@ -229,12 +290,11 @@ class PDFUtil {
     /*funcao util para criar uma tabela com colunas*/
     static createTable(heades, bodys, title, option){
         let autoIncrement = 1;
-        sizeTable++;
 
         this.create()
         for (let body of bodys){
+            let y = this.get();
             isCreateTable = true;
-            const y = this.get();
             let lines = [];
             let i = 0;
 
@@ -293,7 +353,9 @@ class PDFUtil {
         isLimit = false;
         lengthTable = 0;
         incrementDoc = 0.2;
-        pdf.autoTable.previous.cursor = undefined;
+        if (pdf.autoTable.previous.cursor !== undefined){
+            pdf.autoTable.previous.cursor = undefined;
+        }
         this.variables(pdf)
         loadFooter()
         pdf.addPage();
@@ -437,13 +499,28 @@ class CheckOptions {
         if (options.align !== undefined){
             switch (options.align.toUpperCase()){
                 case 'right'.toUpperCase():
-                    return position.right;
+                    return PDFUtil.defaults.position.right;
                 case 'left'.toUpperCase():
-                    return position.left;
+                    return PDFUtil.defaults.position.left;
                 case 'center'.toUpperCase():
-                    return position.center;
+                    return PDFUtil.defaults.position.center;
                 default:
-                    return position.left;
+                    return PDFUtil.defaults.position.left;
+            }
+        }
+    }
+
+    static alignPagination(options){
+        if (options.align !== undefined){
+            switch (options.align.toUpperCase()){
+                case 'right'.toUpperCase():
+                    return PDFUtil.defaults.position.right;
+                case 'left'.toUpperCase():
+                    return PDFUtil.defaults.position.left - 0.5;
+                case 'center'.toUpperCase():
+                    return PDFUtil.defaults.position.center;
+                default:
+                    return PDFUtil.defaults.position.left - 0.5;
             }
         }
     }
@@ -461,23 +538,34 @@ class CheckOptions {
         }
     }
 
+    static default(){
+        pdf.setFont('Times New Roman');
+        pdf.setFontSize('10');
+        pdf.setFontStyle('normal');
+    }
+
     static on(options){
-        if (options.fontName !== undefined){
-            pdf.setFont(options.fontName)
-        } else {
-            pdf.setFont('Times New Roman');
-        }
+        if (options !== undefined){
+            if (options.fontName !== undefined){
+                pdf.setFont(options.fontName)
+            } else {
+                pdf.setFont('Times New Roman');
+            }
 
-        if (options.fontSize !== undefined){
-            pdf.setFontSize(options.fontSize)
-        } else {
-            pdf.setFontSize('12');
-        }
+            if (options.fontSize !== undefined){
+                pdf.setFontSize(options.fontSize)
+            } else {
+                pdf.setFontSize('12');
+            }
 
-        if (options.fontStyle !== undefined){
-            pdf.setFontStyle(options.fontStyle)
-        } else {
-            pdf.setFontStyle('normal');
+            if (options.fontStyle !== undefined){
+                pdf.setFontStyle(options.fontStyle)
+            } else {
+                pdf.setFontStyle('normal');
+            }
+        }
+        else {
+            this.default()
         }
     }
 }

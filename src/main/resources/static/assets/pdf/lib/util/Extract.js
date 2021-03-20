@@ -14,14 +14,28 @@ class Extract {
 
     static extractToKey(objects){
         const update = []
-        for (let val of objects){
-            const now = {
-                text: val
-            }
-            update.push(now)
-        }
 
+        if (objects.length % 2 === 0){
+            for (let val of objects){
+                const now = {
+                    text: this.replaceVal(val)
+                }
+                update.push(now)
+            }
+        } else {
+            for (let val of objects){
+                const now = {
+                    text: this.replaceVal(val)
+                }
+                update.push(now)
+            }
+            update.push({text: ''});
+        }
         return update;
+    }
+
+    static replaceVal(val){
+        return val.replace(/[•]/g, '-');
     }
 
     static extractOfArrayToKey(objects, object){
@@ -29,11 +43,21 @@ class Extract {
         const newArray = []
         for (let obj of extract){
             const update = []
-            for (let val of obj){
-                const now = {
-                    text: val
+            if (obj.length % 2 === 0){
+                for (let val of obj){
+                    const now = {
+                        text: this.replaceVal(val)
+                    }
+                    update.push(now)
                 }
-                update.push(now)
+            } else {
+                for (let val of obj){
+                    const now = {
+                        text: this.replaceVal(val)
+                    }
+                    update.push(now)
+                }
+                update.push({text: ''})
             }
             newArray.push(update)
         }
