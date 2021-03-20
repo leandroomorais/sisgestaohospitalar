@@ -40,6 +40,25 @@ $("#historico-pdf").click(function () {
 
     PDF.config(PDFConfig.orientation.p, PDFConfig.unit.cm, PDFConfig.format.a4)
 
+    PDF.createFooterAutoPage([
+        {
+            text: 'SGH - Versão 1.0 Beta SGH -',
+            options: {fontStyle: 'bold', fontName: 'Times New Roman', fontSize: '10', align: 'left'}
+        },
+        {
+            text: 'Relatório Emitido às '+formTime(new Date())+'MIN do dia '+formDate(new Date())+'.',
+            options: {fontStyle: 'bold', fontName: 'Times New Roman', fontSize: '10', align: 'left'}
+        },
+        {
+            text: 'OBSERVAÇÃO:',
+            options: {fontStyle: 'bold', fontName: 'Times New Roman', fontSize: '10', align: 'left'}
+        },
+        {
+            text: 'DADOS CONSULTADOS NA BASE DE DADOS DO E-SUS',
+            options: {fontStyle: 'bold', fontName: 'Times New Roman', fontSize: '10', align: 'left'}
+        }
+    ])
+
     PDF.createTitle('MUNICÍPIO DE MODELO\n' +
         'SECRETARIA MUNICIPAL DE SAÚDE\n' +
         'HOSPITAL MUNICIPAL DE MODELO', {
@@ -69,7 +88,12 @@ $("#historico-pdf").click(function () {
         'Procedimento Sub Grupo'.toUpperCase(),
         'Data Competencia do Procedimento'.toUpperCase(),
         'Data da Solicitação'.toUpperCase(),
-    ]), examesS);
+    ]), examesS,{
+        text: 'Conteúdo do Exame Solicitado',
+            options: {
+            auto: true,
+        }
+    });
 
     PDF.createSpace();
 
@@ -104,17 +128,5 @@ $("#historico-pdf").click(function () {
         }
     });
 
-    PDF.createFooter('SGH - Versão 1.0 Beta SGH -',
-        {fontStyle: 'bold', fontName: 'Times New Roman', fontSize: '10', align: 'left'});
-
-    PDF.createFooter('Relatorio Emitido às '+formTime(new Date())+'MIN do dia '+formDate(new Date())+'.',
-        {fontStyle: 'bold', fontName: 'Times New Roman', fontSize: '10', align: 'left'});
-
-    PDF.createFooter('OBSERVAÇÃO:',
-        {fontStyle: 'bold', fontName: 'Times New Roman', fontSize: '10', align: 'left'});
-
-    PDF.createFooter('DADOS CONSULTADOS NA BASE DE DADOS DO E-SUS',
-        {fontStyle: 'bold', fontName: 'Times New Roman', fontSize: '10', align: 'left'});
-
-    PDF.save('TESTE');
+    PDF.save('Relatório Emitido às '+formTime(new Date())+'MIN do dia '+formDate(new Date())+'.');
 });

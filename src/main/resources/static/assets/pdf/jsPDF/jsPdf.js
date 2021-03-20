@@ -9002,7 +9002,6 @@
             };
             if (!settings) settings = {};
             if (!settings.elementHandlers) settings.elementHandlers = {};
-
             return process(this, HTML, isNaN(x) ? 4 : x, isNaN(y) ? 4 : y, settings, callback);
         };
     })(jsPDF.API);

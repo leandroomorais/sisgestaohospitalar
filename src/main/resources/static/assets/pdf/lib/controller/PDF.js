@@ -18,6 +18,10 @@ class PDF {
         PDFUtil.createSpace();
     }
 
+    static removeSpace(){
+        PDFUtil.removeSpace();
+    }
+
     static createTitle(text, options){
         PDFUtil.createTitle(text, options);
     }
@@ -40,6 +44,10 @@ class PDF {
 
     static createTable(heades, bodys, title, option){
         PDFUtil.createTable(heades, bodys, title, option);
+    }
+
+    static createFooterAutoPage(footers){
+        PDFUtil.createFooterAutoPage(footers)
     }
 
     static createFooter(text, options) {

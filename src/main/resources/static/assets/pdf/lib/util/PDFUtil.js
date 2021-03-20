@@ -20,7 +20,7 @@ const footerLength = 0.5;
 let incrementFooter = footerLength;
 let lengthTable = 0;
 let incrementDoc = 0.2;
-
+let sizeTable = 0;
 /*funcao util para evitar a duplicação no rodapé*/
 function isNotFooterInsert(array, pag){
     if(array.length === 0){
@@ -35,13 +35,14 @@ function isNotFooterInsert(array, pag){
 }
 /*funcao util para setar o footer na pagina no arquivo .pdf*/
 function loadFooter() {
+    console.log(footers)
     if(footers !== undefined && footers != null){
         if(footers.length > 0){
-            if(!isNotFooterInsert(footerInsert, this.sizeSheets())){
-                footerInsert.push({pag: this.sizeSheets()})
+            if(!isNotFooterInsert(footerInsert, PDFUtil.sizeSheets())){
+                footerInsert.push({pag: PDFUtil.sizeSheets()})
                 incrementFooter = footerLength;
-                for(let i = 0; i < footers.length; i++){
-                    file.insertFooter(footers[i].text);
+                for (let ft of footers){
+                    PDFUtil.createFooter(ft.text, ft.options);
                 }
             }
         }
@@ -94,7 +95,7 @@ class PDFUtil {
     /*funcao util para setar as variaveis globais*/
     static variables(pdf){
         sizeSheet = pdf.internal.pageSize.getHeight() - 5.70;
-        position = {left: leftFile, center: pdf.internal.pageSize.getWidth() / 2, top: 3, right: pdf.internal.pageSize.getWidth() - 2};
+        position = {left: leftFile, center: pdf.internal.pageSize.getWidth() / 2, top: topFile, right: pdf.internal.pageSize.getWidth() - 2};
         titleConf = {left: position.left, center: position.center, top: position.top, right: position.right};
         footer = {left: position.left, center: position.center, bottom: pdf.internal.pageSize.getHeight() - 2.70, right: position.right};
         subFooter = {left: position.left, center: position.center, bottom: footer.bottom + 2};
@@ -108,7 +109,8 @@ class PDFUtil {
     static get(){
         if (this.getPositionLastTable() > sizeCurrent){
             if (this.getPositionLastTable() > sizeSheet && !isLimit){
-                return titleConf.top;
+                this.addPage()
+                return titleConf.top + increment;
             }
         }
         return this.getPositionLastTable();
@@ -120,8 +122,6 @@ class PDFUtil {
             if (this.getPositionLastTable() > sizeSheet && !isLimit){
                 this.addPage();
                 sizeCurrent = 0;
-            } else {
-                isLimit = false;
             }
         } else if(sizeCurrent > sizeSheet){
             this.addPage();
@@ -130,16 +130,18 @@ class PDFUtil {
     }
     /*funcao util para verificar se foi criado uma tabela*/
     static isCreateTable(){
-        if (pdf.autoTable.previous.cursor === undefined){
-            return false;
-        }
-        return true;
+        return pdf.autoTable.previous.cursor !== undefined;
     }
     /*funcao util para setar o espaço no arquivo*/
     static createSpace(){
         increment = increment + 1;
         incrementDoc = incrementDoc + 0.2;
         this.create();
+    }
+    /*funcao util para remover o espaço no arquivo*/
+    static removeSpace(){
+        increment = increment - (3);
+        incrementDoc = incrementDoc - (0.2 * 3);
     }
     /*funcao util para ter um controlle de posicao da ultima tabela criada*/
     static getPositionLastTable(){
@@ -149,20 +151,23 @@ class PDFUtil {
         if (increment === 0){
             return pdf.autoTable.previous.cursor.y + 0.5;
         }
+
         if (isLimit){
             return titleConf.top;
         }
-        return pdf.autoTable.previous.cursor.y + (incrementDoc - 0.005);
+
+        return (pdf.autoTable.previous.cursor.y) + 1.5;
     }
     /*funcao util para inserir um texto na tabela*/
     static createText(text, options){
-        const y = this.getPositionLastTable();
+        let y = this.get();
+
         if(options === undefined){
             pdf.setFont('Times New Roman');
             pdf.setFontSize('12');
             pdf.setFontStyle('normal');
             pdf.text(text, leftFile,
-                increment === 0 ? topFile : topFile + increment,
+                increment === 0 ? titleConf.top : isCreateTable ? y - 1: titleConf.top + increment,
                 {
                     align: 'justify',
                 }
@@ -174,6 +179,7 @@ class PDFUtil {
                 options.align
             );
         }
+
         if (!isCreateTable){
             this.createSpace();
         }
@@ -185,22 +191,28 @@ class PDFUtil {
     }
     /*funcao util para criar uma legenda*/
     static createLegends(text, options){
-        const y = this.get()
+        let y = this.get()
         if(options === undefined){
             pdf.setFont('Times New Roman');
             pdf.setFontSize('12');
             pdf.setFontStyle('normal');
             pdf.text(text, leftFile,
-                increment === 0 ? topFile : isCreateTable ? y - 0.2 : topFile + increment,
+                increment === 0 ? topFile : isCreateTable ? y - 0.2  : topFile + increment,
                 {
                     align: 'justify',
                 }
             );
         }else{
+            /*if (CheckPosition.isTop(y)){
+                y = y + 0.7
+            } else {
+                y = y - 0.2
+            }*/
             CheckOptions.on(options)
             if (options.align !== undefined){
+
                 pdf.text(text, CheckOptions.alignText(options),
-                    increment === 0 ? topFile : isCreateTable ? y - 0.2 : topFile + increment,
+                    increment === 0 ? topFile : isCreateTable ? y - 0.2: topFile + increment,
                     options.align
                 );
             } else {
@@ -217,10 +229,12 @@ class PDFUtil {
     /*funcao util para criar uma tabela com colunas*/
     static createTable(heades, bodys, title, option){
         let autoIncrement = 1;
+        sizeTable++;
+
+        this.create()
         for (let body of bodys){
             isCreateTable = true;
             const y = this.get();
-            this.create()
             let lines = [];
             let i = 0;
 
@@ -254,7 +268,7 @@ class PDFUtil {
     static createTableDefault(heades, bodys, option){
         this.create()
         isCreateTable = true;
-        const y = this.get();
+        const y = CheckPosition.set(this.get(), 1);
         pdf.autoTable({
             margin: option,
             head: [heades],
@@ -266,8 +280,23 @@ class PDFUtil {
     }
     /*funcao util para inserir uma nova pagina no arquivo*/
     static addPage(){
-        pdf.addPage();
         isLimit = true;
+        sizeSheet = 0;
+        sizeCurrent = 0;
+        increment = 0;
+        position = null;
+        page = 1;
+        titleConf = null;
+        footer = null;
+        subFooter = null;
+        isCreateTable = false;
+        isLimit = false;
+        lengthTable = 0;
+        incrementDoc = 0.2;
+        pdf.autoTable.previous.cursor = undefined;
+        this.variables(pdf)
+        loadFooter()
+        pdf.addPage();
     }
     /*funcao util para salvar o arquivo .pdf*/
     static save(name){
@@ -276,12 +305,24 @@ class PDFUtil {
     }
     /*funcao util para restart as variaveis globais*/
     static clear(){
-        isLimit = false;
-        increment = 0;
-        incrementFooter = footerLength;
-        page = 1;
+        sizeSheet = 0;
         sizeCurrent = 0;
-        incrementDoc = 0.2
+        increment = 0;
+        position = null;
+        page = 1;
+        titleConf = null;
+        footer = null;
+        subFooter = null;
+        isCreateTable = false;
+        isLimit = false;
+        incrementSubFooter = 1;
+        incrementFooterSubTable = 1;
+        footers = [];
+        footerInsert = [];
+        incrementFooter = footerLength;
+        lengthTable = 0;
+        incrementDoc = 0.2;
+        pdf.autoTable.previous.cursor = undefined;
     }
     /*funcao util para inserir o rodapé no arquivo*/
     static createFooter(text, options){
@@ -343,7 +384,38 @@ class PDFUtil {
             this.lineVertical(0.02, position.right, topFile * 2, sizeCurrent * topFile)
         }
     }
+    /*funcao util para criar rodapé nas paginas*/
+    static createFooterAutoPage(fs){
+        footers = fs;
+    }
 }
+
+class CheckPosition{
+    static isTop(y){
+        if (y === topFile){
+            if (isLimit){
+                isLimit = false;
+            }
+            return true;
+        }
+        return false;
+    }
+
+    static setOfDefault(y, defaultP){
+        if (this.isTop(y) && defaultP !== undefined){
+            return y + defaultP;
+        }
+        return y - defaultP;
+    }
+
+    static set(y, update){
+        if (this.isTop(y) && update !== undefined){
+            return y + update;
+        }
+        return y;
+    }
+}
+
 /*class util para verificar se nas funcoes acima estao passando o options*/
 class CheckOptions {
     static alignTitle(options){
