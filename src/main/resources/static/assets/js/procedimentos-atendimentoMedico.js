@@ -80,7 +80,7 @@ $("#diagnosticos").click(function () {
         })
     } else {
         createElement('p', father, [{key: 'class', value: 'col-md4'}],
-            `<p>Não Encontrado diagnósticos referente ao Cidadão</p>`)
+            notFound('Não Encontrado diagnósticos referente ao Cidadão'))
     }
 });
 
@@ -92,7 +92,11 @@ function clear(){
     return father;
 }
 
-$("#medicamentosPrescritos").click(function () {
+function notFound(text) {
+    return `<div class="pl-4"><p class="text-info"> <i class="fas fa-exclamation-circle"></i>${text}</p></div>`;
+}
+
+function createMedicamentosPrescritos(){
     const father = clear();
     if (receitas.length > 0){
         const len = receitas.length;
@@ -124,8 +128,12 @@ $("#medicamentosPrescritos").click(function () {
             }
         })
     } else {
-        createElement('p', father, [{key: 'class', value: 'col-md4'}], `<p>Não Encontrado medicamentos prescritos ao referente Cidadão</p>`)
+        createElement('p', father, [{key: 'class', value: 'col-md4'}], notFound('Não Encontrado medicamentos prescritos ao referente Cidadão'))
     }
+}
+
+$("#medicamentosPrescritos").click(function () {
+    createMedicamentosPrescritos();
 });
 
 function createElement(tagName, father, options, value){
@@ -163,7 +171,7 @@ function createExame(data, father){
         createElement('div', row, [{key: 'class', value: 'col-md-4'}], `<strong>Data da Solicitação: </strong>
                                                      <p>${object.dataSolicitacao}</p>`);
 
-        if (object.dataResultado != null){ 
+        if (object.dataResultado != null){
             createElement('div', row, [{key: 'class', value: 'col-md-4'}], `<strong>Data do Resultado: </strong>
                                                      <p>${object.dataResultado}</p>`)
 
@@ -183,7 +191,8 @@ $("#examesSolicitados").click(function () {
     if(examesSolicitations.length > 0){
         createExame(examesSolicitations, father)
     } else {
-        createElement('p', father, [{key: 'class', value: 'col-md4'}], `<p>Não Encontrado o Exame referente ao Cidadão</p>`)
+        createElement('p', father, [{key: 'class', value: 'col-md4'}],
+            notFound('Não Encontrado o Exame referente ao Cidadão'))
     }
 });
 
@@ -192,9 +201,14 @@ $("#examesResults").click(function () {
     if (examesResult.length > 0){
         createExame(examesResult, father)
     } else {
-        createElement('p', father, [{key: 'class', value: 'col-md4'}], `<p>Não Encontrado o Exame referente ao Cidadão</p>`)
+        createElement('p', father,
+            [{key: 'class', value: 'col-md4'}], notFound('Não Encontrado o Exame referente ao Cidadão'))
     }
 });
+
+$('#v-pills-home-tab').click(function () {
+    createMedicamentosPrescritos()
+})
 
 function checkNumber(value){
     if (value < 10){

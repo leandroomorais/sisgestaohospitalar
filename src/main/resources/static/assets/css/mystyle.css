@@ -10,7 +10,7 @@
 	width: 180px;
 	margin-left: -100px;
 }
-/* Estilização de elementos da Sidebar */
+/* Estilizaï¿½ï¿½o de elementos da Sidebar */
 span.low {
 	font-size: 09px;
 	align-content: center;
@@ -25,9 +25,9 @@ span.type-user {
 	text-align: center;
 	font-weight: bold;
 }
-/* Fim da Estilização de elementos da Sidebar */
+/* Fim da Estilizaï¿½ï¿½o de elementos da Sidebar */
 
-/* Estilização do Loader */
+/* Estilizaï¿½ï¿½o do Loader */
 .loadersearch, loading:after {
 	display: block;
 	width: 1.5rem;
@@ -39,7 +39,7 @@ span.type-user {
 	border-radius: 50%;
 	animation: 1s spin linear infinite;
 }
-/* Fim da estilização do Loader */
+/* Fim da estilizaï¿½ï¿½o do Loader */
 .sexo-info {
 	position: relative;
 	display: inline-block;
@@ -55,16 +55,21 @@ span.type-user {
 	line-height: 1.6;
 }
 
-.cidadao-info a, .card-title a:hover, .card-title a:focus {
-	color: #1572e8;
-	text-decoration: none;
+.border-tab{
+	border-bottom: 2px solid #1572E8 !important;
+	color: #1572E8 !important;
 }
 
-/* Estilização do autocomplete */
+.cidadao-info a, .card-title a:hover, .card-title a:focus {
+color: #1572e8;
+text-decoration: none;
+}
 
-/* Estilização do autocomplete */
+/* Estilizaï¿½ï¿½o do autocomplete */
 
-/* Estilização dos botões de classificação de risco */
+/* Estilizaï¿½ï¿½o do autocomplete */
+
+/* Estilizaï¿½ï¿½o dos botï¿½es de classificaï¿½ï¿½o de risco */
 .h1-radio {
 	color: hsla(215, 5%, 10%, 1);
 	margin-bottom: 2rem;
@@ -271,13 +276,13 @@ input[type="radio"]#control_05:checked+label {
 	}
 }
 
-/* Fim da Estilização dos botões de classificação de risco */
+/* Fim da Estilizaï¿½ï¿½o dos botï¿½es de classificaï¿½ï¿½o de risco */
 .background-image {
 	width: 100%;
 	height: 100%;
 }
 
-/*Estilização da Lista de Cidadãos para atendimento do Médico*/
+/*Estilizaï¿½ï¿½o da Lista de Cidadï¿½os para atendimento do Mï¿½dico*/
 tr.red {
 	border-bottom-style: solid;
 	border-bottom-color: red;
@@ -377,9 +382,9 @@ a.blue {
 	color: blue;
 	text-align: center;
 }
-/*Fim da Estilização da Lista de Cidadãos para atendimento do Médico*/
+/*Fim da Estilizaï¿½ï¿½o da Lista de Cidadï¿½os para atendimento do Mï¿½dico*/
 
-/* Estilização da barra de informações do Cidadão */
+/* Estilizaï¿½ï¿½o da barra de informaï¿½ï¿½es do Cidadï¿½o */
 .h3-info {
 	padding: 5px;
 	margin-left: 3px;
@@ -398,9 +403,9 @@ a.blue {
 .img-info {
 	width: 25px;
 }
-/* Fim Estilização da barra de informações do Cidadão */
+/* Fim Estilizaï¿½ï¿½o da barra de informaï¿½ï¿½es do Cidadï¿½o */
 
-/*Estilização dados da Triagem no Formulário de Atendimento Médico */
+/*Estilizaï¿½ï¿½o dados da Triagem no Formulï¿½rio de Atendimento Mï¿½dico */
 .info-triagem-titulo{
 	color: #1269db;
 	margin-top: 0px;
@@ -426,9 +431,9 @@ a.info{
 img.info{
 	width: 20px;
 }
-/*Estilização dados da
- Triagem no Formulário de Atendimento Médico */
- 
+/*Estilizaï¿½ï¿½o dados da
+ Triagem no Formulï¿½rio de Atendimento Mï¿½dico */
+
  .card-title-admin {
     margin: 0;
     color: #094b9f;
