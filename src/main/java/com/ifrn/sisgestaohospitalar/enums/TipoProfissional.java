@@ -2,6 +2,17 @@ package com.ifrn.sisgestaohospitalar.enums;
 
 public enum TipoProfissional {
 
-	ATENDENTE, TECNICO, ENFERMEIRO, MEDICO, ADMINISTRADOR
+	ATENDENTE("Atendente"), TECNICO("Técnico"), ENFERMEIRO("Enfermeiro"), MEDICO("Médico"),
+	ADMINISTRADOR("Administrador");
+
+	private String descricao;
+
+	TipoProfissional(String descricao) {
+		this.descricao = descricao;
+	}
+
+	public String getDescricao() {
+		return descricao;
+	}
 
 }
