@@ -21,7 +21,7 @@ $(document).ready(
 		//Oculta o formulário de pesquisa por NOME
 		$("#form-busca-nome").hide();
 		//Oculta o formulário de CADASTRO DO CIDADÃO
-		$("#form-cidadao-div").hide();
+		//$("#form-cidadao-div").hide();
 
 		$("#svg-status").hide();
 
@@ -225,6 +225,7 @@ $("#form-busca").submit(function (evt) {
 						}
 
 						if (data.datanascimento != null) {
+							console.log(data.datanascimento);
 							$("#datanascimento").val(data.datanascimento);
 						} else {
 							preenchimentoObrigatorio($("#small-datanascimento"));
@@ -254,8 +255,25 @@ $("#form-busca").submit(function (evt) {
 							preenchimentoObrigatorio($("#small-sexo"));
 						}
 
-						if (data.codigoraca != null) {
-							$("#codigoraca").val(data.codigoraca).change();
+						if (data.codigoRaca != null) {
+							if (data.codigoRaca == "BRANCA") {
+								$("#codigoraca").val(1).change();
+							}
+							if (data.codigoRaca == "PRETA") {
+								$("#codigoraca").val(2).change();
+							}
+							if (data.codigoRaca == "PARDA") {
+								$("#codigoraca").val(3).change();
+							}
+							if (data.codigoRaca == "AMARELA") {
+								$("#codigoraca").val(4).change();
+							}
+							if (data.codigoRaca == "INDIGENA") {
+								$("#codigoraca").val(5).change();
+							}
+							if (data.codigoRaca == "SEMINFORMACAO") {
+								$("#codigoraca").val(99).change();
+							}
 						} else {
 							preenchimentoObrigatorio($("#small-codigoraca"));
 						}
@@ -389,8 +407,8 @@ $("#button-pesquisaCep").click(function (evt) {
 			//Removendo Mensagens de erro
 		},
 		success: function (data) {
-			$("#nomeEstado").val(data.estado.nomeUF).attr("disabled",true);
-			$("#nomemunicipio").val(data.nomeMunicipio).attr("disabled",true);
+			$("#nomeEstado").val(data.estado.nomeUF).attr("disabled", true);
+			$("#nomemunicipio").val(data.nomeMunicipio).attr("disabled", true);
 			$("#endereco-municipio").val(data.id)
 			$("#cep").val(cepU);
 		},
