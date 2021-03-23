@@ -1,17 +1,12 @@
 package com.ifrn.sisgestaohospitalar.repository;
 
+import java.time.LocalDate;
+import java.util.Optional;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 import com.ifrn.sisgestaohospitalar.model.Cidadao;
 
-/**
- * A interface <code>CidadaoRepository</code> extende a interface JpaRepository
- * da API JPA e seus respectivos métodos.
- * 
- * @author Leandro Morais
- * @version 1.0, 02/11/2019
- *
- */
 @Repository
 public interface CidadaoRepository extends JpaRepository<Cidadao, Long> {
 
@@ -19,18 +14,20 @@ public interface CidadaoRepository extends JpaRepository<Cidadao, Long> {
 	 * @param cns
 	 * @return Cidadao
 	 */
-	public Cidadao findByCns(String cns);
+	public Optional<Cidadao> findByCns(String cns);
 
 	/**
 	 * @param cpf
 	 * @return Cidadao
 	 */
-	public Cidadao findByCpf(String cpf);
-	
+	public Optional<Cidadao> findByCpf(String cpf);
+
 	/**
 	 * @param nome
 	 * @return Cidadao
 	 */
-	public Cidadao findByNome(String nome);
+	public Optional<Cidadao> findByNomeIgnoreCase(String nome);
+	
+	public Optional<Cidadao> findByNomeAndDatanascimento(String nome, LocalDate datanascimento);
 
 }
