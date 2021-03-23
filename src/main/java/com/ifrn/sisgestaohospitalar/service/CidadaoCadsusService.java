@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.ifrn.sisgestaohospitalar.cadsus.ConexaoCadsus;
+import com.ifrn.sisgestaohospitalar.enums.CodigoRaca;
 import com.ifrn.sisgestaohospitalar.model.Cidadao;
 import com.ifrn.sisgestaohospitalar.model.EnderecoCidadao;
 import com.ifrn.sisgestaohospitalar.repository.LogradouroRepository;
@@ -267,10 +268,13 @@ public class CidadaoCadsusService {
 			}
 			// Verifica códido da RAÇA
 			if (getPaciente.getJSONObject("patientPerson").getJSONObject("raceCode") != null) {
-				cidadao.setCodigoraca(Integer.parseInt(
-						getPaciente.getJSONObject("patientPerson").getJSONObject("raceCode").getString("code")));
+				for (CodigoRaca codigoRaca : CodigoRaca.values()) {
+					if (codigoRaca.getCodigo() == Integer.parseInt(
+							getPaciente.getJSONObject("patientPerson").getJSONObject("raceCode").getString("code"))) {
+						cidadao.setCodigoRaca(codigoRaca);
+					}
+				}
 			}
-
 			return cidadao;
 
 		}
