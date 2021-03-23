@@ -1,6 +1,5 @@
 package com.ifrn.sisgestaohospitalar.controller;
 
-import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -10,6 +9,7 @@ import java.text.ParseException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
+import java.util.Optional;
 
 import javax.validation.Valid;
 import javax.xml.bind.JAXBException;
@@ -31,6 +31,7 @@ import com.ifrn.sisgestaohospitalar.model.ArquivoBPA;
 import com.ifrn.sisgestaohospitalar.model.Cidadao;
 import com.ifrn.sisgestaohospitalar.model.GuiaAtendimento;
 import com.ifrn.sisgestaohospitalar.model.Profissional;
+import com.ifrn.sisgestaohospitalar.repository.CidadaoRepository;
 import com.ifrn.sisgestaohospitalar.service.ArquivoBPAService;
 import com.ifrn.sisgestaohospitalar.service.CidadaoService;
 import com.ifrn.sisgestaohospitalar.service.EstabelecimentoService;
@@ -40,7 +41,6 @@ import com.ifrn.sisgestaohospitalar.service.TriagemService;
 //import com.ifrn.sisgestaohospitalar.utils.GeradorBPA;
 //import com.ifrn.sisgestaohospitalar.utils.EscritorTXT;
 import com.ifrn.sisgestaohospitalar.utils.LeitorXmlEsus;
-
 
 @Controller
 @RequestMapping("/administracao")
@@ -57,13 +57,16 @@ public class AdministracaoController {
 
 	@Autowired
 	GuiaAtendimentoService guiaatendimentoService;
-	
+
 	@Autowired
 	CidadaoService cidadaoService;
 
-	//@Autowired
-	//GeradorBPA geradorBpa;
-	
+	@Autowired
+	CidadaoRepository cidadaoRepository;
+
+	// @Autowired
+	// GeradorBPA geradorBpa;
+
 	@Autowired
 	ArquivoBPAService arquivoBpaService;
 
@@ -71,7 +74,6 @@ public class AdministracaoController {
 	TriagemService triagemService;
 
 	public static String uploadDirectory = System.getProperty("user.dir") + "/uploads/";
-
 
 	/**
 	 * Direciona o usuário para a página principal do Módulo do Administrador
@@ -217,38 +219,41 @@ public class AdministracaoController {
 		mv.addObject("profissional", profissionalService.findOne(id));
 		return mv;
 	}
-	
-	
+
 	@RequestMapping("/buscar-atendimento")
 	public ModelAndView buscarGuiaAtendimento(Principal principal) {
 		ModelAndView mv = new ModelAndView("guiaAtendimento/buscar-guiaAtendimento");
 		String username = principal.getName();
 		Profissional user = profissionalService.findByCpf(username);
 		mv.addObject("user", user);
-		mv.addObject("guiasAtendimentos",null);
+		mv.addObject("guiasAtendimentos", null);
 		return mv;
 	}
-	
+
 	@GetMapping("/buscar-data")
 	public ModelAndView buscarData(Principal principal, @RequestParam("data") String data) {
-		if(guiaatendimentoService.findByData(LocalDate.parse(data)).isEmpty()) {
-			return buscarGuiaAtendimento(principal).addObject("erro","Nenhum atendimento encontrado para esta data");
+		if (guiaatendimentoService.findByData(LocalDate.parse(data)).isEmpty()) {
+			return buscarGuiaAtendimento(principal).addObject("erro", "Nenhum atendimento encontrado para esta data");
 		}
-		return buscarGuiaAtendimento(principal).addObject("guiasAtendimentos", guiaatendimentoService.findByData(LocalDate.parse(data)));
+		return buscarGuiaAtendimento(principal).addObject("guiasAtendimentos",
+				guiaatendimentoService.findByData(LocalDate.parse(data)));
 	}
-	
+
 	@GetMapping("/buscar-periodo")
-	public ModelAndView buscarData(Principal principal, @RequestParam("dataInicial") String dataInicial, @RequestParam("dataFinal") String dataFinal) {
+	public ModelAndView buscarData(Principal principal, @RequestParam("dataInicial") String dataInicial,
+			@RequestParam("dataFinal") String dataFinal) {
 		int compare = LocalDate.parse(dataFinal).compareTo(LocalDate.parse(dataInicial));
-		if(compare < 0) {
-			return buscarGuiaAtendimento(principal).addObject("erro","A data Inicial não deve se superior a data final");
+		if (compare < 0) {
+			return buscarGuiaAtendimento(principal).addObject("erro",
+					"A data Inicial não deve se superior a data final");
 		}
-		if(guiaatendimentoService.findByPeriodo(LocalDate.parse(dataFinal), LocalDate.parse(dataFinal)).isEmpty()) {
-			return buscarGuiaAtendimento(principal).addObject("erro","Nenhum atendimento encontrado para esta data");
+		if (guiaatendimentoService.findByPeriodo(LocalDate.parse(dataFinal), LocalDate.parse(dataFinal)).isEmpty()) {
+			return buscarGuiaAtendimento(principal).addObject("erro", "Nenhum atendimento encontrado para esta data");
 		}
-		return buscarGuiaAtendimento(principal).addObject("guiasAtendimentos", guiaatendimentoService.findByPeriodo(LocalDate.parse(dataFinal), LocalDate.parse(dataFinal)));
+		return buscarGuiaAtendimento(principal).addObject("guiasAtendimentos",
+				guiaatendimentoService.findByPeriodo(LocalDate.parse(dataFinal), LocalDate.parse(dataFinal)));
 	}
-	
+
 	@GetMapping("/atendimento-detalhe/{id}")
 	public ModelAndView guiaAtendimentoDetalhe(Principal principal, @PathVariable("id") Long id) {
 		ModelAndView mv = new ModelAndView("guiaAtendimento/detalhe-guiaAtendimento-admin");
@@ -258,7 +263,7 @@ public class AdministracaoController {
 		mv.addObject("guiaAtendimento", guiaatendimentoService.findOne(id));
 		return mv;
 	}
-	
+
 	@GetMapping("/buscar-cidadaos")
 	public ModelAndView buscarCidadao(Principal principal) {
 		ModelAndView mv = new ModelAndView("cidadao/buscar-cidadao");
@@ -269,45 +274,47 @@ public class AdministracaoController {
 		mv.addObject("user", user);
 		return mv;
 	}
-	
+
 	@GetMapping("/buscar-cidadao-cns")
 	public ModelAndView buscarCidadaoCns(Principal principal, @RequestParam("cns") String cns) {
 		cns.replace(".", "");
-		if(cidadaoService.findByCns(cns) == null) {
-			return buscarCidadao(principal).addObject("erro","Nenhum Cidadão foi encontrado com este CNS");
+		Optional<Cidadao> cidadao = cidadaoRepository.findByCns(cns);
+		if (cidadao.isPresent()) {
+			return buscarCidadao(principal).addObject("cidadao", cidadao.get());
 		}
-		return buscarCidadao(principal).addObject("cidadao",cidadaoService.findByCns(cns));
+		return buscarCidadao(principal).addObject("erro", "Nenhum Cidadão foi encontrado com este CNS");
 	}
-	
+
 	@GetMapping("/buscar-cidadao-cpf")
 	public ModelAndView buscarCidadaoCpf(Principal principal, @RequestParam("cpf") String cpf) {
 		cpf.replace(".", "");
-		if(cidadaoService.findByCpf(cpf) == null) {
-			return buscarCidadao(principal).addObject("erro","Nenhum Cidadão foi encontrado com este CPF");
+		Optional<Cidadao> cidadao = cidadaoRepository.findByCpf(cpf);
+		if (cidadao.isPresent()) {
+			return buscarCidadao(principal).addObject("cidadao", cidadao.get());
 		}
-		return buscarCidadao(principal).addObject("cidadao",cidadaoService.findByCpf(cpf));
+		return buscarCidadao(principal).addObject("erro", "Nenhum Cidadão foi encontrado com este CPF");
+
 	}
-	
+
 	@GetMapping("/buscar-cidadao-nome")
 	public ModelAndView buscarCidadaoNome(Principal principal, @RequestParam("nome") String nome) {
-		nome.replace(".", "");
-		if(cidadaoService.findByNome(nome) == null) {
-			return buscarCidadao(principal).addObject("erro","Nenhum Cidadão foi encontrado com este Nome");
+		Optional<Cidadao> cidadao = cidadaoRepository.findByNomeIgnoreCase(nome);
+		if (cidadao.isPresent()) {
+			return buscarCidadao(principal).addObject("cidadao", cidadao.get());
 		}
-		return buscarCidadao(principal).addObject("cidadao",cidadaoService.findByNome(nome));
+		return buscarCidadao(principal).addObject("erro", "Nenhum Cidadão foi encontrado com este Nome");
 	}
-	
+
 	@GetMapping("/cidadao-detalhe/{id}")
 	public ModelAndView cidadaoDetalhe(Principal principal, @PathVariable("id") Long id) {
 		ModelAndView mv = new ModelAndView("cidadao/detalhe-cidadao-admin");
 		String username = principal.getName();
 		Profissional user = profissionalService.findByCpf(username);
 		mv.addObject("user", user);
-		mv.addObject("cidadao", cidadaoService.findOne(id));
-		return mv;	
+		mv.addObject("cidadao", cidadaoRepository.findById(id));
+		return mv;
 	}
-	
-	
+
 	@RequestMapping("/gerarbpa")
 	public ModelAndView gerarbpa(Principal principal) {
 		ModelAndView mv = new ModelAndView("administrador/gerarbpa");
@@ -323,11 +330,11 @@ public class AdministracaoController {
 		String username = principal.getName();
 		Profissional user = profissionalService.findByCpf(username);
 		mv.addObject("user", user);
-		//geradorBpa.geradorBPA(mes, "2380633");
+		// geradorBpa.geradorBPA(mes, "2380633");
 		mv.addObject("sucesso", "O arquivo BPA para o SIA SUS foi gerado.");
 		return mv;
 	}
-	
+
 	@GetMapping("/listar-bpa")
 	public ModelAndView listarBpa(Principal principal) {
 		ModelAndView mv = new ModelAndView("administrador/list-arquivobpa");
@@ -337,16 +344,16 @@ public class AdministracaoController {
 		mv.addObject("arquivosBpa", arquivoBpaService.findAll());
 		return mv;
 	}
-	
+
 	@GetMapping("/download/{id}")
-	public HttpEntity<byte[]> download(@PathVariable("id") Long id) throws IOException{
+	public HttpEntity<byte[]> download(@PathVariable("id") Long id) throws IOException {
 		ArquivoBPA arquivoBPA = arquivoBpaService.findOne(id);
-		
+
 		byte[] arquivo = Files.readAllBytes(Paths.get(arquivoBPA.getLink()));
-	    HttpHeaders httpHeaders = new HttpHeaders();
-	    httpHeaders.add("Content-Disposition", "attachment;filename=\""+ arquivoBPA.getNomeArquivo() +"\"");
-	    HttpEntity<byte[]> entity = new HttpEntity<byte[]>(arquivo,httpHeaders);
-	    return entity;
+		HttpHeaders httpHeaders = new HttpHeaders();
+		httpHeaders.add("Content-Disposition", "attachment;filename=\"" + arquivoBPA.getNomeArquivo() + "\"");
+		HttpEntity<byte[]> entity = new HttpEntity<byte[]>(arquivo, httpHeaders);
+		return entity;
 	}
 
 	private String getDateTime() {
