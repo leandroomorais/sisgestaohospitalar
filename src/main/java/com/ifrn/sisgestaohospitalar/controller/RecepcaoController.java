@@ -7,35 +7,46 @@ import java.time.LocalTime;
 import java.time.Period;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+
+import com.ifrn.sisgestaohospitalar.enums.CodigoRaca;
 import com.ifrn.sisgestaohospitalar.enums.StatusAtendimento;
 import com.ifrn.sisgestaohospitalar.enums.TipoProfissional;
 import com.ifrn.sisgestaohospitalar.enums.TipoServico;
 import com.ifrn.sisgestaohospitalar.model.Cidadao;
 import com.ifrn.sisgestaohospitalar.model.GuiaAtendimento;
 import com.ifrn.sisgestaohospitalar.model.Profissional;
+import com.ifrn.sisgestaohospitalar.repository.CidadaoRepository;
+import com.ifrn.sisgestaohospitalar.repository.LogradouroRepository;
 import com.ifrn.sisgestaohospitalar.service.CidadaoCadsusService;
 import com.ifrn.sisgestaohospitalar.service.CidadaoService;
 import com.ifrn.sisgestaohospitalar.service.EstabelecimentoService;
 import com.ifrn.sisgestaohospitalar.service.GuiaAtendimentoService;
 import com.ifrn.sisgestaohospitalar.service.ProfissionalService;
-
+import com.ifrn.sisgestaohospitalar.service.exception.CidadaoJaCadastradoException;
 
 @Controller
 @RequestMapping("/recepcao")
 public class RecepcaoController {
+
+	private static final Logger logger = LoggerFactory.getLogger(RecepcaoController.class);
 
 	@Autowired
 	GuiaAtendimentoService guiatendimentoService;
@@ -44,13 +55,19 @@ public class RecepcaoController {
 	CidadaoService cidadaoService;
 
 	@Autowired
+	CidadaoRepository cidadaoRepository;
+
+	@Autowired
 	ProfissionalService profissionalService;
 
 	@Autowired
 	EstabelecimentoService estabelecimentoService;
-	
+
 	@Autowired
 	CidadaoCadsusService cadsusService;
+	
+	@Autowired
+	LogradouroRepository logradouroRepository;
 
 	// Contador para Gerador de Número de Registro
 	int i = 0;
@@ -71,10 +88,11 @@ public class RecepcaoController {
 		String username = principal.getName();
 		user = profissionalService.findByCpf(username);
 		mv.addObject("estabelecimento", estabelecimentoService.findAll());
-		mv.addObject("paciente", cidadao);
+		mv.addObject("cidadao", cidadao);
 		mv.addObject("user", user);
 		mv.addObject("hasErrors", false);
 		mv.addObject("navItem1", true);
+		mv.addObject("racas", CodigoRaca.values());
 		return mv;
 	}
 
@@ -88,15 +106,21 @@ public class RecepcaoController {
 	 * @throws ParseException
 	 */
 	@PostMapping("/salvar-cidadao")
-	public ModelAndView saveCidadao(@Valid Cidadao cidadao, BindingResult result, Principal principal)
-			throws ParseException {
+	public ModelAndView saveCidadao(@Valid Cidadao cidadao, BindingResult result, Principal principal) {
+		System.out.println(cidadao.toString());
 		if (result.hasErrors()) {
 			return addCidadao(cidadao, principal).addObject("hasErrors", true);
 		}
-		String cns = cidadao.getCns();
-		cns = cns.replace(".", "");
-		cidadao.setCns(cns);
-		cidadaoService.save(cidadao);
+
+		try {
+			cidadaoService.save(cidadao);
+		} catch (CidadaoJaCadastradoException e) {
+			result.rejectValue("cpf", e.getMessage(), e.getMessage());
+			result.rejectValue("datanascimento", e.getMessage(), e.getMessage());
+			return addCidadao(cidadao, principal);
+			
+		}
+
 		GuiaAtendimento guiaAtendimento = new GuiaAtendimento();
 		guiaAtendimento.setCidadao(cidadao);
 		return addGuiaAtendimento(guiaAtendimento, principal).addObject("navItem1", true);
@@ -136,8 +160,8 @@ public class RecepcaoController {
 	 * @return ModelAndView
 	 */
 	@PostMapping("/salvar-guia-atendimento")
-	public ModelAndView saveGuiaAtendimento(GuiaAtendimento guiaAtendimento, @RequestParam("optionsRadios") TipoServico tipoServico, BindingResult result,
-			Principal principal) {
+	public ModelAndView saveGuiaAtendimento(GuiaAtendimento guiaAtendimento,
+			@RequestParam("optionsRadios") TipoServico tipoServico, BindingResult result, Principal principal) {
 		if (result.hasErrors()) {
 			return addGuiaAtendimento(guiaAtendimento, principal);
 		}
@@ -148,10 +172,10 @@ public class RecepcaoController {
 		guiaAtendimento.setHora(LocalTime.now());
 		guiaAtendimento.setNumeroregistro(geradorNumero());
 		guiaAtendimento.setTipoServico(tipoServico);
-		if(tipoServico != TipoServico.EscutaInicial) {
+		if (tipoServico != TipoServico.EscutaInicial) {
 			guiaAtendimento.setClassificacaoDeRisco("AZUL");
 		}
-		
+
 		guiatendimentoService.save(guiaAtendimento);
 		return listarStatusAtd(principal).addObject("navItem1", true).addObject("navItem2", false);
 	}
@@ -207,7 +231,7 @@ public class RecepcaoController {
 		mv.addObject("user", user);
 		return mv;
 	}
-	
+
 	@PostMapping("/busca-local")
 	public ResponseEntity<?> buscarCidadao(HttpServletRequest httpServletRequest) {
 
@@ -217,25 +241,25 @@ public class RecepcaoController {
 		String dataNascimento = httpServletRequest.getParameter("dataNascimento").replace("-", "");
 
 		if (cns.isEmpty() != true) {
-			Cidadao cidadao = cidadaoService.findByCns(cns);
-			if (cidadao != null) {
-				return ResponseEntity.ok(cidadao);
+			Optional<Cidadao> cidadao = cidadaoRepository.findByCns(cns);
+			if (cidadao.isPresent()) {
+				return ResponseEntity.ok(cidadao.get());
 			}
 			return ResponseEntity.notFound().build();
 		}
 
 		if (cpf.isEmpty() != true) {
-			Cidadao cidadao = cidadaoService.findByCpf(cpf);
-			if (cidadao != null) {
-				return ResponseEntity.ok(cidadao);
+			Optional<Cidadao> cidadao = cidadaoRepository.findByCpf(cpf);
+			if (cidadao.isPresent()) {
+				return ResponseEntity.ok(cidadao.get());
 			}
 			return ResponseEntity.notFound().build();
 		}
 
 		if (nome.isEmpty() != true && dataNascimento.isEmpty() != true) {
-			Cidadao cidadao = cidadaoService.findByNome(nome);
-			if (cidadao != null) {
-				return ResponseEntity.ok(cidadao);
+			Optional<Cidadao> cidadao = cidadaoRepository.findByNomeIgnoreCase(nome);
+			if (cidadao.isPresent()) {
+				return ResponseEntity.ok(cidadao.get());
 			}
 			return ResponseEntity.notFound().build();
 		}
@@ -253,7 +277,7 @@ public class RecepcaoController {
 
 		if (cns.isEmpty() != true) {
 			System.out.println(cns);
-			 Cidadao cidadao = cadsusService.consultaCNS(cns);
+			Cidadao cidadao = cadsusService.consultaCNS(cns);
 			if (cidadao != null) {
 				return ResponseEntity.ok(cidadao);
 			}
