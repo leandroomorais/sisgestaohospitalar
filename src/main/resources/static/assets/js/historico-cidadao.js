@@ -1,14 +1,20 @@
 /*variaveis globais*/
+var vacinasAplicadas = []
+var vacinasAgendadas = []
 var cpf = $("#cpfCidadao").val();
 var user = {};
 var examesResult = [];
 var examesSolicitations = [];
 var receitas = [];
 var avaliacoes = [];
-const uriSolicitations = "http://localhost:9090/api/exames/cpf/solicitations/"
-const uriResult = "http://localhost:9090/api/exames/cpf/results/"
-const uriReceita = "http://localhost:9090/api/receitamedicamentos/cpf/"
-const uriAvaliacao = "http://localhost:9090/api/avaliacoes/cpf/"
+
+const baseUri = "http://localhost:9090/api"
+const uriVacinasAplicadas = baseUri + "/vacinacao/cpf/"
+const uriVacinasAgendadas = baseUri + "/vacinacao/aprazamentobycpf/"
+const uriSolicitations = baseUri + "/exames/cpf/solicitations/"
+const uriResult = baseUri + "/exames/cpf/results/"
+const uriReceita = baseUri + "/receitamedicamentos/cpf/"
+const uriAvaliacao = baseUri + "/avaliacoes/cpf/"
 /*---------------------------*/
 /*requsicao GET usando a Promise do JavaScript*/
 function request(url, param, success, error){
@@ -25,6 +31,8 @@ function request(url, param, success, error){
 /*---------------------------------------*/
 /*realizando a requisicao e setando o resultado nas variaveis globais*/
 $(document).ready(function () {
+	request(uriVacinasAplicadas, cpf, (data) => vacinasAplicadas = data, () => vacinasAplicadas = [])
+	request(uriVacinasAgendadas, cpf, (data) => vacinasAgendadas = data, () => vacinasAgendadas = [])
     request(uriSolicitations, cpf, (data) => examesSolicitations = data, () => examesSolicitations = [])
     request(uriAvaliacao, cpf, (data) => avaliacoes = data, () => avaliacoes = [])
     request(uriReceita, cpf, (data) => receitas = data, () => receitas = [])

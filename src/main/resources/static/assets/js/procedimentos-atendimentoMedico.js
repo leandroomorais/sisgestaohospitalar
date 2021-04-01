@@ -360,3 +360,55 @@ $(document).ready(function () {
         }
     })(jQuery);
 })
+
+
+function createVacina(data, father){
+    const len = data.length;
+    $.each(data, function (pos, object) {
+        const row = createElement('div', father, [{key: 'class', value: 'row'}], '');
+        const {nomeProcedimento, dtCompetencia, procedimentoFormaOrganizacional, procedimentoSubGrupo} = object.procedimento;
+
+        createElement("div", row, [{key: 'class', value: 'col-md-4'}], `<strong>Procedimento: </strong><p>${nomeProcedimento}</p>`)
+
+
+        createElement('div', row, [{key: 'class', value: 'col-md-3'}], `<strong>Procedimento de Forma Organizacional: </strong>
+                                                     <p>${procedimentoFormaOrganizacional.noProcedFormaOrganizacional}</p>`);
+
+        createElement('div', row,
+            [{key: 'class', value: 'col-md-3'}], `<strong>Procedimento Sub Grupo: </strong>
+                                                     <p>${procedimentoSubGrupo.noProcedSubGrupo}</p>`);
+
+        createElement('div', row, [{key: 'class', value: 'col-md-4'}], `<strong>Data Competencia do Procedimento: </strong>
+                                                     <p>${dtCompetencia}</p>`);
+
+        createElement('div', row, [{key: 'class', value: 'col-md-4'}], `<strong>Data da Solicitação: </strong>
+                                                     <p>${object.dataSolicitacao}</p>`);
+
+        if (object.dataResultado != null){
+            createElement('div', row, [{key: 'class', value: 'col-md-4'}], `<strong>Data do Resultado: </strong>
+                                                     <p>${object.dataResultado}</p>`)
+
+            createElement('div', row, [{key: 'class', value: 'col-md-6'}], `<strong>Resultado: </strong>
+                                                     <p>${object.resultado}</p>`)
+        }
+
+        if (pos < len-1){
+            createElement('hr', father, [{key: 'class', value: 'col-md-11'}], '');
+        }
+
+    })
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
