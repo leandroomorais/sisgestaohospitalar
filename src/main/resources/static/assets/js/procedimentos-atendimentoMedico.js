@@ -3,7 +3,7 @@
 //Variável que guarda os Ids dos Procedimentos adicionados;
 //var idProcedimentos = [];
 
-
+ 
 var div = $('<div class="col-md-4"><strong>Principio ativo: </strong><p id="principioAtivo"></p>' +
     '</div><div class="col-md-3"><strong>Forma: </strong><p id="forma"></p></div>' +
     '<div class="col-md-3"><strong>Concentração: </strong><p id="concentracao"></p></div>' +

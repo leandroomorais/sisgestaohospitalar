@@ -17,7 +17,7 @@ const uriReceita = baseUri + "/receitamedicamentos/cpf/"
 const uriAvaliacao = baseUri + "/avaliacoes/cpf/"
 /*---------------------------*/
 /*requsicao GET usando a Promise do JavaScript*/
-function request(url, param, success, error){
+function request(url, param, success, error){ 
     return new Promise(resolve => {
         resolve(
             $.ajax({
