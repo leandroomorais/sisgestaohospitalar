@@ -1,6 +1,8 @@
 <!DOCTYPE html>
-<html layout:decorate="~{/layouts/layout-modulos}" lang="pt" xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity"
+<html layout:decorate="~{/layouts/layout-modulos}" lang="pt"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity"
 	xmlns:layout="http://ultraq.net.nz/thymeleaf/layout">
 
 <body>
@@ -9,35 +11,37 @@
 		<div class="sidebar-wrapper scrollbar scrollbar-inner">
 			<div class="sidebar-content">
 				<ul class="nav nav-primary">
-					<li class="nav-item"><a data-toggle="collapse" href="#dashboard" class="collapsed"
-							aria-expanded="false"> <img alt="" width="40" th:src="@{/assets/img/person-male.png}">
-							<span th:text="${user.firstname}" class="low"></span><span class="type-user"
-								th:text="${user.tipoprofissional}"></span> <span class="caret"></span>
-						</a>
+					<li class="nav-item"><a data-toggle="collapse"
+						href="#dashboard" class="collapsed" aria-expanded="false"> <img
+							alt="" width="40" th:src="@{/assets/img/person-male.png}">
+							<span th:text="${user.firstname}" class="low"></span><span
+							class="type-user" th:text="${user.tipoprofissional}"></span> <span
+							class="caret"></span>
+					</a>
 						<div class="collapse" id="dashboard">
 							<ul class="nav nav-collapse">
-								<li><a href="../demo1/index.html"> <span class="sub-item">Meu Perfil</span>
-									</a></li>
+								<li><a href="../demo1/index.html"> <span
+										class="sub-item">Meu Perfil</span>
+								</a></li>
 							</ul>
-						</div>
-					</li>
+						</div></li>
 					<li class="nav-section"><span class="sidebar-mini-icon">
 							<i class="fa fa-ellipsis-h"></i>
-						</span>
-						<h4 class="text-section">Ações</h4>
-					</li>
+					</span>
+						<h4 class="text-section">Ações</h4></li>
 
 
 					<li class="nav-item" th:classappend="${navItem1} ? active : ''"><a
-							th:href="@{/recepcao/adicionar-cidadao}"> <i class="fas fa-user-plus"></i>
+						th:href="@{/recepcao/adicionar-cidadao}"> <i
+							class="fas fa-user-plus"></i>
 							<p>Adicionar Cidadão</p> <span class="caret"></span>
-						</a></li>
+					</a></li>
 
 
 					<li class="nav-item" th:classappend="${navItem2} ? active : ''"><a
-							th:href="@{/recepcao/listar-status}"> <i class="fa fa-users"></i>
+						th:href="@{/recepcao/listar-status}"> <i class="fa fa-users"></i>
 							<p>Fila de Atendimento</p>
-						</a></li>
+					</a></li>
 				</ul>
 			</div>
 		</div>
@@ -46,11 +50,18 @@
 	<div class="main-panel" layout:fragment="main-panel">
 		<div class="container">
 			<div class="page-inner">
-				<div class="alert alert-danger alert-dismissible" role="alert" th:if="${#fields.hasErrors('${cidadao.*}')}">
-					<button type="button" class="close" data-dismiss="alert"><span
-						aria-hidden="true">&times;</span></button>
-					<th:block th:each="detailedError : ${#fields.detailedErrors('${cidadao.*}')}">
-						<div><i class="fa fa-exclamation-circle"></i>[[${detailedError.message}]].</div>
+				<div class="alert alert-danger alert-dismissible" role="alert"
+					th:if="${#fields.hasErrors('${cidadao.*}')}">
+					<div id="hasErrors" hidden="true"
+						th:text="${#fields.hasErrors('${cidadao.*}')}"></div>
+					<button type="button" class="close" data-dismiss="alert">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<th:block
+						th:each="detailedError : ${#fields.detailedErrors('${cidadao.*}')}">
+						<div>
+							<i class="fa fa-exclamation-circle"></i>&nbsp;[[${detailedError.message}]].
+						</div>
 					</th:block>
 				</div>
 				<!-- <div class="alert alert-success alert-dismissible" role="alert" th:if="${not #strings.isEmpty()mensagem}">
@@ -63,7 +74,8 @@
 					<ul class="breadcrumbs">
 						<li class="nav-home"><i class="flaticon-home"></i></li>
 						<li class="separator"><i class="flaticon-right-arrow"></i></li>
-						<li class="nav-item"><a th:href="@{/recepcao/adicionar-cidadao}">Adicionar Cidadão</a></li>
+						<li class="nav-item"><a
+							th:href="@{/recepcao/adicionar-cidadao}">Adicionar Cidadão</a></li>
 
 					</ul>
 				</div>
@@ -74,7 +86,8 @@
 								<div class="card-title">Buscar Cidadão</div>
 							</div>
 							<div class="card-body">
-								<form id="form-busca" method="POST" th:action="@{/cidadao/buscar}">
+								<form id="form-busca" method="POST"
+									th:action="@{/cidadao/buscar}">
 									<div class="row">
 										<div class="col-md-6 col-lg-6">
 											<div id="form-busca-cns" class="form-group">
@@ -116,22 +129,20 @@
 													<div class="input-group-prepend">
 														<span class="input-group-text" id="dn-addon">NASCIMENTO</span>
 													</div>
-													<input type="date" id="dataNascimentoBusca" name="data-nascimento"
+													<input type="date" id="dataNascimentoBusca"
+														name="data-nascimento"
 														class="form-control form-control-lg" placeholder=""
-														aria-label="" aria-describedby="dn-addon">
-													<small id="small-nome" class="form-text text-muted">Digite o nome
-														completo
-														do Cidadão com a data de nascimento</small>
+														aria-label="" aria-describedby="dn-addon"> <small
+														id="small-nome" class="form-text text-muted">Digite
+														o nome completo do Cidadão com a data de nascimento</small>
 												</div>
 											</div>
 										</div>
 										<div class="col-md-3 col-lg-3">
 											<div class="form-group">
 												<button class="btn btn-primary">
-													<span class="btn-label">
-														<i class="fa fa-search"></i>
-													</span>
-													Buscar
+													<span class="btn-label"> <i class="fa fa-search"></i>
+													</span> Buscar
 												</button>
 											</div>
 										</div>
@@ -139,1514 +150,7 @@
 										<div class="col-md-3 col-lg-3">
 											<div class="col-md-4 ml-auto mr-auto">
 												<div class="svg-status" id="svg-status">
-													<svg class="animated" id="freepik_stories-people-search"
-														xmlns="http://www.w3.org/2000/svg" viewBox="0 0 750 500"
-														version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink"
-														xmlns:svgjs="http://svgjs.com/svgjs">
-														<style>
-															svg#freepik_stories-people-search:not(.animated) .animable {
-																opacity: 0;
-															}
-
-															svg#freepik_stories-people-search.animated #freepik--magnifying-glass--inject-26 {
-																animation: 1s 1 forwards cubic-bezier(.36, -0.01, .5, 1.38) zoomOut, 1.5s Infinite linear shake;
-																animation-delay: 0s, 1s;
-															}
-
-															@keyframes zoomOut {
-																0% {
-																	opacity: 0;
-																	transform: scale(1.5);
-																}
-
-																100% {
-																	opacity: 1;
-																	transform: scale(1);
-																}
-															}
-
-															@keyframes shake {
-
-																10%,
-																90% {
-																	transform: translate3d(-1px, 0, 0);
-																}
-
-																20%,
-																80% {
-																	transform: translate3d(2px, 0, 0);
-																}
-
-																30%,
-																50%,
-																70% {
-																	transform: translate3d(-4px, 0, 0);
-																}
-
-																40%,
-																60% {
-																	transform: translate3d(4px, 0, 0);
-																}
-															}
-														</style>
-														<g id="freepik--background-complete--inject-26" class="animable"
-															style="transform-origin: 369.835px 260.895px;">
-															<rect x="260.64" y="70.81" width="87.71" height="145.19"
-																style="fill: rgb(224, 224, 224); transform-origin: 304.495px 143.405px;"
-																id="elmdtqsp2kel" class="animable"></rect>
-															<rect x="257.72" y="70.81" width="87.71" height="145.19"
-																style="fill: rgb(235, 235, 235); transform-origin: 301.575px 143.405px;"
-																id="elgnitda9p82" class="animable"></rect>
-															<rect x="261.46" y="73.76" width="80.24" height="139.3"
-																style="fill: rgb(250, 250, 250); transform-origin: 301.58px 143.41px;"
-																id="elsygrtwkax3o" class="animable"></rect>
-															<rect x="276.74" y="91.86" width="49.34" height="103.1"
-																style="fill: rgb(235, 235, 235); transform-origin: 301.41px 143.41px;"
-																id="eledt82n8700d" class="animable"></rect>
-															<path
-																d="M276.74,158.47c-.12-9.63,8.54-19,18.08-20.37,4.55-.64,9.38.26,13.63-1.48,7.58-3.11,10-13.19,17.63-16.18l.35,74.52H276.74Z"
-																style="fill: rgb(224, 224, 224); transform-origin: 301.584px 157.7px;"
-																id="ellns19hj59ib" class="animable"></path>
-															<polygon
-																points="573.53 56.33 573.53 117.14 486.19 117.14 483.04 56.76 573.53 56.33"
-																style="fill: rgb(224, 224, 224); transform-origin: 528.285px 86.735px;"
-																id="el9vvsr01v9nr" class="animable"></polygon>
-															<g id="el0u1morr051m">
-																<rect x="496.58" y="43.22" width="60.26" height="87.34"
-																	style="fill: rgb(255, 255, 255); transform-origin: 526.71px 86.89px; transform: rotate(-90deg);"
-																	class="animable"></rect>
-															</g>
-															<path
-																d="M570.79,117.43H482.62V56.34h88.17Zm-87.34-.83H570V57.17H483.45Z"
-																style="fill: rgb(224, 224, 224); transform-origin: 526.705px 86.885px;"
-																id="el3fnl7zw3bzi" class="animable"></path>
-															<rect x="492.5" y="64.25" width="68.42" height="45.28"
-																style="fill: rgb(255, 255, 255); transform-origin: 526.71px 86.89px;"
-																id="elstputqay2u" class="animable"></rect>
-															<path
-																d="M560.92,64.25h-1.31l-3.76,0-14.1.06-49.25.09.2-.19c0,13.83,0,29.16,0,45.27h0l-.21-.22,68.42,0-.17.17c0-13.78.07-25.08.09-32.95,0-3.93,0-7,0-9.11,0-1,0-1.84,0-2.39s0-.83,0-.83,0,.26,0,.79,0,1.34,0,2.36c0,2.1,0,5.16,0,9.07,0,7.9,0,19.23.09,33.06v.17h-.17l-68.42,0h-.22v-.22h0c0-16.11,0-31.44,0-45.27v-.2h.2l49.38.1,14.06,0,3.71,0h1Z"
-																style="fill: rgb(224, 224, 224); transform-origin: 526.515px 86.755px;"
-																id="elj61vxwiroke" class="animable"></path>
-															<path
-																d="M483,56.59a7.49,7.49,0,0,1,1.5,1c.89.65,2.11,1.56,3.42,2.61s2.47,2,3.29,2.8a6.74,6.74,0,0,1,1.25,1.28c-.08.09-2.18-1.64-4.81-3.74A46.82,46.82,0,0,1,483,56.59Z"
-																style="fill: rgb(224, 224, 224); transform-origin: 487.73px 60.4367px;"
-																id="elcb147f0vje" class="animable"></path>
-															<path
-																d="M570.38,56.76a44.44,44.44,0,0,1-4.6,3.91,43.35,43.35,0,0,1-4.86,3.58,41.24,41.24,0,0,1,4.6-3.92A42.9,42.9,0,0,1,570.38,56.76Z"
-																style="fill: rgb(224, 224, 224); transform-origin: 565.65px 60.505px;"
-																id="eluf2cakf3rvs" class="animable"></path>
-															<path d="M570.31,117l-9.74-7.9"
-																style="fill: rgb(255, 255, 255); transform-origin: 565.44px 113.05px;"
-																id="el1n9n4xjseqj" class="animable"></path>
-															<path
-																d="M560.57,109.13a45.45,45.45,0,0,1,5,3.78,44.62,44.62,0,0,1,4.73,4.12,45.45,45.45,0,0,1-5-3.78A47.35,47.35,0,0,1,560.57,109.13Z"
-																style="fill: rgb(224, 224, 224); transform-origin: 565.435px 113.08px;"
-																id="elowmchrac8ok" class="animable"></path>
-															<path
-																d="M483,117a39.8,39.8,0,0,1,4.55-3.88,42.47,42.47,0,0,1,4.81-3.53,40.37,40.37,0,0,1-4.55,3.87A41.88,41.88,0,0,1,483,117Z"
-																style="fill: rgb(224, 224, 224); transform-origin: 487.68px 113.295px;"
-																id="elkrw71tefre" class="animable"></path>
-															<g id="elk6ifaqh0b4">
-																<rect x="520.33" y="64.41" width="15.16" height="43.05"
-																	style="fill: rgb(224, 224, 224); transform-origin: 527.91px 85.935px; transform: rotate(-90deg);"
-																	class="animable"></rect>
-															</g>
-															<path
-																d="M98.79,226.73s-8.71-.63-7.9,18.91,2.79,29.94,2.79,29.94-.25,4.33-3.61,3.48S80.4,274,77.29,277.15s-2.09,8.28,2.2,14.18,13.21,19.19,14,20.39,1.11,3.4-1.27,3.19S73.8,309.25,71.67,317s12.52,22.26,14.09,23.88,1.66,2.63,1,3.61-5.86-1.36-10.49-2.72-10.23-2.13-11.08,2.46,5.6,18,29.76,32.11l11.62,5.81,11-7c22.63-16.45,27.7-30.45,26.4-34.93s-6.81-3.16-11.28-1.34-9.43,4.66-10.16,3.75-.75-1.93.65-3.69,14.53-17.64,11.64-25.16-18.32-.5-20.67,0-2.25-1.79-1.59-3.05,8.23-15.38,11.9-21.68,4.32-11.41.78-14.34-9.28,2-12.53,3.18-3.94-3.1-3.94-3.1.94-10.55-.22-30.07-10-17.94-10-17.94"
-																style="fill: rgb(235, 235, 235); transform-origin: 104.638px 304.439px;"
-																id="ellf5lbmr37df" class="animable"></path>
-															<path
-																d="M99.48,244.22a3.37,3.37,0,0,1,0,.41q0,.44.09,1.2c.07,1.08.18,2.63.31,4.61.27,4,.61,9.81,1,17,.8,14.34,1.73,34.16,2.68,56s1.84,41.72,2.56,56.06c.36,7.15.66,13,.86,17,.1,2,.18,3.54.23,4.62,0,.51,0,.91,0,1.2s0,.41,0,.41,0-.14,0-.41,0-.68-.09-1.2c-.07-1.07-.18-2.62-.31-4.61-.27-4-.61-9.81-1-17-.79-14.33-1.72-34.15-2.68-56s-1.84-41.7-2.55-56c-.37-7.16-.66-13-.87-17-.1-2-.17-3.54-.23-4.61,0-.52,0-.92,0-1.21S99.48,244.22,99.48,244.22Z"
-																style="fill: rgb(224, 224, 224); transform-origin: 103.345px 323.475px;"
-																id="el9iqy2k8cpij" class="animable"></path>
-															<path
-																d="M85.88,283.4a3.69,3.69,0,0,1,.72.6c.45.41,1.08,1,1.85,1.77,1.53,1.52,3.59,3.68,5.82,6.1l5.69,6.22,1.73,1.87a4.56,4.56,0,0,1,.61.72,3.66,3.66,0,0,1-.73-.59c-.45-.41-1.08-1-1.84-1.79-1.52-1.53-3.55-3.71-5.78-6.13L88.22,286l-1.74-1.87A3.69,3.69,0,0,1,85.88,283.4Z"
-																style="fill: rgb(224, 224, 224); transform-origin: 94.09px 292.04px;"
-																id="el7szkwvpeiw3" class="animable"></path>
-															<path
-																d="M103.45,300.3c-.09-.09,4.16-4.54,9.49-9.94s9.73-9.72,9.81-9.63-4.16,4.53-9.49,9.94S103.54,300.39,103.45,300.3Z"
-																style="fill: rgb(224, 224, 224); transform-origin: 113.1px 290.515px;"
-																id="elqglpsxesdsq" class="animable"></path>
-															<path
-																d="M103.4,334a4.67,4.67,0,0,1,.81-.51l2.27-1.28c1.92-1.08,4.57-2.57,7.43-4.33s5.4-3.43,7.23-4.65l2.16-1.45a4.3,4.3,0,0,1,.83-.49,3.6,3.6,0,0,1-.72.63c-.49.39-1.2.92-2.09,1.57-1.79,1.29-4.31,3-7.18,4.77s-5.55,3.22-7.51,4.23c-1,.5-1.78.9-2.34,1.15A3.78,3.78,0,0,1,103.4,334Z"
-																style="fill: rgb(224, 224, 224); transform-origin: 113.765px 327.645px;"
-																id="elzbqj7zwhkt" class="animable"></path>
-															<path
-																d="M84.14,322.2a2.82,2.82,0,0,1,.81.37l2.11,1.17c1.77,1,4.19,2.42,6.86,4s5.08,3.05,6.8,4.12c.87.54,1.56,1,2,1.29a3.34,3.34,0,0,1,.71.53,3.32,3.32,0,0,1-.8-.38c-.5-.26-1.22-.66-2.11-1.17-1.77-1-4.2-2.42-6.86-4s-5.08-3-6.81-4.12c-.86-.53-1.55-1-2-1.29A3.93,3.93,0,0,1,84.14,322.2Z"
-																style="fill: rgb(224, 224, 224); transform-origin: 93.785px 327.94px;"
-																id="elrhvq8oouuom" class="animable"></path>
-															<path
-																d="M80.32,351.93a5.29,5.29,0,0,1,1,.49l2.7,1.49c2.28,1.28,5.4,3.07,8.84,5.07s6.55,3.84,8.78,5.18l2.63,1.62a6.82,6.82,0,0,1,.94.64,5.09,5.09,0,0,1-1-.49l-2.71-1.49c-2.27-1.28-5.4-3.07-8.84-5.07s-6.54-3.84-8.78-5.18l-2.63-1.62A6.82,6.82,0,0,1,80.32,351.93Z"
-																style="fill: rgb(224, 224, 224); transform-origin: 92.765px 359.175px;"
-																id="elx43qwblwsj" class="animable"></path>
-															<path
-																d="M104.74,365.91a6.52,6.52,0,0,1,1-.68l2.83-1.72c2.38-1.45,5.67-3.47,9.24-5.8s6.75-4.5,9-6.1l2.71-1.89a7.23,7.23,0,0,1,1-.65,5.51,5.51,0,0,1-.92.79c-.62.49-1.52,1.18-2.64,2-2.25,1.66-5.4,3.89-9,6.22s-6.9,4.31-9.32,5.69c-1.22.69-2.21,1.24-2.9,1.6A5.54,5.54,0,0,1,104.74,365.91Z"
-																style="fill: rgb(224, 224, 224); transform-origin: 117.63px 357.49px;"
-																id="el8r65pn2gkgo" class="animable"></path>
-															<polygon
-																points="122.21 385.97 90.05 385.97 100.55 465.42 111.72 465.42 122.21 385.97"
-																style="fill: rgb(224, 224, 224); transform-origin: 106.13px 425.695px;"
-																id="elljxinrnt88" class="animable"></polygon>
-															<path
-																d="M91.72,395.74a.86.86,0,0,0,.17.28,2,2,0,0,0,.78.55,3.89,3.89,0,0,0,3.4-.41c1.29-.72,2.43-2.13,4.17-2.75a9.1,9.1,0,0,1,5.91.12,25.39,25.39,0,0,1,5.51,2.67,38.17,38.17,0,0,0,4.47,2.4,12.84,12.84,0,0,0,3.31,1,7.4,7.4,0,0,0,.93.06q.31,0,.33,0a16.59,16.59,0,0,1-4.42-1.33,44.41,44.41,0,0,1-4.38-2.48,24.35,24.35,0,0,0-5.6-2.75,9.42,9.42,0,0,0-6.24-.07,8.42,8.42,0,0,0-2.35,1.45,16.23,16.23,0,0,1-1.84,1.43,3.76,3.76,0,0,1-3.13.54A3.23,3.23,0,0,1,91.72,395.74Z"
-																style="fill: rgb(245, 245, 245); transform-origin: 106.21px 396.096px;"
-																id="ely04d00kci9l" class="animable"></path>
-															<path
-																d="M92.9,410.37s.25-.33.75-.85a7.11,7.11,0,0,1,2.57-1.63,11.62,11.62,0,0,1,4.47-.68,46.14,46.14,0,0,1,5.6.77,19.31,19.31,0,0,0,5.73.23,15.77,15.77,0,0,0,4.51-1.28,15.24,15.24,0,0,0,2.71-1.61,4.15,4.15,0,0,0,.86-.78,27.9,27.9,0,0,1-3.72,2,16.72,16.72,0,0,1-4.42,1.14,19.54,19.54,0,0,1-5.59-.27,43.07,43.07,0,0,0-5.66-.73,11.49,11.49,0,0,0-4.63.81,6.82,6.82,0,0,0-2.58,1.84,5.15,5.15,0,0,0-.49.71C92.92,410.27,92.88,410.36,92.9,410.37Z"
-																style="fill: rgb(245, 245, 245); transform-origin: 106.497px 407.455px;"
-																id="el88ifomupl2k" class="animable"></path>
-															<path
-																d="M118.57,418.2a3.06,3.06,0,0,0-.89-.46,9.64,9.64,0,0,0-2.66-.57,17,17,0,0,0-4,.23c-1.5.25-3.11.66-4.8,1a20.69,20.69,0,0,1-4.79.54,10.41,10.41,0,0,1-3.8-.82A8.7,8.7,0,0,1,94.72,416a2.44,2.44,0,0,0,.54.84,6.89,6.89,0,0,0,2.18,1.64,10.18,10.18,0,0,0,3.94,1,19.47,19.47,0,0,0,4.92-.51c1.71-.36,3.3-.79,4.77-1.05a18.57,18.57,0,0,1,3.93-.34A15.39,15.39,0,0,1,118.57,418.2Z"
-																style="fill: rgb(245, 245, 245); transform-origin: 106.645px 417.743px;"
-																id="elgkbom2zpjp5" class="animable"></path>
-															<path
-																d="M95.74,429.22a5.27,5.27,0,0,1,3.12-.31,14.57,14.57,0,0,1,3.27,1.22,12.48,12.48,0,0,0,4.24,1.16,12.66,12.66,0,0,0,7.69-1.78A10.83,10.83,0,0,0,116,428c.39-.42.6-.66.57-.68a30.07,30.07,0,0,1-2.67,1.83,13.21,13.21,0,0,1-7.46,1.58c-3-.17-5.38-2-7.49-2.23a4.93,4.93,0,0,0-2.43.21C96,429,95.72,429.2,95.74,429.22Z"
-																style="fill: rgb(245, 245, 245); transform-origin: 106.156px 429.33px;"
-																id="elat9nlv3nhd" class="animable"></path>
-															<path
-																d="M97.53,444.47a6,6,0,0,0,2.68-.53c1.62-.54,3.62-1.78,6-2.71a9.78,9.78,0,0,1,3.42-.71,6.27,6.27,0,0,1,2.75.62,5.89,5.89,0,0,1,2,1.72s0-.28-.3-.68a4.38,4.38,0,0,0-1.51-1.36,6.36,6.36,0,0,0-2.91-.79,9.66,9.66,0,0,0-3.61.71c-2.43,1-4.36,2.24-5.91,2.85S97.52,444.39,97.53,444.47Z"
-																style="fill: rgb(245, 245, 245); transform-origin: 105.955px 442.252px;"
-																id="elzqpjkpobhol" class="animable"></path>
-															<path
-																d="M99.1,451.57a8.14,8.14,0,0,0,2,.66,36.68,36.68,0,0,0,5.09.86,38.29,38.29,0,0,0,5.16.15,7.63,7.63,0,0,0,2.13-.26c0-.15-3.26,0-7.24-.42S99.14,451.41,99.1,451.57Z"
-																style="fill: rgb(245, 245, 245); transform-origin: 106.29px 452.408px;"
-																id="eltov6va2qv4o" class="animable"></path>
-															<path
-																d="M160.7,129.82l-3.35,4.82s7.53,2.09,7.53,8.79-4.6,7.95-9.63,7.95-9.83-1.46-9.62-8.16,6.48-9.21,6.48-9.21L149,129.82Z"
-																style="fill: rgb(245, 245, 245); transform-origin: 155.252px 140.6px;"
-																id="el1hirgpubewh" class="animable"></path>
-															<rect x="62.94" y="122.73" width="7.56" height="28.43"
-																style="fill: rgb(245, 245, 245); transform-origin: 66.72px 136.945px;"
-																id="elo551jai44l" class="animable"></rect>
-															<rect x="49.97" y="115.43" width="13.16" height="35.74"
-																style="fill: rgb(235, 235, 235); transform-origin: 56.55px 133.3px;"
-																id="elpuxosjxmuwj" class="animable"></rect>
-															<rect x="33.4" y="151.05" width="152.87" height="5.35"
-																style="fill: rgb(224, 224, 224); transform-origin: 109.835px 153.725px;"
-																id="elxk9dc68g21b" class="animable"></rect>
-															<rect x="62.07" y="153.72" width="4.16" height="13.89"
-																style="fill: rgb(224, 224, 224); transform-origin: 64.15px 160.665px;"
-																id="elha9heoq750v" class="animable"></rect>
-															<rect x="144.43" y="153.72" width="4.16" height="13.89"
-																style="fill: rgb(224, 224, 224); transform-origin: 146.51px 160.665px;"
-																id="el8m7q6jd6s09" class="animable"></rect>
-															<rect x="86.98" y="138" width="35.74" height="13.16"
-																style="fill: rgb(235, 235, 235); transform-origin: 104.85px 144.58px;"
-																id="el8h28tcepyp3" class="animable"></rect>
-															<rect x="73.82" y="106.65" width="13.16" height="44.51"
-																style="fill: rgb(245, 245, 245); transform-origin: 80.4px 128.905px;"
-																id="el77jymy4xvfn" class="animable"></rect>
-															<rect x="69.85" y="115.43" width="3.97" height="35.74"
-																style="fill: rgb(235, 235, 235); transform-origin: 71.835px 133.3px;"
-																id="elq9sf11wdrir" class="animable"></rect>
-															<rect x="90.02" y="134.03" width="35.74" height="3.97"
-																style="fill: rgb(235, 235, 235); transform-origin: 107.89px 136.015px;"
-																id="elzc5qfvnucuf" class="animable"></rect>
-															<rect x="604.79" y="252.18" width="54.89" height="177.65"
-																style="fill: rgb(235, 235, 235); transform-origin: 632.235px 341.005px;"
-																id="elx2jmebroik" class="animable"></rect>
-															<rect x="659.68" y="252.21" width="46.59" height="177.59"
-																style="fill: rgb(224, 224, 224); transform-origin: 682.975px 341.005px;"
-																id="elhrvsb5f8" class="animable"></rect>
-															<rect x="609.08" y="259.38" width="44.04" height="38.27"
-																style="fill: rgb(224, 224, 224); transform-origin: 631.1px 278.515px;"
-																id="el0iwn5k6vhs5s" class="animable"></rect>
-															<rect x="609.08" y="301.98" width="44.04" height="38.27"
-																style="fill: rgb(224, 224, 224); transform-origin: 631.1px 321.115px;"
-																id="el3d6i7sau92y" class="animable"></rect>
-															<rect x="609.08" y="344.59" width="44.04" height="38.27"
-																style="fill: rgb(224, 224, 224); transform-origin: 631.1px 363.725px;"
-																id="el3inzd13v07p" class="animable"></rect>
-															<rect x="609.08" y="387.19" width="44.04" height="38.27"
-																style="fill: rgb(224, 224, 224); transform-origin: 631.1px 406.325px;"
-																id="el8m3zqktkfug" class="animable"></rect>
-															<path
-																d="M631.1,266.44a1.53,1.53,0,1,1-1.53-1.53A1.53,1.53,0,0,1,631.1,266.44Z"
-																style="fill: rgb(250, 250, 250); transform-origin: 629.57px 266.44px;"
-																id="elm67r4amn8dq" class="animable"></path>
-															<path
-																d="M631.1,309.54a1.53,1.53,0,1,1-1.53-1.53A1.53,1.53,0,0,1,631.1,309.54Z"
-																style="fill: rgb(250, 250, 250); transform-origin: 629.57px 309.54px;"
-																id="elx03wcl8yzhh" class="animable"></path>
-															<path
-																d="M631.1,352.65a1.53,1.53,0,1,1-1.53-1.53A1.53,1.53,0,0,1,631.1,352.65Z"
-																style="fill: rgb(250, 250, 250); transform-origin: 629.57px 352.65px;"
-																id="el37z174b3h7h" class="animable"></path>
-															<path
-																d="M631.1,395.75a1.53,1.53,0,1,1-1.53-1.53A1.54,1.54,0,0,1,631.1,395.75Z"
-																style="fill: rgb(250, 250, 250); transform-origin: 629.57px 395.75px;"
-																id="elzvamiwvqdvp" class="animable"></path>
-															<rect x="604.79" y="429.83" width="6.34" height="35.63"
-																style="fill: rgb(224, 224, 224); transform-origin: 607.96px 447.645px;"
-																id="el0znopird0fuf" class="animable"></rect>
-															<rect x="653.11" y="429.83" width="6.34" height="35.63"
-																style="fill: rgb(224, 224, 224); transform-origin: 656.28px 447.645px;"
-																id="eld6e5yp67zzq" class="animable"></rect>
-															<rect x="699.25" y="429.83" width="6.34" height="35.63"
-																style="fill: rgb(224, 224, 224); transform-origin: 702.42px 447.645px;"
-																id="ellmgq2161y9h" class="animable"></rect>
-															<path
-																d="M655.83,213.07a60.41,60.41,0,0,1,6.68-12.67,8,8,0,0,1,3.45-3.24c2.51-1,5.23.58,7.47,2.06l5.21,3.42a1.37,1.37,0,0,1,.69.81c.09.64-.71,1-1.36,1.09a9.32,9.32,0,0,1-6.3-1.56c-1.4-1-2.76-2.39-4.45-2.21-2.1.22-3,2.66-3.85,4.6a20.75,20.75,0,0,1-8.85,10"
-																style="fill: rgb(245, 245, 245); transform-origin: 666.929px 206.108px;"
-																id="elokv2wvlti47" class="animable"></path>
-															<path
-																d="M655.82,213.93c.4-10.4.81-20.89,3.3-31s7.25-19.94,15.08-26.81c-1,8.77-4.22,17.12-7.38,25.37L654.07,214.8"
-																style="fill: rgb(245, 245, 245); transform-origin: 664.135px 185.46px;"
-																id="el9cp61yms8e" class="animable"></path>
-															<path
-																d="M654,217.72a115.43,115.43,0,0,0-7.91-27.56,6.86,6.86,0,0,0-2.4-3.38c-1.78-1.07-4.06-.36-6,.48a48.83,48.83,0,0,0-12.41,8,1.72,1.72,0,0,0-.66.94,1.22,1.22,0,0,0,1,1.26,3.41,3.41,0,0,0,1.73-.11l10.4-2.4a4.07,4.07,0,0,1,5.68,2.84q5.1,10.3,10.22,20.6"
-																style="fill: rgb(245, 245, 245); transform-origin: 639.309px 202.315px;"
-																id="el5orh9f3xnc" class="animable"></path>
-															<path
-																d="M669.82,139.26a62,62,0,0,0-14.5,36.65C654.34,198.06,653,214,653,214h2.44s4.89-44.63,8.15-52.45S671.93,142.68,669.82,139.26Z"
-																style="fill: rgb(235, 235, 235); transform-origin: 661.659px 176.63px;"
-																id="elq2cfrs14r3f" class="animable"></path>
-															<path
-																d="M669.82,139.26a7.11,7.11,0,0,1-.31.71c-.23.49-.55,1.15-.94,2-.81,1.74-1.92,4.28-3.17,7.47s-2.61,7-3.91,11.37a117,117,0,0,0-3.4,14.3c-.44,2.58-.64,5.11-.83,7.57s-.33,4.84-.46,7.1c-.26,4.52-.54,8.6-.92,12s-.81,6.16-1.19,8c-.18.94-.36,1.67-.48,2.16a6.06,6.06,0,0,1-.2.74,4,4,0,0,1,.11-.76c.09-.5.24-1.22.39-2.17.33-1.89.73-4.63,1-8s.58-7.48.82-12c.12-2.26.26-4.64.43-7.1s.39-5,.83-7.61a111.52,111.52,0,0,1,3.45-14.35c1.33-4.34,2.72-8.19,4-11.37s2.45-5.71,3.31-7.42c.42-.87.78-1.52,1-2A3.69,3.69,0,0,1,669.82,139.26Z"
-																style="fill: rgb(224, 224, 224); transform-origin: 661.915px 175.97px;"
-																id="elyck4zr848fq" class="animable"></path>
-															<path
-																d="M678.9,160s-16.5,15.75-18.36,30.61-2.82,22.82-2.82,22.82h1.63s3.91-21.18,9-27.86S680,161.79,678.9,160Z"
-																style="fill: rgb(235, 235, 235); transform-origin: 668.371px 186.715px;"
-																id="elo0ahxuyznr" class="animable"></path>
-															<path
-																d="M678.7,161a3.26,3.26,0,0,1-.24.5c-.2.36-.46.82-.77,1.39-.71,1.25-1.69,3-2.88,5.08-2.42,4.3-5.76,10.25-8.79,17.13a87.13,87.13,0,0,0-5.9,18.27c-.47,2.41-.74,4.39-.89,5.76-.09.69-.12,1.22-.17,1.58a3.56,3.56,0,0,1-.08.55,2.17,2.17,0,0,1,0-.56c0-.36,0-.9.08-1.59a58.45,58.45,0,0,1,.75-5.8A82.07,82.07,0,0,1,665.6,185a166.54,166.54,0,0,1,8.93-17.11c1.25-2.13,2.28-3.84,3-5l.84-1.35A3.11,3.11,0,0,1,678.7,161Z"
-																style="fill: rgb(224, 224, 224); transform-origin: 668.831px 186.13px;"
-																id="elm4z748m2f7d" class="animable"></path>
-															<path
-																d="M647,162.77s-2.44,31.11,3.26,49.68h2S653.53,172.22,647,162.77Z"
-																style="fill: rgb(235, 235, 235); transform-origin: 649.42px 187.61px;"
-																id="elenyxto7lko8" class="animable"></path>
-															<path
-																d="M648.36,168.65a1.59,1.59,0,0,1,.08.44c0,.34.08.76.13,1.26.1,1.17.24,2.73.41,4.64.32,3.92.73,9.34,1.16,15.33s.79,11.41,1,15.34c.11,1.91.2,3.49.26,4.65,0,.51,0,.93.05,1.27a2,2,0,0,1,0,.45,1.23,1.23,0,0,1-.08-.44c0-.34-.08-.76-.13-1.26-.11-1.17-.24-2.74-.41-4.64-.32-3.93-.73-9.35-1.16-15.34s-.79-11.41-1-15.34c-.11-1.91-.2-3.48-.26-4.65,0-.51,0-.92,0-1.27A1.85,1.85,0,0,1,648.36,168.65Z"
-																style="fill: rgb(224, 224, 224); transform-origin: 649.911px 190.34px;"
-																id="eln34f509xpzq" class="animable"></path>
-															<path
-																d="M643.13,210.65s6,4.29,5.68,6.29S634.08,229.67,635,238.11s7.82,14.27,19.64,13.81,19.79-7.82,18.72-15.34-12.8-19.47-12.93-20.05c-.39-1.65,5.26-5.88,5.26-5.88Z"
-																style="fill: rgb(224, 224, 224); transform-origin: 654.207px 231.298px;"
-																id="el2wgb1ueeosl" class="animable"></path>
-															<path
-																d="M664.64,221.55c0,.13-4.36.23-9.73.23s-9.73-.1-9.73-.23,4.35-.23,9.73-.23S664.64,221.43,664.64,221.55Z"
-																style="fill: rgb(250, 250, 250); transform-origin: 654.91px 221.55px;"
-																id="el8zaoomm5mp6" class="animable"></path>
-															<path
-																d="M666,223.59c0,.13-5.14.23-11.47.23s-11.47-.1-11.47-.23,5.13-.22,11.47-.22S666,223.47,666,223.59Z"
-																style="fill: rgb(250, 250, 250); transform-origin: 654.53px 223.595px;"
-																id="eljohrr0wlvih" class="animable"></path>
-															<path
-																d="M668.08,225.85c0,.13-6.06.23-13.55.23S641,226,641,225.85s6.06-.23,13.54-.23S668.08,225.73,668.08,225.85Z"
-																style="fill: rgb(250, 250, 250); transform-origin: 654.54px 225.85px;"
-																id="ela3tslvnqf2g" class="animable"></path>
-															<path
-																d="M669.91,228.86c0,.13-7,.23-15.62.23s-15.62-.1-15.62-.23,7-.23,15.62-.23S669.91,228.74,669.91,228.86Z"
-																style="fill: rgb(250, 250, 250); transform-origin: 654.29px 228.86px;"
-																id="elii9gcv0hhol" class="animable"></path>
-														</g>
-														<g id="freepik--Floor--inject-26" class="animable"
-															style="transform-origin: 375px 465.68px;">
-															<path
-																d="M687.24,465.68c0,.15-139.81.26-312.23.26s-312.25-.11-312.25-.26,139.78-.26,312.25-.26S687.24,465.54,687.24,465.68Z"
-																style="fill: rgb(38, 50, 56); transform-origin: 375px 465.68px;"
-																id="elru6jx3cxah7" class="animable"></path>
-														</g>
-														<g id="freepik--character-3--inject-26" class="animable"
-															style="transform-origin: 545.199px 297.372px;">
-															<path
-																d="M517.25,208.69l-6.18,11.19-3.79-30.42a12.26,12.26,0,0,1,1.26-6.4,13.3,13.3,0,0,1,1.54-2.47,13.45,13.45,0,0,1,2.65-2.49c1-.55.8-2-.19-2.1s-3.7,1.35-5.83,4.26-2.36-2.69-2.48-4.73-.78-8.33-1.43-8.77c-1-.65-1.86.28-1.69,2.31s.23,8.18-.84,8.22-1.53-10.36-1.53-10.36.26-2.25-1-2.25c-2.25,0-.95,11-.8,12,.11.72-1.06.8-1.13,0s-.22-10.39-2.51-10.4c-1.75,0,1,9.05-.08,11.08s-1.38-7.1-3.06-7.05c-.62,0-1.09.13-.15,5.33.5,2.8,2.34,6.82,2.91,12.28l.15,1.42c.1,6.8,1.6,27.29,7.79,42.89a12.63,12.63,0,0,0,22.23,2.25c3.81-5.73,9.82-20.72,9.82-20.72Z"
-																style="fill: rgb(183, 136, 118); transform-origin: 511.194px 202.402px;"
-																id="elqw0lde424rp" class="animable"></path>
-															<path
-																d="M496.28,185.15s.35,0,.89.24a3.18,3.18,0,0,1,1.73,1.43l.21.38.12-.43a5.49,5.49,0,0,1,.83-1.66,6.09,6.09,0,0,1,2.87-2.11c.88-.32,1.49-.3,1.48-.37a2.81,2.81,0,0,0-1.56.11,5.66,5.66,0,0,0-3.1,2.14,5.24,5.24,0,0,0-.87,1.8l.34-.05a3.27,3.27,0,0,0-2-1.46A1.55,1.55,0,0,0,496.28,185.15Z"
-																style="fill: rgb(163, 105, 87); transform-origin: 500.345px 184.884px;"
-																id="ellncwdyfzmw" class="animable"></path>
-															<path
-																d="M537.71,133.19c-2.89.66-5.57,2.19-5.84,5.15s.1,6.08-1.14,8.78c-1.4,3-4.74,5.28-4.85,8.62-.07,2,1.14,3.95,1.08,6-.09,3.34-3.51,5.87-3.69,9.22-.12,2.4,1.48,4.71,1.09,7.09-.3,1.86-1.74,3.31-2.35,5.09-1.21,3.54,1.22,7.43,4.38,9.42a14.36,14.36,0,0,0,20.92-6.68c1.75-4.25,1.37-9,1-13.62q-1.78-21.43-2.65-42.91"
-																style="fill: rgb(38, 50, 56); transform-origin: 535.158px 162.057px;"
-																id="el8rew2gfivty" class="animable"></path>
-															<path
-																d="M598.32,450s-28.53-89.62-29.11-92.42c-.52-2.54,9.86-64.61,11.16-80.68l-36.69,1.37v.27l-15.6.86,14.49,181.33,16-.28-1.34-63.16c10.41,28,26.41,58.77,26.41,58.77Z"
-																style="fill: rgb(183, 136, 118); transform-origin: 563.2px 368.815px;"
-																id="elnfnmspjxta" class="animable"></path>
-															<path
-																d="M558,418.28c0-.54-.21-19.61-.21-19.61-.21,1.14-6.47-16.56-6.32-17.64C551.5,380.47,558,418.28,558,418.28Z"
-																style="fill: rgb(163, 105, 87); transform-origin: 554.734px 399.652px;"
-																id="elskc6f02rwg" class="animable"></path>
-															<path
-																d="M550.71,372.65a3.72,3.72,0,0,0-.11,1.07,26.24,26.24,0,0,0,0,2.92c0,.62.09,1.3.17,2s.19,1.5.36,2.3a38.84,38.84,0,0,0,1.38,5.14c1.22,3.56,2.58,6.69,3.54,8.95l1.17,2.67a4.72,4.72,0,0,0,.5.95,3.6,3.6,0,0,0-.3-1c-.22-.65-.57-1.59-1-2.74-.86-2.3-2.16-5.45-3.37-9a44,44,0,0,1-1.41-5.06c-.17-.79-.29-1.55-.4-2.26s-.19-1.38-.23-2c-.12-1.21-.17-2.21-.2-2.89A4.92,4.92,0,0,0,550.71,372.65Z"
-																style="fill: rgb(163, 105, 87); transform-origin: 554.14px 385.65px;"
-																id="el0lk7ssjp2ng" class="animable"></path>
-															<path
-																d="M541.73,461.43v-1.58l17.3-.76.05,6.55-1.07.07c-4.75.28-24.16,1.08-27.34.12C527.12,464.77,541.73,461.43,541.73,461.43Z"
-																style="fill: rgb(69, 90, 100); transform-origin: 544.597px 462.689px;"
-																id="elo6itcgqo9mc" class="animable"></path>
-															<path
-																d="M559.31,465.24l-.3,0-.85.06-3.12.14c-2.65.11-6.3.2-10.33.22s-7.69,0-10.33-.13l-3.13-.11-.85-.05-.3,0h1.15l3.13.06c2.64,0,6.3.08,10.33.06s7.68-.09,10.32-.15l3.13-.08.85,0Z"
-																style="fill: rgb(38, 50, 56); transform-origin: 544.705px 465.453px;"
-																id="elxtm6wcym7ti" class="animable"></path>
-															<path
-																d="M536.12,465.8a6.74,6.74,0,0,0-.58-1.49,7.6,7.6,0,0,0-1.08-1.2,2.27,2.27,0,0,1,1.25,1.09A2.23,2.23,0,0,1,536.12,465.8Z"
-																style="fill: rgb(38, 50, 56); transform-origin: 535.299px 464.455px;"
-																id="el0vhdai22f9vc" class="animable"></path>
-															<path
-																d="M541.19,463.2s-.29-.26-.54-.66-.42-.74-.37-.77.29.27.54.66S541.24,463.17,541.19,463.2Z"
-																style="fill: rgb(38, 50, 56); transform-origin: 540.735px 462.484px;"
-																id="el74z6du28kyd" class="animable"></path>
-															<path
-																d="M542.58,462.46s-.31-.14-.6-.4-.51-.52-.47-.56.31.14.61.4S542.62,462.42,542.58,462.46Z"
-																style="fill: rgb(38, 50, 56); transform-origin: 542.045px 461.977px;"
-																id="ell40ngtlab8m" class="animable"></path>
-															<path
-																d="M543.46,460.83a2,2,0,0,1-.9.12,2,2,0,0,1-.9-.09,2,2,0,0,1,.9-.12A2.31,2.31,0,0,1,543.46,460.83Z"
-																style="fill: rgb(38, 50, 56); transform-origin: 542.56px 460.848px;"
-																id="elxoagwd1uah" class="animable"></path>
-															<path
-																d="M543.76,459.69a1.74,1.74,0,0,1-1,.29,1.79,1.79,0,0,1-1-.13,5.66,5.66,0,0,1,1-.08A5.08,5.08,0,0,1,543.76,459.69Z"
-																style="fill: rgb(38, 50, 56); transform-origin: 542.76px 459.845px;"
-																id="eliyx8ujk2tee" class="animable"></path>
-															<path
-																d="M540.6,461.7a2.89,2.89,0,0,1-1.1,0,7,7,0,0,1-1.18-.25,3.42,3.42,0,0,1-.67-.28.57.57,0,0,1-.28-.34.44.44,0,0,1,.17-.45,2,2,0,0,1,2.51.59,2.14,2.14,0,0,1,.36.74.71.71,0,0,1,0,.29,3.37,3.37,0,0,0-.51-.94,2,2,0,0,0-.94-.61,1.73,1.73,0,0,0-1.32.1c-.18.13-.11.33.09.45a2.81,2.81,0,0,0,.62.26,6.16,6.16,0,0,0,1.14.29C540.18,461.67,540.6,461.67,540.6,461.7Z"
-																style="fill: rgb(38, 50, 56); transform-origin: 538.98px 461.082px;"
-																id="elrar8nnyg4q" class="animable"></path>
-															<path
-																d="M540.32,461.76a1.07,1.07,0,0,1-.13-.77,1.72,1.72,0,0,1,.3-.81,1.1,1.1,0,0,1,.92-.56.44.44,0,0,1,.34.51,1.2,1.2,0,0,1-.19.49,3.18,3.18,0,0,1-.52.67,1.58,1.58,0,0,1-.63.45s.22-.2.52-.55a3.47,3.47,0,0,0,.46-.66c.16-.24.26-.66,0-.71s-.56.25-.73.47a2,2,0,0,0-.31.72A3.44,3.44,0,0,0,540.32,461.76Z"
-																style="fill: rgb(38, 50, 56); transform-origin: 540.962px 460.69px;"
-																id="elkuqoqquod7" class="animable"></path>
-															<path
-																d="M558.94,460.53s-.49,0-1.27.05a5.44,5.44,0,0,0-4.5,3.61c-.26.74-.28,1.24-.32,1.23a1,1,0,0,1,0-.35,5.23,5.23,0,0,1,.18-.93,5.26,5.26,0,0,1,4.62-3.71,4.51,4.51,0,0,1,1,0A1.26,1.26,0,0,1,558.94,460.53Z"
-																style="fill: rgb(38, 50, 56); transform-origin: 555.887px 462.911px;"
-																id="elvdli9sjyecf" class="animable"></path>
-															<path
-																d="M550.66,463.87a10.33,10.33,0,0,1-2.52.24,9.9,9.9,0,0,1-2.51-.21c0-.06,1.13,0,2.51,0S550.65,463.81,550.66,463.87Z"
-																style="fill: rgb(38, 50, 56); transform-origin: 548.145px 463.984px;"
-																id="eluzitb4qfaze" class="animable"></path>
-															<path
-																d="M554,463.83s-.09.24-.21.5-.17.49-.23.48-.09-.27,0-.57S554,463.79,554,463.83Z"
-																style="fill: rgb(38, 50, 56); transform-origin: 553.752px 464.317px;"
-																id="elf9prmeuuxa" class="animable"></path>
-															<path
-																d="M555.29,462.25s-.07.22-.24.4-.36.29-.4.25.07-.22.25-.4S555.25,462.21,555.29,462.25Z"
-																style="fill: rgb(38, 50, 56); transform-origin: 554.966px 462.575px;"
-																id="elts83kug3z6" class="animable"></path>
-															<path
-																d="M557.11,461.52c0,.05-.24.05-.49.14s-.44.23-.48.19.09-.28.41-.38S557.13,461.46,557.11,461.52Z"
-																style="fill: rgb(38, 50, 56); transform-origin: 556.622px 461.641px;"
-																id="elzx5bhbb2yl" class="animable"></path>
-															<path
-																d="M558.4,461.17c0,.05-.07.14-.22.2s-.27.06-.29,0,.07-.14.22-.2S558.38,461.12,558.4,461.17Z"
-																style="fill: rgb(38, 50, 56); transform-origin: 558.144px 461.272px;"
-																id="elczu1qh05s3d" class="animable"></path>
-															<path
-																d="M583.33,457.81l-.66-1.44,15.47-7.77,2.72,5.94-.94.51c-4.22,2.19-21.6,10.88-24.89,11.31C571.36,466.84,583.33,457.81,583.33,457.81Z"
-																style="fill: rgb(69, 90, 100); transform-origin: 587.595px 457.489px;"
-																id="elmkho1kg3f5" class="animable"></path>
-															<path
-																d="M600.92,454.08s-.08.06-.25.15l-.76.4-2.79,1.42c-2.37,1.17-5.66,2.76-9.33,4.43s-7,3.1-9.48,4.11l-2.9,1.17-.79.31a1,1,0,0,1-.29.09l.27-.13.78-.34,2.88-1.24c2.42-1,5.77-2.5,9.44-4.16s7-3.23,9.36-4.38l2.82-1.35.77-.36Z"
-																style="fill: rgb(38, 50, 56); transform-origin: 587.625px 460.12px;"
-																id="elvssut91xkp" class="animable"></path>
-															<path
-																d="M580,464.09a6.65,6.65,0,0,0-1.15-1.12,6.5,6.5,0,0,0-1.46-.65,2.78,2.78,0,0,1,2.61,1.77Z"
-																style="fill: rgb(38, 50, 56); transform-origin: 578.695px 463.205px;"
-																id="elk00ktslkaks" class="animable"></path>
-															<path
-																d="M583.56,459.65a2.08,2.08,0,0,1-.76-.38c-.4-.26-.69-.51-.66-.55s.38.12.77.37S583.59,459.6,583.56,459.65Z"
-																style="fill: rgb(38, 50, 56); transform-origin: 582.85px 459.182px;"
-																id="elwn4c7kem3ne" class="animable"></path>
-															<path
-																d="M584.53,458.4c0,.05-.34,0-.72-.12s-.68-.26-.66-.32.34,0,.72.12S584.54,458.34,584.53,458.4Z"
-																style="fill: rgb(38, 50, 56); transform-origin: 583.84px 458.178px;"
-																id="elj3pften2yvb" class="animable"></path>
-															<path
-																d="M584.66,456.56a4.07,4.07,0,0,1-1.63.76c0-.06.32-.27.77-.48S584.63,456.5,584.66,456.56Z"
-																style="fill: rgb(38, 50, 56); transform-origin: 583.845px 456.933px;"
-																id="el914ao910mi" class="animable"></path>
-															<path
-																d="M584.46,455.39s-.28.4-.79.68a1.79,1.79,0,0,1-1,.3,5,5,0,0,1,.9-.49C584.06,455.62,584.42,455.34,584.46,455.39Z"
-																style="fill: rgb(38, 50, 56); transform-origin: 583.565px 455.877px;"
-																id="elq6c3xrsnin" class="animable"></path>
-															<path
-																d="M582.41,458.52a3.24,3.24,0,0,1-1,.45,6.56,6.56,0,0,1-1.18.25,2.92,2.92,0,0,1-.73,0,.57.57,0,0,1-.39-.2.44.44,0,0,1,0-.47,2,2,0,0,1,2.53-.49,2,2,0,0,1,.63.52c.12.15.16.25.15.26a3.14,3.14,0,0,0-.84-.65,2,2,0,0,0-1.12-.17,1.73,1.73,0,0,0-1.16.63c-.11.19,0,.35.27.37a3.76,3.76,0,0,0,.67,0,7.69,7.69,0,0,0,1.16-.2C582,458.66,582.4,458.49,582.41,458.52Z"
-																style="fill: rgb(38, 50, 56); transform-origin: 580.732px 458.525px;"
-																id="elowinq3gq4se" class="animable"></path>
-															<path
-																d="M582.17,458.69a1.18,1.18,0,0,1-.43-.65,1.71,1.71,0,0,1-.06-.86,1.11,1.11,0,0,1,.61-.89c.24-.08.82.42.86.6s-.29.09-.31.25a3.28,3.28,0,0,1-.2.82c-.17.46-.37.69-.39.67s.12-.27.25-.71a3.56,3.56,0,0,0,.15-.8c0-.28,0-.7-.31-.63s-.41.46-.47.73a1.84,1.84,0,0,0,0,.78A4.47,4.47,0,0,0,582.17,458.69Z"
-																style="fill: rgb(38, 50, 56); transform-origin: 582.402px 457.486px;"
-																id="elkcfkqlzqe18" class="animable"></path>
-															<path
-																d="M598.66,449.94s-.47.16-1.14.57a5.34,5.34,0,0,0-2.62,5.13,10.91,10.91,0,0,0,.21,1.25s-.07-.1-.15-.31a4.85,4.85,0,0,1-.21-.93,5.23,5.23,0,0,1,2.7-5.27,4.27,4.27,0,0,1,.87-.37A1.14,1.14,0,0,1,598.66,449.94Z"
-																style="fill: rgb(38, 50, 56); transform-origin: 596.683px 453.415px;"
-																id="el5q7k12r0r6" class="animable"></path>
-															<path
-																d="M592.47,456.38a9.73,9.73,0,0,1-2.2,1.24,9.44,9.44,0,0,1-2.38.84c0-.06,1-.45,2.3-1S592.44,456.32,592.47,456.38Z"
-																style="fill: rgb(38, 50, 56); transform-origin: 590.18px 457.418px;"
-																id="elvbk6gtuqb1" class="animable"></path>
-															<path
-																d="M595.53,455c.05,0,0,.26,0,.54s0,.52,0,.54-.19-.21-.19-.54S595.48,454.94,595.53,455Z"
-																style="fill: rgb(38, 50, 56); transform-origin: 595.446px 455.536px;"
-																id="elq6uonj3sob" class="animable"></path>
-															<path
-																d="M596,453c.06,0,0,.23-.06.46s-.2.42-.25.4,0-.23.06-.47S596,453,596,453Z"
-																style="fill: rgb(38, 50, 56); transform-origin: 595.847px 453.431px;"
-																id="el26r906cd43ei" class="animable"></path>
-															<path
-																d="M597.39,451.59c0,.06-.2.15-.39.33s-.3.39-.36.37,0-.29.22-.52S597.38,451.53,597.39,451.59Z"
-																style="fill: rgb(38, 50, 56); transform-origin: 597.004px 451.925px;"
-																id="elmp2a52ria6n" class="animable"></path>
-															<path
-																d="M598.43,450.74s0,.16-.12.27-.23.17-.27.13,0-.16.12-.27S598.39,450.7,598.43,450.74Z"
-																style="fill: rgb(38, 50, 56); transform-origin: 598.227px 450.94px;"
-																id="elypejratj57" class="animable"></path>
-															<path
-																d="M574.77,246.33l-.16-30.48,18.72-3.45s-2-9-4.59-17.66c-2-6.81-6.3-9.7-11.51-12.24v-.09l-.45-.12a42.33,42.33,0,0,0-13.55-3.54l-18.16.21s-13.88-1.73-21.56,8.16c-3,3.81-12.11,29.89-12.11,29.89l21.8,10.5-2.07-14.46s.41,10.48,1.75,13.8c.74,1.85,2.9,7.6,2.9,7.6l-.28,17.34Z"
-																style="fill: rgb(64, 123, 255); transform-origin: 552.365px 215.27px;"
-																id="elf2ip4jminpr" class="animable"></path>
-															<path
-																d="M535.78,234.45a4.31,4.31,0,0,1-.43-1c-.25-.64-.58-1.58-1-2.75a83,83,0,0,1-2.43-9.3,66.16,66.16,0,0,1-1.2-9.54c-.06-1.23-.08-2.23-.06-2.92a4.55,4.55,0,0,1,.07-1.07c.09,0,.14,1.52.35,4a88.54,88.54,0,0,0,1.35,9.47c.73,3.66,1.61,6.93,2.28,9.29l.79,2.79A4.42,4.42,0,0,1,535.78,234.45Z"
-																style="fill: rgb(38, 50, 56); transform-origin: 533.216px 221.16px;"
-																id="elan713s9m5fi" class="animable"></path>
-															<path
-																d="M542.2,246.49a5,5,0,0,1-.88-2,4.72,4.72,0,0,1-.38-2.17c.14,0,.53.87.88,2A4.75,4.75,0,0,1,542.2,246.49Z"
-																style="fill: rgb(38, 50, 56); transform-origin: 541.57px 244.405px;"
-																id="el9fln2yt8hgq" class="animable"></path>
-															<path
-																d="M544.4,246.33a6.2,6.2,0,0,1-.58-3.06,6.27,6.27,0,0,1,.49-3.08,19.37,19.37,0,0,1,0,3.07A19.14,19.14,0,0,1,544.4,246.33Z"
-																style="fill: rgb(38, 50, 56); transform-origin: 544.109px 243.26px;"
-																id="el7xjumx6804x" class="animable"></path>
-															<path
-																d="M533.64,228c-.06.12-5.13-2.28-11.33-5.38s-11.16-5.7-11.1-5.83,5.14,2.27,11.33,5.37S533.71,227.86,533.64,228Z"
-																style="fill: rgb(38, 50, 56); transform-origin: 522.425px 222.395px;"
-																id="elmjuh9qmpxca" class="animable"></path>
-															<path
-																d="M588.28,192.73c-.24.3-1.19-.16-2.85-.5a14.64,14.64,0,0,0-7,.35c-2.86.79-6,2.67-9.67,5a55.22,55.22,0,0,1-6.2,3.56,21.34,21.34,0,0,1-8,2.14,22.8,22.8,0,0,1-8.13-1.18,63.64,63.64,0,0,1-6.61-2.63c-2-.9-3.83-1.75-5.53-2.37a30.26,30.26,0,0,0-4.85-1.34,16.52,16.52,0,0,0-7.08.07c-1.66.41-2.62.86-2.87.56s.33-1.28,2-2.41a14.21,14.21,0,0,1,8.28-1.89,27.31,27.31,0,0,1,5.74.89,61.41,61.41,0,0,1,6.09,2c4.07,1.53,8.39,3.29,12.64,3.05s8.23-2.52,12-4.62,7.71-4.06,11.4-4.53a13.29,13.29,0,0,1,8.46,1.37C588,191.42,588.5,192.49,588.28,192.73Z"
-																style="fill: rgb(250, 250, 250); transform-origin: 553.881px 195.995px;"
-																id="elvk5y24cdhea" class="animable"></path>
-															<path
-																d="M574.86,221.17c-.24.28-.9.16-2,0a25.67,25.67,0,0,0-4.37-.4,9,9,0,0,0-2.64.36l-.27.1-.37.15-.77.34c-.52.24-1,.51-1.62.8-1.12.59-2.34,1.28-3.74,2a27.57,27.57,0,0,1-4.63,1.74A26.68,26.68,0,0,1,545,227a24.31,24.31,0,0,1-7.43-1.92c-4-1.81-5.78-3.94-5.4-4.49s2.77.26,6.52,1a32.63,32.63,0,0,0,14.42-.38,29.93,29.93,0,0,0,3.87-1.35c1.26-.54,2.55-1.15,3.86-1.68.66-.26,1.33-.51,2-.72.34-.11.68-.2,1-.29l.51-.13.6-.11a11,11,0,0,1,4,.2,11.68,11.68,0,0,1,4.84,2.24C574.79,220.17,575.08,220.91,574.86,221.17Z"
-																style="fill: rgb(250, 250, 250); transform-origin: 553.525px 221.984px;"
-																id="el7w7r50szyes" class="animable"></path>
-															<path
-																d="M574.86,231.27c-.15,0-.3-5.65-.34-12.63s0-12.64.18-12.64.3,5.65.34,12.63S575,231.27,574.86,231.27Z"
-																style="fill: rgb(38, 50, 56); transform-origin: 574.778px 218.635px;"
-																id="el0au67o3sj8d" class="animable"></path>
-															<path
-																d="M574.77,246.33l-.16-30.48,18.72-3.45s-2-9-4.59-17.66c-2-6.81-6.3-9.7-11.51-12.24v-.09l-.45-.12a42.33,42.33,0,0,0-13.55-3.54l-18.16.21s-13.88-1.73-21.56,8.16c-3,3.81-12.11,29.89-12.11,29.89l21.8,10.5-2.07-14.46s.41,10.48,1.75,13.8c.74,1.85,2.9,7.6,2.9,7.6l-.28,17.34Z"
-																style="fill: rgb(64, 123, 255); transform-origin: 552.365px 215.27px;"
-																id="elf6m89qdkkq" class="animable"></path>
-															<path
-																d="M535.78,234.45a4.31,4.31,0,0,1-.43-1c-.25-.64-.58-1.58-1-2.75a83,83,0,0,1-2.43-9.3,66.16,66.16,0,0,1-1.2-9.54c-.06-1.23-.08-2.23-.06-2.92a4.55,4.55,0,0,1,.07-1.07c.09,0,.14,1.52.35,4a88.54,88.54,0,0,0,1.35,9.47c.73,3.66,1.61,6.93,2.28,9.29l.79,2.79A4.42,4.42,0,0,1,535.78,234.45Z"
-																style="fill: rgb(38, 50, 56); transform-origin: 533.216px 221.16px;"
-																id="elih2bbr8v1a" class="animable"></path>
-															<path
-																d="M542.2,246.49a5,5,0,0,1-.88-2,4.72,4.72,0,0,1-.38-2.17c.14,0,.53.87.88,2A4.75,4.75,0,0,1,542.2,246.49Z"
-																style="fill: rgb(38, 50, 56); transform-origin: 541.57px 244.405px;"
-																id="elrvz2rvsazz" class="animable"></path>
-															<path
-																d="M544.4,246.33a6.2,6.2,0,0,1-.58-3.06,6.27,6.27,0,0,1,.49-3.08,19.37,19.37,0,0,1,0,3.07A19.14,19.14,0,0,1,544.4,246.33Z"
-																style="fill: rgb(38, 50, 56); transform-origin: 544.109px 243.26px;"
-																id="eln8ikj87t6r" class="animable"></path>
-															<path
-																d="M533.64,228c-.06.12-5.13-2.28-11.33-5.38s-11.16-5.7-11.1-5.83,5.14,2.27,11.33,5.37S533.71,227.86,533.64,228Z"
-																style="fill: rgb(38, 50, 56); transform-origin: 522.425px 222.395px;"
-																id="elgghivefrari" class="animable"></path>
-															<path
-																d="M588.28,192.73c-.24.3-1.19-.16-2.85-.5a14.64,14.64,0,0,0-7,.35c-2.86.79-6,2.67-9.67,5a55.22,55.22,0,0,1-6.2,3.56,21.34,21.34,0,0,1-8,2.14,22.8,22.8,0,0,1-8.13-1.18,63.64,63.64,0,0,1-6.61-2.63c-2-.9-3.83-1.75-5.53-2.37a30.26,30.26,0,0,0-4.85-1.34,16.52,16.52,0,0,0-7.08.07c-1.66.41-2.62.86-2.87.56s.33-1.28,2-2.41a14.21,14.21,0,0,1,8.28-1.89,27.31,27.31,0,0,1,5.74.89,61.41,61.41,0,0,1,6.09,2c4.07,1.53,8.39,3.29,12.64,3.05s8.23-2.52,12-4.62,7.71-4.06,11.4-4.53a13.29,13.29,0,0,1,8.46,1.37C588,191.42,588.5,192.49,588.28,192.73Z"
-																style="fill: rgb(250, 250, 250); transform-origin: 553.881px 195.995px;"
-																id="el7f6rxodnwcg" class="animable"></path>
-															<path
-																d="M574.86,221.17c-.24.28-.9.16-2,0a25.67,25.67,0,0,0-4.37-.4,9,9,0,0,0-2.64.36l-.27.1-.37.15-.77.34c-.52.24-1,.51-1.62.8-1.12.59-2.34,1.28-3.74,2a27.57,27.57,0,0,1-4.63,1.74A26.68,26.68,0,0,1,545,227a24.31,24.31,0,0,1-7.43-1.92c-4-1.81-5.78-3.94-5.4-4.49s2.77.26,6.52,1a32.63,32.63,0,0,0,14.42-.38,29.93,29.93,0,0,0,3.87-1.35c1.26-.54,2.55-1.15,3.86-1.68.66-.26,1.33-.51,2-.72.34-.11.68-.2,1-.29l.51-.13.6-.11a11,11,0,0,1,4,.2,11.68,11.68,0,0,1,4.84,2.24C574.79,220.17,575.08,220.91,574.86,221.17Z"
-																style="fill: rgb(250, 250, 250); transform-origin: 553.525px 221.984px;"
-																id="eldtcl7uvlbdp" class="animable"></path>
-															<path
-																d="M586.53,278.55c-.15-9.9-8.54-33.46-8.54-33.46l-42.41,1.79S524.76,269.8,525.14,293s7,86.08,7,86.08h51.31L582,332C581.42,316.78,586.82,297.79,586.53,278.55Z"
-																style="fill: rgb(38, 50, 56); transform-origin: 555.836px 312.085px;"
-																id="el1xxkoz36lhn" class="animable"></path>
-															<path
-																d="M579.78,250.34a3.16,3.16,0,0,1-.13.33l-.41,1-1.64,3.61c-1.44,3.16-3.51,7.67-6.07,13.24-5.11,11.19-12.18,26.66-19.15,44.09-3.45,8.72-6.5,17.13-9.09,24.84-1.23,3.87-2.46,7.54-3.44,11-.5,1.73-1,3.41-1.46,5s-.85,3.18-1.24,4.66c-.83,3-1.42,5.68-2,8.06-.28,1.19-.54,2.29-.77,3.31s-.4,2-.58,2.81c-.34,1.66-.61,3-.8,3.87-.1.43-.17.76-.23,1a1.55,1.55,0,0,1-.09.34s1.09-7.55,4.1-19.49c.39-1.49.79-3.05,1.21-4.68s.94-3.29,1.44-5c1-3.49,2.18-7.16,3.4-11,2.56-7.73,5.6-16.15,9.06-24.89,7-17.44,14.1-32.89,19.3-44l6.22-13.18c.74-1.53,1.32-2.72,1.72-3.57.2-.38.35-.69.46-.92A1.73,1.73,0,0,1,579.78,250.34Z"
-																style="fill: rgb(69, 90, 100); transform-origin: 556.23px 313.92px;"
-																id="elfb9c6zas08j" class="animable"></path>
-															<path
-																d="M570.84,379a3.62,3.62,0,0,1-.32-.65l-.84-1.89c-.72-1.65-1.7-4.06-2.85-7.06a213.24,213.24,0,0,1-12.17-48.63c-.4-3.19-.67-5.78-.81-7.57-.06-.85-.11-1.54-.15-2.06a3.68,3.68,0,0,1,0-.73,3.61,3.61,0,0,1,.12.72c.07.52.15,1.2.26,2,.19,1.78.52,4.36,1,7.54a237.72,237.72,0,0,0,12.14,48.55c1.1,3,2,5.44,2.7,7.11l.74,1.93A3.07,3.07,0,0,1,570.84,379Z"
-																style="fill: rgb(69, 90, 100); transform-origin: 562.261px 344.705px;"
-																id="elhysh21peg05" class="animable"></path>
-															<path
-																d="M574.86,231.27c-.15,0-.3-5.65-.34-12.63s0-12.64.18-12.64.3,5.65.34,12.63S575,231.27,574.86,231.27Z"
-																style="fill: rgb(38, 50, 56); transform-origin: 574.778px 218.635px;"
-																id="eldid987tlp7j" class="animable"></path>
-															<path
-																d="M542.58,182.36c.12-5,.14-10.23.14-10.23s-6.38-1.23-7.5-9.63c-.8-6.08.19-16.57.72-21.3a8.56,8.56,0,0,1,1.77-4.32h0c9.34-3.52,18.45-1.54,24.84,6h0L561,183.34c-.19,4.7-4.37,8.28-9.4,8h0C546.5,191.14,542.47,187.11,542.58,182.36Z"
-																style="fill: rgb(183, 136, 118); transform-origin: 548.735px 163.274px;"
-																id="elqrc4go0dmn" class="animable"></path>
-															<path
-																d="M537.72,150.41a1.07,1.07,0,0,0,1,1.11,1,1,0,0,0,1.14-.94,1.07,1.07,0,0,0-1-1.11A1,1,0,0,0,537.72,150.41Z"
-																style="fill: rgb(38, 50, 56); transform-origin: 538.79px 150.495px;"
-																id="elawtkwwmhin8" class="animable"></path>
-															<path
-																d="M536.25,149.29c.13.15,1-.43,2.11-.4s2,.63,2.12.49-.07-.31-.43-.59a3,3,0,0,0-1.69-.57,2.83,2.83,0,0,0-1.69.5C536.31,149,536.18,149.23,536.25,149.29Z"
-																style="fill: rgb(38, 50, 56); transform-origin: 538.374px 148.81px;"
-																id="ellxlinpt1i2" class="animable"></path>
-															<path
-																d="M549.64,151.08a1.06,1.06,0,0,0,1,1.11,1,1,0,0,0,1.14-.94,1.08,1.08,0,0,0-1-1.11A1,1,0,0,0,549.64,151.08Z"
-																style="fill: rgb(38, 50, 56); transform-origin: 550.71px 151.165px;"
-																id="el5u4s5nj0b6w" class="animable"></path>
-															<path
-																d="M548.29,150c.13.14,1-.44,2.11-.41s2,.63,2.12.5-.07-.32-.43-.6a3,3,0,0,0-1.69-.57,2.9,2.9,0,0,0-1.69.5C548.35,149.71,548.23,150,548.29,150Z"
-																style="fill: rgb(38, 50, 56); transform-origin: 550.416px 149.514px;"
-																id="el5rwrmo1rck8" class="animable"></path>
-															<path
-																d="M543.88,158.48a8.51,8.51,0,0,0-1.87-.38c-.3,0-.57-.11-.62-.31a1.56,1.56,0,0,1,.22-.87l.93-2.22a37.62,37.62,0,0,0,2.11-5.83,38.68,38.68,0,0,0-2.57,5.64c-.31.79-.61,1.53-.9,2.24a1.72,1.72,0,0,0-.18,1.16.75.75,0,0,0,.47.44,2.05,2.05,0,0,0,.5.08A6.94,6.94,0,0,0,543.88,158.48Z"
-																style="fill: rgb(38, 50, 56); transform-origin: 542.809px 153.697px;"
-																id="eldx04eoh3brk" class="animable"></path>
-															<path
-																d="M542.72,172.13a21.29,21.29,0,0,0,11.29-2.7s-2.87,5.68-11.22,4.68Z"
-																style="fill: rgb(163, 105, 87); transform-origin: 548.365px 171.829px;"
-																id="elvdhnivtbwsf" class="animable"></path>
-															<path
-																d="M558.68,153.58c-1,2.31-3.42,4.09-3.09,6.58.22,1.6,1.25,3.1,1,4.71-.25,2-2.35,3.43-2.65,5.44-.36,2.48,2,4.4,3,6.71,1.4,3.36-.39,7.14-.43,10.78A11.57,11.57,0,0,0,566.79,199c2.25.18,4.78-.5,6-2.43,1-1.59.77-3.61,1.35-5.38.85-2.64,3.36-4.57,3.89-7.29,1-5-5-9.06-4.63-14.1.17-2.15,1.5-4,2.06-6.11a8.94,8.94,0,0,0-1.76-8c-1.47-1.76-3.62-2.92-4.88-4.84-1.43-2.18-1.48-5-2-7.49a18.87,18.87,0,0,0-30-11.06s-1.43,6.49,5.23,7.57,9.75-.17,10.5,2.5a7.07,7.07,0,0,0,2,6.1C557.25,151.53,559.84,150.91,558.68,153.58Z"
-																style="fill: rgb(38, 50, 56); transform-origin: 557.417px 163.697px;"
-																id="ela9w72r3xb9u" class="animable"></path>
-															<path
-																d="M545.16,161.5a1.58,1.58,0,0,1,2.86-1.08,1.12,1.12,0,0,1,.17,1,1.31,1.31,0,0,1-.56.58,2.06,2.06,0,0,1-1.59.33,1.2,1.2,0,0,1-.92-1.21"
-																style="fill: rgb(163, 105, 87); transform-origin: 546.68px 161.063px;"
-																id="el0xcmv2i9eeu" class="animable"></path>
-															<path
-																d="M547.77,159c.07,0,.11.28,0,.7a2.86,2.86,0,0,1-1,1.37,2.78,2.78,0,0,1-1.61.55c-.44,0-.69-.12-.68-.19a6.87,6.87,0,0,0,2-.78C547.39,160,547.63,159,547.77,159Z"
-																style="fill: rgb(38, 50, 56); transform-origin: 546.159px 160.31px;"
-																id="el9mlqneij85h" class="animable"></path>
-															<path
-																d="M550,155.61c-.1.1-.32,0-.49-.12s-.22-.39-.12-.49.32-.05.49.12S550.07,155.51,550,155.61Z"
-																style="fill: rgb(163, 105, 87); transform-origin: 549.688px 155.3px;"
-																id="elxtbyqyg824" class="animable"></path>
-															<path
-																d="M551.59,154.58c.12.08.13.29,0,.48s-.3.29-.43.21-.13-.28,0-.47S551.46,154.51,551.59,154.58Z"
-																style="fill: rgb(163, 105, 87); transform-origin: 551.373px 154.928px;"
-																id="elvupxnt5ai4" class="animable"></path>
-															<path
-																d="M553.37,155.43c-.12.08-.32,0-.44-.18s-.13-.39,0-.47.31,0,.44.18S553.48,155.35,553.37,155.43Z"
-																style="fill: rgb(163, 105, 87); transform-origin: 553.148px 155.105px;"
-																id="elnpa0emtrmke" class="animable"></path>
-															<path
-																d="M551.61,156.82a.32.32,0,0,1-.48-.41.32.32,0,0,1,.48.41Z"
-																style="fill: rgb(163, 105, 87); transform-origin: 551.37px 156.615px;"
-																id="el0pu98emy106g" class="animable"></path>
-															<path
-																d="M537,155.76c-.08.12-.37.06-.53-.22s-.06-.55.08-.56.27.14.37.3A.49.49,0,0,1,537,155.76Z"
-																style="fill: rgb(163, 105, 87); transform-origin: 536.709px 155.399px;"
-																id="elrlq61hsip9" class="animable"></path>
-															<path
-																d="M538.28,155.34c-.13,0-.18-.26-.11-.49s.25-.37.39-.32.18.27.11.49S538.42,155.39,538.28,155.34Z"
-																style="fill: rgb(163, 105, 87); transform-origin: 538.421px 154.935px;"
-																id="el445u57lroxc" class="animable"></path>
-															<path
-																d="M539.44,155.84c-.12-.07-.11-.34,0-.61s.37-.43.49-.36.11.34,0,.61S539.57,155.91,539.44,155.84Z"
-																style="fill: rgb(163, 105, 87); transform-origin: 539.685px 155.355px;"
-																id="elxnfzuf2gcjn" class="animable"></path>
-															<path
-																d="M537.69,157.66c-.11.1-.36,0-.48-.3s0-.54.11-.55.28.15.37.35S537.8,157.57,537.69,157.66Z"
-																style="fill: rgb(163, 105, 87); transform-origin: 537.463px 157.254px;"
-																id="elqgv8ht9vtk" class="animable"></path>
-															<path
-																d="M551.2,146.56c-.12.27-1.09.11-2.24.12s-2.12.17-2.24-.1.84-.94,2.24-.94S551.32,146.31,551.2,146.56Z"
-																style="fill: rgb(38, 50, 56); transform-origin: 548.96px 146.188px;"
-																id="elw6esmiwgx9s" class="animable"></path>
-															<path
-																d="M538.85,147c-.05.28-.78.38-1.63.34s-1.56-.24-1.58-.53.72-.57,1.64-.51S538.9,146.74,538.85,147Z"
-																style="fill: rgb(38, 50, 56); transform-origin: 537.246px 146.82px;"
-																id="elr1jgdcpo7ip" class="animable"></path>
-															<path
-																d="M527.85,265.72c-.18-2.21,9-3.43,9.75-3.59s.56-1.28-.13-1.1c-1,.27-11.4,2.77-11.6.6-.12-1.2,2.06-1.21,2.06-1.21s9.92-1.62,9.78-2.64-6-.27-7.94.12-2.9-.37-2.36-1.37c.36-.68,6.33-2,8.27-2.38S543,253,540,251.23s-4.61-4.17-4.6-5.14a1.08,1.08,0,0,1,2-.43,12.54,12.54,0,0,0,2.62,2.28,8.57,8.57,0,0,0,2.59,1.23c1,.28,1.89.48,2.64.63C550.43,248.17,575,237,575,237l.05-21.18,16.8-3.1.34,20.62a20.26,20.26,0,0,1-13.62,19.47l-31.21,10.84,0-.05a101.27,101.27,0,0,1-10.24,4.22c-4.9,1.49-5,1.05-5.12.45-.2-1.61,8.52-2.94,6.48-3.74S528,267.42,527.85,265.72Z"
-																style="fill: rgb(183, 136, 118); transform-origin: 559.029px 240.774px;"
-																id="el4cnxui58fhw" class="animable"></path>
-														</g>
-														<g id="freepik--character-2--inject-26" class="animable"
-															style="transform-origin: 383.324px 296.163px;">
-															<path
-																d="M346.42,384.25c-.6,1.8-6.72,75.48-6.72,75.48l16.5,1.12,10-69.57Z"
-																style="fill: rgb(255, 190, 157); transform-origin: 352.95px 422.55px;"
-																id="elimur2s0azh" class="animable"></path>
-															<path
-																d="M394.48,131.9c1.77,4.81,2.84,8,4.58,11.82,1,2.17,2.28,4.35,2.16,6.72-.08,1.64-.84,3.19-.8,4.82.07,2.88,2.52,5.05,4.68,6.94s4.43,4.38,4,7.22c-.19,1.24-.9,2.36-1,3.61a6.19,6.19,0,0,0,1.59,4.18,32.36,32.36,0,0,1,2.82,3.6l.34,2.3-27.08-8.56"
-																style="fill: rgb(38, 50, 56); transform-origin: 399.31px 157.505px;"
-																id="el6qk93otazou" class="animable"></path>
-															<path
-																d="M389.26,381.44c.46,1.83,4.9,80.19,4.9,80.19l16.45-1.24,1.08-78.95Z"
-																style="fill: rgb(255, 190, 157); transform-origin: 400.475px 421.535px;"
-																id="elpq2f2xzjmt8" class="animable"></path>
-															<path
-																d="M411.11,461.35l-.05-1.73-17.53.36.11,5.71,1.08,0c4.82.16,24.52.49,27.72-.47C426,464.18,411.11,461.35,411.11,461.35Z"
-																style="fill: rgb(64, 123, 255); transform-origin: 408.26px 462.748px;"
-																id="elk51c0vvl38" class="animable"></path>
-															<g id="el1nyhvqrrcnv">
-																<g style="opacity: 0.3; transform-origin: 396.795px 463.179px;"
-																	class="animable">
-																	<path
-																		d="M400,465.44a5.58,5.58,0,0,0-2.31-3.41,6.19,6.19,0,0,0-4.1-1.11l.1,4.54Z"
-																		id="el3suc5gqfkmp" class="animable"
-																		style="transform-origin: 396.795px 463.179px;">
-																	</path>
-																</g>
-															</g>
-															<g id="ele7qs4exige">
-																<g style="opacity: 0.3; transform-origin: 408.341px 464.493px;"
-																	class="animable">
-																	<path
-																		d="M418.39,463s5.23,1.3,4.6,2.1-20.55,1.18-29.35.62l0-.36,23.24-.24S417.38,463,418.39,463Z"
-																		id="elzfzcu9vgfx" class="animable"
-																		style="transform-origin: 408.341px 464.493px;">
-																	</path>
-																</g>
-															</g>
-															<path
-																d="M393.38,465.32l.3,0,.86,0,3.18.07c2.68,0,6.38.05,10.47,0s7.8-.21,10.47-.35l3.17-.18.86-.06.3,0h-.3l-.86,0-3.17.11c-2.68.1-6.38.22-10.47.29s-7.79.08-10.47.08h-4.34Z"
-																style="fill: rgb(38, 50, 56); transform-origin: 408.185px 465.106px;"
-																id="el40k30bafeix" class="animable"></path>
-															<path
-																d="M416.9,465.34a6.25,6.25,0,0,1,.56-1.42,6.4,6.4,0,0,1,1.06-1.15,2.27,2.27,0,0,0-1.24,1.05A2,2,0,0,0,416.9,465.34Z"
-																style="fill: rgb(38, 50, 56); transform-origin: 417.698px 464.055px;"
-																id="elq5x7i7673h" class="animable"></path>
-															<path
-																d="M411.7,463c.05,0,.29-.26.53-.64s.41-.7.36-.73-.29.25-.54.63S411.65,463,411.7,463Z"
-																style="fill: rgb(38, 50, 56); transform-origin: 412.145px 462.314px;"
-																id="el1tlhf1iwq3f" class="animable"></path>
-															<path
-																d="M410.27,462.34s.31-.14.6-.4.51-.49.47-.53-.31.13-.61.39S410.23,462.3,410.27,462.34Z"
-																style="fill: rgb(38, 50, 56); transform-origin: 410.805px 461.872px;"
-																id="elsxk0d90183" class="animable"></path>
-															<path
-																d="M409.34,460.82a2,2,0,0,0,.91.09,2.19,2.19,0,0,0,.91-.1,2,2,0,0,0-.91-.09A2.27,2.27,0,0,0,409.34,460.82Z"
-																style="fill: rgb(38, 50, 56); transform-origin: 410.25px 460.815px;"
-																id="elmksnyp1ks6d" class="animable"></path>
-															<path
-																d="M409,459.75a1.88,1.88,0,0,0,1,.25,1.84,1.84,0,0,0,1.05-.15,7.3,7.3,0,0,0-1,0A5.14,5.14,0,0,0,409,459.75Z"
-																style="fill: rgb(38, 50, 56); transform-origin: 410.025px 459.885px;"
-																id="el5siygn87h2g" class="animable"></path>
-															<path
-																d="M412.26,461.58a3.62,3.62,0,0,0,1.12,0,7.4,7.4,0,0,0,1.19-.26,3.69,3.69,0,0,0,.67-.28.56.56,0,0,0,.27-.33.39.39,0,0,0-.17-.41,2.16,2.16,0,0,0-2.54.6,2,2,0,0,0-.35.71.55.55,0,0,0,0,.28,3,3,0,0,1,.49-.9,2.08,2.08,0,0,1,.95-.6,1.94,1.94,0,0,1,1.34.06c.18.12.11.32-.08.43a2.89,2.89,0,0,1-.63.26,8.36,8.36,0,0,1-1.15.31C412.68,461.54,412.26,461.55,412.26,461.58Z"
-																style="fill: rgb(38, 50, 56); transform-origin: 413.889px 461.003px;"
-																id="elu1tvevk6eb" class="animable"></path>
-															<path
-																d="M412.55,461.63a1,1,0,0,0,.11-.73,1.68,1.68,0,0,0-.32-.76,1.16,1.16,0,0,0-.95-.51.4.4,0,0,0-.33.49,1,1,0,0,0,.2.46,3.43,3.43,0,0,0,.54.62,1.71,1.71,0,0,0,.65.41s-.22-.18-.54-.51a3.5,3.5,0,0,1-.48-.61c-.16-.22-.28-.62,0-.67a1,1,0,0,1,.75.43,1.55,1.55,0,0,1,.33.67A3.73,3.73,0,0,1,412.55,461.63Z"
-																style="fill: rgb(38, 50, 56); transform-origin: 411.867px 460.63px;"
-																id="elpxsclig30d" class="animable"></path>
-															<path
-																d="M393.64,460.88a11.6,11.6,0,0,1,1.29,0,5.82,5.82,0,0,1,2.83,1,5.27,5.27,0,0,1,1.81,2.28c.29.69.32,1.16.36,1.15a.84.84,0,0,0,0-.33,3.66,3.66,0,0,0-.21-.87,5,5,0,0,0-1.82-2.38,5.54,5.54,0,0,0-2.95-1,4.45,4.45,0,0,0-1,0C393.76,460.83,393.64,460.86,393.64,460.88Z"
-																style="fill: rgb(38, 50, 56); transform-origin: 396.793px 463.006px;"
-																id="elgv9mhalmiuo" class="animable"></path>
-															<path
-																d="M402.12,463.82a10.28,10.28,0,0,0,2.55.19,9.89,9.89,0,0,0,2.55-.24s-1.14,0-2.55,0S402.13,463.77,402.12,463.82Z"
-																style="fill: rgb(38, 50, 56); transform-origin: 404.67px 463.897px;"
-																id="elt7nhmp4bmfe" class="animable"></path>
-															<path
-																d="M398.7,463.88s.1.22.22.46.19.46.25.45.08-.25-.06-.53S398.74,463.84,398.7,463.88Z"
-																style="fill: rgb(38, 50, 56); transform-origin: 398.958px 464.332px;"
-																id="elpxzs8ugmbb" class="animable"></path>
-															<path
-																d="M397.38,462.41s.07.21.26.37.36.28.41.24-.08-.21-.26-.38S397.42,462.37,397.38,462.41Z"
-																style="fill: rgb(38, 50, 56); transform-origin: 397.72px 462.714px;"
-																id="elb611auazpku" class="animable"></path>
-															<path
-																d="M395.52,461.76c0,.06.24.05.5.13s.45.2.49.17-.1-.26-.42-.36S395.5,461.71,395.52,461.76Z"
-																style="fill: rgb(38, 50, 56); transform-origin: 396.018px 461.862px;"
-																id="elx7ciw827wns" class="animable"></path>
-															<path
-																d="M394.2,461.47s.08.13.23.18.28.05.3,0-.09-.14-.23-.19S394.22,461.42,394.2,461.47Z"
-																style="fill: rgb(38, 50, 56); transform-origin: 394.466px 461.557px;"
-																id="el99gn0aomk4k" class="animable"></path>
-															<path
-																d="M322.77,233.9a16.63,16.63,0,0,1,1.84-21.82l28.89-27.87L359,204.58c-.51.29-22.37,20.23-22.37,20.23l15.55,22.95a12.45,12.45,0,0,1,1.1,12l-1,3.11a7.65,7.65,0,0,1-10.94,4.28l-4.69-2.57a1,1,0,0,1-.32-1.54h0a1.06,1.06,0,0,1,.9-.4l6.59.54a3,3,0,0,0,3.1-2h0Z"
-																style="fill: rgb(255, 190, 157); transform-origin: 339.267px 226.153px;"
-																id="el3iufydureo7" class="animable"></path>
-															<path d="M337,225.41c-1.15-1.7-2.63-3.22-3.81-4.74"
-																style="fill: rgb(255, 190, 157); transform-origin: 335.095px 223.04px;"
-																id="elaifhdjf7gza" class="animable"></path>
-															<path
-																d="M418.08,206.34l6.47,11.71,4-31.82a12.83,12.83,0,0,0-1.32-6.69,14,14,0,0,0-1.61-2.59,14.35,14.35,0,0,0-2.77-2.6,1.16,1.16,0,0,1,.2-2.19c1-.11,3.87,1.41,6.1,4.46s2.46-2.82,2.58-5,.82-8.71,1.5-9.17c1-.68,1.95.29,1.77,2.41s-.24,8.55.88,8.59,1.6-10.83,1.6-10.83-.27-2.35,1-2.34c2.35,0,1,11.5.83,12.59-.11.76,1.11.84,1.18,0s.24-10.86,2.63-10.88c1.83,0-1,9.47.08,11.6s1.44-7.43,3.2-7.37c.65,0,1.14.13.16,5.57-.52,2.92-2.45,7.13-3,12.84l-.16,1.48S440.1,214,435.2,231c-2.93,10.18-17.38,11.18-23.25,2.35-4-6-10.26-21.66-10.26-21.66Z"
-																style="fill: rgb(255, 190, 157); transform-origin: 424.402px 199.82px;"
-																id="elfsl3ash6tfb" class="animable"></path>
-															<path
-																d="M441,181.19c0,.05-.37.05-.93.24a3.4,3.4,0,0,0-1.81,1.5l-.22.4-.13-.45a5.48,5.48,0,0,0-.86-1.73,6.31,6.31,0,0,0-3-2.21c-.93-.33-1.56-.31-1.55-.39a3.06,3.06,0,0,1,1.63.11,6,6,0,0,1,3.25,2.25,5.45,5.45,0,0,1,.9,1.87l-.35,0a3.35,3.35,0,0,1,2.07-1.53A1.67,1.67,0,0,1,441,181.19Z"
-																style="fill: rgb(235, 153, 110); transform-origin: 436.75px 180.909px;"
-																id="el3k2ox9gd046" class="animable"></path>
-															<path
-																d="M338.64,461.28l.05-1.73,17.53.36-.11,5.71-1.08,0c-4.82.16-24.53.49-27.72-.48C323.74,464.1,338.64,461.28,338.64,461.28Z"
-																style="fill: rgb(64, 123, 255); transform-origin: 341.489px 462.678px;"
-																id="elrff3o6x44n" class="animable"></path>
-															<g id="eltnx07lntp7l">
-																<g style="opacity: 0.3; transform-origin: 352.995px 463.103px;"
-																	class="animable">
-																	<path
-																		d="M349.79,465.37a5.65,5.65,0,0,1,2.3-3.42,6.22,6.22,0,0,1,4.11-1.1l-.1,4.53Z"
-																		id="elcou2fexjss9" class="animable"
-																		style="transform-origin: 352.995px 463.103px;">
-																	</path>
-																</g>
-															</g>
-															<g id="el2n0mer4no5o">
-																<g style="opacity: 0.3; transform-origin: 341.404px 464.392px;"
-																	class="animable">
-																	<path
-																		d="M331.35,462.9s-5.23,1.29-4.6,2.1,20.56,1.17,29.36.62l0-.37L332.85,465S332.37,463,331.35,462.9Z"
-																		id="eligxyxc5riw" class="animable"
-																		style="transform-origin: 341.404px 464.392px;">
-																	</path>
-																</g>
-															</g>
-															<path
-																d="M356.37,465.25l-.31,0-.86,0-3.17.07c-2.68,0-6.39.05-10.48,0s-7.79-.22-10.47-.35l-3.17-.18-.86-.07-.3,0h.3l.87,0,3.17.12c2.68.1,6.38.22,10.47.29s7.79.08,10.47.08h4Z"
-																style="fill: rgb(38, 50, 56); transform-origin: 341.56px 465.031px;"
-																id="el40nkctabi99" class="animable"></path>
-															<path
-																d="M332.85,465.27a6.64,6.64,0,0,0-.56-1.42,6.84,6.84,0,0,0-1.06-1.15,2.34,2.34,0,0,1,1.24,1.05A2.09,2.09,0,0,1,332.85,465.27Z"
-																style="fill: rgb(38, 50, 56); transform-origin: 332.05px 463.985px;"
-																id="eld3ebt390men" class="animable"></path>
-															<path
-																d="M338.05,462.93c-.05,0-.29-.25-.54-.63s-.4-.71-.35-.74.29.26.53.64S338.1,462.9,338.05,462.93Z"
-																style="fill: rgb(38, 50, 56); transform-origin: 337.605px 462.244px;"
-																id="elx5opdm11e49" class="animable"></path>
-															<path
-																d="M339.48,462.26s-.31-.13-.61-.39-.5-.5-.46-.54.31.14.61.4S339.52,462.22,339.48,462.26Z"
-																style="fill: rgb(38, 50, 56); transform-origin: 338.945px 461.792px;"
-																id="elvbmydqgoj0o" class="animable"></path>
-															<path
-																d="M340.41,460.75a2.46,2.46,0,0,1-.92.09,2,2,0,0,1-.91-.11,2.38,2.38,0,0,1,.91-.09A2.2,2.2,0,0,1,340.41,460.75Z"
-																style="fill: rgb(38, 50, 56); transform-origin: 339.495px 460.741px;"
-																id="elvpicjjg2zps" class="animable"></path>
-															<path
-																d="M340.74,459.67a2.72,2.72,0,0,1-2.07.11,5.28,5.28,0,0,1,1,0A8,8,0,0,1,340.74,459.67Z"
-																style="fill: rgb(38, 50, 56); transform-origin: 339.705px 459.802px;"
-																id="el4mnqmv7rrb4" class="animable"></path>
-															<path
-																d="M337.49,461.51a3.62,3.62,0,0,1-1.12,0,7.3,7.3,0,0,1-1.19-.27,3.1,3.1,0,0,1-.68-.27.56.56,0,0,1-.27-.33.39.39,0,0,1,.18-.41,2.14,2.14,0,0,1,2.53.6,1.88,1.88,0,0,1,.35.7c0,.18,0,.28,0,.29a2.61,2.61,0,0,0-.49-.9,2,2,0,0,0-.94-.6,1.83,1.83,0,0,0-1.34.06c-.18.12-.12.32.08.43a3.38,3.38,0,0,0,.62.26,9,9,0,0,0,1.15.3C337.06,461.46,337.49,461.47,337.49,461.51Z"
-																style="fill: rgb(38, 50, 56); transform-origin: 335.856px 460.932px;"
-																id="eld0i5qyo80vn" class="animable"></path>
-															<path
-																d="M337.2,461.55a.94.94,0,0,1-.12-.72,1.67,1.67,0,0,1,.33-.76,1.11,1.11,0,0,1,.94-.51.41.41,0,0,1,.34.48,1.26,1.26,0,0,1-.2.47,3.83,3.83,0,0,1-.55.62,1.71,1.71,0,0,1-.65.41s.23-.19.55-.51a3.71,3.71,0,0,0,.48-.62c.16-.22.27-.61,0-.66a1,1,0,0,0-.75.43,1.67,1.67,0,0,0-.33.67A4.08,4.08,0,0,0,337.2,461.55Z"
-																style="fill: rgb(38, 50, 56); transform-origin: 337.876px 460.555px;"
-																id="eldriexchjgve" class="animable"></path>
-															<path
-																d="M356.11,460.8s-.5-.05-1.29,0a6,6,0,0,0-2.84,1,5.29,5.29,0,0,0-1.81,2.28,10,10,0,0,0-.35,1.15s0-.12,0-.33a4.23,4.23,0,0,1,.21-.87,5,5,0,0,1,1.82-2.39,5.78,5.78,0,0,1,3-1,5.31,5.31,0,0,1,1,0A1.49,1.49,0,0,1,356.11,460.8Z"
-																style="fill: rgb(38, 50, 56); transform-origin: 352.965px 462.923px;"
-																id="eldqc99i6aau6" class="animable"></path>
-															<path
-																d="M347.63,463.75a11.1,11.1,0,0,1-2.56.19,10.32,10.32,0,0,1-2.54-.24c0-.06,1.14,0,2.55,0S347.62,463.69,347.63,463.75Z"
-																style="fill: rgb(38, 50, 56); transform-origin: 345.08px 463.812px;"
-																id="elhhb46bceznj" class="animable"></path>
-															<path
-																d="M351.05,463.81s-.1.22-.22.46-.19.46-.25.45-.09-.26.06-.53S351,463.77,351.05,463.81Z"
-																style="fill: rgb(38, 50, 56); transform-origin: 350.79px 464.262px;"
-																id="elop50tifiex" class="animable"></path>
-															<path
-																d="M352.37,462.34s-.08.2-.26.37-.37.27-.41.23.08-.2.26-.37S352.33,462.3,352.37,462.34Z"
-																style="fill: rgb(38, 50, 56); transform-origin: 352.031px 462.64px;"
-																id="ellpy8uvtu0uh" class="animable"></path>
-															<path
-																d="M354.23,461.69c0,.06-.25.05-.51.13s-.44.2-.49.16.11-.26.43-.35S354.25,461.64,354.23,461.69Z"
-																style="fill: rgb(38, 50, 56); transform-origin: 353.726px 461.791px;"
-																id="elffsaodfxwe5" class="animable"></path>
-															<path
-																d="M355.55,461.39c0,.05-.08.14-.23.18s-.28.05-.3,0,.08-.13.23-.18S355.53,461.34,355.55,461.39Z"
-																style="fill: rgb(38, 50, 56); transform-origin: 355.284px 461.478px;"
-																id="elmd670w0wevl" class="animable"></path>
-															<path
-																d="M361.34,241.79l-11.57,27-13.53,149,34.8,3.76L382.35,293l3.42,129.57,31.92-1L413,269a29.42,29.42,0,0,0-3-11.86l-7.67-15.69Z"
-																style="fill: rgb(38, 50, 56); transform-origin: 376.965px 332.01px;"
-																id="el2vazs8ut3hn" class="animable"></path>
-															<path
-																d="M385.77,282.76s-.09.12-.32.27a2.23,2.23,0,0,1-1.16.32,3.63,3.63,0,0,1-1.85-.51,4.08,4.08,0,0,1-1.65-1.93c-.79-1.78-.61-4.05-.67-6.45s0-5.1-.05-7.9c0-5.61,0-10.68,0-14.35,0-1.77.05-3.23.06-4.35a8.9,8.9,0,0,1,.1-1.6,10.88,10.88,0,0,1,.11,1.6c0,1.12.06,2.58.1,4.35.06,3.67.11,8.74.14,14.35,0,2.79,0,5.46,0,7.9s-.17,4.65.53,6.31a3.66,3.66,0,0,0,3.16,2.38A3,3,0,0,0,385.77,282.76Z"
-																style="fill: rgb(69, 90, 100); transform-origin: 382.92px 264.805px;"
-																id="el6gyu2bs1pex" class="animable"></path>
-															<path
-																d="M410.57,258.2a2.87,2.87,0,0,1-.86.47,10.36,10.36,0,0,1-2.57.72,11.1,11.1,0,0,1-4-.16,16.49,16.49,0,0,1-4.53-1.73,14.39,14.39,0,0,1-6-6.34,12.75,12.75,0,0,1-.91-2.51,3.4,3.4,0,0,1-.14-1c.1,0,.35,1.35,1.38,3.31a15,15,0,0,0,5.9,6.05,17.88,17.88,0,0,0,4.39,1.72,11.44,11.44,0,0,0,3.82.25A21.84,21.84,0,0,0,410.57,258.2Z"
-																style="fill: rgb(69, 90, 100); transform-origin: 401.065px 253.575px;"
-																id="el4nqvtkou23l" class="animable"></path>
-															<path
-																d="M369.48,248.06a2.69,2.69,0,0,1,0,.93,12.42,12.42,0,0,1-.5,2.49,14.36,14.36,0,0,1-12.33,10.11,12.58,12.58,0,0,1-2.54,0,2.86,2.86,0,0,1-.92-.17c0-.1,1.33.09,3.42-.21a14.79,14.79,0,0,0,12-9.85C369.31,249.38,369.38,248.05,369.48,248.06Z"
-																style="fill: rgb(69, 90, 100); transform-origin: 361.355px 254.857px;"
-																id="el18d0nffo0n5" class="animable"></path>
-															<path
-																d="M383.81,245.67s.13-.09.37-.07a1.48,1.48,0,0,1,.92.44,1.77,1.77,0,0,1,.52,1.45,1.74,1.74,0,0,1-3.12.62,1.72,1.72,0,0,1-.07-1.54,1.48,1.48,0,0,1,.68-.76c.22-.11.36-.1.36-.07s-.48.24-.7,1a1.42,1.42,0,0,0,.14,1.16,1.2,1.2,0,0,0,1.25.45,1.22,1.22,0,0,0,1-.9,1.44,1.44,0,0,0-.32-1.12C384.36,245.71,383.81,245.76,383.81,245.67Z"
-																style="fill: rgb(69, 90, 100); transform-origin: 383.955px 247.222px;"
-																id="elxjv3boi7z8" class="animable"></path>
-															<path
-																d="M371.28,412.45a6.15,6.15,0,0,1-1.33,0c-.85,0-2.09-.13-3.61-.25-3-.24-7.26-.65-11.89-1.22s-8.81-1.2-11.83-1.71c-1.51-.25-2.73-.47-3.57-.64a7.19,7.19,0,0,1-1.29-.31,5.74,5.74,0,0,1,1.33.11l3.58.48c3,.41,7.22,1,11.84,1.55s8.83,1,11.86,1.37l3.6.41A6.15,6.15,0,0,1,371.28,412.45Z"
-																style="fill: rgb(69, 90, 100); transform-origin: 354.52px 410.401px;"
-																id="elfx46nphsure" class="animable"></path>
-															<path
-																d="M416,411a5,5,0,0,1-1.21.12l-3.29.14c-2.78.12-6.61.32-10.84.65s-8.05.74-10.81,1.06l-3.27.37a6.44,6.44,0,0,1-1.21.08,5.15,5.15,0,0,1,1.18-.28c.76-.15,1.88-.33,3.25-.54,2.76-.41,6.58-.87,10.82-1.21s8.09-.47,10.87-.49c1.39,0,2.52,0,3.3,0A6.54,6.54,0,0,1,416,411Z"
-																style="fill: rgb(69, 90, 100); transform-origin: 400.685px 412.161px;"
-																id="eleoacemmjsg" class="animable"></path>
-															<path
-																d="M412.73,405.54a12.36,12.36,0,0,1,.21,5,6,6,0,0,1-.37-2.48A6.41,6.41,0,0,1,412.73,405.54Z"
-																style="fill: rgb(69, 90, 100); transform-origin: 412.807px 408.04px;"
-																id="el831vv4h26hm" class="animable"></path>
-															<path
-																d="M412.32,395.55a6,6,0,0,1,.37,2.48,6.41,6.41,0,0,1-.16,2.51,6,6,0,0,1-.36-2.49A6.27,6.27,0,0,1,412.32,395.55Z"
-																style="fill: rgb(69, 90, 100); transform-origin: 412.427px 398.045px;"
-																id="elbavvr9lmcu6" class="animable"></path>
-															<path
-																d="M411.92,385.55a12.16,12.16,0,0,1,.2,5,6.19,6.19,0,0,1-.36-2.49A6,6,0,0,1,411.92,385.55Z"
-																style="fill: rgb(69, 90, 100); transform-origin: 411.992px 388.05px;"
-																id="eltx9a7g00fv" class="animable"></path>
-															<path
-																d="M411.51,375.56a6.41,6.41,0,0,1,.36,2.49,6,6,0,0,1-.16,2.51,6.46,6.46,0,0,1-.36-2.49A6,6,0,0,1,411.51,375.56Z"
-																style="fill: rgb(69, 90, 100); transform-origin: 411.61px 378.06px;"
-																id="el6nul4nnpj84" class="animable"></path>
-															<path
-																d="M411.1,365.57a6.17,6.17,0,0,1,.36,2.48,6,6,0,0,1-.16,2.51,6.38,6.38,0,0,1-.36-2.48A6.45,6.45,0,0,1,411.1,365.57Z"
-																style="fill: rgb(69, 90, 100); transform-origin: 411.204px 368.065px;"
-																id="elqbqr6yyfjdq" class="animable"></path>
-															<path
-																d="M410.69,355.58a6.07,6.07,0,0,1,.37,2.48,6.41,6.41,0,0,1-.16,2.51,5.92,5.92,0,0,1-.36-2.48A6.31,6.31,0,0,1,410.69,355.58Z"
-																style="fill: rgb(69, 90, 100); transform-origin: 410.797px 358.075px;"
-																id="elmcvgbcby8t" class="animable"></path>
-															<path
-																d="M410.29,345.59a6.33,6.33,0,0,1,.36,2.48,6.41,6.41,0,0,1-.16,2.51,6.19,6.19,0,0,1-.36-2.49A6,6,0,0,1,410.29,345.59Z"
-																style="fill: rgb(69, 90, 100); transform-origin: 410.387px 348.085px;"
-																id="eltudunbgak3" class="animable"></path>
-															<path
-																d="M409.88,335.59a6.46,6.46,0,0,1,.36,2.49,6,6,0,0,1-.16,2.51,6.41,6.41,0,0,1-.36-2.49A6.23,6.23,0,0,1,409.88,335.59Z"
-																style="fill: rgb(69, 90, 100); transform-origin: 409.982px 338.09px;"
-																id="el2ldccnyeyrw" class="animable"></path>
-															<path
-																d="M409.47,325.6a6.24,6.24,0,0,1,.36,2.49,6.34,6.34,0,0,1-.15,2.51,6.14,6.14,0,0,1-.37-2.49A6.45,6.45,0,0,1,409.47,325.6Z"
-																style="fill: rgb(69, 90, 100); transform-origin: 409.573px 328.1px;"
-																id="eljr2a1f3073m" class="animable"></path>
-															<path
-																d="M409.06,315.61a6.14,6.14,0,0,1,.37,2.49,6.45,6.45,0,0,1-.16,2.51,6,6,0,0,1-.36-2.49A6.34,6.34,0,0,1,409.06,315.61Z"
-																style="fill: rgb(69, 90, 100); transform-origin: 409.167px 318.11px;"
-																id="elcyb0rivwvrf" class="animable"></path>
-															<path
-																d="M408.66,305.62a12.16,12.16,0,0,1,.2,5,6.24,6.24,0,0,1-.36-2.49A6,6,0,0,1,408.66,305.62Z"
-																style="fill: rgb(69, 90, 100); transform-origin: 408.732px 308.12px;"
-																id="elvzzpjfnkks9" class="animable"></path>
-															<path
-																d="M408.25,295.63a6.41,6.41,0,0,1,.36,2.49,5.93,5.93,0,0,1-.16,2.5,6.33,6.33,0,0,1-.36-2.48A6.2,6.2,0,0,1,408.25,295.63Z"
-																style="fill: rgb(69, 90, 100); transform-origin: 408.352px 298.125px;"
-																id="el4jd0bbza676" class="animable"></path>
-															<path
-																d="M407.84,285.64a5.92,5.92,0,0,1,.36,2.48,6.31,6.31,0,0,1-.15,2.51,6,6,0,0,1-.37-2.48A6.41,6.41,0,0,1,407.84,285.64Z"
-																style="fill: rgb(69, 90, 100); transform-origin: 407.943px 288.135px;"
-																id="elb096q7jxazm" class="animable"></path>
-															<path
-																d="M407.43,275.65a6,6,0,0,1,.37,2.48,6.41,6.41,0,0,1-.16,2.51,6,6,0,0,1-.36-2.49A6.24,6.24,0,0,1,407.43,275.65Z"
-																style="fill: rgb(69, 90, 100); transform-origin: 407.537px 278.145px;"
-																id="ely81gmqntzx" class="animable"></path>
-															<path
-																d="M407,265.65a12.16,12.16,0,0,1,.2,5,6.19,6.19,0,0,1-.36-2.49A6,6,0,0,1,407,265.65Z"
-																style="fill: rgb(69, 90, 100); transform-origin: 407.072px 268.15px;"
-																id="elcv9u5r68b9t" class="animable"></path>
-															<path
-																d="M406.76,259c.14,0,.27.35.29.8s-.08.81-.23.82-.27-.35-.29-.8S406.61,259,406.76,259Z"
-																style="fill: rgb(69, 90, 100); transform-origin: 406.79px 259.81px;"
-																id="elim3b4ksnc1g" class="animable"></path>
-															<path
-																d="M342.1,404a6.43,6.43,0,0,1,0,2.51,6.07,6.07,0,0,1-.5,2.47,12.36,12.36,0,0,1,.47-5Z"
-																style="fill: rgb(69, 90, 100); transform-origin: 341.874px 406.48px;"
-																id="el6k0f68ukx3r" class="animable"></path>
-															<path
-																d="M343,394.06a6.06,6.06,0,0,1,0,2.52,6.29,6.29,0,0,1-.49,2.46,6,6,0,0,1,0-2.51A6.37,6.37,0,0,1,343,394.06Z"
-																style="fill: rgb(69, 90, 100); transform-origin: 342.755px 396.55px;"
-																id="elkf1qhk19yg" class="animable"></path>
-															<path
-																d="M344,384.11a12.36,12.36,0,0,1-.47,5,6.27,6.27,0,0,1,0-2.52A6,6,0,0,1,344,384.11Z"
-																style="fill: rgb(69, 90, 100); transform-origin: 343.739px 386.61px;"
-																id="elbahtrtsema9" class="animable"></path>
-															<path
-																d="M344.9,374.15a6.45,6.45,0,0,1,0,2.51,6.07,6.07,0,0,1-.5,2.47,12.36,12.36,0,0,1,.47-5Z"
-																style="fill: rgb(69, 90, 100); transform-origin: 344.674px 376.63px;"
-																id="elc5vu6p4abkc" class="animable"></path>
-															<path
-																d="M345.83,364.2a6,6,0,0,1,0,2.51,6.29,6.29,0,0,1-.49,2.46,6,6,0,0,1,0-2.51A6.29,6.29,0,0,1,345.83,364.2Z"
-																style="fill: rgb(69, 90, 100); transform-origin: 345.585px 366.685px;"
-																id="elqjelhlt2hf" class="animable"></path>
-															<path
-																d="M346.77,354.24a12.36,12.36,0,0,1-.47,5,6.49,6.49,0,0,1,0-2.52A6.05,6.05,0,0,1,346.77,354.24Z"
-																style="fill: rgb(69, 90, 100); transform-origin: 346.511px 356.74px;"
-																id="ela1uxh4b0bpu" class="animable"></path>
-															<path
-																d="M347.7,344.28a6.49,6.49,0,0,1,0,2.52,6.05,6.05,0,0,1-.5,2.46,12.36,12.36,0,0,1,.47-5Z"
-																style="fill: rgb(69, 90, 100); transform-origin: 347.474px 346.76px;"
-																id="elyxxir8ikvar" class="animable"></path>
-															<path
-																d="M348.63,334.33a6,6,0,0,1,0,2.51,6.29,6.29,0,0,1-.49,2.46,6,6,0,0,1,0-2.51A6.29,6.29,0,0,1,348.63,334.33Z"
-																style="fill: rgb(69, 90, 100); transform-origin: 348.385px 336.815px;"
-																id="elanxddz7alvd" class="animable"></path>
-															<path
-																d="M349.57,324.37a12.36,12.36,0,0,1-.47,5,6.49,6.49,0,0,1,0-2.52A6.05,6.05,0,0,1,349.57,324.37Z"
-																style="fill: rgb(69, 90, 100); transform-origin: 349.311px 326.87px;"
-																id="ellh9ocbzq41" class="animable"></path>
-															<path
-																d="M350.5,314.41a6.27,6.27,0,0,1,0,2.52,6,6,0,0,1-.5,2.46,12.36,12.36,0,0,1,.47-5Z"
-																style="fill: rgb(69, 90, 100); transform-origin: 350.276px 316.89px;"
-																id="elivaceeoulq" class="animable"></path>
-															<path
-																d="M351.43,304.46a6,6,0,0,1,0,2.51,6.37,6.37,0,0,1-.49,2.47,6.06,6.06,0,0,1,0-2.52A6.29,6.29,0,0,1,351.43,304.46Z"
-																style="fill: rgb(69, 90, 100); transform-origin: 351.185px 306.95px;"
-																id="el6aw4p023jfh" class="animable"></path>
-															<path
-																d="M352.37,294.5a12.36,12.36,0,0,1-.47,5,6.43,6.43,0,0,1,0-2.51A6.07,6.07,0,0,1,352.37,294.5Z"
-																style="fill: rgb(69, 90, 100); transform-origin: 352.111px 297px;"
-																id="el8lnac6cqcw" class="animable"></path>
-															<path
-																d="M353.3,284.54a6.27,6.27,0,0,1,0,2.52,6,6,0,0,1-.5,2.46,12.36,12.36,0,0,1,.47-5Z"
-																style="fill: rgb(69, 90, 100); transform-origin: 353.076px 287.02px;"
-																id="elc24j0zdxz3i" class="animable"></path>
-															<path
-																d="M354.23,274.59a6,6,0,0,1,0,2.51,6.37,6.37,0,0,1-.49,2.47,6.06,6.06,0,0,1,0-2.52A6.29,6.29,0,0,1,354.23,274.59Z"
-																style="fill: rgb(69, 90, 100); transform-origin: 353.985px 277.08px;"
-																id="elwtqyp3mq5ve" class="animable"></path>
-															<path
-																d="M355.17,264.63a12.31,12.31,0,0,1-.47,5,6.32,6.32,0,0,1,0-2.51A6,6,0,0,1,355.17,264.63Z"
-																style="fill: rgb(69, 90, 100); transform-origin: 354.91px 267.13px;"
-																id="eldi6imxl4sq" class="animable"></path>
-															<path
-																d="M402.39,241.4s.33-28.48.28-29l18.41-2.12s-5.62-21.28-8.71-25.26c-8-10.35-20.82-8.52-20.82-8.52l-19-.22a15.43,15.43,0,0,0-1.62-.28,19.61,19.61,0,0,0-15.49,5l-21.6,19.58,17.2,15.72,7.93-6.47,2.36,31.88Z"
-																style="fill: rgb(64, 123, 255); transform-origin: 377.46px 208.789px;"
-																id="eli1kq3z2zf6g" class="animable"></path>
-															<path
-																d="M417.85,199.26c.08.12-12.81,8.33-28.78,18.33s-29,18-29.06,17.89,12.81-8.33,28.78-18.33S417.78,199.14,417.85,199.26Z"
-																style="fill: rgb(38, 50, 56); transform-origin: 388.93px 217.37px;"
-																id="elygz46orng2" class="animable"></path>
-															<path
-																d="M396.41,176.94c.12.09-8,11-18.15,24.45s-18.46,24.23-18.58,24.14,8-11,18.16-24.45S396.3,176.85,396.41,176.94Z"
-																style="fill: rgb(38, 50, 56); transform-origin: 378.045px 201.235px;"
-																id="elu2z14yrq33" class="animable"></path>
-															<path
-																d="M350.69,185.4c.13-3.74-1.79-7.58-.44-11.07,1-2.59,3.78-4.15,4.9-6.69s.4-5.29,0-7.93-.54-5.71,1.33-7.64c1.54-1.58,4-1.93,5.63-3.42a8,8,0,0,0,2.14-5.47c.13-2-.1-4,.16-6a12.81,12.81,0,0,1,6.86-9.66,9.76,9.76,0,0,1,11.71,1.84l-12.35,46.92A47.79,47.79,0,0,0,350.69,185.4Z"
-																style="fill: rgb(38, 50, 56); transform-origin: 366.373px 155.87px;"
-																id="el5br2oyro6po" class="animable"></path>
-															<path
-																d="M350.79,166.21s-.13.08-.33.26a1.74,1.74,0,0,0-.53,1,1.91,1.91,0,0,0,.53,1.67,2.32,2.32,0,0,0,2.26.4,3,3,0,0,0,1.91-2.08,5.91,5.91,0,0,0-.1-3.4c-.33-1.2-.9-2.39-1.34-3.73a8.6,8.6,0,0,1-.31-4.32,8.9,8.9,0,0,1,4.91-6.5c1.16-.55,2.32-.9,3.31-1.37a6.26,6.26,0,0,0,2.4-1.82,6.51,6.51,0,0,0,1.42-4.1,14.37,14.37,0,0,0-.17-1.63s.07.13.17.4a5.26,5.26,0,0,1,.21,1.23,6.61,6.61,0,0,1-1.34,4.33,6.68,6.68,0,0,1-2.5,2c-1,.5-2.18.87-3.3,1.41a8.49,8.49,0,0,0-4.6,6.16,8.25,8.25,0,0,0,.29,4.08c.41,1.29,1,2.5,1.32,3.75a6.26,6.26,0,0,1,0,3.66,3.4,3.4,0,0,1-2.21,2.3,2.6,2.6,0,0,1-2.57-.54,2.09,2.09,0,0,1-.53-1.92,1.78,1.78,0,0,1,.66-1.07A.92.92,0,0,1,350.79,166.21Z"
-																style="fill: rgb(38, 50, 56); transform-origin: 357.387px 155.317px;"
-																id="elrjshrqc241p" class="animable"></path>
-															<path
-																d="M389.18,175.55c-.42-5.25-6.47-2.06-5.8-7.28a220.26,220.26,0,0,0,1.7-35.48"
-																style="fill: rgb(38, 50, 56); transform-origin: 386.254px 154.17px;"
-																id="elkpfqp54c7ls" class="animable"></path>
-															<path
-																d="M370.81,175.69l-2.34-35.87c6-8.21,14-9.95,23.86-7,0,0,4.17,17.33,3.67,25.62-.51,8.68-7,10.42-7,10.42s.23,2.92.54,6.5c1.67.27,4.36.71,6.19,1.17.7.17-13.93,19.85-13.93,19.85l-17.07-18.49A23.67,23.67,0,0,1,370.81,175.69Z"
-																style="fill: rgb(255, 190, 157); transform-origin: 380.386px 163.93px;"
-																id="eljtgy6lxgi4" class="animable"></path>
-															<path
-																d="M392.32,146.37a1.1,1.1,0,0,1-.95,1.21,1.05,1.05,0,0,1-1.23-.87,1.12,1.12,0,0,1,.95-1.22A1.07,1.07,0,0,1,392.32,146.37Z"
-																style="fill: rgb(38, 50, 56); transform-origin: 391.23px 146.537px;"
-																id="elmitpr8gnp9" class="animable"></path>
-															<path
-																d="M393.64,145.43c-.13.15-1-.38-2.2-.26s-2,.79-2.13.66.05-.33.4-.64a3,3,0,0,1,3.45-.32C393.55,145.11,393.7,145.36,393.64,145.43Z"
-																style="fill: rgb(38, 50, 56); transform-origin: 391.46px 145.158px;"
-																id="elwumomz4o9ci" class="animable"></path>
-															<path
-																d="M380.26,147.77a1.1,1.1,0,0,1-.95,1.21,1.06,1.06,0,0,1-1.23-.88,1.1,1.1,0,0,1,.95-1.21A1.06,1.06,0,0,1,380.26,147.77Z"
-																style="fill: rgb(38, 50, 56); transform-origin: 379.17px 147.935px;"
-																id="el5tlzo41rf45" class="animable"></path>
-															<path
-																d="M381.56,146.81c-.12.15-1-.38-2.2-.26s-2,.79-2.13.66,0-.33.4-.64a3,3,0,0,1,1.69-.71,2.83,2.83,0,0,1,1.76.39C381.47,146.49,381.62,146.74,381.56,146.81Z"
-																style="fill: rgb(38, 50, 56); transform-origin: 379.377px 146.535px;"
-																id="elnyum4wi57l" class="animable"></path>
-															<path
-																d="M386.85,154.94a7.92,7.92,0,0,1,1.88-.53c.3-.06.58-.15.61-.36a1.56,1.56,0,0,0-.29-.88c-.35-.7-.73-1.43-1.12-2.2a39.23,39.23,0,0,1-2.59-5.81,39.44,39.44,0,0,1,3.06,5.58c.37.78.73,1.52,1.08,2.23a1.79,1.79,0,0,1,.27,1.17.79.79,0,0,1-.45.49,3.06,3.06,0,0,1-.51.12A7.49,7.49,0,0,1,386.85,154.94Z"
-																style="fill: rgb(38, 50, 56); transform-origin: 387.551px 150.052px;"
-																id="elz7xua1akzj" class="animable"></path>
-															<path
-																d="M389,168.83a21.84,21.84,0,0,1-11.76-1.93s3.36,5.6,11.84,4Z"
-																style="fill: rgb(235, 153, 110); transform-origin: 383.16px 169.044px;"
-																id="elgssg9py4ojf" class="animable"></path>
-															<path
-																d="M386.63,157.84a2.14,2.14,0,0,0-2-.61,2,2,0,0,0-1.27.85,1.25,1.25,0,0,0,0,1.42,1.44,1.44,0,0,0,1.59.24,4.64,4.64,0,0,0,1.42-1.05,1.4,1.4,0,0,0,.3-.38.41.41,0,0,0-.05-.44"
-																style="fill: rgb(235, 153, 110); transform-origin: 384.925px 158.53px;"
-																id="elpkfuoewszun" class="animable"></path>
-															<path
-																d="M383.46,156.1c.19,0,.32,1.25,1.5,2.05s2.54.53,2.56.71-.27.28-.85.35a3.23,3.23,0,0,1-2.13-.52,2.75,2.75,0,0,1-1.18-1.73C383.26,156.43,383.37,156.1,383.46,156.1Z"
-																style="fill: rgb(38, 50, 56); transform-origin: 385.421px 157.664px;"
-																id="eliiokcxsmlb" class="animable"></path>
-															<path
-																d="M389.6,143.7c.07.18.88,0,1.87,0s1.81.15,1.88,0-.75-.66-1.88-.65S389.52,143.53,389.6,143.7Z"
-																style="fill: rgb(38, 50, 56); transform-origin: 391.474px 143.415px;"
-																id="elsmgruy6cgza" class="animable"></path>
-															<path
-																d="M377.72,144.21s0-.1,0-.2l0,.17a8.47,8.47,0,0,1,1.85-.46c1.11-.11,2,.25,2.1.08s-.14-.28-.52-.47a3.08,3.08,0,0,0-1.64-.28,2.76,2.76,0,0,0-1.94.92l-.08.14,0,0C377.61,144.21,377.68,144.23,377.72,144.21Z"
-																style="fill: rgb(38, 50, 56); transform-origin: 379.591px 143.625px;"
-																id="elcyif4n9olqm" class="animable"></path>
-															<path
-																d="M377.41,151.9c.1,0,.19-.12.21-.29s0-.32-.13-.33-.19.12-.21.29S377.32,151.89,377.41,151.9Z"
-																style="fill: rgb(235, 153, 110); transform-origin: 377.451px 151.59px;"
-																id="elch0tief6uqa" class="animable"></path>
-															<path
-																d="M380.12,151.78c.09,0,.16-.16.09-.32s-.23-.22-.3-.16-.06.18,0,.29S380,151.79,380.12,151.78Z"
-																style="fill: rgb(235, 153, 110); transform-origin: 380.05px 151.529px;"
-																id="elzrlqq187i87" class="animable"></path>
-															<path
-																d="M378.66,153a.19.19,0,0,0,.15-.22.2.2,0,0,0-.18-.2.21.21,0,0,0-.16.22C378.48,152.87,378.56,153,378.66,153Z"
-																style="fill: rgb(235, 153, 110); transform-origin: 378.641px 152.79px;"
-																id="elyskqe0rv598" class="animable"></path>
-															<path
-																d="M394.1,151.25c.09,0,.15-.16.13-.33s-.11-.29-.21-.28-.15.16-.13.33S394,151.26,394.1,151.25Z"
-																style="fill: rgb(235, 153, 110); transform-origin: 394.06px 150.945px;"
-																id="els5psq8zm07i" class="animable"></path>
-															<path
-																d="M391.37,151.31c.1,0,.17-.12.16-.26s-.09-.25-.18-.24-.17.12-.16.26S391.28,151.31,391.37,151.31Z"
-																style="fill: rgb(235, 153, 110); transform-origin: 391.36px 151.06px;"
-																id="elqduwc6xzbv" class="animable"></path>
-															<path
-																d="M392.7,152.17c.1,0,.18-.14.18-.31s-.08-.3-.17-.3-.17.13-.17.3S392.61,152.17,392.7,152.17Z"
-																style="fill: rgb(235, 153, 110); transform-origin: 392.71px 151.865px;"
-																id="el6662marl2vk" class="animable"></path>
-															<path
-																d="M384.07,128.66a19.09,19.09,0,0,0,4.85,11.13c2.77,3.05,5.91,5.71,10,6.45-1.1-3.5-1.34-6.31-2.23-9.22s-2.14-5.85-4.42-7.87a10.33,10.33,0,0,0-10.66-1.74"
-																style="fill: rgb(38, 50, 56); transform-origin: 390.265px 136.44px;"
-																id="elkl4vqnv4zz8" class="animable"></path>
-															<path
-																d="M398,143s-.24.09-.7.12a6.49,6.49,0,0,1-2-.18,8.56,8.56,0,0,1-2.65-1.21,19.09,19.09,0,0,1-2.73-2.27,25.45,25.45,0,0,1-3.83-5.14A11.15,11.15,0,0,1,385,131.9a16.25,16.25,0,0,1,1.49,2.18,31.61,31.61,0,0,0,3.88,5,13.35,13.35,0,0,0,5.11,3.5A19,19,0,0,0,398,143Z"
-																style="fill: rgb(69, 90, 100); transform-origin: 391.5px 137.517px;"
-																id="el0r8prni9h9r" class="animable"></path>
-															<path
-																d="M395.38,143.37s.12.08.31.27a7.94,7.94,0,0,1,.75.9,11,11,0,0,1,1.79,3.9,11.47,11.47,0,0,1,.32,3,19.87,19.87,0,0,1-.47,3.38,20.34,20.34,0,0,0-.52,3.64,8.07,8.07,0,0,0,.8,3.76,8.44,8.44,0,0,0,2.41,3c1,.76,2.15,1.3,3.09,2.11a4,4,0,0,1,1.61,3.06,6,6,0,0,1-1,2.84,14,14,0,0,0-1.14,2.11,4.51,4.51,0,0,0-.35,1.74,3,3,0,0,0,.46,1.43s-.12-.08-.28-.3a2.42,2.42,0,0,1-.38-1.12,4.63,4.63,0,0,1,.27-1.85,13.59,13.59,0,0,1,1.1-2.19,5.73,5.73,0,0,0,.89-2.66,3.62,3.62,0,0,0-1.49-2.7c-.88-.74-2-1.26-3.09-2.07a8.84,8.84,0,0,1-2.57-3.18,8.58,8.58,0,0,1-.84-4,20.39,20.39,0,0,1,.56-3.73,19.66,19.66,0,0,0,.51-3.3,11.37,11.37,0,0,0-.25-2.87,11.76,11.76,0,0,0-1.6-3.87C395.73,143.82,395.35,143.4,395.38,143.37Z"
-																style="fill: rgb(69, 90, 100); transform-origin: 400.424px 160.94px;"
-																id="eld5emjsbzhkc" class="animable"></path>
-															<path
-																d="M405.11,161.52a1.23,1.23,0,0,1-.16.45,2.41,2.41,0,0,1-1,1,3.33,3.33,0,0,1-2.14.37,3.4,3.4,0,0,1-2.36-1.62,5.27,5.27,0,0,1-.71-3.42,8.79,8.79,0,0,1,1.5-3.7c.76-1.18,1.8-2.24,2.57-3.48a5.16,5.16,0,0,0,.69-4.25,5.55,5.55,0,0,0-2.78-3.32,7.15,7.15,0,0,0-2-.65c-.7-.15-1.4-.3-2.08-.5a11.57,11.57,0,0,1-3.59-1.7,27.82,27.82,0,0,1-2.69-2.16,17,17,0,0,1-3.26-3.75,7.49,7.49,0,0,1-.59-1.23,2,2,0,0,1-.11-.46,17.36,17.36,0,0,0,.87,1.58,18.85,18.85,0,0,0,3.33,3.59,15.85,15.85,0,0,0,6.18,3.67c.65.18,1.34.33,2.05.47a7.82,7.82,0,0,1,2.17.69,6,6,0,0,1,3,3.63,5.7,5.7,0,0,1-.75,4.66c-.84,1.31-1.87,2.34-2.61,3.48a8.39,8.39,0,0,0-1.47,3.49,4.86,4.86,0,0,0,.59,3.16,3.17,3.17,0,0,0,2.1,1.54,3.25,3.25,0,0,0,2-.27A2.84,2.84,0,0,0,405.11,161.52Z"
-																style="fill: rgb(38, 50, 56); transform-origin: 395.755px 148.242px;"
-																id="elz0ln6l9kkgo" class="animable"></path>
-															<path
-																d="M354.35,182.77s-.13-.11-.36-.36a6.87,6.87,0,0,1-.83-1.23,8.37,8.37,0,0,1-.78-5.33,7.79,7.79,0,0,1,1.55-3.44,20.68,20.68,0,0,1,3.13-3,13.91,13.91,0,0,0,3.19-3.34,5.67,5.67,0,0,0,.85-2.22,4.56,4.56,0,0,0-.31-2.38c-.62-1.56-1.79-2.86-2.45-4.43a5,5,0,0,1-.37-2.49,4.89,4.89,0,0,1,.95-2.21,11.11,11.11,0,0,1,3.32-2.77,16.86,16.86,0,0,0,3-2.13,5.71,5.71,0,0,0,2.07-4.63,7.14,7.14,0,0,0-.57-1.86s.11.14.29.43a3.92,3.92,0,0,1,.48,1.4,5.87,5.87,0,0,1-2,4.93,16.83,16.83,0,0,1-3,2.22,11,11,0,0,0-3.17,2.69,4.68,4.68,0,0,0-.84,2,4.43,4.43,0,0,0,.36,2.22c.61,1.47,1.77,2.76,2.45,4.44a5,5,0,0,1,.35,2.65,6.49,6.49,0,0,1-.94,2.41,14.13,14.13,0,0,1-3.31,3.44,20.1,20.1,0,0,0-3.1,2.87,7.52,7.52,0,0,0-1.53,3.24,8.42,8.42,0,0,0,.6,5.17A17.05,17.05,0,0,0,354.35,182.77Z"
-																style="fill: rgb(69, 90, 100); transform-origin: 359.886px 161.86px;"
-																id="elssxhsikbn3g" class="animable"></path>
-															<path
-																d="M358.73,181.36c.45-3.92,1.22-5.55,1.2-9.5,0-3.62,3.33-8.44,1.26-12.7a48.27,48.27,0,0,1,2.87-7.82c.69-1.57,3.21-6.33,3.85-7.93-.41-2.95-2.53-2.73-2.12-5.66.48-3.52,2.14-7.05,5.14-9a14.39,14.39,0,0,1,6.33-1.92,13.08,13.08,0,0,1,4.63.21,6.07,6.07,0,0,1,3.69,2.63l-.78-.74a11.09,11.09,0,0,1-2.6,9.36,16.3,16.3,0,0,1-8.53,5,6.56,6.56,0,0,1-.72,3.17l.08.11-.19.1a6.87,6.87,0,0,1-.72,1,6,6,0,0,1-1.25,1.11,4.82,4.82,0,0,0,0,4.27c.81,1.53,2.46,2.62,2.79,4.32.38,1.91-1.08,3.74-1,5.68a6.17,6.17,0,0,0,1,2.9c3.53,4.53,2.91,9.2.91,14.58-.74,2-1.88,4.1-1.3,6.15s2.5,3.21,3.11,5.13c.86,2.66-1.11,5.33-2.95,7.44a62.63,62.63,0,0,0-12.21-4,22.24,22.24,0,0,0,.62-5.39,4.69,4.69,0,0,1-8.77,1.33C356.5,189.36,358.28,185.29,358.73,181.36Z"
-																style="fill: rgb(38, 50, 56); transform-origin: 369.325px 162.982px;"
-																id="el5hehri3angg" class="animable"></path>
-															<path
-																d="M364.36,139.37a21,21,0,0,0,3.37,1.87,12.25,12.25,0,0,0,15.78-5.76A28.88,28.88,0,0,0,385,131.9a3.38,3.38,0,0,1-.15,1,13.1,13.1,0,0,1-1,2.71,13.4,13.4,0,0,1-2.48,3.49A12.26,12.26,0,0,1,377,142a12.67,12.67,0,0,1-9.36-.4,11.43,11.43,0,0,1-2.47-1.48A3.35,3.35,0,0,1,364.36,139.37Z"
-																style="fill: rgb(69, 90, 100); transform-origin: 374.68px 137.304px;"
-																id="elffsqj5sosmb" class="animable"></path>
-															<path
-																d="M365,135c0-.08.92.14,2.38.2a13.78,13.78,0,0,0,10.35-4c1.05-1,1.56-1.8,1.63-1.75a6.31,6.31,0,0,1-1.36,2,12.9,12.9,0,0,1-4.84,3.32,12.72,12.72,0,0,1-5.8.79A5.94,5.94,0,0,1,365,135Z"
-																style="fill: rgb(69, 90, 100); transform-origin: 372.18px 132.534px;"
-																id="el6lry1ksahg8" class="animable"></path>
-															<path
-																d="M364.36,136.94c.12-.1.93.8,2.23,1.44s2.49.79,2.48.94a3.67,3.67,0,0,1-2.72-.47C364.94,138.14,364.24,137,364.36,136.94Z"
-																style="fill: rgb(69, 90, 100); transform-origin: 366.708px 138.168px;"
-																id="elqi4xw03c62s" class="animable"></path>
-															<path
-																d="M365.33,196.35a2.5,2.5,0,0,1,.09-.63,3,3,0,0,1,.95-1.58,5,5,0,0,0,1.88-2,3.7,3.7,0,0,0-.12-3.5,4.19,4.19,0,0,0-1.61-1.34,3.54,3.54,0,0,1-1.78-1.76,3.09,3.09,0,0,1-.27-1.32,3.86,3.86,0,0,1,.31-1.35,18.45,18.45,0,0,1,1.35-2.42,9.35,9.35,0,0,0-1-11,4.93,4.93,0,0,1-1.4-3,5.23,5.23,0,0,1,1.18-3c.61-.84,1.31-1.56,1.83-2.36a4.13,4.13,0,0,0,.84-2.53,4.28,4.28,0,0,0-1.11-2.3A8.61,8.61,0,0,1,365,154a5.25,5.25,0,0,1,.18-4.64,9,9,0,0,1,2.92-2.52,4.24,4.24,0,0,0,1.77-2.12,3.26,3.26,0,0,0,.22-1.75c-.08-.39-.22-.58-.19-.59a1.33,1.33,0,0,1,.29.57,3.11,3.11,0,0,1-.13,1.84,4.44,4.44,0,0,1-1.79,2.29,8.88,8.88,0,0,0-2.78,2.46,4.87,4.87,0,0,0-.09,4.29,8.69,8.69,0,0,0,1.4,2.09,3.93,3.93,0,0,1,.33,5.39c-.55.85-1.26,1.57-1.84,2.38a4.75,4.75,0,0,0-1.07,2.69,4.37,4.37,0,0,0,1.29,2.67A9.77,9.77,0,0,1,368,174.9a9.59,9.59,0,0,1-1.42,5.75,16.58,16.58,0,0,0-1.34,2.34,3.53,3.53,0,0,0-.3,1.19,2.76,2.76,0,0,0,.22,1.14,3.16,3.16,0,0,0,1.57,1.57,4.55,4.55,0,0,1,1.74,1.5,3.21,3.21,0,0,1,.53,2,5.87,5.87,0,0,1-.46,1.8,3.57,3.57,0,0,1-.95,1.3c-.38.32-.76.54-1.06.79a3,3,0,0,0-1,1.45A4,4,0,0,1,365.33,196.35Z"
-																style="fill: rgb(69, 90, 100); transform-origin: 367.001px 169.365px;"
-																id="ell2goo8om6if" class="animable"></path>
-															<path
-																d="M364.27,138.34a13,13,0,0,0,3.18,2.29,9.67,9.67,0,0,0,4.11.9,11.54,11.54,0,0,0,5-1.19,7.56,7.56,0,0,0,3.46-3.67c.68-1.45,1.11-2.87,1.61-4a9.64,9.64,0,0,1,1.48-2.54,4.27,4.27,0,0,1,.57-.57c.14-.12.22-.17.24-.16a11.28,11.28,0,0,0-2,3.41c-.45,1.14-.84,2.56-1.52,4.07a7.87,7.87,0,0,1-3.65,3.93,11.43,11.43,0,0,1-5.23,1.21,9.73,9.73,0,0,1-4.27-1,9,9,0,0,1-2.37-1.76A3.06,3.06,0,0,1,364.27,138.34Z"
-																style="fill: rgb(69, 90, 100); transform-origin: 374.095px 135.71px;"
-																id="elx2nz6kd56w" class="animable"></path>
-														</g>
-														<g id="freepik--character-1--inject-26" class="animable"
-															style="transform-origin: 212.632px 299.23px;">
-															<path
-																d="M167.25,455.64l-1.86,7.83s-12.81,16.63-16.76,15.82c-2.59-.53.59-4.87,5.46-17.51l1-5.21Z"
-																style="fill: rgb(64, 123, 255); transform-origin: 157.478px 467.479px;"
-																id="elxn089y5qag" class="animable"></path>
-															<path
-																d="M148.11,476.83a1.55,1.55,0,0,0,.68.66,2.39,2.39,0,0,0,2.45-.34,72.56,72.56,0,0,0,6.38-6c2.37-2.49,4.36-4.88,5.76-6.65l1.64-2.1c.15-.21.3-.4.44-.58a.88.88,0,0,1,.17-.19s0,.08-.13.22-.27.38-.41.6c-.36.52-.9,1.26-1.58,2.15a82,82,0,0,1-5.73,6.71,62.73,62.73,0,0,1-6.45,6,3,3,0,0,1-1.44.54,2.14,2.14,0,0,1-1.14-.25,1.47,1.47,0,0,1-.54-.5A.67.67,0,0,1,148.11,476.83Z"
-																style="fill: rgb(38, 50, 56); transform-origin: 156.87px 469.742px;"
-																id="elyr2wbvhwqug" class="animable"></path>
-															<path
-																d="M149.92,471.49a2.07,2.07,0,0,1,1.06-.12,5.49,5.49,0,0,1,2.41.84,4.39,4.39,0,0,1,1.75,1.85,2.3,2.3,0,0,1,.28,1s-.12-.39-.42-.95a4.66,4.66,0,0,0-1.73-1.73,6.16,6.16,0,0,0-2.31-.88C150.33,471.44,149.93,471.53,149.92,471.49Z"
-																style="fill: rgb(38, 50, 56); transform-origin: 152.67px 473.204px;"
-																id="elhyk0dbi9ojq" class="animable"></path>
-															<path
-																d="M162.05,467.58s-.08-.12-.16-.37a6.88,6.88,0,0,1-.25-1.07,5.81,5.81,0,0,1,.6-3.56,5.45,5.45,0,0,1,2.59-2.52,4.31,4.31,0,0,1,1-.33,1.17,1.17,0,0,1,.41,0,8.19,8.19,0,0,0-1.39.5,5.65,5.65,0,0,0-2.46,2.47,6.1,6.1,0,0,0-.64,3.44C161.91,467,162.09,467.57,162.05,467.58Z"
-																style="fill: rgb(38, 50, 56); transform-origin: 163.908px 463.646px;"
-																id="elnjtuqep7wq" class="animable"></path>
-															<path
-																d="M166.43,457c.06,0-.23,1.11-.47,2.5a8.43,8.43,0,0,1-.66,2.46c-.05,0,.2-1.12.44-2.51A8.62,8.62,0,0,1,166.43,457Z"
-																style="fill: rgb(38, 50, 56); transform-origin: 165.866px 459.48px;"
-																id="eltoduhwletye" class="animable"></path>
-															<path
-																d="M153.87,462.89a2.93,2.93,0,0,1,1.64,0,2.84,2.84,0,0,1,1.48.7c0,.06-.67-.28-1.53-.48S153.87,463,153.87,462.89Z"
-																style="fill: rgb(38, 50, 56); transform-origin: 155.43px 463.185px;"
-																id="eln26whe999ln" class="animable"></path>
-															<path
-																d="M153.6,464.23a2,2,0,0,1,1.39-.05,2,2,0,0,1,1.21.67s-.55-.28-1.27-.45S153.61,464.3,153.6,464.23Z"
-																style="fill: rgb(38, 50, 56); transform-origin: 154.9px 464.465px;"
-																id="elk7c664neeh" class="animable"></path>
-															<path
-																d="M152.58,465.91a1.73,1.73,0,0,1,1.43-.18,1.77,1.77,0,0,1,1.22.78A7.54,7.54,0,0,0,154,466,6.81,6.81,0,0,0,152.58,465.91Z"
-																style="fill: rgb(38, 50, 56); transform-origin: 153.905px 466.08px;"
-																id="elj272kex5u38" class="animable"></path>
-															<path
-																d="M154.75,462.33s.59-.16,1.5-.52a11.78,11.78,0,0,0,1.55-.74c.28-.16.56-.34.85-.54s.54-.48.53-.78-.38-.47-.68-.4a1.81,1.81,0,0,0-.79.53c-.47.44-.87.87-1.2,1.23-.65.74-1,1.23-1,1.2a2.36,2.36,0,0,1,.22-.37c.16-.23.39-.55.71-.93a12.87,12.87,0,0,1,1.17-1.28,2,2,0,0,1,.89-.6.76.76,0,0,1,1,.6,1.31,1.31,0,0,1-.64,1,9.68,9.68,0,0,1-.88.55,10.48,10.48,0,0,1-1.59.71,10.32,10.32,0,0,1-1.13.31A1.74,1.74,0,0,1,154.75,462.33Z"
-																style="fill: rgb(38, 50, 56); transform-origin: 157.125px 460.712px;"
-																id="elwlhap3j9h" class="animable"></path>
-															<path
-																d="M155.42,462.17a14.11,14.11,0,0,1-.23-1.43,6.29,6.29,0,0,0-.44-1.49,3.18,3.18,0,0,0-.48-.75c-.19-.22-.49-.41-.73-.27s-.27.49-.24.78a3.9,3.9,0,0,0,.25.86,5,5,0,0,0,.84,1.29c.59.66,1.06,1,1,1a1.45,1.45,0,0,1-.34-.2,7.47,7.47,0,0,1-.81-.7,4.77,4.77,0,0,1-.91-1.32,3.23,3.23,0,0,1-.28-.91,1,1,0,0,1,.35-1,.84.84,0,0,1,1,.32,3,3,0,0,1,.5.82,5.37,5.37,0,0,1,.41,1.54c.05.45.07.81.08,1.06A1.19,1.19,0,0,1,155.42,462.17Z"
-																style="fill: rgb(38, 50, 56); transform-origin: 154.225px 460.072px;"
-																id="eld9ggymf1rd" class="animable"></path>
-															<g id="elz0vfay8r8z">
-																<g style="opacity: 0.4; transform-origin: 157.009px 469.49px;"
-																	class="animable">
-																	<path
-																		d="M165.39,463.47l.9-3.76s-3.14.58-3.95,2.93a9.84,9.84,0,0,0-.62,4L154.9,474s-1.71-3.34-4.81-2.54c0,0-2.44,5.37-2.36,6.71s1.64,1.18,2.19.93a27.39,27.39,0,0,0,6.11-4.82C159.64,470.53,163.64,465.78,165.39,463.47Z"
-																		id="el54zubdz0mno" class="animable"
-																		style="transform-origin: 157.009px 469.49px;">
-																	</path>
-																</g>
-															</g>
-															<path
-																d="M228.58,460.67l.06-10.44L209.08,450l-.25,15.27,1.21.09c5.4.37,27.45,1.48,31.08.43C245.15,464.62,228.58,460.67,228.58,460.67Z"
-																style="fill: rgb(64, 123, 255); transform-origin: 225.291px 458.115px;"
-																id="elecfxn8dry1i" class="animable"></path>
-															<g id="elyo47y5yychr">
-																<g style="opacity: 0.4; transform-origin: 212.395px 462.359px;"
-																	class="animable">
-																	<path
-																		d="M215.93,465.2a6.82,6.82,0,0,0-2.45-4.2,6.57,6.57,0,0,0-4.55-1.47l-.07,5.46Z"
-																		id="elwja6shh87n" class="animable"
-																		style="transform-origin: 212.395px 462.359px;">
-																	</path>
-																</g>
-															</g>
-															<g id="el9k68yaf1fol">
-																<g style="opacity: 0.4; transform-origin: 225.318px 464.532px;"
-																	class="animable">
-																	<path
-																		d="M236.68,462.89s5.8,1.75,5.06,2.7-23.07.67-32.91-.32l0-.43,26,.55S235.54,462.93,236.68,462.89Z"
-																		id="el9q2salcnowi" class="animable"
-																		style="transform-origin: 225.318px 464.532px;">
-																	</path>
-																</g>
-															</g>
-															<path
-																d="M208.56,464.82l.34,0,1,.07,3.56.2c3,.14,7.15.29,11.73.35s8.74,0,11.74,0l3.56-.11,1,0a2.77,2.77,0,0,0,.33,0,1.23,1.23,0,0,0-.34,0h-1l-3.56,0c-3,0-7.15,0-11.74,0s-8.73-.19-11.73-.29l-3.55-.12-1,0Z"
-																style="fill: rgb(38, 50, 56); transform-origin: 225.19px 465.143px;"
-																id="elmn6pifsap4" class="animable"></path>
-															<path
-																d="M234.91,465.69a7.49,7.49,0,0,1,.68-1.69,7.67,7.67,0,0,1,1.23-1.34,3.15,3.15,0,0,0-1.91,3Z"
-																style="fill: rgb(38, 50, 56); transform-origin: 235.864px 464.175px;"
-																id="elbr5p33e18g" class="animable"></path>
-															<path
-																d="M229.17,462.69c.06,0,.34-.3.63-.74a2.24,2.24,0,0,0,.43-.87c-.06,0-.34.29-.63.74A2.17,2.17,0,0,0,229.17,462.69Z"
-																style="fill: rgb(38, 50, 56); transform-origin: 229.7px 461.885px;"
-																id="el3xqlrl5b63h" class="animable"></path>
-															<path
-																d="M227.6,461.83c0,.05.35-.15.69-.45s.59-.58.54-.63-.35.16-.69.45S227.56,461.78,227.6,461.83Z"
-																style="fill: rgb(38, 50, 56); transform-origin: 228.216px 461.29px;"
-																id="elcado29w83vs" class="animable"></path>
-															<path
-																d="M226.62,460a2.31,2.31,0,0,0,1,.15,2.22,2.22,0,0,0,1-.1,2.29,2.29,0,0,0-1-.14A2.52,2.52,0,0,0,226.62,460Z"
-																style="fill: rgb(38, 50, 56); transform-origin: 227.62px 460.031px;"
-																id="el24u8klbzvg2" class="animable"></path>
-															<path
-																d="M226.29,458.67a2,2,0,0,0,1.14.34,2,2,0,0,0,1.18-.14,6.57,6.57,0,0,0-1.16-.09A5.28,5.28,0,0,0,226.29,458.67Z"
-																style="fill: rgb(38, 50, 56); transform-origin: 227.45px 458.856px;"
-																id="elbjpn2e4e0f7" class="animable"></path>
-															<path
-																d="M229.86,461a3.54,3.54,0,0,0,1.25,0,7.4,7.4,0,0,0,1.35-.28,3.58,3.58,0,0,0,.77-.3.69.69,0,0,0,.31-.39.47.47,0,0,0-.18-.5,2.31,2.31,0,0,0-2.86.63,2.24,2.24,0,0,0-.42.84.69.69,0,0,0,0,.34,3.53,3.53,0,0,1,.59-1.07,2.21,2.21,0,0,1,1.08-.68,1.91,1.91,0,0,1,1.5.12c.19.15.11.38-.11.51a3.65,3.65,0,0,1-.71.29,9.54,9.54,0,0,1-1.3.33C230.34,461,229.86,461,229.86,461Z"
-																style="fill: rgb(38, 50, 56); transform-origin: 231.708px 460.31px;"
-																id="el9oucxmxwn4u" class="animable"></path>
-															<path
-																d="M230.18,461.06a1.24,1.24,0,0,0,.16-.87,2.14,2.14,0,0,0-.33-.92,1.27,1.27,0,0,0-1-.66.52.52,0,0,0-.4.58,1.34,1.34,0,0,0,.21.56,3.86,3.86,0,0,0,.58.77,1.83,1.83,0,0,0,.72.52s-.25-.23-.59-.63a4.36,4.36,0,0,1-.52-.76c-.17-.27-.28-.75,0-.8s.63.29.82.54a2,2,0,0,1,.34.82A4.41,4.41,0,0,1,230.18,461.06Z"
-																style="fill: rgb(38, 50, 56); transform-origin: 229.483px 459.835px;"
-																id="el3t694dkg8nq" class="animable"></path>
-															<path
-																d="M209,459.47s.56,0,1.44.07a6.11,6.11,0,0,1,5.07,4.15c.29.84.31,1.41.36,1.4a1.31,1.31,0,0,0,0-.39,4.52,4.52,0,0,0-.2-1.06,6,6,0,0,0-1.94-2.94,5.93,5.93,0,0,0-3.27-1.32,5.34,5.34,0,0,0-1.08,0A1.22,1.22,0,0,0,209,459.47Z"
-																style="fill: rgb(38, 50, 56); transform-origin: 212.442px 462.221px;"
-																id="elp4hqb2ycbs" class="animable"></path>
-															<path
-																d="M211.16,451.36a33.89,33.89,0,0,0-.22,4,32,32,0,0,0,0,4,37,37,0,0,0,.22-4A34.1,34.1,0,0,0,211.16,451.36Z"
-																style="fill: rgb(38, 50, 56); transform-origin: 211.048px 455.36px;"
-																id="elkt4lgsw21o" class="animable"></path>
-															<path
-																d="M218.41,463.33a11,11,0,0,0,2.85.32,11.23,11.23,0,0,0,2.87-.19c0-.07-1.29,0-2.86,0S218.42,463.26,218.41,463.33Z"
-																style="fill: rgb(38, 50, 56); transform-origin: 221.27px 463.493px;"
-																id="elg3umne9xiea" class="animable"></path>
-															<path
-																d="M214.58,463.27c-.05.05.1.28.23.57s.19.56.26.55.1-.3,0-.64S214.62,463.23,214.58,463.27Z"
-																style="fill: rgb(38, 50, 56); transform-origin: 214.852px 463.827px;"
-																id="el5bt9qcwl3gf" class="animable"></path>
-															<path
-																d="M213.16,461.46s.07.25.27.46.4.34.45.29-.08-.25-.28-.46S213.2,461.41,213.16,461.46Z"
-																style="fill: rgb(38, 50, 56); transform-origin: 213.525px 461.835px;"
-																id="el4kbu3humven" class="animable"></path>
-															<path
-																d="M211.1,460.61c0,.07.27.07.56.17s.49.26.54.22-.11-.32-.46-.44S211.08,460.55,211.1,460.61Z"
-																style="fill: rgb(38, 50, 56); transform-origin: 211.654px 460.756px;"
-																id="elqohpbl9m1kf" class="animable"></path>
-															<path
-																d="M209.63,460.2c0,.06.09.17.25.23s.31.07.34,0-.09-.16-.25-.23S209.66,460.14,209.63,460.2Z"
-																style="fill: rgb(38, 50, 56); transform-origin: 209.927px 460.315px;"
-																id="elfb49knrt8m9" class="animable"></path>
-															<polygon
-																points="241.81 259.29 234.3 455.32 203.84 455.96 208.9 286.1 174.64 457.26 145.68 457.26 182.99 259.68 241.81 259.29"
-																style="fill: rgb(38, 50, 56); transform-origin: 193.745px 358.275px;"
-																id="elrfc7u3xi3ga" class="animable"></polygon>
-															<path
-																d="M215.92,266.42a20.56,20.56,0,0,1-.35,3.23c-.29,2-.71,4.72-1.22,7.74a31.88,31.88,0,0,1-.87,4.25,6,6,0,0,1-2,3,4.7,4.7,0,0,1-2.21,1,1.78,1.78,0,0,1-.89,0,5.48,5.48,0,0,0,4.62-4.12,38.08,38.08,0,0,0,.81-4.19c.51-3,1-5.75,1.37-7.71A19.57,19.57,0,0,1,215.92,266.42Z"
-																style="fill: rgb(69, 90, 100); transform-origin: 212.15px 276.058px;"
-																id="eldim02052fah" class="animable"></path>
-															<path
-																d="M209.58,267.36c.07.05-.18.36,0,.88a1,1,0,0,0,.51.65.82.82,0,0,0,.91-.18.85.85,0,0,0,.3-.87,1,1,0,0,0-.59-.59c-.49-.21-.84,0-.88-.08s.28-.44,1-.28a1.34,1.34,0,0,1,.93.78,1.38,1.38,0,0,1-1.9,1.66,1.36,1.36,0,0,1-.65-1C209.1,267.58,209.56,267.29,209.58,267.36Z"
-																style="fill: rgb(69, 90, 100); transform-origin: 210.507px 268.154px;"
-																id="elywkc87fl2ms" class="animable"></path>
-															<path
-																d="M193.22,270.15a5.74,5.74,0,0,1,.58-5.44c.15.07-.29,1.22-.44,2.71S193.38,270.12,193.22,270.15Z"
-																style="fill: rgb(69, 90, 100); transform-origin: 193.309px 267.43px;"
-																id="elldlep5d7j5" class="animable"></path>
-															<path
-																d="M196.89,269.92a4.71,4.71,0,0,1-.44-2.88,4.76,4.76,0,0,1,.83-2.79,25.08,25.08,0,0,1-.3,2.83A25.82,25.82,0,0,1,196.89,269.92Z"
-																style="fill: rgb(69, 90, 100); transform-origin: 196.834px 267.085px;"
-																id="eliy40mn26ol" class="animable"></path>
-															<path
-																d="M228.37,270.72a17.44,17.44,0,0,1,.17-2.94,18.77,18.77,0,0,1,.13-2.95,5.52,5.52,0,0,1,.41,3A5.72,5.72,0,0,1,228.37,270.72Z"
-																style="fill: rgb(69, 90, 100); transform-origin: 228.75px 267.775px;"
-																id="el4er1nhxf3js" class="animable"></path>
-															<path
-																d="M232.35,270.5c-.15-.06.32-1.34.43-3s-.17-3,0-3a4.81,4.81,0,0,1,.56,3.06A4.86,4.86,0,0,1,232.35,270.5Z"
-																style="fill: rgb(69, 90, 100); transform-origin: 232.857px 267.5px;"
-																id="elttykhynsgf" class="animable"></path>
-															<path
-																d="M199.37,177.73l18.8-1.5c.12-2.2,0-10.69,0-10.69s7.83-1.22,7.92-9-1.26-25.79-1.26-25.79h0a27.18,27.18,0,0,0-27.32,3.44l-1.16.89Z"
-																style="fill: rgb(255, 190, 157); transform-origin: 211.222px 153.136px;"
-																id="elits3e4d439a" class="animable"></path>
-															<path
-																d="M218.15,165.42a18.14,18.14,0,0,1-10.2-2.89s2.41,5.63,10.21,4.92Z"
-																style="fill: rgb(235, 153, 110); transform-origin: 213.055px 165.021px;"
-																id="el52er4itnjb" class="animable"></path>
-															<path
-																d="M197.28,143.14c-.13-.06-5.38-1.59-5.21,3.76s5.51,4.07,5.51,3.92S197.28,143.14,197.28,143.14Z"
-																style="fill: rgb(255, 190, 157); transform-origin: 194.823px 146.976px;"
-																id="el2vgodkkxqwg" class="animable"></path>
-															<path
-																d="M195.89,148.85s-.1.06-.25.14a.94.94,0,0,1-.7,0,2.32,2.32,0,0,1-1.13-2,3.08,3.08,0,0,1,.22-1.34,1.06,1.06,0,0,1,.68-.74.47.47,0,0,1,.55.24c.08.15.05.26.08.26s.11-.09.06-.31a.58.58,0,0,0-.22-.33.74.74,0,0,0-.52-.12,1.35,1.35,0,0,0-.95.86,3.19,3.19,0,0,0-.27,1.5,2.42,2.42,0,0,0,1.43,2.27,1,1,0,0,0,.85-.17C195.88,149,195.9,148.85,195.89,148.85Z"
-																style="fill: rgb(235, 153, 110); transform-origin: 194.663px 146.977px;"
-																id="elgifgqy4mudl" class="animable"></path>
-															<path
-																d="M222.23,142.75a1.12,1.12,0,0,1-1.08,1.13,1.07,1.07,0,0,1-1.15-1,1.12,1.12,0,0,1,1.08-1.13A1.07,1.07,0,0,1,222.23,142.75Z"
-																style="fill: rgb(38, 50, 56); transform-origin: 221.115px 142.815px;"
-																id="elly8mpouout" class="animable"></path>
-															<path
-																d="M223.31,141.72c-.14.14-1-.48-2.18-.48s-2.09.6-2.22.46.08-.33.46-.61a3.11,3.11,0,0,1,1.78-.55,3,3,0,0,1,1.74.56C223.26,141.39,223.38,141.65,223.31,141.72Z"
-																style="fill: rgb(38, 50, 56); transform-origin: 221.1px 141.14px;"
-																id="el4wvtijortqm" class="animable"></path>
-															<path
-																d="M210.18,142.84A1.11,1.11,0,0,1,209.1,144a1.07,1.07,0,0,1-1.15-1,1.12,1.12,0,0,1,1.08-1.12A1.07,1.07,0,0,1,210.18,142.84Z"
-																style="fill: rgb(38, 50, 56); transform-origin: 209.066px 142.94px;"
-																id="el4udeenpeoz" class="animable"></path>
-															<path
-																d="M211.5,141.94c-.14.15-1-.48-2.19-.48s-2.08.61-2.21.46.07-.33.46-.61a3,3,0,0,1,1.77-.54,2.92,2.92,0,0,1,1.74.56C211.44,141.61,211.56,141.88,211.5,141.94Z"
-																style="fill: rgb(38, 50, 56); transform-origin: 209.288px 141.366px;"
-																id="elogid7a38hi" class="animable"></path>
-															<path
-																d="M215.86,150.86a7.81,7.81,0,0,1,1.95-.36c.31,0,.6-.09.65-.3a1.65,1.65,0,0,0-.2-.91l-.91-2.34a39.33,39.33,0,0,1-2-6.11,41.87,41.87,0,0,1,2.53,5.94l.87,2.35a1.78,1.78,0,0,1,.15,1.2.74.74,0,0,1-.5.45,2.13,2.13,0,0,1-.52.07A8.33,8.33,0,0,1,215.86,150.86Z"
-																style="fill: rgb(38, 50, 56); transform-origin: 217.147px 145.878px;"
-																id="elj4f9hu3djye" class="animable"></path>
-															<path
-																d="M212.32,151.69c.2,0,.2,1.29,1.32,2.22s2.5.78,2.51,1-.31.26-.89.27a3.25,3.25,0,0,1-2.11-.73,2.81,2.81,0,0,1-1-1.86C212.09,152,212.23,151.68,212.32,151.69Z"
-																style="fill: rgb(38, 50, 56); transform-origin: 214.143px 153.435px;"
-																id="elwn21kct7nbe" class="animable"></path>
-															<path
-																d="M211.81,137.23c-.12.33-1.32.17-2.73.34s-2.55.56-2.74.26c-.08-.14.11-.44.57-.76a4.52,4.52,0,0,1,2-.71,4.6,4.6,0,0,1,2.14.25C211.6,136.82,211.86,137.07,211.81,137.23Z"
-																style="fill: rgb(38, 50, 56); transform-origin: 209.069px 137.133px;"
-																id="elufqft55amn" class="animable"></path>
-															<path
-																d="M222.87,138.24c-.21.27-1,0-2,0s-1.84.19-2-.1,0-.41.42-.67a2.94,2.94,0,0,1,3.28.1C222.85,137.82,223,138.1,222.87,138.24Z"
-																style="fill: rgb(38, 50, 56); transform-origin: 220.863px 137.689px;"
-																id="elkc7u11gs9sr" class="animable"></path>
-															<path
-																d="M228.6,125.77a2.87,2.87,0,0,0-1.06-2.58,2.06,2.06,0,0,0-2.66.2,2.39,2.39,0,0,0-2-2.9c-1.28-.08-2.36.89-3.6,1.22a5.78,5.78,0,0,1-3.65-.42c-1.16-.46-2.24-1.11-3.41-1.54a10,10,0,0,0-12.8,5.88,4.43,4.43,0,0,0-4.71,1.78,7.3,7.3,0,0,0-1.11,5.13,16.28,16.28,0,0,0,.89,3.51c0,.1,0,.2,0,.3.09,4.31.57,9.36,2.41,9.39,3.2,0,2.43-6,2.43-6,3.93-1.52,2.47-7.4,3.45-8.29s3-3,11.25,1.23a16,16,0,0,0,9.75,1.06l.21,0h0l.07,0a7.27,7.27,0,0,0,2.11-.9,4.17,4.17,0,0,0,1.74-1.93,2.31,2.31,0,0,0-.45-2.45A4.94,4.94,0,0,0,228.6,125.77Z"
-																style="fill: rgb(38, 50, 56); transform-origin: 211.066px 132.44px;"
-																id="el2y5s1smnrs8" class="animable"></path>
-															<path
-																d="M214,142.79c-.05,0,0-.43-.25-1.16a4.78,4.78,0,0,0-1.78-2.55,4.63,4.63,0,1,0,0,7.42,4.85,4.85,0,0,0,1.78-2.55c.21-.73.2-1.16.25-1.16s0,.1,0,.31a3.73,3.73,0,0,1-.09.9,4.83,4.83,0,0,1-1.75,2.79,5,5,0,0,1-4.79.78,5.07,5.07,0,1,1,4.79-8.79,4.85,4.85,0,0,1,1.75,2.8,3.69,3.69,0,0,1,.09.9C214,142.68,214,142.79,214,142.79Z"
-																style="fill: rgb(38, 50, 56); transform-origin: 209.004px 142.792px;"
-																id="elx2rf99iqluj" class="animable"></path>
-															<path
-																d="M227,142.79s0-.43-.25-1.16a4.81,4.81,0,0,0-1.77-2.55,4.63,4.63,0,1,0,0,7.42,4.88,4.88,0,0,0,1.77-2.55c.21-.73.2-1.16.25-1.16s0,.1,0,.31a3.73,3.73,0,0,1-.09.9,4.83,4.83,0,0,1-1.75,2.79,5,5,0,0,1-4.78.78,5.07,5.07,0,0,1,0-9.56,5,5,0,0,1,4.78.77,4.85,4.85,0,0,1,1.75,2.8,3.69,3.69,0,0,1,.09.9C227,142.68,227,142.79,227,142.79Z"
-																style="fill: rgb(38, 50, 56); transform-origin: 222.011px 142.788px;"
-																id="eljeo5cx8ite" class="animable"></path>
-															<path
-																d="M217.65,142.49c-.06.14-.87-.1-1.88-.05s-1.8.33-1.87.2.71-.68,1.85-.72S217.72,142.37,217.65,142.49Z"
-																style="fill: rgb(38, 50, 56); transform-origin: 215.775px 142.296px;"
-																id="elqnzp7wdpj6" class="animable"></path>
-															<path
-																d="M204.22,142.44a11.7,11.7,0,0,1-3.41.45,11.82,11.82,0,0,1-3.44-.07,11.23,11.23,0,0,1,3.41-.45A11.89,11.89,0,0,1,204.22,142.44Z"
-																style="fill: rgb(38, 50, 56); transform-origin: 200.795px 142.63px;"
-																id="elzervbzz8d5" class="animable"></path>
-															<path
-																d="M251.79,204.81,258,216l3.79-30.43a12.19,12.19,0,0,0-1.26-6.39,12.68,12.68,0,0,0-1.54-2.48,13.45,13.45,0,0,0-2.65-2.49,1.11,1.11,0,0,1,.2-2.09c1-.11,3.7,1.34,5.83,4.26s2.35-2.7,2.47-4.74.78-8.32,1.43-8.77c1-.65,1.86.28,1.7,2.32s-.24,8.17.84,8.21,1.52-10.36,1.52-10.36-.26-2.25,1-2.24c2.24,0,.94,11,.79,12-.1.72,1.07.81,1.14,0s.22-10.38,2.5-10.4c1.76,0-1,9.06.08,11.09s1.38-7.11,3.06-7.05c.62,0,1.09.12.16,5.32-.5,2.8-2.35,6.83-2.91,12.29l-.15,1.41c-.11,6.8-1.61,27.29-7.79,42.89a12.64,12.64,0,0,1-22.24,2.25c-3.8-5.73-9.81-20.71-9.81-20.71Z"
-																style="fill: rgb(255, 190, 157); transform-origin: 257.872px 198.521px;"
-																id="elooyp08755i" class="animable"></path>
-															<path
-																d="M272.76,181.28c0,.05-.35,0-.89.23a3.23,3.23,0,0,0-1.73,1.43l-.21.38-.12-.42a5.28,5.28,0,0,0-.83-1.66,6.07,6.07,0,0,0-2.87-2.12c-.88-.31-1.48-.29-1.48-.37a2.93,2.93,0,0,1,1.56.11A5.7,5.7,0,0,1,269.3,181a5.17,5.17,0,0,1,.86,1.79l-.33,0a3.14,3.14,0,0,1,2-1.46A1.51,1.51,0,0,1,272.76,181.28Z"
-																style="fill: rgb(235, 153, 110); transform-origin: 268.695px 181.006px;"
-																id="eljcfwdqt9dwh" class="animable"></path>
-															<path
-																d="M240.35,182.6,258,216l3-29.53h15.81L271,228.56a12.35,12.35,0,0,1-8.33,10.24h0c-5.74,1.93-13.37-.32-16.2-5.67l-10.34-17.6Z"
-																style="fill: rgb(64, 123, 255); transform-origin: 256.47px 211.041px;"
-																id="elpupccm3qmv" class="animable"></path>
-															<path
-																d="M259.1,229.82a6.23,6.23,0,0,1-1.18-1.88,15.57,15.57,0,0,1-1-10.52,6.56,6.56,0,0,1,.82-2.07,19.47,19.47,0,0,0,1.34,14.47Z"
-																style="fill: rgb(38, 50, 56); transform-origin: 257.765px 222.585px;"
-																id="el2k25efpfe7m" class="animable"></path>
-															<g id="eliv4uxsty00p">
-																<g style="opacity: 0.3; transform-origin: 256.046px 221.281px;"
-																	class="animable">
-																	<path
-																		d="M257.5,214.88a7.47,7.47,0,0,0-3.08,4.78,17.76,17.76,0,0,0-.11,5.82,3.43,3.43,0,0,0,.44,1.6,1.23,1.23,0,0,0,1.44.54,1.28,1.28,0,0,0,.64-1.18,4.69,4.69,0,0,0-.31-1.37,11.66,11.66,0,0,1,1.45-9.84"
-																		id="el4uqprnh6k5v" class="animable"
-																		style="transform-origin: 256.046px 221.281px;">
-																	</path>
-																</g>
-															</g>
-															<path
-																d="M190.32,174.78c2.64-.5,5.2-1.46,8.3-1.59h0a33.22,33.22,0,0,0,20,0c.82.11,2,.21,3.37.38,8.71,1,12.05,2.87,18.31,9l-.69,35.25s2.1,40.12,2,46.6H182.09L182,237.24v-7.4L162.46,237l1.78-10.28S173,192.6,174.38,188C176,182.42,182,176.37,190.32,174.78Z"
-																style="fill: rgb(64, 123, 255); transform-origin: 202.037px 218.805px;"
-																id="el9kxlko6fpf9" class="animable"></path>
-															<path
-																d="M171.43,227.26,200,219.83l8.17,13.29-29.1,12.25a11.7,11.7,0,0,1-4.84,1h0a11.79,11.79,0,0,1-10.89-7.3l-.88-2.16Z"
-																style="fill: rgb(64, 123, 255); transform-origin: 185.315px 233.1px;"
-																id="elga2vb0nmq6" class="animable"></path>
-															<path
-																d="M186.32,224.36c-.14,0-.26-5.25-.26-11.72s.12-11.71.26-11.71.27,5.24.27,11.71S186.47,224.36,186.32,224.36Z"
-																style="fill: rgb(38, 50, 56); transform-origin: 186.325px 212.645px;"
-																id="el6l5ggycf2wu" class="animable"></path>
-															<g id="ele1dmdhzn2xn">
-																<g style="opacity: 0.3; transform-origin: 200.815px 239.433px;"
-																	class="animable">
-																	<path
-																		d="M181.79,244.32a9.93,9.93,0,0,0,3.81,3.55c3.57,1.93,8,1.88,11.83.62a33.84,33.84,0,0,0,10.41-6.16,87.41,87.41,0,0,0,11.58-11.26,1.23,1.23,0,0,0,.42-.95c-.1-.62-1-.7-1.58-.61-5.92.94-11.32,3.81-16.72,6.42q-9.63,4.66-19.7,8.38"
-																		id="eltmksdd5m9sp" class="animable"
-																		style="transform-origin: 200.815px 239.433px;">
-																	</path>
-																</g>
-															</g>
-															<path
-																d="M238,204.41a1.35,1.35,0,0,1-.11.27l-.37.77c-.17.33-.42.72-.7,1.19a16.45,16.45,0,0,1-1.15,1.51,17.09,17.09,0,0,1-3.92,3.4,17.83,17.83,0,0,1-6.39,2.5,17.12,17.12,0,0,1-8.29-.57,19.64,19.64,0,0,1-8.09-5.06,18.71,18.71,0,0,1-5-9.28,14.6,14.6,0,0,1-.05-5.63,12.43,12.43,0,0,1,2.42-5.27,10.19,10.19,0,0,1,4.72-3.38,6.41,6.41,0,0,1,2.88-.3,4.65,4.65,0,0,1,2.59,1.25,3.69,3.69,0,0,1,1.14,2.6,4.81,4.81,0,0,1-.81,2.65,7.1,7.1,0,0,1-4.41,2.77,19.92,19.92,0,0,1-9.55-.19A19.81,19.81,0,0,1,188.94,180a15.13,15.13,0,0,1-.72-4.35,1.47,1.47,0,0,1,.05.28l.12.84a21.46,21.46,0,0,0,.75,3.17,20.3,20.3,0,0,0,6.64,9.69,19.85,19.85,0,0,0,7.32,3.61,19.63,19.63,0,0,0,9.32.15,6.69,6.69,0,0,0,4.11-2.58,4.26,4.26,0,0,0,.72-2.37,3.11,3.11,0,0,0-1-2.24,4.12,4.12,0,0,0-2.31-1.11,5.88,5.88,0,0,0-2.65.28,9.79,9.79,0,0,0-4.47,3.21,12,12,0,0,0-2.32,5.05,14.16,14.16,0,0,0,0,5.43,18.31,18.31,0,0,0,4.8,9.05,19.45,19.45,0,0,0,7.88,5,16.88,16.88,0,0,0,8.1.62,17.78,17.78,0,0,0,6.3-2.39,17.59,17.59,0,0,0,3.92-3.28A19.76,19.76,0,0,0,238,204.41Z"
-																style="fill: rgb(224, 224, 224); transform-origin: 213.11px 194.983px;"
-																id="elm69c9uiysn" class="animable"></path>
-															<path
-																d="M240.5,243.37a18.08,18.08,0,0,0-1.63-3.62,12.45,12.45,0,0,0-8.67-5.82,17.09,17.09,0,0,0-7.37.34,20.52,20.52,0,0,0-3.88,1.44,14.46,14.46,0,0,0-3.62,2.43,6.63,6.63,0,0,0-2.08,3.9,4,4,0,0,0,1.71,4,3,3,0,0,0,4.19-.64,11.13,11.13,0,0,0,2-4.63,18.29,18.29,0,0,0-.66-9.95,18.57,18.57,0,0,0-5.16-7.76,21.31,21.31,0,0,0-7.33-4.29,21.6,21.6,0,0,0-17.68,1.54c-1.13.61-1.95,1.17-2.52,1.54l-.63.43-.23.14a19.49,19.49,0,0,1,3.28-2.29,21.36,21.36,0,0,1,10.45-2.93,22.08,22.08,0,0,1,7.47,1.16,21.54,21.54,0,0,1,7.51,4.34,19.2,19.2,0,0,1,5.33,7.95,18.84,18.84,0,0,1,.68,10.24,11.67,11.67,0,0,1-2.08,4.85,3.54,3.54,0,0,1-4.86.73,4.15,4.15,0,0,1-1.64-2,5,5,0,0,1-.29-2.49A7,7,0,0,1,215,237.8a15,15,0,0,1,3.74-2.5,21,21,0,0,1,4-1.45,17.71,17.71,0,0,1,7.55-.29,12.64,12.64,0,0,1,8.78,6.08,13.23,13.23,0,0,1,1.2,2.72,7.4,7.4,0,0,1,.2.75A1,1,0,0,1,240.5,243.37Z"
-																style="fill: rgb(224, 224, 224); transform-origin: 213.72px 232.161px;"
-																id="elskkel6smj6" class="animable"></path>
-															<path
-																d="M186.06,209.86s-.15.25-.5.63A12.13,12.13,0,0,1,184,212a14.65,14.65,0,0,1-2.73,1.73,16.13,16.13,0,0,1-3.76,1.28,19.92,19.92,0,0,1-7.16,0,21.08,21.08,0,0,1-2.12-.48c-.49-.15-.76-.24-.75-.28s1.12.17,2.92.39a22.44,22.44,0,0,0,7-.17,17.37,17.37,0,0,0,3.65-1.2,16.29,16.29,0,0,0,2.72-1.6C185.21,210.62,186,209.8,186.06,209.86Z"
-																style="fill: rgb(224, 224, 224); transform-origin: 176.77px 212.596px;"
-																id="eld1yy6eduo3" class="animable"></path>
-															<path
-																d="M180.73,244.55a18,18,0,0,0-1.1-3.11,9.78,9.78,0,0,0-13.4-4.36,18.35,18.35,0,0,0-2.72,1.86,2.43,2.43,0,0,1,.57-.7,8.79,8.79,0,0,1,2-1.49A9.84,9.84,0,0,1,180,241.28a9,9,0,0,1,.72,2.36A2.56,2.56,0,0,1,180.73,244.55Z"
-																style="fill: rgb(224, 224, 224); transform-origin: 172.138px 239.989px;"
-																id="elzq0ghff3bf" class="animable"></path>
-															<path
-																d="M243.76,228a3.49,3.49,0,0,1-.27-1,17.67,17.67,0,0,1-.37-2.73,22.29,22.29,0,0,1,.1-4.1,23.81,23.81,0,0,1,1.15-4.9,23.38,23.38,0,0,1,2.22-4.51,21.51,21.51,0,0,1,2.52-3.24,19,19,0,0,1,2-1.88,3.8,3.8,0,0,1,.82-.58c.07.08-1.06,1-2.57,2.71a24.81,24.81,0,0,0-2.39,3.24,23.57,23.57,0,0,0-3.29,9.22,24.33,24.33,0,0,0-.21,4C243.56,226.61,243.86,228,243.76,228Z"
-																style="fill: rgb(224, 224, 224); transform-origin: 247.501px 216.53px;"
-																id="el5rtnhoefpcd" class="animable"></path>
-															<path
-																d="M273.66,208.43s-.16.25-.55.59a6.74,6.74,0,0,1-1.92,1.11,8.6,8.6,0,0,1-7.12-.55,7.28,7.28,0,0,1-2.84-2.86,10.41,10.41,0,0,1-1.1-3.09,13.11,13.11,0,0,1-.27-2.17,2,2,0,0,1,0-.81c.09,0,.16,1.14.59,2.9a11.7,11.7,0,0,0,1.16,2.93,7.1,7.1,0,0,0,2.68,2.65,8.59,8.59,0,0,0,6.75.65A12.19,12.19,0,0,0,273.66,208.43Z"
-																style="fill: rgb(224, 224, 224); transform-origin: 266.739px 205.652px;"
-																id="elj5fnfv4pidk" class="animable"></path>
-															<path
-																d="M241.62,185.12a2.28,2.28,0,0,1-.72.46,7.72,7.72,0,0,1-2.21.71,9,9,0,0,1-3.44-.11,10.74,10.74,0,0,1-3.84-1.75,10.13,10.13,0,0,1-4-6.38,8.89,8.89,0,0,1-.12-2.31,2.58,2.58,0,0,1,.16-.84,21.51,21.51,0,0,0,.32,3.07,10.39,10.39,0,0,0,3.93,6,10.75,10.75,0,0,0,3.65,1.7,9.23,9.23,0,0,0,3.28.21A17,17,0,0,0,241.62,185.12Z"
-																style="fill: rgb(224, 224, 224); transform-origin: 234.441px 180.653px;"
-																id="el0jdogefng0s" class="animable"></path>
-															<path
-																d="M210.24,264a48.2,48.2,0,0,0-2.6-4.22,25.85,25.85,0,0,0-8.95-7.7,27.33,27.33,0,0,0-6.13-2.29,23.32,23.32,0,0,0-5.31-.61,47,47,0,0,0-4.93.45,5.52,5.52,0,0,1,1.29-.37,20.25,20.25,0,0,1,3.64-.45,22.19,22.19,0,0,1,5.42.51,26.41,26.41,0,0,1,6.26,2.3,24.68,24.68,0,0,1,9,7.95,22.62,22.62,0,0,1,1.82,3.17A5.38,5.38,0,0,1,210.24,264Z"
-																style="fill: rgb(224, 224, 224); transform-origin: 196.28px 256.4px;"
-																id="el2r26x3a1ek6" class="animable"></path>
-															<path
-																d="M238.85,197.92c.14,0,1,14.74,1.91,32.94s1.54,32.95,1.39,33-1-14.74-1.91-32.94S238.7,197.93,238.85,197.92Z"
-																style="fill: rgb(38, 50, 56); transform-origin: 240.5px 230.89px;"
-																id="el6z8qvikzc93" class="animable"></path>
-															<path
-																d="M200,219.83a12.26,12.26,0,0,0,4.9-4.38,13,13,0,0,0,1.36-2.61,13.87,13.87,0,0,0,.79-3.57c0-1.13,1.31-1.72,1.92-.91s.73,3.9-.7,7.24,3.55.66,5.38-.29,7.62-3.61,8.34-3.27c1.06.5.71,1.76-1.14,2.66s-7.2,4-6.68,5,9.76-4,9.76-4,1.82-1.38,2.45-.3c1.15,2-9,6.47-10,6.88-.68.28-.15,1.34.57,1s9.11-5.16,10.3-3.18c.92,1.51-8.35,3.8-9.57,5.77s6.87-2.46,7.69-1c.3.56.45,1-4.54,2.88-2.68,1-7.12,1.48-12.14,3.8l-1.31.59"
-																style="fill: rgb(255, 190, 157); transform-origin: 213.657px 220.062px;"
-																id="el6vz3vxomjf" class="animable"></path>
-															<path
-																d="M180.19,244.9a2.93,2.93,0,0,1,.54-.28l1.57-.71,5.88-2.56,19.89-8.47-.12.38L205.29,229l-5.66-9,.29.1L183,225.46l-4.9,1.52-1.32.38-.46.11a1.62,1.62,0,0,1,.44-.19l1.29-.46,4.85-1.65,16.84-5.57.19-.06.1.16,5.68,9,2.66,4.26.16.25-.28.12-20,8.31-5.94,2.41-1.61.63A3.24,3.24,0,0,1,180.19,244.9Z"
-																style="fill: rgb(38, 50, 56); transform-origin: 192.425px 232.22px;"
-																id="elthpaa7oprc9" class="animable"></path>
-															<path
-																d="M179.52,222.14a6.37,6.37,0,0,1,6.74,1.81,22.6,22.6,0,0,0-3.24-1.41A23.58,23.58,0,0,0,179.52,222.14Z"
-																style="fill: rgb(38, 50, 56); transform-origin: 182.89px 222.886px;"
-																id="el7yyl11ce1t2" class="animable"></path>
-														</g>
-														<g id="freepik--magnifying-glass--inject-26"
-															class="animable animator-active"
-															style="transform-origin: 404.98px 267.132px;">
-															<path
-																d="M524,420.9,439.52,273.58A97.91,97.91,0,0,0,477.83,218c13.17-51-16.71-103.82-67.18-118.8a98.31,98.31,0,0,0-122.6,67.39c-14.76,52,15.77,106.73,67.79,121.45a97.85,97.85,0,0,0,63.85-3.55l83.17,148.44a12.15,12.15,0,0,0,16.6,4.63h0A12.16,12.16,0,0,0,524,420.9ZM358.27,280.42a90.51,90.51,0,1,1,111.32-63.18A90.51,90.51,0,0,1,358.27,280.42Z"
-																style="fill: rgb(69, 90, 100); transform-origin: 404.98px 267.132px;"
-																id="elbzc71p2cvig" class="animable"></path>
-															<path
-																d="M327.92,254.45s-.1-.07-.27-.23l-.74-.72c-.63-.65-1.65-1.54-2.79-2.83a80.67,80.67,0,0,1-8.95-11.58,88.44,88.44,0,0,1-5-8.81,90.76,90.76,0,0,1-4.38-10.75,83.44,83.44,0,0,1-.38-52.4,85.28,85.28,0,0,1,9.07-19.71,82,82,0,0,1,8.78-11.7c1.13-1.31,2.13-2.22,2.75-2.88l.73-.73c.17-.16.26-.24.27-.23a2.75,2.75,0,0,1-.23.27l-.7.77c-.59.68-1.57,1.6-2.67,2.94a86.55,86.55,0,0,0-8.62,11.76,90.26,90.26,0,0,0-4.77,8.87,93.26,93.26,0,0,0-4.16,10.78,83.84,83.84,0,0,0,.38,52.1,92,92,0,0,0,4.32,10.72,90.46,90.46,0,0,0,4.9,8.8,86.34,86.34,0,0,0,8.79,11.64c1.12,1.31,2.11,2.22,2.71,2.9.3.32.53.57.71.75A2.41,2.41,0,0,1,327.92,254.45Z"
-																style="fill: rgb(224, 224, 224); transform-origin: 314.649px 193.165px;"
-																id="elm7fkxw7dvq" class="animable"></path>
-															<path
-																d="M357,116a18.68,18.68,0,0,1-2.65,1.06c-1.65.62-3.9,1.52-6.31,2.68S343.52,122.1,342,123a17.62,17.62,0,0,1-2.48,1.41,13.22,13.22,0,0,1,2.29-1.72,51.37,51.37,0,0,1,6-3.39,49.83,49.83,0,0,1,6.42-2.56A12.75,12.75,0,0,1,357,116Z"
-																style="fill: rgb(224, 224, 224); transform-origin: 348.26px 120.205px;"
-																id="elsbk6q01eso7" class="animable"></path>
-														</g>
-														<g id="freepik--Plant--inject-26" class="animable"
-															style="transform-origin: 288.346px 434.523px;">
-															<path
-																d="M286.7,428.74c-1.72,2.46-5.08,1.64-6.63.14s-2.22-3.68-2.81-5.76c-1.37-4.75-2.75-9.74-1.73-14.57a8.07,8.07,0,0,1,1.86-4,4.23,4.23,0,0,1,4-1.33c1.69.45,2.74,2.1,3.5,3.68a34.78,34.78,0,0,1,3.43,14.9,12,12,0,0,1-1.63,6.91"
-																style="fill: rgb(64, 123, 255); transform-origin: 281.763px 416.72px;"
-																id="el8s29a4mpd3" class="animable"></path>
-															<g id="el0n38xwp4l64">
-																<g style="opacity: 0.2; transform-origin: 281.763px 416.72px;"
-																	class="animable">
-																	<path
-																		d="M286.7,428.74c-1.72,2.46-5.08,1.64-6.63.14s-2.22-3.68-2.81-5.76c-1.37-4.75-2.75-9.74-1.73-14.57a8.07,8.07,0,0,1,1.86-4,4.23,4.23,0,0,1,4-1.33c1.69.45,2.74,2.1,3.5,3.68a34.78,34.78,0,0,1,3.43,14.9,12,12,0,0,1-1.63,6.91"
-																		id="elgm63md66pzk" class="animable"
-																		style="transform-origin: 281.763px 416.72px;">
-																	</path>
-																</g>
-															</g>
-															<path
-																d="M280.24,441.22a14.93,14.93,0,0,0-9.28-1.13,7.68,7.68,0,0,0-4.58,2.05c-1.15,1.26-1.37,3.48-.05,4.57a4.31,4.31,0,0,0,2.89.73c2.45,0,5.17-.46,7.13,1,1.12.84,1.86,2.24,3.2,2.66a3.18,3.18,0,0,0,3.48-1.55,5.44,5.44,0,0,0,.39-4A6.07,6.07,0,0,0,280.24,441.22Z"
-																style="fill: rgb(64, 123, 255); transform-origin: 274.53px 445.49px;"
-																id="eljbsj98k4r1c" class="animable"></path>
-															<path
-																d="M291.44,432.27A9,9,0,0,1,290,424a15.92,15.92,0,0,1,4.89-7.09,26.3,26.3,0,0,1,8.76-5.16,9.19,9.19,0,0,1,3.93-.67,4.09,4.09,0,0,1,3.3,2c.93,1.75,0,3.88-.91,5.62a68.47,68.47,0,0,1-5.75,8.76c-1.72,2.22-3.7,4.41-6.32,5.41s-5.36.89-6.75-.93"
-																style="fill: rgb(64, 123, 255); transform-origin: 300.415px 422.284px;"
-																id="elcvb1yhfh81l" class="animable"></path>
-															<path
-																d="M286.82,465.91a5,5,0,0,1-.16-1.12l-.3-3.05c-.14-1.29-.33-2.82-.68-4.49a35.92,35.92,0,0,0-1.63-5.29,19.73,19.73,0,0,0-2.7-4.78,10,10,0,0,0-3.42-2.84,9.36,9.36,0,0,0-2.88-.9,5.29,5.29,0,0,1-1.11-.16,5.2,5.2,0,0,1,1.13,0,8.66,8.66,0,0,1,3,.78,10.07,10.07,0,0,1,3.61,2.87,19,19,0,0,1,2.8,4.88,32.09,32.09,0,0,1,1.61,5.38,37.28,37.28,0,0,1,.6,4.54c.1,1.3.13,2.35.15,3.07A5.2,5.2,0,0,1,286.82,465.91Z"
-																style="fill: rgb(38, 50, 56); transform-origin: 280.4px 454.58px;"
-																id="el62dplwvytw" class="animable"></path>
-															<path
-																d="M286.61,463.56a1.76,1.76,0,0,1,0-.52v-1.48c0-1.29,0-3.16-.06-5.46-.12-4.61-.52-11-1.28-18s-1.8-13.29-2.73-17.8c-.22-1.13-.44-2.15-.65-3s-.37-1.67-.54-2.29l-.34-1.44a1.69,1.69,0,0,1-.09-.52,4.24,4.24,0,0,1,.18.49c.11.37.25.85.43,1.42s.39,1.39.61,2.28.48,1.9.72,3a169.54,169.54,0,0,1,2.87,17.82c.77,7,1.11,13.39,1.14,18,0,2.31,0,4.18-.08,5.47,0,.6-.07,1.1-.09,1.49A2.24,2.24,0,0,1,286.61,463.56Z"
-																style="fill: rgb(38, 50, 56); transform-origin: 283.895px 438.305px;"
-																id="elc1oxkibibc7" class="animable"></path>
-															<path
-																d="M286.58,451.26a9.87,9.87,0,0,1,0-1.56c.06-1,.19-2.44.47-4.2a56.87,56.87,0,0,1,1.37-6.13,55.17,55.17,0,0,1,2.56-7.25,38.88,38.88,0,0,1,7.53-11.72,19.65,19.65,0,0,1,1.77-1.64c.27-.23.51-.46.75-.64l.69-.48a9.49,9.49,0,0,1,1.31-.83,45.54,45.54,0,0,0-4.29,3.82,40.72,40.72,0,0,0-7.33,11.67,57.8,57.8,0,0,0-2.58,7.19,60.8,60.8,0,0,0-1.45,6.06c-.33,1.75-.51,3.18-.62,4.17A10.05,10.05,0,0,1,286.58,451.26Z"
-																style="fill: rgb(38, 50, 56); transform-origin: 294.79px 434.035px;"
-																id="eljpd9ak3dn8c" class="animable"></path>
-														</g>
-														<defs>
-															<filter id="active" height="200%">
-																<feMorphology in="SourceAlpha" result="DILATED"
-																	operator="dilate" radius="2"></feMorphology>
-																<feFlood flood-color="#32DFEC" flood-opacity="1"
-																	result="PINK">
-																</feFlood>
-																<feComposite in="PINK" in2="DILATED" operator="in"
-																	result="OUTLINE"></feComposite>
-																<feMerge>
-																	<feMergeNode in="OUTLINE"></feMergeNode>
-																	<feMergeNode in="SourceGraphic"></feMergeNode>
-																</feMerge>
-															</filter>
-															<filter id="hover" height="200%">
-																<feMorphology in="SourceAlpha" result="DILATED"
-																	operator="dilate" radius="2"></feMorphology>
-																<feFlood flood-color="#ff0000" flood-opacity="0.5"
-																	result="PINK"></feFlood>
-																<feComposite in="PINK" in2="DILATED" operator="in"
-																	result="OUTLINE"></feComposite>
-																<feMerge>
-																	<feMergeNode in="OUTLINE"></feMergeNode>
-																	<feMergeNode in="SourceGraphic"></feMergeNode>
-																</feMerge>
-																<feColorMatrix type="matrix"
-																	values="0   0   0   0   0                0   1   0   0   0                0   0   0   0   0                0   0   0   1   0 ">
-																</feColorMatrix>
-															</filter>
-														</defs>
-													</svg>
+													
 													<div class="svg-text">
 														<h3 id="pesquisa-status"></h3>
 
@@ -1661,17 +165,18 @@
 								</form>
 								<div class="row">
 									<div class="form-group">
-										<strong class="form-text text-muted">Buscar
-											por:
+										<strong class="form-text text-muted">Buscar por:
 											<button id="button-cns" class="btn btn-primary btn-xs">
-												<img th:src="@{/assets/img/icons/icon-bandeira-brasil.png}" width="30">
-												CNS
+												<img th:src="@{/assets/img/icons/icon-bandeira-brasil.png}"
+													width="30"> CNS
 											</button>
-											<button id="button-cpf" class="btn btn-primary btn-border btn-xs">
+											<button id="button-cpf"
+												class="btn btn-primary btn-border btn-xs">
 												<img th:src="@{/assets/img/icons/icon-cpf.png}" width="30">
 												CPF
 											</button>
-											<button id="button-nome" class="btn btn-primary btn-border btn-xs">
+											<button id="button-nome"
+												class="btn btn-primary btn-border btn-xs">
 												<img th:src="@{/assets/img/icons/icon-cpf.png}" width="30">
 												NOME
 											</button>
@@ -1686,13 +191,11 @@
 					<div class="col-md-12">
 						<!-- Formulário para preenchimento dos dados do Cidadão -->
 						<div id="form-cidadao-div">
-							<form method="post" th:action="@{/recepcao/salvar-cidadao}" th:object="${cidadao}"
-								id="form-cidadao">
+							<form method="post" th:action="@{/recepcao/salvar-cidadao}"
+								th:object="${cidadao}" id="form-cidadao">
 								<!-- div reponsável em mostrar os erros -->
 								<div id="errors" class="form-group row">
-									<div class="col-sm-12 mb-3 mb-sm-0">
-
-									</div>
+									<div class="col-sm-12 mb-3 mb-sm-0"></div>
 								</div>
 
 								<div class="card">
@@ -1702,69 +205,76 @@
 									<div class="card-body">
 										<div class="row">
 											<div class="col-md-6 col-lg-9">
-												<div class="form-group" th:classappend="${#fields.hasErrors('nome')} ? has-error">
-													<label for="nome">Nome</label> <input name="nome" type="text"
-														class="form-control" id="nome"
+												<div class="form-group"
+													th:classappend="${#fields.hasErrors('nome')} ? has-error">
+													<label for="nome">Nome</label> <input name="nome"
+														type="text" class="form-control" id="nome"
 														placeholder="Digite o nome do Cidadão" th:field="*{nome}">
 													<small id="small-nome" class="form-text text-muted"></small>
 												</div>
 											</div>
 
 											<div class="col-md-6 col-lg-3">
-												<div class="form-group" th:classappend="${#fields.hasErrors('datanascimento')} ? has-error">
+												<div class="form-group"
+													th:classappend="${#fields.hasErrors('datanascimento')} ? has-error">
 													<label for="datanascimento">Data de Nascimento</label> <input
 														name="datanascimento" type="date" class="form-control"
-														id="datanascimento" th:field="*{datanascimento}"> <small
-														id="small-datanascimento" class="form-text text-muted"></small>
+														id="datanascimento" th:field="*{datanascimento}">
+													<small id="small-datanascimento"
+														class="form-text text-muted"></small>
 												</div>
 											</div>
 
 											<div class="col-md-6 col-lg-9">
-												<div class="form-group" th:classappend="${#fields.hasErrors('nomemae')} ? has-error">
-													<label for="nomemae">Nome da mãe</label> <input name="nomemae"
-														type="text" class="form-control" id="nomemae"
-														placeholder="Digite o nome da mãe" th:field="*{nomemae}"> <small
-														id="small-nomemae" class="form-text text-muted"></small>
-													<small><input type="checkbox" id="semInfo-mae"> Sem
-														informação</small>
+												<div class="form-group"
+													th:classappend="${#fields.hasErrors('nomemae')} ? has-error">
+													<label for="nomemae">Nome da mãe</label> <input
+														name="nomemae" type="text" class="form-control"
+														id="nomemae" placeholder="Digite o nome da mãe"
+														th:field="*{nomemae}"> <small id="small-nomemae"
+														class="form-text text-muted"></small> <small><input
+														type="checkbox" id="semInfo-mae"> Sem informação</small>
 												</div>
 											</div>
 
 											<div class="col-md-6 col-lg-9">
-												<div class="form-group" th:classappend="${#fields.hasErrors('nomepai')} ? has-error">
-													<label for="nomepai">Nome do pai</label> <input name="nomepai"
-														type="text" class="form-control" id="nomepai"
-														placeholder="Digite o nome do pai" th:field="*{nomepai}"> <small
-														id="small-nomepai" class="form-text text-muted"></small>
-													<small><input type="checkbox" id="semInfo-pai"> Sem
-														informação</small>
+												<div class="form-group"
+													th:classappend="${#fields.hasErrors('nomepai')} ? has-error">
+													<label for="nomepai">Nome do pai</label> <input
+														name="nomepai" type="text" class="form-control"
+														id="nomepai" placeholder="Digite o nome do pai"
+														th:field="*{nomepai}"> <small id="small-nomepai"
+														class="form-text text-muted"></small> <small><input
+														type="checkbox" id="semInfo-pai"> Sem informação</small>
 												</div>
 											</div>
 
 											<div class="col-md-6 col-lg-4">
-												<div class="form-group" th:classappend="${#fields.hasErrors('sexo')} ? has-error">
+												<div class="form-group"
+													th:classappend="${#fields.hasErrors('sexo')} ? has-error">
 													<label for="sexo">Sexo</label> <select name="sexo"
 														class="form-control" id="sexo">
 														<option th:value="M">MASCULINO</option>
 														<option th:value="F">FEMININO</option>
-													</select> <small id="small-sexo"
-														class="form-text text-muted"></small>
+													</select> <small id="small-sexo" class="form-text text-muted"></small>
 												</div>
 											</div>
 
 											<div class="col-md-6 col-lg-4">
-												<div class="form-group" th:classappend="${#fields.hasErrors('codigoRaca')} ? has-error">
-													<label for="codigoraca">Raça</label> <select name="codigoRaca"
-														class="form-control" id="codigoraca" th:field="*{codigoRaca}">
-														<option th:each="raca : ${racas}" th:value="${raca.codigo}"
-															th:text="${raca.descricao}"></option>
-													</select> <small id="small-codigoraca"
-														class="form-text text-muted"></small>
+												<div class="form-group"
+													th:classappend="${#fields.hasErrors('codigoRaca')} ? has-error">
+													<label for="codigoraca">Raça</label> <select
+														name="codigoRaca" class="form-control" id="codigoraca"
+														th:field="*{codigoRaca}">
+														<option th:each="raca : ${racas}"
+															th:value="${raca.codigo}" th:text="${raca.descricao}"></option>
+													</select> <small id="small-codigoraca" class="form-text text-muted"></small>
 												</div>
 											</div>
 
 											<div class="col-md-6 col-lg-3">
-												<div class="form-group" th:classappend="${#fields.hasErrors('codigonacionalidade')} ? has-error">
+												<div class="form-group"
+													th:classappend="${#fields.hasErrors('codigonacionalidade')} ? has-error">
 													<label for="codigonacionalidade">Nacionalidade</label> <select
 														name="codigonacionalidade" class="form-control"
 														id="codigonacionalidade" th:field="*{codigonacionalidade}">
@@ -1777,12 +287,15 @@
 											</div>
 
 											<div class="col-md-6 col-lg-4">
-												<div class="form-group" th:classappend="${#fields.hasErrors('municipioNascimento')} ? has-error">
-													<label for="municipioNascimento">Naturalidade</label>
-													<input type="text" name="municipioNascimentoNome"
-														class="form-control ui-widget" id="municipioNascimento" th:value="*{municipioNascimento} != null ? *{municipioNascimento.nomeMunicipioSiglaUF}">
+												<div class="form-group"
+													th:classappend="${#fields.hasErrors('municipioNascimento')} ? has-error">
+													<label for="municipioNascimento">Naturalidade</label> <input
+														type="text" name="municipioNascimentoNome"
+														class="form-control ui-widget" id="municipioNascimento"
+														th:value="*{municipioNascimento} != null ? *{municipioNascimento.nomeMunicipioSiglaUF}">
 													<input type="hidden" name="municipioNascimento"
-														id="id-municipioNascimento" th:value="*{municipioNascimento} != null ? *{municipioNascimento.id}">
+														id="id-municipioNascimento"
+														th:value="*{municipioNascimento} != null ? *{municipioNascimento.id}">
 													<small id="small-municipioNascimento"
 														class="form-text text-muted"></small>
 												</div>
@@ -1799,20 +312,22 @@
 									<div class="card-body">
 										<div class="row">
 											<div class="col-md-6 col-lg-4">
-												<div class="form-group" th:classappend="${#fields.hasErrors('cns')} ? has-error">
+												<div class="form-group"
+													th:classappend="${#fields.hasErrors('cns')} ? has-error">
 													<label for="cns">CNS</label> <input type="text" name="cns"
-														class="form-control" id="cns" placeholder="000.0000.0000.0000"
-														th:field="*{cns}"> <small id="small-cns"
-														class="form-text text-muted"></small>
+														class="form-control" id="cns"
+														placeholder="000.0000.0000.0000" th:field="*{cns}">
+													<small id="small-cns" class="form-text text-muted"></small>
 												</div>
 											</div>
 
 											<div class="col-md-6 col-lg-4">
-												<div class="form-group" th:classappend="${#fields.hasErrors('cpf')} ? has-error">
+												<div class="form-group"
+													th:classappend="${#fields.hasErrors('cpf')} ? has-error">
 													<label for="cpf">CPF</label> <input type="text" name="cpf"
 														class="form-control" id="cpf" placeholder="000.000.000-00"
-														th:field="*{cpf}">
-													<small id="small-cpf" class="form-text text-muted"></small>
+														th:field="*{cpf}"> <small id="small-cpf"
+														class="form-text text-muted"></small>
 												</div>
 											</div>
 										</div>
@@ -1826,30 +341,34 @@
 									<div class="card-body">
 										<div class="row">
 											<div id="div-cep" class="col-md-6 col-lg-4">
-												<div class="form-group" th:classappend="${#fields.hasErrors('endereco.cep')} ? has-error">
-													<label for="cep">CEP</label> <input name="endereco.cep" th:field="*{endereco.cep}" type="text"
-														class="form-control" id="cep"> <small id="small-endereco-cep"
-														class="form-text text-muted"></small>
+												<div class="form-group"
+													th:classappend="${#fields.hasErrors('endereco.cep')} ? has-error">
+													<label for="cep">CEP</label> <input name="endereco.cep"
+														th:field="*{endereco.cep}" type="text"
+														class="form-control" id="cep"> <small
+														id="small-endereco-cep" class="form-text text-muted"></small>
 												</div>
 											</div>
 											<div id="div-cep" class="col-md-6 col-lg-3">
 												<div class="form-group">
-													<label for="cep">&nbsp</label> <button id="button-pesquisaCep"
+													<label for="cep">&nbsp</label>
+													<button id="button-pesquisaCep"
 														class="btn btn-primary form-control">
-														<span class="btn-label">
-															<i class="fa fa-search"></i>
-														</span>
-														Pesquisar
+														<span class="btn-label"> <i class="fa fa-search"></i>
+														</span> Pesquisar
 													</button>
 												</div>
 											</div>
 											<div class="col-md-6 col-lg-6">
-												<div class="form-group" th:classappend="${#fields.hasErrors('endereco.municipio')} ? has-error">
+												<div class="form-group"
+													th:classappend="${#fields.hasErrors('endereco.municipio')} ? has-error">
 													<label for="nomemunicipio">Município</label> <input
 														name="nomemunicipio" type="text" class="form-control"
-														id="nomemunicipio" th:value="*{endereco.municipio} != null ? *{endereco.municipio.nomeMunicipio}">
+														id="nomemunicipio"
+														th:value="*{endereco.municipio} != null ? *{endereco.municipio.nomeMunicipio}">
 													<input type="hidden" id="endereco-municipio"
-														name="endereco.municipio" th:field=*{endereco.municipio} th:value="*{endereco.municipio} != null ? *{endereco.municipio.id}">
+														name="endereco.municipio" th:field=*{endereco.municipio}
+														th:value="*{endereco.municipio} != null ? *{endereco.municipio.id}">
 													<small id="small-nomemunicipio"
 														class="form-text text-muted"></small>
 												</div>
@@ -1858,60 +377,73 @@
 											<div class="col-md-6 col-lg-4">
 												<div class="form-group">
 													<label for="estado">Estado</label> <input type="text"
-														class="form-control" id="nomeEstado" th:value="*{endereco.municipio} != null ? *{endereco.municipio.estado.nomeUF}">
+														class="form-control" id="nomeEstado"
+														th:value="*{endereco.municipio} != null ? *{endereco.municipio.estado.nomeUF}">
 													<small id="small-endereco-municipio"
 														class="form-text text-muted"></small>
 												</div>
 											</div>
 
 											<div class="col-md-6 col-lg-3">
-												<div class="form-group" th:classappend="${#fields.hasErrors('endereco.logradouro')} ? has-error">
-													<label for="codigologradouro">Logradouro</label>
-													<input type="text" class="form-control" id="desc-logradouro"
-														name="desc-logradouro" th:value="*{endereco.logradouro} != null ? *{endereco.logradouro.descLogradouro}">
+												<div class="form-group"
+													th:classappend="${#fields.hasErrors('endereco.logradouro')} ? has-error">
+													<label for="codigologradouro">Logradouro</label> <input
+														type="text" class="form-control" id="desc-logradouro"
+														name="desc-logradouro"
+														th:value="*{endereco.logradouro} != null ? *{endereco.logradouro.descLogradouro}">
 													<input type="hidden" id="endereco-logradouro"
-														name="endereco.logradouro" th:field="*{endereco.logradouro}" th:value="*{endereco.logradouro} != null ? *{endereco.logradouro.codigoLogradouro}">
+														name="endereco.logradouro"
+														th:field="*{endereco.logradouro}"
+														th:value="*{endereco.logradouro} != null ? *{endereco.logradouro.codigoLogradouro}">
 													<small id="small-endereco-logradouro"
 														class="form-text text-muted"></small>
 												</div>
 											</div>
 
 											<div class="col-md-6 col-lg-4">
-												<div class="form-group" th:classappend="${#fields.hasErrors('endereco.nomeLogradouro')} ? has-error">
+												<div class="form-group"
+													th:classappend="${#fields.hasErrors('endereco.nomeLogradouro')} ? has-error">
 													<label for="endereco">Nome do Logradouro</label> <input
-														name="endereco.nomeLogradouro" th:field="*{endereco.nomeLogradouro}" type="text" class="form-control"
-														id="endereco-nomeLogradouro" placeholder="">
-													<small id="small-endereco-nomeLogradouro"
+														name="endereco.nomeLogradouro"
+														th:field="*{endereco.nomeLogradouro}" type="text"
+														class="form-control" id="endereco-nomeLogradouro"
+														placeholder=""> <small
+														id="small-endereco-nomeLogradouro"
 														class="form-text text-muted"></small>
 												</div>
 											</div>
 
 											<div class="col-md-6 col-lg-4">
-												<div class="form-group" th:classappend="${#fields.hasErrors('endereco.bairro')} ? has-error">
-													<label for="bairro">Bairro</label> <input name="endereco.bairro"
-														type="text" class="form-control" id="endereco-bairro"
-														placeholder="" th:field="*{endereco.bairro}"> <small id="small-endereco-bairro"
-														class="form-text text-muted"></small>
+												<div class="form-group"
+													th:classappend="${#fields.hasErrors('endereco.bairro')} ? has-error">
+													<label for="bairro">Bairro</label> <input
+														name="endereco.bairro" type="text" class="form-control"
+														id="endereco-bairro" placeholder=""
+														th:field="*{endereco.bairro}"> <small
+														id="small-endereco-bairro" class="form-text text-muted"></small>
 												</div>
 											</div>
 
 											<div class="col-md-6 col-lg-2">
 												<div class="form-group">
 													<label for="complementoendereco">Complemento</label> <input
-														name="endereco.complemento" type="text" class="form-control"
-														id="endereco-complemento" placeholder="" th:field="*{endereco.complemento}"> <small
-														id="small-endereco-complemento"
+														name="endereco.complemento" type="text"
+														class="form-control" id="endereco-complemento"
+														placeholder="" th:field="*{endereco.complemento}">
+													<small id="small-endereco-complemento"
 														class="form-text text-muted"></small>
 												</div>
 											</div>
 
 											<div class="col-md-6 col-lg-2">
-												<div class="form-group" th:classappend="${#fields.hasErrors('endereco.numero')} ? has-error">
+												<div class="form-group"
+													th:classappend="${#fields.hasErrors('endereco.numero')} ? has-error">
 													<label for="numeroendereco">Número</label> <input
 														name="endereco.numero" type="text" class="form-control"
-														id="endereco-numero" placeholder="" th:field="*{endereco.numero}">
-													<small id="small-numero" class="form-text text-muted"></small>
-													<small><input type="checkbox" id="semNumero"> Sem número</small>
+														id="endereco-numero" placeholder=""
+														th:field="*{endereco.numero}"> <small
+														id="small-numero" class="form-text text-muted"></small> <small><input
+														type="checkbox" id="semNumero"> Sem número</small>
 												</div>
 											</div>
 
@@ -1926,16 +458,18 @@
 									<div class="card-body">
 										<div class="row">
 											<div class="col-md-6 col-lg-4">
-												<div class="form-group" th:classappend="${#fields.hasErrors('email')} ? has-error">
-													<label for="email">Email</label> <input type="email" name="email"
-														class="form-control" id="email" th:field="*{email}"
-														placeholder="example@email.com"> <small id="small-email"
-														class="form-text text-muted"></small>
+												<div class="form-group"
+													th:classappend="${#fields.hasErrors('email')} ? has-error">
+													<label for="email">Email</label> <input type="email"
+														name="email" class="form-control" id="email"
+														th:field="*{email}" placeholder="example@email.com">
+													<small id="small-email" class="form-text text-muted"></small>
 												</div>
 											</div>
 
 											<div class="col-md-6 col-lg-4">
-												<div class="form-group" th:classappend="${#fields.hasErrors('telefone')} ? has-error">
+												<div class="form-group"
+													th:classappend="${#fields.hasErrors('telefone')} ? has-error">
 													<label for="telefone">Telefone</label> <input type="tel"
 														name="telefone" class="form-control" id="telefone"
 														th:field="*{telefone}" placeholder="(00)00000-0000">
@@ -1959,12 +493,11 @@
 						<div class="row" id="info-cidadao">
 							<div class="col-md-12">
 								<!-- Formulário para preenchimento dos dados do Cidadão -->
-								<form method="post" th:action="@{/recepcao/salvar-cidadao}" id="form-cidadao">
+								<form method="post" th:action="@{/recepcao/salvar-cidadao}"
+									id="form-cidadao">
 									<!-- div reponsável em mostrar os erros -->
 									<div id="errors" class="form-group row">
-										<div class="col-sm-12 mb-3 mb-sm-0">
-
-										</div>
+										<div class="col-sm-12 mb-3 mb-sm-0"></div>
 									</div>
 
 									<div class="card">
@@ -1975,8 +508,7 @@
 											<div class="col-md-4 col-lg-4">
 												<input type="hidden" name="cidadao" id="idCidadao">
 												<strong class="card-text">Nome: </strong>
-												<p class="card-text" id="info-nome">
-												</p>
+												<p class="card-text" id="info-nome"></p>
 												<strong class="card-text">CPF: </strong>
 												<p class="card-text" id="info-cpf"></p>
 												<strong class="card-text">CNS: </strong>
@@ -1994,12 +526,12 @@
 											</div>
 											<div class="col-md-4 col-lg-4">
 												<strong class="card-text">Endereço: </strong>
-												<p class="card-text" id="info-endereco"><span
-														id="info-logradouro"></span><span>&nbsp</span><span
+												<p class="card-text" id="info-endereco">
+													<span id="info-logradouro"></span><span>&nbsp</span><span
 														id="info-nomeLogradouro"></span><span> , </span><span
-														id="info-numero"></span>
-													<span> , </span> <span id="info-bairro"></span> <span> ,
-													</span><span id="info-municipio"></span><span info-cep></span>
+														id="info-numero"></span> <span> , </span> <span
+														id="info-bairro"></span> <span> , </span><span
+														id="info-municipio"></span><span info-cep></span>
 												</p>
 											</div>
 										</div>
