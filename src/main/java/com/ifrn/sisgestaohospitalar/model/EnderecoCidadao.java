@@ -18,22 +18,22 @@ public class EnderecoCidadao {
 
 	private int tipoEndereco;
 
-	@NotBlank(message = "É necessário preencher o campo NUMERO do Endereço. Caso não possua selecione a opção sem número")
+	@NotBlank(message = "É necessário preencher o campo NUMERO. Caso não possua selecione a opção SEM NÚMERO")
 	@Size(max = 10)
 	private String numero;
 	@Size(max = 30)
 	private String complemento;
-	@NotBlank(message = "É necessário preencher o campo BAIRRO do Endereço")
+	@NotBlank(message = "É necessário preencher o campo BAIRRO")
 	@Size(max = 30)
 	private String bairro;
-	@NotBlank(message = "É necessário preencher o campo CEP do Endereço")
+	@NotBlank(message = "É necessário preencher o campo CEP")
 	private String cep;
-	@NotBlank(message = "É necessário preencher o campo NOME DO LOGRADOURO do Endereço")
+	@NotBlank(message = "É necessário preencher o campo NOME DO LOGRADOURO")
 	private String nomeLogradouro;
 	@NotNull(message = "É necessário selecionar o MUNICÍPIO")
 	@OneToOne
 	private Municipio municipio;
-	@NotNull(message = "É necessário preencher o campo LOGRADOURO do Endereço")
+	@NotNull(message = "É necessário preencher o campo LOGRADOURO")
 	@OneToOne
 	private Logradouro logradouro;
 
