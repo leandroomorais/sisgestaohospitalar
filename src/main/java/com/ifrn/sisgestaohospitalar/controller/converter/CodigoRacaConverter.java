@@ -11,6 +11,7 @@ public class CodigoRacaConverter implements Converter<String, CodigoRaca> {
 
 	@Override
 	public CodigoRaca convert(String raca) {
+		System.out.println(raca);
 		if (!StringUtils.isEmpty(raca)) {
 			for (CodigoRaca codigoRaca : CodigoRaca.values()) {
 				if (codigoRaca.getCodigo() == Integer.parseInt(raca)) {
