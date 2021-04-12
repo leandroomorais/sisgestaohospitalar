@@ -193,7 +193,7 @@ public class RecepcaoController {
 		user = profissionalService.findByCpf(username);
 		mv.addObject("estabelecimento", estabelecimentoService.findAll());
 		mv.addObject("user", user);
-		mv.addObject("guiasAtendimento", guiatendimentoService.teste(StatusAtendimento.FINALIZADO));
+		mv.addObject("guiasAtendimento", guiatendimentoService.findAll());
 		mv.addObject("navItem2", true);
 		return mv;
 	}
