@@ -21,13 +21,15 @@ $(document).ready(
 		//Oculta o formulário de pesquisa por NOME
 		$("#form-busca-nome").hide();
 		//Oculta o formulário de CADASTRO DO CIDADÃO
-		//$("#form-cidadao-div").hide();
-
+		if($("#hasErrors").text() != "true"){
+			$("#form-cidadao-div").hide();
+		}else{
+			$("#form-cidadao-div").show();
+		}
 		$("#svg-status").hide();
 
 		$("#info-cidadao").hide();
-
-
+		
 		//Muda o formulário ao clicar no botão de pesquisa por CPF
 		$("#button-cpf").click(function () {
 			//Limpa o formulário
@@ -122,8 +124,6 @@ $("#form-busca").submit(function (evt) {
 			//Removendo mensagens de Erro
 			$("#svg-status").fadeIn(20);
 			$("#pesquisa-status").text("Buscando");
-			console.log(info);
-
 		},
 		success: function (data) {
 			$("#form-busca").each(function () {
@@ -279,7 +279,7 @@ $("#form-busca").submit(function (evt) {
 						}
 
 						if (data.municipioNascimento.nomeMunicipioSiglaUF != null) {
-							$("#municipioNascimentoNome").val(data.municipioNascimento.nomeMunicipioSiglaUF);
+							$("#municipioNascimento").val(data.municipioNascimento.nomeMunicipioSiglaUF);
 							$("#id-municipioNascimento").val(data.municipioNascimento.id);
 						} else {
 							preenchimentoObrigatorio($("#small-municipioNascimento"));
