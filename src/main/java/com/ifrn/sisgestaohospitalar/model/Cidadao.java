@@ -14,6 +14,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Transient;
+import javax.validation.Valid;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -70,14 +71,10 @@ public class Cidadao implements Serializable {
 	private String nomepai;
 
 	@NotNull(message = "É necessário preencher o campo DATA DE NASCIMENTO")
-	@PastOrPresent(message = "{PastOrPresent.cidadao.dataEntrada}")
-	@DateTimeFormat(iso = ISO.DATE, pattern = "")
-	@JsonFormat(pattern = "dd/MM/yyyy")
-	@Column(name = "datanascimento", nullable = false, columnDefinition = "DATE")
+	@Column(name = "datanascimento", nullable = false)
 	private LocalDate datanascimento;
 
 	@NotNull(message = "É necessário selecionar a RAÇA do Cidadão")
-	@Column(length = 2)
 	@Enumerated(EnumType.STRING)
 	private CodigoRaca codigoRaca;
 
@@ -104,6 +101,7 @@ public class Cidadao implements Serializable {
 
 	@NotNull(message = "Preencha os campos do ENDEREÇO do Cidadão")
 	@OneToOne(cascade = CascadeType.ALL)
+	@Valid
 	private EnderecoCidadao endereco;
 	
 	@PrePersist
