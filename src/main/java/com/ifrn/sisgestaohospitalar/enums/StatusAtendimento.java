@@ -2,10 +2,9 @@ package com.ifrn.sisgestaohospitalar.enums;
 
 public enum StatusAtendimento {
 
-	AGUARDANDOTRIAGEM("Aguardando Triagem"), EMATENDIMENTO("Em Atendimento"),
-	AGUARDANDOATDMEDICO("Aguardando Atendimento Médico"),
-	AGUARDANDOADMMEDICAMENTOS("Aguardando Administração de Medicamentos"), FINALIZADO("Finalizado");
-	
+	AGUARDANDOATENDIMENTO("Aguardando Atendimento"), EMATENDIMENTO("Em Atendimento"),
+	OBSERVACAO("Paciente em observação"), NAOAGUARDOU("Não aguardou atendimento"), FINALIZADO("Finalizado");
+
 	private String descricao;
 
 	StatusAtendimento(String descricao) {
@@ -15,5 +14,5 @@ public enum StatusAtendimento {
 	public String getDescricao() {
 		return descricao;
 	}
-	
+
 }

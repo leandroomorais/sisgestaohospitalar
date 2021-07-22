@@ -5,6 +5,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
+import javax.persistence.PrePersist;
+import javax.persistence.PreUpdate;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -36,6 +38,15 @@ public class EnderecoCidadao {
 	@NotNull(message = "É necessário preencher o campo LOGRADOURO")
 	@OneToOne
 	private Logradouro logradouro;
+
+	private String enderecoCompleto;
+
+	@PrePersist
+	@PreUpdate
+	private void prePersistUpdate() {
+		enderecoCompleto = this.logradouro.getDescLogradouro() + " " + nomeLogradouro + ", BAIRRO " + bairro + ", "
+				+ municipio.getNomeMunicipioSiglaUF();
+	}
 
 	public Long getId() {
 		return id;
@@ -107,6 +118,14 @@ public class EnderecoCidadao {
 
 	public void setLogradouro(Logradouro logradouro) {
 		this.logradouro = logradouro;
+	}
+
+	public String getEnderecoCompleto() {
+		return enderecoCompleto;
+	}
+
+	public void setEnderecoCompleto(String enderecoCompleto) {
+		this.enderecoCompleto = enderecoCompleto;
 	}
 
 }

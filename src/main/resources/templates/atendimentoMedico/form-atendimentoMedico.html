@@ -1,6 +1,8 @@
 <!DOCTYPE html>
-<html layout:decorate="~{/layouts/layout-modulos}" lang="pt" xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity"
+<html layout:decorate="~{/layouts/layout-modulos}" lang="pt"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity"
 	xmlns:layout="http://ultraq.net.nz/thymeleaf/layout">
 
 <body>
@@ -9,28 +11,30 @@
 		<div class="sidebar-wrapper scrollbar scrollbar-inner">
 			<div class="sidebar-content">
 				<ul class="nav nav-primary">
-					<li class="nav-item"><a data-toggle="collapse" href="#dashboard" class="collapsed"
-							aria-expanded="false"> <img alt="" width="40" th:src="@{/assets/img/person-male.png}">
-							<span th:text="${user.firstname}" class="low"></span><span class="type-user"
-								th:text="${user.tipoprofissional}"></span> <span class="caret"></span>
-						</a>
+					<li class="nav-item"><a data-toggle="collapse"
+						href="#dashboard" class="collapsed" aria-expanded="false"> <img
+							alt="" width="40" th:src="@{/assets/img/person-male.png}">
+							<span th:text="${user.firstname}" class="low"></span><span
+							class="type-user" th:text="${user.tipoprofissional}"></span> <span
+							class="caret"></span>
+					</a>
 						<div class="collapse" id="dashboard">
 							<ul class="nav nav-collapse">
-								<li><a href="../demo1/index.html"> <span class="sub-item">Meu Perfil</span>
-									</a></li>
+								<li><a href="../demo1/index.html"> <span
+										class="sub-item">Meu Perfil</span>
+								</a></li>
 							</ul>
-						</div>
-					</li>
+						</div></li>
 					<li class="nav-section"><span class="sidebar-mini-icon">
 							<i class="fa fa-ellipsis-h"></i>
-						</span>
-						<h4 class="text-section">Ações</h4>
-					</li>
+					</span>
+						<h4 class="text-section">Ações</h4></li>
 
 					<li class="nav-item" th:classappend="${navItem1} ? active : ''"><a
-							th:href="@{/atendimento-medico/cidadaos-atendimento}"> <i class="fas fa-users"></i>
+						th:href="@{/atendimento-medico/cidadaos-atendimento}"> <i
+							class="fas fa-users"></i>
 							<p>Fila de Atendimento</p> <span class="caret"></span>
-						</a></li>
+					</a></li>
 				</ul>
 			</div>
 		</div>
@@ -44,7 +48,8 @@
 					<ul class="breadcrumbs">
 						<li class="nav-home"><i class="flaticon-home"></i></li>
 						<li class="separator"><i class="flaticon-right-arrow"></i></li>
-						<li class="nav-item"><a th:href="@{/atendimento-medico/cidadaos-atendimento}">Fila de
+						<li class="nav-item"><a
+							th:href="@{/atendimento-medico/cidadaos-atendimento}">Fila de
 								Atendimento</a></li>
 						<li class="separator"><i class="flaticon-right-arrow"></i></li>
 						<li class="nav-item"><a>Realizar Atendimento</a></li>
@@ -65,14 +70,22 @@
 											class="avatar-img rounded-circle">
 									</div>
 									<div class="demo">
-										<span class="h3-info" th:text="${guiaAtendimento.cidadao.nome}"></span><br>
+										<span class="h3-info"
+											th:text="${guiaAtendimento.cidadao.nome}"></span><br>
 										<div class="h4-info">
-											<input type="hidden" id="cpfCidadao" th:value="${guiaAtendimento.cidadao.cpf}">
-											<span th:text="${guiaAtendimento.cidadao.cpf}"></span><span
-												th:if="${guiaAtendimento.cidadao.sexo == 'M'}">
-												masculino.</span><span th:if="${guiaAtendimento.cidadao.sexo == 'F'}">
-												feminino.</span>
-
+											<input type="hidden" id="cpfCidadao"
+												th:value="${guiaAtendimento.cidadao.cpf}"> <input
+												type="hidden" id="dataNascimentoCidadao"
+												th:value="${guiaAtendimento.cidadao.datanascimento}"><i class="fa fa-id-card"></i>
+											<strong>CPF: </strong><span data-mask="000.000.000-00"
+												th:text="${guiaAtendimento.cidadao.cpf}"></span> | <strong>CNS:
+											</strong> <span data-mask="000.0000.0000.0000"
+												th:text="${guiaAtendimento.cidadao.cns}"></span><br>
+											<strong>SEXO:</strong> <span
+												th:if="${guiaAtendimento.cidadao.sexo == 'M'}"> M</span><span
+												th:if="${guiaAtendimento.cidadao.sexo == 'F'}"> F</span><i></i>
+											| <strong>NASC.:</strong><span id="dtNascimento"></span>
+											| <strong>IDADE:</strong><span id="idadeCidadao"></span>
 										</div>
 									</div>
 								</div>
@@ -86,41 +99,44 @@
 						<h4 class="card-title">Atendimento do Cidadão</h4>
 					</div>
 					<div class="card-body">
-						<form method="post" th:action="@{/atendimento-medico/salvar-atendimento}"
+						<form method="post"
+							th:action="@{/atendimento-medico/salvar-atendimento}"
 							th:object="${atendimentoMedico}">
 							<div class="row">
 								<div class="col-5 col-md-2">
-									<div class="nav flex-column nav-pills nav-secondary" id="v-pills-tab" role="tablist"
-										aria-orientation="vertical">
+									<div class="nav flex-column nav-pills nav-secondary"
+										id="v-pills-tab" role="tablist" aria-orientation="vertical">
 
 										<a th:if="${getTriagem} == true" class="nav-link active show"
-											id="v-pills-triagem-tab" data-toggle="pill" href="#v-pills-triagem"
-											role="tab" aria-controls="v-pills-triagem" aria-selected="true">Triagem</a>
+											id="v-pills-triagem-tab" data-toggle="pill"
+											href="#v-pills-triagem" role="tab"
+											aria-controls="v-pills-triagem" aria-selected="true">Triagem</a>
 
 
 										<a class="nav-link" id="v-pills-home-tab" data-toggle="pill"
 											href="#v-pills-home" role="tab" aria-controls="v-pills-home"
-											aria-selected="false">Histórico</a>
-										<a class="nav-link" id="v-pills-profile-tab" data-toggle="pill"
-											href="#v-pills-profile" role="tab" aria-controls="v-pills-profile"
-											aria-selected="false">Atendimento</a>
-										<a class="nav-link" id="v-pills-messages-tab" data-toggle="pill"
-											href="#v-pills-messages" role="tab" aria-controls="v-pills-messages"
-											aria-selected="false">Receituário</a>
+											aria-selected="false">Histórico</a> <a class="nav-link"
+											id="v-pills-profile-tab" data-toggle="pill"
+											href="#v-pills-profile" role="tab"
+											aria-controls="v-pills-profile" aria-selected="false">Atendimento</a>
+										<a class="nav-link" id="v-pills-messages-tab"
+											data-toggle="pill" href="#v-pills-messages" role="tab"
+											aria-controls="v-pills-messages" aria-selected="false">Receituário</a>
 										<a class="nav-link" id="v-pills-exames-tab" data-toggle="pill"
-											href="#v-pills-exames" role="tab" aria-controls="v-pills-exames"
-											aria-selected="false">Exames</a>
+											href="#v-pills-exames" role="tab"
+											aria-controls="v-pills-exames" aria-selected="false">Exames</a>
 
-										<a class="nav-link" id="v-pills-finalizar-tab" data-toggle="pill"
-											href="#v-pills-finalizar" role="tab" aria-controls="v-pills-finalizar"
-											aria-selected="false">Finalizar</a>
+										<a class="nav-link" id="v-pills-finalizar-tab"
+											data-toggle="pill" href="#v-pills-finalizar" role="tab"
+											aria-controls="v-pills-finalizar" aria-selected="false">Finalizar</a>
 									</div>
 								</div>
 								<div class="col-7 col-md-10">
 									<div class="tab-content" id="v-pills-tabContent">
 
-										<div th:if="${getTriagem} == true" class="tab-pane fade active show"
-											id="v-pills-triagem" role="tabpanel" aria-labelledby="v-pills-triagem-tab">
+										<div th:if="${getTriagem} == true"
+											class="tab-pane fade active show" id="v-pills-triagem"
+											role="tabpanel" aria-labelledby="v-pills-triagem-tab">
 											<p class="info-triagem-titulo">Motivos da Consulta</p>
 											<hr class="info">
 											<p th:text="${guiaAtendimento.triagem.motivo}"></p>
@@ -132,8 +148,7 @@
 													<div class="card p-3">
 														<div class="d-flex align-items-center">
 															<span class="stamp stamp-md bg-warning mr-3"> <img
-																	class="info"
-																	th:src="@{/assets/img/icons/pa.icon.png}">
+																class="info" th:src="@{/assets/img/icons/pa.icon.png}">
 															</span>
 															<div>
 																<h5 class="mb-1">
@@ -151,7 +166,7 @@
 													<div class="card p-3">
 														<div class="d-flex align-items-center">
 															<span class="stamp stamp-md bg-warning mr-3"> <i
-																	class="fa fa-heartbeat"></i>
+																class="fa fa-heartbeat"></i>
 															</span>
 															<div>
 																<h5 class="mb-1">
@@ -169,7 +184,7 @@
 													<div class="card p-3">
 														<div class="d-flex align-items-center">
 															<span class="stamp stamp-md bg-warning mr-3"> <i
-																	class="fa fa-thermometer"></i>
+																class="fa fa-thermometer"></i>
 															</span>
 															<div>
 																<h5 class="mb-1">
@@ -187,8 +202,8 @@
 													<div class="card p-3">
 														<div class="d-flex align-items-center">
 															<span class="stamp stamp-md bg-warning mr-3"><img
-																	class="info"
-																	th:src="@{/assets/img/icons/oxi.icon.png}"> </span>
+																class="info" th:src="@{/assets/img/icons/oxi.icon.png}">
+															</span>
 															<div>
 																<h5 class="mb-1">
 																	<b><small class="info">Saturação de O²</small></b>
@@ -205,8 +220,8 @@
 													<div class="card p-3">
 														<div class="d-flex align-items-center">
 															<span class="stamp stamp-md bg-warning mr-3"> <img
-																	class="info"
-																	th:src="@{/assets/img/icons/pulmao.icon.png}">
+																class="info"
+																th:src="@{/assets/img/icons/pulmao.icon.png}">
 															</span>
 															<div>
 																<h5 class="mb-1">
@@ -227,8 +242,7 @@
 													<div class="card p-3">
 														<div class="d-flex align-items-center">
 															<span class="stamp stamp-md bg-warning mr-3"> <img
-																	class="info"
-																	th:src="@{/assets/img/icons/head.icon.png}">
+																class="info" th:src="@{/assets/img/icons/head.icon.png}">
 															</span>
 															<div>
 																<h5 class="mb-1">
@@ -246,7 +260,7 @@
 													<div class="card p-3">
 														<div class="d-flex align-items-center">
 															<span class="stamp stamp-md bg-warning mr-3"> <i
-																	class="fa fa-balance-scale"></i>
+																class="fa fa-balance-scale"></i>
 															</span>
 															<div>
 																<h5 class="mb-1">
@@ -264,8 +278,8 @@
 													<div class="card p-3">
 														<div class="d-flex align-items-center">
 															<span class="stamp stamp-md bg-warning mr-3"> <img
-																	class="info"
-																	th:src="@{/assets/img/icons/altura.icon.png}">
+																class="info"
+																th:src="@{/assets/img/icons/altura.icon.png}">
 															</span>
 															<div>
 																<h5 class="mb-1">
@@ -282,21 +296,19 @@
 												<div class="col-sm-6 col-lg-3">
 													<div class="card p-3">
 														<div class="d-flex align-items-center">
-															<span class="stamp stamp-md bg-warning mr-3">
-																IMC </span>
+															<span class="stamp stamp-md bg-warning mr-3"> IMC
+															</span>
 															<div>
 																<h5 class="mb-1">
 																	<b><small class="info">IMC</small></b>
 																</h5>
-																<a class="info"
-																	th:text="${guiaAtendimento.triagem.imc}"></a>
+																<a class="info" th:text="${guiaAtendimento.triagem.imc}"></a>
 															</div>
 														</div>
 													</div>
 												</div>
 											</div>
-											<p class="info-triagem-titulo">Alergias a Medicamentos
-											</p>
+											<p class="info-triagem-titulo">Alergias a Medicamentos</p>
 											<hr class="info">
 											<p th:text="${guiaAtendimento.triagem.alergiamedicamentos}"></p>
 											<p class="info-triagem-titulo">Medicamentos em Uso</p>
@@ -304,7 +316,8 @@
 											<p th:text="${guiaAtendimento.triagem.usomedicamentos}"></p>
 											<p class="info-triagem-titulo">Comorbidades</p>
 											<hr class="info">
-											<a th:if="${guiaAtendimento.triagem.hipertensaoarterialsistemica == true}">Hispertensão
+											<a
+												th:if="${guiaAtendimento.triagem.hipertensaoarterialsistemica == true}">Hispertensão
 												Arterial Sistêmica (HAS),</a><a
 												th:if="${guiaAtendimento.triagem.doencameningococica == true}">
 												Doença Meningocócica (DM),</a><a
@@ -313,11 +326,11 @@
 												Linfangioleiomiomatose (LAM),</a> <a
 												th:if="${guiaAtendimento.triagem.insuficienciarenal == true}">
 												Insuficiência Renal,</a><a
-												th:if="${guiaAtendimento.triagem.dpoc == true}">
-												Doença Pulmonar Obstrutiva Crônica (DPOC),</a><a
+												th:if="${guiaAtendimento.triagem.dpoc == true}"> Doença
+												Pulmonar Obstrutiva Crônica (DPOC),</a><a
 												th:if="${guiaAtendimento.triagem.asma == true}"> ASMA,</a><a
-												th:if="${guiaAtendimento.triagem.dlp == true}">
-												Doenças ou Lesões Preexistentes (DLP),</a><a
+												th:if="${guiaAtendimento.triagem.dlp == true}"> Doenças
+												ou Lesões Preexistentes (DLP),</a><a
 												th:if="${guiaAtendimento.triagem.insuficienciacardiacacongestiva == true}">
 												Insuficiência Cardíaca Congestiva (ICC),</a><a
 												th:if="${guiaAtendimento.triagem.epilepsia == true}">
@@ -331,308 +344,305 @@
 											<a th:if="${guiaAtendimento.triagem.tabagismo == true}">Tabagismo,
 											</a><a th:if="${guiaAtendimento.triagem.etilismo == true}">Etilismo,
 											</a><a th:if="${guiaAtendimento.triagem.drogaslicitas == true}">Drogas
-												Lícitas, </a><a th:text="${guiaAtendimento.triagem.outroshabitos}"></a>
+												Lícitas, </a><a
+												th:text="${guiaAtendimento.triagem.outroshabitos}"></a>
 										</div>
 
 										<div class="tab-pane fade" id="v-pills-home" role="tabpanel"
 											aria-labelledby="v-pills-home-tab">
-											<div th:replace="fragments/tabs-historico/tabs::tabs-historico"></div>
+											<div
+												th:replace="fragments/tabs-historico/tabs::tabs-historico"></div>
 										</div>
-										<div class="tab-pane fade" id="v-pills-profile" role="tabpanel"
-											aria-labelledby="v-pills-profile-tab">
+										<div class="tab-pane fade" id="v-pills-profile"
+											role="tabpanel" aria-labelledby="v-pills-profile-tab">
 
 											<div class="card">
 												<div class="card-header">
-													<div class="card-title" >História Clínica</div>
+													<div class="card-title">História Clínica</div>
 												</div>
 												<div class="card-body">
 													<div class="row">
-														<div class="col-md-12 col-lg-12" th:classappend="${#fields.hasErrors('historiaclinica')}? 'has-error'">
-																	<div class="form-group">
-																		<label for="historiaclinica">Histórica Clínica</label>
-																		<input th:field="*{historiaclinica}" type="text"
-																			class="form-control" id="historiaclinica"
-																			placeholder=""> <small id="historiaclinica"
-																			class="form-text text-muted"></small>
-																	</div>
-																</div>
+														<div class="col-md-12 col-lg-12"
+															th:classappend="${#fields.hasErrors('historiaclinica')}? 'has-error'">
+															<div class="form-group">
+																<label for="historiaclinica">Histórica Clínica</label> <input
+																	th:field="*{historiaclinica}" type="text"
+																	class="form-control" id="historiaclinica"
+																	placeholder=""> <small id="historiaclinica"
+																	class="form-text text-muted"></small>
 															</div>
 														</div>
 													</div>
+												</div>
+											</div>
 
-													<div class="card">
-														<div class="card-header">
-															<div class="card-title">Avaliação</div>
-														</div>
-														<div class="card-body">
-															<div class="row">
-																<div class="col-md-12 col-lg-12"
-																	th:classappend="${#fields.hasErrors('examefisico')}? 'has-error'">
-																	<div class="form-group">
-																		<label for="examefisico">Exame Físico</label>
-																		<textarea th:field="*{examefisico}" type="text"
-																			class="form-control" id="examefisico" placeholder=""></textarea>
-																		<small id="examefisico" class="form-text text-muted"></small>
-																	</div>
-																</div>
-																<div class="col-md-12 col-lg-12"
-																	th:classappend="${#fields.hasErrors('hipoteseDiagnostica')}? 'has-error'">
-																	<div class="form-group">
-																		<label for="hipoteseDiagnostica">Hipótese
-																			Diagnóstica</label>
-																		<textarea th:field="*{hipoteseDiagnostica}"
-																			type="text" class="form-control"
-																			id="hipoteseDiagnostica" placeholder=""></textarea>
-																		<small id="hipoteseDiagnostica"
-																			class="form-text text-muted"></small>
-																	</div>
-																</div>
-															</div>
-														</div>
-													</div>
-													<div class="card">
-														<div class="card-header">
-															<div class="card-title">Evolução Médica</div>
-														</div>
-														<div class="card-body">
-															<div class="row">
-																<div class="col-md-12 col-lg-12"
-																	th:classappend="${#fields.hasErrors('evolucaoMedica')}? 'has-error'">
-																	<div class="form-group">
-																		<label for="evolucaoMedica">Evolução Médica</label>
-																		<textarea th:field="*{evolucaoMedica}" type="text"
-																			class="form-control" id="evolucaoMedica"
-																			placeholder=""></textarea>
-																		<small id="evolucaoMedica"
-																			class="form-text text-muted"></small>
-																	</div>
-																</div>
-
-															</div>
-														</div>
-													</div>
-
-													<div class="card">
-														<div class="card-header">
-															<div class="card-title">Procedimentos</div>
-														</div>
-														<div class="card-body">
-															<div class="row">
-																<div class="col-md-12">
-																	<div class="form-group">
-																		<label for="nome">Adicionar Procedimentos:</label> <input
-																			id="procedimentos-atendimento-medico" type="text"
-																			class="form-control input-sm">
-																	</div>
-																</div>
-																<div class="col-md-12">
-																	<div class="form-group">
-																		<div class="card-sub">Procedimentos realizados:</div>
-																		<table
-																			class="table table-bordered table-bordered-bd-info mt-4">
-																			<thead>
-																				<tr>
-																					<th scope="col">Código</th>
-																					<th scope="col">Procedimento</th>
-																					<th scope="col">Ações</th>
-																				</tr>
-																			</thead>
-																			<tbody id="table-procedimento-atendimento-medico">
-																			</tbody>
-																		</table>
-																	</div>
-																</div>
-															</div>
-														</div>
-													</div>
-									</div>
-									<div class="tab-pane fade" id="v-pills-messages" role="tabpanel"
-										aria-labelledby="v-pills-messages-tab">
-										<h4 class="page-title">Receita</h4>
-
-													<div class="form-group">
-														<button data-toggle="modal"
-															data-target="#modalContactForm" type="button"
-															class="btn btn-icon btn-round btn-primary">
-															<img style="width: 40px;"
-																th:src="@{/assets/img/icons/medicamento.icon.png}">
-														</button>
-														<label for="add-medicamento">Adicionar Medicamento
-														</label>
-													</div>
-
-													<div class="card-body">
-														<div class="card-sub">Medicamentos:</div>
-														<table class="table mt-3">
-															<thead>
-																<tr>
-																	<th scope="col">Nome</th>
-																	<th scope="col">Concentração</th>
-																	<th scope="col">Forma</th>
-																	<th scope="col">Posologia</th>
-																</tr>
-															</thead>
-															<tbody id="table-medicamentos">
-
-															</tbody>
-														</table>
-													</div>
-													<div class="card-body">
-														<div class="form-group">
-															<label>Orientações</label>
-															<textarea class="form-control" name="orientacao"></textarea>
-														</div>
-													</div>
-													<input type="hidden" id="medicamentos" name="medicamento">
-													<div class="card-action">
-														<button onclick="myFunc()" type="button"
-															class="btn btn-info">
-															<i class="fa fa-print"></i> Imprimir Via do Usuário
-														</button>
-													</div>
-													<div class="modal fade" id="modalContactForm" tabindex="-1"
-														role="dialog" aria-labelledby="myModalLabel"
-														aria-hidden="true">
-														<div class="modal-dialog" role="document">
-															<div class="modal-content" id="form-add-medicamento">
-																<div class="modal-header text-center">
-																	<h4 class="modal-title w-100 font-weight-bold">Adicionar
-																		Medicamentos</h4>
-																	<button type="button" class="close"
-																		data-dismiss="modal" aria-label="Close">
-																		<span aria-hidden="true">&times;</span>
-																	</button>
-																</div>
-																<div class="modal-body">
-																	<div class="row">
-																		<div class="col-md-12">
-																			<div class="form-group">
-																				<label for="nome-medicamento">Nome do
-																					Medicamento:</label> <input type="text"
-																					class="form-control" id="nome-medicamento"
-																					placeholder="Ex.: Dipirona"></input> <small
-																					id="small-nome-medicamento"
-																					class="form-text text-muted"></small>
-																			</div>
-																		</div>
-																		<div class="col-md-4">
-																			<div class="form-group">
-																				<label for="concentracao">Concentração:</label> <input
-																					type="text" class="form-control" id="concentracao"
-																					placeholder="Ex.: 500mg"></input> <small
-																					id="small-concentracao"
-																					class="form-text text-muted"></small>
-																			</div>
-																		</div>
-																		<div class="col-md-8">
-																			<div class="form-group">
-																				<label for="posologia">Posologia:</label> <input
-																					type="text" class="form-control" id="posologia"
-																					placeholder="Ex.: De 8 em 8 horas"></input> <small
-																					id="small-posologia" class="form-text text-muted"></small>
-																			</div>
-																		</div>
-																		<div class="col-md-5">
-																			<div class="form-group">
-																				<label for="forma">Forma:</label> <input type="text"
-																					class="form-control" id="forma"
-																					placeholder="Ex.: Comprimido"></input> <small
-																					id="forma-small" class="form-text text-muted"></small>
-																			</div>
-																		</div>
-
-																	</div>
-																</div>
-																<div class="modal-footer d-flex justify-content-center">
-																	<button id="add-medicamento" type="button"
-																		class="btn btn-primary">
-																		<span class="btn-label"> <i class="fa fa-plus"></i>
-																		</span> Adicionar
-																	</button>
-																</div>
-															</div>
-														</div>
-													</div>
-									</div>
-									<div class="tab-pane fade" id="v-pills-exames" role="tabpanel"
-										aria-labelledby="v-pills-exames-tab">
-										<p>Exames do Cidadão</p>
-
-										<p> But nothing the copy said could convince her and so it didn’t take long
-											until a few insidious Copy Writers ambushed her, made her drunk with Longe
-											and Parole and dragged her into their agency, where they abused her for
-											their</p>
-									</div>
-
-									<div class="tab-pane fade" id="v-pills-finalizar" role="tabpanel"
-										aria-labelledby="v-pills-finalizar-tab">
 											<div class="card">
-														<div class="card-header">
-															<div class="card-title">Encaminhamento Interno</div>
+												<div class="card-header">
+													<div class="card-title">Avaliação</div>
+												</div>
+												<div class="card-body">
+													<div class="row">
+														<div class="col-md-12 col-lg-12"
+															th:classappend="${#fields.hasErrors('examefisico')}? 'has-error'">
+															<div class="form-group">
+																<label for="examefisico">Exame Físico</label>
+																<textarea th:field="*{examefisico}" type="text"
+																	class="form-control" id="examefisico" placeholder=""></textarea>
+																<small id="examefisico" class="form-text text-muted"></small>
+															</div>
 														</div>
-														<div class="card-body">
+														<div class="col-md-12 col-lg-12"
+															th:classappend="${#fields.hasErrors('hipoteseDiagnostica')}? 'has-error'">
+															<div class="form-group">
+																<label for="hipoteseDiagnostica">Hipótese
+																	Diagnóstica</label>
+																<textarea th:field="*{hipoteseDiagnostica}" type="text"
+																	class="form-control" id="hipoteseDiagnostica"
+																	placeholder=""></textarea>
+																<small id="hipoteseDiagnostica"
+																	class="form-text text-muted"></small>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="card">
+												<div class="card-header">
+													<div class="card-title">Evolução Médica</div>
+												</div>
+												<div class="card-body">
+													<div class="row">
+														<div class="col-md-12 col-lg-12"
+															th:classappend="${#fields.hasErrors('evolucaoMedica')}? 'has-error'">
+															<div class="form-group">
+																<label for="evolucaoMedica">Evolução Médica</label>
+																<textarea th:field="*{evolucaoMedica}" type="text"
+																	class="form-control" id="evolucaoMedica" placeholder=""></textarea>
+																<small id="evolucaoMedica" class="form-text text-muted"></small>
+															</div>
+														</div>
+
+													</div>
+												</div>
+											</div>
+
+											<div class="card">
+												<div class="card-header">
+													<div class="card-title">Procedimentos</div>
+												</div>
+												<div class="card-body">
+													<div class="row">
+														<div class="col-md-12">
+															<div class="form-group">
+																<label for="nome">Adicionar Procedimentos:</label> <input
+																	id="procedimentos-atendimento-medico" type="text"
+																	class="form-control input-sm">
+															</div>
+														</div>
+														<div class="col-md-12">
+															<div class="form-group">
+																<div class="card-sub">Procedimentos realizados:</div>
+																<table
+																	class="table table-bordered table-bordered-bd-info mt-4">
+																	<thead>
+																		<tr>
+																			<th scope="col">Código</th>
+																			<th scope="col">Procedimento</th>
+																			<th scope="col">Ações</th>
+																		</tr>
+																	</thead>
+																	<tbody id="table-procedimento-atendimento-medico">
+																	</tbody>
+																</table>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="tab-pane fade" id="v-pills-messages"
+											role="tabpanel" aria-labelledby="v-pills-messages-tab">
+											<h4 class="page-title">Receita</h4>
+
+											<div class="form-group">
+												<button data-toggle="modal" data-target="#modalContactForm"
+													type="button" class="btn btn-icon btn-round btn-primary">
+													<img style="width: 40px;"
+														th:src="@{/assets/img/icons/medicamento.icon.png}">
+												</button>
+												<label for="add-medicamento">Adicionar Medicamento </label>
+											</div>
+
+											<div class="card-body">
+												<div class="card-sub">Medicamentos:</div>
+												<table class="table mt-3">
+													<thead>
+														<tr>
+															<th scope="col">Nome</th>
+															<th scope="col">Concentração</th>
+															<th scope="col">Forma</th>
+															<th scope="col">Posologia</th>
+														</tr>
+													</thead>
+													<tbody id="table-medicamentos">
+
+													</tbody>
+												</table>
+											</div>
+											<div class="card-body">
+												<div class="form-group">
+													<label>Orientações</label>
+													<textarea class="form-control" name="orientacao"></textarea>
+												</div>
+											</div>
+											<input type="hidden" id="medicamentos" name="medicamento">
+											<div class="card-action">
+												<button onclick="myFunc()" type="button"
+													class="btn btn-info">
+													<i class="fa fa-print"></i> Imprimir Via do Usuário
+												</button>
+											</div>
+											<div class="modal fade" id="modalContactForm" tabindex="-1"
+												role="dialog" aria-labelledby="myModalLabel"
+												aria-hidden="true">
+												<div class="modal-dialog" role="document">
+													<div class="modal-content" id="form-add-medicamento">
+														<div class="modal-header text-center">
+															<h4 class="modal-title w-100 font-weight-bold">Adicionar
+																Medicamentos</h4>
+															<button type="button" class="close" data-dismiss="modal"
+																aria-label="Close">
+																<span aria-hidden="true">&times;</span>
+															</button>
+														</div>
+														<div class="modal-body">
 															<div class="row">
 																<div class="col-md-12">
-																	<div class="form-check">
-																		<label class="form-radio-label"> <input
-																			id="liberar" class="form-radio-input" type="radio"
-																			th:field="*{destinocidadao}" value="0"> <span
-																			class="form-radio-sign">Liberar Cidadão</span>
-																		</label> <label class="form-radio-label ml-3"> <input
-																			id="adicionar" class="form-radio-input" type="radio"
-																			th:field="*{destinocidadao}" value="1"> <span
-																			class="form-radio-sign">Adicionar a Lista de
-																				Atendimentos</span>
-																		</label>
+																	<div class="form-group">
+																		<label for="nome-medicamento">Nome do
+																			Medicamento:</label> <input type="text" class="form-control"
+																			id="nome-medicamento" placeholder="Ex.: Dipirona"></input>
+																		<small id="small-nome-medicamento"
+																			class="form-text text-muted"></small>
 																	</div>
 																</div>
-																<div class="col-md-12" id="profissional-destino">
-																	<div class="row">
-																		<div class="col-md-6">
-																			<div class="form-group">
-																				<label for="nome">Profissional de Destino:</label><select
-																					th:field="*{profissionaldestino}"
-																					class="form-control form-control">
-																					<option th:each="profissional : ${profissionais}"
-																						th:value="${profissional.id}"
-																						th:text="${profissional.nome}"></option>
-																				</select>
-																			</div>
-																		</div>
-																		<div class="col-md-6">
-																			<div class="form-check">
-																				<label>Tipo de Serviço:</label>
-																				<div class="servicos">
-																					<div class="row">
-																						<label class="form-radio-label ml-3"> <input
-																							class="form-radio-input" type="radio"
-																							name="optionsRadios" value="AdminMedicamentos">
-																							<span class="form-radio-sign">Adm. de
-																								Medicamentos</span>
-																						</label> <label class="form-radio-label ml-3"> <input
-																							class="form-radio-input" type="radio"
-																							name="optionsRadios" value="Observacao">
-																							<span class="form-radio-sign">Observacao</span>
-																						</label>
-																					</div>
-																				</div>
-																			</div>
-																		</div>
+																<div class="col-md-4">
+																	<div class="form-group">
+																		<label for="concentracao">Concentração:</label> <input
+																			type="text" class="form-control" id="concentracao"
+																			placeholder="Ex.: 500mg"></input> <small
+																			id="small-concentracao" class="form-text text-muted"></small>
+																	</div>
+																</div>
+																<div class="col-md-8">
+																	<div class="form-group">
+																		<label for="posologia">Posologia:</label> <input
+																			type="text" class="form-control" id="posologia"
+																			placeholder="Ex.: De 8 em 8 horas"></input> <small
+																			id="small-posologia" class="form-text text-muted"></small>
+																	</div>
+																</div>
+																<div class="col-md-5">
+																	<div class="form-group">
+																		<label for="forma">Forma:</label> <input type="text"
+																			class="form-control" id="forma"
+																			placeholder="Ex.: Comprimido"></input> <small
+																			id="forma-small" class="form-text text-muted"></small>
 																	</div>
 																</div>
 
 															</div>
 														</div>
+														<div class="modal-footer d-flex justify-content-center">
+															<button id="add-medicamento" type="button"
+																class="btn btn-primary">
+																<span class="btn-label"> <i class="fa fa-plus"></i>
+																</span> Adicionar
+															</button>
+														</div>
 													</div>
+												</div>
+											</div>
+										</div>
+										<div class="tab-pane fade" id="v-pills-exames" role="tabpanel"
+											aria-labelledby="v-pills-exames-tab">
+											<p>Exames do Cidadão</p>
 
-													<div class="card-action">
-														<button type="submit" class="btn btn-success">Concluir</button>
-														<button type="reset" class="btn btn-danger">Cancelar</button>
+											<p>But nothing the copy said could convince her and so it
+												didn’t take long until a few insidious Copy Writers ambushed
+												her, made her drunk with Longe and Parole and dragged her
+												into their agency, where they abused her for their</p>
+										</div>
+
+										<div class="tab-pane fade" id="v-pills-finalizar"
+											role="tabpanel" aria-labelledby="v-pills-finalizar-tab">
+											<div class="card">
+												<div class="card-header">
+													<div class="card-title">Encaminhamento Interno</div>
+												</div>
+												<div class="card-body">
+													<div class="row">
+														<div class="col-md-12">
+															<div class="form-check">
+																<label class="form-radio-label"> <input
+																	id="liberar" class="form-radio-input" type="radio"
+																	th:field="*{destinocidadao}" value="0"> <span
+																	class="form-radio-sign">Liberar Cidadão</span>
+																</label> <label class="form-radio-label ml-3"> <input
+																	id="adicionar" class="form-radio-input" type="radio"
+																	th:field="*{destinocidadao}" value="1"> <span
+																	class="form-radio-sign">Adicionar a Lista de
+																		Atendimentos</span>
+																</label>
+															</div>
+														</div>
+														<div class="col-md-12" id="profissional-destino">
+															<div class="row">
+																<div class="col-md-6">
+																	<div class="form-group">
+																		<label for="nome">Profissional de Destino:</label><select
+																			th:field="*{profissionaldestino}"
+																			class="form-control form-control">
+																			<option th:each="profissional : ${profissionais}"
+																				th:value="${profissional.id}"
+																				th:text="${profissional.nome}"></option>
+																		</select>
+																	</div>
+																</div>
+																<div class="col-md-6">
+																	<div class="form-check">
+																		<label>Tipo de Serviço:</label>
+																		<div class="servicos">
+																			<div class="row">
+																				<label class="form-radio-label ml-3"> <input
+																					class="form-radio-input" type="radio"
+																					name="optionsRadios" value="AdminMedicamentos">
+																					<span class="form-radio-sign">Adm. de
+																						Medicamentos</span>
+																				</label> <label class="form-radio-label ml-3"> <input
+																					class="form-radio-input" type="radio"
+																					name="optionsRadios" value="Observacao"> <span
+																					class="form-radio-sign">Observacao</span>
+																				</label>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</div>
+
 													</div>
+												</div>
+											</div>
+
+											<div class="card-action">
+												<button type="submit" class="btn btn-success">Concluir</button>
+												<button type="reset" class="btn btn-danger">Cancelar</button>
+											</div>
+										</div>
 									</div>
 								</div>
 							</div>
-						</div>
 						</form>
 					</div>
 

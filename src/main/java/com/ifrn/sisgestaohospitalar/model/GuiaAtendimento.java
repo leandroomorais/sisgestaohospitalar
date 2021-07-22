@@ -2,14 +2,22 @@ package com.ifrn.sisgestaohospitalar.model;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
+import javax.persistence.PrePersist;
+import javax.persistence.PreUpdate;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.format.annotation.DateTimeFormat.ISO;
 import com.ifrn.sisgestaohospitalar.enums.StatusAtendimento;
@@ -26,6 +34,7 @@ public class GuiaAtendimento {
 
 	private String responsavel;
 
+	@NotNull(message = "É necessário selecionar o Tipo de Serviço")
 	private TipoServico tipoServico;
 
 	private StatusAtendimento statusAtendimento;
@@ -41,8 +50,8 @@ public class GuiaAtendimento {
 	/**
 	 * Relacionamento entre os objetos GuiaAtendimento e Cidadao
 	 */
-	@ManyToOne
-	@JoinTable(name = "guiaatendimento_cidadao")
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "cidadao_id")
 	private Cidadao cidadao;
 
 	/**
@@ -73,6 +82,13 @@ public class GuiaAtendimento {
 	@ManyToOne
 	@JoinTable(name = "guiaatendimento_profissionaldestino")
 	private Profissional profissionaldestino;
+	
+	@PrePersist
+	@PreUpdate
+	private void prePersistUpdate() {
+		int i = 0;
+		numeroregistro = Integer.toString(i++); 
+	}
 
 	/** Getters and Setters */
 

@@ -91,7 +91,7 @@
 													th:if="${guiaAtendimento.cidadao.sexo == 'F'}"><i
 														class="fa fa-female"></i></span></td>
 												<td th:text="${guiaAtendimento.cidadao.nome}"></td>
-												<td th:text="${guiaAtendimento.cidadao.cns}"></td>
+												<td data-mask="000.0000.0000.0000" th:text="${guiaAtendimento.cidadao.cns}"></td>
 												<td th:text="${guiaAtendimento.profissionaldestino.nome}"></td>
 												<td><a class="btn btn-primary btn-sm"
 													th:href="@{/triagem/realizar-triagem/{id} (id=${guiaAtendimento.id})}">Escuta

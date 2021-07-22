@@ -66,7 +66,7 @@ public class TriagemController {
 		Profissional user = profissionalService.findByCpf(username);
 		mv.addObject("estabelecimento", estabelecimentoService.findAll());
 		mv.addObject("user", user);
-		mv.addObject("guiasAtendimento", guiaAtendimentoService.findByTipoServico(TipoServico.EscutaInicial));
+		mv.addObject("guiasAtendimento", guiaAtendimentoService.findByTipoServico(TipoServico.Triagem));
 		mv.addObject("navItem1", true);
 		return mv;
 	}

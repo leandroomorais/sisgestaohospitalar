@@ -1,6 +1,8 @@
 <!DOCTYPE html>
-<html layout:decorate="~{/layouts/layout-modulos}" lang="pt" xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity"
+<html layout:decorate="~{/layouts/layout-modulos}" lang="pt"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity"
 	xmlns:layout="http://ultraq.net.nz/thymeleaf/layout">
 
 <body>
@@ -9,27 +11,29 @@
 		<div class="sidebar-wrapper scrollbar scrollbar-inner">
 			<div class="sidebar-content">
 				<ul class="nav nav-primary">
-					<li class="nav-item"><a data-toggle="collapse" href="#dashboard" class="collapsed"
-							aria-expanded="false"> <img alt="" width="40" th:src="@{/assets/img/person-male.png}">
-							<span th:text="${user.firstname}" class="low"></span><span class="type-user"
-								th:text="${user.tipoprofissional}"></span> <span class="caret"></span>
-						</a>
+					<li class="nav-item"><a data-toggle="collapse"
+						href="#dashboard" class="collapsed" aria-expanded="false"> <img
+							alt="" width="40" th:src="@{/assets/img/person-male.png}">
+							<span th:text="${user.firstname}" class="low"></span><span
+							class="type-user" th:text="${user.tipoprofissional}"></span> <span
+							class="caret"></span>
+					</a>
 						<div class="collapse" id="dashboard">
 							<ul class="nav nav-collapse">
-								<li><a href="../demo1/index.html"> <span class="sub-item">Meu Perfil</span>
-									</a></li>
+								<li><a href="../demo1/index.html"> <span
+										class="sub-item">Meu Perfil</span>
+								</a></li>
 							</ul>
-						</div>
-					</li>
+						</div></li>
 					<li class="nav-section"><span class="sidebar-mini-icon">
 							<i class="fa fa-ellipsis-h"></i>
-						</span>
-						<h4 class="text-section">Ações</h4>
-					</li>
+					</span>
+						<h4 class="text-section">Ações</h4></li>
 					<li class="nav-item" th:classappend="${navItem1} ? active : ''"><a
-							th:href="@{/triagem/cidadaos-atendimento}"> <i class="fas fa-users"></i>
+						th:href="@{/triagem/cidadaos-atendimento}"> <i
+							class="fas fa-users"></i>
 							<p>Fila de Atendimento</p> <span class="caret"></span>
-						</a></li>
+					</a></li>
 				</ul>
 			</div>
 		</div>
@@ -43,7 +47,8 @@
 					<ul class="breadcrumbs">
 						<li class="nav-home"><i class="flaticon-home"></i></li>
 						<li class="separator"><i class="flaticon-right-arrow"></i></li>
-						<li class="nav-item"><a th:href="@{/triagem/cidadaos-atendimento}">Fila de
+						<li class="nav-item"><a
+							th:href="@{/triagem/cidadaos-atendimento}">Fila de
 								Atendimento</a></li>
 						<li class="separator"><i class="flaticon-right-arrow"></i></li>
 						<li class="nav-item"><a>Escuta inicial</a></li>
@@ -63,15 +68,17 @@
 											class="avatar-img rounded-circle">
 									</div>
 									<div class="demo">
-										<span class="h3-info" th:text="${guiaAtendimento.cidadao.nome}"></span><br>
+										<span class="h3-info"
+											th:text="${guiaAtendimento.cidadao.nome}"></span><br>
 										<div class="h4-info">
 											<img class="img-info"
 												th:src="@{/assets/img/icons/icon-bandeira-brasil.png}">
-											<span th:text="${guiaAtendimento.cidadao.cns}"></span><span>
-												anos,</span><span th:if="${guiaAtendimento.cidadao.sexo == 'M'}">
-												masculino.</span><span th:if="${guiaAtendimento.cidadao.sexo == 'F'}">
-												feminino.</span>
-
+											<span data-mask="000.0000.0000.0000"
+												th:text="${guiaAtendimento.cidadao.cns}"></span> <br> <img
+												class="img-info" th:src="@{/assets/img/icons/icon-cpf.png}">
+											<span data-mask="000.000.000-00"
+												th:text="${guiaAtendimento.cidadao.cpf}"></span><br>
+												<strong>Idade: </strong><span>42 anos</span><strong>Sexo:</strong><span>Masculino</span>
 										</div>
 									</div>
 								</div>
@@ -79,20 +86,25 @@
 						</div>
 					</div>
 
-					<form method="post" th:action="@{/triagem/salvar-triagem}" th:object="${triagem}">
+					<form method="post" th:action="@{/triagem/salvar-triagem}"
+						th:object="${triagem}">
 
 						<!-- Input responsável por guardar o ID -->
-						<input id="id" name="id" type="hidden" th:field="*{id}" th:value="*{id}" />
+						<input id="id" name="id" type="hidden" th:field="*{id}"
+							th:value="*{id}" />
 
 						<!-- Input responsável por guardar a Guia de Atendimento -->
-						<input name="" type="hidden" th:field="*{guiaatendimento}" value="*{guiaAtendimento}" />
+						<input name="" type="hidden" th:field="*{guiaatendimento}"
+							value="*{guiaAtendimento}" />
 
 
 						<!-- div reponsável em mostrar os erros -->
-						<div id="errors" class="form-group row" th:data-objeto="${hasErrors}">
+						<div id="errors" class="form-group row"
+							th:data-objeto="${hasErrors}">
 							<div class="col-sm-12 mb-3 mb-sm-0">
 								<div class="alert alert-danger alert-dismissible fade show"
-									data-valor="#fields.hasAnyErrors()" role="alert" id="hasAnyErrors" th:if="${#fields.hasAnyErrors()}">
+									data-valor="#fields.hasAnyErrors()" role="alert"
+									id="hasAnyErrors" th:if="${#fields.hasAnyErrors()}">
 
 									<button type="button" class="close" data-dismiss="alert"
 										aria-label="Close">
@@ -505,7 +517,8 @@
 									<div class="col-md-12">
 										<div class="form-group">
 											<label for="nome">Adicionar Procedimentos:</label> <input
-												id="procedimentos-triagem" type="text" class="form-control input-sm">
+												id="procedimentos-triagem" type="text"
+												class="form-control input-sm">
 										</div>
 									</div>
 									<div class="col-md-12">

@@ -1,59 +1,59 @@
 <!DOCTYPE html>
-<html lang="pt" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
 	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity"
 	xmlns:layout="http://ultraq.net.nz/thymeleaf/layout">
 
 <head>
-	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-	<title>SGH - Sistema de Gestão Hospitalar</title>
-	<meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
-	<link rel="icon" th:href="@{/assets/img/favicon.png}" type="image/x-icon" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<title>SGH - Sistema de Gestão Hospitalar</title>
+<meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no'
+	name='viewport' />
+<link rel="icon" th:href="@{/assets/img/favicon.png}"
+	type="image/x-icon" />
 
-	<!-- Fonts and icons -->
-	<script th:src="@{/assets/js/plugin/webfont/webfont.min.js}"></script>
-	<script th:inline="javascript">
-		WebFont.load({
-			google: {
-				"families": ["Lato:300,400,700,900"]
-			},
-			custom: {
-				"families": ["Flaticon", "Font Awesome 5 Solid",
+<!-- Fonts and icons -->
+<script th:src="@{/assets/js/plugin/webfont/webfont.min.js}"></script>
+<script th:inline="javascript">
+	WebFont.load({
+		google : {
+			"families" : [ "Lato:300,400,700,900" ]
+		},
+		custom : {
+			"families" : [ "Flaticon", "Font Awesome 5 Solid",
 					"Font Awesome 5 Regular", "Font Awesome 5 Brands",
-					"simple-line-icons"],
-				urls: ['/assets/css/fonts.min.css']
-			},
-			active: function () {
-				sessionStorage.fonts = true;
-			}
-		});
-	</script>
+					"simple-line-icons" ],
+			urls : [ '/assets/css/fonts.min.css' ]
+		},
+		active : function() {
+			sessionStorage.fonts = true;
+		}
+	});
+</script>
 
-	<!-- CSS Files -->
-	<link rel="stylesheet" th:href="@{/assets/css/bootstrap.min.css}">
-	<link rel="stylesheet" th:href="@{/assets/css/atlantis.css}">
-	<link rel="stylesheet" th:href="@{/assets/css/mystyle.css}">
+<!-- CSS Files -->
+<link rel="stylesheet" th:href="@{/assets/css/bootstrap.min.css}">
+<link rel="stylesheet" th:href="@{/assets/css/atlantis.css}">
+<link rel="stylesheet" th:href="@{/assets/css/mystyle.css}">
 
-	<!-- CSS Just for demo purpose, don't include it in your project -->
-	<link rel="stylesheet" th:href="@{/assets/css/demo.css}">
-	<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<!-- CSS Just for demo purpose, don't include it in your project -->
+<link rel="stylesheet" th:href="@{/assets/css/demo.css}">
+<link rel="stylesheet"
+	href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 </head>
-
 <body>
+	
 	<div class="wrapper compact-wrapper">
 
 		<div th:replace="fragments/main-header::main-header-recepcao"></div>
 		<div layout:fragment="sidebar"></div>
 		<!-- <div th:replace="fragments/sidebar::sidebar-modulos"></div> -->
 		<div layout:fragment="main-panel"></div>
-
 	</div>
 
-
-
-
-
 	<!--   Core JS Files   -->
-	<script th:src="@{https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js}"></script>
+	<script
+		th:src="@{https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js}"></script>
 	<!-- 	<script th:src="@{/assets/js/core/jquery.3.2.1.min.js}"></script> -->
 	<script th:src="@{/assets/js/core/popper.min.js}"></script>
 	<script th:src="@{/assets/js/core/bootstrap.min.js}"></script>
@@ -61,16 +61,20 @@
 
 	<!-- jQuery UI -->
 	<script th:src="@{/assets/js/plugin/jquery-ui-1.12.1.custom/teste.js}"></script>
-	<script th:src="@{/assets/js/plugin/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js}"></script>
+	<script
+		th:src="@{/assets/js/plugin/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js}"></script>
 
 
-	<script th:src="@{/assets/js/plugin/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js}"></script>
+	<script
+		th:src="@{/assets/js/plugin/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js}"></script>
 
 	<!-- Bootstrap Notify -->
-	<script th:src="@{/assets/js/plugin/bootstrap-notify/bootstrap-notify.min.js}"></script>
+	<script
+		th:src="@{/assets/js/plugin/bootstrap-notify/bootstrap-notify.min.js}"></script>
 
 	<!-- jQuery Scrollbar -->
-	<script th:src="@{/assets/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js}"></script>
+	<script
+		th:src="@{/assets/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js}"></script>
 
 	<!-- Moment JS -->
 	<script th:src="@{/assets/js/plugin/moment/moment.min.js}"></script>
@@ -79,7 +83,8 @@
 	<script th:src="@{/assets/js/plugin/chart.js/chart.min.js}"></script>
 
 	<!-- jQuery Sparkline -->
-	<script th:src="@{/assets/js/plugin/jquery.sparkline/jquery.sparkline.min.js}"></script>
+	<script
+		th:src="@{/assets/js/plugin/jquery.sparkline/jquery.sparkline.min.js}"></script>
 
 	<!-- Chart Circle -->
 	<script th:src="@{/assets/js/plugin/chart-circle/circles.min.js}"></script>
@@ -88,7 +93,8 @@
 	<script th:src="@{/assets/js/plugin/datatables/datatables.min.js}"></script>
 
 	<!-- Bootstrap Toggle -->
-	<script th:src="@{/assets/js/plugin/bootstrap-toggle/bootstrap-toggle.min.js}"></script>
+	<script
+		th:src="@{/assets/js/plugin/bootstrap-toggle/bootstrap-toggle.min.js}"></script>
 
 	<!-- jQuery Vector Maps -->
 	<script th:src="@{/assets/js/plugin/jqvmap/jquery.vmap.min.js}"></script>
@@ -99,7 +105,8 @@
 
 
 	<!-- jQuery Validation -->
-	<script th:src="@{/assets/js/plugin/jquery.validate/jquery.validate.min.js}"></script>
+	<script
+		th:src="@{/assets/js/plugin/jquery.validate/jquery.validate.min.js}"></script>
 
 	<!-- Sweet Alert -->
 	<script th:src="@{/assets/js/plugin/sweetalert/sweetalert.min.js}"></script>
@@ -108,9 +115,11 @@
 	<script th:src="@{/assets/js/atlantis.min.js}"></script>
 
 	<!-- Easy Auto complete -->
-	<script th:src="@{/assets/js/plugin/easyautocomplete/jquery.easy-autocomplete.js}"></script>
+	<script
+		th:src="@{/assets/js/plugin/easyautocomplete/jquery.easy-autocomplete.js}"></script>
 
-	<script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.4.1/jspdf.debug.js}"
+	<script
+		th:src="@{https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.4.1/jspdf.debug.js}"
 		integrity="sha384-THVO/sM0mFD9h7dfSndI6TS0PgAGavwKvB5hAxRRvc0o9cPLohB0wb/PTA7LdUHs"
 		crossorigin="anonymous"></script>
 
@@ -129,7 +138,8 @@
 	<script th:src="@{/assets/js/imc.js}"></script>
 	<script th:src="@{/assets/js/procedimentos-triagem.js}"></script>
 	<script th:src="@{/assets/js/procedimentos-atendimentoMedico.js}"></script>
-	<script th:src="@{/assets/js/procedimentos-administracaoMedicamento.js}"></script>
+	<script
+		th:src="@{/assets/js/procedimentos-administracaoMedicamento.js}"></script>
 	<script th:src="@{/assets/js/destino-cidadao.js}"></script>
 	<script th:src="@{/assets/js/receituario.js}"></script>
 	<script th:src="@{/assets/js/historico-cidadao.js}"></script>

@@ -18,12 +18,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.ifrn.sisgestaohospitalar.enums.CodigoRaca;
@@ -40,6 +38,7 @@ import com.ifrn.sisgestaohospitalar.service.CidadaoService;
 import com.ifrn.sisgestaohospitalar.service.EstabelecimentoService;
 import com.ifrn.sisgestaohospitalar.service.GuiaAtendimentoService;
 import com.ifrn.sisgestaohospitalar.service.ProfissionalService;
+import com.ifrn.sisgestaohospitalar.service.exception.CidadaoJaAdicionadoNaFilaException;
 import com.ifrn.sisgestaohospitalar.service.exception.CidadaoJaCadastradoException;
 
 @Controller
@@ -65,7 +64,7 @@ public class RecepcaoController {
 
 	@Autowired
 	CidadaoCadsusService cadsusService;
-	
+
 	@Autowired
 	LogradouroRepository logradouroRepository;
 
@@ -107,23 +106,21 @@ public class RecepcaoController {
 	 */
 	@PostMapping("/salvar-cidadao")
 	public ModelAndView saveCidadao(@Valid Cidadao cidadao, BindingResult result, Principal principal) {
-		System.out.println(cidadao.toString());
 		if (result.hasErrors()) {
 			return addCidadao(cidadao, principal).addObject("hasErrors", true);
 		}
-
 		try {
 			cidadaoService.save(cidadao);
 		} catch (CidadaoJaCadastradoException e) {
 			result.rejectValue("cpf", e.getMessage(), e.getMessage());
 			result.rejectValue("datanascimento", e.getMessage(), e.getMessage());
 			return addCidadao(cidadao, principal);
-			
 		}
 
 		GuiaAtendimento guiaAtendimento = new GuiaAtendimento();
 		guiaAtendimento.setCidadao(cidadao);
-		return addGuiaAtendimento(guiaAtendimento, principal).addObject("navItem1", true);
+		return addGuiaAtendimento(guiaAtendimento, principal).addObject("navItem1", true).addObject("success",
+				"O Cidadão " + guiaAtendimento.getCidadao().getNome() + " foi adicionado a Base Local");
 	}
 
 	/**
@@ -139,6 +136,7 @@ public class RecepcaoController {
 		ModelAndView mv = new ModelAndView("guiaAtendimento/form-guiaAtendimento");
 		mv.addObject("estabelecimento", estabelecimentoService.findAll());
 		mv.addObject("guiaAtendimento", guiaAtendimento);
+		mv.addObject("tipoServicos", TipoServico.values());
 		List<Profissional> profissionais = new ArrayList<Profissional>();
 		profissionais.addAll(profissionalService.findByTipoprofissional(TipoProfissional.MEDICO));
 		profissionais.addAll(profissionalService.findByTipoprofissional(TipoProfissional.ENFERMEIRO));
@@ -148,6 +146,7 @@ public class RecepcaoController {
 		user = profissionalService.findByCpf(username);
 		mv.addObject("user", user);
 		mv.addObject("navItem1", true);
+		mv.addObject("edit", false);
 		return mv;
 	}
 
@@ -160,24 +159,38 @@ public class RecepcaoController {
 	 * @return ModelAndView
 	 */
 	@PostMapping("/salvar-guia-atendimento")
-	public ModelAndView saveGuiaAtendimento(GuiaAtendimento guiaAtendimento,
-			@RequestParam("optionsRadios") TipoServico tipoServico, BindingResult result, Principal principal) {
+	public ModelAndView saveGuiaAtendimento(@Valid GuiaAtendimento guiaAtendimento, BindingResult result,
+			Principal principal) {
 		if (result.hasErrors()) {
 			return addGuiaAtendimento(guiaAtendimento, principal);
 		}
+		try {
+			String username = principal.getName();
+			guiaAtendimento.setProfissional(profissionalService.findByCpf(username));
+			guiaAtendimento.setData(LocalDate.now());
+			guiaAtendimento.setHora(LocalTime.now());
+			guiaAtendimento.setNumeroregistro(geradorNumero());
+			if (guiaAtendimento.getTipoServico() != TipoServico.Triagem) {
+				guiaAtendimento.setClassificacaoDeRisco("AZUL");
+			}
+			if (guiaAtendimento.getStatusAtendimento() == null) {
+				guiaAtendimento.setStatusAtendimento(StatusAtendimento.AGUARDANDOATENDIMENTO);
+			}
 
-		String username = principal.getName();
-		guiaAtendimento.setProfissional(profissionalService.findByCpf(username));
-		guiaAtendimento.setData(LocalDate.now());
-		guiaAtendimento.setHora(LocalTime.now());
-		guiaAtendimento.setNumeroregistro(geradorNumero());
-		guiaAtendimento.setTipoServico(tipoServico);
-		if (tipoServico != TipoServico.EscutaInicial) {
-			guiaAtendimento.setClassificacaoDeRisco("AZUL");
+			if (guiaAtendimento.getStatusAtendimento().equals(StatusAtendimento.NAOAGUARDOU)) {
+				guiaAtendimento.setTipoServico(TipoServico.Inativo);
+			}
+
+			guiatendimentoService.save(guiaAtendimento);
+
+		} catch (CidadaoJaAdicionadoNaFilaException e) {
+			result.rejectValue("cidadao", e.getMessage(), e.getMessage());
+			return addGuiaAtendimento(guiaAtendimento, principal);
 		}
-
-		guiatendimentoService.save(guiaAtendimento);
-		return listarStatusAtd(principal).addObject("navItem1", true).addObject("navItem2", false);
+		return listarStatusAtd(principal).addObject("navItem1", true).addObject("navItem2", false).addObject("success",
+				"O Cidadão " + guiaAtendimento.getCidadao().getNome()
+						+ " foi adicionado a fila de atendimento para o serviço: "
+						+ guiaAtendimento.getTipoServico().getDescricao());
 	}
 
 	/**
@@ -193,7 +206,8 @@ public class RecepcaoController {
 		user = profissionalService.findByCpf(username);
 		mv.addObject("estabelecimento", estabelecimentoService.findAll());
 		mv.addObject("user", user);
-		mv.addObject("guiasAtendimento", guiatendimentoService.findAll());
+		mv.addObject("guiasAtendimento", guiatendimentoService.listaAtendimentos());
+		mv.addObject("statusAtendimentos", StatusAtendimento.values());
 		mv.addObject("navItem2", true);
 		return mv;
 	}
@@ -208,8 +222,7 @@ public class RecepcaoController {
 	 */
 	@GetMapping("/editar/{id}")
 	public ModelAndView editarGuia(@PathVariable("id") Long id, Principal principal, GuiaAtendimento guiaAtendimento) {
-
-		return addGuiaAtendimento(guiatendimentoService.findOne(id), principal);
+		return addGuiaAtendimento(guiatendimentoService.findOne(id), principal).addObject("edit", true);
 	}
 
 	/**
@@ -229,6 +242,18 @@ public class RecepcaoController {
 		String username = principal.getName();
 		user = profissionalService.findByCpf(username);
 		mv.addObject("user", user);
+		return mv;
+	}
+
+	@GetMapping("/excluir/{id}")
+	public ModelAndView excluirGuia(@PathVariable("id") Long id, Principal principal, GuiaAtendimento guiaAtendimento) {
+		ModelAndView mv = new ModelAndView("guiaAtendimento/detalhe-guiaAtendimento");
+		mv.addObject("estabelecimento", estabelecimentoService.findAll());
+		mv.addObject("guiaAtendimento", guiatendimentoService.findOne(id));
+		String username = principal.getName();
+		user = profissionalService.findByCpf(username);
+		mv.addObject("user", user);
+		guiatendimentoService.delete(id);
 		return mv;
 	}
 

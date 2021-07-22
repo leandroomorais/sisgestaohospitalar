@@ -50,6 +50,14 @@
 	<div class="main-panel" layout:fragment="main-panel">
 		<div class="container">
 			<div class="page-inner">
+				<div class="alert alert-success alert-dismissible fade show"
+					role="alert" th:if="${success}">
+					<strong>Sucesso!</strong> <span th:text="${success}"></span>
+					<button type="button" class="close" data-dismiss="alert"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
 				<div class="page-header">
 					<h4 class="page-title">Recepção</h4>
 					<ul class="breadcrumbs">
@@ -57,7 +65,7 @@
 							th:href="@{/recepcao/adicionar-cidadao}"><i
 								class="flaticon-home"></i></a></li>
 						<li class="separator"><i class="flaticon-right-arrow"></i></li>
-						<li class="nav-item"><a th:href="@{/recepcao/listar-status}">Fila
+						<li class="nav-item"><a th:href="@{/recepcao/listar-status}">Lista
 								de Atendimento</a></li>
 
 					</ul>
@@ -72,35 +80,61 @@
 							<div class="card-body">
 								<div class="table-responsive">
 									<table id="basic-datatables"
-										class="display table table-striped table-hover">
+										class="display table table-hover dataTable" role="grid"
+										aria-describedby="basic-datatables_info">
 										<thead>
-											<tr>
-												<th></th>
-												<th>Nome</th>
-												<th>CNS</th>
-												<th>Profissional de Destino</th>
-												<th style="width: 150px;">Ações</th>
+											<tr role="row">
+												<th class="text-center" tabindex="0" aria-controls="basic-datatables"
+													rowspan="1" colspan="1" aria-sort="ascending"
+													aria-label="Name: activate to sort column descending"
+													style="width: 10px;"></th>
+												<th class="text-center" tabindex="0" aria-controls="basic-datatables"
+													rowspan="1" colspan="1"
+													aria-label="Position: activate to sort column ascending"
+													style="width: 217.688px;">NOME</th>
+												<th class="text-center" tabindex="0" aria-controls="basic-datatables"
+													rowspan="1" colspan="1"
+													aria-label="Office: activate to sort column ascending"
+													style="width: 150.516px;">PROF. DE DESTINO</th>
+												<th class="text-center" tabindex="0" aria-controls="basic-datatables"
+													rowspan="1" colspan="1"
+													aria-label="Age: activate to sort column ascending"
+													style="width: 31.1719px;">TIPO DE SERVIÇO</th>
+												<th class="text-center" tabindex="0" aria-controls="basic-datatables"
+													rowspan="1" colspan="1"
+													aria-label="Start date: activate to sort column ascending"
+													style="width: 81.2969px;">STATUS ATENDIMENTO</th>
+												<th class="text-center" tabindex="0" aria-controls="basic-datatables"
+													rowspan="1" colspan="1"
+													aria-label="Salary: activate to sort column ascending"
+													style="width: 155px;">AÇÕES</th>
 											</tr>
 										</thead>
 										<tfoot>
-											<tr th:if="${guiasAtendimento.size()} > 5">
-												<th></th>
-												<th>Nome</th>
-												<th>CNS</th>
-												<th>Profissional de Destino</th>
-												<th>Ações</th>
+											<tr th:if="${guiasAtendimento.size()} > 10">
+												<th class="text-center" rowspan="1" colspan="1"></th>
+												<th class="text-center" rowspan="1" colspan="1">NOME</th>
+												<th class="text-center" rowspan="1" colspan="1">PROF. DE DESTINO</th>
+												<th class="text-center" rowspan="1" colspan="1">TIPO DE SERVIÇO</th>
+												<th class="text-center" rowspan="1" colspan="1">STATUS ATENDIMENTO</th>
+												<th class="text-center" rowspan="1" colspan="1">AÇÕES</th>
 											</tr>
 										</tfoot>
 										<tbody>
-											<tr th:each="guiaAtendimento : ${guiasAtendimento}">
+											<tr role="row" class="odd"
+												th:each="guiaAtendimento : ${guiasAtendimento}">
 												<td><span
 													th:if="${guiaAtendimento.cidadao.sexo == 'M'}"><i
 														class="fa fa-male"></i></span> <span
 													th:if="${guiaAtendimento.cidadao.sexo == 'F'}"><i
 														class="fa fa-female"></i></span></td>
 												<td th:text="${guiaAtendimento.cidadao.nome}"></td>
-												<td th:text="${guiaAtendimento.cidadao.cns}"></td>
 												<td th:text="${guiaAtendimento.profissionaldestino.nome}"></td>
+												<td class="text-center"><span class="badge badge-info"
+													th:text="${guiaAtendimento.tipoServico.resumo}"></span></td>
+												<td class="text-center"><i class="fa fa-circle"
+													th:classappend="|${guiaAtendimento.statusAtendimento.descricao == 'Aguardando Atendimento' ? 'aguardando-atendimento' : ''} ${guiaAtendimento.statusAtendimento.descricao == 'Em Atendimento' ? 'em-atendimento' : ''}
+										${guiaAtendimento.statusAtendimento.descricao == 'Paciente em observação' ? 'observacao' : ''} ${guiaAtendimento.statusAtendimento.descricao == 'Não aguardou atendimento' ? 'nao-aguardou-atendimento' : ''} ${guiaAtendimento.statusAtendimento.descricao == 'Finalizado' ? '' : ''}|"></i></td>
 												<td><a class="btn btn-primary btn-sm"
 													th:href="@{/recepcao/editar/{id} (id=${guiaAtendimento.id})}">Editar</a>
 													<a class="btn btn-primary btn-sm"
@@ -110,6 +144,17 @@
 									</table>
 								</div>
 							</div>
+							<div class="card-action">
+								<strong>Legenda - Status Atendimento:</strong><br>
+								<th:block th:each="statusAtendimento : ${statusAtendimentos}">
+									&nbsp;<span> <i class="fa fa-circle"
+										th:classappend="|${statusAtendimento.descricao == 'Aguardando Atendimento' ? 'aguardando-atendimento' : ''} ${statusAtendimento.descricao == 'Em Atendimento' ? 'em-atendimento' : ''}
+										${statusAtendimento.descricao == 'Paciente em observação' ? 'observacao' : ''} ${statusAtendimento.descricao == 'Não aguardou atendimento' ? 'nao-aguardou-atendimento' : ''} ${statusAtendimento.descricao == 'Finalizado' ? '' : ''}|"></i>
+									</span>
+									<span th:text="${statusAtendimento.descricao}"></span>
+								</th:block>
+							</div>
+
 							<div class="card-action">
 								<a th:href="@{/recepcao/adicionar-cidadao}"
 									class="btn btn-success">Adicionar novo cidadao <i

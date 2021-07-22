@@ -249,6 +249,83 @@ function formDateTime(date){
 }
 
 $(document).ready(function () {
+	
+	//Exibe Idade atual e data de Nascimento
+	
+	var dtNascimento = $("#dataNascimentoCidadao").val();
+	var ano_aniversario = dtNascimento.split('-')[0];
+	var mes_aniversario = dtNascimento.split('-')[1];
+	var dia_aniversario = dtNascimento.split('-')[2];
+	$("#idadeCidadao").text(" " + calculaIdade(ano_aniversario, mes_aniversario, dia_aniversario));
+	$("#dtNascimento").text(" " + dia_aniversario + "/" + mes_aniversario + "/" + ano_aniversario);
+	function calculaIdade(ano_aniversario, mes_aniversario, dia_aniversario) {
+    	var objData = new Date();
+    	ano_atual = objData.getFullYear();
+    	mes_atual = objData.getMonth() + 1;
+    	dia_atual = objData.getDate();
+    	ano_aniversario = +ano_aniversario;
+    	mes_aniversario = +mes_aniversario;
+    	dia_aniversario = +dia_aniversario;
+		numDiasMesAnt = new Date(ano_atual, mes_atual-1,0).getDate();
+    	idade = ano_atual - ano_aniversario;	
+		var strMes = "mês";
+		var strDia = "dia";
+		var strAno = "ano";
+		if(ano_aniversario == ano_atual && mes_aniversario == mes_atual && dia_aniversario == dia_atual){
+			return "0 dias";
+		}
+		if(idade < 1 && dia_atual < dia_aniversario || idade < 1 && dia_atual == dia_aniversario){
+			qtdMeses = (mes_atual - mes_aniversario) - 1;
+			qtdDias = (numDiasMesAnt - (dia_aniversario - dia_atual));			
+			if(qtdMeses > 1){
+				strMes = "meses";
+			}
+			if(qtdDias > 1){
+				strDia = "dias";
+			}
+				return qtdMeses == 0 ? qtdDias + " " + strDia : qtdMeses + " " + strMes + " e " + qtdDias + " " + strDia;
+		}
+		if(idade < 1 && dia_atual > dia_aniversario){
+			qtdMeses = (mes_atual - mes_aniversario);
+			qtdDias = (dia_atual - dia_aniversario);				
+			if(qtdMeses > 1){
+				strMes = "meses";
+			}
+			if(qtdDias > 1){
+				strDia = "dias";
+			}
+			return qtdMeses == 0 ? qtdDias + " " + strDia : qtdMeses + " " + strMes + " e " + qtdDias + " " + strDia;
+		}
+		if(idade >= 1 && dia_atual < dia_aniversario){
+			qtdMeses = (mes_atual - mes_aniversario) - 1;
+			qtdDias = (numDiasMesAnt - (dia_aniversario - dia_atual));				
+			if(qtdMeses > 1){
+				strMes = "meses";
+			}
+			if(qtdDias > 1){
+				strDia = "dias";
+			}
+			if(idade > 1){
+				strAno = "anos";
+			}
+			return qtdMeses == 0 ? idade + " " + strAno + " e " + qtdDias + " " + strDia : idade + " " + strAno + ", " + qtdMeses + " " + strMes + " e " + qtdDias + " " + strDia;
+		}	
+		if(idade > 1 && dia_atual > dia_aniversario){
+			qtdMeses = (mes_atual - mes_aniversario);
+			qtdDias = (dia_atual - dia_aniversario);			
+			if(qtdMeses > 1){
+				strMes = "meses";
+			}
+			if(qtdDias > 1){
+				strDia = "dias";
+			}
+			if(idade > 1){
+				strAno = "anos";
+			}
+			return idade + " " + strAno + ", " + qtdMeses + " " + strMes + " e " + qtdDias + " " + strDia;
+		}	
+	}
+
     // Autocomplete dos Procedimentos
     $(function () {
         $("#procedimentos-atendimento-medico")

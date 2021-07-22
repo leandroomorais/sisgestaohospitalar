@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html layout:decorate="~{/layouts/layout-modulos}" lang="pt"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity"
+	xmlns:layout="http://ultraq.net.nz/thymeleaf/layout">
+
+<body>
+	<!-- Sidebar Módulos - Recepção -->
+	<div layout:fragment="sidebar" class="sidebar sidebar-style-2">
+		<div class="sidebar-wrapper scrollbar scrollbar-inner">
+			<div class="sidebar-content">
+				<ul class="nav nav-primary">
+					<li class="nav-item"><a data-toggle="collapse"
+						href="#dashboard" class="collapsed" aria-expanded="false"> <img
+							alt="" width="40" th:src="@{/assets/img/person-male.png}">
+							<span th:text="${user.firstname}" class="low"></span><span
+							class="type-user" th:text="${user.tipoprofissional}"></span> <span
+							class="caret"></span>
+					</a>
+						<div class="collapse" id="dashboard">
+							<ul class="nav nav-collapse">
+								<li><a href="../demo1/index.html"> <span
+										class="sub-item">Meu Perfil</span>
+								</a></li>
+							</ul>
+						</div></li>
+					<li class="nav-section"><span class="sidebar-mini-icon">
+							<i class="fa fa-ellipsis-h"></i>
+					</span>
+						<h4 class="text-section">Ações</h4></li>
+
+					<li class="nav-item" th:classappend="${navItem1} ? active : ''"><a
+						th:href="@{/recepcao/adicionar-cidadao}"> <i
+							class="fas fa-user-plus"></i>
+							<p>Adicionar Cidadão</p> <span class="caret"></span>
+					</a></li>
+
+
+					<li class="nav-item" th:classappend="${navItem2} ? active : ''"><a
+						th:href="@{/recepcao/listar-status}"> <i class="fa fa-users"></i>
+							<p>Fila de Atendimento</p>
+					</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<!-- End Sidebar -->
+	<div class="main-panel" layout:fragment="main-panel">
+		<div class="container">
+			<div class="page-inner">
+				<div class="alert alert-danger alert-dismissible" role="alert"
+					th:if="${#fields.hasErrors('${guiaAtendimento.*}')}">
+					<div id="hasErrors" hidden="true"
+						th:text="${#fields.hasErrors('${guiaAtendimento.*}')}"></div>
+					<button type="button" class="close" data-dismiss="alert">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<th:block
+						th:each="detailedError : ${#fields.detailedErrors('${guiaAtendimento.*}')}">
+						<div>
+							<i class="fa fa-exclamation-circle"></i>&nbsp;[[${detailedError.message}]].
+						</div>
+					</th:block>
+				</div>
+				<div class="alert alert-success alert-dismissible fade show"
+					role="alert" th:if="${success}">
+					<strong>Sucesso!</strong> <span th:text="${success}"></span>
+					<button type="button" class="close" data-dismiss="alert"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+
+				<div class="page-header">
+					<h4 class="page-title">Recepção</h4>
+					<ul class="breadcrumbs">
+						<li class="nav-home"><i class="flaticon-home"></i></li>
+						<li class="separator"><i class="flaticon-right-arrow"></i></li>
+						<li class="nav-item"><a
+							th:href="@{/recepcao/adicionar-cidadao}">Fila de Atendimento</a></li>
+						<li class="separator"><i class="flaticon-right-arrow"></i></li>
+						<li class="nav-item"><a>Editar</a></li>
+
+					</ul>
+				</div>
+
+				<div class="card">
+					<form method="post"
+						th:action="@{/recepcao/salvar-guia-atendimento}"
+						th:object="${guiaAtendimento}">
+						<div class="card-header">
+							<h4 class="card-title">Editar Atendimento</h4>
+						</div>
+						<div class="card-body">
+							<div class="page-inner">
+								<div class="row justify-content-center">
+									<div class="col-md-12 col-lg-12 col-xl-12">
+										<div class="row align-items-center">
+											<div class="col">
+												<h6 class="page-pretitle">Editar Atendimento</h6>
+												<h4 class="page-title">
+													Número do registro: <span
+														th:text="${guiaAtendimento.numeroregistro}"></span>
+												</h4>
+											</div>
+											<div class="col-auto">
+												<a href="#" class="btn btn-danger"><i class="fa fa-ban"></i>
+													Remover</a>
+											</div>
+										</div>
+										<div class="page-divider"></div>
+										<div class="card">
+											<div class="card-body">
+												<div class="row">
+													<div class="avatar avatar-lg">
+														<img th:if="${guiaAtendimento.cidadao.sexo == 'M'}"
+															th:src="@{/assets/img/icons/masculino.png}" alt="..."
+															class="avatar-img rounded-circle"> <img
+															th:if="${guiaAtendimento.cidadao.sexo == 'F'}"
+															th:src="@{/assets/img/icons/feminino.png}" alt="..."
+															class="avatar-img rounded-circle">
+													</div>
+													<div class="demo">
+														<span class="h3-info"
+															th:text="${guiaAtendimento.cidadao.nome}"></span><br>
+														<div class="h4-info">
+															<input type="hidden" id="cpfCidadao"
+																th:value="${guiaAtendimento.cidadao.cpf}"> <input
+																type="hidden" id="dataNascimentoCidadao"
+																th:value="${guiaAtendimento.cidadao.datanascimento}"><i
+																class="fa fa-id-card"></i> <strong>CPF: </strong><span
+																data-mask="000.000.000-00"
+																th:text="${guiaAtendimento.cidadao.cpf}"></span> | <strong>CNS:
+															</strong> <span data-mask="000.0000.0000.0000"
+																th:text="${guiaAtendimento.cidadao.cns}"></span><br>
+															<strong>SEXO:</strong> <span
+																th:if="${guiaAtendimento.cidadao.sexo == 'M'}"> M</span><span
+																th:if="${guiaAtendimento.cidadao.sexo == 'F'}"> F</span><i></i>
+															| <strong>NASC.:</strong><span id="dtNascimento"></span>
+															| <strong>IDADE:</strong><span id="idadeCidadao"></span>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+
+										<!-- Input responsável por guardar o Id -->
+										<input name="id" type="hidden" th:field="*{id}"
+											th:value="${guiaAtendimento.id}" />
+
+										<!-- Input responsável por guardar o Cidadão -->
+										<input name="" type="hidden" th:field="*{cidadao}"
+											th:value="*{cidadao}" />
+										<div class="card">
+											<div class="card-header">
+												<div class="card-title">Dados complementares</div>
+											</div>
+											<div class="card-body">
+												<div class="row">
+													<div class="col-md-6 col-lg-8">
+														<div class="form-group">
+															<label for="responsavel">Responsável</label> <input
+																th:field="*{responsavel}" type="text"
+																class="form-control" id="responsavel" placeholder="">
+															<small id="responsavel" class="form-text text-muted">Digite
+																o nome do Responsável pelo Cidadão, caso tenha.</small>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+
+										<div class="card">
+											<div class="card-header">
+												<div class="card-title">Encaminhamento Interno</div>
+											</div>
+											<div class="card-body">
+												<div class="row">
+													<div class="col-md-12">
+														<div class="row">
+															<div class="col-md-6">
+																<div class="form-group">
+																	<label for="nome">Profissional de Destino:</label><select
+																		th:field="*{profissionaldestino}"
+																		class="form-control form-control">
+																		<option th:each="profissional : ${profissionais}"
+																			th:value="${profissional.id}"
+																			th:text="${profissional.nome}"></option>
+																	</select>
+																</div>
+															</div>
+															<div class="col-md-6">
+																<div class="form-check"
+																	th:classappend="${#fields.hasErrors('tipoServico')} ? has-error">
+																	<label>Tipo de Serviço:</label>
+																	<div class="servicos">
+																		<div class="row">
+																			<th:block th:each="tipoServico : ${tipoServicos}">
+																				<label class="form-radio-label"> <input
+																					th:field="*{tipoServico}" class="form-radio-input"
+																					type="radio" name="optionsRadios"
+																					th:value="${tipoServico}"> <span
+																					class="form-radio-sign"
+																					th:text="${tipoServico.descricao}"></span>
+																				</label>
+																			</th:block>
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="card-action">
+							<button type="submit" class="btn btn-primary">Salvar</button>
+							<a th:ref="${/listar-status}" class="btn btn-warning">Cancelar</a>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+		<footer class="footer">
+			<div class="container-fluid">
+				<nav class="pull-left">
+					<th:block th:each="estabelecimento : ${estabelecimento}">
+						<span class="text-primary" th:text="${estabelecimento.nome}"></span>
+					</th:block>
+				</nav>
+				<div class="copyright ml-auto">Sistema de Gestão Hospitalar,
+					2020.</div>
+			</div>
+		</footer>
+	</div>
+	<script th:src="@{/assets/js/pesquisa-cidadao.js}" th:fragment="js"></script>
+</body>
+
+</html>

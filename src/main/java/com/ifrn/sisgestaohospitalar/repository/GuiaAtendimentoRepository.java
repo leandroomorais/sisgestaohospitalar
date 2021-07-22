@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 
 import com.ifrn.sisgestaohospitalar.enums.StatusAtendimento;
 import com.ifrn.sisgestaohospitalar.enums.TipoServico;
+import com.ifrn.sisgestaohospitalar.model.Cidadao;
 import com.ifrn.sisgestaohospitalar.model.GuiaAtendimento;
 
 /**
@@ -28,6 +29,8 @@ public interface GuiaAtendimentoRepository extends JpaRepository<GuiaAtendimento
 	public List<GuiaAtendimento> findByTipoServico(TipoServico tipoServico);
 
 	public List<GuiaAtendimento> findByData(LocalDate data);
+	
+	public List<GuiaAtendimento> findByCidadao(Cidadao cidadao);
 	
 	@Query(value = "SELECT g FROM GuiaAtendimento g WHERE g.data BETWEEN :dataInicial AND :dataFinal")
 	public List<GuiaAtendimento> findByPeriodo(@Param("dataInicial") LocalDate dataInicial, @Param("dataFinal")LocalDate dataFinal);

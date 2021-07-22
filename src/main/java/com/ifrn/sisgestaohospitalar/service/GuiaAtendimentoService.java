@@ -3,12 +3,14 @@ package com.ifrn.sisgestaohospitalar.service;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.ifrn.sisgestaohospitalar.enums.StatusAtendimento;
 import com.ifrn.sisgestaohospitalar.enums.TipoServico;
 import com.ifrn.sisgestaohospitalar.model.GuiaAtendimento;
 import com.ifrn.sisgestaohospitalar.repository.GuiaAtendimentoRepository;
+import com.ifrn.sisgestaohospitalar.service.exception.CidadaoJaAdicionadoNaFilaException;
 
 /**
  * A classe <code>GuiaAtendimentoService</code> implementa os métodos da
@@ -31,6 +33,19 @@ public class GuiaAtendimentoService {
 	 * @param guiaAtendimento
 	 */
 	public void save(GuiaAtendimento guiaAtendimento) {
+		for (GuiaAtendimento guiaAtendimentoAux : repository.findByCidadao(guiaAtendimento.getCidadao())) {
+			if (guiaAtendimentoAux.getCidadao().equals(guiaAtendimento.getCidadao())
+					&& guiaAtendimentoAux.getTipoServico().equals(guiaAtendimento.getTipoServico())
+					&& guiaAtendimentoAux.getProfissionaldestino().equals(guiaAtendimento.getProfissionaldestino())
+					&& guiaAtendimentoAux.getResponsavel().equals(guiaAtendimento.getResponsavel())
+					&& guiaAtendimentoAux.getStatusAtendimento() != StatusAtendimento.FINALIZADO) {
+				throw new CidadaoJaAdicionadoNaFilaException("O Cidadão " + guiaAtendimentoAux.getCidadao().getNome()
+						+ " já foi adicionado a fila de atendimento para o serviço: "
+						+ guiaAtendimentoAux.getTipoServico().getDescricao().toUpperCase()
+						+ " e ainda não teve o atendimento finalizado");
+			}
+		}
+
 		repository.saveAndFlush(guiaAtendimento);
 	}
 
@@ -71,7 +86,7 @@ public class GuiaAtendimentoService {
 	public List<GuiaAtendimento> findByStatusAtendimento(StatusAtendimento statusAtendimento) {
 		return repository.findByStatusAtendimento(statusAtendimento);
 	}
-	
+
 	/**
 	 * Retorna a lista de Guias de Atendimento de acordo com o Tipo de Serviço
 	 * 
@@ -92,25 +107,25 @@ public class GuiaAtendimentoService {
 		return repository.findByData(data);
 	}
 
-	public List<GuiaAtendimento> teste(StatusAtendimento statusAtendimento) {
-		List<GuiaAtendimento> atendimentos = new ArrayList<GuiaAtendimento>();
-		for (GuiaAtendimento guiaAtendimento : repository.findAll()) {
-			if (guiaAtendimento.getStatusAtendimento() != statusAtendimento) {
-				atendimentos.add(guiaAtendimento);
-			}
-		}
-		return atendimentos;
-	}
-	
-	
 	/**
 	 * Retorna as Guias de Atendimento por período de Data
+	 * 
 	 * @param dataInicial
 	 * @param dataFinal
 	 * @return
 	 */
-	public List<GuiaAtendimento> findByPeriodo(LocalDate dataInicial, LocalDate dataFinal){
+	public List<GuiaAtendimento> findByPeriodo(LocalDate dataInicial, LocalDate dataFinal) {
 		return repository.findByPeriodo(dataInicial, dataFinal);
 	}
 
+	public List<GuiaAtendimento> listaAtendimentos() {
+		List<GuiaAtendimento> listaAtendimentos = new ArrayList<>();
+		for (GuiaAtendimento guiaAtendimento : repository.findAll()) {
+			if (guiaAtendimento.getStatusAtendimento() != StatusAtendimento.NAOAGUARDOU
+					&& guiaAtendimento.getStatusAtendimento() != StatusAtendimento.FINALIZADO) {
+				listaAtendimentos.add(guiaAtendimento);
+			}
+		}
+		return listaAtendimentos;
+	}
 }

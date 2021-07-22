@@ -1,6 +1,8 @@
 <!DOCTYPE html>
-<html layout:decorate="~{/layouts/layout-modulos}" lang="pt" xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity"
+<html layout:decorate="~{/layouts/layout-modulos}" lang="pt"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity"
 	xmlns:layout="http://ultraq.net.nz/thymeleaf/layout">
 
 <body>
@@ -9,35 +11,37 @@
 		<div class="sidebar-wrapper scrollbar scrollbar-inner">
 			<div class="sidebar-content">
 				<ul class="nav nav-primary">
-					<li class="nav-item"><a data-toggle="collapse" href="#dashboard" class="collapsed"
-							aria-expanded="false"> <img alt="" width="40" th:src="@{/assets/img/person-male.png}">
-							<span th:text="${user.firstname}" class="low"></span><span class="type-user"
-								th:text="${user.tipoprofissional}"></span> <span class="caret"></span>
-						</a>
+					<li class="nav-item"><a data-toggle="collapse"
+						href="#dashboard" class="collapsed" aria-expanded="false"> <img
+							alt="" width="40" th:src="@{/assets/img/person-male.png}">
+							<span th:text="${user.firstname}" class="low"></span><span
+							class="type-user" th:text="${user.tipoprofissional}"></span> <span
+							class="caret"></span>
+					</a>
 						<div class="collapse" id="dashboard">
 							<ul class="nav nav-collapse">
-								<li><a href="../demo1/index.html"> <span class="sub-item">Meu Perfil</span>
-									</a></li>
+								<li><a href="../demo1/index.html"> <span
+										class="sub-item">Meu Perfil</span>
+								</a></li>
 							</ul>
-						</div>
-					</li>
+						</div></li>
 					<li class="nav-section"><span class="sidebar-mini-icon">
 							<i class="fa fa-ellipsis-h"></i>
-						</span>
-						<h4 class="text-section">Ações</h4>
-					</li>
+					</span>
+						<h4 class="text-section">Ações</h4></li>
 
 
 					<li class="nav-item" th:classappend="${navItem1} ? active : ''"><a
-							th:href="@{/recepcao/adicionar-cidadao}"> <i class="fas fa-user-plus"></i>
+						th:href="@{/recepcao/adicionar-cidadao}"> <i
+							class="fas fa-user-plus"></i>
 							<p>Adicionar Cidadão</p> <span class="caret"></span>
-						</a></li>
+					</a></li>
 
 
 					<li class="nav-item" th:classappend="${navItem2} ? active : ''"><a
-							th:href="@{/recepcao/listar-status}"> <i class="fa fa-users"></i>
+						th:href="@{/recepcao/listar-status}"> <i class="fa fa-users"></i>
 							<p>Fila de Atendimento</p>
-						</a></li>
+					</a></li>
 				</ul>
 			</div>
 		</div>
@@ -49,12 +53,14 @@
 				<div class="page-header">
 					<h4 class="page-title">Recepção</h4>
 					<ul class="breadcrumbs">
-						<li class="nav-home"><a th:href="@{/recepcao/adicionar-cidadao}"><i
-									class="flaticon-home"></i></a></li>
+						<li class="nav-home"><a
+							th:href="@{/recepcao/adicionar-cidadao}"><i
+								class="flaticon-home"></i></a></li>
 						<li class="separator"><i class="flaticon-right-arrow"></i></li>
 						<li class="nav-item"><a th:href="@{/recepcao/listar-status}">Fila
 								de Atendimento</a></li>
-
+						<li class="separator"><i class="flaticon-right-arrow"></i></li>
+						<li class="nav-item"><a>Detalhe</a></li>
 					</ul>
 				</div>
 
@@ -62,42 +68,140 @@
 					<div class="col-md-12">
 						<div class="card">
 							<div class="card-header">
-								<h4 class="card-title">Fila de Atendimento</h4>
+								<h4 class="card-title">Detalhe do Atendimento</h4>
 							</div>
 							<div class="card-body">
-								<div class="table-responsive">
-									<table class="display table table-striped table-hover">
-										<thead>
-											<tr>
-												<th>Nome</th>
-												<th>CNS</th>
-												<th>CPF</th>
-												<th>Data de Nascimento</th>
-												<th>Nome da mãe</th>
-												<th>Endereço</th>
-												<th>Sexo</th>
-											</tr>
-										</thead>
-										<tbody>
-											<tr>
-												<td th:text="${guiaAtendimento.cidadao.nome}"></td>
-												<td th:text="${guiaAtendimento.cidadao.cns}"></td>
-												<td th:text="${guiaAtendimento.cidadao.cpf}"></td>
-												<td th:text="${guiaAtendimento.cidadao.datanascimento}"></td>
-												<td th:text="${guiaAtendimento.cidadao.nomemae}"></td>
-												<td th:text="${guiaAtendimento.cidadao.endereco.nomeLogradouro}"></td>
-												<td><span th:if="${guiaAtendimento.cidadao.sexo == 'M'}"><i
-															class="fa fa-male"></i></span> <span
-														th:if="${guiaAtendimento.cidadao.sexo == 'F'}"><i
-															class="fa fa-female"></i></span></td>
-											</tr>
-										</tbody>
-									</table>
+								<div class="container">
+									<div class="page-inner">
+										<div class="row justify-content-center">
+											<div class="col-md-12 col-lg-12 col-xl-12">
+												<div class="row align-items-center">
+													<div class="col">
+														<h6 class="page-pretitle">Atendimento</h6>
+														<h4 class="page-title">
+															Número do registro: <span
+																th:text="${guiaAtendimento.numeroregistro}"></span>
+														</h4>
+													</div>
+													<div class="col-auto">
+														<a href="#" class="btn btn-light btn-border"><i
+															class="fa fa-print"></i> Imprimir </a>
+													</div>
+												</div>
+												<div class="page-divider"></div>
+												<div class="row">
+													<div class="col-md-12">
+														<div class="card card-invoice">
+															<div class="card-body">
+																<br>
+																<div class="row">
+																	<div class="col-md-3 info-invoice">
+																		<h5 class="sub">Data do Atendimento</h5>
+																		<p
+																			th:text="${#temporals.format(guiaAtendimento.data, 'dd/MM/yyyy')}"></p>
+																	</div>
+																	<div class="col-md-4 info-invoice">
+																		<h5 class="sub">Horário de Entrada (Recepção)</h5>
+																		<p th:text="${guiaAtendimento.hora}"></p>
+																	</div>
+																	<div class="col-md-5 info-invoice">
+																		<h5 class="sub">Profissional</h5>
+																		<p th:text="${guiaAtendimento.profissional.nome}"></p>
+																	</div>
+																</div>
+																<div class="row">
+																	<div class="col-md-12">
+																		<div class="invoice-detail">
+																			<div class="invoice-top">
+																				<h3 class="title">
+																					<strong>Dados do Cidadão</strong>
+																				</h3>
+																			</div>
+																			<div class="invoice-item"></div>
+																		</div>
+																		<div class="separator-solid  mb-3"></div>
+																	</div>
+																</div>
+															</div>
+															<div class="card-footer">
+																<div class="row">
+																	<div class="col-sm-7 col-md-8 mb-3 mb-md-0 transfer-to">
+																		<div class="account-transfer">
+																			<div>
+																				<span>NOME:</span><span
+																					th:text="${guiaAtendimento.cidadao.nome}"></span>
+																			</div>
+																			<div>
+																				<span>DT. NASCIMENTO:</span><span
+																					th:text="${#temporals.format(guiaAtendimento.cidadao.datanascimento, 'dd/MM/yyyy')}"></span>
+																			</div>
+																			<div>
+																				<span>SEXO: </span><span
+																					th:text="${guiaAtendimento.cidadao.sexo}"></span>
+																			</div>
+																			<div>
+																				<span>CNS:</span><span
+																					data-mask="000.0000.0000.0000"
+																					th:text="${guiaAtendimento.cidadao.cns}"></span>
+																			</div>
+																			<div>
+																				<span>CPF:</span><span data-mask="000.000.000-00"
+																					th:text="${guiaAtendimento.cidadao.cpf}"></span>
+																			</div>
+																			<div>
+																				<span>NOME DA MÃE:</span><span
+																					th:text="${guiaAtendimento.cidadao.nomemae}"></span>
+																			</div>
+																			<div>
+																				<span>NOME DO PAI:</span><span
+																					th:text="${guiaAtendimento.cidadao.nomepai}"></span>
+																			</div>
+																			<div class="separator-solid"></div>
+																			<div>
+																				<span>ENDEREÇO:</span><span
+																					th:text="${guiaAtendimento.cidadao.endereco.enderecoCompleto}"></span>
+																			</div>
+																			<div>
+																				<span>CEP:</span><span data-mask="00000-000"
+																					th:text="${guiaAtendimento.cidadao.endereco.cep}"></span>
+																			</div>
+																			<div>
+																				<span>TELEFONE:</span><span
+																					th:text="${guiaAtendimento.cidadao.telefone}"></span>
+																			</div>
+																			<div class="separator-solid"></div>
+																			<div>
+																				<span>RESPONSÁVEL:</span><span
+																					th:text="${guiaAtendimento.responsavel}"></span>
+																			</div>
+																		</div>
+																	</div>
+																	<div
+																		class="col-sm-5 col-md-4 transfer-total text-center">
+																		<div class="price">
+																			<i class="fa fa-circle"
+																				th:classappend="|${guiaAtendimento.statusAtendimento.descricao == 'Aguardando Atendimento' ? 'aguardando-atendimento' : ''} ${guiaAtendimento.statusAtendimento.descricao == 'Em Atendimento' ? 'em-atendimento' : ''}
+										${guiaAtendimento.statusAtendimento.descricao == 'Paciente em observação' ? 'observacao' : ''} ${guiaAtendimento.statusAtendimento.descricao == 'Não aguardou atendimento' ? 'nao-aguardou-atendimento' : ''} ${guiaAtendimento.statusAtendimento.descricao == 'Finalizado' ? '' : ''}|"></i>
+																		</div>
+																		<span
+																			th:text="${guiaAtendimento.statusAtendimento.descricao}"></span>
+																	</div>
+																</div>
+																<div class="separator-solid"></div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
 								</div>
+
 							</div>
 							<div class="card-action">
-								<a th:href="@{/recepcao/adicionar-cidadao}" class="btn btn-success">Adicionar novo
-									cidadao <i class="fa fa-user-plus"></i></a>
+								<a th:href="@{/recepcao/editar/{id} (id=${guiaAtendimento.id})}"
+									class="btn btn-primary"><i class="fa fa-pen"></i>
+									Editar</a>
 							</div>
 						</div>
 					</div>
