@@ -34,10 +34,10 @@ public class Estabelecimento {
 	private String cnes;
 
 	@XmlAttribute(name = "TP_UNID_ID")
-	private String tipounidadeid;
+	private String tipoUnidadeId;
 
 	@XmlAttribute(name = "DS_TP_UNID")
-	private String descricaotipounidade;
+	private String descricaoTipoUnidade;
 
 	@XmlAttribute(name = "TELEFONE1")
 	private String telefone1;
@@ -52,13 +52,13 @@ public class Estabelecimento {
 	private String email;
 
 	/**
-	 * Relacionamento entre os objetos Estabelecimento e Endereco
+	 * Relacionamento entre os objetos Estabelecimento e EnderecoEstabelecimento
 	 */
 	@XmlElementWrapper(name = "ENDERECO")
 	@XmlElement(name = "DADOS_ENDERECO")
 	@ManyToMany(cascade = CascadeType.ALL)
 	@JoinTable(name = "estabelecimento_endereco", joinColumns = { @JoinColumn(name = "endereco_id") })
-	private List<Endereco> enderecos;
+	private List<EnderecoEstabelecimento> enderecos;
 
 	/**
 	 * Relacionamento entre os objetos Estabelecimento e Complexidade
@@ -103,20 +103,20 @@ public class Estabelecimento {
 		this.cnes = cnes;
 	}
 
-	public String getTipounidadeid() {
-		return tipounidadeid;
+	public String getTipoUnidadeId() {
+		return tipoUnidadeId;
 	}
 
-	public void setTipounidadeid(String tipounidadeid) {
-		this.tipounidadeid = tipounidadeid;
+	public void setTipoUnidadeId(String tipoUnidadeId) {
+		this.tipoUnidadeId = tipoUnidadeId;
 	}
 
-	public String getDescricaotipounidade() {
-		return descricaotipounidade;
+	public String getDescricaoTipoUnidade() {
+		return descricaoTipoUnidade;
 	}
 
-	public void setDescricaotipounidade(String descricaotipounidade) {
-		this.descricaotipounidade = descricaotipounidade;
+	public void setDescricaoTipoUnidade(String descricaoTipoUnidade) {
+		this.descricaoTipoUnidade = descricaoTipoUnidade;
 	}
 
 	public String getTelefone1() {
@@ -151,11 +151,11 @@ public class Estabelecimento {
 		this.email = email;
 	}
 
-	public List<Endereco> getEnderecos() {
+	public List<EnderecoEstabelecimento> getEnderecos() {
 		return enderecos;
 	}
 
-	public void setEnderecos(List<Endereco> enderecos) {
+	public void setEnderecos(List<EnderecoEstabelecimento> enderecos) {
 		this.enderecos = enderecos;
 	}
 
