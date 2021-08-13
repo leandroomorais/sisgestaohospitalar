@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html layout:decorate="~{/layouts/layout-modulos}" lang="pt"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity"
+	xmlns:layout="http://ultraq.net.nz/thymeleaf/layout">
+
+<body>
+	<div class="main-panel" layout:fragment="main-panel">
+		<div class="container">
+			<div class="page-inner">
+				<div class="page-header">
+					<h4 class="page-title">Recepção</h4>
+					<ul class="breadcrumbs">
+						<li class="nav-home"><a
+							th:href="@{/recepcao/adicionar-cidadao}"><i
+								class="flaticon-home"></i></a></li>
+						<li class="separator"><i class="flaticon-right-arrow"></i></li>
+						<li class="nav-item"><a th:href="@{/recepcao/listar-status}">Fila
+								de Atendimento</a></li>
+						<li class="separator"><i class="flaticon-right-arrow"></i></li>
+						<li class="nav-item"><a>Detalhe</a></li>
+					</ul>
+				</div>
+
+				<div class="row">
+					<div class="col-md-12">
+						<div class="card">
+							<div class="card-header">
+								<h4 class="card-title">Detalhe do Atendimento</h4>
+							</div>
+							<div class="card-body">
+								<div class="container">
+									<div class="page-inner">
+										<div class="row justify-content-center">
+											<div class="col-md-12 col-lg-12 col-xl-12">
+												<div class="row align-items-center">
+													<div class="col">
+														<h6 class="page-pretitle">Atendimento</h6>
+														<h4 class="page-title">
+															Número do registro: <span></span>
+														</h4>
+													</div>
+													<div class="col-auto">
+														<a href="#" class="btn btn-light btn-border"><i
+															class="fa fa-print"></i> Imprimir </a>
+													</div>
+												</div>
+												<div class="page-divider"></div>
+												<div class="row">
+													<div class="col-md-12">
+														<div class="card card-invoice">
+															<div class="card-body">
+																<br>
+																<div class="row">
+																	<div class="col-md-3 info-invoice">
+																		<h5 class="sub">Data do Atendimento</h5>
+																		<p
+																			th:text="${#temporals.format(atendimento.dataEntrada, 'dd/MM/yyyy')}"></p>
+																	</div>
+																	<div class="col-md-4 info-invoice">
+																		<h5 class="sub">Horário de Entrada (Recepção)</h5>
+																		<p
+																			th:text="${#temporals.format(atendimento.dataEntrada, 'hh:mm:ss')}"></p>
+																	</div>
+																	<div class="col-md-5 info-invoice">
+																		<h5 class="sub">Usuário</h5>
+																		<p>Nome profissional realizou</p>
+																	</div>
+																</div>
+																<div class="row">
+																	<div class="col-md-12">
+																		<div class="invoice-detail">
+																			<div class="invoice-top">
+																				<h3 class="title">
+																					<strong>Dados do Cidadão</strong>
+																				</h3>
+																			</div>
+																			<div class="invoice-item"></div>
+																		</div>
+																		<div class="separator-solid  mb-3"></div>
+																	</div>
+																</div>
+															</div>
+															<div class="card-footer">
+																<div class="row">
+																	<div class="col-sm-7 col-md-8 mb-3 mb-md-0 transfer-to">
+																		<div class="account-transfer">
+																			<div>
+																				<span>NOME:</span><span
+																					th:text="${atendimento.cidadao.nome}"></span>
+																			</div>
+																			<div>
+																				<span>DT. NASCIMENTO:</span><span
+																					th:text="${#temporals.format(atendimento.cidadao.dataNascimento, 'dd/MM/yyyy')}"></span>
+																			</div>
+																			<div>
+																				<span>SEXO: </span><span
+																					th:text="${atendimento.cidadao.sexo}"></span>
+																			</div>
+																			<div>
+																				<span>CNS:</span><span
+																					data-mask="000.0000.0000.0000"
+																					th:text="${atendimento.cidadao.cns}"></span>
+																			</div>
+																			<div>
+																				<span>CPF:</span><span data-mask="000.000.000-00"
+																					th:text="${atendimento.cidadao.cpf}"></span>
+																			</div>
+																			<div>
+																				<span>NOME DA MÃE:</span><span
+																					th:text="${atendimento.cidadao.nomeMae}"></span>
+																			</div>
+																			<div>
+																				<span>NOME DO PAI:</span><span
+																					th:text="${atendimento.cidadao.nomePai}"></span>
+																			</div>
+																			<div class="separator-solid"></div>
+																			<div>
+																				<span>ENDEREÇO:</span><span
+																					th:text="${atendimento.cidadao.endereco.enderecoCompleto}"></span>
+																			</div>
+																			<div>
+																				<span>CEP:</span><span data-mask="00000-000"
+																					th:text="${atendimento.cidadao.endereco.cep}"></span>
+																			</div>
+																			<div>
+																				<span>TELEFONE:</span><span
+																					th:text="${atendimento.cidadao.telefone}"></span>
+																			</div>
+																			<div class="separator-solid"></div>
+																			<div>
+																				<span>RESPONSÁVEL:</span><span
+																					th:text="${atendimento.responsavel}"></span>
+																			</div>
+																		</div>
+																	</div>
+																	<div
+																		class="col-sm-5 col-md-4 transfer-total text-center">
+																		<div class="price">
+																			<i class="fa fa-circle"
+																				th:classappend="|${atendimento.statusAtendimento.status.descricao == 'Aguardando Atendimento' ? 'aguardando-atendimento' : ''} ${atendimento.statusAtendimento.status.descricao == 'Em Atendimento' ? 'em-atendimento' : ''}
+										${atendimento.statusAtendimento.status.descricao == 'Paciente em observação' ? 'observacao' : ''} ${atendimento.statusAtendimento.status.descricao == 'Não aguardou atendimento' ? 'nao-aguardou-atendimento' : ''} ${atendimento.statusAtendimento.status.descricao == 'Finalizado' ? '' : ''}|"></i>
+																		</div>
+																		<span
+																			th:text="${atendimento.statusAtendimento.status.descricao}"></span>
+																		<strong>Ultima atualização em: </strong><span
+																			th:text="${#temporals.format(atendimento.statusAtendimento.ultimaAtualizacao, 'dd/MM/yyyy')}"></span>
+																		<span
+																			th:text="${#temporals.format(atendimento.statusAtendimento.ultimaAtualizacao, 'hh:mm:ss')}"></span>
+																	</div>
+																</div>
+																<div class="separator-solid"></div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+
+							</div>
+							<div class="card-action">
+								<a th:href="@{/atendimento/editar/{id} (id=${atendimento.id})}"
+									class="btn btn-primary"><i class="fa fa-pen"></i> Editar</a>
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+		<div th:replace="fragments/footer :: footer-layout"></div>
+	</div>
+	<th:block layout:fragment="my-js-files">
+	</th:block>
+</body>
+
+</html>

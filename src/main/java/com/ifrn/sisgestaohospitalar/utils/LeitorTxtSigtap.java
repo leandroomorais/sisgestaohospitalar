@@ -5,16 +5,38 @@ import java.io.IOException;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+
+import javax.persistence.EntityGraph;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityTransaction;
+import javax.persistence.FlushModeType;
+import javax.persistence.LockModeType;
+import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
+import javax.persistence.StoredProcedureQuery;
+import javax.persistence.TypedQuery;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaDelete;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.CriteriaUpdate;
+import javax.persistence.metamodel.Metamodel;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import com.ifrn.sisgestaohospitalar.model.CidSigtap;
-import com.ifrn.sisgestaohospitalar.model.OcupacaoSigtap;
-import com.ifrn.sisgestaohospitalar.model.ProcedimentoSigtap;
+import com.ifrn.sisgestaohospitalar.model.Cid;
+import com.ifrn.sisgestaohospitalar.model.Ocupacao;
+import com.ifrn.sisgestaohospitalar.model.Procedimento;
 import com.ifrn.sisgestaohospitalar.model.RegistroSigtap;
-import com.ifrn.sisgestaohospitalar.repository.CidSigtapRepository;
-import com.ifrn.sisgestaohospitalar.repository.OcupacaoSigtapRepository;
-import com.ifrn.sisgestaohospitalar.repository.ProcedimentoSigtapRepository;
+import com.ifrn.sisgestaohospitalar.model.RelProcedimentoCid;
+import com.ifrn.sisgestaohospitalar.repository.CidRepository;
+import com.ifrn.sisgestaohospitalar.repository.OcupacaoRepository;
+import com.ifrn.sisgestaohospitalar.repository.ProcedimentoRepository;
 import com.ifrn.sisgestaohospitalar.repository.RegistroSigtapRepository;
+import com.ifrn.sisgestaohospitalar.repository.RelProcedimentoCidRepository;
 
 /**
  * A classe <code>LeitorTxtSigtap</code> é um utilitário que contém métodos para
@@ -30,20 +52,23 @@ import com.ifrn.sisgestaohospitalar.repository.RegistroSigtapRepository;
 public class LeitorTxtSigtap {
 
 	@Autowired
-	private ProcedimentoSigtapRepository procedimentoSigtapRepository;
+	private ProcedimentoRepository procedimentoRepository;
 
 	@Autowired
 	private RegistroSigtapRepository registroSigtapRepository;
 
 	@Autowired
-	private CidSigtapRepository cidSigtapRepository;
+	private CidRepository cidRepository;
 
 	@Autowired
-	private OcupacaoSigtapRepository ocupacaoSigtapRepository;
+	private OcupacaoRepository ocupacaoRepository;
+	
+	@Autowired
+	private RelProcedimentoCidRepository procedimentoCidRepository;
 
 	/**
 	 * Este método realiza a leitura do arquivo TXT que contém o relacionamento
-	 * entre a tabela de ProcedimentoSigtap e a tabela RegistroSigtap e persiste as
+	 * entre a tabela de Procedimento e a tabela RegistroSigtap e persiste as
 	 * informações no Banco de Dados
 	 * 
 	 * @param arquivoRelacionamentoProcedimento_Registro
@@ -54,30 +79,25 @@ public class LeitorTxtSigtap {
 		BufferedReader bufferedReader = Files.newBufferedReader(Paths.get(arquivoRelacionamentoProcedimento_Registro),
 				Charset.forName("ISO-8859-1"));
 		String linha;
-
 		while ((linha = bufferedReader.readLine()) != null) {
 			String novaLinha = new String(linha.getBytes("UTF-8"));
-
-			String CO_PROCEDIMENTO = novaLinha.substring(0, 10);
+			Long CO_PROCEDIMENTO = Long.getLong(novaLinha.substring(0, 10));
 			String CO_REGISTRO = novaLinha.substring(10, 12);
 			String DT_COMPETENCIA = novaLinha.substring(12, 18);
-
-			ProcedimentoSigtap procedimentoSigtap = procedimentoSigtapRepository
-					.findByCodigoprocedimento(CO_PROCEDIMENTO);
-			RegistroSigtap registroSigtap = registroSigtapRepository.findByCodigoregistro(CO_REGISTRO);
-
+			Procedimento procedimentoSigtap = procedimentoRepository.findByCodigo(CO_PROCEDIMENTO);
+			RegistroSigtap registroSigtap = registroSigtapRepository.findByCodigo(CO_REGISTRO);
 			procedimentoSigtap.getRegistros().add(registroSigtap);
 
-			if (procedimentoSigtap.getDatacompetencia().equals(DT_COMPETENCIA)) {
-				procedimentoSigtapRepository.saveAndFlush(procedimentoSigtap);
+			if (procedimentoSigtap.getDataCompetencia().equals(DT_COMPETENCIA)) {
+				procedimentoRepository.saveAndFlush(procedimentoSigtap);
 			}
 		}
 	}
 
 	/**
 	 * Este método realiza a leitura do arquivo TXT que contém o relacionamento
-	 * entre a tabela de ProcedimentoSigtap e a tabela CidSigtap e persiste as
-	 * informações no Banco de Dados
+	 * entre a tabela de Procedimento e a tabela Cid e persiste as informações no
+	 * Banco de Dados
 	 * 
 	 * @param arquivoRelacionamentoProcedimento_Cid
 	 * @throws IOException
@@ -86,33 +106,25 @@ public class LeitorTxtSigtap {
 		BufferedReader bufferedReader = Files.newBufferedReader(Paths.get(arquivoRelacionamentoProcedimento_Cid),
 				Charset.forName("ISO-8859-1"));
 		String linha;
-
+		
+		List<RelProcedimentoCid> relProcedimentoCids = new ArrayList<>();
+		
 		while ((linha = bufferedReader.readLine()) != null) {
 			String novaLinha = new String(linha.getBytes("UTF-8"));
-
-			String CO_PROCEDIMENTO = novaLinha.substring(0, 10);
+			Long CO_PROCEDIMENTO = Long.parseLong(novaLinha.substring(0, 10));
 			String CO_CID = novaLinha.substring(10, 14);
 			String DT_COMPETENCIA = novaLinha.substring(15, 21);
-
-			ProcedimentoSigtap procedimentoSigtap = procedimentoSigtapRepository
-					.findByCodigoprocedimento(CO_PROCEDIMENTO);
-			CidSigtap cidSigtap = cidSigtapRepository.findByCodigocid(CO_CID);
-
-			procedimentoSigtap.getCids().add(cidSigtap);
-
-			if (procedimentoSigtap.getDatacompetencia().equals(DT_COMPETENCIA)) {
-				procedimentoSigtapRepository.saveAndFlush(procedimentoSigtap);
-			} else {
-				System.out.println("Erro");
-			}
+			RelProcedimentoCid relProcedimentoCid = new RelProcedimentoCid();
+			relProcedimentoCid.setCodigoProcedimento(CO_PROCEDIMENTO);
+			relProcedimentoCid.setCodigoCid(CO_CID);
+			relProcedimentoCids.add(relProcedimentoCid);
 		}
-
+		procedimentoCidRepository.saveAll(relProcedimentoCids);
 	}
 
 	/**
 	 * Este método realiza a leitura do arquivo que contém o relacionamento entre a
-	 * tabela ProcedimentoSigtap e CidSigtap e persite as informações no Banco de
-	 * Dados
+	 * tabela Procedimento e Cid e persite as informações no Banco de Dados
 	 * 
 	 * @param arquivoRelacionamentoProcedimento_Ocupacao
 	 * @throws IOException
@@ -126,29 +138,26 @@ public class LeitorTxtSigtap {
 		while ((linha = bufferedReader.readLine()) != null) {
 			String novaLinha = new String(linha.getBytes("UTF-8"));
 
-			String CO_PROCEDIMENTO = novaLinha.substring(0, 10);
+			Long CO_PROCEDIMENTO = Long.parseLong(novaLinha.substring(0, 10));
 			String CO_OCUPACAO = novaLinha.substring(10, 16);
 			String DT_COMPETENCIA = novaLinha.substring(16, 22);
 
-			ProcedimentoSigtap procedimentoSigtap = procedimentoSigtapRepository
-					.findByCodigoprocedimento(CO_PROCEDIMENTO);
-			OcupacaoSigtap ocupacaoSigtap = ocupacaoSigtapRepository.findByCodigoocupacao(CO_OCUPACAO);
+			Procedimento procedimentoSigtap = procedimentoRepository.findByCodigo(CO_PROCEDIMENTO);
+			Ocupacao ocupacaoSigtap = ocupacaoRepository.findByCodigo(CO_OCUPACAO);
 
 			procedimentoSigtap.getOcupacoes().add(ocupacaoSigtap);
 
-			if (procedimentoSigtap.getDatacompetencia().equals(DT_COMPETENCIA)) {
-				procedimentoSigtapRepository.saveAndFlush(procedimentoSigtap);
+			if (procedimentoSigtap.getDataCompetencia().equals(DT_COMPETENCIA)) {
+				procedimentoRepository.saveAndFlush(procedimentoSigtap);
 			} else {
 				System.out.println("Erro");
 			}
-
 		}
-
 	}
 
 	/**
 	 * Este método realiza a leitura do arquivo TXT de Procedimentos da Tabela
-	 * Sigtap e preenche a tabela ProcedimentoSigtap do Banco de Dados
+	 * Sigtap e preenche a tabela Procedimento do Banco de Dados
 	 * 
 	 * @param arquivoProcedimentos
 	 * @throws IOException
@@ -158,11 +167,10 @@ public class LeitorTxtSigtap {
 		BufferedReader bufferedReader = Files.newBufferedReader(Paths.get(arquivoProcedimentos),
 				Charset.forName("ISO-8859-1"));
 		String linha;
-
+		List<Procedimento> procedimentos = new ArrayList<>();
 		while ((linha = bufferedReader.readLine()) != null) {
 			String novaLinha = new String(linha.getBytes("UTF-8"));
-
-			String CO_PROCEDIMENTO = novaLinha.substring(0, 10);
+			Long CO_PROCEDIMENTO = Long.parseLong(novaLinha.substring(0, 10));
 			String NO_PROCEDIMENTO = novaLinha.substring(10, 260);
 			char TP_COMPLEXIDADE = novaLinha.charAt(260);
 			char TP_SEXO = novaLinha.charAt(261);
@@ -178,29 +186,26 @@ public class LeitorTxtSigtap {
 			String CO_RUBRICA = novaLinha.substring(314, 320);
 			int QT_TEMPO_PERMANENCIA = Integer.parseInt(novaLinha.substring(320, 323));
 			String DT_COMPETENCIA = novaLinha.substring(324, 330);
-
-			ProcedimentoSigtap procedimentoSigtap = new ProcedimentoSigtap();
-
-			procedimentoSigtap.setCodigoprocedimento(CO_PROCEDIMENTO);
-			procedimentoSigtap.setNomeprocedimento(NO_PROCEDIMENTO);
-			procedimentoSigtap.setTipocomplexidade(TP_COMPLEXIDADE);
-			procedimentoSigtap.setTiposexo(TP_SEXO);
-			procedimentoSigtap.setQtdmaximaexecucao(QT_MAXIMA_EXECUCAO);
-			procedimentoSigtap.setQtddiaspermanencia(QT_DIAS_PERMANENCIA);
-			procedimentoSigtap.setQtdpontos(QT_PONTOS);
-			procedimentoSigtap.setVlidademinina(VL_IDADE_MINIMA);
-			procedimentoSigtap.setVlidademaxima(VL_IDADE_MAXIMA);
+			Procedimento procedimentoSigtap = new Procedimento();
+			procedimentoSigtap.setCodigo(CO_PROCEDIMENTO);
+			procedimentoSigtap.setNome(NO_PROCEDIMENTO);
+			procedimentoSigtap.setTipoComplexidade(TP_COMPLEXIDADE);
+			procedimentoSigtap.setTipoSexo(TP_SEXO);
+			procedimentoSigtap.setQtdMaximaExecucao(QT_MAXIMA_EXECUCAO);
+			procedimentoSigtap.setQtdDiasPermanencia(QT_DIAS_PERMANENCIA);
+			procedimentoSigtap.setQtdPontos(QT_PONTOS);
+			procedimentoSigtap.setVlIdadeMinina(VL_IDADE_MINIMA);
+			procedimentoSigtap.setVlIdadeMaxima(VL_IDADE_MAXIMA);
 			procedimentoSigtap.setVlsh(VL_SH);
 			procedimentoSigtap.setVlsa(VL_SA);
 			procedimentoSigtap.setVlsp(VL_SP);
-			procedimentoSigtap.setCodigofinanciamento(CO_FINANCIAMENTO);
-			procedimentoSigtap.setCodigorubrica(CO_RUBRICA);
-			procedimentoSigtap.setQtdtempopermanencia(QT_TEMPO_PERMANENCIA);
-			procedimentoSigtap.setDatacompetencia(DT_COMPETENCIA);
-
-			procedimentoSigtapRepository.save(procedimentoSigtap);
-
+			procedimentoSigtap.setCodigoFinanciamento(CO_FINANCIAMENTO);
+			procedimentoSigtap.setCodigoRubrica(CO_RUBRICA);
+			procedimentoSigtap.setQtdTempoPermanencia(QT_TEMPO_PERMANENCIA);
+			procedimentoSigtap.setDataCompetencia(DT_COMPETENCIA);
+			procedimentos.add(procedimentoSigtap);
 		}
+		procedimentoRepository.saveAll(procedimentos);
 	}
 
 	/**
@@ -216,64 +221,56 @@ public class LeitorTxtSigtap {
 
 		String linha;
 
+		List<RegistroSigtap> registroSigtaps = new ArrayList<>();
 		while ((linha = bufferedReader.readLine()) != null) {
 			String novaLinha = new String(linha.getBytes("UTF-8"));
-
 			String CO_REGISTRO = novaLinha.substring(0, 2);
 			String NO_REGISTRO = novaLinha.substring(2, 52);
 			String DT_COMPETENCIA = novaLinha.substring(52, 58);
-
 			RegistroSigtap registroSigtap = new RegistroSigtap();
-
-			registroSigtap.setCodigoregistro(CO_REGISTRO);
-			registroSigtap.setNomeregistro(NO_REGISTRO);
-			registroSigtap.setDatacompetencia(DT_COMPETENCIA);
-
-			registroSigtapRepository.save(registroSigtap);
+			registroSigtap.setCodigo(CO_REGISTRO);
+			registroSigtap.setNome(NO_REGISTRO);
+			registroSigtap.setDataCompetencia(DT_COMPETENCIA);
+			registroSigtaps.add(registroSigtap);
 		}
-
+		registroSigtapRepository.saveAll(registroSigtaps);
 	}
 
 	/**
 	 * Este método realiza a leitura do arquivo TXT Cid da Tabela Sigtap e preenche
-	 * a tabela CidSigtap do Banco de Dados
+	 * a tabela Cid do Banco de Dados
 	 * 
 	 * @param arquivoCid
 	 * @throws IOException
 	 */
 	public void lerTxtCid(String arquivoCid) throws IOException {
 		BufferedReader bufferedReader = Files.newBufferedReader(Paths.get(arquivoCid), Charset.forName("ISO-8859-1"));
-
 		String linha;
-
+		List<Cid> cids = new ArrayList<>();
 		while ((linha = bufferedReader.readLine()) != null) {
 			String novaLinha = new String(linha.getBytes("UTF-8"));
-
 			String CO_CID = novaLinha.substring(0, 4);
 			String NO_CID = novaLinha.substring(4, 104);
 			char TP_AGRAVO = novaLinha.charAt(104);
 			char TP_SEXO = novaLinha.charAt(105);
 			char TP_ESTADIO = novaLinha.charAt(106);
 			int VL_CAMPOS_IRRADIADOS = Integer.parseInt(novaLinha.substring(107, 111));
-
-			CidSigtap cidSigtap = new CidSigtap();
-
-			cidSigtap.setCodigocid(CO_CID);
-			cidSigtap.setNomecid(NO_CID);
-			cidSigtap.setTipoagravo(TP_AGRAVO);
-			cidSigtap.setTiposexo(TP_SEXO);
-			cidSigtap.setTipoestadio(TP_ESTADIO);
-			cidSigtap.setValorcamposirradiados(VL_CAMPOS_IRRADIADOS);
-
-			cidSigtapRepository.save(cidSigtap);
-
+			Cid cidSigtap = new Cid();
+			cidSigtap.setCodigo(CO_CID);
+			cidSigtap.setNome(NO_CID);
+			cidSigtap.setTipoAgravo(TP_AGRAVO);
+			cidSigtap.setTipoSexo(TP_SEXO);
+			cidSigtap.setTipoEstadio(TP_ESTADIO);
+			cidSigtap.setValorCamposIrradiados(VL_CAMPOS_IRRADIADOS);
+			cids.add(cidSigtap);
 		}
 
+		cidRepository.saveAll(cids);
 	}
 
 	/**
 	 * Este método realiza a leitura do arquivo TXT Ocupacao da Tabela Sigtap e
-	 * preenche a tabela OcupacaoSigtap do Banco de Dados
+	 * preenche a tabela Ocupacao do Banco de Dados
 	 * 
 	 * @param arquivoOcupacao
 	 * @throws IOException
@@ -281,22 +278,17 @@ public class LeitorTxtSigtap {
 	public void lerTxtOcupacao(String arquivoOcupacao) throws IOException {
 		BufferedReader bufferedReader = Files.newBufferedReader(Paths.get(arquivoOcupacao),
 				Charset.forName("ISO-8859-1"));
-
 		String linha = bufferedReader.readLine();
-
-		OcupacaoSigtap ocupacaoSigtap = new OcupacaoSigtap();
-
+		List<Ocupacao> ocupacaos = new ArrayList<>();
 		while ((bufferedReader.readLine()) != null) {
 
 			StringBuilder novaLinha = new StringBuilder(linha);
-
 			String CO_OCUPACAO = novaLinha.substring(0, 6);
 			String NO_OCUPACAO = novaLinha.substring(6, 156);
-
-			ocupacaoSigtap.setCodigoocupacao(CO_OCUPACAO);
-			ocupacaoSigtap.setNomeocupacao(NO_OCUPACAO);
-
-			ocupacaoSigtapRepository.save(ocupacaoSigtap);
+			Ocupacao ocupacaoSigtap = new Ocupacao();
+			ocupacaoSigtap.setCodigo(CO_OCUPACAO);
+			ocupacaoSigtap.setNome(NO_OCUPACAO);
 		}
+		ocupacaoRepository.saveAll(ocupacaos);
 	}
 }

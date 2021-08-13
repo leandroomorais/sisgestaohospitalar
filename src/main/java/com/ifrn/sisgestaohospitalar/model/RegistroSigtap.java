@@ -7,36 +7,35 @@ import javax.persistence.Id;
 public class RegistroSigtap {
 
 	@Id
-	private String codigoregistro;
+	private String codigo;
 
-	private String nomeregistro;
+	private String nome;
 
-	private String datacompetencia;
+	private String dataCompetencia;
 
 	/** Getters and setters */
 
-	public String getCodigoregistro() {
-		return codigoregistro;
+	public String getCodigo() {
+		return codigo;
 	}
 
-	public void setCodigoregistro(String codigoregistro) {
-		this.codigoregistro = codigoregistro;
+	public void setCodigo(String codigo) {
+		this.codigo = codigo;
 	}
 
-	public String getNomeregistro() {
-		return nomeregistro;
+	public String getNome() {
+		return nome;
 	}
 
-	public void setNomeregistro(String nomeregistro) {
-		this.nomeregistro = nomeregistro;
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
 
-	public String getDatacompetencia() {
-		return datacompetencia;
+	public String getDataCompetencia() {
+		return dataCompetencia;
 	}
 
-	public void setDatacompetencia(String datacompetencia) {
-		this.datacompetencia = datacompetencia;
+	public void setDataCompetencia(String dataCompetencia) {
+		this.dataCompetencia = dataCompetencia;
 	}
-
 }

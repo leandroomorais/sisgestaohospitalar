@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html layout:decorate="~{/layouts/layout-modulos}" lang="pt"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity"
+	xmlns:layout="http://ultraq.net.nz/thymeleaf/layout">
+
+<body>
+
+	<div class="main-panel" layout:fragment="main-panel">
+		<div class="container">
+			<div class="page-inner">
+				<div class="alert alert-danger alert-dismissible" role="alert"
+					th:if="${#fields.hasErrors('${atendimento.*}')}">
+					<div id="hasErrors" hidden="true"
+						th:text="${#fields.hasErrors('${atendimento.*}')}"></div>
+					<button type="button" class="close" data-dismiss="alert">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<th:block
+						th:each="detailedError : ${#fields.detailedErrors('${atendimento.*}')}">
+						<div>
+							<i class="fa fa-exclamation-circle"></i>&nbsp;[[${detailedError.message}]].
+						</div>
+					</th:block>
+				</div>
+				<div class="alert alert-success alert-dismissible fade show"
+					role="alert" th:if="${success}">
+					<strong>Sucesso!</strong> <span th:text="${success}"></span>
+					<button type="button" class="close" data-dismiss="alert"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="page-header">
+					<h4 class="page-title">Recepção</h4>
+					<th:block th:switch="${edit}">
+						<ul th:case="false" class="breadcrumbs">
+							<li class="nav-home"><i class="flaticon-home"></i></li>
+							<li class="separator"><i class="flaticon-right-arrow"></i></li>
+							<li class="nav-item"><a
+								th:href="@{/recepcao/adicionar-cidadao}">Adicionar Cidadão</a></li>
+							<li class="separator"><i class="flaticon-right-arrow"></i></li>
+							<li class="nav-item"><a>Dados Complementares</a></li>
+						</ul>
+
+						<ul th:case="true" class="breadcrumbs">
+							<li class="nav-home"><i class="flaticon-home"></i></li>
+							<li class="separator"><i class="flaticon-right-arrow"></i></li>
+							<li class="nav-item"><a th:href="@{/recepcao/listar-status}">Lista
+									de Atendimento</a></li>
+							<li class="separator"><i class="flaticon-right-arrow"></i></li>
+							<li class="nav-item"><a>Editar Atendimento</a></li>
+						</ul>
+					</th:block>
+				</div>
+
+
+				<div class="card">
+					<form method="post" th:action="@{/atendimento/salvar}"
+						th:object="${atendimento}">
+						<!-- 						<div th:switch="${edit}" class="card-header"> -->
+						<!-- 							<h4 th:case="true" class="card-title">Editar Atendimento</h4> -->
+						<!-- 							<h4 th:case="false" class="card-title">Adicionar a Lista de -->
+						<!-- 								Atendimento</h4> -->
+						<!-- 						</div> -->
+						<div class="card-body">
+							<div class="page-inner">
+								<div class="row justify-content-center">
+									<div class="col-md-12 col-lg-12 col-xl-12">
+										<div class="row align-items-center" th:if="${edit}">
+											<div class="col">
+												<h6 class="page-pretitle">Editar Atendimento</h6>
+												<h4 class="page-title">
+													Número do registro: <span></span>
+												</h4>
+											</div>
+											<div class="col-auto">
+												<button id="btn-mudar-status" type="button"
+													class="btn btn-warning btn-sm">
+													<i class="fa fa-ban"></i> Não aguardou atendimento
+												</button>
+											</div>
+										</div>
+										<div class="page-divider"></div>
+										<div class="card">
+											<div class="card-body">
+												<div class="row">
+													<div class="avatar avatar-lg">
+														<img th:if="${atendimento.cidadao.sexo == 'M'}"
+															th:src="@{/assets/img/icons/masculino.png}" alt="..."
+															class="avatar-img rounded-circle"> <img
+															th:if="${atendimento.cidadao.sexo == 'F'}"
+															th:src="@{/assets/img/icons/feminino.png}" alt="..."
+															class="avatar-img rounded-circle">
+													</div>
+													<div class="demo">
+														<span class="h3-info"
+															th:text="${atendimento.cidadao.nome}"></span><br>
+														<div class="h4-info">
+															<input type="hidden" id="cpfCidadao"
+																th:value="${atendimento.cidadao.cpf}"> <input
+																type="hidden" id="dataNascimentoCidadao"
+																th:value="${atendimento.cidadao.dataNascimento}"><i
+																class="fa fa-id-card"></i> <strong>CPF: </strong><span
+																data-mask="000.000.000-00"
+																th:text="${atendimento.cidadao.cpf}"></span> | <strong>CNS:
+															</strong> <span data-mask="000.0000.0000.0000"
+																th:text="${atendimento.cidadao.cns}"></span><br> <strong>SEXO:</strong>
+															<span th:if="${atendimento.cidadao.sexo == 'M'}">
+																M</span><span th:if="${atendimento.cidadao.sexo == 'F'}">
+																F</span><i></i> | <strong>NASC.:</strong><span
+																th:text="${#temporals.format(atendimento.cidadao.dataNascimento,'dd/MM/yyyy')}"></span>
+															| <strong>IDADE:</strong><span id="idadeCidadao"></span>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+
+										<!-- Input responsável por guardar o Id do Atendimento -->
+										<input name="id" type="hidden" th:field="*{id}"
+											th:value="${atendimento.id}" />
+
+										<!-- Input responsável por guardar o Cidadão -->
+										<input name="" type="hidden" th:field="*{cidadao}"
+											th:value="*{cidadao.id}" />
+
+										<!-- Input responsável por guardar a Data de Entrada do Atendimento -->
+										<input type="hidden" th:field="*{dataEntrada}"
+											th:value="${atendimento.dataEntrada}">
+
+										<!-- Input responsável por guardar o Status do Atendimento -->
+										<input type="hidden" th:field="*{status}"
+											th:value="${status}">
+
+										<div class="card">
+											<div class="card-header">
+												<div class="card-title">Dados complementares</div>
+											</div>
+											<div class="card-body">
+												<div class="row">
+													<div class="col-md-6 col-lg-8">
+														<div class="form-group">
+															<label for="responsavel">Responsável</label> <input
+																th:field="*{responsavel}" type="text"
+																class="form-control" id="responsavel" placeholder="">
+															<small id="responsavel" class="form-text text-muted">Digite
+																o nome do Responsável pelo Cidadão, caso tenha.</small>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+
+										<div class="card">
+											<div class="card-header">
+												<div class="card-title">Encaminhamento Interno</div>
+											</div>
+											<div class="card-body">
+												<div class="row">
+													<div class="col-md-12">
+														<div class="row">
+															<div class="col-md-6">
+																<div class="form-group">
+																	<label for="nome">Profissional de Destino:</label><select
+																		th:field="*{profissionalDestino}"
+																		class="form-control form-control">
+																		<option th:each="profissional : ${profissionais}"
+																			th:value="${profissional.id}"
+																			th:text="${profissional.nome}"></option>
+																	</select>
+																</div>
+															</div>
+															<div class="col-md-6">
+																<div class="form-check"
+																	th:classappend="${#fields.hasErrors('condutaTipoServico')} ? has-error">
+																	<label>Tipo de Serviço:</label>
+																	<div class="servicos">
+																		<div class="row">
+																			<th:block
+																				th:each="condutaTipoServico : ${tipoServicos}">
+																				<label th:if="${condutaTipoServico.descricao != 'Inativo'}" class="form-radio-label"> <input
+																					th:field="*{condutaTipoServico}"
+																					class="form-radio-input" type="radio"
+																					name="optionsRadios"
+																					th:value="${condutaTipoServico}"> <span
+																					class="form-radio-sign"
+																					th:text="${condutaTipoServico.descricao}"></span>
+																				</label>
+																			</th:block>
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="card-action">
+							<button id="submit-guia-atendimento" type="submit"
+								class="btn btn-primary">Adicionar a Lista de
+								Atendimento</button>
+							<a th:ref="${/listar-status}" class="btn btn-warning">Cancelar</a>
+						</div>
+					</form>
+				</div>
+
+
+			</div>
+		</div>
+		<div th:replace="fragments/footer :: footer-layout"></div>
+	</div>
+
+	<th:block layout:fragment="my-js-files">
+
+	</th:block>
+</body>
+
+</html>

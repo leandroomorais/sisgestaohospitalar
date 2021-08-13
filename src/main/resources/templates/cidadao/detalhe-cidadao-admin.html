@@ -43,8 +43,7 @@
 						<li class="nav-item"><a
 							th:href="@{/administracao/buscar-cidadaos}">Cidadãos</a></li>
 						<li class="separator"><i class="flaticon-right-arrow"></i></li>
-						<li class="nav-item"><a
-							th:href="@{#}">Detalhe do Cidadão</a></li>
+						<li class="nav-item"><a th:href="@{#}">Detalhe do Cidadão</a></li>
 					</ul>
 				</div>
 
@@ -67,15 +66,11 @@
 													class="avatar-img rounded-circle">
 											</div>
 											<div class="demo">
-												<span class="h3-info"
-													th:text="${cidadao.nome}"></span><br>
+												<span class="h3-info" th:text="${cidadao.nome}"></span><br>
 												<div class="h4-info">
-													<span
-														th:text="${cidadao.idade}"></span><span>
-														anos,</span><span th:if="${cidadao.sexo == 'M'}">
-														masculino.</span><span
-														th:if="${cidadao.sexo == 'F'}">
-														feminino.</span>
+													<span th:text="${cidadao.idade}"></span><span> anos,</span><span
+														th:if="${cidadao.sexo == 'M'}"> masculino.</span><span
+														th:if="${cidadao.sexo == 'F'}"> feminino.</span>
 
 												</div>
 											</div>
@@ -88,27 +83,35 @@
 								<div class="card-body">
 									<p class="info-triagem-titulo">Documentação</p>
 									<hr class="info">
-									<strong>CNS: </strong><p th:text="${cidadao.cns}"></p>
-									<strong>CPF: </strong><p th:text="${cidadao.cpf}"></p>
+									<strong>CNS: </strong>
+									<p th:text="${cidadao.cns}"></p>
+									<strong>CPF: </strong>
+									<p th:text="${cidadao.cpf}"></p>
 									<p class="info-triagem-titulo">Dados pessoais</p>
 									<hr class="info">
-									<strong>NOME DA MÃE: </strong><p th:text="${cidadao.nomemae}"></p>
-									<strong>NOME DO PAI: </strong><p th:text="${cidadao.nomepai}"></p>
-									<strong>DATA DE NASCIMENTO: </strong><p th:text="${cidadao.datanascimento}"></p>
+									<strong>NOME DA MÃE: </strong>
+									<p th:text="${cidadao.nomemae}"></p>
+									<strong>NOME DO PAI: </strong>
+									<p th:text="${cidadao.nomepai}"></p>
+									<strong>DATA DE NASCIMENTO: </strong>
+									<p th:text="${cidadao.datanascimento}"></p>
 									<p class="info-triagem-titulo">Endereço</p>
 									<hr class="info">
-									<strong>ENDEREÇO: </strong><p th:text="${cidadao.endereco}"></p>
-									<strong>COMPLEMENTO: </strong><p th:text="${cidadao.complementoendereco}"></p>
-									<strong>BAIRRO: </strong><p th:text="${cidadao.bairro}"></p>
-									<strong>NÚMERO: </strong><p th:text="${cidadao.numeroendereco}"></p>
+									<strong>ENDEREÇO: </strong>
+									<p th:text="${cidadao.endereco}"></p>
+									<strong>COMPLEMENTO: </strong>
+									<p th:text="${cidadao.complementoendereco}"></p>
+									<strong>BAIRRO: </strong>
+									<p th:text="${cidadao.bairro}"></p>
+									<strong>NÚMERO: </strong>
+									<p th:text="${cidadao.numeroendereco}"></p>
 									<p class="info-triagem-titulo">Dados de Contato</p>
 									<hr class="info">
-									<strong>TELEFONE: </strong><p th:text="${cidadao.telefone}"></p>
-									<strong>EMAIL: </strong><p th:text="${cidadao.email}"></p>
+									<strong>TELEFONE: </strong>
+									<p th:text="${cidadao.telefone}"></p>
+									<strong>EMAIL: </strong>
+									<p th:text="${cidadao.email}"></p>
 								</div>
-
-
-
 							</div>
 						</div>
 					</div>
@@ -116,18 +119,6 @@
 			</div>
 		</div>
 	</div>
-
-	<footer class="footer">
-		<div class="container-fluid">
-			<nav class="pull-left">
-				<th:block th:each="estabelecimento : ${estabelecimento}">
-					<span class="text-primary" th:text="${estabelecimento.nome}"></span>
-				</th:block>
-			</nav>
-			<div class="copyright ml-auto">Sistema de Gestão Hospitalar,
-				2020.</div>
-		</div>
-	</footer>
 </body>
 
 </html>

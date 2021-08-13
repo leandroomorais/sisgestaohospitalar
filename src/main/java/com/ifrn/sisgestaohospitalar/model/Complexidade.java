@@ -17,7 +17,7 @@ public class Complexidade {
 	private Long id;
 
 	@XmlAttribute(name = "SG_COMPLEXIDADE")
-	private String siglacomplexidade;
+	private String siglaComplexidade;
 
 	/** Getters and setters */
 
@@ -30,11 +30,11 @@ public class Complexidade {
 	}
 
 	public String getSiglacomplexidade() {
-		return siglacomplexidade;
+		return siglaComplexidade;
 	}
 
 	public void setSiglacomplexidade(String siglacomplexidade) {
-		this.siglacomplexidade = siglacomplexidade;
+		this.siglaComplexidade = siglacomplexidade;
 	}
 
 }

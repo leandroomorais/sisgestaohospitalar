@@ -2451,7 +2451,7 @@ body {
   border: 0px; }
   .card .card-header, .card-light .card-header {
     padding: 1rem 1.25rem;
-    background-color: #1572e8;
+    background-color: transparent;
     border-bottom: 1px solid #ebecec !important; }
     .card .card-header:first-child, .card-light .card-header:first-child {
       border-radius: 0px; }
@@ -2550,7 +2550,7 @@ body {
 
 .card-title {
   margin: 0;
-  color: white;
+  color: #2A2F5B;
   font-size: 20px;
   font-weight: 400;
   line-height: 1.6; }
@@ -6270,7 +6270,7 @@ label.error {
   width: 1.5rem;
   height: 1.5rem;
   background: transparent;
-  border: 3px solid #1572E8;
+  border: 3px solid #6861CE;
   border-bottom-color: transparent;
   border-radius: 50%;
   animation: 1s spin linear infinite; }
@@ -6278,13 +6278,7 @@ label.error {
 .loader-lg, .is-loading-lg:after {
   width: 2rem;
   height: 2rem;
-  border-width: 5px;
-  margin: 0;
-  position: absolute;
-	top: 50%;
-	left: 50%;
-	margin-right: -50%;
-	transform: translate(-50%, -50%); }
+  border-width: 5px; }
 
 .loader-sm, .is-loading-sm:after {
   width: 1rem;
@@ -14097,8 +14091,7 @@ img.mfp-img {
     justify-content: center;
     align-items: center;
     height: unset;
-    padding: 15px;
-    background: url(/assets/img/fundo.png); }
+    padding: 15px; }
     .login .wrapper.wrapper-login .container-login, .login .wrapper.wrapper-login .container-signup {
       width: 400px;
       padding: 60px 25px;

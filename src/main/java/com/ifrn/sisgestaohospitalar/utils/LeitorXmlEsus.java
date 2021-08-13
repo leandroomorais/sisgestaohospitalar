@@ -7,17 +7,13 @@ import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
-import com.ifrn.sisgestaohospitalar.enums.TipoProfissional;
 import com.ifrn.sisgestaohospitalar.model.Estabelecimento;
 import com.ifrn.sisgestaohospitalar.model.ImportarXmlEsus;
 import com.ifrn.sisgestaohospitalar.model.Lotacao;
 import com.ifrn.sisgestaohospitalar.model.Profissional;
-import com.ifrn.sisgestaohospitalar.model.Role;
 import com.ifrn.sisgestaohospitalar.repository.EstabelecimentoRepository;
 import com.ifrn.sisgestaohospitalar.repository.ProfissionalRepository;
-import com.ifrn.sisgestaohospitalar.service.RoleService;
 
 /**
  * A classe <code>LeitorXmlEsus</code> é um utilitário que contém métodos para a
@@ -36,9 +32,6 @@ public class LeitorXmlEsus {
 
 	@Autowired
 	private EstabelecimentoRepository estabelecimentoRepository;
-
-	@Autowired
-	private RoleService roleService;
 
 	SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
 
@@ -61,30 +54,27 @@ public class LeitorXmlEsus {
 			for (Lotacao lotacaoProfissional : profissional.getLotacoes()) {
 				if (lotacaoProfissional.getCnes().equals(cnes)
 						&& profissionalRepository.findByCpf(profissional.getCpf()) == null) {
-
-					profissional.setUsername(profissional.getCpf());
-					profissional.setPassword(new BCryptPasswordEncoder().encode("sgh" + profissional.getCpf()));
-					profissional.setEnabled(true);
 					String[] name = profissional.getNome().split(" ");
-					String firstname = name[0].toString() + " " + name[1].toString();
-					profissional.setFirstname(firstname);
-					if (lotacaoProfissional.getCodigocbo().equals("225125")) {
-						profissional.setTipoprofissional(TipoProfissional.MEDICO);
-						Role role = roleService.findByNome("MED");
-						profissional.getRole().add(role);
-					} else if (lotacaoProfissional.getCodigocbo().equals("223505")) {
-						profissional.setTipoprofissional(TipoProfissional.ENFERMEIRO);
-						Role role = roleService.findByNome("ENF");
-						profissional.getRole().add(role);
-					} else if (lotacaoProfissional.getCodigocbo().equals("322205")) {
-						profissional.setTipoprofissional(TipoProfissional.TECNICO);
-						Role role = roleService.findByNome("TEC");
-						profissional.getRole().add(role);
-					} else if (lotacaoProfissional.getCodigocbo().equals("123105")) {
-						profissional.setTipoprofissional(TipoProfissional.ADMINISTRADOR);
-						Role role = roleService.findByNome("ADM");
-						profissional.getRole().add(role);
-					}
+					String nomeAbrev = name[0].toString() + " " + name[1].toString();
+					profissional.setNomeAbrev(nomeAbrev);
+					profissional.setAtivo(true);
+//					if (lotacaoProfissional.getCodigoCBO().equals("225125")) {
+//						profissional.setTipoprofissional(TipoProfissional.MEDICO);
+//						Role role = roleService.findByNome("MED");
+//						profissional.getRole().add(role);
+//					} else if (lotacaoProfissional.getCodigocbo().equals("223505")) {
+//						profissional.setTipoprofissional(TipoProfissional.ENFERMEIRO);
+//						Role role = roleService.findByNome("ENF");
+//						profissional.getRole().add(role);
+//					} else if (lotacaoProfissional.getCodigocbo().equals("322205")) {
+//						profissional.setTipoprofissional(TipoProfissional.TECNICO);
+//						Role role = roleService.findByNome("TEC");
+//						profissional.getRole().add(role);
+//					} else if (lotacaoProfissional.getCodigocbo().equals("123105")) {
+//						profissional.setTipoprofissional(TipoProfissional.ADMINISTRADOR);
+//						Role role = roleService.findByNome("ADM");
+//						profissional.getRole().add(role);
+//					}
 
 				}
 

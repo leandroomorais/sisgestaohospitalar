@@ -22,15 +22,15 @@ public class Lotacao {
 	private String cnes;
 
 	@XmlAttribute(name = "CO_INE")
-	private String codigoine;
+	private String codigoIne;
 
 	@XmlAttribute(name = "CO_CBO")
 	@Column(nullable = false, length = 6)
-	private String codigocbo;
+	private String codigoCBO;
 
 	@XmlAttribute(name = "MICROAREA")
-	private String microarea;
-
+	private String microArea;
+	
 	/** Getters and setters */
 
 	public Long getId() {
@@ -49,27 +49,29 @@ public class Lotacao {
 		this.cnes = cnes;
 	}
 
-	public String getCodigoine() {
-		return codigoine;
+	public String getCodigoIne() {
+		return codigoIne;
 	}
 
-	public void setCodigoine(String codigoine) {
-		this.codigoine = codigoine;
+	public void setCodigoIne(String codigoIne) {
+		this.codigoIne = codigoIne;
 	}
 
-	public String getCodigocbo() {
-		return codigocbo;
+	public String getCodigoCBO() {
+		return codigoCBO;
 	}
 
-	public void setCodigocbo(String codigocbo) {
-		this.codigocbo = codigocbo;
+	public void setCodigoCBO(String codigoCBO) {
+		this.codigoCBO = codigoCBO;
 	}
 
-	public String getMicroarea() {
-		return microarea;
+	public String getMicroArea() {
+		return microArea;
 	}
 
-	public void setMicroarea(String microarea) {
-		this.microarea = microarea;
+	public void setMicroArea(String microArea) {
+		this.microArea = microArea;
 	}
+
+		
 }

@@ -7,25 +7,23 @@ import javax.persistence.Id;
 public class Logradouro {
 	
 	@Id
-	private Long codigoLogradouro;
+	private Long codigo;
 	
-	private String descLogradouro;
+	private String descricao;
 
-	public Long getCodigoLogradouro() {
-		return codigoLogradouro;
+	public Long getCodigo() {
+		return codigo;
 	}
 
-	public void setCodigoLogradouro(Long codigoLogradouro) {
-		this.codigoLogradouro = codigoLogradouro;
+	public void setCodigo(Long codigo) {
+		this.codigo = codigo;
 	}
 
-	public String getDescLogradouro() {
-		return descLogradouro;
+	public String getDescricao() {
+		return descricao;
 	}
 
-	public void setDescLogradouro(String descLogradouro) {
-		this.descLogradouro = descLogradouro;
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
 	}
-
-	
 }

@@ -54,7 +54,7 @@ public class ConstrutorEmail {
 			public void prepare(MimeMessage mimeMessage) throws Exception {
 				MimeMessageHelper email = new MimeMessageHelper(mimeMessage);
 				email.setTo(profissional.getEmail());
-				email.setSubject("Redefinição de senha: " + profissional.getFirstname());
+				email.setSubject("Redefinição de senha: " + profissional.getNomeAbrev());
 				email.setText(text, true);
 				email.setFrom(new InternetAddress("gestaoescolaronline1.0@gmail.com"));
 

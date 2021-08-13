@@ -19,8 +19,8 @@ public class LogradouroController {
 	private LogradouroRepository logradouroRepository;
 
 	@GetMapping
-	public ResponseEntity<List<Logradouro>> autoCompletarPorNome(@RequestParam("term") String descLogradouro) {
-		return ResponseEntity.ok(logradouroRepository.findBydescLogradouroIgnoreCaseContaining(descLogradouro));
+	public ResponseEntity<List<Logradouro>> autoCompletarPorNome(@RequestParam("term") String descricao) {
+		return ResponseEntity.ok(logradouroRepository.findByDescricaoIgnoreCaseContaining(descricao));
 	}
 
 }
