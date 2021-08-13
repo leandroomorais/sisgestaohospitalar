@@ -14,41 +14,34 @@ public class Estado {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	@NotBlank
-	private String nomeUF;
+	private String nome;
 	@NotBlank
-	private String siglaUF;
+	private String sigla;
 	@NotNull
-	private int codigoUF;
-
+	private int codigo;
 	public Long getId() {
 		return id;
 	}
-
 	public void setId(Long id) {
 		this.id = id;
 	}
-
-	public String getNomeUF() {
-		return nomeUF;
+	public String getNome() {
+		return nome;
+	}
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+	public String getSigla() {
+		return sigla;
+	}
+	public void setSigla(String sigla) {
+		this.sigla = sigla;
+	}
+	public int getCodigo() {
+		return codigo;
+	}
+	public void setCodigo(int codigo) {
+		this.codigo = codigo;
 	}
 
-	public void setNomeUF(String nomeUF) {
-		this.nomeUF = nomeUF;
-	}
-
-	public String getSiglaUF() {
-		return siglaUF;
-	}
-
-	public void setSiglaUF(String siglaUF) {
-		this.siglaUF = siglaUF;
-	}
-
-	public int getCodigoUF() {
-		return codigoUF;
-	}
-
-	public void setCodigoUF(int codigoUF) {
-		this.codigoUF = codigoUF;
-	}
 }

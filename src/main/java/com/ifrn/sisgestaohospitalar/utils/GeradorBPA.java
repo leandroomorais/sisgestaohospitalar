@@ -19,7 +19,7 @@
 //import com.ifrn.sisgestaohospitalar.model.Estabelecimento;
 //import com.ifrn.sisgestaohospitalar.model.GuiaAtendimento;
 //import com.ifrn.sisgestaohospitalar.model.Lotacao;
-//import com.ifrn.sisgestaohospitalar.model.ProcedimentoSigtap;
+//import com.ifrn.sisgestaohospitalar.model.Procedimento;
 //import com.ifrn.sisgestaohospitalar.model.Profissional;
 //import com.ifrn.sisgestaohospitalar.model.RegistroSigtap;
 //import com.ifrn.sisgestaohospitalar.service.ArquivoBPAService;
@@ -69,7 +69,7 @@
 //		// For para a quantidade de procedimentos, linhas e folhas do BPAI
 //		for (GuiaAtendimento guiaAtendimento : guiaAtendimentoService.findByPeriodo(dataInicial, dataFinal)) {
 //			if (guiaAtendimento.getTriagem() != null) {
-//				for (ProcedimentoSigtap procedimentoSigtap : guiaAtendimento.getTriagem().getProcedimentos()) {
+//				for (Procedimento procedimentoSigtap : guiaAtendimento.getTriagem().getProcedimentos()) {
 //					for (RegistroSigtap registroSigtap : procedimentoSigtap.getRegistros()) {
 //						if (registroSigtap.getCodigoregistro().equals("02")) {
 //							for (Lotacao lotacao : guiaAtendimento.getTriagem().getProfissional().getLotacoes()) {
@@ -83,7 +83,7 @@
 //			}
 //
 //			if (guiaAtendimento.getAtendimentomedico() != null) {
-//				for (ProcedimentoSigtap procedimentoSigtap : guiaAtendimento.getAtendimentomedico()
+//				for (Procedimento procedimentoSigtap : guiaAtendimento.getAtendimentomedico()
 //						.getProcedimentos()) {
 //					for (RegistroSigtap registroSigtap : procedimentoSigtap.getRegistros()) {
 //						if (registroSigtap.getCodigoregistro().equals("02")) {
@@ -99,7 +99,7 @@
 //			}
 //
 //			if (guiaAtendimento.getAdministracaomedicamento() != null) {
-//				for (ProcedimentoSigtap procedimentoSigtap : guiaAtendimento.getAdministracaomedicamento()
+//				for (Procedimento procedimentoSigtap : guiaAtendimento.getAdministracaomedicamento()
 //						.getProcedimentos()) {
 //					for (RegistroSigtap registroSigtap : procedimentoSigtap.getRegistros()) {
 //						if (registroSigtap.getCodigoregistro().equals("02")) {
@@ -140,7 +140,7 @@
 //		// For para escrita dos BPAI
 //		for (GuiaAtendimento guiaAtendimento : guiaAtendimentoService.findByPeriodo(dataInicial, dataFinal)) {
 //			if (guiaAtendimento.getTriagem() != null) {
-//				for (ProcedimentoSigtap procedimentoSigtap : guiaAtendimento.getTriagem().getProcedimentos()) {
+//				for (Procedimento procedimentoSigtap : guiaAtendimento.getTriagem().getProcedimentos()) {
 //					for (RegistroSigtap registroSigtap : procedimentoSigtap.getRegistros()) {
 //						if (registroSigtap.getCodigoregistro().equals("02")) {
 //							for (Lotacao lotacao : guiaAtendimento.getTriagem().getProfissional().getLotacoes()) {
@@ -202,7 +202,7 @@
 //			}
 //
 //			if (guiaAtendimento.getAtendimentomedico() != null) {
-//				for (ProcedimentoSigtap procedimentoSigtap : guiaAtendimento.getAtendimentomedico()
+//				for (Procedimento procedimentoSigtap : guiaAtendimento.getAtendimentomedico()
 //						.getProcedimentos()) {
 //					for (RegistroSigtap registroSigtap : procedimentoSigtap.getRegistros()) {
 //						if (registroSigtap.getCodigoregistro().equals("02")) {
@@ -266,7 +266,7 @@
 //			}
 //
 //			if (guiaAtendimento.getAdministracaomedicamento() != null) {
-//				for (ProcedimentoSigtap procedimentoSigtap : guiaAtendimento.getAdministracaomedicamento()
+//				for (Procedimento procedimentoSigtap : guiaAtendimento.getAdministracaomedicamento()
 //						.getProcedimentos()) {
 //					for (RegistroSigtap registroSigtap : procedimentoSigtap.getRegistros()) {
 //						if (registroSigtap.getCodigoregistro().equals("02")) {
