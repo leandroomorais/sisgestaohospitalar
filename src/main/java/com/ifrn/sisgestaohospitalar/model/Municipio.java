@@ -25,6 +25,7 @@ public class Municipio {
 	private Long codigoIBGE7;
 	@OneToOne
 	private Estado estado;
+	
 	public Long getId() {
 		return id;
 	}
