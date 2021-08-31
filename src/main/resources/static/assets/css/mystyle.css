@@ -115,7 +115,8 @@ input[class="radio-class"] {
 }
 
 }
-.label-input {
+
+.label-input-red {
 	height: 100%;
 	display: block;
 	background: #F54545;
@@ -128,7 +129,7 @@ input[class="radio-class"] {
 	position: relative;
 }
 
-input[type="radio"]:checked+label {
+input[type="radio"]#VERMELHO:checked+label {
 	background: red;
 	color: hsla(215, 0%, 100%, 1);
 	box-shadow: 0px 0px 20px #EE4848; &:: after { color : hsla( 215, 5%,
@@ -164,7 +165,7 @@ input[type="radio"]:checked+label {
 	position: relative;
 }
 
-input[type="radio"]#control_02:checked+label {
+input[type="radio"]#LARANJA:checked+label {
 	background: orange;
 	color: hsla(215, 0%, 100%, 1);
 	box-shadow: 0px 0px 20px #FA8F3D; &:: after { color : hsla( 215, 5%,
@@ -200,7 +201,7 @@ input[type="radio"]#control_02:checked+label {
 	position: relative;
 }
 
-input[type="radio"]#control_03:checked+label {
+input[type="radio"]#AMARELO:checked+label {
 	background: yellow;
 	color: hsla(215, 0%, 100%, 1);
 	box-shadow: 0px 0px 20px #D6D800; &:: after { color : hsla( 215, 5%,
@@ -236,7 +237,7 @@ input[type="radio"]#control_03:checked+label {
 	position: relative;
 }
 
-input[type="radio"]#control_04:checked+label {
+input[type="radio"]#VERDE:checked+label {
 	background: green;
 	color: hsla(215, 0%, 100%, 1);
 	box-shadow: 0px 0px 20px #00C000; &:: after { color : hsla( 215, 5%,
@@ -272,7 +273,7 @@ input[type="radio"]#control_04:checked+label {
 	position: relative;
 }
 
-input[type="radio"]#control_05:checked+label {
+input[type="radio"]#AZUL:checked+label {
 	background: blue;
 	color: hsla(215, 0%, 100%, 1);
 	box-shadow: 0px 0px 20px #0863CF; &:: after { color : hsla( 215, 5%,

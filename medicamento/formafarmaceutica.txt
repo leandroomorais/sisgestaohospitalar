@@ -1,0 +1,114 @@
+1;Adesivo transdérmico;adesivo transdermico;1
+2;Aer bucal (fr de 200 doses);aer bucal (fr de 200 doses);1
+3;Aerossol;aerossol;1
+4;Aerossol nasal;aerossol nasal;1
+5;Aerossol oral;aerossol oral;1
+6;Amp;amp;1
+7;Bastão;bastao;1
+8;Bisnaga;bisnaga;1
+9;Cap;cap;0
+10;Cap liberação controlada;cap liberacao controlada;1
+11;Carpule;carpule;1
+12;Comp;comp;0
+13;Comp rev;comp rev;1
+14;Comprimido;comprimido;1
+15;Comprimido de liberação controlada;comprimido de liberacao controlada;1
+16;Comprimido de liberação prolongada;comprimido de liberacao prolongada;1
+17;Comprimido efervescente;comprimido efervescente;1
+18;Comprimido mastigável;comprimido mastigavel;1
+19;Comprimido para  suspensão;comprimido para  suspensao;1
+20;Comprimido sublingual;comprimido sublingual;1
+21;Creme;creme;1
+22;Creme vaginal;creme vaginal;1
+23;Creme vaginal + comprimido;creme vaginal + comprimido;1
+24;Cápsula;capsula;1
+25;Cápsula dura de liberação prolongada;capsula dura de liberacao prolongada;1
+26;Cápsula vaginal;capsula vaginal;1
+27;Drágea;dragea;1
+28;Elixir;elixir;1
+29;Emulsão;emulsao;1
+30;Emulsão dermatológica;emulsao dermatologica;1
+31;Emulsão injetável;emulsao injetavel;1
+32;Emulsão oftálmica;emulsao oftalmica;1
+33;Emulsão oral;emulsao oral;1
+34;Enema;enema;1
+35;Esmalte;esmalte;1
+36;Gel;gel;1
+37;Gel creme;gel creme;1
+38;Gel oftálmico;gel oftalmico;1
+39;Gel percutâneo;gel percutaneo;1
+40;Gel vaginal;gel vaginal;1
+41;Geléia;geleia;1
+42;Goma de mascar;goma de mascar;1
+43;Granulado;granulado;1
+44;Implante biodegradável para uso oftálmico (intravítreo);implante biodegradavel para uso oftalmico (intravitreo);1
+45;Inj (fr);inj (fr);1
+46;Líquido inalante;liquido inalante;1
+47;Loção;locao;1
+48;Orabase;orabase;1
+49;Pasta;pasta;1
+50;Pastilha;pastilha;1
+51;Pó liófilo para injetável com sistema de aplicação;po liofilo para injetavel com sistema de aplicacao;1
+52;Pomada;pomada;1
+54;Pomada oftálmica;pomada oftalmica;1
+55;Pomada retal;pomada retal;1
+56;Pó;po;1
+57;Pó + diluente;po + diluente;1
+58;Pó liof inj (amp);po liof inj (amp);1
+59;Pó liof inj (fr);po liof inj (fr);1
+60;Pó liof inj (fr-amp ou ser preenc);po liof inj (fr-amp ou ser preenc);1
+61;Pó liof inj (fr-amp);po liof inj (fr-amp);1
+62;Pó liof inj (ser preenc);po liof inj (ser preenc);1
+63;Pó liofilizado para solução injetável;po liofilizado para solucao injetavel;1
+64;Pó liofilizado para suspensão injetável;po liofilizado para suspensao injetavel;1
+65;Pó para dispersão oral;po para dispersao oral;1
+66;Pó para inalação oral;po para inalacao oral;1
+67;Pó para solução;po para solucao;1
+68;Pó para solução injetável;po para solucao injetavel;1
+69;Pó para suspensão;po para suspensao;1
+70;Pó para suspensão injetável;po para suspensao injetavel;1
+71;Sabonete;sabonete;1
+72;Sistema intrauterino;sistema intrauterino;1
+73;Sol inj (amp);sol inj (amp);1
+74;Sol inj (fr);sol inj (fr);1
+75;Sol inj (fr-amp ou ser preenc);sol inj (fr-amp ou ser preenc);1
+76;Sol inj (fr-amp);sol inj (fr-amp);1
+77;Sol inj (ser preenc);sol inj (ser preenc);1
+78;Sol inj ou pó liof inj (fr-amp);sol inj ou po liof inj (fr-amp);1
+79;Sol oft (fr);sol oft (fr);1
+80;Sol oral (fr);sol oral (fr);1
+81;Solução;solucao;1
+82;Solução injetável;solucao injetavel;1
+83;Solução injetável com sistema de aplicação;solucao injetavel com sistema de aplicacao;1
+84;Solução injetável ev;solucao injetavel ev;1
+85;Solução injetável im;solucao injetavel im;1
+86;Solução injetável intra-ocular;solucao injetavel intra-ocular;1
+87;Solução nasal;solucao nasal;1
+88;Solução oftálmica;solucao oftalmica;1
+89;Solução oral;solucao oral;1
+90;Solução oto-oftálmica;solucao oto-oftalmica;1
+91;Solução otológica;solucao otologica;1
+92;Solução para inalação;solucao para inalacao;1
+93;Solução para nebulização;solucao para nebulizacao;1
+94;Solução tópica;solucao topica;1
+95;Spray  nasal;spray  nasal;1
+96;Spray  tópico;spray  topico;1
+97;Supositório;supositorio;1
+98;Susp inj (fr-amp);susp inj (fr-amp);1
+99;Susp oft (fr);susp oft (fr);1
+100;Susp oral (fr);susp oral (fr);1
+101;Suspensão injetável;suspensao injetavel;1
+102;Suspensão nasal;suspensao nasal;1
+103;Suspensão oftálmica;suspensao oftalmica;1
+104;Suspensão oral;suspensao oral;1
+105;Suspensão otológica;suspensao otologica;1
+106;Suspensão para aerossolterapia;suspensao para aerossolterapia;1
+107;Suspensão para instilação;suspensao para instilacao;1
+108;Suspensão para nebulização;suspensao para nebulizacao;1
+109;Suspensão tópica;suspensao topica;1
+110;Tablete;tablete;1
+111;Tintura;tintura;1
+112;Xampu;xampu;1
+113;Xarope;xarope;1
+114;Xpe (fr);xpe (fr);1
+115;Óvulo;ovulo;1

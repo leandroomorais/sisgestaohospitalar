@@ -1,173 +1,139 @@
 package com.ifrn.sisgestaohospitalar.controller;
 
-import java.security.Principal;
-import java.time.LocalDate;
-import java.time.LocalTime;
-import java.util.ArrayList;
-import java.util.List;
+import java.time.LocalDateTime;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Optional;
+
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
-import com.ifrn.sisgestaohospitalar.enums.StatusAtendimento;
-import com.ifrn.sisgestaohospitalar.enums.TipoProfissional;
-import com.ifrn.sisgestaohospitalar.enums.TipoServico;
-import com.ifrn.sisgestaohospitalar.model.GuiaAtendimento;
-import com.ifrn.sisgestaohospitalar.model.ProcedimentoSigtap;
-import com.ifrn.sisgestaohospitalar.model.Profissional;
-import com.ifrn.sisgestaohospitalar.model.Triagem;
-import com.ifrn.sisgestaohospitalar.service.EstabelecimentoService;
-import com.ifrn.sisgestaohospitalar.service.GuiaAtendimentoService;
-import com.ifrn.sisgestaohospitalar.service.ProcedimentoSigtapService;
-import com.ifrn.sisgestaohospitalar.service.ProfissionalService;
-import com.ifrn.sisgestaohospitalar.service.TriagemService;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.ifrn.sisgestaohospitalar.enums.ClassificacaoDeRisco;
+import com.ifrn.sisgestaohospitalar.enums.CondutaCidadao;
+import com.ifrn.sisgestaohospitalar.enums.MomentoColeta;
+import com.ifrn.sisgestaohospitalar.enums.SituacaoCondicao;
+import com.ifrn.sisgestaohospitalar.enums.Status;
+import com.ifrn.sisgestaohospitalar.enums.TipoServico;
+import com.ifrn.sisgestaohospitalar.model.Atendimento;
+import com.ifrn.sisgestaohospitalar.model.HistoricoStatus;
+import com.ifrn.sisgestaohospitalar.model.SinaisVitais;
+import com.ifrn.sisgestaohospitalar.model.Triagem;
+import com.ifrn.sisgestaohospitalar.repository.AtendimentoRepository;
+import com.ifrn.sisgestaohospitalar.repository.ProfissionalRepository;
+import com.ifrn.sisgestaohospitalar.service.AtendimentoService;
+import com.ifrn.sisgestaohospitalar.service.TriagemDataTablesService;
+import com.ifrn.sisgestaohospitalar.service.TriagemService;
+import com.ifrn.sisgestaohospitalar.service.exception.CidadaoJaAdicionadoNaFilaException;
 
 @Controller
 @RequestMapping("/triagem")
 public class TriagemController {
 
 	@Autowired
+	private AtendimentoRepository atendimentoRepository;
+
+	@Autowired
+	private ProfissionalRepository profissionalRepository;
+	
+	@Autowired
+	private AtendimentoService atendimentoService;
+	
+	@Autowired
 	private TriagemService triagemService;
 
-	@Autowired
-	private GuiaAtendimentoService guiaAtendimentoService;
-
-	@Autowired
-	private ProfissionalService profissionalService;
-
-	@Autowired
-	private ProcedimentoSigtapService procedimentoSigtapService;
-
-	@Autowired
-	private EstabelecimentoService estabelecimentoService;
-	
-	List<ProcedimentoSigtap> procedimentos = new ArrayList<ProcedimentoSigtap>();
-
-	/**
-	 * Direciona o usuário para a página com a lista de Cidadãos para serem
-	 * atendidos
-	 * 
-	 * @param principal
-	 * @return
-	 */
-	@RequestMapping("/cidadaos-atendimento")
-	public ModelAndView listStatusAddTri(Principal principal) {
-		ModelAndView mv = new ModelAndView("triagem/list-guiaAtendimento");
-		String username = principal.getName();
-		Profissional user = profissionalService.findByCpf(username);
-		mv.addObject("estabelecimento", estabelecimentoService.findAll());
-		mv.addObject("user", user);
-		mv.addObject("guiasAtendimento", guiaAtendimentoService.findByTipoServico(TipoServico.Triagem));
-		mv.addObject("navItem1", true);
-		return mv;
+	@RequestMapping("/adicionar/{atendimentoId}")
+	public ModelAndView cadastrar(@PathVariable("atendimentoId") Long id, Triagem triagem,
+			RedirectAttributes attributes) {
+		Optional<Atendimento> optional = atendimentoRepository.findById(id);
+		if (optional.isPresent()) {
+			Atendimento atendimento = optional.get();
+			atendimento.setStatus(Status.EMATENDIMENTO);
+			atendimentoRepository.saveAndFlush(atendimento);
+			triagem.setAtendimento(atendimento);
+			triagem.setInicioTriagem(LocalDateTime.now());
+			ModelAndView mv = new ModelAndView("triagem/form-triagem");
+			mv.addObject("atendimento", triagem.getAtendimento());
+			mv.addObject("momentosColeta", MomentoColeta.values());
+			mv.addObject("classificacoesRisco", ClassificacaoDeRisco.values());
+			mv.addObject("situacoesCondicao", SituacaoCondicao.values());
+			mv.addObject("profissionais", profissionalRepository.findAll());
+			mv.addObject("tipoServicos", TipoServico.values());
+			mv.addObject("condutasCidadao", CondutaCidadao.values());
+			return mv;
+		} else {
+			attributes.addFlashAttribute("erro", "Atendimento não localizado");
+			return new ModelAndView("redirect:/triagem/listar");
+		}
 	}
 
-	/**
-	 * Direciona o usuário para o formulário de Triagem
-	 * 
-	 * @param id
-	 * @param triagem
-	 * @param principal
-	 * @return
-	 */
-	@GetMapping("/realizar-triagem/{id}")
-	public ModelAndView addTriagem(@PathVariable("id") Long id, Triagem triagem, Principal principal) {
-		procedimentos.clear();
-		String username = principal.getName();
-		Profissional user = profissionalService.findByCpf(username);
-		GuiaAtendimento guiaAtendimento = guiaAtendimentoService.findOne(id);
-		Profissional profissional = profissionalService.findByCpf(username);
-		triagem.setGuiaatendimento(guiaAtendimento);
-		triagem.setProfissional(profissional);
-		List<Profissional> profissionais = new ArrayList<Profissional>();
-		profissionais.addAll(profissionalService.findByTipoprofissional(TipoProfissional.MEDICO));
-		profissionais.addAll(profissionalService.findByTipoprofissional(TipoProfissional.ENFERMEIRO));
-		profissionais.addAll(profissionalService.findByTipoprofissional(TipoProfissional.TECNICO));
-		ModelAndView mv = new ModelAndView("triagem/form-triagem");
-		mv.addObject("estabelecimento", estabelecimentoService.findAll());
-		mv.addObject("user", user);
-		mv.addObject("profissional", profissional);
-		mv.addObject("triagem", triagem);
-		mv.addObject("profissionais", profissionais);
-		mv.addObject("guiaAtendimento", guiaAtendimento);
-		mv.addObject("navItem1", true);
-		return mv;
-	}
-
-	/**
-	 * @param triagem
-	 * @param result
-	 * @param ids_procedimentos
-	 * @param principal
-	 * @return
-	 */
-	@PostMapping("/salvar-triagem")
-	public ModelAndView save(@Valid Triagem triagem, BindingResult result,
-			@RequestParam(value = "classificacaoDeRisco", required = false) String classificacaoDeRisco,
-			@RequestParam(value = "optionsRadios", required = false) TipoServico tipoServico, Principal principal) {
-
-		GuiaAtendimento guiaAtendimento = triagem.getGuiaatendimento();
-
+	@PostMapping("/salvar")
+	public ResponseEntity<?> salvar(@Valid Triagem triagem, BindingResult result) {
+		Map<String, String> errors = new HashMap<>();
 		if (result.hasErrors()) {
-			return addTriagem(guiaAtendimento.getId(), triagem, principal);
-		}
-
-		if (triagem.getDestinocidadao().equals("0")) {
-			triagem.getGuiaatendimento().setStatusAtendimento(StatusAtendimento.FINALIZADO);
-		}
-
-		triagem.getGuiaatendimento().setProfissionaldestino(triagem.getProfissionaldestino());
-		triagem.setProcedimentos(procedimentos);
-		guiaAtendimento.setClassificacaoDeRisco(classificacaoDeRisco);
-		guiaAtendimento.setTipoServico(tipoServico);
-		guiaAtendimentoService.save(guiaAtendimento);
-		String username = principal.getName();
-		Profissional profissional = profissionalService.findByCpf(username);
-		triagem.setData(LocalDate.now());
-		triagem.setHora(LocalTime.now());
-		triagem.setProfissional(profissional);
-		triagemService.save(triagem);
-		procedimentos.clear();
-		return listStatusAddTri(principal).addObject("navItem1", true);
-	}
-	
-	@PostMapping("/add-procedimento")
-	@ResponseBody
-	public void addProcedimento(ProcedimentoSigtap procedimentoSigtap) {
-		ProcedimentoSigtap prSigtap = procedimentoSigtapService.findOne(procedimentoSigtap.getId());
-		procedimentos.add(prSigtap);
-		imprimeLista();
-	}
-	
-	@DeleteMapping("/delete-procedimento")
-	@ResponseBody
-	public void deleteProcedimento(ProcedimentoSigtap procedimentoSigtap) {
-		for(int i = 0; i < procedimentos.size(); i++) {
-			if(procedimentos.get(i).getId().equals(procedimentoSigtap.getId())) {
-				procedimentos.remove(i);
+			for (FieldError error : result.getFieldErrors()) {
+				errors.put(error.getField(), error.getDefaultMessage());
 			}
+			return ResponseEntity.unprocessableEntity().body(errors);
 		}
-		imprimeLista();
+		
+		try {
+			Optional<Atendimento> optional = atendimentoRepository.findById(triagem.getAtendimento().getId());
+			if (optional.isPresent()) {
+				Atendimento atendimento = optional.get();
+				
+				if (triagem.getAtendimento().getCondutaTipoServico() != TipoServico.INATIVO) {
+					atendimento.setStatus(Status.AGUARDANDOATENDIMENTO);
+				}
+				if (triagem.getAtendimento().getCondutaTipoServico().equals(TipoServico.INATIVO)
+						&& triagem.getAtendimento().getStatus() != Status.NAOAGUARDOU) {
+					atendimento.setStatus(Status.FINALIZADO);
+				}
+				
+				atendimento.setCondutaTipoServico(triagem.getAtendimento().getCondutaTipoServico());
+				atendimento.setCondutaCidadao(triagem.getAtendimento().getCondutaCidadao());
+				
+				triagem.setAtendimento(atendimento);
+				triagem.setFimTriagem(LocalDateTime.now());
+				
+				atendimento.setTriagem(triagem);
+				
+				HistoricoStatus historicoStatus = new HistoricoStatus();
+				historicoStatus.setStatus(triagem.getAtendimento().getStatus());
+				historicoStatus.setTipoServico(triagem.getAtendimento().getCondutaTipoServico());
+				historicoStatus.setUltimaAtualizacao(LocalDateTime.now());
+
+				triagemService.save(triagem);
+				return ResponseEntity.ok().build();
+			}
+			return ResponseEntity.notFound().build();
+		} catch (CidadaoJaAdicionadoNaFilaException e) {
+			errors.put(e.getLocalizedMessage(), e.getMessage());
+			return ResponseEntity.unprocessableEntity().body(errors);
+		}
 	}
-	
-	@GetMapping("/imprimir")
-	@ResponseBody
-	public void imprimeLista() {
-		if(procedimentos.isEmpty()) {
-			System.out.println("### A lista está vazia ###");
-		}
-		for(int i = 0; i < procedimentos.size(); i++) {
-			System.out.println("PROCEDIMENTO DA LISTA> " + procedimentos.get(i).getNomeprocedimento());
-		}
+
+	@GetMapping("/datatables/server")
+	public ResponseEntity<?> dataTables(HttpServletRequest request) {
+		Map<String, Object> data = new TriagemDataTablesService().execute(atendimentoRepository, request);
+		return ResponseEntity.ok(data);
+	}
+
+	@GetMapping("/listar")
+	public ModelAndView listar() {
+		ModelAndView mv = new ModelAndView("triagem/listar-atendimento");
+		mv.addObject("statusAtendimentos", Status.values());
+		return mv;
 	}
 
 }

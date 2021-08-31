@@ -1,12 +1,11 @@
 package com.ifrn.sisgestaohospitalar.model;
 
-import java.util.Collection;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -19,27 +18,12 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElementWrapper;
-import org.hibernate.annotations.LazyCollection;
-import org.hibernate.annotations.LazyCollectionOption;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
+
 import com.ifrn.sisgestaohospitalar.enums.TipoProfissional;
 
 @Entity
 @XmlAccessorType(XmlAccessType.FIELD)
-public class Profissional implements UserDetails {
-
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-
-	public Profissional() {
-		super();
-		this.enabled = true;
-
-		// TODO Auto-generated constructor stub
-	}
+public class Profissional {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -63,7 +47,7 @@ public class Profissional implements UserDetails {
 	@Column(nullable = false)
 	@NotBlank(message = "É necessário preencher o campo DATA DE NASCIMENTO")
 	@XmlAttribute(name = "DT_NASC")
-	private String datanascimento;
+	private String dataNascimento;
 
 	@Column(nullable = false)
 	@NotBlank(message = "É necessário preencher o campo SEXO")
@@ -71,13 +55,13 @@ public class Profissional implements UserDetails {
 	private String sexo;
 
 	@XmlAttribute(name = "CONSELHO_ID")
-	private int conselhoid;
+	private int conselhoId;
 
-	@XmlAttribute(name = "SIG_UF_EMIS")
-	private String siglaufemissao;
+	@XmlAttribute(name = "SG_UF_EMIS")
+	private String siglaUfEmissao;
 
 	@XmlAttribute(name = "NU_REGISTRO")
-	private String numeroregistro;
+	private String numeroRegistro;
 
 	@XmlAttribute(name = "E_MAIL")
 	private String email;
@@ -85,15 +69,12 @@ public class Profissional implements UserDetails {
 	@XmlAttribute(name = "TELEFONE")
 	private String telefone;
 
-	private TipoProfissional tipoprofissional;
+	private String nomeAbrev;
 
-	private boolean enabled;
+	@Enumerated(EnumType.STRING)
+	private TipoProfissional tipoProfissional;
 
-	private String firstname;
-
-	private String username;
-
-	private String password;
+	private boolean ativo;
 
 	/**
 	 * Relacionamento entre os objetos Profissional e Lotação
@@ -104,15 +85,6 @@ public class Profissional implements UserDetails {
 	@JoinTable(name = "profissional_lotacao", joinColumns = {
 			@JoinColumn(name = "profissional_id") }, inverseJoinColumns = { @JoinColumn(name = "lotacao_id") })
 	private List<Lotacao> lotacoes;
-
-	/**
-	 * Relacionamento entre os objetos Profissional e Role
-	 */
-	@LazyCollection(LazyCollectionOption.FALSE)
-	@ManyToMany
-	private Set<Role> role = new HashSet<Role>();
-
-	/** Getters and setters */
 
 	public Long getId() {
 		return id;
@@ -146,12 +118,20 @@ public class Profissional implements UserDetails {
 		this.cns = cns;
 	}
 
-	public String getDatanascimento() {
-		return datanascimento;
+	public String getDataNascimento() {
+		return dataNascimento;
 	}
 
-	public void setDatanascimento(String datanascimento) {
-		this.datanascimento = datanascimento;
+	public void setDataNascimento(String dataNascimento) {
+		this.dataNascimento = dataNascimento;
+	}
+
+	public TipoProfissional getTipoProfissional() {
+		return tipoProfissional;
+	}
+
+	public void setTipoProfissional(TipoProfissional tipoProfissional) {
+		this.tipoProfissional = tipoProfissional;
 	}
 
 	public String getSexo() {
@@ -162,28 +142,28 @@ public class Profissional implements UserDetails {
 		this.sexo = sexo;
 	}
 
-	public int getConselhoid() {
-		return conselhoid;
+	public int getConselhoId() {
+		return conselhoId;
 	}
 
-	public void setConselhoid(int conselhoid) {
-		this.conselhoid = conselhoid;
+	public void setConselhoId(int conselhoId) {
+		this.conselhoId = conselhoId;
 	}
 
-	public String getSiglaufemissao() {
-		return siglaufemissao;
+	public String getSiglaUfEmissao() {
+		return siglaUfEmissao;
 	}
 
-	public void setSiglaufemissao(String siglaufemissao) {
-		this.siglaufemissao = siglaufemissao;
+	public void setSiglaUfEmissao(String siglaUfEmissao) {
+		this.siglaUfEmissao = siglaUfEmissao;
 	}
 
-	public String getNumeroregistro() {
-		return numeroregistro;
+	public String getNumeroRegistro() {
+		return numeroRegistro;
 	}
 
-	public void setNumeroregistro(String numeroregistro) {
-		this.numeroregistro = numeroregistro;
+	public void setNumeroRegistro(String numeroRegistro) {
+		this.numeroRegistro = numeroRegistro;
 	}
 
 	public String getEmail() {
@@ -202,44 +182,20 @@ public class Profissional implements UserDetails {
 		this.telefone = telefone;
 	}
 
-	public TipoProfissional getTipoprofissional() {
-		return tipoprofissional;
+	public String getNomeAbrev() {
+		return nomeAbrev;
 	}
 
-	public void setTipoprofissional(TipoProfissional tipoprofissional) {
-		this.tipoprofissional = tipoprofissional;
+	public void setNomeAbrev(String nomeAbrev) {
+		this.nomeAbrev = nomeAbrev;
 	}
 
-	public boolean isEnabled() {
-		return enabled;
+	public boolean isAtivo() {
+		return ativo;
 	}
 
-	public void setEnabled(boolean enabled) {
-		this.enabled = enabled;
-	}
-
-	public String getFirstname() {
-		return firstname;
-	}
-
-	public void setFirstname(String firstname) {
-		this.firstname = firstname;
-	}
-
-	public String getUsername() {
-		return username;
-	}
-
-	public void setUsername(String username) {
-		this.username = username;
-	}
-
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
+	public void setAtivo(boolean ativo) {
+		this.ativo = ativo;
 	}
 
 	public List<Lotacao> getLotacoes() {
@@ -248,43 +204,6 @@ public class Profissional implements UserDetails {
 
 	public void setLotacoes(List<Lotacao> lotacoes) {
 		this.lotacoes = lotacoes;
-	}
-
-	public Set<Role> getRole() {
-		return role;
-	}
-
-	public void setRole(Set<Role> role) {
-		this.role = role;
-	}
-
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
-
-	@Override
-	public Collection<? extends GrantedAuthority> getAuthorities() {
-		Set<GrantedAuthority> authorities = new HashSet<>();
-		authorities.addAll(getRole());
-		return authorities;
-	}
-
-	@Override
-	public boolean isAccountNonExpired() {
-		// TODO Auto-generated method stub
-		return true;
-	}
-
-	@Override
-	public boolean isAccountNonLocked() {
-		// TODO Auto-generated method stub
-		return true;
-	}
-
-	@Override
-	public boolean isCredentialsNonExpired() {
-		// TODO Auto-generated method stub
-		return true;
 	}
 
 }

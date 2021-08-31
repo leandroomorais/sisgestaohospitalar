@@ -26,10 +26,14 @@ public class CidadaoService {
 		if(optional.isPresent()) {
 			throw new CidadaoJaCadastradoException("Já existe um Cidadão cadastrado com este mesmo CPF");
 		}
-		if(cidadao.getDatanascimento().isAfter(LocalDate.now())) {
+		if(cidadao.getDataNascimento().isAfter(LocalDate.now())) {
 			throw new DataNascimentoMaiorQueDataAtualException("A data de nascimento é maior que a data atual");
 		}
 		repository.save(cidadao);
+	}
+	
+	public void update(Cidadao cidadao) {
+		repository.saveAndFlush(cidadao);
 	}
 
 

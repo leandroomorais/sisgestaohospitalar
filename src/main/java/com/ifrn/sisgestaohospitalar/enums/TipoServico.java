@@ -1,9 +1,9 @@
 package com.ifrn.sisgestaohospitalar.enums;
 
 public enum TipoServico {
-	Triagem("Triagem", "Triagem"), AtendimentoMedico("Atendimento Médico","Atd. Médico"),
-	AdminMedicamentos("Administração de Medicamentos","Adm. Medicamento"), Observacao("Observação","Observação"), Curativo("Curativo","Curativo"),
-	Inativo("Inativo","Inativo");
+	TRIAGEM("Triagem", "Triagem"), CONSULTA("Consulta","Consulta"),
+	ADMINMEDICAMENTOS("Administração de Medicamentos","Adm. Medicamento"), CURATIVO("Curativo","Curativo"),
+	INATIVO("Inativo","Inativo");
 
 	private String descricao;
 	private String resumo;

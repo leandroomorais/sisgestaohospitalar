@@ -13,19 +13,14 @@ import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
-import javax.persistence.Transient;
 import javax.validation.Valid;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.PastOrPresent;
 import javax.validation.constraints.Size;
-
 import org.hibernate.validator.constraints.br.CPF;
-import org.springframework.format.annotation.DateTimeFormat;
-import org.springframework.format.annotation.DateTimeFormat.ISO;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.ifrn.sisgestaohospitalar.enums.CodigoRaca;
 import com.ifrn.sisgestaohospitalar.validation.Cns;
 
@@ -45,7 +40,6 @@ public class Cidadao implements Serializable {
 	private String cns;
 
 	@Column(nullable = false, length = 11)
-	@Size(max = 11, message = "O campo CPF deve conter 11 caracteres")
 	@NotBlank(message = "É necessário preencher o campo CPF")
 	@CPF(message = "O CPF digitado é inválido")
 	private String cpf;
@@ -63,33 +57,29 @@ public class Cidadao implements Serializable {
 	@Column(nullable = false, length = 50)
 	@Size(max = 50, message = "O campo NOME DA MÃE deve conter no máximo 50 caracteres")
 	@NotBlank(message = "É necessário preencher o campo NOME DA MÃE, caso não possua, selecione a opção SEM INFORMAÇÕES")
-	private String nomemae;
+	private String nomeMae;
 
 	@Column(nullable = false, length = 50)
 	@Size(max = 50, message = "O campo NOME DO PAI deve conter no máximo 50 caracteres")
 	@NotBlank(message = "É necessário preencher o campo NOME DO PAI, caso não possua, selecione a opção SEM INFORMAÇÕES")
-	private String nomepai;
+	private String nomePai;
 
 	@NotNull(message = "É necessário preencher o campo DATA DE NASCIMENTO")
-	@Column(name = "datanascimento", nullable = false)
-	private LocalDate datanascimento;
+	@Column(nullable = false)
+	private LocalDate dataNascimento;
 
 	@NotNull(message = "É necessário selecionar a RAÇA do Cidadão")
 	@Enumerated(EnumType.STRING)
 	private CodigoRaca codigoRaca;
 
-	@Column(length = 4)
-	private int codigoetnia;
+	@OneToOne(cascade = CascadeType.ALL)
+	private Etnia etnia;
 
 	@NotNull(message = "É necessário selecionar a NACIONALIDADE do Cidadão")
 	@Column(length = 3)
-	private int codigonacionalidade;
+	private int codigoNacionalidade;
 
 	private String telefone;
-
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
 
 	@Column(length = 40)
 	@Email(message = "Email inválido")
@@ -102,20 +92,22 @@ public class Cidadao implements Serializable {
 	@NotNull(message = "Preencha os campos do ENDEREÇO do Cidadão")
 	@OneToOne(cascade = CascadeType.ALL)
 	@Valid
-	private EnderecoCidadao endereco;
-	
+	private Endereco endereco;
+
+	@JsonIgnore
+	@OneToOne(cascade = CascadeType.ALL)
+	@Valid
+	private Prontuario prontuario;
+
 	@PrePersist
 	@PreUpdate
 	private void prePersistUpdate() {
-		
 		cns.replaceAll("\\.|-|/", "");
 		cpf.replaceAll("\\.|-|/", "");
-		cns = cns.toUpperCase();
-		cpf = cpf.toUpperCase();
 		sexo = sexo.toUpperCase();
 		nome = nome.toUpperCase();
-		nomemae = nomemae.toUpperCase();
-		nomepai = nomepai.toUpperCase();
+		nomeMae = nomeMae.toUpperCase();
+		nomePai = nomePai.toUpperCase();
 	}
 
 	public Long getId() {
@@ -131,7 +123,7 @@ public class Cidadao implements Serializable {
 	}
 
 	public void setCns(String cns) {
-		this.cns = cns.replaceAll("\\.|-|/", "");
+		this.cns = cns;
 	}
 
 	public String getCpf() {
@@ -139,7 +131,7 @@ public class Cidadao implements Serializable {
 	}
 
 	public void setCpf(String cpf) {
-		this.cpf = cpf.replaceAll("\\.|-|/", "");
+		this.cpf = cpf;
 	}
 
 	public String getSexo() {
@@ -158,28 +150,28 @@ public class Cidadao implements Serializable {
 		this.nome = nome;
 	}
 
-	public String getNomemae() {
-		return nomemae;
+	public String getNomeMae() {
+		return nomeMae;
 	}
 
-	public void setNomemae(String nomemae) {
-		this.nomemae = nomemae;
+	public void setNomeMae(String nomeMae) {
+		this.nomeMae = nomeMae;
 	}
 
-	public String getNomepai() {
-		return nomepai;
+	public String getNomePai() {
+		return nomePai;
 	}
 
-	public void setNomepai(String nomepai) {
-		this.nomepai = nomepai;
+	public void setNomePai(String nomePai) {
+		this.nomePai = nomePai;
 	}
 
-	public LocalDate getDatanascimento() {
-		return datanascimento;
+	public LocalDate getDataNascimento() {
+		return dataNascimento;
 	}
 
-	public void setDatanascimento(LocalDate datanascimento) {
-		this.datanascimento = datanascimento;
+	public void setDataNascimento(LocalDate dataNascimento) {
+		this.dataNascimento = dataNascimento;
 	}
 
 	public CodigoRaca getCodigoRaca() {
@@ -190,20 +182,20 @@ public class Cidadao implements Serializable {
 		this.codigoRaca = codigoRaca;
 	}
 
-	public int getCodigoetnia() {
-		return codigoetnia;
+	public Etnia getEtnia() {
+		return etnia;
 	}
 
-	public void setCodigoetnia(int codigoetnia) {
-		this.codigoetnia = codigoetnia;
+	public void setEtnia(Etnia etnia) {
+		this.etnia = etnia;
 	}
 
-	public int getCodigonacionalidade() {
-		return codigonacionalidade;
+	public int getCodigoNacionalidade() {
+		return codigoNacionalidade;
 	}
 
-	public void setCodigonacionalidade(int codigonacionalidade) {
-		this.codigonacionalidade = codigonacionalidade;
+	public void setCodigoNacionalidade(int codigoNacionalidade) {
+		this.codigoNacionalidade = codigoNacionalidade;
 	}
 
 	public String getTelefone() {
@@ -230,12 +222,24 @@ public class Cidadao implements Serializable {
 		this.municipioNascimento = municipioNascimento;
 	}
 
-	public EnderecoCidadao getEndereco() {
+	public Endereco getEndereco() {
 		return endereco;
 	}
 
-	public void setEndereco(EnderecoCidadao endereco) {
+	public void setEndereco(Endereco endereco) {
 		this.endereco = endereco;
+	}
+
+	public Prontuario getProntuario() {
+		return prontuario;
+	}
+
+	public void setProntuario(Prontuario prontuario) {
+		this.prontuario = prontuario;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
 	}
 
 	@Override
@@ -262,5 +266,4 @@ public class Cidadao implements Serializable {
 			return false;
 		return true;
 	}
-
 }

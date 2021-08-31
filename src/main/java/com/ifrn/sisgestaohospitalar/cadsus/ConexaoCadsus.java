@@ -8,7 +8,6 @@ import org.apache.http.entity.ByteArrayEntity;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.util.EntityUtils;
 
-
 public class ConexaoCadsus {
 
 	private static final String ENDPOINT_HOMOLOGACAO = "https://servicoshm.saude.gov.br/cadsus/PDQSupplier";

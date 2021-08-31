@@ -15,7 +15,7 @@ import org.springframework.stereotype.Service;
 import com.ifrn.sisgestaohospitalar.cadsus.ConexaoCadsus;
 import com.ifrn.sisgestaohospitalar.enums.CodigoRaca;
 import com.ifrn.sisgestaohospitalar.model.Cidadao;
-import com.ifrn.sisgestaohospitalar.model.EnderecoCidadao;
+import com.ifrn.sisgestaohospitalar.model.Endereco;
 import com.ifrn.sisgestaohospitalar.repository.LogradouroRepository;
 import com.ifrn.sisgestaohospitalar.repository.MunicipioRepository;
 
@@ -114,7 +114,7 @@ public class CidadaoCadsusService {
 			if (getPaciente.getJSONObject("patientPerson").getJSONObject("birthPlace").getJSONObject("addr")
 					.has("country")) {
 
-				cidadao.setCodigonacionalidade(getPaciente.getJSONObject("patientPerson").getJSONObject("birthPlace")
+				cidadao.setCodigoNacionalidade(getPaciente.getJSONObject("patientPerson").getJSONObject("birthPlace")
 						.getJSONObject("addr").getInt("country"));
 			}
 			// Verifica MUNICIPIO DE NASCIMENTO
@@ -192,14 +192,14 @@ public class CidadaoCadsusService {
 						.length(); i++) {
 					if (getPaciente.getJSONObject("patientPerson").getJSONArray("personalRelationship").getJSONObject(i)
 							.getJSONObject("code").getString("code").equals("PRN")) {
-						cidadao.setNomemae(getPaciente.getJSONObject("patientPerson")
+						cidadao.setNomeMae(getPaciente.getJSONObject("patientPerson")
 								.getJSONArray("personalRelationship").getJSONObject(i)
 								.getJSONObject("relationshipHolder1").getJSONObject("name").getString("given"));
 					}
 
 					if (getPaciente.getJSONObject("patientPerson").getJSONArray("personalRelationship").getJSONObject(i)
 							.getJSONObject("code").getString("code").equals("NPRN")) {
-						cidadao.setNomepai(getPaciente.getJSONObject("patientPerson")
+						cidadao.setNomePai(getPaciente.getJSONObject("patientPerson")
 								.getJSONArray("personalRelationship").getJSONObject(i)
 								.getJSONObject("relationshipHolder1").getJSONObject("name").getString("given"));
 					}
@@ -210,7 +210,7 @@ public class CidadaoCadsusService {
 
 			// Verifica DATA DE NASCIMENTO
 			if (getPaciente.getJSONObject("patientPerson").getJSONObject("birthTime") != null) {
-				cidadao.setDatanascimento(LocalDate.parse(
+				cidadao.setDataNascimento(LocalDate.parse(
 						convertData(
 								getPaciente.getJSONObject("patientPerson").getJSONObject("birthTime").getLong("value")),
 						formatter));
@@ -218,7 +218,7 @@ public class CidadaoCadsusService {
 
 			// Verifica ENDEREÇO
 			if (getPaciente.getJSONObject("patientPerson").getJSONObject("addr") != null) {
-				EnderecoCidadao endereco = new EnderecoCidadao();
+				Endereco endereco = new Endereco();
 				endereco.setBairro(getPaciente.getJSONObject("patientPerson").getJSONObject("addr")
 						.getString("additionalLocator"));
 				if (getPaciente.getJSONObject("patientPerson").getJSONObject("addr").has("postalCode")) {
@@ -229,10 +229,10 @@ public class CidadaoCadsusService {
 				if (getPaciente.getJSONObject("patientPerson").getJSONObject("addr").has("streetNameType")) {
 					if (getPaciente.getJSONObject("patientPerson").getJSONObject("addr")
 							.optString("streetNameType") != null) {
-						endereco.setLogradouro(logradouroRepository.findBycodigoLogradouro(Long.parseLong(getPaciente
+						endereco.setLogradouro(logradouroRepository.findByCodigo(Long.parseLong(getPaciente
 								.getJSONObject("patientPerson").getJSONObject("addr").optString("streetNameType"))));
 					} else {
-						endereco.setLogradouro(logradouroRepository.findBycodigoLogradouro(getPaciente
+						endereco.setLogradouro(logradouroRepository.findByCodigo(getPaciente
 								.getJSONObject("patientPerson").getJSONObject("addr").optLong("streetNameType")));
 					}
 				}

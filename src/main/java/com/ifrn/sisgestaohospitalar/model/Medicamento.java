@@ -1,24 +1,21 @@
 package com.ifrn.sisgestaohospitalar.model;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
 public class Medicamento {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-
-	private String nome;
-
+	
+	private String principioAtivo;
+	
 	private String concentracao;
-
-	private String forma;
-
-	private String posologia;
+	
+	private String unidadeFornecimento;
+	
+	private Long codigoFormaFarmaceutica;
 
 	public Long getId() {
 		return id;
@@ -28,12 +25,12 @@ public class Medicamento {
 		this.id = id;
 	}
 
-	public String getNome() {
-		return nome;
+	public String getPrincipioAtivo() {
+		return principioAtivo;
 	}
 
-	public void setNome(String nome) {
-		this.nome = nome;
+	public void setPrincipioAtivo(String principioAtivo) {
+		this.principioAtivo = principioAtivo;
 	}
 
 	public String getConcentracao() {
@@ -44,20 +41,22 @@ public class Medicamento {
 		this.concentracao = concentracao;
 	}
 
-	public String getForma() {
-		return forma;
+	public String getUnidadeFornecimento() {
+		return unidadeFornecimento;
 	}
 
-	public void setForma(String forma) {
-		this.forma = forma;
+	public void setUnidadeFornecimento(String unidadeFornecimento) {
+		this.unidadeFornecimento = unidadeFornecimento;
 	}
 
-	public String getPosologia() {
-		return posologia;
+	
+
+	public Long getCodigoFormaFarmaceutica() {
+		return codigoFormaFarmaceutica;
 	}
 
-	public void setPosologia(String posologia) {
-		this.posologia = posologia;
+	public void setCodigoFormaFarmaceutica(Long codigoFormaFarmaceutica) {
+		this.codigoFormaFarmaceutica = codigoFormaFarmaceutica;
 	}
-
+	
 }

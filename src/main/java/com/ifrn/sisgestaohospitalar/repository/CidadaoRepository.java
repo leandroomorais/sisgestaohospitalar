@@ -28,6 +28,6 @@ public interface CidadaoRepository extends JpaRepository<Cidadao, Long> {
 	 */
 	public Optional<Cidadao> findByNomeIgnoreCase(String nome);
 	
-	public Optional<Cidadao> findByNomeAndDatanascimento(String nome, LocalDate datanascimento);
+	public Optional<Cidadao> findByNomeAndDataNascimento(String nome, LocalDate dataNascimento);
 
 }

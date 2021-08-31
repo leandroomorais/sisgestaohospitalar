@@ -7,12 +7,10 @@ import org.springframework.stereotype.Repository;
 
 import com.ifrn.sisgestaohospitalar.model.Municipio;
 
-
 @Repository
 public interface MunicipioRepository extends JpaRepository<Municipio, Long> {
 	
-	public List<Municipio> findBynomeMunicipioSiglaUFIgnoreCaseContaining(String nomeMunicipioSiglaUF);
-	public Municipio findBycodigoIBGE(Long codigoIBGE);
-	
+	Municipio findBycodigoIBGE(Long codigoIBGE);
+	List<Municipio> findByNomeMunicipioSiglaUFIgnoreCaseContaining(String nome);
 
 }

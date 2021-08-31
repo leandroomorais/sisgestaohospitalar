@@ -30,14 +30,13 @@ public class SalvarEstadosEMunicipios {
 				String[] municipioArquivo = linha.split(csvDivisor);
 				Municipio municipio = new Municipio();
 				Estado estado = new Estado();
-
-				estado = estadoRepository.findBysiglaUF(municipioArquivo[3]);
-				if (municipioArquivo[3].equals(estado.getSiglaUF())) {
+				estado = estadoRepository.findBySigla(municipioArquivo[3]);
+				if (municipioArquivo[3].equals(estado.getSigla())) {
 					municipio.setCodigoIBGE(Long.parseLong(municipioArquivo[1]));
 					municipio.setCodigoIBGE7(Long.parseLong(municipioArquivo[2]));
 					municipio.setNomeMunicipio(municipioArquivo[4].toUpperCase());
 					municipio.setNomeMunicipioSiglaUF(
-					municipioArquivo[4].toUpperCase() + "-" + municipioArquivo[3].toUpperCase());
+							municipioArquivo[4].toUpperCase() + "-" + municipioArquivo[3].toUpperCase());
 					municipio.setEstado(estado);
 					municipioRepository.save(municipio);
 				}
@@ -69,13 +68,13 @@ public class SalvarEstadosEMunicipios {
 			while ((linha = bufferedReader.readLine()) != null) {
 				String[] estadoArquivo = linha.split(csvDivisor);
 				Estado estado = new Estado();
-				estado.setCodigoUF(Integer.parseInt(estadoArquivo[0]));
-				estado.setSiglaUF(estadoArquivo[1].toUpperCase());
-				estado.setNomeUF(estadoArquivo[2].toUpperCase());
+				estado.setCodigo(Integer.parseInt(estadoArquivo[0]));
+				estado.setSigla(estadoArquivo[1].toUpperCase());
+				estado.setNome(estadoArquivo[2].toUpperCase());
 				estados.add(estado);
 			}
 			estadoRepository.saveAll(estados);
-			
+
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (IOException e) {

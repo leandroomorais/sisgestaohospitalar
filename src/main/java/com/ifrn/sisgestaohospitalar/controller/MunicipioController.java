@@ -26,12 +26,12 @@ public class MunicipioController {
 
 	@GetMapping
 	public ResponseEntity<List<Municipio>> autoCompletarPorNome(@RequestParam("term") String nome) {
-		return ResponseEntity.ok(municipioRepository.findBynomeMunicipioSiglaUFIgnoreCaseContaining(nome));
+		return ResponseEntity.ok(municipioRepository.findByNomeMunicipioSiglaUFIgnoreCaseContaining(nome));
 	}
 
 	@GetMapping("/cep")
 	public ResponseEntity<?> buscaMunicipioCep(@RequestParam("cep") Long cep) {
-		Cep_Ibge cepIbge = cepIbgeRepository.findBycep(cep);
+		Cep_Ibge cepIbge = cepIbgeRepository.findByCep(cep);
 		if (cepIbge != null) {
 			return ResponseEntity.ok(municipioRepository.findBycodigoIBGE(cepIbge.getCdIbge()));
 		}

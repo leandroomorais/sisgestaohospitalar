@@ -5,7 +5,7 @@
 	xmlns:layout="http://ultraq.net.nz/thymeleaf/layout">
 
 <head>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" charset="utf-8" />
 <title>SGH - Sistema de Gestão Hospitalar</title>
 <meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no'
 	name='viewport' />
@@ -13,6 +13,8 @@
 	type="image/x-icon" />
 
 <!-- Fonts and icons -->
+<script src="https://kit.fontawesome.com/cd7a32d4a8.js"
+	crossorigin="anonymous"></script>
 <script th:src="@{/assets/js/plugin/webfont/webfont.min.js}"></script>
 <script th:inline="javascript">
 	WebFont.load({
@@ -31,6 +33,7 @@
 	});
 </script>
 
+
 <!-- CSS Files -->
 <link rel="stylesheet" th:href="@{/assets/css/bootstrap.min.css}">
 <link rel="stylesheet" th:href="@{/assets/css/atlantis.css}">
@@ -42,11 +45,12 @@
 	href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 </head>
 <body>
-	
+
 	<div class="wrapper compact-wrapper">
 
 		<div th:replace="fragments/main-header::main-header-recepcao"></div>
-		<div layout:fragment="sidebar"></div>
+		<!-- 		<div th:replace="layout/fragments/MenuLateral :: layout-sidebar"></div> -->
+		<div th:replace="fragments/sidebar :: sidebar"></div>
 		<!-- <div th:replace="fragments/sidebar::sidebar-modulos"></div> -->
 		<div layout:fragment="main-panel"></div>
 	</div>
@@ -58,6 +62,9 @@
 	<script th:src="@{/assets/js/core/popper.min.js}"></script>
 	<script th:src="@{/assets/js/core/bootstrap.min.js}"></script>
 	<script th:src="@{/assets/js/tabs.js}"></script>
+
+	<!-- 	TinyMCE -->
+	<script th:src="@{/assets/js/plugin/tinymce/tinymce.min.js}"></script>
 
 	<!-- jQuery UI -->
 	<script th:src="@{/assets/js/plugin/jquery-ui-1.12.1.custom/teste.js}"></script>
@@ -123,27 +130,28 @@
 		integrity="sha384-THVO/sM0mFD9h7dfSndI6TS0PgAGavwKvB5hAxRRvc0o9cPLohB0wb/PTA7LdUHs"
 		crossorigin="anonymous"></script>
 
-	<!-- My JS Files -->
-	<script th:src="@{/assets/pdf/jsPDF/jsPdf.js}"></script>
-	<script th:src="@{/assets/pdf/jsPDF/jsPdfTable.js}"></script>
-	<script th:src="@{/assets/pdf/lib/util/Line.js}"></script>
-	<script th:src="@{/assets/pdf/lib/util/Extract.js}"></script>
-	<script th:src="@{/assets/pdf/lib/util/PDFConfig.js}"></script>
-	<script th:src="@{/assets/pdf/lib/util/PDFUtil.js}"></script>
-	<script th:src="@{/assets/pdf/lib/controller/PDF.js}"></script>
-	<script th:src="@{/assets/js/pesquisa-cidadao.js}"></script>
-	<script th:src="@{/assets/js/mascaras.js}"></script>
-	<script th:src="@{/assets/js/datatables-filaAtendimento.js}"></script>
-	<script th:src="@{/assets/js/autocomplete.js}"></script>
-	<script th:src="@{/assets/js/imc.js}"></script>
-	<script th:src="@{/assets/js/procedimentos-triagem.js}"></script>
-	<script th:src="@{/assets/js/procedimentos-atendimentoMedico.js}"></script>
-	<script
-		th:src="@{/assets/js/procedimentos-administracaoMedicamento.js}"></script>
-	<script th:src="@{/assets/js/destino-cidadao.js}"></script>
-	<script th:src="@{/assets/js/receituario.js}"></script>
-	<script th:src="@{/assets/js/historico-cidadao.js}"></script>
-	<script th:src="@{/assets/js/historico-pdf.js}"></script>
+	<!-- 	<!-- My JS Files -->
+	<!-- 	<script th:src="@{/assets/pdf/jsPDF/jsPdf.js}"></script> -->
+	<!-- 	<script th:src="@{/assets/pdf/jsPDF/jsPdfTable.js}"></script> -->
+	<!-- 	<script th:src="@{/assets/pdf/lib/util/Line.js}"></script> -->
+	<!-- 	<script th:src="@{/assets/pdf/lib/util/Extract.js}"></script> -->
+	<!-- 	<script th:src="@{/assets/pdf/lib/util/PDFConfig.js}"></script> -->
+	<!-- 	<script th:src="@{/assets/pdf/lib/util/PDFUtil.js}"></script> -->
+	<!-- 	<script th:src="@{/assets/pdf/lib/controller/PDF.js}"></script> -->
+	<!-- 	<script th:src="@{/assets/js/pesquisa-cidadao.js}"></script> -->
+	<!-- 	<script th:src="@{/assets/js/mascaras.js}"></script> -->
+	<!-- 	<script th:src="@{/assets/js/datatables-filaAtendimento.js}"></script> -->
+	<!-- 	<script th:src="@{/assets/js/autocomplete.js}"></script> -->
+	<!-- 	<script th:src="@{/assets/js/imc.js}"></script> -->
+	<!-- 	<script th:src="@{/assets/js/procedimentos-triagem.js}"></script> -->
+	<!-- 	<script th:src="@{/assets/js/procedimentos-atendimentoMedico.js}"></script> -->
+	<!-- 	<script -->
+	<!-- 		th:src="@{/assets/js/procedimentos-administracaoMedicamento.js}"></script> -->
+	<!-- 	<script th:src="@{/assets/js/destino-cidadao.js}"></script> -->
+	<!-- 	<script th:src="@{/assets/js/receituario.js}"></script> -->
+	<!-- 	<script th:src="@{/assets/js/historico-cidadao.js}"></script> -->
+	<!-- 	<script th:src="@{/assets/js/historico-pdf.js}"></script> -->
+	<th:block layout:fragment="my-js-files"></th:block>
 
 </body>
 

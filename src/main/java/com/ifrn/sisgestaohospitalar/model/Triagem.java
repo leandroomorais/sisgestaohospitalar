@@ -1,138 +1,45 @@
 package com.ifrn.sisgestaohospitalar.model;
 
-import java.time.LocalDate;
-import java.time.LocalTime;
-import java.util.List;
-import javax.persistence.Column;
+import java.time.LocalDateTime;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
+import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
-
-import org.hibernate.annotations.LazyCollection;
-import org.hibernate.annotations.LazyCollectionOption;
-import org.springframework.format.annotation.DateTimeFormat;
-import org.springframework.format.annotation.DateTimeFormat.ISO;
-
+import javax.validation.constraints.NotNull;
+import com.ifrn.sisgestaohospitalar.enums.ClassificacaoDeRisco;
 
 @Entity
 public class Triagem {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@Column(nullable = false, length = 100)
-	@NotBlank(message = "É necessário preencher o campo Motivo da Consulta")
+	@NotBlank(message = "É necessário preencher o motivo do Atendimento")
 	private String motivo;
+	
+	private LocalDateTime inicioTriagem;
+	
+	private LocalDateTime fimTriagem;
+	
+	@Valid
+	@OneToOne(cascade = CascadeType.ALL)
+	private SinaisVitais sinaisVitais;
 
-	private String descricaomotivo;
-
-	private String pressaoarterial;
-
-	private String temperaturacorporal;
-
-	private String peso;
-
-	private String altura;
-
-	private String imc;
-
-	private String glicemiacapilar;
-
-	private String momentocoleta;
-
-	private String frequenciacardiaca;
-
-	private String saturacaooxigenio;
-
-	private String frequenciarespiratoria;
-
-	private String perimetrocefalico;
-
-	private String classificacaoderisco;
-
-	private String usomedicamentos;
-
-	private String alergiamedicamentos;
-
-	private boolean tabagismo;
-
-	private boolean etilismo;
-
-	private boolean drogaslicitas;
-
-	private String outroshabitos;
-
-	private boolean hipertensaoarterialsistemica;
-
-	private boolean doencameningococica;
-
-	private boolean avc;
-
-	private boolean linfangioliomiomatose;
-
-	private boolean insuficienciarenal;
-
-	private boolean dpoc;
-
-	private boolean asma;
-
-	private boolean dlp;
-
-	private boolean insuficienciacardiacacongestiva;
-
-	private boolean epilepsia;
-
-	private boolean caneoplasia;
-
-	private String outrasdoencas;
-
-	@DateTimeFormat(iso = ISO.DATE, pattern = "")
-	@Column(name = "data", columnDefinition = "DATE")
-	private LocalDate data;
-
-	private LocalTime hora;
-
-	@Column(nullable = false, length = 100)
-	@NotBlank(message = "É necessário preencher o campo Destino do Cidadão")
-	private String destinocidadao;
-
-	/**
-	 * Relacionamento entre os objetos Triagem e GuiaAtendimento
-	 */
+	//@NotNull
 	@OneToOne
-	@JoinColumn(name = "guiaatendimento_id")
-	private GuiaAtendimento guiaatendimento;
-
-	/**
-	 * Relacionamento entre os objetos Triagem e ProcedimentoSigtap
-	 */
-	@LazyCollection(value = LazyCollectionOption.FALSE)
-	@ManyToMany
-	@JoinTable(name = "triagem_procedimentos")
-	private List<ProcedimentoSigtap> procedimentos;
-
-	/**
-	 * Relacionamento entre os objetos Triagem e Profissional
-	 */
-	@OneToOne
-	@JoinColumn(name = "profissional_id")
 	private Profissional profissional;
 
-	/**
-	 * Relacionamento entre os objetos Triagem e Profissional
-	 */
+	@NotNull(message = "Selecione a Classificaçao de Risco")
+	private ClassificacaoDeRisco classificacaoDeRisco;
+	
+	@Valid
 	@OneToOne
-	@JoinColumn(name = "profissionaldestino_id")
-	private Profissional profissionaldestino;
-
-	/** Getters and Setters */
+	private Atendimento atendimento;
 
 	public Long getId() {
 		return id;
@@ -150,294 +57,28 @@ public class Triagem {
 		this.motivo = motivo;
 	}
 
-	public String getDescricaomotivo() {
-		return descricaomotivo;
+	public LocalDateTime getInicioTriagem() {
+		return inicioTriagem;
 	}
 
-	public void setDescricaomotivo(String descricaomotivo) {
-		this.descricaomotivo = descricaomotivo;
+	public void setInicioTriagem(LocalDateTime inicioTriagem) {
+		this.inicioTriagem = inicioTriagem;
 	}
 
-	public String getPressaoarterial() {
-		return pressaoarterial;
+	public LocalDateTime getFimTriagem() {
+		return fimTriagem;
 	}
 
-	public void setPressaoarterial(String pressaoarterial) {
-		this.pressaoarterial = pressaoarterial;
+	public void setFimTriagem(LocalDateTime fimTriagem) {
+		this.fimTriagem = fimTriagem;
 	}
 
-	public String getTemperaturacorporal() {
-		return temperaturacorporal;
+	public SinaisVitais getSinaisVitais() {
+		return sinaisVitais;
 	}
 
-	public void setTemperaturacorporal(String temperaturacorporal) {
-		this.temperaturacorporal = temperaturacorporal;
-	}
-
-	public String getPeso() {
-		return peso;
-	}
-
-	public void setPeso(String peso) {
-		this.peso = peso;
-	}
-
-	public String getAltura() {
-		return altura;
-	}
-
-	public void setAltura(String altura) {
-		this.altura = altura;
-	}
-
-	public String getImc() {
-		return imc;
-	}
-
-	public void setImc(String imc) {
-		this.imc = imc;
-	}
-
-	public String getGlicemiacapilar() {
-		return glicemiacapilar;
-	}
-
-	public void setGlicemiacapilar(String glicemiacapilar) {
-		this.glicemiacapilar = glicemiacapilar;
-	}
-
-	public String getMomentocoleta() {
-		return momentocoleta;
-	}
-
-	public void setMomentocoleta(String momentocoleta) {
-		this.momentocoleta = momentocoleta;
-	}
-
-	public String getFrequenciacardiaca() {
-		return frequenciacardiaca;
-	}
-
-	public void setFrequenciacardiaca(String frequenciacardiaca) {
-		this.frequenciacardiaca = frequenciacardiaca;
-	}
-
-	public String getSaturacaooxigenio() {
-		return saturacaooxigenio;
-	}
-
-	public void setSaturacaooxigenio(String saturacaooxigenio) {
-		this.saturacaooxigenio = saturacaooxigenio;
-	}
-
-	public String getFrequenciarespiratoria() {
-		return frequenciarespiratoria;
-	}
-
-	public void setFrequenciarespiratoria(String frequenciarespiratoria) {
-		this.frequenciarespiratoria = frequenciarespiratoria;
-	}
-
-	public String getPerimetrocefalico() {
-		return perimetrocefalico;
-	}
-
-	public void setPerimetrocefalico(String perimetrocefalico) {
-		this.perimetrocefalico = perimetrocefalico;
-	}
-
-	public String getClassificacaoderisco() {
-		return classificacaoderisco;
-	}
-
-	public void setClassificacaoderisco(String classificacaoderisco) {
-		this.classificacaoderisco = classificacaoderisco;
-	}
-
-	public String getUsomedicamentos() {
-		return usomedicamentos;
-	}
-
-	public void setUsomedicamentos(String usomedicamentos) {
-		this.usomedicamentos = usomedicamentos;
-	}
-
-	public String getAlergiamedicamentos() {
-		return alergiamedicamentos;
-	}
-
-	public void setAlergiamedicamentos(String alergiamedicamentos) {
-		this.alergiamedicamentos = alergiamedicamentos;
-	}
-
-	public boolean isTabagismo() {
-		return tabagismo;
-	}
-
-	public void setTabagismo(boolean tabagismo) {
-		this.tabagismo = tabagismo;
-	}
-
-	public boolean isEtilismo() {
-		return etilismo;
-	}
-
-	public void setEtilismo(boolean etilismo) {
-		this.etilismo = etilismo;
-	}
-
-	public boolean isDrogaslicitas() {
-		return drogaslicitas;
-	}
-
-	public void setDrogaslicitas(boolean drogaslicitas) {
-		this.drogaslicitas = drogaslicitas;
-	}
-
-	public String getOutroshabitos() {
-		return outroshabitos;
-	}
-
-	public void setOutroshabitos(String outroshabitos) {
-		this.outroshabitos = outroshabitos;
-	}
-
-	public boolean isHipertensaoarterialsistemica() {
-		return hipertensaoarterialsistemica;
-	}
-
-	public void setHipertensaoarterialsistemica(boolean hipertensaoarterialsistemica) {
-		this.hipertensaoarterialsistemica = hipertensaoarterialsistemica;
-	}
-
-
-	public boolean isDoencameningococica() {
-		return doencameningococica;
-	}
-
-	public void setDoencameningococica(boolean doencameningococica) {
-		this.doencameningococica = doencameningococica;
-	}
-
-	public boolean isAvc() {
-		return avc;
-	}
-
-	public void setAvc(boolean avc) {
-		this.avc = avc;
-	}
-
-	public boolean isLinfangioliomiomatose() {
-		return linfangioliomiomatose;
-	}
-
-	public void setLinfangioliomiomatose(boolean linfangioliomiomatose) {
-		this.linfangioliomiomatose = linfangioliomiomatose;
-	}
-
-	public boolean isInsuficienciarenal() {
-		return insuficienciarenal;
-	}
-
-	public void setInsuficienciarenal(boolean insuficienciarenal) {
-		this.insuficienciarenal = insuficienciarenal;
-	}
-
-	public boolean isDpoc() {
-		return dpoc;
-	}
-
-	public void setDpoc(boolean dpoc) {
-		this.dpoc = dpoc;
-	}
-
-	public boolean isAsma() {
-		return asma;
-	}
-
-	public void setAsma(boolean asma) {
-		this.asma = asma;
-	}
-
-	public boolean isDlp() {
-		return dlp;
-	}
-
-	public void setDlp(boolean dlp) {
-		this.dlp = dlp;
-	}
-
-	public boolean isInsuficienciacardiacacongestiva() {
-		return insuficienciacardiacacongestiva;
-	}
-
-	public void setInsuficienciacardiacacongestiva(boolean insuficienciacardiacacongestiva) {
-		this.insuficienciacardiacacongestiva = insuficienciacardiacacongestiva;
-	}
-
-	public boolean isEpilepsia() {
-		return epilepsia;
-	}
-
-	public void setEpilepsia(boolean epilepsia) {
-		this.epilepsia = epilepsia;
-	}
-
-	public boolean isCaneoplasia() {
-		return caneoplasia;
-	}
-
-	public void setCaneoplasia(boolean caneoplasia) {
-		this.caneoplasia = caneoplasia;
-	}
-
-
-	public String getOutrasdoencas() {
-		return outrasdoencas;
-	}
-
-	public void setOutrasdoencas(String outrasdoencas) {
-		this.outrasdoencas = outrasdoencas;
-	}
-
-	public LocalDate getData() {
-		return data;
-	}
-
-	public void setData(LocalDate data) {
-		this.data = data;
-	}
-
-	public LocalTime getHora() {
-		return hora;
-	}
-
-	public void setHora(LocalTime hora) {
-		this.hora = hora;
-	}
-
-	public String getDestinocidadao() {
-		return destinocidadao;
-	}
-
-	public void setDestinocidadao(String destinocidadao) {
-		this.destinocidadao = destinocidadao;
-	}
-
-	public GuiaAtendimento getGuiaatendimento() {
-		return guiaatendimento;
-	}
-
-	public void setGuiaatendimento(GuiaAtendimento guiaatendimento) {
-		this.guiaatendimento = guiaatendimento;
-	}
-
-	public List<ProcedimentoSigtap> getProcedimentos() {
-		return procedimentos;
-	}
-
-	public void setProcedimentos(List<ProcedimentoSigtap> procedimentos) {
-		this.procedimentos = procedimentos;
+	public void setSinaisVitais(SinaisVitais sinaisVitais) {
+		this.sinaisVitais = sinaisVitais;
 	}
 
 	public Profissional getProfissional() {
@@ -448,13 +89,29 @@ public class Triagem {
 		this.profissional = profissional;
 	}
 
-
-	public Profissional getProfissionaldestino() {
-		return profissionaldestino;
+	public ClassificacaoDeRisco getClassificacaoDeRisco() {
+		return classificacaoDeRisco;
 	}
 
-	public void setProfissionaldestino(Profissional profissionaldestino) {
-		this.profissionaldestino = profissionaldestino;
+	public void setClassificacaoDeRisco(ClassificacaoDeRisco classificacaoDeRisco) {
+		this.classificacaoDeRisco = classificacaoDeRisco;
 	}
+
+	public Atendimento getAtendimento() {
+		return atendimento;
+	}
+
+	public void setAtendimento(Atendimento atendimento) {
+		this.atendimento = atendimento;
+	}
+
+	@Override
+	public String toString() {
+		return "Triagem [id=" + id + ", motivo=" + motivo + ", inicioTriagem=" + inicioTriagem + ", fimTriagem="
+				+ fimTriagem + ", sinaisVitais=" + sinaisVitais + ", profissional=" + profissional
+				+ ", classificacaoDeRisco=" + classificacaoDeRisco + ", atendimento=" + atendimento + "]";
+	}
+	
+	
 
 }

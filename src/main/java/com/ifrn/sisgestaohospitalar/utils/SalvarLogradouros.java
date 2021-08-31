@@ -23,8 +23,8 @@ public class SalvarLogradouros {
 			while ((linha = bufferedReader.readLine()) != null) {
 				String[] logradouro = linha.split(csvDivisor);
 				Logradouro logradouroObj = new Logradouro();
-				logradouroObj.setCodigoLogradouro(Long.parseLong(logradouro[0]));
-				logradouroObj.setDescLogradouro(logradouro[1]);
+				logradouroObj.setCodigo(Long.parseLong(logradouro[0]));
+				logradouroObj.setDescricao(logradouro[1]);
 				logradouroRepository.save(logradouroObj);
 			}
 		} catch (FileNotFoundException e) {

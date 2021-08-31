@@ -9,6 +9,8 @@ import com.ifrn.sisgestaohospitalar.model.Logradouro;
 
 @Repository
 public interface LogradouroRepository extends JpaRepository<Logradouro, Long> {
-	public Logradouro findBycodigoLogradouro(Long codigoLogradouro);
-	public List<Logradouro> findBydescLogradouroIgnoreCaseContaining(String descLogradouro);
+	
+	Logradouro findByCodigo(Long codigo);
+	List<Logradouro> findByDescricaoIgnoreCaseContaining(String descricao);
+
 }
