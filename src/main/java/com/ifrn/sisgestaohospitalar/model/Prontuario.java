@@ -39,6 +39,10 @@ public class Prontuario {
 	@JoinTable(name = "prontuario_status_alergia", joinColumns = @JoinColumn(name = "id_prontuario"), inverseJoinColumns = @JoinColumn(name = "id_status_alergia"))
 	private List<StatusAlergia> statusAlergias;
 	
+	@ManyToMany(cascade = CascadeType.ALL)
+	@JoinTable(name = "prontuario_uso_continuo_medicamento", joinColumns = @JoinColumn(name = "id_prontuario"), inverseJoinColumns = @JoinColumn(name = "id_uso_continuo_medicamento"))
+	private List<UsoContinuoMedicamento> usoContinuoMedicamentos;
+	
 
 	@ManyToMany(cascade = CascadeType.ALL)
 	@JoinTable(name = "prontuario_habito", joinColumns = @JoinColumn(name = "id_prontuario"), inverseJoinColumns = @JoinColumn(name = "id_habito"))
@@ -90,6 +94,15 @@ public class Prontuario {
 
 	public void setStatusAlergias(List<StatusAlergia> statusAlergias) {
 		this.statusAlergias = statusAlergias;
+	}
+	
+
+	public List<UsoContinuoMedicamento> getUsoContinuoMedicamentos() {
+		return usoContinuoMedicamentos;
+	}
+
+	public void setUsoContinuoMedicamentos(List<UsoContinuoMedicamento> usoContinuoMedicamentos) {
+		this.usoContinuoMedicamentos = usoContinuoMedicamentos;
 	}
 
 	public List<Habito> getHabitos() {

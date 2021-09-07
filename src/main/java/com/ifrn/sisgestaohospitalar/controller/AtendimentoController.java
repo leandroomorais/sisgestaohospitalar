@@ -2,6 +2,7 @@ package com.ifrn.sisgestaohospitalar.controller;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -11,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -23,6 +25,7 @@ import com.ifrn.sisgestaohospitalar.model.Atendimento;
 import com.ifrn.sisgestaohospitalar.model.Cidadao;
 import com.ifrn.sisgestaohospitalar.model.HistoricoStatus;
 import com.ifrn.sisgestaohospitalar.model.Profissional;
+import com.ifrn.sisgestaohospitalar.model.RelAtendimentoProcedimento;
 import com.ifrn.sisgestaohospitalar.repository.AtendimentoRepository;
 import com.ifrn.sisgestaohospitalar.repository.CidadaoRepository;
 import com.ifrn.sisgestaohospitalar.repository.ProfissionalRepository;
@@ -127,6 +130,16 @@ public class AtendimentoController {
 		ModelAndView mv = new ModelAndView("atendimento/listar-atendimento");
 		mv.addObject("statusAtendimentos", Status.values());
 		return mv;
+	}
+	
+	@RequestMapping("/procedimentos-triagem/{id}")
+	public ResponseEntity<?> procedimentosTriagem(@PathVariable("id") Long id){
+		Optional<Atendimento> optional = atendimentoRepository.findById(id);
+		if(optional.isPresent()) {
+			return ResponseEntity.ok().body(optional.get().getAtendimentoProcedimentos().stream().filter(r -> r.getTipoServico().equals(TipoServico.TRIAGEM)));
+		}
+		return ResponseEntity.notFound().build();
+		
 	}
 
 }

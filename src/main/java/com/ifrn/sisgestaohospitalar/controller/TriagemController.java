@@ -1,7 +1,9 @@
 package com.ifrn.sisgestaohospitalar.controller;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
@@ -59,6 +61,16 @@ public class TriagemController {
 		if (optional.isPresent()) {
 			Atendimento atendimento = optional.get();
 			atendimento.setStatus(Status.EMATENDIMENTO);
+			
+			HistoricoStatus historicoStatus = new HistoricoStatus();
+			historicoStatus.setStatus(atendimento.getStatus());
+			historicoStatus.setTipoServico(atendimento.getCondutaTipoServico());
+			historicoStatus.setProfissional(null);
+			historicoStatus.setUltimaAtualizacao(LocalDateTime.now());
+			
+			List<HistoricoStatus> listHistoricoStatus = new ArrayList<>();
+			listHistoricoStatus.add(historicoStatus);
+			atendimento.setHistoricoStatus(listHistoricoStatus);
 			atendimentoRepository.saveAndFlush(atendimento);
 			triagem.setAtendimento(atendimento);
 			triagem.setInicioTriagem(LocalDateTime.now());

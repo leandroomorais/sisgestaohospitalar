@@ -61,7 +61,8 @@
 
 									<input id="id-prontuario" type="hidden"
 										th:value="${triagem.atendimento.cidadao.prontuario.id}">
-
+									<input id="id-atendimento" type="hidden"
+										th:value="${triagem.atendimento.id}">
 									<div class="row">
 										<div class="col-sm-3 col-md-2 col-lg-2">
 											<div
@@ -79,7 +80,7 @@
 												<a class="nav-link" id="v-pills-medicacoes-tab-nobd"
 													data-toggle="pill" href="#v-pills-medicacoes-nobd"
 													role="tab" aria-controls="v-pills-medicacoes-nobd"
-													aria-selected="false"><strong>MEDICAMENTOS</strong></a>
+													aria-selected="false"><strong>HÁBITOS</strong></a>
 											</div>
 										</div>
 										<div class="col-sm-9 col-md-10 col-lg-10">
@@ -87,6 +88,7 @@
 												<div class="tab-pane fade show active"
 													id="v-pills-triagem-nobd" role="tabpanel"
 													aria-labelledby="v-pills-triagem-tab-nobd">
+
 													<form id="form-triagem" method="post"
 														action="/triagem/salvar">
 														<input id="atendimento-id" type="hidden"
@@ -206,10 +208,80 @@
 																					th:value="${momentoColeta}"
 																					th:text="${momentoColeta.nome}"></option>
 																			</select> <small id="sinaisVitais-momentoColeta-small"
-																				class="form-text text-muted">mg/dl</small>
+																				class="form-text text-muted"></small>
 																		</div>
 																	</div>
 																</div>
+															</div>
+														</div>
+
+														<div class="card">
+															<div class="card-header">
+																<div class="card-title">Medicamentos em uso</div>
+															</div>
+															<div class="card-body">
+																<div class="row">
+																	<div class="col-md-12">
+																		<div class="form-group">
+																			<label for="medicamento">Medicamento</label>
+																			<div class="input-group">
+																				<div class="input-group-prepend">
+																					<button id="button-medicamento" type="button"
+																						class="btn btn-black btn-border">
+																						<i id="i-medicamento" class="fa fa-search"></i>
+																					</button>
+																				</div>
+																				<input type="text" name="medicamento"
+																					class="form-control" id="medicamento"
+																					placeholder="Pesquisa de medicamentos"> <small
+																					id="medicamento-small" class="form-text text-muted"></small>
+																				<input id="id-medicamento" type="hidden">
+																			</div>
+																		</div>
+																	</div>
+
+																	<div class="col-md-12">
+																		<div class="form-group">
+																			<label for="nota-uso-medicamento">Posologia /
+																				Notas</label>
+																			<textarea id="nota-uso-medicamento"
+																				class="form-control"></textarea>
+																		</div>
+																	</div>
+
+
+																	<div class="col-md-6">
+																		<div class="form-group">
+																			<label for="usoContinuo">Uso contínuo?</label><br>
+																			<input id="usoContinuo" type='checkbox'
+																				data-toggle='toggle' data-on='Sim' data-off='Não'>
+																			<small id="usoContinuo-small"
+																				class="form-text text-muted"></small>
+																		</div>
+																	</div>
+																	<div class="col-md-12 text-right">
+																		<button id="submit-uso-medicamento" type="button"
+																			class="btn btn-primary btn-sm">
+																			<i class="fa fa-plus"></i> Adicionar
+																		</button>
+																	</div>
+																</div>
+																<br>
+																<div id="medicamentos-uso-continuo">
+																	<div class="card-sub">Medicamentos de uso
+																		contínuo:</div>
+																	<ul id="uso-continuo-lista"
+																		class="list-group list-group-bordered">
+																	</ul>
+																</div>
+																<div id="medicamentos-uso">
+																	<div class="card-sub">Medicamentos em uso:</div>
+																	<ul id="uso-lista"
+																		class="list-group list-group-bordered">
+																	</ul>
+
+																</div>
+
 															</div>
 														</div>
 
@@ -242,6 +314,7 @@
 
 
 
+
 														<div class="card">
 															<div class="card-header">
 																<div class="card-title">Procedimentos</div>
@@ -250,28 +323,62 @@
 																<div class="row">
 																	<div class="col-md-12">
 																		<div class="form-group">
-																			<label for="nome">Adicionar Procedimentos:</label> <input
-																				id="procedimentos-triagem" type="text"
-																				class="form-control input-sm">
+																			<label for="nome">Adicionar Procedimentos:</label>
+																			<div class="input-group">
+																				<div class="input-group-prepend">
+																					<button id="button-procedimento" type="button"
+																						class="btn btn-black btn-border">
+																						<i id="i-procedimento" class="fa fa-search"></i>
+																					</button>
+																				</div>
+																				<input id="procedimentos-triagem" type="text"
+																					class="form-control"
+																					placeholder="Pesquisa de procedimentos"> <input
+																					type="hidden" id="id-procedimento"> <input
+																					type="hidden" id="nome-procedimento">
+																			</div>
 																		</div>
 																	</div>
-																	<div class="col-md-12">
+																	<div class="col-md-2">
 																		<div class="form-group">
-																			<div class="card-sub">Procedimentos realizados:</div>
-																			<table
-																				class="table table-bordered table-bordered-bd-info mt-4">
+																			<label for="qtd-procedimento">Quantidade: </label> <input
+																				id="qtd-procedimento" type="number"
+																				class="form-control">
+																		</div>
+																	</div>
+																	<div class="col-md-12 text-right">
+																		<button id="submit-procedimento" type="button"
+																			class="btn btn-primary btn-sm">
+																			<i class="fa fa-plus"></i> Adicionar
+																		</button>
+																	</div>
+																	<div class="col-md-12 mt-3">
+																		<div class="card-sub">Procedimentos realizados:</div>
+																		<div id="div-table-procedimentos"
+																			class="table-responsive">
+																			<table id="table-procedimentos"
+																				class="display table table-hover dataTable"
+																				role="grid" aria-describedby="basic-datatables_info"
+																				style="width: 100%">
 																				<thead>
-																					<tr>
-																						<th scope="col">Código</th>
-																						<th scope="col">Procedimento</th>
-																						<th scope="col">Ações</th>
+																					<tr role="row">
+																						<th></th>
+																						<th></th>
+																						<th></th>
+																						<th></th>
 																					</tr>
 																				</thead>
-																				<tbody id="table-procedimento-triagem">
+																				<tbody>
+																					<tr role="row" class="odd">
+																						<td></td>
+																						<td></td>
+																						<td></td>
+																						<td></td>
+																					</tr>
 																				</tbody>
 																			</table>
-																			<div id="inputs-procedimentos" hidden="true"></div>
 																		</div>
+
 																	</div>
 																</div>
 															</div>
@@ -818,9 +925,7 @@
 												</div>
 												<div class="tab-pane fade" id="v-pills-medicacoes-nobd"
 													role="tabpanel"
-													aria-labelledby="v-pills-medicacoes-tab-nobd">
-													<p>Medicamentos</p>
-												</div>
+													aria-labelledby="v-pills-medicacoes-tab-nobd"><p>Hábitos do Cidadão</p></div>
 											</div>
 										</div>
 									</div>

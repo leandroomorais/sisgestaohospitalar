@@ -54,7 +54,7 @@ public class Atendimento {
 	@ManyToOne
 	private Profissional profissionalDestino;
 	
-	@ManyToMany
+	@ManyToMany(cascade = CascadeType.ALL)
 	@JoinTable(name = "atendimento_uso_medicamento", joinColumns = @JoinColumn(name = "id_atendimento"), inverseJoinColumns = @JoinColumn(name = "id_uso_medicamento"))
 	private List<UsoMedicamento> usoMedicamentos;
 
@@ -62,7 +62,7 @@ public class Atendimento {
 	@JoinTable(name = "atendimento_historico_status", joinColumns = @JoinColumn(name = "id_atendimento"), inverseJoinColumns = @JoinColumn(name = "id_historico"))
 	private List<HistoricoStatus> historicoStatus;
 
-	@ManyToMany
+	@ManyToMany(cascade = CascadeType.ALL)
 	@JoinTable(name = "atendimento_procedimento", joinColumns = @JoinColumn(name = "id_atendimento"), inverseJoinColumns = @JoinColumn(name = "id_rel_procedimento"))
 	private List<RelAtendimentoProcedimento> atendimentoProcedimentos;
 

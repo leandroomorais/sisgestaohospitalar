@@ -334,11 +334,7 @@ function editarDoenca(item) {
 
 
 //Função pesquisa de Doencas
-$("#doenca-nome").on("keydown", function(event) {
-	$(this).autocomplete("instance")._renderItem = function(select, item) {
-		return $("<option>").append("<div>" + item.nome + "</div>").appendTo(select);
-	};
-}).autocomplete({
+$("#doenca-nome").autocomplete({
 	source: "/doenca/buscar",
 	focus: function(event, ui) {
 		$("#doenca-nome").val(ui.item.nome);
@@ -351,18 +347,36 @@ $("#doenca-nome").on("keydown", function(event) {
 		$("#id-cid-doenca").val(ui.item.cid.codigo);
 		return false;
 	}
-});
+}).autocomplete("instance")._renderItem = function(ul, item) {
+	return $("<li></li>")
+		.append("<div class='h6'>" + item.nome + "</div>")
+		.appendTo(ul);
+}
+//$("#doenca-nome").on("keydown", function(event) {
+//	$(this).autocomplete("instance")._renderItem = function(select, item) {
+//		return $("<option>").append("<div>" + item.nome + "</div>").appendTo(select);
+//	};
+//}).autocomplete({
+//	source: "/doenca/buscar",
+//	focus: function(event, ui) {
+//		$("#doenca-nome").val(ui.item.nome);
+//		return false;
+//	},
+//	select: function(event, ui) {
+//		$("#doenca-nome").val(ui.item.nome);
+//		$("#id-doenca").val(ui.item.id);
+//		$("#doenca-cid").val(ui.item.cid.codigo + " - " + ui.item.cid.nome);
+//		$("#id-cid-doenca").val(ui.item.cid.codigo);
+//		return false;
+//	}
+//});
 
 //Fim da Função pesquisa de Doencas
 
 
 
 //Função pesquisa de Cids
-$("#doenca-cid").on("keydown", function(event) {
-	$(this).autocomplete("instance")._renderItem = function(select, item) {
-		return $("<option>").append("<div>" + item.codigo + " - " + item.nome + "</div>").appendTo(select);
-	};
-}).autocomplete({
+$("#doenca-cid").autocomplete({
 	source: "/cid/buscar",
 	focus: function(event, ui) {
 		$("#doenca-cid").val(ui.item.codigo + " - " + ui.item.nome);
@@ -373,7 +387,28 @@ $("#doenca-cid").on("keydown", function(event) {
 		$("#id-cid-doenca").val(ui.item.codigo);
 		return false;
 	}
-})
+}).autocomplete("instance")._renderItem = function(ul, item) {
+	return $("<li></li>")
+		.append("<div class='h6'>" + item.codigo + " - " + item.nome + "</div>")
+		.appendTo(ul);
+}
+
+//$("#doenca-cid").on("keydown", function(event) {
+//	$(this).autocomplete("instance")._renderItem = function(select, item) {
+//		return $("<option>").append("<div>" + item.codigo + " - " + item.nome + "</div>").appendTo(select);
+//	};
+//}).autocomplete({
+//	source: "/cid/buscar",
+//	focus: function(event, ui) {
+//		$("#doenca-cid").val(ui.item.codigo + " - " + ui.item.nome);
+//		return false;
+//	},
+//	select: function(event, ui) {
+//		$("#doenca-cid").val(ui.item.codigo + " - " + ui.item.nome);
+//		$("#id-cid-doenca").val(ui.item.codigo);
+//		return false;
+//	}
+//})
 //Fim da função pesquisa Cids
 
 //Função pesquisa de Cids Edit

@@ -2,6 +2,7 @@ package com.ifrn.sisgestaohospitalar.model;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Medicamento {
@@ -15,7 +16,8 @@ public class Medicamento {
 	
 	private String unidadeFornecimento;
 	
-	private Long codigoFormaFarmaceutica;
+	@OneToOne
+	private FormaFarmaceutica formaFarmaceutica;
 
 	public Long getId() {
 		return id;
@@ -49,14 +51,12 @@ public class Medicamento {
 		this.unidadeFornecimento = unidadeFornecimento;
 	}
 
-	
-
-	public Long getCodigoFormaFarmaceutica() {
-		return codigoFormaFarmaceutica;
+	public FormaFarmaceutica getFormaFarmaceutica() {
+		return formaFarmaceutica;
 	}
 
-	public void setCodigoFormaFarmaceutica(Long codigoFormaFarmaceutica) {
-		this.codigoFormaFarmaceutica = codigoFormaFarmaceutica;
+	public void setFormaFarmaceutica(FormaFarmaceutica formaFarmaceutica) {
+		this.formaFarmaceutica = formaFarmaceutica;
 	}
 	
 }

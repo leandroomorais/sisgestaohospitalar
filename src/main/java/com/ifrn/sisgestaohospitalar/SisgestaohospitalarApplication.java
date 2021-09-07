@@ -106,18 +106,19 @@ public class SisgestaohospitalarApplication implements ApplicationListener<Conte
 	@Override
 	public void onApplicationEvent(ContextRefreshedEvent event) {
 		
-		//lerSigtab();
-		//lerMedicamentosEFormaFarmaceutica();
-		//lerXmlEsus();
-		//lerEstadosMunicipios();
+		lerSigtab();
+		lerMedicamentosEFormaFarmaceutica();
+		lerXmlEsus();
+		lerEstadosMunicipios();
 		
 
 	}
 
 	public void lerMedicamentosEFormaFarmaceutica() {
 		try {
-			leitorTXTMedicamentos.lerTXTMedicamentos(fileMedicamento);
 			leitorTXTMedicamentos.lerTXTFormaFarmaceutica(txtFormaFarmaceutica);
+			leitorTXTMedicamentos.lerTXTMedicamentos(fileMedicamento);
+			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

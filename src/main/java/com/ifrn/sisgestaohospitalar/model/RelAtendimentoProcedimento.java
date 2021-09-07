@@ -4,6 +4,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
+import javax.persistence.Transient;
 
 import com.ifrn.sisgestaohospitalar.enums.TipoServico;
 
@@ -14,9 +16,16 @@ public class RelAtendimentoProcedimento {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	private Long codigoProcedimento;
+	@Transient
+	private Long idAtendimento;
 	
-	private Long idProfissional;
+	@OneToOne
+	private Procedimento procedimento;
+	
+	private int quantidade;
+	
+	@OneToOne
+	private Profissional profissional;
 	
 	private TipoServico tipoServico;
 	
@@ -30,20 +39,36 @@ public class RelAtendimentoProcedimento {
 		this.id = id;
 	}
 
-	public Long getCodigoProcedimento() {
-		return codigoProcedimento;
+	public Long getIdAtendimento() {
+		return idAtendimento;
 	}
 
-	public void setCodigoProcedimento(Long codigoProcedimento) {
-		this.codigoProcedimento = codigoProcedimento;
+	public void setIdAtendimento(Long idAtendimento) {
+		this.idAtendimento = idAtendimento;
 	}
 
-	public Long getIdProfissional() {
-		return idProfissional;
+	public Procedimento getProcedimento() {
+		return procedimento;
 	}
 
-	public void setIdProfissional(Long idProfissional) {
-		this.idProfissional = idProfissional;
+	public void setProcedimento(Procedimento procedimento) {
+		this.procedimento = procedimento;
+	}
+
+	public int getQuantidade() {
+		return quantidade;
+	}
+
+	public void setQuantidade(int quantidade) {
+		this.quantidade = quantidade;
+	}
+
+	public Profissional getProfissional() {
+		return profissional;
+	}
+
+	public void setProfissional(Profissional profissional) {
+		this.profissional = profissional;
 	}
 
 	public TipoServico getTipoServico() {

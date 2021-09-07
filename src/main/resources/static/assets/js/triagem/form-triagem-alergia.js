@@ -13,7 +13,7 @@ $("#form-status-alergia").submit(function(evt) {
 	statusAlergia.dataFim = $("#dataFim").val();
 	statusAlergia.situacaoCondicao = $("input[name = 'situacaoCondicao']:checked").val();
 	statusAlergia.idProntuario = $("#id-prontuario").val();
-	
+
 	$.ajax({
 		url: '/status-alergia/salvar',
 		method: 'post',
@@ -105,12 +105,12 @@ $("#form-status-alergia").submit(function(evt) {
 //Fim da função cadastrar nova alergia
 
 //Submit da função editar alergia
-$("#editar-nome-alergia").click(function(){
-	$("#alergia-nome-dto").prop("disabled",false);
+$("#editar-nome-alergia").click(function() {
+	$("#alergia-nome-dto").prop("disabled", false);
 });
 
-$("#editar-cid-alergia").click(function(){
-	$("#alergia-cid-dto").prop("disabled",false);
+$("#editar-cid-alergia").click(function() {
+	$("#alergia-cid-dto").prop("disabled", false);
 });
 
 $("#form-status-alergia-edit").submit(function(evt) {
@@ -126,7 +126,7 @@ $("#form-status-alergia-edit").submit(function(evt) {
 	statusAlergiaDTO.dataFim = $("#dataFim-dto").val();
 	statusAlergiaDTO.situacaoCondicao = $("#div-situacao-edit").children().children("input[name = 'situacaoCondicao']:checked").val();
 	statusAlergiaDTO.idProntuario = $("#id-prontuario").val();
-	
+
 
 	$.ajax({
 		url: '/status-alergia/editar',
@@ -377,11 +377,7 @@ function excluiAlergia(item) {
 //Fim da função excluir alergia
 
 //Função pesquisa de Alergias
-$("#alergia-nome").on("keydown", function(event) {
-	$(this).autocomplete("instance")._renderItem = function(select, item) {
-		return $("<option>").append("<div>" + item.nome + "</div>").appendTo(select);
-	};
-}).autocomplete({
+$("#alergia-nome").autocomplete({
 	source: "/alergia/buscar",
 	focus: function(event, ui) {
 		$("#alergia-nome").val(ui.item.nome);
@@ -394,7 +390,29 @@ $("#alergia-nome").on("keydown", function(event) {
 		$("#id-cid").val(ui.item.cid.codigo);
 		return false;
 	}
-})
+}).autocomplete("instance")._renderItem = function(ul, item) {
+	return $("<li>")
+		.append("<div class='h6'>" + item.nome + "</div>")
+		.appendTo(ul);
+}
 
 //Fim da Função pesquisa de Alergias
+
+//Função pesquisa de Cids
+$("#alergia-cid").autocomplete({
+	source: "/cid/buscar",
+	focus: function(event, ui) {
+		$("#alergia-cid").val(ui.item.codigo + " - " + ui.item.nome);
+		return false;
+	},
+	select: function(event, ui) {
+		$("#alegia-cid").val(ui.item.codigo + " - " + ui.item.nome);
+		$("#id-cid").val(ui.item.codigo);
+		return false;
+	}
+}).autocomplete("instance")._renderItem = function(ul, item) {
+	return $("<li>")
+		.append("<div class='h6'>" + item.codigo + " - " + item.nome + "</div>").appendTo(ul);
+}
+//Fim da função pesquisa Cids
 //***************Fim Alergias */
