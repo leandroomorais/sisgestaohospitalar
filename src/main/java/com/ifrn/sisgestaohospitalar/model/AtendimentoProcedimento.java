@@ -7,10 +7,9 @@ import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Transient;
 
-import com.ifrn.sisgestaohospitalar.enums.TipoServico;
 
 @Entity
-public class RelAtendimentoProcedimento {
+public class AtendimentoProcedimento {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,8 +25,6 @@ public class RelAtendimentoProcedimento {
 	
 	@OneToOne
 	private Profissional profissional;
-	
-	private TipoServico tipoServico;
 	
 	private String codigoCid;
 
@@ -71,13 +68,6 @@ public class RelAtendimentoProcedimento {
 		this.profissional = profissional;
 	}
 
-	public TipoServico getTipoServico() {
-		return tipoServico;
-	}
-
-	public void setTipoServico(TipoServico tipoServico) {
-		this.tipoServico = tipoServico;
-	}
 
 	public String getCodigoCid() {
 		return codigoCid;

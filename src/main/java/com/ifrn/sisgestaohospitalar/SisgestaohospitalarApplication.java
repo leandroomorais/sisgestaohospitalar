@@ -2,6 +2,7 @@ package com.ifrn.sisgestaohospitalar;
 
 import java.io.IOException;
 import java.text.ParseException;
+import java.util.List;
 
 import javax.xml.bind.JAXBException;
 
@@ -11,6 +12,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
 
+import com.ifrn.sisgestaohospitalar.model.TipoServico;
+import com.ifrn.sisgestaohospitalar.model.ViaAdministracao;
 import com.ifrn.sisgestaohospitalar.repository.AtendimentoRepository;
 import com.ifrn.sisgestaohospitalar.repository.Cep_IbgeRepository;
 import com.ifrn.sisgestaohospitalar.repository.EnderecoRepository;
@@ -21,6 +24,8 @@ import com.ifrn.sisgestaohospitalar.repository.LogradouroRepository;
 import com.ifrn.sisgestaohospitalar.repository.MedicamentoRepository;
 import com.ifrn.sisgestaohospitalar.repository.MunicipioRepository;
 import com.ifrn.sisgestaohospitalar.repository.ProcedimentoRepository;
+import com.ifrn.sisgestaohospitalar.repository.TipoServicoRepository;
+import com.ifrn.sisgestaohospitalar.repository.ViaAdministracaoRepository;
 import com.ifrn.sisgestaohospitalar.service.CidadaoService;
 import com.ifrn.sisgestaohospitalar.service.ProfissionalService;
 import com.ifrn.sisgestaohospitalar.utils.LeitorTXTMedicamentos;
@@ -82,6 +87,12 @@ public class SisgestaohospitalarApplication implements ApplicationListener<Conte
 
 	@Autowired
 	private FormaFarmaceuticaRepository formaFarmaceuticaRepository;
+	
+	@Autowired
+	private ViaAdministracaoRepository viaAdministracaoRepository;
+	
+	@Autowired
+	private TipoServicoRepository tipoServicoRepository;
 
 	public static void main(String[] args) {
 		SpringApplication.run(SisgestaohospitalarApplication.class, args);
@@ -106,12 +117,72 @@ public class SisgestaohospitalarApplication implements ApplicationListener<Conte
 	@Override
 	public void onApplicationEvent(ContextRefreshedEvent event) {
 		
-		lerSigtab();
-		lerMedicamentosEFormaFarmaceutica();
-		lerXmlEsus();
-		lerEstadosMunicipios();
+		//lerSigtab();
+		//lerMedicamentosEFormaFarmaceutica();
+		//lerXmlEsus();
+		//lerEstadosMunicipios();
+		//salvarViaAdministracao();
+		//salvarTipoServico();
 		
 
+	}
+	
+	public void salvarTipoServico() {
+		TipoServico triagem = new TipoServico();
+		TipoServico consulta = new TipoServico();
+		TipoServico adminMedicamentos = new TipoServico();
+		TipoServico curativo = new TipoServico();
+		TipoServico inativo = new TipoServico();
+		
+		triagem.setNome("Triagem");
+		consulta.setNome("Consulta");
+		adminMedicamentos.setNome("Admin. de medicamentos");
+		curativo.setNome("Curativo");
+		inativo.setNome("Inativo");
+		
+		tipoServicoRepository.saveAndFlush(triagem);
+		tipoServicoRepository.saveAndFlush(consulta);
+		tipoServicoRepository.saveAndFlush(adminMedicamentos);
+		tipoServicoRepository.saveAndFlush(curativo);
+		tipoServicoRepository.saveAndFlush(inativo);
+	}
+	
+	public void salvarViaAdministracao() {
+		ViaAdministracao oral = new ViaAdministracao();
+		ViaAdministracao sublingual = new ViaAdministracao();
+		ViaAdministracao parenteralIntramuscular = new ViaAdministracao();
+		ViaAdministracao parenteralIntraVenosa = new ViaAdministracao();
+		ViaAdministracao parenteralSubcultanea = new ViaAdministracao();
+		ViaAdministracao nasal = new ViaAdministracao();
+		ViaAdministracao oftalmica = new ViaAdministracao();
+		ViaAdministracao auricular = new ViaAdministracao();
+		ViaAdministracao pulmonar = new ViaAdministracao();
+		ViaAdministracao vaginal = new ViaAdministracao();
+		ViaAdministracao retal = new ViaAdministracao();
+		
+		oral.setNome("Oral");
+		sublingual.setNome("Sublingual");
+		parenteralIntramuscular.setNome("Intramuscular");
+		parenteralIntraVenosa.setNome("Intravenosa");
+		parenteralSubcultanea.setNome("Subcutânea");
+		nasal.setNome("Nasal");
+		oftalmica.setNome("Oftálmica");
+		auricular.setNome("Auricular");
+		pulmonar.setNome("Pulmonar");
+		vaginal.setNome("Vaginal");
+		retal.setNome("Retal");
+		
+		viaAdministracaoRepository.saveAndFlush(oral);
+		viaAdministracaoRepository.saveAndFlush(sublingual);
+		viaAdministracaoRepository.saveAndFlush(parenteralIntramuscular);
+		viaAdministracaoRepository.saveAndFlush(parenteralIntraVenosa);
+		viaAdministracaoRepository.saveAndFlush(parenteralSubcultanea);
+		viaAdministracaoRepository.saveAndFlush(nasal);
+		viaAdministracaoRepository.saveAndFlush(oftalmica);
+		viaAdministracaoRepository.saveAndFlush(auricular);
+		viaAdministracaoRepository.saveAndFlush(pulmonar);
+		viaAdministracaoRepository.saveAndFlush(vaginal);
+		viaAdministracaoRepository.saveAndFlush(retal);
 	}
 
 	public void lerMedicamentosEFormaFarmaceutica() {

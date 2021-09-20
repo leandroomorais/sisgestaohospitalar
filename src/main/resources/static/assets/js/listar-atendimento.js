@@ -37,19 +37,13 @@ function atualizarTabela() {
 			{ title: 'NOME', data: 'cidadao.nome' },
 			{ title: 'PROF. DE DESTINO', data: 'profissionalDestino.nome' },
 			{
-				title: 'SERVIÇO', data: 'condutaTipoServico', mRender: function(data) {
-					if (data == "TRIAGEM") {
-						return "<span class='badge badge-info'>Triagem</span>"
-					}
-					if (data == "CONSULTA") {
-						return "<span class='badge badge-info'>Consulta</span>"
-					}
-					if (data = "ADMINMEDICAMENTOS") {
-						return "<span class='badge badge-info'>Medicamentos</span>"
-					}
-					if (data = "CURATIVO") {
-						return "<span class='badge badge-info'>Curativo</span>"
-					}
+				title: 'SERVIÇO', data: 'tipoServicos',
+				mRender: function(data) {
+					var retorno = "";
+					$.each(data,function(key,item){
+						retorno += createSpan(item.nome);
+					})
+					return retorno;
 				}
 			},
 			{
@@ -77,4 +71,12 @@ function atualizarTabela() {
 			}
 		],
 	});
+}
+
+function createSpan(item){
+	var abreSpan = "<span class='badge badge-info'>";
+	var fechaSpan = "</span>";
+	var span = abreSpan + item + fechaSpan;
+	return span;
+	
 }

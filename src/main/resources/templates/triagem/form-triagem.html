@@ -77,10 +77,6 @@
 												<a class="nav-link" id="v-pills-doencas-tab-nobd"
 													data-toggle="pill" href="#v-pills-doencas-nobd" role="tab"
 													aria-controls="v-pills-doencas-nobd" aria-selected="false"><strong>DOENÇAS</strong></a>
-												<a class="nav-link" id="v-pills-medicacoes-tab-nobd"
-													data-toggle="pill" href="#v-pills-medicacoes-nobd"
-													role="tab" aria-controls="v-pills-medicacoes-nobd"
-													aria-selected="false"><strong>HÁBITOS</strong></a>
 											</div>
 										</div>
 										<div class="col-sm-9 col-md-10 col-lg-10">
@@ -209,6 +205,57 @@
 																					th:text="${momentoColeta.nome}"></option>
 																			</select> <small id="sinaisVitais-momentoColeta-small"
 																				class="form-text text-muted"></small>
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</div>
+
+														<div class="card">
+															<div class="card-header">
+																<div class="card-title">Antropometria</div>
+															</div>
+															<div class="card-body">
+																<div class="row">
+																	<div class="col-md-3">
+																		<div class="form-group">
+																			<label for="perimetrocefalico">Perimetro
+																				Cefálico</label><input type="text" class="form-control"
+																				id="perimetrocefalico"> <small
+																				id="perimetrocefalico" class="form-text text-muted">cm</small>
+
+																		</div>
+																	</div>
+
+
+																	<div class="col-md-3">
+																		<div class="form-group">
+																			<label for="peso">Peso</label> <input type="text"
+																				class="form-control" id="peso" placeholder="">
+																			<small id="peso" class="form-text text-muted">Kg</small>
+
+																		</div>
+																	</div>
+
+																	<div class="col-md-3">
+																		<div class="form-group">
+																			<label for="altura">Altura</label> <input type="text"
+																				class="form-control" id="altura" placeholder="">
+																			<small id="altura" class="form-text text-muted">cm</small>
+
+																		</div>
+																	</div>
+
+																	<div class="col-md-2">
+																		<div class="card card-info">
+																			<div class="card-body text-center">
+																				<div class="card-opening">IMC</div>
+																				<div class="card-desc" id="resultado">
+																					<h4 class="card-title" id="imc">--.-</h4>
+																					<input type="hidden" id="valor-imc">
+																					<div class="card-opening" id="imc-desc"></div>
+																				</div>
+																			</div>
 																		</div>
 																	</div>
 																</div>
@@ -420,24 +467,20 @@
 																		</div>
 																		<div class="col-md-6">
 																			<div class="form-check">
-																				<label>Selecione o Tipo de Serviço:</label>
-																				<div class="servicos">
-																					<div class="row">
-																						<th:block
-																							th:each="condutaTipoServico : ${tipoServicos}">
-																							<label th:for="${condutaTipoServico}"
-																								th:if="${condutaTipoServico.descricao != 'Inativo'}"
-																								class="form-radio-label"> <input
-																								name="atendimento.condutaTipoServico"
-																								th:id="${condutaTipoServico}"
-																								th:value="${condutaTipoServico}"
-																								class="form-radio-input" type="radio"> <span
-																								class="form-radio-sign"
-																								th:text="${condutaTipoServico.descricao}"></span>
-																							</label>
-																						</th:block>
+																				<label>Selecione o(s) serviço(s) para este
+																					atendimento:</label><br>
+																				<th:block th:each="tipoServico : ${tipoServicos}">
+																					<div class="custom-control custom-checkbox"
+																						th:if="${tipoServico.nome} != 'Inativo'">
+																						<input th:field="*{atendimento.tipoServicos}"
+																							th:value="${tipoServico.id}" type="checkbox"
+																							class="custom-control-input"
+																							th:id="${tipoServico.id}"> <label
+																							class="custom-control-label"
+																							th:for="${tipoServico.id}"
+																							th:text="${tipoServico.nome}"></label>
 																					</div>
-																				</div>
+																				</th:block>
 																			</div>
 																		</div>
 																	</div>
@@ -923,9 +966,7 @@
 														</div>
 													</div>
 												</div>
-												<div class="tab-pane fade" id="v-pills-medicacoes-nobd"
-													role="tabpanel"
-													aria-labelledby="v-pills-medicacoes-tab-nobd"><p>Hábitos do Cidadão</p></div>
+
 											</div>
 										</div>
 									</div>

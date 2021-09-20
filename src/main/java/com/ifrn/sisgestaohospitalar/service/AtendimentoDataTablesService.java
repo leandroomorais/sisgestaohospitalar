@@ -17,7 +17,7 @@ import com.ifrn.sisgestaohospitalar.repository.AtendimentoRepository;
 public class AtendimentoDataTablesService {
 
 	private String[] cols = { "dataEntrada", "cidadao.sexo", "cidadao.nome", "profissionalDestino.nome",
-			"condutaTipoServico", "status.descricao", "" };
+			"tipoServicos", "status.descricao", "" };
 
 	public Map<String, Object> execute(AtendimentoRepository repository, HttpServletRequest request) {
 

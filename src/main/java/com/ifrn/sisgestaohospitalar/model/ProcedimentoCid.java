@@ -6,7 +6,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class RelProcedimentoCid {
+public class ProcedimentoCid {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

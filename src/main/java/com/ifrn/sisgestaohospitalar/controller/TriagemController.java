@@ -26,14 +26,13 @@ import com.ifrn.sisgestaohospitalar.enums.CondutaCidadao;
 import com.ifrn.sisgestaohospitalar.enums.MomentoColeta;
 import com.ifrn.sisgestaohospitalar.enums.SituacaoCondicao;
 import com.ifrn.sisgestaohospitalar.enums.Status;
-import com.ifrn.sisgestaohospitalar.enums.TipoServico;
 import com.ifrn.sisgestaohospitalar.model.Atendimento;
 import com.ifrn.sisgestaohospitalar.model.HistoricoStatus;
-import com.ifrn.sisgestaohospitalar.model.SinaisVitais;
+import com.ifrn.sisgestaohospitalar.model.TipoServico;
 import com.ifrn.sisgestaohospitalar.model.Triagem;
 import com.ifrn.sisgestaohospitalar.repository.AtendimentoRepository;
 import com.ifrn.sisgestaohospitalar.repository.ProfissionalRepository;
-import com.ifrn.sisgestaohospitalar.service.AtendimentoService;
+import com.ifrn.sisgestaohospitalar.repository.TipoServicoRepository;
 import com.ifrn.sisgestaohospitalar.service.TriagemDataTablesService;
 import com.ifrn.sisgestaohospitalar.service.TriagemService;
 import com.ifrn.sisgestaohospitalar.service.exception.CidadaoJaAdicionadoNaFilaException;
@@ -47,10 +46,10 @@ public class TriagemController {
 
 	@Autowired
 	private ProfissionalRepository profissionalRepository;
-	
+
 	@Autowired
-	private AtendimentoService atendimentoService;
-	
+	private TipoServicoRepository tipoServicoRepository;
+
 	@Autowired
 	private TriagemService triagemService;
 
@@ -61,13 +60,13 @@ public class TriagemController {
 		if (optional.isPresent()) {
 			Atendimento atendimento = optional.get();
 			atendimento.setStatus(Status.EMATENDIMENTO);
-			
+
 			HistoricoStatus historicoStatus = new HistoricoStatus();
 			historicoStatus.setStatus(atendimento.getStatus());
-			historicoStatus.setTipoServico(atendimento.getCondutaTipoServico());
+			historicoStatus.setTipoServicos(atendimento.getTipoServicos());
 			historicoStatus.setProfissional(null);
 			historicoStatus.setUltimaAtualizacao(LocalDateTime.now());
-			
+
 			List<HistoricoStatus> listHistoricoStatus = new ArrayList<>();
 			listHistoricoStatus.add(historicoStatus);
 			atendimento.setHistoricoStatus(listHistoricoStatus);
@@ -80,7 +79,7 @@ public class TriagemController {
 			mv.addObject("classificacoesRisco", ClassificacaoDeRisco.values());
 			mv.addObject("situacoesCondicao", SituacaoCondicao.values());
 			mv.addObject("profissionais", profissionalRepository.findAll());
-			mv.addObject("tipoServicos", TipoServico.values());
+			mv.addObject("tipoServicos", tipoServicoRepository.findAll());
 			mv.addObject("condutasCidadao", CondutaCidadao.values());
 			return mv;
 		} else {
@@ -98,31 +97,34 @@ public class TriagemController {
 			}
 			return ResponseEntity.unprocessableEntity().body(errors);
 		}
-		
+
 		try {
 			Optional<Atendimento> optional = atendimentoRepository.findById(triagem.getAtendimento().getId());
 			if (optional.isPresent()) {
 				Atendimento atendimento = optional.get();
-				
-				if (triagem.getAtendimento().getCondutaTipoServico() != TipoServico.INATIVO) {
-					atendimento.setStatus(Status.AGUARDANDOATENDIMENTO);
+
+				for (TipoServico tipoServico : atendimento.getTipoServicos()) {
+					if (tipoServico.getNome() != "Inativo") {
+						atendimento.setStatus(Status.AGUARDANDOATENDIMENTO);
+					}
+
+					if (tipoServico.getNome().equals("Inativo")
+							&& triagem.getAtendimento().getStatus() != Status.NAOAGUARDOU) {
+						atendimento.setStatus(Status.FINALIZADO);
+					}
 				}
-				if (triagem.getAtendimento().getCondutaTipoServico().equals(TipoServico.INATIVO)
-						&& triagem.getAtendimento().getStatus() != Status.NAOAGUARDOU) {
-					atendimento.setStatus(Status.FINALIZADO);
-				}
-				
-				atendimento.setCondutaTipoServico(triagem.getAtendimento().getCondutaTipoServico());
+
+				atendimento.setTipoServicos(triagem.getAtendimento().getTipoServicos());
 				atendimento.setCondutaCidadao(triagem.getAtendimento().getCondutaCidadao());
-				
+
 				triagem.setAtendimento(atendimento);
 				triagem.setFimTriagem(LocalDateTime.now());
-				
+
 				atendimento.setTriagem(triagem);
-				
+
 				HistoricoStatus historicoStatus = new HistoricoStatus();
 				historicoStatus.setStatus(triagem.getAtendimento().getStatus());
-				historicoStatus.setTipoServico(triagem.getAtendimento().getCondutaTipoServico());
+				historicoStatus.setTipoServicos(triagem.getAtendimento().getTipoServicos());
 				historicoStatus.setUltimaAtualizacao(LocalDateTime.now());
 
 				triagemService.save(triagem);

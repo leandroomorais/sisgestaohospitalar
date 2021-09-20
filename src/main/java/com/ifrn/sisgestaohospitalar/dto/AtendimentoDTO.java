@@ -4,15 +4,18 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
 
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import com.ifrn.sisgestaohospitalar.enums.CaraterAtendimento;
 import com.ifrn.sisgestaohospitalar.enums.CondutaCidadao;
 import com.ifrn.sisgestaohospitalar.enums.Status;
-import com.ifrn.sisgestaohospitalar.enums.TipoServico;
 import com.ifrn.sisgestaohospitalar.model.HistoricoStatus;
 import com.ifrn.sisgestaohospitalar.model.Profissional;
-import com.ifrn.sisgestaohospitalar.model.RelAtendimentoProcedimento;
+import com.ifrn.sisgestaohospitalar.model.TipoServico;
+import com.ifrn.sisgestaohospitalar.model.AtendimentoProcedimento;
 import com.ifrn.sisgestaohospitalar.model.Triagem;
 
 public class AtendimentoDTO {
@@ -23,8 +26,10 @@ public class AtendimentoDTO {
 
 	private UUID numeroRegistro;
 
-	@NotNull(message = "É necessário Informar o Tipo de Serviço para o Atendimento")
-	private TipoServico condutaTipoServico;
+	@NotNull(message = "É necessário selecionar o(s) serviço(s) para o Atendimento")
+	@ManyToMany
+	@JoinTable(name = "atendimento_servicos", joinColumns = @JoinColumn(name = "id_atendimento"), inverseJoinColumns = @JoinColumn(name = "id_servico"))
+	private List<TipoServico> tipoServicos;
 
 	private CondutaCidadao condutaCidadao;
 
@@ -39,7 +44,7 @@ public class AtendimentoDTO {
 
 	private List<HistoricoStatus> historicoStatus;
 
-	private List<RelAtendimentoProcedimento> atendimentoProcedimentos;
+	private List<AtendimentoProcedimento> atendimentoProcedimentos;
 
 	@Valid
 	private Triagem triagem;
@@ -68,12 +73,12 @@ public class AtendimentoDTO {
 		this.numeroRegistro = numeroRegistro;
 	}
 
-	public TipoServico getCondutaTipoServico() {
-		return condutaTipoServico;
+	public List<TipoServico> getTipoServicos() {
+		return tipoServicos;
 	}
 
-	public void setCondutaTipoServico(TipoServico condutaTipoServico) {
-		this.condutaTipoServico = condutaTipoServico;
+	public void setTipoServicos(List<TipoServico> tipoServicos) {
+		this.tipoServicos = tipoServicos;
 	}
 
 	public CondutaCidadao getCondutaCidadao() {
@@ -124,11 +129,11 @@ public class AtendimentoDTO {
 		this.historicoStatus = historicoStatus;
 	}
 
-	public List<RelAtendimentoProcedimento> getAtendimentoProcedimentos() {
+	public List<AtendimentoProcedimento> getAtendimentoProcedimentos() {
 		return atendimentoProcedimentos;
 	}
 
-	public void setAtendimentoProcedimentos(List<RelAtendimentoProcedimento> atendimentoProcedimentos) {
+	public void setAtendimentoProcedimentos(List<AtendimentoProcedimento> atendimentoProcedimentos) {
 		this.atendimentoProcedimentos = atendimentoProcedimentos;
 	}
 

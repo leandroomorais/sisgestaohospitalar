@@ -10,15 +10,13 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.domain.Sort.Direction;
-
-import com.ifrn.sisgestaohospitalar.enums.TipoServico;
 import com.ifrn.sisgestaohospitalar.model.Atendimento;
 import com.ifrn.sisgestaohospitalar.repository.AtendimentoRepository;
 
 public class TriagemDataTablesService {
 
 	private String[] cols = { "dataEntrada", "cidadao.sexo", "cidadao.nome", "profissionalDestino.nome",
-			"condutaTipoServico", "status", "" };
+			"tipoServicos", "status", "" };
 
 	public Map<String, Object> execute(AtendimentoRepository repository, HttpServletRequest request) {
 
@@ -47,7 +45,7 @@ public class TriagemDataTablesService {
 
 	private Page<Atendimento> queryBy(String search, AtendimentoRepository repository, Pageable pageable) {
 		if (search.isEmpty()) {
-			return repository.findByCondutaTipoServico(TipoServico.TRIAGEM, pageable);
+			return repository.findAll(pageable);
 		}
 		return repository.findByCidadaoOrProfissionalOrTipoServico(search, pageable);
 	}

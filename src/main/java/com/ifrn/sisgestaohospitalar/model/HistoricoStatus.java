@@ -1,15 +1,18 @@
 package com.ifrn.sisgestaohospitalar.model;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToOne;
+
 import com.ifrn.sisgestaohospitalar.enums.Status;
-import com.ifrn.sisgestaohospitalar.enums.TipoServico;
 
 @Entity
 public class HistoricoStatus {
@@ -22,9 +25,11 @@ public class HistoricoStatus {
 
 	private LocalDateTime ultimaAtualizacao;
 	
-	private TipoServico tipoServico;
+	@ManyToMany
+	@JoinTable(name = "historico_servicos", joinColumns = @JoinColumn(name = "id_historico"), inverseJoinColumns = @JoinColumn(name = "id_servico"))
+	private List<TipoServico> tipoServicos;
 	
-	@ManyToOne
+	@OneToOne
 	@JoinColumn(name = "status_profissional")
 	private Profissional profissional;
 
@@ -52,12 +57,12 @@ public class HistoricoStatus {
 		this.ultimaAtualizacao = ultimaAtualizacao;
 	}
 
-	public TipoServico getTipoServico() {
-		return tipoServico;
+	public List<TipoServico> getTipoServicos() {
+		return tipoServicos;
 	}
 
-	public void setTipoServico(TipoServico tipoServico) {
-		this.tipoServico = tipoServico;
+	public void setTipoServicos(List<TipoServico> tipoServicos) {
+		this.tipoServicos = tipoServicos;
 	}
 
 	public Profissional getProfissional() {
@@ -67,5 +72,6 @@ public class HistoricoStatus {
 	public void setProfissional(Profissional profissional) {
 		this.profissional = profissional;
 	}
+
 	
 }

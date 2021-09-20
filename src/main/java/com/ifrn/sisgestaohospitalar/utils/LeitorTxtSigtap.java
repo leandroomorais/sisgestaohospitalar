@@ -31,12 +31,12 @@ import com.ifrn.sisgestaohospitalar.model.Cid;
 import com.ifrn.sisgestaohospitalar.model.Ocupacao;
 import com.ifrn.sisgestaohospitalar.model.Procedimento;
 import com.ifrn.sisgestaohospitalar.model.RegistroSigtap;
-import com.ifrn.sisgestaohospitalar.model.RelProcedimentoCid;
+import com.ifrn.sisgestaohospitalar.model.ProcedimentoCid;
 import com.ifrn.sisgestaohospitalar.repository.CidRepository;
 import com.ifrn.sisgestaohospitalar.repository.OcupacaoRepository;
 import com.ifrn.sisgestaohospitalar.repository.ProcedimentoRepository;
 import com.ifrn.sisgestaohospitalar.repository.RegistroSigtapRepository;
-import com.ifrn.sisgestaohospitalar.repository.RelProcedimentoCidRepository;
+import com.ifrn.sisgestaohospitalar.repository.ProcedimentoCidRepository;
 
 /**
  * A classe <code>LeitorTxtSigtap</code> é um utilitário que contém métodos para
@@ -64,7 +64,7 @@ public class LeitorTxtSigtap {
 	private OcupacaoRepository ocupacaoRepository;
 	
 	@Autowired
-	private RelProcedimentoCidRepository procedimentoCidRepository;
+	private ProcedimentoCidRepository procedimentoCidRepository;
 
 	/**
 	 * Este método realiza a leitura do arquivo TXT que contém o relacionamento
@@ -107,19 +107,19 @@ public class LeitorTxtSigtap {
 				Charset.forName("ISO-8859-1"));
 		String linha;
 		
-		List<RelProcedimentoCid> relProcedimentoCids = new ArrayList<>();
+		List<ProcedimentoCid> procedimentoCids = new ArrayList<>();
 		
 		while ((linha = bufferedReader.readLine()) != null) {
 			String novaLinha = new String(linha.getBytes("UTF-8"));
 			Long CO_PROCEDIMENTO = Long.parseLong(novaLinha.substring(0, 10));
 			String CO_CID = novaLinha.substring(10, 14);
 			String DT_COMPETENCIA = novaLinha.substring(15, 21);
-			RelProcedimentoCid relProcedimentoCid = new RelProcedimentoCid();
-			relProcedimentoCid.setCodigoProcedimento(CO_PROCEDIMENTO);
-			relProcedimentoCid.setCodigoCid(CO_CID);
-			relProcedimentoCids.add(relProcedimentoCid);
+			ProcedimentoCid procedimentoCid = new ProcedimentoCid();
+			procedimentoCid.setCodigoProcedimento(CO_PROCEDIMENTO);
+			procedimentoCid.setCodigoCid(CO_CID);
+			procedimentoCids.add(procedimentoCid);
 		}
-		procedimentoCidRepository.saveAll(relProcedimentoCids);
+		procedimentoCidRepository.saveAll(procedimentoCids);
 	}
 
 	/**

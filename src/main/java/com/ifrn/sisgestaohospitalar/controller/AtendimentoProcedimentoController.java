@@ -14,21 +14,21 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import com.ifrn.sisgestaohospitalar.model.Atendimento;
-import com.ifrn.sisgestaohospitalar.model.RelAtendimentoProcedimento;
+import com.ifrn.sisgestaohospitalar.model.AtendimentoProcedimento;
 import com.ifrn.sisgestaohospitalar.repository.AtendimentoRepository;
-import com.ifrn.sisgestaohospitalar.repository.RelAtendimentoProcedimentoRepository;
+import com.ifrn.sisgestaohospitalar.repository.AtendimentoProcedimentoRepository;
 
 @Controller
 @RequestMapping("/atendimento-procedimento")
-public class RelAtendimentoProcedimentoController {
+public class AtendimentoProcedimentoController {
 
 	@Autowired
 	private AtendimentoRepository atendimentoRepository;
 	@Autowired
-	private RelAtendimentoProcedimentoRepository relAtendimentoProcedimentoRepository;
+	private AtendimentoProcedimentoRepository atendimentoProcedimentoRepository;
 
 	@PostMapping("/adicionar")
-	public ResponseEntity<?> adicionarProcedimentos(@Valid RelAtendimentoProcedimento relAtendimentoProcedimento,
+	public ResponseEntity<?> adicionarProcedimentos(@Valid AtendimentoProcedimento atendimentoProcedimento,
 			BindingResult result) {
 		Map<String, String> errors = new HashMap<>();
 		if (result.hasErrors()) {
@@ -37,10 +37,10 @@ public class RelAtendimentoProcedimentoController {
 			}
 			return ResponseEntity.unprocessableEntity().body(errors);
 		}
-		Optional<Atendimento> optional = atendimentoRepository.findById(relAtendimentoProcedimento.getIdAtendimento());
+		Optional<Atendimento> optional = atendimentoRepository.findById(atendimentoProcedimento.getIdAtendimento());
 		if (optional.isPresent()) {
 			Atendimento atendimento = optional.get();
-			atendimento.getAtendimentoProcedimentos().add(relAtendimentoProcedimento);
+			atendimento.getAtendimentoProcedimentos().add(atendimentoProcedimento);
 			atendimentoRepository.saveAndFlush(atendimento);
 			return ResponseEntity.ok().body(atendimento);
 		}
@@ -53,13 +53,13 @@ public class RelAtendimentoProcedimentoController {
 		Optional<Atendimento> optionalAtendimento = atendimentoRepository.findById(idAtendimento);
 		if (optionalAtendimento.isPresent()) {
 			Atendimento atendimento = optionalAtendimento.get();
-			Optional<RelAtendimentoProcedimento> optionalRelAtendimentoProcedimento = relAtendimentoProcedimentoRepository
+			Optional<AtendimentoProcedimento> optionalRelAtendimentoProcedimento = atendimentoProcedimentoRepository
 					.findById(idAtendimentoProcedimento);
 			if (optionalRelAtendimentoProcedimento.isPresent()) {
-				RelAtendimentoProcedimento atendimentoProcedimento = optionalRelAtendimentoProcedimento.get();
+				AtendimentoProcedimento atendimentoProcedimento = optionalRelAtendimentoProcedimento.get();
 				atendimento.getAtendimentoProcedimentos().remove(atendimentoProcedimento);
 				atendimentoRepository.saveAndFlush(atendimento);
-				relAtendimentoProcedimentoRepository.deleteById(idAtendimentoProcedimento);
+				atendimentoProcedimentoRepository.deleteById(idAtendimentoProcedimento);
 				return ResponseEntity.ok().build();
 			}
 			return ResponseEntity.badRequest().build();

@@ -8,6 +8,8 @@ import java.util.Map;
 import java.util.Optional;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
+
+import org.hibernate.internal.build.AllowSysOut;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -20,15 +22,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.ifrn.sisgestaohospitalar.enums.Status;
-import com.ifrn.sisgestaohospitalar.enums.TipoServico;
 import com.ifrn.sisgestaohospitalar.model.Atendimento;
 import com.ifrn.sisgestaohospitalar.model.Cidadao;
+import com.ifrn.sisgestaohospitalar.model.Diagnostico;
 import com.ifrn.sisgestaohospitalar.model.HistoricoStatus;
-import com.ifrn.sisgestaohospitalar.model.Profissional;
-import com.ifrn.sisgestaohospitalar.model.RelAtendimentoProcedimento;
+import com.ifrn.sisgestaohospitalar.model.Prescricao;
 import com.ifrn.sisgestaohospitalar.repository.AtendimentoRepository;
 import com.ifrn.sisgestaohospitalar.repository.CidadaoRepository;
 import com.ifrn.sisgestaohospitalar.repository.ProfissionalRepository;
+import com.ifrn.sisgestaohospitalar.repository.TipoServicoRepository;
+import com.ifrn.sisgestaohospitalar.repository.ViaAdministracaoRepository;
 import com.ifrn.sisgestaohospitalar.service.AtendimentoDataTablesService;
 import com.ifrn.sisgestaohospitalar.service.AtendimentoService;
 import com.ifrn.sisgestaohospitalar.service.exception.CidadaoJaAdicionadoNaFilaException;
@@ -49,6 +52,12 @@ public class AtendimentoController {
 	@Autowired
 	private AtendimentoRepository atendimentoRepository;
 
+	@Autowired
+	private ViaAdministracaoRepository viaAdministracaoRepository;
+
+	@Autowired
+	private TipoServicoRepository tipoServicoRepository;;
+
 	@GetMapping("/tabela")
 	public String mostrarTabela() {
 		return "";
@@ -62,13 +71,27 @@ public class AtendimentoController {
 
 	@RequestMapping("/adicionar/{cidadaoId}")
 	public ModelAndView cadastrar(@PathVariable("cidadaoId") Long cidadaoId, Atendimento atendimento) {
-		ModelAndView mv = new ModelAndView("atendimento/form-atendimento");
+		ModelAndView mv = new ModelAndView("atendimento/form-cadastrar");
 		Optional<Cidadao> optional = cidadaoRepository.findById(cidadaoId);
 		atendimento.setCidadao(optional.get());
 		mv.addObject("atendimento", atendimento);
-		mv.addObject("tipoServicos", TipoServico.values());
+		mv.addObject("tipoServicos", tipoServicoRepository.findAll());
 		mv.addObject("profissionais", profissionalRepository.findAll());
 		return mv;
+	}
+
+	@RequestMapping("/atender/{atendimentoId}")
+	public ModelAndView atendimento(@PathVariable("atendimentoId") Long atendimentoId) {
+		Optional<Atendimento> optional = atendimentoRepository.findById(atendimentoId);
+		ModelAndView mv = new ModelAndView("atendimento/form-atendimento");
+		if (optional.isPresent()) {
+			mv.addObject("atendimento", optional.get());
+			mv.addObject("tipoServicos", tipoServicoRepository.findAll());
+			mv.addObject("profissionais", profissionalRepository.findAll());
+			mv.addObject("viasAdministracao", viaAdministracaoRepository.findAll());
+		}
+		return mv;
+
 	}
 
 	@PostMapping("/salvar")
@@ -86,7 +109,7 @@ public class AtendimentoController {
 			atendimento.setStatus(Status.AGUARDANDOATENDIMENTO);
 			HistoricoStatus historicoStatus = new HistoricoStatus();
 			historicoStatus.setStatus(atendimento.getStatus());
-			historicoStatus.setTipoServico(atendimento.getCondutaTipoServico());
+			historicoStatus.setTipoServicos(atendimento.getTipoServicos());
 			historicoStatus.setProfissional(null);
 			historicoStatus.setUltimaAtualizacao(LocalDateTime.now());
 			List<HistoricoStatus> listHistoricoStatus = new ArrayList<>();
@@ -100,8 +123,8 @@ public class AtendimentoController {
 
 		attributes.addFlashAttribute("success",
 				"O Cidadão " + atendimento.getCidadao().getNome()
-						+ " foi adicionado a lista de atendimentos para o serviço: "
-						+ atendimento.getCondutaTipoServico().getDescricao());
+						+ " foi adicionado a lista de atendimentos para o(s) serviço(s): "
+						+ atendimento.tiposServicosToString());
 		return new ModelAndView("redirect:/atendimento/listar");
 	}
 
@@ -131,15 +154,70 @@ public class AtendimentoController {
 		mv.addObject("statusAtendimentos", Status.values());
 		return mv;
 	}
-	
+
 	@RequestMapping("/procedimentos-triagem/{id}")
-	public ResponseEntity<?> procedimentosTriagem(@PathVariable("id") Long id){
+	public ResponseEntity<?> procedimentosTriagem(@PathVariable("id") Long id) {
 		Optional<Atendimento> optional = atendimentoRepository.findById(id);
-		if(optional.isPresent()) {
-			return ResponseEntity.ok().body(optional.get().getAtendimentoProcedimentos().stream().filter(r -> r.getTipoServico().equals(TipoServico.TRIAGEM)));
+		if (optional.isPresent()) {
+			return ResponseEntity.ok().body(optional.get().getAtendimentoProcedimentos());
 		}
 		return ResponseEntity.notFound().build();
+
+	}
+
+	@PostMapping("/diagnostico")
+	public ResponseEntity<?> diagnostico(@Valid Diagnostico diagnostico) {
+		Optional<Atendimento> optional = atendimentoRepository.findById(diagnostico.getIdAtendimento());
+		if (optional.isPresent()) {
+			Atendimento atendimento = optional.get();
+			diagnostico.setLocalDateTime(LocalDateTime.now());
+			atendimento.getDiagnostico().add(diagnostico);
+			atendimentoRepository.saveAndFlush(atendimento);
+			return ResponseEntity.ok().build();
+		}
+		return ResponseEntity.notFound().build();
+	}
+
+	@RequestMapping("/diagnosticos/{id}")
+	public ResponseEntity<?> diagnosticos(@PathVariable("id") Long id) {
+		Optional<Atendimento> optional = atendimentoRepository.findById(id);
+		if (optional.isPresent()) {
+			return ResponseEntity.ok().body(optional.get().getDiagnostico());
+		}
+		return ResponseEntity.notFound().build();
+
+	}
+
+	@PostMapping("/prescricao")
+	public ResponseEntity<?> prescricao(@Valid Prescricao prescricao, BindingResult result) {
+		Map<String, String> errors = new HashMap<>();
+		if (result.hasErrors()) {
+			for (FieldError error : result.getFieldErrors()) {
+				errors.put(error.getField(), error.getDefaultMessage());
+			}
+			return ResponseEntity.unprocessableEntity().body(errors);
+		}
 		
+		Optional<Atendimento> optional = atendimentoRepository.findById(prescricao.getIdAtendimento());
+		if (optional.isPresent()) {
+			System.out.println(optional.get().getCidadao().getNome());
+			Atendimento atendimento = optional.get();
+			prescricao.setData(LocalDateTime.now());
+			atendimento.getPrescricoes().add(prescricao);
+			atendimentoRepository.saveAndFlush(atendimento);
+			return ResponseEntity.ok().build();
+		}
+		return ResponseEntity.notFound().build();
+	}
+	
+	@RequestMapping("/prescricoes/{id}")
+	public ResponseEntity<?> prescricoes(@PathVariable("id") Long id) {
+		Optional<Atendimento> optional = atendimentoRepository.findById(id);
+		if (optional.isPresent()) {
+			return ResponseEntity.ok().body(optional.get().getPrescricoes());
+		}
+		return ResponseEntity.notFound().build();
+
 	}
 
 }

@@ -102,15 +102,15 @@ $("#form-triagem").submit(function(evt) {
 	var condutaTipoServico;
 
 	if ($("#customRadio1").is(":checked")) {
-		condutaTipoServico = $("input[name='atendimento.condutaTipoServico']:checked").val();
+		condutaTipoServico = $("input[name='tipoServicos']:checked").val();
 		condutaCidadao = null;
 	}
 	if ($("#customRadio2").is(":checked")) {
 		condutaCidadao = $("input[name='atendimento.condutaCidadao']:checked").val();
-		condutaTipoServico = "INATIVO";
+		condutaTipoServico = 5;
 	}
 
-	triagem['atendimento.condutaTipoServico'] = condutaTipoServico;
+	triagem['atendimento.tipoServicos'] = condutaTipoServico;
 	triagem['atendimento.condutaCidadao'] = condutaCidadao;
 
 	$.ajax({

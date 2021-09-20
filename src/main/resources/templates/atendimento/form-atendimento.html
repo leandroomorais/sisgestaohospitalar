@@ -6,218 +6,729 @@
 	xmlns:layout="http://ultraq.net.nz/thymeleaf/layout">
 
 <body>
-
 	<div class="main-panel" layout:fragment="main-panel">
 		<div class="container">
 			<div class="page-inner">
-				<div class="alert alert-danger alert-dismissible" role="alert"
-					th:if="${#fields.hasErrors('${atendimento.*}')}">
-					<div id="hasErrors" hidden="true"
-						th:text="${#fields.hasErrors('${atendimento.*}')}"></div>
-					<button type="button" class="close" data-dismiss="alert">
-						<span aria-hidden="true">&times;</span>
-					</button>
-					<th:block
-						th:each="detailedError : ${#fields.detailedErrors('${atendimento.*}')}">
-						<div>
-							<i class="fa fa-exclamation-circle"></i>&nbsp;[[${detailedError.message}]].
-						</div>
-					</th:block>
-				</div>
-				<div class="alert alert-success alert-dismissible fade show"
-					role="alert" th:if="${success}">
-					<strong>Sucesso!</strong> <span th:text="${success}"></span>
-					<button type="button" class="close" data-dismiss="alert"
-						aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-				</div>
+				<div id="alert"></div>
 				<div class="page-header">
-					<h4 class="page-title">Recepção</h4>
-					<th:block th:switch="${edit}">
-						<ul th:case="false" class="breadcrumbs">
-							<li class="nav-home"><i class="flaticon-home"></i></li>
-							<li class="separator"><i class="flaticon-right-arrow"></i></li>
-							<li class="nav-item"><a
-								th:href="@{/recepcao/adicionar-cidadao}">Adicionar Cidadão</a></li>
-							<li class="separator"><i class="flaticon-right-arrow"></i></li>
-							<li class="nav-item"><a>Dados Complementares</a></li>
-						</ul>
-
-						<ul th:case="true" class="breadcrumbs">
-							<li class="nav-home"><i class="flaticon-home"></i></li>
-							<li class="separator"><i class="flaticon-right-arrow"></i></li>
-							<li class="nav-item"><a th:href="@{/recepcao/listar-status}">Lista
-									de Atendimento</a></li>
-							<li class="separator"><i class="flaticon-right-arrow"></i></li>
-							<li class="nav-item"><a>Editar Atendimento</a></li>
-						</ul>
-					</th:block>
+					<h4 class="page-title">Atendimento</h4>
 				</div>
-
-
 				<div class="card">
-					<form method="post" th:action="@{/atendimento/salvar}"
-						th:object="${atendimento}">
-						<!-- 						<div th:switch="${edit}" class="card-header"> -->
-						<!-- 							<h4 th:case="true" class="card-title">Editar Atendimento</h4> -->
-						<!-- 							<h4 th:case="false" class="card-title">Adicionar a Lista de -->
-						<!-- 								Atendimento</h4> -->
-						<!-- 						</div> -->
-						<div class="card-body">
-							<div class="page-inner">
-								<div class="row justify-content-center">
-									<div class="col-md-12 col-lg-12 col-xl-12">
-										<div class="row align-items-center" th:if="${edit}">
-											<div class="col">
-												<h6 class="page-pretitle">Editar Atendimento</h6>
-												<h4 class="page-title">
-													Número do registro: <span></span>
-												</h4>
-											</div>
-											<div class="col-auto">
-												<button id="btn-mudar-status" type="button"
-													class="btn btn-warning btn-sm">
-													<i class="fa fa-ban"></i> Não aguardou atendimento
-												</button>
-											</div>
-										</div>
-										<div class="page-divider"></div>
-										<div class="card">
-											<div class="card-body">
-												<div class="row">
-													<div class="avatar avatar-lg">
-														<img th:if="${atendimento.cidadao.sexo == 'M'}"
-															th:src="@{/assets/img/icons/masculino.png}" alt="..."
-															class="avatar-img rounded-circle"> <img
-															th:if="${atendimento.cidadao.sexo == 'F'}"
-															th:src="@{/assets/img/icons/feminino.png}" alt="..."
-															class="avatar-img rounded-circle">
-													</div>
-													<div class="demo">
-														<span class="h3-info"
-															th:text="${atendimento.cidadao.nome}"></span><br>
-														<div class="h4-info">
-															<input type="hidden" id="cpfCidadao"
-																th:value="${atendimento.cidadao.cpf}"> <input
-																type="hidden" id="dataNascimentoCidadao"
-																th:value="${atendimento.cidadao.dataNascimento}"><i
-																class="fa fa-id-card"></i> <strong>CPF: </strong><span
-																data-mask="000.000.000-00"
-																th:text="${atendimento.cidadao.cpf}"></span> | <strong>CNS:
-															</strong> <span data-mask="000.0000.0000.0000"
-																th:text="${atendimento.cidadao.cns}"></span><br> <strong>SEXO:</strong>
-															<span th:if="${atendimento.cidadao.sexo == 'M'}">
-																M</span><span th:if="${atendimento.cidadao.sexo == 'F'}">
-																F</span><i></i> | <strong>NASC.:</strong><span
-																th:text="${#temporals.format(atendimento.cidadao.dataNascimento,'dd/MM/yyyy')}"></span>
-															| <strong>IDADE:</strong><span id="idadeCidadao"></span>
-														</div>
-													</div>
+					<!-- 						<div th:switch="${edit}" class="card-header"> -->
+					<!-- 							<h4 th:case="true" class="card-title">Editar Atendimento</h4> -->
+					<!-- 							<h4 th:case="false" class="card-title">Adicionar a Lista de -->
+					<!-- 								Atendimento</h4> -->
+					<!-- 						</div> -->
+					<!-- Input responsável por guardar o Id -->
+					<div class="card-body">
+						<div class="page-inner">
+							<div class="row justify-content-center">
+								<div class="col-md-12 col-lg-12 col-xl-12">
+									<div class="page-divider"></div>
+									<div class="card">
+										<div class="card-body">
+											<div class="row">
+												<div class="avatar avatar-lg">
+													<img th:if="${atendimento.cidadao.sexo == 'M'}"
+														th:src="@{/assets/img/icons/masculino.png}" alt="..."
+														class="avatar-img rounded-circle"> <img
+														th:if="${atendimento.cidadao.sexo == 'F'}"
+														th:src="@{/assets/img/icons/feminino.png}" alt="..."
+														class="avatar-img rounded-circle">
 												</div>
-											</div>
-										</div>
-
-										<!-- Input responsável por guardar o Id do Atendimento -->
-										<input name="id" type="hidden" th:field="*{id}"
-											th:value="${atendimento.id}" />
-
-										<!-- Input responsável por guardar o Cidadão -->
-										<input name="" type="hidden" th:field="*{cidadao}"
-											th:value="*{cidadao.id}" />
-
-										<!-- Input responsável por guardar a Data de Entrada do Atendimento -->
-										<input type="hidden" th:field="*{dataEntrada}"
-											th:value="${atendimento.dataEntrada}">
-
-										<!-- Input responsável por guardar o Status do Atendimento -->
-										<input type="hidden" th:field="*{status}"
-											th:value="${status}">
-
-										<div class="card">
-											<div class="card-header">
-												<div class="card-title">Dados complementares</div>
-											</div>
-											<div class="card-body">
-												<div class="row">
-													<div class="col-md-6 col-lg-8">
-														<div class="form-group">
-															<label for="responsavel">Responsável</label> <input
-																th:field="*{responsavel}" type="text"
-																class="form-control" id="responsavel" placeholder="">
-															<small id="responsavel" class="form-text text-muted">Digite
-																o nome do Responsável pelo Cidadão, caso tenha.</small>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-
-										<div class="card">
-											<div class="card-header">
-												<div class="card-title">Encaminhamento Interno</div>
-											</div>
-											<div class="card-body">
-												<div class="row">
-													<div class="col-md-12">
-														<div class="row">
-															<div class="col-md-6">
-																<div class="form-group">
-																	<label for="nome">Profissional de Destino:</label><select
-																		th:field="*{profissionalDestino}"
-																		class="form-control form-control">
-																		<option th:each="profissional : ${profissionais}"
-																			th:value="${profissional.id}"
-																			th:text="${profissional.nome}"></option>
-																	</select>
-																</div>
-															</div>
-															<div class="col-md-6">
-																<div class="form-check"
-																	th:classappend="${#fields.hasErrors('condutaTipoServico')} ? has-error">
-																	<label>Tipo de Serviço:</label>
-																	<div class="servicos">
-																		<div class="row">
-																			<th:block
-																				th:each="condutaTipoServico : ${tipoServicos}">
-																				<label th:if="${condutaTipoServico.descricao != 'Inativo'}" class="form-radio-label"> <input
-																					th:field="*{condutaTipoServico}"
-																					class="form-radio-input" type="radio"
-																					name="optionsRadios"
-																					th:value="${condutaTipoServico}"> <span
-																					class="form-radio-sign"
-																					th:text="${condutaTipoServico.descricao}"></span>
-																				</label>
-																			</th:block>
-																		</div>
-																	</div>
-																</div>
-															</div>
-														</div>
+												<div class="demo">
+													<span class="h3-info" th:text="${atendimento.cidadao.nome}"></span><br>
+													<div class="h4-info">
+														<input type="hidden" id="cpfCidadao"
+															th:value="${atendimento.cidadao.cpf}"> <input
+															type="hidden" id="dataNascimentoCidadao"
+															th:value="${atendimento.cidadao.dataNascimento}"><i
+															class="fa fa-id-card"></i> <strong>CPF: </strong><span
+															data-mask="000.000.000-00"
+															th:text="${atendimento.cidadao.cpf}"></span> | <strong>CNS:
+														</strong> <span data-mask="000.0000.0000.0000"
+															th:text="${atendimento.cidadao.cns}"></span><br> <strong>SEXO:</strong>
+														<span th:if="${atendimento.cidadao.sexo == 'M'}"> M</span><span
+															th:if="${atendimento.cidadao.sexo == 'F'}"> F</span><i></i>
+														| <strong>NASC.:</strong><span
+															th:text="${#temporals.format(atendimento.cidadao.dataNascimento,'dd/MM/yyyy')}"></span>
+														| <strong>IDADE:</strong><span id="idadeCidadao"></span>
 													</div>
 												</div>
 											</div>
 										</div>
 									</div>
+
+									<div class="row">
+										<div class="col-sm-3 col-md-2 col-lg-2">
+											<div
+												class="nav flex-column nav-pills nav-secondary nav-pills-no-bd"
+												id="v-pills-tab-without-border" role="tablist"
+												aria-orientation="vertical">
+												<a class="nav-link active" id="v-pills-resumo-tab-nobd"
+													data-toggle="pill" href="#v-pills-resumo-nobd" role="tab"
+													aria-controls="v-pills-resumo-nobd" aria-selected="true"><strong>RESUMO</strong></a>
+												<a class="nav-link" id="v-pills-atendimento-tab-nobd"
+													data-toggle="pill" href="#v-pills-atendimento-nobd"
+													role="tab" aria-controls="v-pills-atendimento-nobd"
+													aria-selected="false"><strong>ATENDIMENTO</strong></a> <a
+													class="nav-link" id="v-pills-historico-tab-nobd"
+													data-toggle="pill" href="#v-pills-historico-nobd"
+													role="tab" aria-controls="v-pills-historico-nobd"
+													aria-selected="false"><strong>HISTÓRICO</strong></a>
+											</div>
+										</div>
+										<div class="col-sm-9 col-md-10 col-lg-10">
+											<div class="tab-content"
+												id="v-pills-without-border-tabContent">
+												<div class="tab-pane fade show active"
+													id="v-pills-resumo-nobd" role="tabpanel"
+													aria-labelledby="v-pills-resumo-tab-nobd">
+													<p>Far far away, behind the word mountains, far from
+														the countries Vokalia and Consonantia, there live the
+														blind texts. Separated they live in Bookmarksgrove right
+														at the coast of the Semantics, a large language ocean.</p>
+
+													<p>A small river named Duden flows by their place and
+														supplies it with the necessary regelialia. It is a
+														paradisematic country, in which roasted parts of sentences
+														fly into your mouth.</p>
+												</div>
+												<div class="tab-pane fade" id="v-pills-atendimento-nobd"
+													role="tabpanel"
+													aria-labelledby="v-pills-atendimento-tab-nobd">
+													<ul class="nav nav-tabs">
+														<li class="nav-item"><a class="nav-link active"
+															data-toggle="tab" href="#home"><strong>CONSULTA</strong></a></li>
+														<li class="nav-item"><a class="nav-link"
+															data-toggle="tab" href="#menu1"><strong>PRESCRIÇÕES</strong></a></li>
+														<li class="nav-item"><a class="nav-link"
+															data-toggle="tab" href="#menu2"><strong>EXAMES</strong></a></li>
+														<li class="nav-item"><a class="nav-link "
+															data-toggle="tab" href="#menu3"><strong>ATESTADOS</strong></a></li>
+													</ul>
+													<input id="id-prontuario" type="hidden"
+														th:value="${atendimento.cidadao.prontuario.id}"> <input
+														id="id-atendimento" type="hidden"
+														th:value="${atendimento.id}">
+													<div class="tab-content">
+														<div id="home" class="tab-pane fade show active">
+															<div class="card mt-3">
+																<div class="card-header">
+																	<div class="card-title">Sumário da história
+																		clínica</div>
+																</div>
+																<div class="card-body">
+																	<div class="row">
+																		<div class="col-md-12 col-lg-12">
+																			<div class="form-group">
+																				<textarea class="form-control"
+																					name="historiaClinica" id="historia-clinica"></textarea>
+																				<small id="historia-clinica-small"
+																					class="form-text text-muted">Queixa
+																					principal, tratamento, história atual da doença,
+																					história pessoal e familiar</small>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+															</div>
+															<div class="card mt-3">
+																<div class="card-header">
+																	<div class="card-title">Avaliação</div>
+																</div>
+																<div class="card-body">
+																	<div class="row">
+																		<div class="col-md-2">
+																			<div class="form-group">
+																				<label for="sinaisVitais-pressaoArterial">Pressão
+																					Arterial </label><input type="text"
+																					name="sinaisVitais.pressaoArterial"
+																					class="form-control"
+																					id="sinaisVitais-pressaoArterial"
+																					placeholder="___/__"> <small
+																					id="pressaoArterial-small"
+																					class="form-text text-muted">mmHg</small> <small
+																					id="sinaisVitais.pressaoArterial-error"></small>
+																			</div>
+																		</div>
+
+																		<div class="col-md-2">
+																			<div class="form-group">
+																				<label for="sinaisVitais-frequenciaRespiratoria">Freq.
+																					Respiratória</label> <input type="number"
+																					class="form-control"
+																					id="sinaisVitais-frequenciaRespiratoria"
+																					name="sinaisVitais.frequenciaRespiratoria"
+																					placeholder=""><small
+																					id="sinaisVitais-frequenciaRespitatoria-small"
+																					class="form-text text-muted">rpm</small> <small
+																					id="sinaisVitais-frequenciaRespitatoria-error"></small>
+																			</div>
+																		</div>
+
+																		<div class="col-md-2">
+																			<div class="form-group">
+																				<label for="sinaisVitais-frequenciaCardiaca">Freq.
+																					Cardíaca</label> <input type="number" class="form-control"
+																					name="sinaisVitais.frequenciaCardiaca"
+																					id="sinaisVitais-frequenciaCardiaca" placeholder="">
+																				<small id="sinaisVitais-frequeciaCardiaca-small"
+																					class="form-text text-muted">bpm</small> <small
+																					id="sinaisVitais-frequenciaCardiaca-error"></small>
+																				<small id="sinaisVitais-frequenciaCardiaca-error"></small>
+																			</div>
+																		</div>
+
+																		<div class="col-md-2">
+																			<div class="form-group">
+																				<label for="sinaisVitais-temperaturaCorporal">Temperatura</label>
+																				<input type="text" class="form-control"
+																					id="sinaisVitais-temperaturaCorporal"
+																					placeholder="00.0"> <small
+																					id="temperaturacorporal-small"
+																					class="form-text text-muted">°C</small> <small
+																					id="sinaisVitais-temperaturaCorporal-error"></small>
+																			</div>
+																		</div>
+
+																		<div class="col-md-2">
+																			<div class="form-group">
+																				<label for="sinaisVitais-saturacaoOxigenio">Saturação
+																					de O<sub>2</sub>
+																				</label> <input type="number" class="form-control"
+																					name="sinaisVitais.saturacaoOxigenio"
+																					id="sinaisVitais-saturacaoOxigenio" placeholder="">
+																				<small id="sinaisVitais-saturacaoOxigenio-small"
+																					class="form-text text-muted">%</small> <small
+																					id="sinaisVitais-temperaturaCorporal-error"></small>
+																			</div>
+																		</div>
+
+																		<div class="col-md-3">
+																			<div class="form-group">
+																				<label for="sinaisVitais-glicemiaCapilar">Glicemia
+																					Capilar</label> <input type="number"
+																					name="sinaisVitais.glicemiaCapilar"
+																					class="form-control"
+																					id="sinaisVitais-glicemiaCapilar" placeholder="">
+																				<small id="sinaisVitais-glicemiaCapilar-small"
+																					class="form-text text-muted">mg/dl</small>
+																			</div>
+																		</div>
+																		<div class="col-md-4">
+																			<div class="form-group">
+																				<label for="sinaisVitais-momentoColeta">Momento
+																					coleta</label> <select name="sinaisVitais.momentoColeta"
+																					class="form-control form-control"
+																					id="sinaisVitais-momentoColeta">
+																					<option th:each="momentoColeta : ${momentosColeta}"
+																						th:value="${momentoColeta}"
+																						th:text="${momentoColeta.nome}"></option>
+																				</select> <small id="sinaisVitais-momentoColeta-small"
+																					class="form-text text-muted"></small>
+																			</div>
+																		</div>
+																	</div>
+																	<div class="row">
+																		<div class="col-md-12 col-lg-12">
+																			<div class="form-group">
+																				<textarea class="form-control" name="avaliacao"
+																					id="avaliacao"></textarea>
+																				<small id="avaliacao-small"
+																					class="form-text text-muted">Digite na área
+																					de texto acima as observações que achar necessário</small>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+															</div>
+															<div class="card mt-3">
+																<div class="card-header">
+																	<div class="card-title">Diagnóstico</div>
+																</div>
+																<div class="card-body">
+																	<div class="row">
+																		<div class="col-md-12">
+																			<div class="form-group">
+																				<label for="nome">Nota:</label>
+																				<textarea id="nota" class="form-control"></textarea>
+																			</div>
+																		</div>
+																		<div class="col-md-12">
+																			<div class="form-group">
+																				<label for="diagnostico-cid">Cid-10: </label>
+																				<div class="input-group">
+																					<div class="input-group-prepend">
+																						<button id="button-cid" type="button"
+																							class="btn btn-black btn-border">
+																							<i id="i-cid" class="fa fa-search"></i>
+																						</button>
+																					</div>
+																					<input id="diagnostico-cid" type="text"
+																						class="form-control" placeholder="Pesquisa de Cid">
+																					<input type="hidden" id="id-cid">
+																				</div>
+																			</div>
+																		</div>
+																		<div class="col-md-12 text-right">
+																			<button id="submit-diagnostico" type="button"
+																				class="btn btn-primary btn-sm">
+																				<i class="fa fa-plus"></i> Adicionar
+																			</button>
+																		</div>
+																		<div class="col-md-12 mt-3">
+																			<div class="card-sub">Diagnósticos:</div>
+																			<div id="div-table-diagnosticos"
+																				class="table-responsive">
+																				<table id="table-diagnosticos"
+																					class="display table table-hover dataTable"
+																					role="grid"
+																					aria-describedby="basic-datatables_info"
+																					style="width: 100%">
+																					<thead>
+																						<tr role="row">
+																							<th></th>
+																							<th></th>
+																							<th></th>
+																						</tr>
+																					</thead>
+																					<tbody>
+																						<tr role="row" class="odd">
+																							<td></td>
+																							<td></td>
+																							<td></td>
+																						</tr>
+																					</tbody>
+																				</table>
+																			</div>
+
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</div>
+														<div id="menu1" class="tab-pane fade">
+															<div class="card">
+																<div id="card-header" class="card-header">
+																	<div class="card-title">Prescrições do
+																		Atendimento</div>
+																</div>
+																<div class="card-body">
+																	<div id="info-prescricoes">
+																		<div id="div-prescricoes"></div>
+																		<div class="text-right">
+																			<button type="button"
+																				onclick="exibeFormularioPrescricao()"
+																				class="btn btn-primary btn-sm">
+																				<i class="fa fa-plus"></i> Nova prescrição
+																			</button>
+																		</div>
+																	</div>
+																	<div id="div-form-prescricao">
+																		<form id="form-prescricao"
+																			action="/atendimento/prescricao" method="post">
+																			<h5 class="card-title">Nova prescrição</h5>
+																			<div class="row">
+																				<div class="col-md-12">
+																					<div class="form-group">
+																						<label for="medicamento-prescricao">Adicionar
+																							Medicamentos*</label>
+																						<div class="input-group">
+																							<div class="input-group-prepend">
+																								<button id="button-medicamento" type="button"
+																									class="btn btn-black btn-border">
+																									<i id="i-medicamento" class="fa fa-search"></i>
+																								</button>
+																							</div>
+																							<input id="medicamento-prescricao" type="text"
+																								class="form-control"
+																								placeholder="Pesquisa de medicamentos">
+																							<input type="hidden" id="id-medicamento">
+																						</div>
+																					</div>
+																				</div>
+
+																				<div class="col-md-4">
+																					<div class="form-group">
+																						<label for="concentracao">Concentração*</label> <input
+																							type="text" class="form-control"
+																							name="concentracao" id="concentracao"
+																							placeholder="" disabled="disabled"> <small
+																							id="concentracao-small"
+																							class="form-text text-muted"></small>
+																					</div>
+																				</div>
+																				<div class="col-md-4">
+																					<div class="form-group">
+																						<label for="forma">Forma farmacêutica*</label> <input
+																							type="text" class="form-control" name="forma"
+																							id="forma" placeholder="" disabled="disabled">
+																						<small id="forma-small"
+																							class="form-text text-muted"></small>
+																					</div>
+																				</div>
+																				<div class="col-md-4">
+																					<div class="form-group">
+																						<label for="via">Via de administração*</label> <select
+																							id="via" class="form-control form-control">
+																							<option
+																								th:each="viaAdministracao : ${viasAdministracao}"
+																								th:value="${viaAdministracao.id}"
+																								th:text="${viaAdministracao.nome}"></option>
+																						</select> <small id="via-small"
+																							class="form-text text-muted"></small>
+																					</div>
+																				</div>
+																				<div class="col-md-6">
+																					<div class="form-group">
+																						<label for="posologia">Posologia*</label> <input
+																							type="text" class="form-control" name="posologia"
+																							id="posologia" placeholder=""> <small
+																							id="posologia-small" class="form-text text-muted"></small>
+																					</div>
+																				</div>
+																				<div class="col-md-4">
+																					<div class="form-group">
+																						<label for="quantidade">Quantidade a
+																							dispensar*</label> <input type="number"
+																							class="form-control" name="quantidade"
+																							id="quantidade" placeholder=""> <small
+																							id="quantidade-small"
+																							class="form-text text-muted"></small>
+																					</div>
+																				</div>
+																				<div class="col-md-4">
+																					<div class="form-group">
+																						<label for="dose-unica">Dose única?</label><br>
+																						<input id="dose-unica" type='checkbox'
+																							data-toggle='toggle' data-on='Sim' data-off='Não'>
+																						<small id="dose-unica-small"
+																							class="form-text text-muted"></small>
+																					</div>
+																				</div>
+																				<div class="col-md-4">
+																					<div class="form-group">
+																						<label for="uso-continuo">Uso contínuo?</label><br>
+																						<input id="uso-continuo" type='checkbox'
+																							data-toggle='toggle' data-on='Sim' data-off='Não'>
+																						<small id="uso-continuo-small"
+																							class="form-text text-muted"></small>
+																					</div>
+																				</div>
+
+																				<div class="col-md-4">
+																					<div class="form-group">
+																						<label for="administracao-no-atendimento">Adiministração
+																							no atendimento?</label><br> <input
+																							id="administracao-no-atendimento" type='checkbox'
+																							data-toggle='toggle' data-on='Sim' data-off='Não'>
+																						<small id="administracao-no-atendimento-small"
+																							class="form-text text-muted"></small>
+																					</div>
+																				</div>
+
+																				<div class="col-md-12">
+																					<div class="form-group">
+																						<label for="orientacao">Orientacões</label>
+																						<textarea class="form-control" name="orientacao"
+																							id="orientacao" placeholder=""></textarea>
+																						<small id="orientacao-small"
+																							class="form-text text-muted"></small>
+																					</div>
+																				</div>
+
+																			</div>
+																			<div class="text-right">
+																				<button id="submit-prescricao" type="submit"
+																					class="btn btn-primary btn-sm">Salvar</button>
+																				<button onclick="fechaFormularioPrescricao()"
+																					type="button" class="btn btn-warning btn-sm">
+																					Cancelar</button>
+																			</div>
+																		</form>
+																	</div>
+																	<div id="div-form-edit-prescricao">
+																		<form id="form-edit-prescricao"
+																			action="/prescricao/editar" method="post">
+																			<h5 class="card-title">Editar prescrição</h5>
+																			<div class="row">
+																				<div class="col-md-12">
+																					<input type="hidden" id="id-prescricao">
+																					<div class="form-group">
+																						<label for="medicamento-prescricao-dto">Adicionar
+																							Medicamentos*</label>
+																						<div class="input-group">
+																							<div class="input-group-prepend">
+																								<button id="button-medicamento-dto"
+																									type="button" class="btn btn-black btn-border">
+																									<i id="i-medicamento-dto" class="fa fa-edit"></i>
+																								</button>
+																							</div>
+																							<input id="medicamento-prescricao-dto"
+																								type="text" class="form-control"
+																								disabled="disabled"
+																								placeholder="Pesquisa de medicamentos">
+																							<input type="hidden" id="id-medicamento-dto">
+																						</div>
+																					</div>
+																				</div>
+
+																				<div class="col-md-4">
+																					<div class="form-group">
+																						<label for="concentracao-dto">Concentração*</label>
+																						<input type="text" class="form-control"
+																							name="concentracao" id="concentracao-dto"
+																							placeholder="" disabled="disabled"> <small
+																							id="concentracao-dto-small"
+																							class="form-text text-muted"></small>
+																					</div>
+																				</div>
+																				<div class="col-md-4">
+																					<div class="form-group">
+																						<label for="forma-dto">Forma farmacêutica*</label>
+																						<input type="text" class="form-control"
+																							name="forma" id="forma-dto" placeholder=""
+																							disabled="disabled"> <small
+																							id="forma-dto-small" class="form-text text-muted"></small>
+																					</div>
+																				</div>
+																				<div class="col-md-4">
+																					<div class="form-group">
+																						<label for="via-dto">Via de administração*</label>
+																						<select id="via-dto"
+																							class="form-control form-control">
+																							<option
+																								th:each="viaAdministracao : ${viasAdministracao}"
+																								th:value="${viaAdministracao.id}"
+																								th:text="${viaAdministracao.nome}"></option>
+																						</select> <small id="via-dto-small"
+																							class="form-text text-muted"></small>
+																					</div>
+																				</div>
+																				<div class="col-md-6">
+																					<div class="form-group">
+																						<label for="posologia-dto">Posologia*</label> <input
+																							type="text" class="form-control" name="posologia"
+																							id="posologia-dto" placeholder=""> <small
+																							id="posologia-dto-small"
+																							class="form-text text-muted"></small>
+																					</div>
+																				</div>
+																				<div class="col-md-4">
+																					<div class="form-group">
+																						<label for="quantidade-dto">Quantidade a
+																							dispensar*</label> <input type="number"
+																							class="form-control" name="quantidade"
+																							id="quantidade-dto" placeholder=""> <small
+																							id="quantidade-dto-small"
+																							class="form-text text-muted"></small>
+																					</div>
+																				</div>
+																				<div class="col-md-4">
+																					<div class="form-group">
+																						<label for="dose-unica-dto">Dose única?</label><br>
+																						<input id="dose-unica-dto" type='checkbox'
+																							data-toggle='toggle' data-on='Sim' data-off='Não'>
+																						<small id="dose-unica-dto-small"
+																							class="form-text text-muted"></small>
+																					</div>
+																				</div>
+																				<div class="col-md-4">
+																					<div class="form-group">
+																						<label for="uso-continuo-dto">Uso
+																							contínuo?</label><br> <input id="uso-continuo-dto"
+																							type='checkbox' data-toggle='toggle'
+																							data-on='Sim' data-off='Não'> <small
+																							id="uso-continuo-dto-small"
+																							class="form-text text-muted"></small>
+																					</div>
+																				</div>
+
+																				<div class="col-md-4">
+																					<div class="form-group">
+																						<label for="administracao-no-atendimento-dto">Adiministração
+																							no atendimento?</label><br> <input
+																							id="administracao-no-atendimento-dto"
+																							type='checkbox' data-toggle='toggle'
+																							data-on='Sim' data-off='Não'> <small
+																							id="administracao-no-atendimento-dto-small"
+																							class="form-text text-muted"></small>
+																					</div>
+																				</div>
+
+																				<div class="col-md-12">
+																					<div class="form-group">
+																						<label for="orientacao-dto">Orientacões</label>
+																						<textarea class="form-control" name="orientacao"
+																							id="orientacao-dto" placeholder=""></textarea>
+																						<small id="orientacao-dto-small"
+																							class="form-text text-muted"></small>
+																					</div>
+																				</div>
+
+																			</div>
+																			<div class="text-right">
+																				<button id="submit-prescricao" type="submit"
+																					class="btn btn-primary btn-sm">Salvar</button>
+																				<button onclick="fechaFormularioPrescricao()"
+																					type="button" class="btn btn-warning btn-sm">
+																					Cancelar</button>
+																			</div>
+																		</form>
+																	</div>
+																	<div id="form-administrar-prescricao">
+																		<form id="form-confirma-administracao"
+																			action="/prescricao/administrar" method="post">
+																			<h5 class="card-title">Administrar prescrição</h5>
+																			<div class="row">
+																				<div class="col-md-12">
+																					<div class="card-prescricao-administracao">Informações
+																						da Prescrição</div>
+																				</div>
+
+																				<div class="col-md-12">
+																					<div class="form-check">
+																						<label class="form-check-label"> <input
+																							id="administracaoRealizada"
+																							name="administracaoRealizada" data-toggle="modal"
+																							data-target="#exampleModalCenter"
+																							class="form-check-input" type="checkbox">
+																							<span class="form-check-sign">Confirmo a
+																								admnistração da prescrição</span>
+																						</label> <small id="nota-administracao-small"
+																							class="form-text text-muted">Marque esta
+																							caixa de seleção para informar a administração da
+																							prescrição e o procedimento correspondente.</small>
+																					</div>
+																				</div>
+
+																				<div class="col-md-12">
+																					<div class="form-group">
+																						<label for="nota-administracao">Anotações
+																							da administração:*</label>
+																						<textarea class="form-control" name="noto"
+																							id="nota-administracao" placeholder=""></textarea>
+																						<small id="nota-administracao-small"
+																							class="form-text text-muted">Registre
+																							neste espaço, todos os efeitos diferentes (em
+																							intensidade e forma) do esperado para o
+																							medicamento ou as observações que achar
+																							necessário.</small>
+																					</div>
+																				</div>
+																				<!-- Modal -->
+																				<div class="modal fade" id="exampleModalCenter"
+																					tabindex="-1" role="dialog"
+																					aria-labelledby="exampleModalCenterTitle"
+																					aria-hidden="true">
+																					<div class="modal-dialog modal-dialog-centered"
+																						role="document">
+																						<div class="modal-content">
+																							<div class="modal-header">
+																								<h5 class="modal-title"
+																									id="exampleModalLongTitle">Adicionar
+																									procedimentos</h5>
+																								<button type="button" class="close"
+																									data-dismiss="modal" aria-label="Close">
+																									<span aria-hidden="true">&times;</span>
+																								</button>
+																							</div>
+																							<div class="modal-body">
+																								<div class="card-sub">O seguinte
+																									procedimento será adicionado a este
+																									atendimento:</div>
+																								<div class="form-group">
+																									<input
+																										value="0515545 - Administração de medicmanetos po via intramuscular"
+																										id="procedimentos-admin-medicamentos"
+																										type="text" class="form-control"
+																										disabled="disabled"> <input
+																										type="hidden" id="id-procedimento">
+																								</div>
+																								<div class="form-group">
+																									<label for="qtd-procedimento">Quantidade:
+																									</label> <input id="qtd-procedimento" type="number"
+																										class="form-control">
+																								</div>
+																							</div>
+																							<div class="modal-footer">
+																								<button type="button" class="btn btn-secondary"
+																									data-dismiss="modal">Close</button>
+																								<button type="button" class="btn btn-primary">Save
+																									changes</button>
+																							</div>
+																						</div>
+																					</div>
+																				</div>
+																			</div>
+																			<div class="text-right">
+																				<button id="submit-prescricao" type="submit"
+																					class="btn btn-primary btn-sm">Salvar</button>
+																				<button onclick="fechaFormularioPrescricao()"
+																					type="button" class="btn btn-warning btn-sm">
+																					Cancelar</button>
+																			</div>
+																		</form>
+																	</div>
+																</div>
+
+															</div>
+														</div>
+														<div id="menu2" class="tab-pane fade">
+															<h3>Menu 2</h3>
+															<p>Sed ut perspiciatis unde omnis iste natus error
+																sit voluptatem accusantium doloremque laudantium, totam
+																rem aperiam.</p>
+														</div>
+														<div id="menu3" class="tab-pane fade">
+															<h3>Menu 3</h3>
+															<p>Eaque ipsa quae ab illo inventore veritatis et
+																quasi architecto beatae vitae dicta sunt explicabo.</p>
+														</div>
+													</div>
+												</div>
+												<div class="tab-pane fade" id="v-pills-historico-nobd"
+													role="tabpanel"
+													aria-labelledby="v-pills-historico-tab-nobd">
+													<p>Pityful a rethoric question ran over her cheek, then
+														she continued her way. On her way she met a copy. The copy
+														warned the Little Blind Text, that where it came from it
+														would have been rewritten a thousand times and everything
+														that was left from its origin would be the word "and" and
+														the Little Blind Text should turn around and return to its
+														own, safe country.</p>
+
+													<p>But nothing the copy said could convince her and so
+														it didn’t take long until a few insidious Copy Writers
+														ambushed her, made her drunk with Longe and Parole and
+														dragged her into their agency, where they abused her for
+														their</p>
+												</div>
+											</div>
+
+										</div>
+									</div>
 								</div>
+
+
 							</div>
 						</div>
-						<div class="card-action">
-							<button id="submit-guia-atendimento" type="submit"
-								class="btn btn-primary">Adicionar a Lista de
-								Atendimento</button>
-							<a th:ref="${/listar-status}" class="btn btn-warning">Cancelar</a>
-						</div>
-					</form>
+					</div>
 				</div>
-
-
 			</div>
+
+
 		</div>
-		<div th:replace="fragments/footer :: footer-layout"></div>
 	</div>
+	<div th:replace="fragments/footer :: footer-layout"></div>
+
 
 	<th:block layout:fragment="my-js-files">
+		<script type="text/javascript" th:inline="javascript"
+			th:src="@{/assets/js/atendimento/form-atendimento.js}"></script>
+		<script type="text/javascript" th:inline="javascript"
+			th:src="@{/assets/js/atendimento/form-atendimento-prescricao.js}"></script>
 
 	</th:block>
 </body>

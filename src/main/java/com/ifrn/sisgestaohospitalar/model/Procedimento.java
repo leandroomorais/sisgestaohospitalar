@@ -54,7 +54,7 @@ public class Procedimento {
 	 */
 	@LazyCollection(LazyCollectionOption.FALSE)
 	@ManyToMany(cascade = CascadeType.ALL)
-	@JoinTable(name = "procedimento_tiporegistro", joinColumns = {
+	@JoinTable(name = "procedimento_tiposregistro", joinColumns = {
 			@JoinColumn(name = "procedimento_id") }, inverseJoinColumns = { @JoinColumn(name = "registro_id") })
 	private List<RegistroSigtap> registros;
 
@@ -62,7 +62,7 @@ public class Procedimento {
 	 * Relacionamento entre os objetos Procedimento e Ocupacao
 	 */
 	@ManyToMany(cascade = CascadeType.ALL)
-	@JoinTable(name = "procedimento_ocupacao", joinColumns = {
+	@JoinTable(name = "procedimento_ocupacoes", joinColumns = {
 			@JoinColumn(name = "procedimento_id") }, inverseJoinColumns = { @JoinColumn(name = "ocupacao_id") })
 	private List<Ocupacao> ocupacoes;
 
@@ -71,7 +71,7 @@ public class Procedimento {
 	 */
 	@LazyCollection(LazyCollectionOption.FALSE)
 	@ManyToMany(cascade = CascadeType.ALL)
-	@JoinTable(name = "procedimento_cid", joinColumns = {
+	@JoinTable(name = "procedimento_cids", joinColumns = {
 			@JoinColumn(name = "procedimento_id") }, inverseJoinColumns = { @JoinColumn(name = "cid_id") })
 	private List<Cid> cids;
 
