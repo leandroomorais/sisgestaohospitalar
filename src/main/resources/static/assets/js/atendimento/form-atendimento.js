@@ -3,7 +3,7 @@ $(document).ready(function() {
 
 	$("#div-form-prescricao").hide();
 	$("#div-form-edit-prescricao").hide();
-	$("#form-administrar-prescricao").hide();
+	$("#div-form-confirma-prescricao").hide();
 
 	//Função que inicia o TinyMCE
 	tinymce.init({

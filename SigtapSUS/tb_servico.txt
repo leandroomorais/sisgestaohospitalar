@@ -1,67 +1,73 @@
-100Serviço de Atenção a Saúde no Sistema Penitenciário                                                                     201903
-101Estratégia de Saúde da Família                                                                                          201903
-102Estratégias de Agentes Comunitário de Saúde                                                                             201903
-103Serviço de Atendimento Móvel de Urgências                                                                               201903
-104Regulação Assistêncial dos Serviços de Saúde                                                                            201903
-105Serviço de Atenção em Neurologia/ Neurocirurgia                                                                         201903
-106Serviço de Atenção a DST/HIV/AIDS                                                                                       201903
-107Serviço de Atenção a Saúde Auditiva                                                                                     201903
-108Serviço de Atenção a Saúde do Trabalhador                                                                               201903
-109Serviço de Atenção a Saúde dos Adolecentes em Conflito com a Lei, em Regime de Internação e Internação Provisória       201903
-110Serviço de Atenção a Saúde Reprodutiva                                                                                  201903
-111Serviço de Atenção ao Paciente com Tuberculose                                                                          201903
-112Serviço de Atenção ao Pré-Natal, Parto e Nascimento                                                                     201903
-113Serviço de Atenção Domiciliar                                                                                           201903
-114Serviço de Atenção em Saúde Bucal                                                                                       201903
-115Serviço de Atenção Psicossocial                                                                                         201903
-116Serviço de Atenção Cardiovascular/Cardiologia                                                                           201903
-117Serviço de Cirurgia Reparadora                                                                                          201903
-118Serviço de Cirurgia Torácica                                                                                            201903
-119Serviço de Controle de Tabagismo                                                                                        201903
-120Serviço de Diagnóstico por Anatomia Patológica e/ou Citopatologia                                                       201903
-121Diagnóstico por Imagem                                                                                                  201903
-122Serviço de Diagnóstico por Métodos Gráficos/Dinâmicos                                                                   201903
-123Serviço de Dispensação de Órteses, Próteses e Materiais Especiais                                                       201903
-124Serviço de Endocrinologia                                                                                               201903
-125Serviço de Farmácia                                                                                                     201903
-126Serviço de Fisioterapia                                                                                                 201903
-127Serviço de Atenção à Obesidade                                                                                          201903
-128Serviço de Hemoterapia                                                                                                  201903
-129Servico de Laboratório de Histocompatibilidade                                                                          201903
-130Atenção à Doença Renal Crônica                                                                                          201903
-131Serviço de Oftalmologia                                                                                                 201903
-132Serviço de Oncologia                                                                                                    201903
-133Serviço de Pneumologia                                                                                                  201903
-134Serviço de Práticas Integrativas e Complementares                                                                       201903
-135Serviço de Reabilitação                                                                                                 201903
-136Serviço de Suporte Nutricional                                                                                          201903
-137Serviço de Telemedicina                                                                                                 201903
-138Serviço de Traumato-Ortopedia                                                                                           201903
-139Serviço de Triagem Neonatal                                                                                             201903
-140Serviço de Urgência e Emergência                                                                                        201903
-141Serviço de Vigilância em Saúde                                                                                          201903
-142Serviço de Endoscopia                                                                                                   201903
-143Serviço Móvel de Urgência (exceto SAMU)                                                                                 201903
-144Serviço Posto de Coleta de Materiais Biológicos                                                                         201903
-145Serviço de Diagnóstico por Laboratório Clínico                                                                          201903
-146Serviço de Videolaparoscopia                                                                                            201903
-147Serviço de Apoio a Saúde da Família                                                                                     201903
-148Hospital-Dia                                                                                                            201903
-149Transplante                                                                                                             201903
-150Cirurgia Vascular                                                                                                       201903
-151Medicina Nuclear                                                                                                        201903
-153Atenção Especializada no Processo Transexualizador                                                                      201903
-154Serviço de Banco de Tecidos                                                                                             201903
-155Serviço de Traumatologia  Ortopedia                                                                                     201903
-156Serviço de Atenção á Saúde das Pessoas Ostomizadas                                                                      201903
-157Serviço de Laboratorio de Protese Dentaria                                                                              201903
-158Serviço de Atenção Integral em Hanseniase                                                                               201903
-159Atenção Básica                                                                                                          201903
-160Teleconsultoria                                                                                                         201903
-162Serviço de Terapia Intensiva                                                                                            201903
-163Serviço de Cuidados Intermediários                                                                                      201903
-164Serviço de Órteses,Próteses e Materiais Especiais em Reabilitação                                                       201903
-165Atenção às Pessoas em Situação de Violência Sexual                                                                      201903
-167Atendimento Itinerante de Asistência e Ensino em Saúde                                                                  201903
-168Atenção Às Pessoas com Doenças Raras                                                                                    201903
-169Serviço de Atenção em Urologia                                                                                          201903
+100Serviço de Atenção a Saúde no Sistema Penitenciário                                                                     202109
+101Estratégia de Saúde da Família                                                                                          202109
+102Estratégias de Agentes Comunitário de Saúde                                                                             202109
+103Serviço de Atendimento Móvel de Urgências                                                                               202109
+104Regulação Assistêncial dos Serviços de Saúde                                                                            202109
+105Serviço de Atenção em Neurologia/ Neurocirurgia                                                                         202109
+106Serviço de Atenção a DST/HIV/AIDS                                                                                       202109
+107Serviço de Atenção a Saúde Auditiva                                                                                     202109
+108Serviço de Atenção a Saúde do Trabalhador                                                                               202109
+109Serviço de Atenção a Saúde dos Adolecentes em Conflito com a Lei, em Regime de Internação e Internação Provisória       202109
+110Serviço de Atenção a Saúde Reprodutiva                                                                                  202109
+111Serviço de Atenção ao Paciente com Tuberculose                                                                          202109
+112Serviço de Atenção ao Pré-Natal, Parto e Nascimento                                                                     202109
+113Serviço de Atenção Domiciliar                                                                                           202109
+114Serviço de Atenção em Saúde Bucal                                                                                       202109
+115Serviço de Atenção Psicossocial                                                                                         202109
+116Serviço de Atenção Cardiovascular/Cardiologia                                                                           202109
+117Serviço de Cirurgia Reparadora                                                                                          202109
+118Serviço de Cirurgia Torácica                                                                                            202109
+119Serviço de Controle de Tabagismo                                                                                        202109
+120Serviço de Diagnóstico por Anatomia Patológica e/ou Citopatologia                                                       202109
+121Diagnóstico por Imagem                                                                                                  202109
+122Serviço de Diagnóstico por Métodos Gráficos/Dinâmicos                                                                   202109
+123Serviço de Dispensação de Órteses, Próteses e Materiais Especiais                                                       202109
+124Serviço de Endocrinologia                                                                                               202109
+125Serviço de Farmácia                                                                                                     202109
+126Serviço de Fisioterapia                                                                                                 202109
+127Serviço de Atenção à Obesidade                                                                                          202109
+128Serviço de Hemoterapia                                                                                                  202109
+129Servico de Laboratório de Histocompatibilidade                                                                          202109
+130Atenção à Doença Renal Crônica                                                                                          202109
+131Serviço de Oftalmologia                                                                                                 202109
+132Serviço de Oncologia                                                                                                    202109
+133Serviço de Pneumologia                                                                                                  202109
+134Serviço de Práticas Integrativas e Complementares                                                                       202109
+135Serviço de Reabilitação                                                                                                 202109
+136Serviço de Suporte Nutricional                                                                                          202109
+137Serviço de Telemedicina                                                                                                 202109
+138Serviço de Traumato-Ortopedia                                                                                           202109
+139Serviço de Triagem Neonatal                                                                                             202109
+140Serviço de Urgência e Emergência                                                                                        202109
+141Serviço de Vigilância em Saúde                                                                                          202109
+142Serviço de Endoscopia                                                                                                   202109
+143Serviço Móvel de Urgência (exceto SAMU)                                                                                 202109
+144Serviço Posto de Coleta de Materiais Biológicos                                                                         202109
+145Serviço de Diagnóstico por Laboratório Clínico                                                                          202109
+146Serviço de Videolaparoscopia                                                                                            202109
+147Serviço de Apoio a Saúde da Família                                                                                     202109
+148Hospital-Dia                                                                                                            202109
+149Transplante                                                                                                             202109
+150Cirurgia Vascular                                                                                                       202109
+151Medicina Nuclear                                                                                                        202109
+152Atenção à Saúde da População Indígena                                                                                   202109
+153Atenção Especializada no Processo Transexualizador                                                                      202109
+154Serviço de Banco de Tecidos                                                                                             202109
+155Serviço de Traumatologia  Ortopedia                                                                                     202109
+156Serviço de Atenção á Saúde das Pessoas Ostomizadas                                                                      202109
+157Serviço de Laboratorio de Protese Dentaria                                                                              202109
+158Serviço de Atenção Integral em Hanseniase                                                                               202109
+159Atenção Primária                                                                                                        202109
+160Teleconsultoria                                                                                                         202109
+161Consultório na Rua                                                                                                      202109
+162Serviço de Terapia Intensiva                                                                                            202109
+163Serviço de Cuidados Intermediários                                                                                      202109
+164Serviço de Órteses,Próteses e Materiais Especiais em Reabilitação                                                       202109
+165Atenção às Pessoas em Situação de Violência Sexual                                                                      202109
+166Serviço de  Análise Laboratorial  de Produtos Sujeitos á  Vigilância Sanitária                                          202109
+167Atendimento Itinerante de Asistência e Ensino em Saúde                                                                  202109
+168Atenção Às Pessoas com Doenças Raras                                                                                    202109
+169Serviço de Atenção em Urologia                                                                                          202109
+170Comissões e Comitês                                                                                                     202109
+173Logística de Imunobiológicos                                                                                            202109
+174Imunização                                                                                                              202109

@@ -32,13 +32,13 @@ public class PrescricaoController {
 	@Autowired
 	private AtendimentoRepository atendimentoRepository;
 
-	@GetMapping("/editar/{id}")
+	@GetMapping("/{id}")
 	public ResponseEntity<?> editarPrescricao(@PathVariable("id") Long id) {
 		Optional<Prescricao> optional = prescricaoRepository.findById(id);
 		if (optional.isPresent()) {
 			return ResponseEntity.ok().body(optional.get());
 		}
-		return ResponseEntity.notFound().build();
+		return ResponseEntity.badRequest().build();
 	}
 
 	@DeleteMapping("/excluir/{idAtendimento}/{idPrescricao}")
@@ -77,8 +77,7 @@ public class PrescricaoController {
 			prescricaoRepository.saveAndFlush(prescricao);
 			return ResponseEntity.ok().build();
 		}
-
-		return ResponseEntity.notFound().build();
+		return ResponseEntity.badRequest().build();
 	}
 
 }

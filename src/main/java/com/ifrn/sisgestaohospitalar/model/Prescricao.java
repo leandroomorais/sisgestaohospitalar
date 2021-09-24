@@ -9,8 +9,9 @@ import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Transient;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+
+import com.ifrn.sisgestaohospitalar.validation.Quantidade;
 
 @Entity
 public class Prescricao {
@@ -18,7 +19,7 @@ public class Prescricao {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-
+	
 	@NotNull(message = "Selecione o medicamento")
 	@OneToOne
 	private Medicamento medicamento;
@@ -47,6 +48,7 @@ public class Prescricao {
 	@OneToOne
 	private SituacaoPrescricao situacaoPrescricao;
 	
+	@Quantidade
 	private int quantidade;
 
 	private LocalDateTime data;
@@ -165,6 +167,18 @@ public class Prescricao {
 	public void setProfissional(Profissional profissional) {
 		this.profissional = profissional;
 	}
+
+	@Override
+	public String toString() {
+		return "Prescricao [id=" + id + ", medicamento=" + medicamento + ", viaAdministracao=" + viaAdministracao
+				+ ", posologia=" + posologia + ", administracaoNoAtendimento=" + administracaoNoAtendimento
+				+ ", orientacoes=" + orientacoes + ", doseUnica=" + doseUnica + ", usoContinuo=" + usoContinuo
+				+ ", idAtendimento=" + idAtendimento + ", prontuario=" + prontuario + ", situacaoPrescricao="
+				+ situacaoPrescricao + ", quantidade=" + quantidade + ", data=" + data + ", profissional="
+				+ profissional + "]";
+	}
+	
+	
 	
 	
 }

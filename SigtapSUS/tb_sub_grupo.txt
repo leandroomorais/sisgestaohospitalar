@@ -1,59 +1,59 @@
-0301Consultas / Atendimentos / Acompanhamentos                                                          201903
-0801Ações relacionadas ao estabelecimento                                                               201903
-0201Coleta de material                                                                                  201903
-0101Ações coletivas/individuais em saúde                                                                201903
-0701Órteses, próteses e materiais especiais não relacionados ao ato cirúrgico                           201903
-0601Medicamentos de dispensação excepcional                                                             201903
-0501Coleta e exames para fins de doação de orgãos, tecidos e células e de transplante                   201903
-0401Pequenas cirurgias e cirurgias de pele, tecido subcutâneo e mucosa                                  201903
-0202Diagnóstico em laboratório clínico                                                                  201903
-0102Vigilância em saúde                                                                                 201903
-0802Ações relacionadas ao atendimento                                                                   201903
-0702Órteses, próteses e materiais especiais relacionados ao ato cirúrgico                               201903
-0602Medicamentos estratégicos                                                                           201903
-0502Avaliação de morte encefálica                                                                       201903
-0402Cirurgia de glândulas endócrinas                                                                    201903
-0302Fisioterapia                                                                                        201903
-0203Diagnóstico por anatomia patológica e citopatologia                                                 201903
-0803Autorização / Regulação                                                                             201903
-0603Medicamentos de âmbito hospitalar e urgência                                                        201903
-0403Cirurgia do sistema nervoso central e periférico                                                    201903
-0303Tratamentos clínicos (outras especialidades)                                                        201903
-0503Ações relacionadas à doação de orgãos e tecidos para transplante                                    201903
-0504Processamento de tecidos para transplante                                                           201903
-0404Cirurgia das vias aéreas superiores, da face, da cabeça e do pescoço                                201903
-0204Diagnóstico por radiologia                                                                          201903
-0604Componente Especializado da Assitencia Farmaceutica                                                 201903
-0304Tratamento em oncologia                                                                             201903
-0305Tratamento em nefrologia                                                                            201903
-0405Cirurgia do aparelho da visão                                                                       201903
-0205Diagnóstico por ultrasonografia                                                                     201903
-0505Transplante de orgãos, tecidos e células                                                            201903
-0506Acompanhamento e intercorrências no pré e pós-transplante                                           201903
-0206Diagnóstico por tomografia                                                                          201903
-0406Cirurgia do aparelho circulatório                                                                   201903
-0306Hemoterapia                                                                                         201903
-0307Tratamentos odontológicos                                                                           201903
-0207Diagnóstico por ressonância magnética                                                               201903
-0407Cirurgia do aparelho digestivo, orgãos anexos e parede abdominal                                    201903
-0208Diagnóstico por medicina nuclear in vivo                                                            201903
-0308Tratamento de lesões, envenenamentos e outros, decorrentes de causas externas                       201903
-0408Cirurgia do sistema osteomuscular                                                                   201903
-0409Cirurgia do aparelho geniturinário                                                                  201903
-0309Terapias especializadas                                                                             201903
-0209Diagnóstico por endoscopia                                                                          201903
-0410Cirurgia de mama                                                                                    201903
-0310Parto e nascimento                                                                                  201903
-0210Diagnóstico por radiologia intervencionista                                                         201903
-0411Cirurgia obstétrica                                                                                 201903
-0211Métodos diagnósticos em especialidades                                                              201903
-0412Cirurgia torácica                                                                                   201903
-0212Diagnóstico e procedimentos especiais em hemoterapia                                                201903
-0213Diagnóstico em vigilância epidemiológica e ambiental                                                201903
-0413Cirurgia reparadora                                                                                 201903
-0414Bucomaxilofacial                                                                                    201903
-0214Diagnóstico por teste rápido                                                                        201903
-0415Outras cirurgias                                                                                    201903
-0416Cirurgia em oncologia                                                                               201903
-0417Anestesiologia                                                                                      201903
-0418Cirurgia em nefrologia                                                                              201903
+0301Consultas / Atendimentos / Acompanhamentos                                                          202109
+0801Ações relacionadas ao estabelecimento                                                               202109
+0201Coleta de material                                                                                  202109
+0101Ações coletivas/individuais em saúde                                                                202109
+0701Órteses, próteses e materiais especiais não relacionados ao ato cirúrgico                           202109
+0601Medicamentos de dispensação excepcional                                                             202109
+0501Coleta e exames para fins de doação de orgãos, tecidos e células e de transplante                   202109
+0401Pequenas cirurgias e cirurgias de pele, tecido subcutâneo e mucosa                                  202109
+0202Diagnóstico em laboratório clínico                                                                  202109
+0102Vigilância em saúde                                                                                 202109
+0802Ações relacionadas ao atendimento                                                                   202109
+0702Órteses, próteses e materiais especiais relacionados ao ato cirúrgico                               202109
+0602Medicamentos estratégicos                                                                           202109
+0502Avaliação de morte encefálica                                                                       202109
+0402Cirurgia de glândulas endócrinas                                                                    202109
+0302Fisioterapia                                                                                        202109
+0203Diagnóstico por anatomia patológica e citopatologia                                                 202109
+0803Autorização / regulação                                                                             202109
+0603Medicamentos de âmbito hospitalar e urgência                                                        202109
+0403Cirurgia do sistema nervoso central e periférico                                                    202109
+0303Tratamentos clínicos (outras especialidades)                                                        202109
+0503Ações relacionadas à doação de orgãos e tecidos para transplante                                    202109
+0504Processamento de tecidos para transplante                                                           202109
+0404Cirurgia das vias aéreas superiores, da face, da cabeça e do pescoço                                202109
+0204Diagnóstico por radiologia                                                                          202109
+0604Componente especializado da assistência farmacêutica                                                202109
+0304Tratamento em oncologia                                                                             202109
+0305Tratamento em nefrologia                                                                            202109
+0405Cirurgia do aparelho da visão                                                                       202109
+0205Diagnóstico por ultrasonografia                                                                     202109
+0505Transplante de orgãos, tecidos e células                                                            202109
+0506Acompanhamento e intercorrências no pré e pós-transplante                                           202109
+0206Diagnóstico por tomografia                                                                          202109
+0406Cirurgia do aparelho circulatório                                                                   202109
+0306Hemoterapia                                                                                         202109
+0307Tratamentos odontológicos                                                                           202109
+0207Diagnóstico por ressonância magnética                                                               202109
+0407Cirurgia do aparelho digestivo, orgãos anexos e parede abdominal                                    202109
+0208Diagnóstico por medicina nuclear in vivo                                                            202109
+0308Tratamento de lesões, envenenamentos e outros, decorrentes de causas externas                       202109
+0408Cirurgia do sistema osteomuscular                                                                   202109
+0409Cirurgia do aparelho geniturinário                                                                  202109
+0309Terapias especializadas                                                                             202109
+0209Diagnóstico por endoscopia                                                                          202109
+0410Cirurgia de mama                                                                                    202109
+0310Parto e nascimento                                                                                  202109
+0210Diagnóstico por radiologia intervencionista                                                         202109
+0411Cirurgia obstétrica                                                                                 202109
+0211Métodos diagnósticos em especialidades                                                              202109
+0412Cirurgia torácica                                                                                   202109
+0212Diagnóstico e procedimentos especiais em hemoterapia                                                202109
+0213Diagnóstico em vigilância epidemiológica e ambiental                                                202109
+0413Cirurgia reparadora                                                                                 202109
+0414Bucomaxilofacial                                                                                    202109
+0214Diagnóstico por teste rápido                                                                        202109
+0415Outras cirurgias                                                                                    202109
+0416Cirurgia em oncologia                                                                               202109
+0417Anestesiologia                                                                                      202109
+0418Cirurgia em nefrologia                                                                              202109

@@ -6,8 +6,8 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import com.ifrn.sisgestaohospitalar.model.Medicamento;
 import com.ifrn.sisgestaohospitalar.model.Prontuario;
-import com.ifrn.sisgestaohospitalar.model.SituacaoPrescricao;
 import com.ifrn.sisgestaohospitalar.model.ViaAdministracao;
+import com.ifrn.sisgestaohospitalar.validation.Quantidade;
 
 public class PrescricaoDTO {
 
@@ -34,7 +34,8 @@ public class PrescricaoDTO {
 	private Long idAtendimento;
 	
 	private Prontuario prontuario;
-		
+	
+	@Quantidade
 	private int quantidade;
 
 	private LocalDateTime data;
@@ -136,14 +137,5 @@ public class PrescricaoDTO {
 		this.data = data;
 	}
 
-	@Override
-	public String toString() {
-		return "PrescricaoDTO [id=" + id + ", medicamento=" + medicamento.getId() + ", viaAdministracao=" + viaAdministracao.getId()
-				+ ", posologia=" + posologia + ", administracaoNoAtendimento=" + administracaoNoAtendimento
-				+ ", orientacoes=" + orientacoes + ", doseUnica=" + doseUnica + ", usoContinuo=" + usoContinuo
-				+ ", idAtendimento=" + idAtendimento + ", prontuario=" + prontuario + ", quantidade=" + quantidade + ", data=" + data + "]";
-	}
-	
-	
 	
 }

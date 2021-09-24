@@ -1,38 +1,38 @@
-001Inclui valor da anestesia                                                                           201903
-003Admite longa permanência                                                                            201903
-004Admite permanência à maior                                                                          201903
-005Admite liberação de quantidade na AIH                                                               201903
-006CNRAC                                                                                               201903
-007Permanência por dia                                                                                 201903
-008Não permite mudança de procedimento                                                                 201903
-009Exige CNS                                                                                           201903
-011Permite alta direta de UTI                                                                          201903
-012Exige idade no BPA (Consolidado)                                                                    201903
-013Verifica habilitação de terceiro                                                                    201903
-014Admite APAC de Continuidade                                                                         201903
-015Admitido apenas em Hosp.Espec/Psiquiatria                                                           201903
-017Exige Informação da OPM                                                                             201903
-020Monitoramento do CEO                                                                                201903
-021Não Exige CBO                                                                                       201903
-022Exige registro na APAC de dados complementares                                                      201903
-023Registro no SISCOLO                                                                                 201903
-024Registro no SISPRENATAL                                                                             201903
-025Registro no SISMAMA                                                                                 201903
-026Registro de Procedimentos Secundário Compativel                                                     201903
-029Admite período maior para a apresentação                                                            201903
-033APAC com validade fixa de 03 competências                                                           201903
-034Não exige CNS                                                                                       201903
-036Exige Autorização                                                                                   201903
-037Exige CNPJ do Fornecedor                                                                            201903
-038Exige Serviço/Classificação                                                                         201903
-040Registro no SISCAN                                                                                  201903
-041APAC com validade fixa de 12 competências                                                           201903
-042Não Admite Liberação de Crítica de Idade                                                            201903
-043Exige registro de CID de causas associadas                                                          201903
-044Cirurgias Eletivas                                                                                  201903
-045Diárias de Leitos Complementares                                                                    201903
-046Tratamento Ambulatorial de Doenças Crônicas                                                         201903
-047Autorização com limite máximo de 6 meses.                                                           201903
-048Exige CID                                                                                           201903
-049Permite Informação de Equipe Cirúrgica                                                              201903
-050Permite o Registro de Informações do CNS do(s) Recém-Nascido(s)                                     201903
+001Inclui valor da anestesia                                                                           202109
+003Admite longa permanência                                                                            202109
+004Admite permanência à maior                                                                          202109
+005Admite liberação de quantidade na AIH                                                               202109
+006CNRAC                                                                                               202109
+007Permanência por dia                                                                                 202109
+008Não permite mudança de procedimento                                                                 202109
+009Exige CNS                                                                                           202109
+011Permite alta direta de UTI                                                                          202109
+012Exige idade no BPA (Consolidado)                                                                    202109
+013Verifica habilitação de terceiro                                                                    202109
+014Admite APAC de Continuidade                                                                         202109
+015Admitido apenas em Hosp.Espec/Psiquiatria                                                           202109
+017Exige Informação da OPM                                                                             202109
+020Monitoramento do CEO                                                                                202109
+021Não Exige CBO                                                                                       202109
+022Exige registro na APAC de dados complementares                                                      202109
+023Registro no SISCOLO                                                                                 202109
+024Registro no SISPRENATAL                                                                             202109
+025Registro no SISMAMA                                                                                 202109
+026Registro de Procedimentos Secundário Compativel                                                     202109
+029Admite período maior para a apresentação                                                            202109
+033APAC com validade fixa de 03 competências                                                           202109
+034Não exige CNS                                                                                       202109
+036Exige Autorização                                                                                   202109
+037Exige CNPJ do Fornecedor                                                                            202109
+038Exige Serviço/Classificação                                                                         202109
+040Registro no SISCAN                                                                                  202109
+041APAC com validade fixa de 12 competências                                                           202109
+042Não Admite Liberação de Crítica de Idade                                                            202109
+043Exige registro de CID de causas associadas                                                          202109
+044Cirurgias Eletivas                                                                                  202109
+045Diárias de Leitos Complementares                                                                    202109
+046Tratamento Ambulatorial de Doenças Crônicas                                                         202109
+047Autorização com limite máximo de 6 meses.                                                           202109
+048Exige CID                                                                                           202109
+049Permite Informação de Equipe Cirúrgica                                                              202109
+050Permite o Registro de Informações do CNS do(s) Recém-Nascido(s)                                     202109

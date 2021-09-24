@@ -6,8 +6,16 @@ $("#button-medicamento").click(function() {
 })
 //Fim da função habilita pesquisa de Medicamentos
 
+$("#administracaoRealizada").click(function() {
+	if ($(this).prop("checked") == true) {
+		$("#exampleModalCenter").modal("show");
+
+	}
+})
+
 function exibeFormularioPrescricao() {
 	limpaPrescricao();
+	removeInvalidFedbackPrescricao();
 	$("#card-header").fadeOut(100);
 	$("#info-prescricoes").fadeOut(100);
 	$("#div-form-prescricao").fadeIn(100);
@@ -20,8 +28,16 @@ function fechaFormularioPrescricao() {
 	$("#info-prescricoes").fadeIn(100);
 }
 
+function fechaFormularioEditPrescricao() {
+	limpaPrescricaoDto();
+	$("#div-form-edit-prescricao").fadeOut(100);
+	$("#card-header").fadeIn(100);
+	$("#info-prescricoes").fadeIn(100);
+}
+
 function exibeFormularioEditPrescricao(element) {
 	limpaPrescricaoDto();
+	removeInvalidFedbackPrescricaoDTO();
 	$("#card-header").fadeOut(100);
 	$("#info-prescricoes").fadeOut(100);
 	$("#div-form-edit-prescricao").fadeIn(100);
@@ -33,6 +49,11 @@ function fechaFormularioEditPrescricao() {
 	$("#div-form-edit-prescricao").fadeOut(100);
 	$("#card-header").fadeIn(100);
 	$("#info-prescricoes").fadeIn(100);
+}
+
+function confirmaPrescricao(element) {
+	var idPrescricao = $(element).attr("data-value");
+	detalharPrescricao(idPrescricao);
 }
 
 
@@ -98,6 +119,9 @@ function limpaPrescricao() {
 	$("#orientacao").val("");
 	$("#quantidade").val("");
 	$("#quantidade-small").text("");
+	$("#dose-unica").parent().removeClass().addClass("toggle btn btn-black off");
+	$("#uso-continuo").parent().removeClass().addClass("toggle btn btn-black off");
+	$("#administracao-no-atendimento").parent().removeClass().addClass("toggle btn btn-black off");
 }
 
 function limpaPrescricaoDto() {
@@ -106,6 +130,9 @@ function limpaPrescricaoDto() {
 	$("#concentracao-dto").val("");
 	$("#forma-dto").val("");
 	$("#quantidade-dto-small").text("");
+	$("#dose-unica-dto").parent().removeClass().addClass("toggle btn btn-black off");
+	$("#uso-continuo-dto").parent().removeClass().addClass("toggle btn btn-black off");
+	$("#administracao-no-atendimento-dto").parent().removeClass().addClass("toggle btn btn-black off");
 
 }
 
@@ -114,8 +141,8 @@ $("#form-prescricao").submit(function(evt) {
 	evt.preventDefault();
 	var prescricao = {};
 
-	prescricao['medicamento.id'] = $("#id-medicamento").val();
-	prescricao['viaAdministracao.id'] = $("#via option:selected").val();
+	prescricao['medicamento'] = $("#id-medicamento").val();
+	prescricao['viaAdministracao'] = $("#via option:selected").val();
 	prescricao.posologia = $("#posologia").val();
 	prescricao.orientacoes = $("#orientacao").val();
 	prescricao.doseUnica = $("#dose-unica").prop("checked");
@@ -129,6 +156,10 @@ $("#form-prescricao").submit(function(evt) {
 		url: '/atendimento/prescricao',
 		method: 'post',
 		data: prescricao,
+		beforeSend: function() {
+			console.log(prescricao);
+			removeInvalidFedbackPrescricao();
+		},
 		success: function() {
 			$.notify({
 				// options
@@ -170,6 +201,43 @@ $("#form-prescricao").submit(function(evt) {
 		},
 
 		statusCode: {
+			400: function() {
+				$.notify({
+					// options
+					icon: 'flaticon-exclamation',
+					title: 'ERRO',
+					message: 'Não foi possível processar sua solicitação',
+					target: '_blank'
+				}, {
+					// settings
+					element: 'body',
+					position: null,
+					type: "danger",
+					allow_dismiss: true,
+					newest_on_top: false,
+					showProgressbar: false,
+					placement: {
+						from: "top",
+						align: "right"
+					},
+					offset: 20,
+					spacing: 10,
+					z_index: 1031,
+					delay: 5000,
+					timer: 1000,
+					url_target: '_blank',
+					mouse_over: null,
+					animate: {
+						enter: 'animated fadeInDown',
+						exit: 'animated fadeOutUp'
+					},
+					onShow: null,
+					onShown: null,
+					onClose: null,
+					onClosed: null,
+					icon_type: 'class',
+				});
+			},
 			422: function(xhr) {
 				var errors = $.parseJSON(xhr.responseText);
 				$.each(errors, function(key, val) {
@@ -215,46 +283,6 @@ $("#form-prescricao").submit(function(evt) {
 			}
 		},
 
-		error: function(xhr) {
-
-			$.notify({
-				// options
-				icon: 'flaticon-exclamation',
-				title: 'ERRO',
-				message: 'Não foi possível processar sua solicitação',
-				target: '_blank'
-			}, {
-				// settings
-				element: 'body',
-				position: null,
-				type: "danger",
-				allow_dismiss: true,
-				newest_on_top: false,
-				showProgressbar: false,
-				placement: {
-					from: "top",
-					align: "right"
-				},
-				offset: 20,
-				spacing: 10,
-				z_index: 1031,
-				delay: 5000,
-				timer: 1000,
-				url_target: '_blank',
-				mouse_over: null,
-				animate: {
-					enter: 'animated fadeInDown',
-					exit: 'animated fadeOutUp'
-				},
-				onShow: null,
-				onShown: null,
-				onClose: null,
-				onClosed: null,
-				icon_type: 'class',
-			});
-
-		}
-
 	})
 })
 
@@ -263,8 +291,8 @@ $("#form-edit-prescricao").submit(function(evt) {
 	var prescricaoDTO = {};
 
 	prescricaoDTO.id = $("#id-prescricao").val();
-	prescricaoDTO['medicamento.id'] = $("#id-medicamento-dto").val();
-	prescricaoDTO['viaAdministracao.id'] = $("#via-dto option:selected").val();
+	prescricaoDTO['medicamento'] = $("#id-medicamento-dto").val();
+	prescricaoDTO['viaAdministracao'] = $("#via-dto option:selected").val();
 	prescricaoDTO.posologia = $("#posologia-dto").val();
 	prescricaoDTO.orientacoes = $("#orientacao-dto").val();
 	prescricaoDTO.doseUnica = $("#dose-unica-dto").prop("checked");
@@ -278,6 +306,9 @@ $("#form-edit-prescricao").submit(function(evt) {
 		url: '/prescricao/editar',
 		method: 'post',
 		data: prescricaoDTO,
+		beforeSend: function() {
+			removeInvalidFedbackPrescricaoDTO();
+		},
 		success: function() {
 			$.notify({
 				// options
@@ -319,43 +350,93 @@ $("#form-edit-prescricao").submit(function(evt) {
 			atualizaPrescricoes();
 		},
 
-		error: function() {
-			$.notify({
-				// options
-				icon: 'flaticon-exclamation',
-				title: 'ERRO',
-				message: 'Não foi possível processar sua solicitação',
-				target: '_blank'
-			}, {
-				// settings
-				element: 'body',
-				position: null,
-				type: "danger",
-				allow_dismiss: true,
-				newest_on_top: false,
-				showProgressbar: false,
-				placement: {
-					from: "top",
-					align: "right"
-				},
-				offset: 20,
-				spacing: 10,
-				z_index: 1031,
-				delay: 5000,
-				timer: 1000,
-				url_target: '_blank',
-				mouse_over: null,
-				animate: {
-					enter: 'animated fadeInDown',
-					exit: 'animated fadeOutUp'
-				},
-				onShow: null,
-				onShown: null,
-				onClose: null,
-				onClosed: null,
-				icon_type: 'class',
-			});
-		}
+		statusCode: {
+			400: function() {
+				$.notify({
+					// options
+					icon: 'flaticon-exclamation',
+					title: 'ERRO',
+					message: 'Não foi possível processar sua solicitação',
+					target: '_blank'
+				}, {
+					// settings
+					element: 'body',
+					position: null,
+					type: "danger",
+					allow_dismiss: true,
+					newest_on_top: false,
+					showProgressbar: false,
+					placement: {
+						from: "top",
+						align: "right"
+					},
+					offset: 20,
+					spacing: 10,
+					z_index: 1031,
+					delay: 5000,
+					timer: 1000,
+					url_target: '_blank',
+					mouse_over: null,
+					animate: {
+						enter: 'animated fadeInDown',
+						exit: 'animated fadeOutUp'
+					},
+					onShow: null,
+					onShown: null,
+					onClose: null,
+					onClosed: null,
+					icon_type: 'class',
+				});
+			},
+			422: function(xhr) {
+				var errors = $.parseJSON(xhr.responseText);
+				$.each(errors, function(key, val) {
+					$.notify({
+						// options
+						icon: 'flaticon-exclamation',
+						title: 'ATENÇÃO',
+						message: val,
+						target: '_blank'
+					}, {
+						// settings
+						element: 'body',
+						position: null,
+						type: "danger",
+						allow_dismiss: true,
+						newest_on_top: false,
+						showProgressbar: false,
+						placement: {
+							from: "top",
+							align: "right"
+						},
+						offset: 20,
+						spacing: 10,
+						z_index: 1031,
+						delay: 5000,
+						timer: 1000,
+						url_target: '_blank',
+						mouse_over: null,
+						animate: {
+							enter: 'animated fadeInDown',
+							exit: 'animated fadeOutUp'
+						},
+						onShow: null,
+						onShown: null,
+						onClose: null,
+						onClosed: null,
+						icon_type: 'class',
+					});
+
+					if (key == 'medicamento') {
+						$("#medicamento-prescricao-dto").parent().parent().addClass("has-error has-feedback");
+					}
+					$("#form-edit-prescricao input[name='" + key + "']").each(function(index) {
+						$(this).parent().parent().addClass("has-error has-feedback");
+					})
+				})
+			}
+		},
+
 	})
 
 })
@@ -363,7 +444,7 @@ $("#form-edit-prescricao").submit(function(evt) {
 function editarPrescricao(element) {
 	var idPrescricao = $(element).attr("data-value");
 	$.ajax({
-		url: '/prescricao/editar/' + idPrescricao,
+		url: '/prescricao/' + idPrescricao,
 		method: 'get',
 		success: function(data) {
 			$("#id-prescricao").val(data.id);
@@ -383,7 +464,7 @@ function editarPrescricao(element) {
 				$("#uso-continuo-dto").parent().removeClass().addClass("toggle btn btn-primary");
 			}
 			if (data.administracaoNoAtendimento) {
-				$("#administracao-no-atendimento-dto").removeClass().addClass("toggle btn btn-primary");
+				$("#administracao-no-atendimento-dto").parent().removeClass().addClass("toggle btn btn-primary");
 			}
 			$("#orientacao-dto").val(data.orientacoes);
 		}
@@ -398,7 +479,7 @@ function excluirPrescricao(element) {
 	swal({
 		title: 'Você tem certeza disso?',
 		text: "Você não poderá reverter esta ação!",
-		type: 'warning',
+		icon: 'warning',
 		buttons: {
 			confirm: {
 				text: 'Sim, exclua!',
@@ -419,7 +500,7 @@ function excluirPrescricao(element) {
 					swal({
 						title: 'Sucesso!',
 						text: 'A prescrição foi excluida.',
-						type: 'success',
+						icon: 'success',
 						buttons: {
 							confirm: {
 								className: 'btn btn-success'
@@ -470,10 +551,30 @@ function excluirPrescricao(element) {
 			})
 		}
 	});
-
 };
 
-
+function detalharPrescricao(id) {
+	var idPrescricao = id;
+	$.ajax({
+		url: '/prescricao/' + idPrescricao,
+		method: 'get',
+		success: function(data) {
+			var noAtendimento = "Não";
+			var usoContinuo = "Não";
+			var doseUnica = "Não";
+			if (data.administracaoNoAtendimento) {
+				noAtendimento = "Sim";
+			}
+			if (data.usoContinuo) {
+				usoContinuo = "Sim";
+			}
+			if (data.doseUnica) {
+				doseUnica = "Sim";
+			}
+			$("#card-prescricao-administracao").append(createCardDetalhePrescricao(data.medicamento.principioAtivo, data.medicamento.concentracao, data.quantidade, data.medicamento.unidadeFornecimento, data.viaAdministracao.nome, data.medicamento.formaFarmaceutica.nome, data.posologia, data.orientacoes, data.data, noAtendimento, usoContinuo, doseUnica))
+		}
+	})
+};
 
 function atualizaPrescricoes() {
 	var atendimentoId = $("#id-atendimento").val();
@@ -482,25 +583,62 @@ function atualizaPrescricoes() {
 		url: '/atendimento/prescricoes/' + atendimentoId,
 		method: 'get',
 		success: function(data) {
-			$.each(data, function(key, item) {
-				$("#div-prescricoes").append(createCardPrescricao(item.medicamento.principioAtivo, item.medicamento.concentracao, item.quantidade, item.medicamento.unidadeFornecimento, item.viaAdministracao.nome, item.medicamento.formaFarmaceutica.nome, item.posologia, item.orientacoes, item.data, item.id))
-			})
+			if (isEmpty(data)) {
+				$("#div-prescricoes").append("<h5 class='card-title text-center'>Não existem prescrições para este atendimento</h5><p class='card-text text-center'>Clique no botão Nova prescrição para cadastrar uma.</p>");
+			} else {
+				$.each(data, function(key, item) {
+					$("#div-prescricoes").append(createCardPrescricao(item));
+				})
+			}
+
 		},
 	})
+};
+
+function createCardPrescricao(data) {
+	return "<div class='card'><div class='card-body'><div class='d-flex'><div class='flex-1 ml-3 pt-1'>" +
+		h5CarPrescricao(data.medicamento.principioAtivo, data.viaAdministracao.nome) + inforCardPrimary(data.medicamento.concentracao, data.medicamento.unidadeFornecimento, data.quantidade) +
+		infoCardPrescricao("Forma famaceutica: ", data.medicamento.formaFarmaceutica.nome) +
+		infoCardPrescricao("Posologia: ", data.posologia) +
+		infoCardPrescricao("Antônio Cardinael da Silva Gomes", "CRM: 54884/RN") +
+		"<p> " + data.orientacoes + " </p>" +
+		+ "<div id='table-registros'></div>" +
+		"</div><div class='float-right pt-1'><small class='text-muted'> " + data.data + " </small></div></div><div class='text-right'>" +
+
+		"<button type='button' class='btn btn-light btn-sm' data-value='" + data.id + "' onclick='imprimirPrescricao()'><i class='fa fa-print'></i> Imprimir</button>" +
+		buttonConfirmar()
+		+ "<button type='button' class='btn btn-light btn-sm' data-value='" + data.id + "' onclick='exibeFormularioEditPrescricao(this)'><i class='fa fa-edit'></i> Editar</button>" +
+		"<button type='button' class='btn btn-light btn-sm' data-value='" + data.id + "' onclick='excluirPrescricao(this)'><i class='fa fa-trash'></i> Excluir</button>" +
+		"</div></div></div>";
+
+	function buttonConfirmar() {
+		if (data.administracaoNoAtendimento) {
+			return "<button type='button' class='btn btn-light btn-sm' data-value='" + data.id + "' onclick='confirmaPrescricao(this)'><i class='fa fa-check'></i> Administrar</button>";
+		} else {
+			return "";
+		}
+	}
+
+	function buttonEditar() {
+
+	}
+
+	function buttonExcluir() {
+
+	}
 }
 
-function createCardPrescricao(principioAtivo, concentracao, quantidade, unidade, viaAdministracao, formaFarmaceutica, posologia, orientacoes, hora, dataValue) {
+function createCardDetalhePrescricao(principioAtivo, concentracao, quantidade, unidade, viaAdministracao, formaFarmaceutica, posologia, orientacoes, hora, dataValue, noAtendimento, usoContinuo, doseUnica) {
 	return "<div class='card'><div class='card-body'><div class='d-flex'><div class='flex-1 ml-3 pt-1'>" +
 		h5CarPrescricao(principioAtivo, viaAdministracao) + inforCardPrimary(concentracao, unidade, quantidade) +
 		infoCardPrescricao("Forma famaceutica: ", formaFarmaceutica) +
 		infoCardPrescricao("Posologia: ", posologia) +
+		infoCardPrescricao("Admin. no atendimento: ", noAtendimento) +
+		infoCardPrescricao("Uso contínuo: ", usoContinuo) +
+		infoCardPrescricao("Dose única: ", doseUnica) +
 		infoCardPrescricao("Antônio Cardinael da Silva Gomes", "CRM: 54884/RN") +
 		"<p> " + orientacoes + " </p>" +
 		"</div><div class='float-right pt-1'><small class='text-muted'> " + hora + " </small></div></div><div class='text-right'>" +
-		"<button type='button' class='btn btn-light btn-sm' data-value='" + dataValue + "' onclick='imprimirPrescricao()'><i class='fa fa-print'></i> Imprimir</button>" +
-		"<button type='button' class='btn btn-light btn-sm' data-value='" + dataValue + "' onclick='confirmaPrescricao()'><i class='fa fa-check'></i> Confirmar administração</button>" +
-		"<button type='button' class='btn btn-light btn-sm' data-value='" + dataValue + "' onclick='exibeFormularioEditPrescricao(this)'><i class='fa fa-edit'></i> Editar</button>" +
-		"<button type='button' class='btn btn-light btn-sm' data-value='" + dataValue + "' onclick='excluirPrescricao(this)'><i class='fa fa-trash'></i> Excluir</button>" +
 		"</div></div></div>";
 }
 
@@ -515,6 +653,51 @@ function inforCardPrimary(info, unidade, quantidade) {
 
 function infoCardPrescricao(text, info) {
 	return "<strong>" + text + "</strong><span> " + info + "</span><br>";
+}
+
+function isEmpty(obj) {
+	if (isSet(obj)) {
+		if (obj.length && obj.length > 0) {
+			return false;
+		}
+
+		for (var key in obj) {
+			if (hasOwnProperty.call(obj, key)) {
+				return false;
+			}
+		}
+	}
+	return true;
+};
+
+function isSet(val) {
+	if ((val != undefined) && (val != null)) {
+		return true;
+	}
+	return false;
+};
+
+function removeInvalidFedbackPrescricao() {
+	$("#form-prescricao input, #form-prescricao textarea").each(
+		function(index) {
+			var str = $(this).parent().parent().attr("class");
+			if (str.match(/has-error/)) {
+				$(this).parent().parent().removeClass("has-error has-feedback");
+			}
+
+		}
+	);
+}
+
+function removeInvalidFedbackPrescricaoDTO() {
+	$("#form-edit-prescricao input, #form-edit-prescricao textarea").each(
+		function(index) {
+			var str = $(this).parent().parent().attr("class");
+			if (str.match(/has-error/)) {
+				$(this).parent().parent().removeClass("has-error has-feedback");
+			}
+		}
+	);
 }
 
 

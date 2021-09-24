@@ -1,4 +1,4 @@
-01Ambulatorial                                                                                        201903
-02Hospitalar                                                                                          201903
-03Hospital Dia                                                                                        201903
-06Atenção Domiciliar                                                                                  201903
+01Ambulatorial                                                                                        202109
+02Hospitalar                                                                                          202109
+03Hospital Dia                                                                                        202109
+06Atenção Domiciliar                                                                                  202109

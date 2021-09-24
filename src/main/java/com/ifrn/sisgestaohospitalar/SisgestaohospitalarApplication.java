@@ -96,7 +96,6 @@ public class SisgestaohospitalarApplication implements ApplicationListener<Conte
 
 	public static void main(String[] args) {
 		SpringApplication.run(SisgestaohospitalarApplication.class, args);
-
 		System.out.println("Iniciando Projeto");
 	}
 

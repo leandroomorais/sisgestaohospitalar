@@ -1,347 +1,411 @@
-168001Atenção Especializada Em Doenças Raras                                                                                                                201903
-169001Urologia em Geral                                                                                                                                     201903
-100001Atendimento em presídio até 100 presos                                                                                                                201903
-101001Saúde da família                                                                                                                                      201903
-102001Estratégia de Agentes Comunitários de Saúde - EACS                                                                                                    201903
-103001Ambulância de transporte                                                                                                                              201903
-104001Central de Regulação de Internações Hospitalares                                                                                                      201903
-105001Neurocirurgia do trauma e anomalias do desenvolvimento                                                                                                201903
-106001Testagem e aconselhamento                                                                                                                             201903
-107001Serviço de Atenção à Saúde Auditiva na Média Complexidade                                                                                             201903
-108001Atendimento/acompanhamento em saúde do trabalhador                                                                                                    201903
-109001Unidade sócio-educativa com até 40 adolecentes                                                                                                        201903
-110001Atenção à infertilidade                                                                                                                               201903
-111001Diagnóstico e tratamento                                                                                                                              201903
-112001Acompanhamento do pré-natal de risco habitual                                                                                                         201903
-113001Assitência Domiciliar                                                                                                                                 201903
-114001Dentística                                                                                                                                            201903
-115001Residência terapêutica em saúde mental                                                                                                                201903
-116001Eletrofisiologia                                                                                                                                      201903
-117001Tratamento da lipodistrofia do portador de HIV / AIDS                                                                                                 201903
-118001Cirurgia torácica                                                                                                                                     201903
-119001Abordagem e tratamento do fumante                                                                                                                     201903
-120001Exames anatomopatológicos                                                                                                                             201903
-121001Radiologia                                                                                                                                            201903
-122001Teste Ergométrico                                                                                                                                     201903
-123001OPM auxiliares de locomoção                                                                                                                           201903
-124001Diagnóstico/Tratamento das doenças endócrinas, metabólicas e nutricionais                                                                             201903
-125001Dispensação de Medicamentos do Componente Especializado da Assistência Farmaceutica.                                                                  201903
-126001Assistência fisioterapêutica em alterações obstétricas, neonatais e uroginecológicas                                                                  201903
-127001Tratamento clínico, cirúrgico, reparador e acompanhamento ao obeso                                                                                    201903
-128001Procedimentos destinados à obtenção do sangue para fins de assitência hemoterápica                                                                    201903
-129001Exames de histocompatibilidade por meio de sorologia                                                                                                  201903
-130001Tratamento Dialítico-Hemodiálise                                                                                                                      201903
-131001Diagnóstico em oftalmologia                                                                                                                           201903
-132001Oncologia pediátrica                                                                                                                                  201903
-133001Tratamento de Doenças das Vias Aéreas Inferiores                                                                                                      201903
-134001Acupuntura                                                                                                                                            201903
-135001Reabilitação Visual                                                                                                                                   201903
-136001Enteral                                                                                                                                               201903
-137001Exame eletrocardiográfico por telemedicina                                                                                                            201903
-138001Diagnóstico e tratamento em cintura escapular                                                                                                         201903
-139001Tratamento de recém-nascido com hipotireoidismo e fenilcetonuria                                                                                      201903
-141001Vigilância epidemiológica                                                                                                                             201903
-142001Do aparelho digestivo                                                                                                                                 201903
-143001Transporte terrestre                                                                                                                                  201903
-144001Coleta realizada fora das estrutura laboratorial                                                                                                      201903
-145001Exames Bioquimicos                                                                                                                                    201903
-146001Diagnóstica                                                                                                                                           201903
-147001NASF 1                                                                                                                                                201903
-148001Saúde mental                                                                                                                                          201903
-149001Rim                                                                                                                                                   201903
-150001Fístula arteriovenosa sem enxerto                                                                                                                     201903
-151001Medicina nuclear in vivo                                                                                                                              201903
-153001Acompanhamento Clínico, pré e pós operatório e hormonioterapia.                                                                                       201903
-154001Banco de valvula cardiaca humana                                                                                                                      201903
-155001Serviço de Traumatologia e Ortopedia                                                                                                                  201903
-156001Atenção as Pessoas Ostomizadas I                                                                                                                      201903
-157001Laboratorio Regional de Protese Dentaria                                                                                                              201903
-158001Serviço de Atenção Integral em Hanseniase Tipo I                                                                                                      201903
-159001Atenção Básica                                                                                                                                        201903
-160001Teleconsultoria Assíncrona                                                                                                                            201903
-162001ADULTO                                                                                                                                                201903
-163001NEONATAL CONVENCIONAL                                                                                                                                 201903
-164001Dispensação de OPM Auxiliares de Locomoção                                                                                                            201903
-165001Referência para Atenção Integral às Pessoas em Situação de Violência Sexual                                                                           201903
-167001ODONTOLOGIA - PROJETO SAÚDE NA ESCOLA (PSE)                                                                                                           201903
-100002Atendimento em manicômio até 100 presos                                                                                                               201903
-169002Litotripsia                                                                                                                                           201903
-102002Estratégia de Agentes Comunitários de Saúde com Saúde Bucal - (modalidade I)                                                                          201903
-103002Unidade de suporte básico de vida terrestre (USB)                                                                                                     201903
-104002Cental de Regulação de Consultas e Exames                                                                                                             201903
-105002Coluna e nervos periféricos                                                                                                                           201903
-106002Diagnóstico e tratamento                                                                                                                              201903
-107002Serviço de Atenção à Saúde Auditiva na Alta Complexidade                                                                                              201903
-108002Centro de referência em saúde do trabalhador CEREST estadual                                                                                          201903
-109002Unidade sócio-educativa com de 41 a 100 adolecentes                                                                                                   201903
-110002Contracepção clínica                                                                                                                                  201903
-111002Tratamento multidrogas resistentes                                                                                                                    201903
-112002Acompanhamento do pré-natal de alto risco                                                                                                             201903
-113002Internação Domiciliar                                                                                                                                 201903
-114002Endodontia                                                                                                                                            201903
-115002Atendimento psicossocial                                                                                                                              201903
-116002Cirurgia cardiovascular (adulto)                                                                                                                      201903
-117002Tratamento em queimados                                                                                                                               201903
-120002Exames citopatológicos                                                                                                                                201903
-121002Ultra-sonografia                                                                                                                                      201903
-122002Teste de Holter                                                                                                                                       201903
-123002OPM ortopédicas                                                                                                                                       201903
-124002Cirurgia de glândulas endócrinas                                                                                                                      201903
-125002Farmácia Popular                                                                                                                                      201903
-126002Assistência fisioterapêutica em alterações oncológicas                                                                                                201903
-128002Diagnóstico em hemoterapia                                                                                                                            201903
-129002Exames de histocompatibilidade por sorologia e biologia                                                                                               201903
-131002Tratamento clínico do aparelho da visão                                                                                                               201903
-132002Hematologia                                                                                                                                           201903
-133002Diagnóstico em Pneumologia                                                                                                                            201903
-134002Fitoterapia                                                                                                                                           201903
-135002Reabilitação Intelectual                                                                                                                              201903
-136002Enteral/Parenteral                                                                                                                                    201903
-138002Diagnóstico e tratamento em membros superiores                                                                                                        201903
-139002Tratamento de recém-nascido com doenças falciformes                                                                                                   201903
-141002Vigilância sanitária                                                                                                                                  201903
-142002Do aparelho respiratório                                                                                                                              201903
-143002Transporte aéreo                                                                                                                                      201903
-145002Exames hematológicos e hemostasia                                                                                                                     201903
-146002Cirúrgica                                                                                                                                             201903
-147002NASF 2                                                                                                                                                201903
-148002AIDS                                                                                                                                                  201903
-149002Medula óssea                                                                                                                                          201903
-150002Fístula arteriovenosa com enxerto                                                                                                                     201903
-151002Medicina nuclear in vitro                                                                                                                             201903
-153002Cirurgia e Acompanhamento pré e pós oreratório                                                                                                        201903
-154002Banco de tecido musculo esqueletico                                                                                                                   201903
-155002Serviço de Traumatologia e Ortopedia Pediátrica (até 21 anos de idade)                                                                                201903
-156002Atenção as Pessoas Ostomizadas II                                                                                                                     201903
-158002Serviço de Atenção Integral em Hanseniase Tipo II                                                                                                     201903
-159002Atenção Básica com Saúde Bucal                                                                                                                        201903
-160002Teleconsultoria Síncrona                                                                                                                              201903
-162002NEONATAL                                                                                                                                              201903
-163002NEONATAL CANGURU                                                                                                                                      201903
-164002Manutenção e Adaptação de OPM Auxiliares de Locomoção                                                                                                 201903
-165002Atenção Integral à Saúde de Adolescentes em Situação de Violência Sexual                                                                              201903
-167002ODONTOLOGIA - PROJETO BRASIL ALFABETIZADO (PBA)                                                                                                       201903
-168002Referência em Doenças Raras                                                                                                                           201903
-101002Saúde bucal MI                                                                                                                                        201903
-100003Atendimento em presídio acima de 100 presos                                                                                                           201903
-101003Saúde bucal MII                                                                                                                                       201903
-102003Estratégia de Agentes Comunitários de Saúde com Saúde Bucal - (modalidade II)                                                                         201903
-103003Unidade de suporte avançado de vida terrestre (USA)                                                                                                   201903
-104003Central de Regulação de Urgências                                                                                                                     201903
-105003Tumores do sistema nervoso                                                                                                                            201903
-106003Diagnóstico, tratamento e capacitação técnica                                                                                                         201903
-107003Terapia fonoaudiológica                                                                                                                               201903
-108003VIGILÂNCIA EM SAÚDE DO TRABALHADOR (VISAT)                                                                                                            201903
-109003Unidade sócio-educativa com de 101 a 180 adolecentes                                                                                                  201903
-110003Laqueadura                                                                                                                                            201903
-112003Parto em gestação de risco habitual                                                                                                                   201903
-113003Equipe Multidisciplinar de Atenção Domiciliar - EMAD                                                                                                  201903
-114003Periodontia clínica                                                                                                                                   201903
-115003Serviço Hospitalar para Atenção a Saúde Mental                                                                                                        201903
-116003Cirurgia cardiovascular (Pediátrico)                                                                                                                  201903
-117003Tratamento da lipoatrofia facial do portador de HIV / AIDS                                                                                            201903
-120003Monitoramento Externo da Qualidade dos Exames Citopatologicos do Colo do Útero                                                                        201903
-121003Tomografia computadorizada                                                                                                                            201903
-122003Exame Eletrocardiográfico                                                                                                                             201903
-123003OPM auditivas                                                                                                                                         201903
-125003Farmácia com manipulação homeopática                                                                                                                  201903
-126003Assistência fisioterapêutica em oftalmologia                                                                                                          201903
-128003Procedimentos especiais em hemoterapia                                                                                                                201903
-130003Confeccção/Intervenção de Acessos para Diálise                                                                                                        201903
-131003Tratamento cirúrgico do aparelho da visão                                                                                                             201903
-132003Oncologia clínica                                                                                                                                     201903
-133003Diagnóstico em Pneumologia por Telemedicina                                                                                                           201903
-134003Outras Práticas em Medicina Tradicional Chinesa                                                                                                       201903
-135003Reabilitação Física                                                                                                                                   201903
-136003Enteral/Parenteral, com manipulação/fabricação                                                                                                        201903
-138003Diagnóstico e tratamento em coluna vertebral e caixa torácica                                                                                         201903
-139003Tratamento de recém-nascido com fibrose cística                                                                                                       201903
-141003Vigilância ambiental                                                                                                                                  201903
-142003Do aparelho urinário                                                                                                                                  201903
-143003Transporte marítimo                                                                                                                                   201903
-145003Exames sorológicos e imunológicos                                                                                                                     201903
-148003Geriátrico                                                                                                                                            201903
-149003Coração                                                                                                                                               201903
-151003Medicina nuclear in vivo por telemedicina                                                                                                             201903
-155003Serviço de Traumatologia e Ortopedia de Urgência                                                                                                      201903
-158003Serviço de Atenção Integral em Hanseniase Tipo III                                                                                                    201903
-160003Segunda Opinião Formativa                                                                                                                             201903
-162003PEDIÁTRICO                                                                                                                                            201903
-163003PEDIÁTRICO                                                                                                                                            201903
-164003Dispensação de OPM Ortopédica                                                                                                                         201903
-165003Atenção Integral à Saúde de Crianças em Situação de Violência Sexual                                                                                  201903
-167003OFTALMOLOGIA - PROJETO SAÚDE NA ESCOLA (PSE)                                                                                                          201903
-128004Medicina transfusional                                                                                                                                201903
-130004Tratamento Nefrologia em Geral                                                                                                                        201903
-131004Projeto Olhar Brasil                                                                                                                                  201903
-132004Radioterapia                                                                                                                                          201903
-134004Práticas Corpo-mente                                                                                                                                  201903
-135004Reabilitação visual/mental/múltiplas deficiências                                                                                                     201903
-138004Diagnóstico e tratamento em cintura pélvica                                                                                                           201903
-139004Tratamento de recém-nascido com outras doenças congênitas                                                                                             201903
-140004Estabilização de paciente crítico/grave                                                                                                               201903
-141004Núcleo de vigilância hospitalar                                                                                                                       201903
-142004Do aparelho ginecológico                                                                                                                              201903
-145004Exames coprológicos                                                                                                                                   201903
-148004Fibrose cística                                                                                                                                       201903
-149004Pulmão                                                                                                                                                201903
-162004QUEIMADOS                                                                                                                                             201903
-163004ADULTO                                                                                                                                                201903
-164004Manutenção e Adaptação de OPM Ortopédica                                                                                                              201903
-165004Atenção Integral à Saúde de Homens em Situação de Violência Sexual                                                                                    201903
-167004OFTALMOLOGIA - PROJETO BRASIL ALFABETIZADO (PBA)                                                                                                      201903
-100004Atendimento em manicômio acima de 100 presos                                                                                                          201903
-104004Unidade de autorizações de TFD intermunicipais                                                                                                        201903
-105004Neurocirurgia vascular                                                                                                                                201903
-107004Diagnóstico em audiologia/otologia                                                                                                                    201903
-109004Unidade sócio-educativa com mais de 180 adolecentes                                                                                                   201903
-110004Vasectomia                                                                                                                                            201903
-112004Parto em gestação de alto risco                                                                                                                       201903
-113004Equipe Multidisciplinar de Apoio - EMAP                                                                                                               201903
-114004Moldagem/Manutenção                                                                                                                                   201903
-115004Serviço Residencial Terapêutico Tipo I - SRT tipo I                                                                                                   201903
-116004Cirurgia vascular                                                                                                                                     201903
-121004Ressonância magnética                                                                                                                                 201903
-122004Exame Eletroencefalográfico                                                                                                                           201903
-123004OPM oftalmológicas                                                                                                                                    201903
-125004Dispensação de medicamentos estratégicos                                                                                                              201903
-126004Assistência fisioterapêutica cardiovasculares e pneumo-funcionais                                                                                     201903
-130005Tratamento Diálitico Peritonial                                                                                                                       201903
-126005Assistência fisioterapêutica nas disfunções músculo-esqueléticas (todas as origens)                                                                   201903
-132005Oncologia cirúrgica                                                                                                                                   201903
-134005Homeopatia                                                                                                                                            201903
-135005Reabiliatação Auditiva                                                                                                                                201903
-138005Diagnóstico e tratamento em membros inferiores                                                                                                        201903
-139005Acompanhamento a pacientes com diagnósticos de Hiperplasia Adrenal Congênita                                                                          201903
-140005Atendimento ao paciente com Acidente Vascular Cerebral (AVC)                                                                                          201903
-145005Exames de uroanálise                                                                                                                                  201903
-148005Cirúrgico / Diagnóstico                                                                                                                               201903
-149005Córnea / Esclera                                                                                                                                      201903
-162005DOENÇA CORONARIANA (UCO)                                                                                                                              201903
-164005Dispensação de OPM Auditiva                                                                                                                           201903
-165005Atenção Integral à Saúde de Pessoas Idosas em Situação de Violência Sexual                                                                            201903
-103005Unidade de Suporte Básico de vida: Equipe Embarcação                                                                                                  201903
-104005Unidade de autorizações de TFD interestaduais                                                                                                         201903
-105005Tratamento neurocirúrgico da dor funcional                                                                                                            201903
-107005Implante Coclear                                                                                                                                      201903
-112005Centro de parto normal                                                                                                                                201903
-114005Cirurgia oral                                                                                                                                         201903
-115005Serviço Residencial Terapêutico Tipo II - SRT tipo II                                                                                                 201903
-116005Cardiologia intervencionista (hemodinâmica)                                                                                                           201903
-122005Teste Ergométrico por Telemedicina                                                                                                                    201903
-123005OPM em gastroenterologia                                                                                                                              201903
-125005Dispensação de medicamentos básicos                                                                                                                   201903
-131005Diagnóstico em Oftalmologia por Telemedicina                                                                                                          201903
-130006Tratamento em DRC                                                                                                                                     201903
-126006Assistência fisioterapêutica em queimados                                                                                                             201903
-134006Termalismo/Crenoterapia                                                                                                                               201903
-139006Acompanhamento a pacientes com diagnósticos de Deficiência Biotinidase                                                                                201903
-140006Pronto Atendimento Clínico                                                                                                                            201903
-145006Exames hormonais                                                                                                                                      201903
-148006Acompanhamento pós-transplante de medula óssea                                                                                                        201903
-149006Fígado                                                                                                                                                201903
-164006Manutenção e Adaptação de OPM Auditiva                                                                                                                201903
-165006Interrupção de Gravidez nos Casos Previstos em Lei                                                                                                    201903
-103006Veículos de intervenção rápida                                                                                                                        201903
-104006Central Estadual de Regulação da Alta Complexidade                                                                                                    201903
-105006Investigação e cirurgia de epilepsia                                                                                                                  201903
-107006Triagem Auditiva Neonatal                                                                                                                             201903
-112006Casa da Gestante, Bebê e Puérpera                                                                                                                     201903
-114006Cirurgia buco-maxilo-facial                                                                                                                           201903
-115006UA Adulto                                                                                                                                             201903
-116006Cardiologia Endovascular Extracardíaco                                                                                                                201903
-121006Radiologia intervencionista                                                                                                                           201903
-122006Teste Holter por Telemedicina                                                                                                                         201903
-123006OPM em urologia                                                                                                                                       201903
-125006Farmácia Hospitalar                                                                                                                                   201903
-131006Projeto Olhar Brasil - Programa Saúde na Escola (PSE)                                                                                                 201903
-131007Projeto Olhar Brasil - Programa Brasil Alfabetizado (PBA)                                                                                             201903
-126007Assistência fisioterapêutica nas alterações em neurologia                                                                                             201903
-135007Oficina Ortopédica Fixa                                                                                                                               201903
-140007Pronto Atendimento Pediátrico                                                                                                                         201903
-145007Exames de  vigilância epidemiológica e  ambiental                                                                                                     201903
-149007Pâncreas                                                                                                                                              201903
-164007Dispensação de OPM Oftalmológica                                                                                                                      201903
-165007Atenção Ambulatorial às Pessoas em Situação de Violência Sexual                                                                                       201903
-103007Outros veículos                                                                                                                                       201903
-105007Tratamento endovascular                                                                                                                               201903
-107007Diagnóstico em Audiologia/Otologia po Telemedicina                                                                                                    201903
-114007Atendimento à pessoa com deficiência                                                                                                                  201903
-115007UA Infantojuvenil                                                                                                                                     201903
-116007Cardiologia Clínica                                                                                                                                   201903
-121007Radiologia por telemedicina                                                                                                                           201903
-122007Exame Eletrocardiografico por Telemedicina                                                                                                            201903
-123007OPM em odontologia                                                                                                                                    201903
-134007Antroposofia Aplicada à Saúde                                                                                                                         201903
-134008Práticas Expressivas                                                                                                                                  201903
-126008Diagnóstico cinético funcional                                                                                                                        201903
-140008Pronto Atendimento Obstétrico                                                                                                                         201903
-145008Exames toxicológicos ou de monitorização terapêutica                                                                                                  201903
-149008Retirada de orgãos                                                                                                                                    201903
-164008Manutenção e Adaptação de OPM Oftalmológica                                                                                                           201903
-165008Coleta de Vestígios de Violência Sexual                                                                                                               201903
-103008Ambulância de resgate                                                                                                                                 201903
-105008Neurocirurgia funcional estereotáxica                                                                                                                 201903
-107008Atenção Especializada às Pessoas com Deficiência Auditiva                                                                                             201903
-115008Unidade de Atenção em Regime Residencial                                                                                                              201903
-116008Serviço de Atenção Cardiovascular/Cardiologia Angiologia                                                                                              201903
-121008Ultra-sonografia por telemedicina                                                                                                                     201903
-122008Exame Eletroencefalografico por Telemedicina                                                                                                          201903
-123008OPM buco-maxilo-facial                                                                                                                                201903
-135008Oficina Ortopédica Intinerante Terrestre                                                                                                              201903
-134009Ayurveda                                                                                                                                              201903
-135009Oficina Ortopédica Intinerante Fluvial                                                                                                                201903
-140009Pronto Atendimento Psiquiátrico                                                                                                                       201903
-145009Exames microbiológicos                                                                                                                                201903
-123009Substituição/Troca em órteses/próteses                                                                                                                201903
-164009Substitução/Troca de OPM                                                                                                                              201903
-105009Polissonografia                                                                                                                                       201903
-121009Tomografia computadorizada por telemedicina                                                                                                           201903
-122009Exame Eletroneuromiografia                                                                                                                            201903
-149009Pele                                                                                                                                                  201903
-145010Exames em outros líquidos biológicos                                                                                                                  201903
-123010OPM em queimados                                                                                                                                      201903
-134010Práticas Naturais                                                                                                                                     201903
-121010Ressonância magnética por telemedicina                                                                                                                201903
-149010Válvulas cardíacas                                                                                                                                    201903
-140010Pronto Atendimento Oftalmológico                                                                                                                      201903
-135010Atenção Fonoaudiológica                                                                                                                               201903
-122010Exame videoeletroencefalografia                                                                                                                       201903
-103010Motolância                                                                                                                                            201903
-123011OPM em nefrologia                                                                                                                                     201903
-122011Potenciais Evocados                                                                                                                                   201903
-121011Radiologia intervencionista por telemedicina                                                                                                          201903
-103011Unidade de Suporte Avançado de vida: Equipe Embarcação                                                                                                201903
-149011Osteocondroligamentos                                                                                                                                 201903
-145011Exames de genética                                                                                                                                    201903
-140011Pronto Atendimento Odontológico                                                                                                                       201903
-135011Atenção Fisioterapeutica                                                                                                                              201903
-134011Práticas Manuais                                                                                                                                      201903
-103012Equipe Aeromédico                                                                                                                                     201903
-145012Exames para triagem neonatal                                                                                                                          201903
-123012OPM - Projeto Olhar Brasil                                                                                                                            201903
-134012Práticas Psicodinâmicas                                                                                                                               201903
-122012Potenciais Evocados por Telemedicina                                                                                                                  201903
-140012Pronto Socorro Pediátrico                                                                                                                             201903
-121012Mamografia                                                                                                                                            201903
-135012Atenção à Saúde das Pessoas Ostomizadas I                                                                                                             201903
-149012Separação, avaliação biomicroscópica e conservação da córnea/esclera                                                                                  201903
-149013Contagem endotelial corneana                                                                                                                          201903
-134013Ozônioterapia                                                                                                                                         201903
-135013Atenção à Saúde das Pessoas Ostomizadas II                                                                                                            201903
-140013Pronto Socorro Obstétrico                                                                                                                             201903
-145013Exames imunohematológicos                                                                                                                             201903
-121013Mamografia por Telemedicina                                                                                                                           201903
-123013OPM Projeto Olhar Brasil - Programa Saúde na Escola (PSE)                                                                                             201903
-140014Pronto Socorro Cardiovascular                                                                                                                         201903
-134014Aromaterapia                                                                                                                                          201903
-123014OPM Projeto Olhar Brasil - Programa Brasil Alfabetizado (PBA)                                                                                         201903
-149014Acompanhamento de paciente transplantado                                                                                                              201903
-149015Ações para doação e captação de órgãos e tecidos                                                                                                      201903
-140015Pronto Socorro Neurologia/Neurocirurgia                                                                                                               201903
-134015Imposição de Mãos                                                                                                                                     201903
-149016Retirada de globo ocular humano para transplante                                                                                                      201903
-140016Pronto Socorro Traumato-Ortopédico                                                                                                                    201903
-140017Pronto Socorro Odontológico                                                                                                                           201903
-140018Pronto Socorro Oftalmológico                                                                                                                          201903
-140019Pronto Socorro Geral/Clínico                                                                                                                          201903
+165001Referência para Atenção Integral às Pessoas em Situação de Violência Sexual                                                                           202109
+166001Água de Consumo                                                                                                                                       202109
+167001ODONTOLOGIA - PROJETO SAÚDE NA ESCOLA (PSE)                                                                                                           202109
+168001Atenção Especializada Em Doenças Raras                                                                                                                202109
+169001Urologia em Geral                                                                                                                                     202109
+170001Núcleo de Segurança do Paciente                                                                                                                       202109
+173001Recebimento e Inspeção                                                                                                                                202109
+174001Indivíduos em Geral                                                                                                                                   202109
+100001Atendimento em presídio até 100 presos                                                                                                                202109
+101001Saúde da família                                                                                                                                      202109
+102001Estratégia de Agentes Comunitários de Saúde - EACS                                                                                                    202109
+103001Ambulância de transporte                                                                                                                              202109
+104001Central de Regulação de Internações Hospitalares                                                                                                      202109
+105001Neurocirurgia do trauma e anomalias do desenvolvimento                                                                                                202109
+106001Testagem e aconselhamento                                                                                                                             202109
+107001Serviço de Atenção à Saúde Auditiva na Média Complexidade                                                                                             202109
+108001Atendimento/acompanhamento em saúde do trabalhador                                                                                                    202109
+109001Unidade sócio-educativa com até 40 adolecentes                                                                                                        202109
+110001Atenção à infertilidade                                                                                                                               202109
+111001Diagnóstico e tratamento                                                                                                                              202109
+112001Acompanhamento do pré-natal de risco habitual                                                                                                         202109
+113001Assitência Domiciliar                                                                                                                                 202109
+114001Dentística                                                                                                                                            202109
+115001Residência terapêutica em saúde mental                                                                                                                202109
+116001Eletrofisiologia                                                                                                                                      202109
+117001Tratamento da lipodistrofia do portador de HIV / AIDS                                                                                                 202109
+118001Cirurgia torácica                                                                                                                                     202109
+119001Abordagem e tratamento do fumante                                                                                                                     202109
+120001Exames anatomopatológicos                                                                                                                             202109
+121001Radiologia                                                                                                                                            202109
+122001Teste Ergométrico                                                                                                                                     202109
+123001OPM auxiliares de locomoção                                                                                                                           202109
+124001Diagnóstico/Tratamento das doenças endócrinas, metabólicas e nutricionais                                                                             202109
+125001Dispensação de Medicamentos do Componente Especializado da Assistência Farmaceutica.                                                                  202109
+126001Assistência fisioterapêutica em alterações obstétricas, neonatais e uroginecológicas                                                                  202109
+127001Tratamento clínico, cirúrgico, reparador e acompanhamento ao obeso                                                                                    202109
+128001Procedimentos destinados à obtenção do sangue para fins de assitência hemoterápica                                                                    202109
+129001Exames de histocompatibilidade por meio de sorologia                                                                                                  202109
+130001Tratamento Dialítico-Hemodiálise                                                                                                                      202109
+131001Diagnóstico em oftalmologia                                                                                                                           202109
+132001Oncologia pediátrica                                                                                                                                  202109
+133001Tratamento de Doenças das Vias Aéreas Inferiores                                                                                                      202109
+134001Acupuntura                                                                                                                                            202109
+135001Reabilitação Visual                                                                                                                                   202109
+136001Enteral                                                                                                                                               202109
+137001Exame eletrocardiográfico por telemedicina                                                                                                            202109
+138001Diagnóstico e tratamento em cintura escapular                                                                                                         202109
+139001Tratamento de recém-nascido com hipotireoidismo e fenilcetonuria                                                                                      202109
+141001Vigilância epidemiológica                                                                                                                             202109
+142001Do aparelho digestivo                                                                                                                                 202109
+143001Transporte terrestre                                                                                                                                  202109
+144001Coleta realizada fora das estrutura laboratorial                                                                                                      202109
+145001Exames Bioquimicos                                                                                                                                    202109
+146001Diagnóstica                                                                                                                                           202109
+147001NASF 1                                                                                                                                                202109
+148001Saúde mental                                                                                                                                          202109
+149001Rim                                                                                                                                                   202109
+150001Fístula arteriovenosa sem enxerto                                                                                                                     202109
+151001Medicina nuclear in vivo                                                                                                                              202109
+152001Atenção Básica à Populações Indígenas                                                                                                                 202109
+153001Acompanhamento Clínico, pré e pós operatório e hormonioterapia.                                                                                       202109
+154001Banco de valvula cardiaca humana                                                                                                                      202109
+155001Serviço de Traumatologia e Ortopedia                                                                                                                  202109
+156001Atenção as Pessoas Ostomizadas I                                                                                                                      202109
+157001Laboratorio Regional de Protese Dentaria                                                                                                              202109
+158001Serviço de Atenção Integral em Hanseniase Tipo I                                                                                                      202109
+159001Atenção Primária                                                                                                                                      202109
+160001Teleconsultoria Assíncrona                                                                                                                            202109
+161001Equipe de Consultório na Rua - Modalidade I                                                                                                           202109
+162001ADULTO                                                                                                                                                202109
+163001NEONATAL CONVENCIONAL                                                                                                                                 202109
+164001Dispensação de OPM Auxiliares de Locomoção                                                                                                            202109
+100002Atendimento em manicômio até 100 presos                                                                                                               202109
+174002Grupos Especiais                                                                                                                                      202109
+102002Estratégia de Agentes Comunitários de Saúde com Saúde Bucal - (modalidade I)                                                                          202109
+103002Unidade de suporte básico de vida terrestre (USB)                                                                                                     202109
+104002Cental de Regulação de Consultas e Exames                                                                                                             202109
+105002Coluna e nervos periféricos                                                                                                                           202109
+106002Diagnóstico e tratamento                                                                                                                              202109
+107002Serviço de Atenção à Saúde Auditiva na Alta Complexidade                                                                                              202109
+108002Centro de referência em saúde do trabalhador CEREST estadual                                                                                          202109
+109002Unidade sócio-educativa com de 41 a 100 adolecentes                                                                                                   202109
+110002Contracepção clínica                                                                                                                                  202109
+111002Tratamento multidrogas resistentes                                                                                                                    202109
+112002Acompanhamento do pré-natal de alto risco                                                                                                             202109
+113002Internação Domiciliar                                                                                                                                 202109
+114002Endodontia                                                                                                                                            202109
+115002Atendimento psicossocial                                                                                                                              202109
+116002Cirurgia cardiovascular (adulto)                                                                                                                      202109
+117002Tratamento em queimados                                                                                                                               202109
+120002Exames citopatológicos                                                                                                                                202109
+121002Ultra-sonografia                                                                                                                                      202109
+122002Teste de Holter                                                                                                                                       202109
+123002OPM ortopédicas                                                                                                                                       202109
+124002Cirurgia de glândulas endócrinas                                                                                                                      202109
+125002Farmácia Popular                                                                                                                                      202109
+126002Assistência fisioterapêutica em alterações oncológicas                                                                                                202109
+128002Diagnóstico em hemoterapia                                                                                                                            202109
+129002Exames de histocompatibilidade por sorologia e biologia                                                                                               202109
+131002Tratamento clínico do aparelho da visão                                                                                                               202109
+132002Hematologia                                                                                                                                           202109
+133002Diagnóstico em Pneumologia                                                                                                                            202109
+134002Fitoterapia                                                                                                                                           202109
+135002Reabilitação Intelectual                                                                                                                              202109
+136002Enteral/Parenteral                                                                                                                                    202109
+138002Diagnóstico e tratamento em membros superiores                                                                                                        202109
+139002Tratamento de recém-nascido com doenças falciformes                                                                                                   202109
+141002Vigilância sanitária                                                                                                                                  202109
+142002Do aparelho respiratório                                                                                                                              202109
+143002Transporte aéreo                                                                                                                                      202109
+145002Exames hematológicos e hemostasia                                                                                                                     202109
+146002Cirúrgica                                                                                                                                             202109
+147002NASF 2                                                                                                                                                202109
+148002AIDS                                                                                                                                                  202109
+149002Medula óssea                                                                                                                                          202109
+150002Fístula arteriovenosa com enxerto                                                                                                                     202109
+151002Medicina nuclear in vitro                                                                                                                             202109
+153002Cirurgia e Acompanhamento pré e pós oreratório                                                                                                        202109
+154002Banco de tecido musculo esqueletico                                                                                                                   202109
+155002Serviço de Traumatologia e Ortopedia Pediátrica (até 21 anos de idade)                                                                                202109
+156002Atenção as Pessoas Ostomizadas II                                                                                                                     202109
+158002Serviço de Atenção Integral em Hanseniase Tipo II                                                                                                     202109
+159002Atenção Básica com Saúde Bucal                                                                                                                        202109
+160002Teleconsultoria Síncrona                                                                                                                              202109
+161002Equipe de Consultório na Rua - Modalidade II                                                                                                          202109
+162002NEONATAL                                                                                                                                              202109
+163002NEONATAL CANGURU                                                                                                                                      202109
+164002Manutenção e Adaptação de OPM Auxiliares de Locomoção                                                                                                 202109
+165002Serviço de Referência para Atenção Integral à Saúde de Adolescentes em Situação de Violência Sexual                                                   202109
+166002Água de Ambiental                                                                                                                                     202109
+167002ODONTOLOGIA - PROJETO BRASIL ALFABETIZADO (PBA)                                                                                                       202109
+168002Referência em Doenças Raras                                                                                                                           202109
+169002Litotripsia                                                                                                                                           202109
+173002Armazenamento e Controle                                                                                                                              202109
+101002Saúde bucal MI                                                                                                                                        202109
+100003Atendimento em presídio acima de 100 presos                                                                                                           202109
+101003Saúde bucal MII                                                                                                                                       202109
+102003Estratégia de Agentes Comunitários de Saúde com Saúde Bucal - (modalidade II)                                                                         202109
+103003Unidade de suporte avançado de vida terrestre (USA)                                                                                                   202109
+104003Central de Regulação de Urgências                                                                                                                     202109
+105003Tumores do sistema nervoso                                                                                                                            202109
+106003Diagnóstico, tratamento e capacitação técnica                                                                                                         202109
+107003Terapia fonoaudiológica                                                                                                                               202109
+108003VIGILÂNCIA EM SAÚDE DO TRABALHADOR (VISAT)                                                                                                            202109
+109003Unidade sócio-educativa com de 101 a 180 adolecentes                                                                                                  202109
+110003Laqueadura                                                                                                                                            202109
+112003Parto em gestação de risco habitual                                                                                                                   202109
+113003Equipe Multidisciplinar de Atenção Domiciliar - EMAD                                                                                                  202109
+114003Periodontia clínica                                                                                                                                   202109
+115003Serviço Hospitalar para Atenção a Saúde Mental                                                                                                        202109
+116003Cirurgia cardiovascular (Pediátrico)                                                                                                                  202109
+117003Tratamento da lipoatrofia facial do portador de HIV / AIDS                                                                                            202109
+120003Monitoramento Externo da Qualidade dos Exames Citopatologicos do Colo do Útero                                                                        202109
+121003Tomografia computadorizada                                                                                                                            202109
+122003Exame Eletrocardiográfico                                                                                                                             202109
+123003OPM auditivas                                                                                                                                         202109
+125003Farmácia com manipulação homeopática                                                                                                                  202109
+126003Assistência fisioterapêutica em oftalmologia                                                                                                          202109
+128003Procedimentos especiais em hemoterapia                                                                                                                202109
+130003Confeccção/Intervenção de Acessos para Diálise                                                                                                        202109
+131003Tratamento cirúrgico do aparelho da visão                                                                                                             202109
+132003Oncologia clínica                                                                                                                                     202109
+133003Diagnóstico em Pneumologia por Telemedicina                                                                                                           202109
+134003Outras Práticas em Medicina Tradicional Chinesa                                                                                                       202109
+135003Reabilitação Física                                                                                                                                   202109
+136003Enteral/Parenteral, com manipulação/fabricação                                                                                                        202109
+138003Diagnóstico e tratamento em coluna vertebral e caixa torácica                                                                                         202109
+139003Tratamento de recém-nascido com fibrose cística                                                                                                       202109
+141003Vigilância ambiental                                                                                                                                  202109
+142003Do aparelho urinário                                                                                                                                  202109
+143003Transporte marítimo                                                                                                                                   202109
+145003Exames sorológicos e imunológicos                                                                                                                     202109
+147003NASF Intermunicipal                                                                                                                                   202109
+148003Geriátrico                                                                                                                                            202109
+149003Coração                                                                                                                                               202109
+151003Medicina nuclear in vivo por telemedicina                                                                                                             202109
+155003Serviço de Traumatologia e Ortopedia de Urgência                                                                                                      202109
+158003Serviço de Atenção Integral em Hanseniase Tipo III                                                                                                    202109
+159003Academia da Saúde                                                                                                                                     202109
+160003Segunda Opinião Formativa                                                                                                                             202109
+161003Equipe de Consultório na Rua - Modalidade III                                                                                                         202109
+162003PEDIÁTRICO                                                                                                                                            202109
+163003PEDIÁTRICO                                                                                                                                            202109
+164003Dispensação de OPM Ortopédica                                                                                                                         202109
+165003Serviço de Referência para Atenção Integral à Saúde de Crianças em Situação de Violência Sexual                                                       202109
+166003Água de Hemodiálise                                                                                                                                   202109
+167003OFTALMOLOGIA - PROJETO SAÚDE NA ESCOLA (PSE)                                                                                                          202109
+173003Distribuição                                                                                                                                          202109
+152004Saneamento a Populações Indígenas                                                                                                                     202109
+159004Estratégia de Saúde da Família                                                                                                                        202109
+162004QUEIMADOS                                                                                                                                             202109
+163004ADULTO                                                                                                                                                202109
+164004Manutenção e Adaptação de OPM Ortopédica                                                                                                              202109
+165004Serviço de Referência para Atenção Integral à Saúde de Homens em Situação de Violência Sexual                                                         202109
+166004Água Mineral                                                                                                                                          202109
+167004OFTALMOLOGIA - PROJETO BRASIL ALFABETIZADO (PBA)                                                                                                      202109
+173004Transporte                                                                                                                                            202109
+125004Dispensação de medicamentos estratégicos                                                                                                              202109
+126004Assistência fisioterapêutica cardiovasculares e pneumo-funcionais                                                                                     202109
+128004Medicina transfusional                                                                                                                                202109
+130004Tratamento Nefrologia em Geral                                                                                                                        202109
+131004Projeto Olhar Brasil                                                                                                                                  202109
+132004Radioterapia                                                                                                                                          202109
+134004Práticas Corpo-mente                                                                                                                                  202109
+135004Reabilitação visual/mental/múltiplas deficiências                                                                                                     202109
+138004Diagnóstico e tratamento em cintura pélvica                                                                                                           202109
+139004Tratamento de recém-nascido com outras doenças congênitas                                                                                             202109
+140004Estabilização de paciente crítico/grave                                                                                                               202109
+141004Núcleo de vigilância hospitalar                                                                                                                       202109
+142004Do aparelho ginecológico                                                                                                                              202109
+145004Exames coprológicos                                                                                                                                   202109
+147004NASF 3                                                                                                                                                202109
+148004Fibrose cística                                                                                                                                       202109
+149004Pulmão                                                                                                                                                202109
+100004Atendimento em manicômio acima de 100 presos                                                                                                          202109
+101004Saúde da Família para a População Ribeirinha                                                                                                          202109
+104004Unidade de autorizações de TFD intermunicipais                                                                                                        202109
+105004Neurocirurgia vascular                                                                                                                                202109
+106004Assistência Domiciliar Terapêutica em AIDS-ADT                                                                                                        202109
+107004Diagnóstico em audiologia/otologia                                                                                                                    202109
+109004Unidade sócio-educativa com mais de 180 adolecentes                                                                                                   202109
+110004Vasectomia                                                                                                                                            202109
+112004Parto em gestação de alto risco                                                                                                                       202109
+113004Equipe Multidisciplinar de Apoio - EMAP                                                                                                               202109
+114004Moldagem/Manutenção                                                                                                                                   202109
+115004Serviço Residencial Terapêutico Tipo I - SRT tipo I                                                                                                   202109
+116004Cirurgia vascular                                                                                                                                     202109
+121004Ressonância magnética                                                                                                                                 202109
+122004Exame Eletroencefalográfico                                                                                                                           202109
+123004OPM oftalmológicas                                                                                                                                    202109
+152005Atenção Especializada a Populações Indígenas                                                                                                          202109
+122005Teste Ergométrico por Telemedicina                                                                                                                    202109
+162005DOENÇA CORONARIANA (UCO)                                                                                                                              202109
+164005Dispensação de OPM Auditiva                                                                                                                           202109
+165005Serviço de Referência para Atenção Integral à Saúde de Pessoas Idosas em Situação de Violência Sexual                                                 202109
+166005Alimentos                                                                                                                                             202109
+123005OPM em gastroenterologia                                                                                                                              202109
+125005Dispensação de medicamentos básicos                                                                                                                   202109
+126005Assistência fisioterapêutica nas disfunções músculo-esqueléticas (todas as origens)                                                                   202109
+130005Tratamento Diálitico Peritonial                                                                                                                       202109
+131005Diagnóstico em Oftalmologia por Telemedicina                                                                                                          202109
+132005Oncologia cirúrgica                                                                                                                                   202109
+134005Homeopatia                                                                                                                                            202109
+135005Reabiliatação Auditiva                                                                                                                                202109
+138005Diagnóstico e tratamento em membros inferiores                                                                                                        202109
+139005Acompanhamento a pacientes com diagnósticos de Hiperplasia Adrenal Congênita                                                                          202109
+140005Atendimento ao paciente com Acidente Vascular Cerebral (AVC)                                                                                          202109
+145005Exames de uroanálise                                                                                                                                  202109
+148005Cirúrgico / Diagnóstico                                                                                                                               202109
+149005Córnea / Esclera                                                                                                                                      202109
+101005Saúde da Família para a População Ribeirinha-Saúde Bucal MI                                                                                           202109
+103005Unidade de Suporte Básico de vida: Equipe Embarcação                                                                                                  202109
+104005Unidade de autorizações de TFD interestaduais                                                                                                         202109
+105005Tratamento neurocirúrgico da dor funcional                                                                                                            202109
+106005Unidade Dispensadora de Medicamentos - UDM                                                                                                            202109
+107005Implante Coclear                                                                                                                                      202109
+109005Atenção Básica à Adolescentes em Unidade Socioeducativa                                                                                               202109
+112005Centro de parto normal                                                                                                                                202109
+113005Equipe de cuidados domiciliares                                                                                                                       202109
+114005Cirurgia oral                                                                                                                                         202109
+115005Serviço Residencial Terapêutico Tipo II - SRT tipo II                                                                                                 202109
+116005Cardiologia intervencionista (hemodinâmica)                                                                                                           202109
+159005Saúde Bucal                                                                                                                                           202109
+159006Núcleo Ampliado de Saúde da Família e Atenção Primária                                                                                                202109
+122006Teste Holter por Telemedicina                                                                                                                         202109
+165006Serviço de referência para interrupção de gravidez nos casos previstos em LEI                                                                         202109
+166006Células, Tecidos e Órgãos                                                                                                                             202109
+123006OPM em urologia                                                                                                                                       202109
+125006Farmácia Hospitalar                                                                                                                                   202109
+126006Assistência fisioterapêutica em queimados                                                                                                             202109
+130006Tratamento em DRC                                                                                                                                     202109
+131006Projeto Olhar Brasil - Programa Saúde na Escola (PSE)                                                                                                 202109
+134006Termalismo/Crenoterapia                                                                                                                               202109
+139006Acompanhamento a pacientes com diagnósticos de Deficiência Biotinidase                                                                                202109
+140006Pronto Atendimento Clínico                                                                                                                            202109
+145006Exames hormonais                                                                                                                                      202109
+148006Acompanhamento pós-transplante de medula óssea                                                                                                        202109
+149006Fígado                                                                                                                                                202109
+101006Saúde da Família Fluvial                                                                                                                              202109
+103006Veículos de intervenção rápida                                                                                                                        202109
+104006Central Estadual de Regulação da Alta Complexidade                                                                                                    202109
+105006Investigação e cirurgia de epilepsia                                                                                                                  202109
+107006Triagem Auditiva Neonatal                                                                                                                             202109
+112006Casa da Gestante, Bebê e Puérpera                                                                                                                     202109
+114006Cirurgia buco-maxilo-facial                                                                                                                           202109
+115006UA Adulto                                                                                                                                             202109
+116006Cardiologia Endovascular Extracardíaco                                                                                                                202109
+121006Radiologia intervencionista                                                                                                                           202109
+164006Manutenção e Adaptação de OPM Auditiva                                                                                                                202109
+159007Atenção Primária para População Ribeirinha                                                                                                            202109
+122007Exame Eletrocardiografico por Telemedicina                                                                                                            202109
+165007Atenção Ambulatorial  ás Pessoas em Situação de Violência Sexual                                                                                      202109
+166007Medicamentos                                                                                                                                          202109
+123007OPM em odontologia                                                                                                                                    202109
+125007Farmácia Viva                                                                                                                                         202109
+126007Assistência fisioterapêutica nas alterações em neurologia                                                                                             202109
+131007Projeto Olhar Brasil - Programa Brasil Alfabetizado (PBA)                                                                                             202109
+134007Antroposofia Aplicada à Saúde                                                                                                                         202109
+135007Oficina Ortopédica Fixa                                                                                                                               202109
+140007Pronto Atendimento Pediátrico                                                                                                                         202109
+145007Exames de  vigilância epidemiológica e  ambiental                                                                                                     202109
+149007Pâncreas                                                                                                                                              202109
+101007Saúde da Família Fluvial com Saúde Bucal                                                                                                              202109
+103007Outros veículos                                                                                                                                       202109
+104007Regulação Nacional de Alta Complexidade                                                                                                               202109
+105007Tratamento endovascular                                                                                                                               202109
+107007Diagnóstico em Audiologia/Otologia por Telemedicina                                                                                                   202109
+114007Atendimento à pessoa com deficiência                                                                                                                  202109
+115007UA Infantojuvenil                                                                                                                                     202109
+116007Cardiologia Clínica                                                                                                                                   202109
+121007Radiologia por telemedicina                                                                                                                           202109
+164007Dispensação de OPM Oftalmológica                                                                                                                      202109
+152008Hospitalidade Indígena                                                                                                                                202109
+122008Exame Eletroencefalografico por Telemedicina                                                                                                          202109
+164008Manutenção e Adaptação de OPM Oftalmológica                                                                                                           202109
+165008Coleta de  Vestígios de Violência Sexual                                                                                                              202109
+166008Saneantes Domissanitários                                                                                                                             202109
+123008OPM buco-maxilo-facial                                                                                                                                202109
+126008Diagnóstico cinético funcional                                                                                                                        202109
+134008Práticas Expressivas                                                                                                                                  202109
+135008Oficina Ortopédica Intinerante Terrestre                                                                                                              202109
+140008Pronto Atendimento Obstétrico                                                                                                                         202109
+145008Exames toxicológicos ou de monitorização terapêutica                                                                                                  202109
+149008Retirada de orgãos                                                                                                                                    202109
+101008ESF Tipo I, II, III, IV ou Transitória                                                                                                                202109
+103008Ambulância de resgate                                                                                                                                 202109
+104008Regulação Ambulatorial de Média Complexidade                                                                                                          202109
+105008Neurocirurgia funcional estereotáxica                                                                                                                 202109
+107008Atenção Especializada às Pessoas com Deficiência Auditiva                                                                                             202109
+115008Unidade de Atenção em Regime Residencial                                                                                                              202109
+116008Serviço de Atenção Cardiovascular/Cardiologia Angiologia                                                                                              202109
+121008Ultra-sonografia por telemedicina                                                                                                                     202109
+159008Consultório na Rua                                                                                                                                    202109
+152009Gestão da Atenção e Saneamento à Populações Indígenas                                                                                                 202109
+122009Exame Eletroneuromiografia                                                                                                                            202109
+164009Substitução/Troca de OPM                                                                                                                              202109
+166009Produtos para a Saúde                                                                                                                                 202109
+123009Substituição/Troca em órteses/próteses                                                                                                                202109
+134009Ayurveda                                                                                                                                              202109
+135009Oficina Ortopédica Intinerante Fluvial                                                                                                                202109
+140009Pronto Atendimento Psiquiátrico                                                                                                                       202109
+145009Exames microbiológicos                                                                                                                                202109
+149009Pele                                                                                                                                                  202109
+101009ESF Tipo I, II, III, IV ou Transitória com Saúde Bucal MI                                                                                             202109
+104009Regulação do Acesso a Ações e Serviços de Saúde                                                                                                       202109
+105009Polissonografia                                                                                                                                       202109
+121009Tomografia computadorizada por telemedicina                                                                                                           202109
+159009Atenção Primária para População Prisional                                                                                                             202109
+134010Práticas Naturais                                                                                                                                     202109
+159010Atenção Primária para Adolescentes em Unidade Socioeducativa                                                                                          202109
+123010OPM em queimados                                                                                                                                      202109
+135010Atenção Fonoaudiológica                                                                                                                               202109
+152010Saúde Bucal à Populações Indígenas                                                                                                                    202109
+103010Motolância                                                                                                                                            202109
+164010OPM em gastroenterologia                                                                                                                              202109
+149010Válvulas cardíacas                                                                                                                                    202109
+121010Ressonância magnética por telemedicina                                                                                                                202109
+166010Cosméticos                                                                                                                                            202109
+145010Exames em outros líquidos biológicos                                                                                                                  202109
+140010Pronto Atendimento Oftalmológico                                                                                                                      202109
+122010Exame videoeletroencefalografia                                                                                                                       202109
+101010ESF Tipo I, II, III, IV ou Transitória com Saúde Bucal MII                                                                                            202109
+123011OPM em nefrologia                                                                                                                                     202109
+122011Potenciais Evocados                                                                                                                                   202109
+121011Radiologia intervencionista por telemedicina                                                                                                          202109
+103011Unidade de Suporte Avançado de vida: Equipe Embarcação                                                                                                202109
+101011ESF Transitória                                                                                                                                       202109
+166011Desinfestantes                                                                                                                                        202109
+164011OPM em Urologia                                                                                                                                       202109
+149011Osteocondroligamentos                                                                                                                                 202109
+145011Exames de genética                                                                                                                                    202109
+140011Pronto Atendimento Odontológico                                                                                                                       202109
+135011Atenção Fisioterapeutica                                                                                                                              202109
+134011Práticas Manuais                                                                                                                                      202109
+135012Atenção à Saúde das Pessoas Ostomizadas I                                                                                                             202109
+123012OPM - Projeto Olhar Brasil                                                                                                                            202109
+103012Equipe Aeromédico                                                                                                                                     202109
+145012Exames para triagem neonatal                                                                                                                          202109
+121012Mamografia                                                                                                                                            202109
+101012Saúde da Família para a População Ribeirinha - Saúde Bucal MII                                                                                        202109
+134012Práticas Psicodinâmicas                                                                                                                               202109
+122012Potenciais Evocados por Telemedicina                                                                                                                  202109
+140012Pronto Socorro Pediátrico                                                                                                                             202109
+166012Imunobiológicos                                                                                                                                       202109
+149012Separação, avaliação biomicroscópica e conservação da córnea/esclera                                                                                  202109
+123013OPM Projeto Olhar Brasil - Programa Saúde na Escola (PSE)                                                                                             202109
+101013ESB MI                                                                                                                                                202109
+140013Pronto Socorro Obstétrico                                                                                                                             202109
+166013Insumos Farmacêuticos                                                                                                                                 202109
+149013Contagem endotelial corneana                                                                                                                          202109
+121013Mamografia por Telemedicina                                                                                                                           202109
+135013Atenção à Saúde das Pessoas Ostomizadas II                                                                                                            202109
+145013Exames imunohematológicos                                                                                                                             202109
+134013Ozônioterapia                                                                                                                                         202109
+149014Acompanhamento de paciente transplantado                                                                                                              202109
+166014Material Biológico                                                                                                                                    202109
+140014Pronto Socorro Cardiovascular                                                                                                                         202109
+123014OPM Projeto Olhar Brasil - Programa Brasil Alfabetizado (PBA)                                                                                         202109
+134014Aromaterapia                                                                                                                                          202109
+101014ESB MII                                                                                                                                               202109
+140015Pronto Socorro Neurologia/Neurocirurgia                                                                                                               202109
+166015Sangue e Hemoderivados                                                                                                                                202109
+134015Imposição de Mãos                                                                                                                                     202109
+149015Ações para doação e captação de órgãos e tecidos                                                                                                      202109
+149016Retirada de globo ocular humano para transplante                                                                                                      202109
+166016Surtos de Toxinfecção                                                                                                                                 202109
+140016Pronto Socorro Traumato-Ortopédico                                                                                                                    202109
+166017Diversos                                                                                                                                              202109
+140017Pronto Socorro Odontológico                                                                                                                           202109
+140018Pronto Socorro Oftalmológico                                                                                                                          202109
+140019Pronto Socorro Geral/Clínico                                                                                                                          202109

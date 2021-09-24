@@ -502,6 +502,7 @@
 225340Médico hemoterapeuta                                                                                                                                  
 225345Médico hiperbarista                                                                                                                                   
 225350Médico neurofisiologista clínico                                                                                                                      
+225355Médico Radiologista Intervencionista                                                                                                                  
 226105Quiropraxista                                                                                                                                         
 226110Osteopata                                                                                                                                             
 226305Musicoterapeuta                                                                                                                                       

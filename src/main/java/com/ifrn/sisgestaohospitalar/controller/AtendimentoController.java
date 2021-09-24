@@ -9,7 +9,6 @@ import java.util.Optional;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
-import org.hibernate.internal.build.AllowSysOut;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -161,7 +160,7 @@ public class AtendimentoController {
 		if (optional.isPresent()) {
 			return ResponseEntity.ok().body(optional.get().getAtendimentoProcedimentos());
 		}
-		return ResponseEntity.notFound().build();
+		return ResponseEntity.badRequest().build();
 
 	}
 
@@ -175,7 +174,7 @@ public class AtendimentoController {
 			atendimentoRepository.saveAndFlush(atendimento);
 			return ResponseEntity.ok().build();
 		}
-		return ResponseEntity.notFound().build();
+		return ResponseEntity.badRequest().build();
 	}
 
 	@RequestMapping("/diagnosticos/{id}")
@@ -184,12 +183,13 @@ public class AtendimentoController {
 		if (optional.isPresent()) {
 			return ResponseEntity.ok().body(optional.get().getDiagnostico());
 		}
-		return ResponseEntity.notFound().build();
+		return ResponseEntity.badRequest().build();
 
 	}
 
 	@PostMapping("/prescricao")
 	public ResponseEntity<?> prescricao(@Valid Prescricao prescricao, BindingResult result) {
+		System.out.println(prescricao);
 		Map<String, String> errors = new HashMap<>();
 		if (result.hasErrors()) {
 			for (FieldError error : result.getFieldErrors()) {
@@ -197,26 +197,25 @@ public class AtendimentoController {
 			}
 			return ResponseEntity.unprocessableEntity().body(errors);
 		}
-		
+
 		Optional<Atendimento> optional = atendimentoRepository.findById(prescricao.getIdAtendimento());
 		if (optional.isPresent()) {
-			System.out.println(optional.get().getCidadao().getNome());
 			Atendimento atendimento = optional.get();
 			prescricao.setData(LocalDateTime.now());
 			atendimento.getPrescricoes().add(prescricao);
 			atendimentoRepository.saveAndFlush(atendimento);
 			return ResponseEntity.ok().build();
 		}
-		return ResponseEntity.notFound().build();
+		return ResponseEntity.badRequest().build();
 	}
-	
+
 	@RequestMapping("/prescricoes/{id}")
 	public ResponseEntity<?> prescricoes(@PathVariable("id") Long id) {
 		Optional<Atendimento> optional = atendimentoRepository.findById(id);
 		if (optional.isPresent()) {
 			return ResponseEntity.ok().body(optional.get().getPrescricoes());
 		}
-		return ResponseEntity.notFound().build();
+		return ResponseEntity.badRequest().build();
 
 	}
 
