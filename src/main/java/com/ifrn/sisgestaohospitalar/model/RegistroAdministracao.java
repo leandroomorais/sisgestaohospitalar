@@ -9,7 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
 @Entity
-public class SituacaoPrescricao {
+public class RegistroAdministracao {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
