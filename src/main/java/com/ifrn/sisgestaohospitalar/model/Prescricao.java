@@ -1,13 +1,19 @@
 package com.ifrn.sisgestaohospitalar.model;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Transient;
+import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
@@ -45,8 +51,10 @@ public class Prescricao {
 	@OneToOne
 	private Prontuario prontuario;
 	
-	@OneToOne
-	private SituacaoPrescricao situacaoPrescricao;
+	@Valid
+	@ManyToMany(cascade = CascadeType.ALL)
+	@JoinTable(name = "prescricao_registro_administracao", joinColumns = @JoinColumn(name = "id_prescricao"), inverseJoinColumns = @JoinColumn(name = "id_registro_administracao"))
+	private List<RegistroAdministracao> registrosAdministracao;
 	
 	@Quantidade
 	private int quantidade;
@@ -136,13 +144,7 @@ public class Prescricao {
 		this.prontuario = prontuario;
 	}
 
-	public SituacaoPrescricao getSituacaoPrescricao() {
-		return situacaoPrescricao;
-	}
-
-	public void setSituacaoPrescricao(SituacaoPrescricao situacaoPrescricao) {
-		this.situacaoPrescricao = situacaoPrescricao;
-	}
+	
 
 	public int getQuantidade() {
 		return quantidade;
@@ -168,15 +170,7 @@ public class Prescricao {
 		this.profissional = profissional;
 	}
 
-	@Override
-	public String toString() {
-		return "Prescricao [id=" + id + ", medicamento=" + medicamento + ", viaAdministracao=" + viaAdministracao
-				+ ", posologia=" + posologia + ", administracaoNoAtendimento=" + administracaoNoAtendimento
-				+ ", orientacoes=" + orientacoes + ", doseUnica=" + doseUnica + ", usoContinuo=" + usoContinuo
-				+ ", idAtendimento=" + idAtendimento + ", prontuario=" + prontuario + ", situacaoPrescricao="
-				+ situacaoPrescricao + ", quantidade=" + quantidade + ", data=" + data + ", profissional="
-				+ profissional + "]";
-	}
+	
 	
 	
 	
