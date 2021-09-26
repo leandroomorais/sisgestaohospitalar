@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 @Entity
 public class ViaAdministracao {
@@ -13,6 +14,9 @@ public class ViaAdministracao {
 	private Long id;
 	
 	private String nome;
+	
+	@OneToOne
+	private Procedimento procedimento;
 
 	public Long getId() {
 		return id;
@@ -28,6 +32,14 @@ public class ViaAdministracao {
 
 	public void setNome(String nome) {
 		this.nome = nome;
+	}
+
+	public Procedimento getProcedimento() {
+		return procedimento;
+	}
+
+	public void setProcedimento(Procedimento procedimento) {
+		this.procedimento = procedimento;
 	}
 
 }
