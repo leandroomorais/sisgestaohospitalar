@@ -3,7 +3,7 @@ $(document).ready(function() {
 
 	$("#div-form-prescricao").hide();
 	$("#div-form-edit-prescricao").hide();
-	$("#div-form-confirma-prescricao").hide();
+	$("#div-registro-administracao").hide();
 
 	//Função que inicia o TinyMCE
 	tinymce.init({
@@ -30,9 +30,6 @@ $(document).ready(function() {
 
 });
 
-$("#submit-receituario").click(function() {
-
-});
 
 $("#submit-diagnostico").click(function() {
 	var hipoteseDiagnostica = {};

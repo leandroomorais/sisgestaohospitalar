@@ -170,9 +170,11 @@ public class Prescricao {
 		this.profissional = profissional;
 	}
 
-	
-	
-	
-	
-	
+	public List<RegistroAdministracao> getRegistrosAdministracao() {
+		return registrosAdministracao;
+	}
+
+	public void setRegistrosAdministracao(List<RegistroAdministracao> registrosAdministracao) {
+		this.registrosAdministracao = registrosAdministracao;
+	}	
 }

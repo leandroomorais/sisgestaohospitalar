@@ -87,10 +87,10 @@ public class SisgestaohospitalarApplication implements ApplicationListener<Conte
 
 	@Autowired
 	private FormaFarmaceuticaRepository formaFarmaceuticaRepository;
-	
+
 	@Autowired
 	private ViaAdministracaoRepository viaAdministracaoRepository;
-	
+
 	@Autowired
 	private TipoServicoRepository tipoServicoRepository;
 
@@ -115,80 +115,65 @@ public class SisgestaohospitalarApplication implements ApplicationListener<Conte
 
 	@Override
 	public void onApplicationEvent(ContextRefreshedEvent event) {
-		
-		//lerSigtab();
-		//lerMedicamentosEFormaFarmaceutica();
-		//lerXmlEsus();
-		//lerEstadosMunicipios();
-		//salvarViaAdministracao();
-		//salvarTipoServico();
-		
 
+		// lerSigtab();
+		// lerMedicamentosEFormaFarmaceutica();
+		// lerXmlEsus();
+		// lerEstadosMunicipios();
+		// salvarViaAdministracao();
+		// salvarTipoServico();
 	}
-	
+
 	public void salvarTipoServico() {
 		TipoServico triagem = new TipoServico();
 		TipoServico consulta = new TipoServico();
 		TipoServico adminMedicamentos = new TipoServico();
 		TipoServico curativo = new TipoServico();
 		TipoServico inativo = new TipoServico();
-		
+
 		triagem.setNome("Triagem");
 		consulta.setNome("Consulta");
 		adminMedicamentos.setNome("Admin. de medicamentos");
 		curativo.setNome("Curativo");
 		inativo.setNome("Inativo");
-		
+
 		tipoServicoRepository.saveAndFlush(triagem);
 		tipoServicoRepository.saveAndFlush(consulta);
 		tipoServicoRepository.saveAndFlush(adminMedicamentos);
 		tipoServicoRepository.saveAndFlush(curativo);
 		tipoServicoRepository.saveAndFlush(inativo);
 	}
-	
+
 	public void salvarViaAdministracao() {
 		ViaAdministracao oral = new ViaAdministracao();
-		ViaAdministracao sublingual = new ViaAdministracao();
 		ViaAdministracao parenteralIntramuscular = new ViaAdministracao();
 		ViaAdministracao parenteralIntraVenosa = new ViaAdministracao();
 		ViaAdministracao parenteralSubcultanea = new ViaAdministracao();
-		ViaAdministracao nasal = new ViaAdministracao();
-		ViaAdministracao oftalmica = new ViaAdministracao();
-		ViaAdministracao auricular = new ViaAdministracao();
-		ViaAdministracao pulmonar = new ViaAdministracao();
-		ViaAdministracao vaginal = new ViaAdministracao();
-		ViaAdministracao retal = new ViaAdministracao();
-		
+		ViaAdministracao topica = new ViaAdministracao();
+
 		oral.setNome("Oral");
-		sublingual.setNome("Sublingual");
+		oral.setProcedimento(procedimentoRepository.getOne(Long.parseLong("0301100217")));
 		parenteralIntramuscular.setNome("Intramuscular");
-		parenteralIntraVenosa.setNome("Intravenosa");
+		parenteralIntramuscular.setProcedimento(procedimentoRepository.getOne(Long.parseLong("0301100209")));
+		parenteralIntraVenosa.setNome("Endovenosa");
+		parenteralIntraVenosa.setProcedimento(procedimentoRepository.getOne(Long.parseLong("0301100195")));
 		parenteralSubcultanea.setNome("Subcutânea");
-		nasal.setNome("Nasal");
-		oftalmica.setNome("Oftálmica");
-		auricular.setNome("Auricular");
-		pulmonar.setNome("Pulmonar");
-		vaginal.setNome("Vaginal");
-		retal.setNome("Retal");
-		
+		parenteralSubcultanea.setProcedimento(procedimentoRepository.getOne(Long.parseLong("0301100225")));
+		topica.setNome("Tópica");
+		topica.setProcedimento(procedimentoRepository.getOne(Long.parseLong("0301100233")));
+
 		viaAdministracaoRepository.saveAndFlush(oral);
-		viaAdministracaoRepository.saveAndFlush(sublingual);
 		viaAdministracaoRepository.saveAndFlush(parenteralIntramuscular);
 		viaAdministracaoRepository.saveAndFlush(parenteralIntraVenosa);
 		viaAdministracaoRepository.saveAndFlush(parenteralSubcultanea);
-		viaAdministracaoRepository.saveAndFlush(nasal);
-		viaAdministracaoRepository.saveAndFlush(oftalmica);
-		viaAdministracaoRepository.saveAndFlush(auricular);
-		viaAdministracaoRepository.saveAndFlush(pulmonar);
-		viaAdministracaoRepository.saveAndFlush(vaginal);
-		viaAdministracaoRepository.saveAndFlush(retal);
+		viaAdministracaoRepository.saveAndFlush(topica);
 	}
 
 	public void lerMedicamentosEFormaFarmaceutica() {
 		try {
 			leitorTXTMedicamentos.lerTXTFormaFarmaceutica(txtFormaFarmaceutica);
 			leitorTXTMedicamentos.lerTXTMedicamentos(fileMedicamento);
-			
+
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -207,21 +192,21 @@ public class SisgestaohospitalarApplication implements ApplicationListener<Conte
 
 	public void lerSigtab() {
 		try {
-			 leitorTxtSigtap.lerTxtCid(urlCid);
-			 leitorTxtSigtap.lerTxtProcedimentos(urlProcedimentos);
-			 leitorTxtSigtap.lerTxtOcupacao(urlOcupacao);
-			 leitorTxtSigtap.lerTxtRegistro(urlRegistros);
-			 //leitorTxtSigtap.relacionamentoProcedimento_Cid(urlRelationProced_Cid);
+			leitorTxtSigtap.lerTxtCid(urlCid);
+			leitorTxtSigtap.lerTxtProcedimentos(urlProcedimentos);
+			leitorTxtSigtap.lerTxtOcupacao(urlOcupacao);
+			leitorTxtSigtap.lerTxtRegistro(urlRegistros);
+			// leitorTxtSigtap.relacionamentoProcedimento_Cid(urlRelationProced_Cid);
 
-			 //leitorTxtSigtap.relacionamentoProcedimento_Cid(urlRelationProced_Cid);
-			 //leitorTxtSigtap.relacionamentoProcedimento_Ocupacao(urlRelationProced_Ocupacao);
-			 //leitorTxtSigtap.relacionamentoProcedimento_Registro(urlRelationProced_Registro);
+			// leitorTxtSigtap.relacionamentoProcedimento_Cid(urlRelationProced_Cid);
+			// leitorTxtSigtap.relacionamentoProcedimento_Ocupacao(urlRelationProced_Ocupacao);
+			// leitorTxtSigtap.relacionamentoProcedimento_Registro(urlRelationProced_Registro);
 
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public void lerEstadosMunicipios() {
 		SalvarEstadosEMunicipios estadosEMunicipios = new SalvarEstadosEMunicipios();
 		SalvarLogradouros logradouros = new SalvarLogradouros();

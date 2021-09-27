@@ -7,6 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
+import javax.persistence.Transient;
 
 @Entity
 public class RegistroAdministracao {
@@ -21,6 +22,9 @@ public class RegistroAdministracao {
 	
 	@OneToOne
 	private Profissional profissionalResponsavel;
+	
+	@Transient
+	private Long idPrescricao;
 	
 	private String nota;
 
@@ -63,5 +67,22 @@ public class RegistroAdministracao {
 	public void setNota(String nota) {
 		this.nota = nota;
 	}
+
+	public Long getIdPrescricao() {
+		return idPrescricao;
+	}
+
+	public void setIdPrescricao(Long idPrescricao) {
+		this.idPrescricao = idPrescricao;
+	}
+
+	@Override
+	public String toString() {
+		return "RegistroAdministracao [id=" + id + ", administracaoRealizada=" + administracaoRealizada
+				+ ", dataAdministracao=" + dataAdministracao + ", profissionalResponsavel=" + profissionalResponsavel
+				+ ", idPrescricao=" + idPrescricao + ", nota=" + nota + "]";
+	}
+	
+	
 	
 }
