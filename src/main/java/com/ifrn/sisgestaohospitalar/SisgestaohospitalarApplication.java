@@ -12,7 +12,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
 
+import com.ifrn.sisgestaohospitalar.model.Role;
 import com.ifrn.sisgestaohospitalar.model.TipoServico;
+import com.ifrn.sisgestaohospitalar.model.TipoUsuario;
 import com.ifrn.sisgestaohospitalar.model.ViaAdministracao;
 import com.ifrn.sisgestaohospitalar.repository.AtendimentoRepository;
 import com.ifrn.sisgestaohospitalar.repository.Cep_IbgeRepository;
@@ -24,7 +26,9 @@ import com.ifrn.sisgestaohospitalar.repository.LogradouroRepository;
 import com.ifrn.sisgestaohospitalar.repository.MedicamentoRepository;
 import com.ifrn.sisgestaohospitalar.repository.MunicipioRepository;
 import com.ifrn.sisgestaohospitalar.repository.ProcedimentoRepository;
+import com.ifrn.sisgestaohospitalar.repository.RoleRepository;
 import com.ifrn.sisgestaohospitalar.repository.TipoServicoRepository;
+import com.ifrn.sisgestaohospitalar.repository.TipoUsuarioRepository;
 import com.ifrn.sisgestaohospitalar.repository.ViaAdministracaoRepository;
 import com.ifrn.sisgestaohospitalar.service.CidadaoService;
 import com.ifrn.sisgestaohospitalar.service.ProfissionalService;
@@ -93,6 +97,10 @@ public class SisgestaohospitalarApplication implements ApplicationListener<Conte
 
 	@Autowired
 	private TipoServicoRepository tipoServicoRepository;
+	@Autowired
+	private RoleRepository roleRepository;
+	@Autowired
+	private TipoUsuarioRepository tipoUsuarioRepository;
 
 	public static void main(String[] args) {
 		SpringApplication.run(SisgestaohospitalarApplication.class, args);
@@ -116,12 +124,13 @@ public class SisgestaohospitalarApplication implements ApplicationListener<Conte
 	@Override
 	public void onApplicationEvent(ContextRefreshedEvent event) {
 
-		// lerSigtab();
-		// lerMedicamentosEFormaFarmaceutica();
-		// lerXmlEsus();
-		// lerEstadosMunicipios();
-		// salvarViaAdministracao();
-		// salvarTipoServico();
+		//criaRolesETipoUsuario();
+		//lerSigtab();
+		//lerMedicamentosEFormaFarmaceutica();
+		//lerXmlEsus();
+		//lerEstadosMunicipios();
+		//salvarViaAdministracao();
+		//salvarTipoServico();
 	}
 
 	public void salvarTipoServico() {
@@ -216,6 +225,45 @@ public class SisgestaohospitalarApplication implements ApplicationListener<Conte
 		estadosEMunicipios.lerCSV(municipioRepository, estadoRepository);
 
 		logradouros.lerCsvLogradouro(logradouroRepository);
+	}
+
+	public void criaRolesETipoUsuario() {
+		TipoUsuario medico = new TipoUsuario();
+		TipoUsuario enfermeiro = new TipoUsuario();
+		TipoUsuario tecnico = new TipoUsuario();
+		TipoUsuario auxiliar = new TipoUsuario();
+		TipoUsuario administrador = new TipoUsuario();
+
+		medico.setNome("MEDICO");
+		enfermeiro.setNome("ENFERMEIRO");
+		tecnico.setNome("TECNICO");
+		auxiliar.setNome("AUXILIAR");
+		administrador.setNome("ADMINISTRADOR");
+
+		Role roleMedico = new Role();
+		Role roleEnfermeiro = new Role();
+		Role roleTecnico = new Role();
+		Role roleAuxiliar = new Role();
+		Role roleAdministrador = new Role();
+
+		roleMedico.setNome(medico.getNome());
+		roleEnfermeiro.setNome(enfermeiro.getNome());
+		roleTecnico.setNome(tecnico.getNome());
+		roleAuxiliar.setNome(auxiliar.getNome());
+		roleAdministrador.setNome(administrador.getNome());
+
+		tipoUsuarioRepository.saveAndFlush(medico);
+		tipoUsuarioRepository.saveAndFlush(enfermeiro);
+		tipoUsuarioRepository.saveAndFlush(tecnico);
+		tipoUsuarioRepository.saveAndFlush(auxiliar);
+		tipoUsuarioRepository.saveAndFlush(administrador);
+
+		roleRepository.saveAndFlush(roleMedico);
+		roleRepository.saveAndFlush(roleEnfermeiro);
+		roleRepository.saveAndFlush(roleTecnico);
+		roleRepository.saveAndFlush(roleAuxiliar);
+		roleRepository.saveAndFlush(roleAdministrador);
+
 	}
 
 }

@@ -101,7 +101,8 @@
 													<input id="id-prontuario" type="hidden"
 														th:value="${atendimento.cidadao.prontuario.id}"> <input
 														id="id-atendimento" type="hidden"
-														th:value="${atendimento.id}">
+														th:value="${atendimento.id}"> <span
+														id="nome-usuario" hidden="true" th:text="${user.username}"></span>
 													<div class="tab-content">
 														<div id="home" class="tab-pane fade show active">
 															<div class="card mt-3">
@@ -308,7 +309,8 @@
 																<div class="card-body">
 																	<div id="info-prescricoes">
 																		<div id="div-prescricoes"></div>
-																		<div class="text-right">
+																		<div id="div-button-nova-prescricao"
+																			class="text-right">
 																			<button type="button"
 																				onclick="exibeFormularioPrescricao()"
 																				class="btn btn-primary btn-sm">
@@ -318,7 +320,14 @@
 																	</div>
 																	<div id="div-form-prescricao">
 																		<div id="card-header" class="card-header">
-																			<div class="card-title">Nova prescrição</div>
+																			<div class="card-title">
+																				<a id="nova-prescricao-voltar"
+																					data-toggle="tooltipe" data-placement="top"
+																					title="Voltar para tela anterior"
+																					class="btn btn-light"> <i
+																					class="fa fa-flip-horizontal fa-share"></i>
+																				</a> Nova prescrição
+																			</div>
 																		</div>
 																		<form id="form-prescricao"
 																			action="/atendimento/prescricao" method="post">
@@ -444,7 +453,14 @@
 																	</div>
 																	<div id="div-form-edit-prescricao">
 																		<div id="card-header" class="card-header">
-																			<div class="card-title">Editar prescrição</div>
+																			<div class="card-title">
+																				<a id="editar-prescricao-voltar"
+																					data-toggle="tooltipe" data-placement="top"
+																					title="Voltar para tela anterior"
+																					class="btn btn-light"> <i
+																					class="fa fa-flip-horizontal fa-share"></i>
+																				</a> Editar prescrição
+																			</div>
 																		</div>
 																		<form id="form-edit-prescricao"
 																			action="/prescricao/editar" method="post">
@@ -576,8 +592,14 @@
 																	</div>
 																	<div id="div-registro-administracao">
 																		<div id="card-header" class="card-header">
-																			<div class="card-title">Registros de
-																				administração da prescrição</div>
+																			<div class="card-title">
+																				<a id="registro-voltar" data-toggle="tooltipe"
+																					data-placement="top"
+																					title="Voltar para tela anterior"
+																					class="btn btn-light"> <i
+																					class="fa fa-flip-horizontal fa-share"></i>
+																				</a> Registros de administração da prescrição
+																			</div>
 																		</div>
 																		<div class="col-md-12">
 																			<div class="card-sub">Registros:</div>
@@ -607,7 +629,7 @@
 																				</table>
 																			</div>
 																		</div>
-																		<div class="text-right">
+																		<div id="button-novo-registro" class="text-right">
 																			<button type="button" class="btn btn-primary btn-sm">
 																				<i class="fa fa-plus"></i> Novo registro
 																			</button>
@@ -733,19 +755,8 @@
 												<div class="tab-pane fade" id="v-pills-historico-nobd"
 													role="tabpanel"
 													aria-labelledby="v-pills-historico-tab-nobd">
-													<p>Pityful a rethoric question ran over her cheek, then
-														she continued her way. On her way she met a copy. The copy
-														warned the Little Blind Text, that where it came from it
-														would have been rewritten a thousand times and everything
-														that was left from its origin would be the word "and" and
-														the Little Blind Text should turn around and return to its
-														own, safe country.</p>
-
-													<p>But nothing the copy said could convince her and so
-														it didn’t take long until a few insidious Copy Writers
-														ambushed her, made her drunk with Longe and Parole and
-														dragged her into their agency, where they abused her for
-														their</p>
+													<div
+														th:replace="fragments/tabs-historico/tabs::tabs-historico"></div>
 												</div>
 											</div>
 
@@ -767,6 +778,15 @@
 
 
 	<th:block layout:fragment="my-js-files">
+		<script th:src="@{/assets/pdf/jsPDF/jsPdf.js}"></script>
+		<script th:src="@{/assets/pdf/jsPDF/jsPdfTable.js}"></script>
+		<script th:src="@{/assets/pdf/lib/util/Line.js}"></script>
+		<script th:src="@{/assets/pdf/lib/util/Extract.js}"></script>
+		<script th:src="@{/assets/pdf/lib/util/PDFConfig.js}"></script>
+		<script th:src="@{/assets/pdf/lib/util/PDFUtil.js}"></script>
+		<script th:src="@{/assets/pdf/lib/controller/PDF.js}"></script>
+		<script th:src="@{/assets/js/historico-cidadao.js}"></script>
+		<script th:src="@{/assets/js/historico-pdf.js}"></script>
 		<script type="text/javascript" th:inline="javascript"
 			th:src="@{/assets/js/atendimento/form-atendimento.js}"></script>
 		<script type="text/javascript" th:inline="javascript"

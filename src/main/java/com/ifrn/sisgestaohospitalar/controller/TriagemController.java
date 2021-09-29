@@ -1,5 +1,6 @@
 package com.ifrn.sisgestaohospitalar.controller;
 
+import java.security.Principal;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -28,11 +29,13 @@ import com.ifrn.sisgestaohospitalar.enums.SituacaoCondicao;
 import com.ifrn.sisgestaohospitalar.enums.Status;
 import com.ifrn.sisgestaohospitalar.model.Atendimento;
 import com.ifrn.sisgestaohospitalar.model.HistoricoStatus;
+import com.ifrn.sisgestaohospitalar.model.Profissional;
 import com.ifrn.sisgestaohospitalar.model.TipoServico;
 import com.ifrn.sisgestaohospitalar.model.Triagem;
 import com.ifrn.sisgestaohospitalar.repository.AtendimentoRepository;
 import com.ifrn.sisgestaohospitalar.repository.ProfissionalRepository;
 import com.ifrn.sisgestaohospitalar.repository.TipoServicoRepository;
+import com.ifrn.sisgestaohospitalar.repository.UsuarioRepository;
 import com.ifrn.sisgestaohospitalar.service.TriagemDataTablesService;
 import com.ifrn.sisgestaohospitalar.service.TriagemService;
 import com.ifrn.sisgestaohospitalar.service.exception.CidadaoJaAdicionadoNaFilaException;
@@ -53,18 +56,22 @@ public class TriagemController {
 	@Autowired
 	private TriagemService triagemService;
 
+	@Autowired
+	private UsuarioRepository usuarioRepository;
+
 	@RequestMapping("/adicionar/{atendimentoId}")
 	public ModelAndView cadastrar(@PathVariable("atendimentoId") Long id, Triagem triagem,
-			RedirectAttributes attributes) {
+			RedirectAttributes attributes, Principal principal) {
 		Optional<Atendimento> optional = atendimentoRepository.findById(id);
 		if (optional.isPresent()) {
 			Atendimento atendimento = optional.get();
+			Profissional profissional = profissionalRepository.findByCpf(principal.getName());
 			atendimento.setStatus(Status.EMATENDIMENTO);
 
 			HistoricoStatus historicoStatus = new HistoricoStatus();
 			historicoStatus.setStatus(atendimento.getStatus());
 			historicoStatus.setTipoServicos(atendimento.getTipoServicos());
-			historicoStatus.setProfissional(null);
+			historicoStatus.setProfissional(profissional);
 			historicoStatus.setUltimaAtualizacao(LocalDateTime.now());
 
 			List<HistoricoStatus> listHistoricoStatus = new ArrayList<>();
@@ -73,6 +80,7 @@ public class TriagemController {
 			atendimentoRepository.saveAndFlush(atendimento);
 			triagem.setAtendimento(atendimento);
 			triagem.setInicioTriagem(LocalDateTime.now());
+			triagem.setProfissional(profissional);
 			ModelAndView mv = new ModelAndView("triagem/form-triagem");
 			mv.addObject("atendimento", triagem.getAtendimento());
 			mv.addObject("momentosColeta", MomentoColeta.values());
@@ -81,6 +89,7 @@ public class TriagemController {
 			mv.addObject("profissionais", profissionalRepository.findAll());
 			mv.addObject("tipoServicos", tipoServicoRepository.findAll());
 			mv.addObject("condutasCidadao", CondutaCidadao.values());
+			mv.addObject("user", usuarioRepository.findByUsername(principal.getName()));
 			return mv;
 		} else {
 			attributes.addFlashAttribute("erro", "Atendimento não localizado");
@@ -89,7 +98,7 @@ public class TriagemController {
 	}
 
 	@PostMapping("/salvar")
-	public ResponseEntity<?> salvar(@Valid Triagem triagem, BindingResult result) {
+	public ResponseEntity<?> salvar(@Valid Triagem triagem, BindingResult result, Principal principal) {
 		Map<String, String> errors = new HashMap<>();
 		if (result.hasErrors()) {
 			for (FieldError error : result.getFieldErrors()) {
@@ -119,7 +128,7 @@ public class TriagemController {
 
 				triagem.setAtendimento(atendimento);
 				triagem.setFimTriagem(LocalDateTime.now());
-
+				triagem.setProfissional(profissionalRepository.findByCpf(principal.getName()));
 				atendimento.setTriagem(triagem);
 
 				HistoricoStatus historicoStatus = new HistoricoStatus();
@@ -144,9 +153,10 @@ public class TriagemController {
 	}
 
 	@GetMapping("/listar")
-	public ModelAndView listar() {
+	public ModelAndView listar(Principal principal) {
 		ModelAndView mv = new ModelAndView("triagem/listar-atendimento");
 		mv.addObject("statusAtendimentos", Status.values());
+		mv.addObject("user", usuarioRepository.findByUsername(principal.getName()));
 		return mv;
 	}
 

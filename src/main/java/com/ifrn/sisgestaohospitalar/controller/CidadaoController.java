@@ -20,6 +20,7 @@ import com.ifrn.sisgestaohospitalar.enums.CodigoRaca;
 import com.ifrn.sisgestaohospitalar.model.Cidadao;
 import com.ifrn.sisgestaohospitalar.model.Prontuario;
 import com.ifrn.sisgestaohospitalar.repository.CidadaoRepository;
+import com.ifrn.sisgestaohospitalar.repository.UsuarioRepository;
 import com.ifrn.sisgestaohospitalar.service.CidadaoCadsusService;
 import com.ifrn.sisgestaohospitalar.service.CidadaoService;
 import com.ifrn.sisgestaohospitalar.service.exception.CidadaoJaCadastradoException;
@@ -37,21 +38,25 @@ public class CidadaoController {
 	@Autowired
 	private CidadaoRepository cidadaoRepository;
 
+	@Autowired
+	private UsuarioRepository usuarioRepository;
+
 	@RequestMapping("/adicionar")
-	public ModelAndView cadastrar(Cidadao cidadao) {
+	public ModelAndView cadastrar(Cidadao cidadao, Principal principal) {
 		ModelAndView mv = new ModelAndView("cidadao/form-cidadao");
 		ModelMap mp = new ModelMap();
 		mp.put("racas", CodigoRaca.values());
 		mp.put("cidadao", cidadao);
+		mp.put("user", usuarioRepository.findByUsername(principal.getName()));
 		mv.addAllObjects(mp);
 		return mv;
 	}
 
 	@PostMapping("/salvar")
-	public ModelAndView saveCidadao(@Valid Cidadao cidadao, BindingResult result,
-			RedirectAttributes attributes/* , Principal principal */) {
+	public ModelAndView saveCidadao(@Valid Cidadao cidadao, BindingResult result, RedirectAttributes attributes,
+			Principal principal) {
 		if (result.hasErrors()) {
-			return cadastrar(cidadao/* , principal */).addObject("hasErrors", true);
+			return cadastrar(cidadao, principal).addObject("hasErrors", true);
 		}
 		try {
 			Prontuario prontuario = new Prontuario();
@@ -62,7 +67,7 @@ public class CidadaoController {
 		} catch (CidadaoJaCadastradoException e) {
 			result.rejectValue("cpf", e.getMessage(), e.getMessage());
 			result.rejectValue("dataNascimento", e.getMessage(), e.getMessage());
-			return cadastrar(cidadao/* , principal */);
+			return cadastrar(cidadao, principal);
 		}
 
 		attributes.addFlashAttribute("success", "O Cidadão " + cidadao.getNome() + " foi cadastrado na Base Local");
@@ -70,29 +75,31 @@ public class CidadaoController {
 	}
 
 	@PostMapping("/atualizar")
-	public ModelAndView atualizaCidadao(@Valid Cidadao cidadao, BindingResult result/* , Principal principal */) {
+	public ModelAndView atualizaCidadao(@Valid Cidadao cidadao, BindingResult result, Principal principal) {
 		if (result.hasErrors()) {
-			return editar(cidadao.getId());
+			return editar(cidadao.getId(), principal);
 		}
 		cidadaoService.update(cidadao);
-		return editar(cidadao.getId()).addObject("success", "Os dados foram salvos");
+		return editar(cidadao.getId(), principal).addObject("success", "Os dados foram salvos");
 	}
 
 	@RequestMapping("/detalhar/{id}")
-	public ModelAndView detalhes(@PathVariable("id") Long id) {
+	public ModelAndView detalhes(@PathVariable("id") Long id, Principal principal) {
 		ModelAndView mv = new ModelAndView("cidadao/detalhe-cidadao");
 		Optional<Cidadao> optional = cidadaoRepository.findById(id);
 		mv.addObject("cidadao", optional.get());
+		mv.addObject("user", usuarioRepository.findByUsername(principal.getName()));
 		return mv;
 	}
 
 	@RequestMapping("/editar/{id}")
-	public ModelAndView editar(@PathVariable("id") Long id) {
+	public ModelAndView editar(@PathVariable("id") Long id, Principal principal) {
 		Optional<Cidadao> optional = cidadaoRepository.findById(id);
 		ModelAndView mv = new ModelAndView("cidadao/editar-cidadao");
 		ModelMap mp = new ModelMap();
 		mp.put("racas", CodigoRaca.values());
 		mp.put("cidadao", optional.get());
+		mp.put("user", usuarioRepository.findByUsername(principal.getName()));
 		mv.addAllObjects(mp);
 		return mv;
 	}

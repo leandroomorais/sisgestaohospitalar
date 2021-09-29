@@ -11,21 +11,24 @@ import javax.persistence.Transient;
 
 @Entity
 public class Diagnostico {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
+
 	@OneToOne
 	private Prontuario prontuario;
-	
+
 	@OneToOne
 	private Cid cid;
-	
+
 	private String nota;
-	
+
 	private LocalDateTime localDateTime;
-	
+
+	@OneToOne
+	private Profissional profissional;
+
 	@Transient
 	private Long idAtendimento;
 
@@ -69,6 +72,14 @@ public class Diagnostico {
 		this.localDateTime = localDateTime;
 	}
 
+	public Profissional getProfissional() {
+		return profissional;
+	}
+
+	public void setProfissional(Profissional profissional) {
+		this.profissional = profissional;
+	}
+
 	public Long getIdAtendimento() {
 		return idAtendimento;
 	}
@@ -76,4 +87,5 @@ public class Diagnostico {
 	public void setIdAtendimento(Long idAtendimento) {
 		this.idAtendimento = idAtendimento;
 	}
+
 }

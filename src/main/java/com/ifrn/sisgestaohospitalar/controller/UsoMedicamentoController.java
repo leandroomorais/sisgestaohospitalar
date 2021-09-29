@@ -25,13 +25,11 @@ import com.ifrn.sisgestaohospitalar.repository.ProntuarioRepository;
 @RequestMapping("/uso-medicamento")
 public class UsoMedicamentoController {
 
-	
 	@Autowired
 	private AtendimentoRepository atendimentoRepository;
 	@Autowired
 	private ProntuarioRepository prontuarioRepository;
 
-	
 	@PostMapping("/salvar")
 	public ResponseEntity<?> salvar(@Valid UsoMedicamento usoMedicamento, BindingResult result) {
 		Map<String, String> errors = new HashMap<>();
@@ -41,14 +39,12 @@ public class UsoMedicamentoController {
 			}
 			return ResponseEntity.unprocessableEntity().body(errors);
 		}
-		
+
 		usoMedicamento.toString();
 
 		Optional<Atendimento> optionalAtendimento = atendimentoRepository.findById(usoMedicamento.getIdAtendimento());
 		if (optionalAtendimento.isPresent()) {
 			Atendimento atendimento = optionalAtendimento.get();
-			//Optional<Medicamento> optionalMedicamento = medicamentoRepository.findById(usoMedicamento.getMedicamento().getId());
-			//usoMedicamento.setMedicamento(optionalMedicamento.get());
 			if (usoMedicamento.isUsoContinuo()) {
 				Optional<Prontuario> optionalProntuario = prontuarioRepository
 						.findById(usoMedicamento.getIdProntuario());
@@ -68,7 +64,7 @@ public class UsoMedicamentoController {
 		}
 		return ResponseEntity.notFound().build();
 	}
-	
+
 	@GetMapping("/medicamentos/{id}")
 	public ResponseEntity<?> dataTables(@PathVariable("id") Long id) {
 		Optional<Atendimento> optional = atendimentoRepository.findById(id);

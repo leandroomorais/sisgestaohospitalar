@@ -15,13 +15,14 @@
 				<li class="nav-item"><a data-toggle="collapse"
 					href="#dashboard" class="collapsed" aria-expanded="false"> <img
 						alt="" width="40" th:src="@{/assets/img/person-male.png}"> <span
-						class="low">NOME USUARIO</span><span class="type-user">TIPO
-							USUARIO</span> <span class="caret"></span>
+						class="low" th:text="${user.concatName}"></span><span
+						class="type-user" th:text="${user.tipoUsuario.nome}"></span> <span
+						class="caret"></span>
 				</a>
 					<div class="collapse" id="dashboard">
 						<ul class="nav nav-collapse">
-							<li><a href="#"> <span
-									class="sub-item">Meu Perfil</span>
+							<li><a href="#"> <span class="sub-item">Meu
+										Perfil</span>
 							</a></li>
 						</ul>
 					</div></li>
@@ -31,14 +32,13 @@
 					<h4 class="text-section">Ações</h4></li>
 
 
-				<li class="nav-item" th:classappend="${navItem1} ? active : ''"><a
-					th:href="@{/cidadao/adicionar}"> <i
+				<li class="nav-item"><a th:href="@{/cidadao/adicionar}"> <i
 						class="fas fa-user-plus"></i>
 						<p>Adicionar Cidadão</p> <span class="caret"></span>
 				</a></li>
 
-				<li class="nav-item" th:classappend="${navItem2} ? active : ''"><a
-					th:href="@{/atendimento/listar}"> <i class="fa fa-users"></i>
+				<li class="nav-item"><a th:href="@{/atendimento/listar}"> <i
+						class="fa fa-users"></i>
 						<p>Atendimentos</p>
 				</a></li>
 			</ul>

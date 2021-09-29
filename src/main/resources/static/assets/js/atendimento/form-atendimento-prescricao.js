@@ -1,3 +1,9 @@
+$("#nova-prescricao-voltar, #editar-prescricao-voltar, #registro-voltar").click(function() {
+	fechaFormularioPrescricao();
+	fechaFormularioEditPrescricao();
+	fechaDivRegistroAdministracao();
+
+})
 
 //Função Habilita pesquisa de Medicamentos
 $("#button-medicamento").click(function() {
@@ -73,11 +79,24 @@ function fechaFormularioEditPrescricao() {
 function confirmaPrescricao(element) {
 	var idPrescricao = $(element).attr("data-value");
 	$("#div-form-registro-administracao").hide();
+	$("#card-header").fadeOut(100);
+	$("#div-button-nova-prescricao").fadeOut(100);
 	$("#div-prescricoes").fadeOut(100);
 	$("#div-registro-administracao").fadeIn(100);
 	$("#id-prescricao").val(idPrescricao);
 	detalharPrescricao(idPrescricao);
 	dataTableRegistro(idPrescricao);
+}
+
+function fechaDivRegistroAdministracao() {
+	$("#div-registro-administracao").fadeOut(100);
+	$("#div-button-nova-prescricao").fadeIn(100);
+	$("#card-header").fadeIn(100);
+	$("#div-prescricoes").fadeIn(100);
+}
+
+function exibeFormConfirmaPrescricao() {
+	$("#div-form-registro-administracao").fadeIn(100);
 }
 
 
@@ -634,7 +653,7 @@ function createCardDetalhePrescricao(data) {
 		inforCardBooleans(data) +
 		infoCardPrescricao("Orientações: ", data.orientacoes) +
 		"</div><div class='col-md-4 text-right'>" +
-		infoCardDataProfissional("25/09/2021 às 15:25", "Nome do Profissional", "8454A/RN") +
+		infoCardDataProfissional(data.data, data.profissional.nome, data.profissional.numeroRegistro + " / " + data.profissional.siglaUfEmissao) +
 		"</div></div><div class='text-right'>" +
 		"</div></div></div>";
 }
@@ -647,13 +666,13 @@ function createCardPrescricao(data) {
 		inforCardBooleans(data) +
 		infoCardPrescricao("Orientações: ", data.orientacoes) +
 		"</div><div class='col-md-4 text-right'>" +
-		infoCardDataProfissional("25/09/2021 às 15:25", "Nome do Profissional", "8454A/RN") +
+		infoCardDataProfissional(data.data, data.profissional.nome, data.profissional.numeroRegistro + " / " + data.profissional.siglaUfEmissao) +
 		"</div></div><div class='text-right'>" +
 		"<button type='button' class='btn btn-light btn-sm' data-value='" + data.id + "' onclick='imprimirPrescricao()'><i class='fa fa-print'></i> Imprimir</button>" +
 		buttonConfirmar()
-		+ "<button type='button' class='btn btn-light btn-sm' data-value='" + data.id + "' onclick='exibeFormularioEditPrescricao(this)'><i class='fa fa-edit'></i> Editar</button>" +
-		"<button type='button' class='btn btn-light btn-sm' data-value='" + data.id + "' onclick='excluirPrescricao(this)'><i class='fa fa-trash'></i> Excluir</button>" +
-		"</div></div></div>";
+		+ buttonEditar()
+		+ buttonExcluir()
+		+ "</div></div></div>";
 
 	function buttonConfirmar() {
 		if (data.administracaoNoAtendimento) {
@@ -664,11 +683,21 @@ function createCardPrescricao(data) {
 	}
 
 	function buttonEditar() {
-
+		var username = $("#nome-usuario").text();
+		if (data.profissional.cpf != username) {
+			return "";
+		} else if (data.profissional.cpf == username) {
+			return "<button type='button' class='btn btn-light btn-sm' data-value='" + data.id + "' onclick='exibeFormularioEditPrescricao(this)'><i class='fa fa-edit'></i> Editar</button>";
+		}
 	}
 
 	function buttonExcluir() {
-
+		var username = $("#nome-usuario").text();
+		if (data.profissional.cpf != username) {
+			return "";
+		} else if (data.profissional.cpf == username) {
+			return "<button type='button' class='btn btn-light btn-sm' data-value='" + data.id + "' onclick='excluirPrescricao(this)'><i class='fa fa-trash'></i> Excluir</button>";
+		}
 	}
 }
 

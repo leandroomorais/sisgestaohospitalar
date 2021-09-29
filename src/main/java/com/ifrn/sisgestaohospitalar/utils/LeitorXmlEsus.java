@@ -7,13 +7,20 @@ import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import com.ifrn.sisgestaohospitalar.model.Estabelecimento;
 import com.ifrn.sisgestaohospitalar.model.ImportarXmlEsus;
 import com.ifrn.sisgestaohospitalar.model.Lotacao;
 import com.ifrn.sisgestaohospitalar.model.Profissional;
+import com.ifrn.sisgestaohospitalar.model.Role;
+import com.ifrn.sisgestaohospitalar.model.TipoUsuario;
+import com.ifrn.sisgestaohospitalar.model.Usuario;
 import com.ifrn.sisgestaohospitalar.repository.EstabelecimentoRepository;
 import com.ifrn.sisgestaohospitalar.repository.ProfissionalRepository;
+import com.ifrn.sisgestaohospitalar.repository.RoleRepository;
+import com.ifrn.sisgestaohospitalar.repository.TipoUsuarioRepository;
+import com.ifrn.sisgestaohospitalar.repository.UsuarioRepository;
 
 /**
  * A classe <code>LeitorXmlEsus</code> é um utilitário que contém métodos para a
@@ -32,6 +39,13 @@ public class LeitorXmlEsus {
 
 	@Autowired
 	private EstabelecimentoRepository estabelecimentoRepository;
+	@Autowired
+	private RoleRepository roleRepository;
+
+	@Autowired
+	private UsuarioRepository usuarioRepository;
+	@Autowired
+	private TipoUsuarioRepository tipoUsuarioRepository;
 
 	SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
 
@@ -58,23 +72,44 @@ public class LeitorXmlEsus {
 					String nomeAbrev = name[0].toString() + " " + name[1].toString();
 					profissional.setNomeAbrev(nomeAbrev);
 					profissional.setAtivo(true);
-//					if (lotacaoProfissional.getCodigoCBO().equals("225125")) {
-//						profissional.setTipoprofissional(TipoProfissional.MEDICO);
-//						Role role = roleService.findByNome("MED");
-//						profissional.getRole().add(role);
-//					} else if (lotacaoProfissional.getCodigocbo().equals("223505")) {
-//						profissional.setTipoprofissional(TipoProfissional.ENFERMEIRO);
-//						Role role = roleService.findByNome("ENF");
-//						profissional.getRole().add(role);
-//					} else if (lotacaoProfissional.getCodigocbo().equals("322205")) {
-//						profissional.setTipoprofissional(TipoProfissional.TECNICO);
-//						Role role = roleService.findByNome("TEC");
-//						profissional.getRole().add(role);
-//					} else if (lotacaoProfissional.getCodigocbo().equals("123105")) {
-//						profissional.setTipoprofissional(TipoProfissional.ADMINISTRADOR);
-//						Role role = roleService.findByNome("ADM");
-//						profissional.getRole().add(role);
-//					}
+					Usuario usuario = new Usuario();
+					usuario.setUsername(profissional.getCpf());
+					usuario.setPassword(new BCryptPasswordEncoder().encode("sgh" + profissional.getCpf()));
+					usuario.setConcatName(profissional.getNomeAbrev());
+
+					if (lotacaoProfissional.getCodigoCBO().equals("225125")) {
+						TipoUsuario tipoUsuario = tipoUsuarioRepository.findByNome("MEDICO");
+						usuario.setTipoUsuario(tipoUsuario);
+						usuario.setEnabled(profissional.isAtivo());
+						Role role = roleRepository.findByNome(tipoUsuario.getNome());
+						usuario.getRole().add(role);
+					} else if (lotacaoProfissional.getCodigoCBO().equals("223505")) {
+						TipoUsuario tipoUsuario = tipoUsuarioRepository.findByNome("ENFERMEIRO");
+						usuario.setTipoUsuario(tipoUsuario);
+						usuario.setEnabled(profissional.isAtivo());
+						Role role = roleRepository.findByNome(tipoUsuario.getNome());
+						usuario.getRole().add(role);
+					} else if (lotacaoProfissional.getCodigoCBO().equals("322205")) {
+						TipoUsuario tipoUsuario = tipoUsuarioRepository.findByNome("TECNICO");
+						usuario.setEnabled(profissional.isAtivo());
+						usuario.setTipoUsuario(tipoUsuario);
+						Role role = roleRepository.findByNome(tipoUsuario.getNome());
+						usuario.getRole().add(role);
+					} else if (lotacaoProfissional.getCodigoCBO().equals("322230")) {
+						TipoUsuario tipoUsuario = tipoUsuarioRepository.findByNome("AUXILIAR");
+						usuario.setEnabled(profissional.isAtivo());
+						usuario.setTipoUsuario(tipoUsuario);
+						Role role = roleRepository.findByNome(tipoUsuario.getNome());
+						usuario.getRole().add(role);
+					} else if (lotacaoProfissional.getCodigoCBO().equals("123105")) {
+						TipoUsuario tipoUsuario = tipoUsuarioRepository.findByNome("ADMINISTRADOR");
+						usuario.setEnabled(profissional.isAtivo());
+						usuario.setTipoUsuario(tipoUsuario);
+						Role role = roleRepository.findByNome(tipoUsuario.getNome());
+						usuario.getRole().add(role);
+					}
+
+					usuarioRepository.saveAndFlush(usuario);
 
 				}
 

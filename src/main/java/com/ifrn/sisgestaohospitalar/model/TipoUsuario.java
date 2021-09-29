@@ -1,33 +1,18 @@
 package com.ifrn.sisgestaohospitalar.model;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import org.springframework.security.core.GrantedAuthority;
 
 @Entity
-public class Role implements GrantedAuthority {
-
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-
+public class TipoUsuario {
+	
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-
-	@Column(unique = true)
+	
 	private String nome;
-
-	@Override
-	public String getAuthority() {
-		return nome;
-	}
-
-	/** Getters and setters */
 
 	public Long getId() {
 		return id;
@@ -44,5 +29,5 @@ public class Role implements GrantedAuthority {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-
+	
 }
