@@ -17,7 +17,8 @@
 		<div class="card-body">
 			<div id="info-prescricoes">
 				<div id="div-prescricoes"></div>
-				<div id="div-button-nova-prescricao" class="text-right">
+				<div sec:authorize="hasAnyAuthority('MEDICO')" id="div-button-nova-prescricao"
+					class="text-right">
 					<button type="button" onclick="exibeFormularioPrescricao()" class="btn btn-primary btn-sm">
 						<i class="fa fa-plus"></i> Nova
 						prescrição

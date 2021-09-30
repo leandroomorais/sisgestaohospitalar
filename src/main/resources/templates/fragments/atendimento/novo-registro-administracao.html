@@ -9,7 +9,8 @@
 </head>
 
 <body>
-	<div id="card-novo-registro-administracao" class="card">
+	<div sec:authorize="hasAnyAuthority('MEDICO', 'ENFERMEIRO','TECNICO','AUXILIAR')"
+		id="card-novo-registro-administracao" class="card">
 		<div class="card-header">
 			<div class="card-title"><a id="form-novo-registro-voltar" data-toggle="tooltipe" data-placement="top"
 					title="Voltar para tela anterior" class="btn btn-light"> <i

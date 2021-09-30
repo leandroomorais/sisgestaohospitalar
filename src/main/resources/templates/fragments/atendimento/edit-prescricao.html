@@ -9,7 +9,7 @@
 </head>
 
 <body>
-	<div id="card-edit-prescricao" class="card">
+	<div sec:authorize="hasAnyAuthority('MEDICO')" id="card-edit-prescricao" class="card">
 		<div class="card-header">
 			<div class="card-title"><a id="edit-prescricao-voltar" data-toggle="tooltipe" data-placement="top"
 					title="Voltar para tela anterior" class="btn btn-light"> <i

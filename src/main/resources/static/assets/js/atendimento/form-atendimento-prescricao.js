@@ -1,5 +1,4 @@
 
-
 //Função Habilita pesquisa de Medicamentos
 $("#button-medicamento").click(function() {
 	limpaPrescricao();
@@ -51,12 +50,11 @@ $("#nova-prescricao-voltar").click(function() {
 	fechaFormularioPrescricao();
 })
 
-function exibeFormularioEditPrescricao(element) {
+function exibeFormularioEditPrescricao() {
 	limpaPrescricaoDto();
 	removeInvalidFedbackPrescricaoDTO();
 	$("#card-info-prescricoes").fadeOut(100);
 	$("#card-edit-prescricao").fadeIn(100);
-	editarPrescricao(element);
 }
 
 $("#edit-prescricao-voltar").click(function() {
@@ -71,7 +69,7 @@ function fechaFormularioEditPrescricao() {
 
 function exibeRegistros(element) {
 	var idPrescricao = $(element).attr("data-value");
-	$("#button-novo-registro").val(idPrescricao);
+	$("#button-novo-registro").attr("data-value", idPrescricao);
 	$("#card-info-prescricoes").fadeOut(100);
 	$("#card-registros-administracao").fadeIn(100);
 	dataTableRegistro(idPrescricao);
@@ -83,10 +81,11 @@ $("#registro-voltar").click(function() {
 })
 
 function exibeFormularioNovoRegistro(element) {
-	var idPrescricao = $(element).val();
+	var idPrescricao = $(element).attr("data-value");
+	limpaNovoRegistro();
 	$("#card-registros-administracao").fadeOut(100);
 	$("#card-novo-registro-administracao").fadeIn(100);
-	$("#card-prescricao-administracao").append(detalharPrescricao(idPrescricao));
+	$("#card-prescricao-administracao").empty().append(detalharPrescricao(idPrescricao));
 	$("#administracaoRealizada").attr("data-value", idPrescricao);
 }
 
@@ -95,62 +94,25 @@ $("#form-novo-registro-voltar").click(function() {
 })
 
 function fechaFormularioNovoRegistro() {
+	limpaNovoRegistro();
 	$("#card-registros-administracao").fadeIn(100);
 	$("#card-novo-registro-administracao").fadeOut(100);
 }
 
-//Função autocomplete Medicamentos
-$("#medicamento-prescricao").autocomplete({
-	source: "/medicamento/buscar",
-	focus: function(event, ui) {
-		$("#medicamento-prescricao").val(ui.item.principioAtivo + " ; " + ui.item.concentracao + " ; " + ui.item.formaFarmaceutica.nome);
-		return false;
-	},
-	select: function(event, ui) {
-		$("#i-medicamento").removeClass("fa fa-search").addClass("fa fa-times");
-		$("#medicamento-prescricao").val(ui.item.principioAtivo).attr("disabled", true);
-		$("#id-medicamento").val(ui.item.id);
-		$("#medicamento").val(ui.item.principioAtivo);
-		$("#concentracao").val(ui.item.concentracao);
-		$("#forma").val(ui.item.formaFarmaceutica.nome);
-		$("#quantidade-small").text(ui.item.unidadeFornecimento);
-		return false;
 
-	}
-}).autocomplete("instance")._renderItem = function(ul, item) {
-	return $("<li>")
-		.append("<div class='h6'>" + item.principioAtivo + " ; " + "<b>" + item.concentracao + "</b>" + "<br>" + item.formaFarmaceutica.nome + " | " + item.unidadeFornecimento + "</div>")
-		.appendTo(ul);
-};
 
-//Função autocomplete Medicamentos
-$("#medicamento-prescricao-dto").autocomplete({
-	source: "/medicamento/buscar",
-	focus: function(event, ui) {
-		$("#medicamento-prescricao-dto").val(ui.item.principioAtivo + " ; " + ui.item.concentracao + " ; " + ui.item.formaFarmaceutica.nome);
-		return false;
-	},
-	select: function(event, ui) {
-		$("#i-medicamento-dto").removeClass("fa fa-search").addClass("fa fa-times");
-		$("#medicamento-prescricao-dto").val(ui.item.principioAtivo).attr("disabled", true);
-		$("#id-medicamento-dto").val(ui.item.id);
-		$("#concentracao-dto").val(ui.item.concentracao);
-		$("#forma-dto").val(ui.item.formaFarmaceutica.nome);
-		$("#quantidade-dto-small").text(ui.item.unidadeFornecimento);
-		return false;
 
-	}
-}).autocomplete("instance")._renderItem = function(ul, item) {
-	return $("<li>")
-		.append("<div class='h6'>" + item.principioAtivo + " ; " + "<b>" + item.concentracao + "</b>" + "<br>" + item.formaFarmaceutica.nome + " | " + item.unidadeFornecimento + "</div>")
-		.appendTo(ul);
-};
 
 $("#button-medicamento-dto").click(function() {
 	$("#i-medicamento-dto").removeClass("fa fa-edit").addClass("fa fa-search");
 	$("#medicamento-prescricao-dto").attr("disabled", false);
 	limpaPrescricaoDto();
 })
+
+function limpaNovoRegistro() {
+	$("#administracaoRealizada").prop("checked", false);
+	tinymce.get("nota-administracao").setContent("");
+}
 
 function limpaPrescricao() {
 	$("#medicamento-prescricao").val("").attr("disabled", false);
@@ -183,7 +145,6 @@ $("#form-confirma-administracao").submit(function(evt) {
 	var registroAdministracao = {};
 	registroAdministracao.administracaoRealizada = $("#administracaoRealizada").prop("checked");
 	registroAdministracao.idPrescricao = $("#administracaoRealizada").attr("data-value");
-	alert($("#id-prescricao").val());
 	$.ajax({
 		url: '/prescricao/registro',
 		method: 'post',
@@ -224,49 +185,47 @@ $("#form-confirma-administracao").submit(function(evt) {
 				onClosed: null,
 				icon_type: 'class',
 			});
-
 			fechaFormularioNovoRegistro();
+			$("#table-registros").DataTable().ajax.reload();
 		},
 
-		statusCode: {
-			403: function() {
-				$.notify({
-					// options
-					icon: 'flaticon-exclamation',
-					title: 'ERRO',
-					message: 'Não é possível excluir esta prescrição, pois já existe um registro de administração cadastrado ou o atendimento já foi finalizado',
-					target: '_blank'
-				}, {
-					// settings
-					element: 'body',
-					position: null,
-					type: "danger",
-					allow_dismiss: true,
-					newest_on_top: false,
-					showProgressbar: false,
-					placement: {
-						from: "top",
-						align: "right"
-					},
-					offset: 20,
-					spacing: 10,
-					z_index: 1031,
-					delay: 5000,
-					timer: 1000,
-					url_target: '_blank',
-					mouse_over: null,
-					animate: {
-						enter: 'animated fadeInDown',
-						exit: 'animated fadeOutUp'
-					},
-					onShow: null,
-					onShown: null,
-					onClose: null,
-					onClosed: null,
-					icon_type: 'class',
-				});
-			}
-		},
+		error: function() {
+			$.notify({
+				// options
+				icon: 'flaticon-exclamation',
+				title: 'ERRO',
+				message: 'Não foi possível processar sua solicitação',
+				target: '_blank'
+			}, {
+				// settings
+				element: 'body',
+				position: null,
+				type: "danger",
+				allow_dismiss: true,
+				newest_on_top: false,
+				showProgressbar: false,
+				placement: {
+					from: "top",
+					align: "right"
+				},
+				offset: 20,
+				spacing: 10,
+				z_index: 1031,
+				delay: 5000,
+				timer: 1000,
+				url_target: '_blank',
+				mouse_over: null,
+				animate: {
+					enter: 'animated fadeInDown',
+					exit: 'animated fadeOutUp'
+				},
+				onShow: null,
+				onShown: null,
+				onClose: null,
+				onClosed: null,
+				icon_type: 'class',
+			});
+		}
 	})
 })
 
@@ -568,6 +527,44 @@ $("#form-edit-prescricao").submit(function(evt) {
 						$(this).parent().parent().addClass("has-error has-feedback");
 					})
 				})
+			},
+
+			403: function() {
+				$.notify({
+					// options
+					icon: 'flaticon-exclamation',
+					title: 'ERRO',
+					message: 'Não é possível editar esta prescrição, pois já existe um registro de administração cadastrado.',
+					target: '_blank'
+				}, {
+					// settings
+					element: 'body',
+					position: null,
+					type: "danger",
+					allow_dismiss: true,
+					newest_on_top: false,
+					showProgressbar: false,
+					placement: {
+						from: "top",
+						align: "right"
+					},
+					offset: 20,
+					spacing: 10,
+					z_index: 1031,
+					delay: 5000,
+					timer: 1000,
+					url_target: '_blank',
+					mouse_over: null,
+					animate: {
+						enter: 'animated fadeInDown',
+						exit: 'animated fadeOutUp'
+					},
+					onShow: null,
+					onShown: null,
+					onClose: null,
+					onClosed: null,
+					icon_type: 'class',
+				});
 			}
 		},
 
@@ -578,9 +575,10 @@ $("#form-edit-prescricao").submit(function(evt) {
 function editarPrescricao(element) {
 	var idPrescricao = $(element).attr("data-value");
 	$.ajax({
-		url: '/prescricao/' + idPrescricao,
+		url: '/prescricao/editar/' + idPrescricao,
 		method: 'get',
 		success: function(data) {
+			exibeFormularioEditPrescricao()
 			$("#id-prescricao").val(data.id);
 			$("#medicamento-prescricao-dto").val(data.medicamento.principioAtivo);
 			$("#id-medicamento-dto").val(data.medicamento.id);
@@ -601,7 +599,86 @@ function editarPrescricao(element) {
 				$("#administracao-no-atendimento-dto").parent().removeClass().addClass("toggle btn btn-primary");
 			}
 			$("#orientacao-dto").val(data.orientacoes);
-		}
+		},
+
+		statusCode: {
+			400: function() {
+				$.notify({
+					// options
+					icon: 'flaticon-exclamation',
+					title: 'ERRO',
+					message: 'Não foi possível processar sua solicitação',
+					target: '_blank'
+				}, {
+					// settings
+					element: 'body',
+					position: null,
+					type: "danger",
+					allow_dismiss: true,
+					newest_on_top: false,
+					showProgressbar: false,
+					placement: {
+						from: "top",
+						align: "right"
+					},
+					offset: 20,
+					spacing: 10,
+					z_index: 1031,
+					delay: 5000,
+					timer: 1000,
+					url_target: '_blank',
+					mouse_over: null,
+					animate: {
+						enter: 'animated fadeInDown',
+						exit: 'animated fadeOutUp'
+					},
+					onShow: null,
+					onShown: null,
+					onClose: null,
+					onClosed: null,
+					icon_type: 'class',
+				});
+			},
+
+
+			403: function() {
+				$.notify({
+					// options
+					icon: 'flaticon-exclamation',
+					title: 'ERRO',
+					message: 'Não é possível editar esta prescrição, pois já existe um registro de administração cadastrado.',
+					target: '_blank'
+				}, {
+					// settings
+					element: 'body',
+					position: null,
+					type: "danger",
+					allow_dismiss: true,
+					newest_on_top: false,
+					showProgressbar: false,
+					placement: {
+						from: "top",
+						align: "right"
+					},
+					offset: 20,
+					spacing: 10,
+					z_index: 1031,
+					delay: 5000,
+					timer: 1000,
+					url_target: '_blank',
+					mouse_over: null,
+					animate: {
+						enter: 'animated fadeInDown',
+						exit: 'animated fadeOutUp'
+					},
+					onShow: null,
+					onShown: null,
+					onClose: null,
+					onClosed: null,
+					icon_type: 'class',
+				});
+			}
+		},
 	})
 
 }
@@ -644,44 +721,45 @@ function excluirPrescricao(element) {
 					atualizaPrescricoes();
 				},
 
-				error: function() {
-					$.notify({
-						// options
-						icon: 'flaticon-exclamation',
-						title: 'ERRO',
-						message: 'Não foi possível processar sua solicitação',
-						target: '_blank'
-					}, {
-						// settings
-						element: 'body',
-						position: null,
-						type: "danger",
-						allow_dismiss: true,
-						newest_on_top: false,
-						showProgressbar: false,
-						placement: {
-							from: "top",
-							align: "right"
-						},
-						offset: 20,
-						spacing: 10,
-						z_index: 1031,
-						delay: 5000,
-						timer: 1000,
-						url_target: '_blank',
-						mouse_over: null,
-						animate: {
-							enter: 'animated fadeInDown',
-							exit: 'animated fadeOutUp'
-						},
-						onShow: null,
-						onShown: null,
-						onClose: null,
-						onClosed: null,
-						icon_type: 'class',
-					});
-					swal.close();
-				}
+				statusCode: {
+					403: function() {
+						$.notify({
+							// options
+							icon: 'flaticon-exclamation',
+							title: 'ERRO',
+							message: 'Não é possível excluir esta prescrição, pois já existe um registro de administração cadastrado ou o atendimento já foi finalizado',
+							target: '_blank'
+						}, {
+							// settings
+							element: 'body',
+							position: null,
+							type: "danger",
+							allow_dismiss: true,
+							newest_on_top: false,
+							showProgressbar: false,
+							placement: {
+								from: "top",
+								align: "right"
+							},
+							offset: 20,
+							spacing: 10,
+							z_index: 1031,
+							delay: 5000,
+							timer: 1000,
+							url_target: '_blank',
+							mouse_over: null,
+							animate: {
+								enter: 'animated fadeInDown',
+								exit: 'animated fadeOutUp'
+							},
+							onShow: null,
+							onShown: null,
+							onClose: null,
+							onClosed: null,
+							icon_type: 'class',
+						});
+					}
+				},
 			})
 		}
 	});
@@ -758,7 +836,7 @@ function createCardPrescricao(data) {
 		if (data.profissional.cpf != username) {
 			return "";
 		} else if (data.profissional.cpf == username) {
-			return "<button type='button' class='btn btn-light btn-sm' data-value='" + data.id + "' onclick='exibeFormularioEditPrescricao(this)'><i class='fa fa-edit'></i> Editar</button>";
+			return "<button type='button' class='btn btn-light btn-sm' data-value='" + data.id + "' onclick='editarPrescricao(this)'><i class='fa fa-edit'></i> Editar</button>";
 		}
 	}
 
@@ -859,7 +937,7 @@ function dataTableRegistro(id) {
 	$("#table-registros").DataTable().destroy();
 	$("#table-registros").DataTable({
 		responsive: true,
-		paging: false,
+		paging: true,
 		searching: false,
 		ordering: false,
 		ajax: {
@@ -954,5 +1032,53 @@ function submitProcedimentoAutomatico(idAtendimento, codigoProcedimento, tipoSer
 		}
 	})
 }
+
+//************Funções autocomplete */
+//Função autocomplete Medicamentos
+$("#medicamento-prescricao").autocomplete({
+	source: "/medicamento/buscar",
+	focus: function(event, ui) {
+		$("#medicamento-prescricao").val(ui.item.principioAtivo + " ; " + ui.item.concentracao + " ; " + ui.item.formaFarmaceutica.nome);
+		return false;
+	},
+	select: function(event, ui) {
+		$("#i-medicamento").removeClass("fa fa-search").addClass("fa fa-times");
+		$("#medicamento-prescricao").val(ui.item.principioAtivo).attr("disabled", true);
+		$("#id-medicamento").val(ui.item.id);
+		$("#medicamento").val(ui.item.principioAtivo);
+		$("#concentracao").val(ui.item.concentracao);
+		$("#forma").val(ui.item.formaFarmaceutica.nome);
+		$("#quantidade-small").text(ui.item.unidadeFornecimento);
+		return false;
+
+	}
+}).autocomplete("instance")._renderItem = function(ul, item) {
+	return $("<li>")
+		.append("<div class='h6'>" + item.principioAtivo + " ; " + "<b>" + item.concentracao + "</b>" + "<br>" + item.formaFarmaceutica.nome + " | " + item.unidadeFornecimento + "</div>")
+		.appendTo(ul);
+};
+
+//Função autocomplete Medicamentos
+$("#medicamento-prescricao-dto").autocomplete({
+	source: "/medicamento/buscar",
+	focus: function(event, ui) {
+		$("#medicamento-prescricao-dto").val(ui.item.principioAtivo + " ; " + ui.item.concentracao + " ; " + ui.item.formaFarmaceutica.nome);
+		return false;
+	},
+	select: function(event, ui) {
+		$("#i-medicamento-dto").removeClass("fa fa-search").addClass("fa fa-times");
+		$("#medicamento-prescricao-dto").val(ui.item.principioAtivo).attr("disabled", true);
+		$("#id-medicamento-dto").val(ui.item.id);
+		$("#concentracao-dto").val(ui.item.concentracao);
+		$("#forma-dto").val(ui.item.formaFarmaceutica.nome);
+		$("#quantidade-dto-small").text(ui.item.unidadeFornecimento);
+		return false;
+
+	}
+}).autocomplete("instance")._renderItem = function(ul, item) {
+	return $("<li>")
+		.append("<div class='h6'>" + item.principioAtivo + " ; " + "<b>" + item.concentracao + "</b>" + "<br>" + item.formaFarmaceutica.nome + " | " + item.unidadeFornecimento + "</div>")
+		.appendTo(ul);
+};
 
 

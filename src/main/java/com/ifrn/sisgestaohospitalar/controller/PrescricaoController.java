@@ -41,10 +41,11 @@ public class PrescricaoController {
 	private ProfissionalRepository profissionalRepository;
 
 	@GetMapping("/{id}")
-	public ResponseEntity<?> editarPrescricao(@PathVariable("id") Long id) {
+	public ResponseEntity<?> getPrescricao(@PathVariable("id") Long id) {
 		Optional<Prescricao> optional = prescricaoRepository.findById(id);
 		if (optional.isPresent()) {
-			return ResponseEntity.ok().body(optional.get());
+			Prescricao prescricao = optional.get();
+			return ResponseEntity.ok().body(prescricao);
 		}
 		return ResponseEntity.badRequest().build();
 	}
@@ -88,6 +89,19 @@ public class PrescricaoController {
 		return ResponseEntity.badRequest().build();
 	}
 
+	@GetMapping("/editar/{id}")
+	public ResponseEntity<?> editarPrescricao(@PathVariable("id") Long id) {
+		Optional<Prescricao> optional = prescricaoRepository.findById(id);
+		if (optional.isPresent()) {
+			Prescricao prescricao = optional.get();
+			if (!prescricao.getRegistrosAdministracao().isEmpty()) {
+				return ResponseEntity.status(HttpStatus.FORBIDDEN).build();
+			}
+			return ResponseEntity.ok().body(prescricao);
+		}
+		return ResponseEntity.badRequest().build();
+	}
+
 	@PostMapping("/editar")
 	public ResponseEntity<?> editar(@Valid PrescricaoDTO prescricaoDTO, BindingResult result) {
 		Map<String, String> errors = new HashMap<>();
@@ -101,6 +115,9 @@ public class PrescricaoController {
 		Optional<Prescricao> optional = prescricaoRepository.findById(prescricaoDTO.getId());
 		if (optional.isPresent()) {
 			Prescricao prescricao = optional.get();
+			if (!prescricao.getRegistrosAdministracao().isEmpty()) {
+				return ResponseEntity.status(HttpStatus.FORBIDDEN).build();
+			}
 			prescricao.setMedicamento(prescricaoDTO.getMedicamento());
 			prescricao.setAdministracaoNoAtendimento(prescricaoDTO.isAdministracaoNoAtendimento());
 			prescricao.setDoseUnica(prescricaoDTO.isDoseUnica());
