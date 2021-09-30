@@ -1,9 +1,4 @@
-$("#nova-prescricao-voltar, #editar-prescricao-voltar, #registro-voltar").click(function() {
-	fechaFormularioPrescricao();
-	fechaFormularioEditPrescricao();
-	fechaDivRegistroAdministracao();
 
-})
 
 //Função Habilita pesquisa de Medicamentos
 $("#button-medicamento").click(function() {
@@ -14,12 +9,11 @@ $("#button-medicamento").click(function() {
 
 $("#administracaoRealizada").click(function() {
 	if ($(this).prop("checked") == true) {
-		var prescricaoId = $("#id-prescricao").val();
+		var prescricaoId = $(this).attr("data-value");
 		$.ajax({
 			url: '/prescricao/' + prescricaoId,
 			method: 'get',
 			success: function(data) {
-				console.log(data.viaAdministracao.nome);
 				$("#exampleModalCenter").modal("show");
 				$("#procedimentos-admin-medicamento").val(data.viaAdministracao.procedimento.codigo + " - " + data.viaAdministracao.procedimento.nome);
 				$("#procedimentos-admin-medicamento").attr("data-toggle", "tooltip").attr("title", $("#procedimentos-admin-medicamento").val());
@@ -41,64 +35,69 @@ $("#salva-procedimento-medicamento").click(function() {
 function exibeFormularioPrescricao() {
 	limpaPrescricao();
 	removeInvalidFedbackPrescricao();
-	$("#card-header").fadeOut(100);
-	$("#info-prescricoes").fadeOut(100);
-	$("#div-form-prescricao").fadeIn(100);
+	$("#card-info-prescricoes").fadeOut(100);
+	//$("#card-edit-prescricao").hide();
+	//$("#card-novo-registro-administracao").hide();
+	//$("#card-registros-administracao").hide();
+	$("#card-nova-prescricao").fadeIn(100);
 }
 
 function fechaFormularioPrescricao() {
 	limpaPrescricao();
-	$("#div-form-prescricao").fadeOut(100);
-	$("#card-header").fadeIn(100);
-	$("#info-prescricoes").fadeIn(100);
+	$("#card-nova-prescricao").fadeOut(100);
+	$("#card-info-prescricoes").fadeIn(100);
 }
-
-function fechaFormularioEditPrescricao() {
-	limpaPrescricaoDto();
-	$("#div-form-edit-prescricao").fadeOut(100);
-	$("#card-header").fadeIn(100);
-	$("#info-prescricoes").fadeIn(100);
-}
+$("#nova-prescricao-voltar").click(function() {
+	fechaFormularioPrescricao();
+})
 
 function exibeFormularioEditPrescricao(element) {
 	limpaPrescricaoDto();
 	removeInvalidFedbackPrescricaoDTO();
-	$("#card-header").fadeOut(100);
-	$("#info-prescricoes").fadeOut(100);
-	$("#div-form-edit-prescricao").fadeIn(100);
+	$("#card-info-prescricoes").fadeOut(100);
+	$("#card-edit-prescricao").fadeIn(100);
 	editarPrescricao(element);
 }
 
+$("#edit-prescricao-voltar").click(function() {
+	fechaFormularioEditPrescricao();
+})
+
 function fechaFormularioEditPrescricao() {
-	limpaPrescricao();
-	$("#div-form-edit-prescricao").fadeOut(100);
-	$("#card-header").fadeIn(100);
-	$("#info-prescricoes").fadeIn(100);
+	limpaPrescricaoDto();
+	$("#card-edit-prescricao").fadeOut(100);
+	$("#card-info-prescricoes").fadeIn(100);
 }
 
-function confirmaPrescricao(element) {
+function exibeRegistros(element) {
 	var idPrescricao = $(element).attr("data-value");
-	$("#div-form-registro-administracao").hide();
-	$("#card-header").fadeOut(100);
-	$("#div-button-nova-prescricao").fadeOut(100);
-	$("#div-prescricoes").fadeOut(100);
-	$("#div-registro-administracao").fadeIn(100);
-	$("#id-prescricao").val(idPrescricao);
-	detalharPrescricao(idPrescricao);
+	$("#button-novo-registro").val(idPrescricao);
+	$("#card-info-prescricoes").fadeOut(100);
+	$("#card-registros-administracao").fadeIn(100);
 	dataTableRegistro(idPrescricao);
 }
 
-function fechaDivRegistroAdministracao() {
-	$("#div-registro-administracao").fadeOut(100);
-	$("#div-button-nova-prescricao").fadeIn(100);
-	$("#card-header").fadeIn(100);
-	$("#div-prescricoes").fadeIn(100);
+$("#registro-voltar").click(function() {
+	$("#card-info-prescricoes").fadeIn(100);
+	$("#card-registros-administracao").fadeOut(100);
+})
+
+function exibeFormularioNovoRegistro(element) {
+	var idPrescricao = $(element).val();
+	$("#card-registros-administracao").fadeOut(100);
+	$("#card-novo-registro-administracao").fadeIn(100);
+	$("#card-prescricao-administracao").append(detalharPrescricao(idPrescricao));
+	$("#administracaoRealizada").attr("data-value", idPrescricao);
 }
 
-function exibeFormConfirmaPrescricao() {
-	$("#div-form-registro-administracao").fadeIn(100);
-}
+$("#form-novo-registro-voltar").click(function() {
+	fechaFormularioNovoRegistro();
+})
 
+function fechaFormularioNovoRegistro() {
+	$("#card-registros-administracao").fadeIn(100);
+	$("#card-novo-registro-administracao").fadeOut(100);
+}
 
 //Função autocomplete Medicamentos
 $("#medicamento-prescricao").autocomplete({
@@ -183,19 +182,91 @@ $("#form-confirma-administracao").submit(function(evt) {
 	evt.preventDefault();
 	var registroAdministracao = {};
 	registroAdministracao.administracaoRealizada = $("#administracaoRealizada").prop("checked");
-	registroAdministracao.idPrescricao = $("#id-prescricao").val();
+	registroAdministracao.idPrescricao = $("#administracaoRealizada").attr("data-value");
 	alert($("#id-prescricao").val());
 	$.ajax({
 		url: '/prescricao/registro',
 		method: 'post',
 		data: registroAdministracao,
-		success: function(data) {
-			alert("Salvo com sucesso");
+		success: function() {
+			$.notify({
+				// options
+				icon: 'flaticon-success',
+				title: 'SUCESSO',
+				message: 'O registro de administração da prescrição foi salvo',
+				target: '_blank'
+			}, {
+				// settings
+				element: 'body',
+				position: null,
+				type: "success",
+				allow_dismiss: true,
+				newest_on_top: false,
+				showProgressbar: false,
+				placement: {
+					from: "top",
+					align: "right"
+				},
+				offset: 20,
+				spacing: 10,
+				z_index: 1031,
+				delay: 5000,
+				timer: 1000,
+				url_target: '_blank',
+				mouse_over: null,
+				animate: {
+					enter: 'animated fadeInDown',
+					exit: 'animated fadeOutUp'
+				},
+				onShow: null,
+				onShown: null,
+				onClose: null,
+				onClosed: null,
+				icon_type: 'class',
+			});
+
+			fechaFormularioNovoRegistro();
 		},
-		error: function(data) {
-			console.log(data);
-			alert("Houve um erro");
-		}
+
+		statusCode: {
+			403: function() {
+				$.notify({
+					// options
+					icon: 'flaticon-exclamation',
+					title: 'ERRO',
+					message: 'Não é possível excluir esta prescrição, pois já existe um registro de administração cadastrado ou o atendimento já foi finalizado',
+					target: '_blank'
+				}, {
+					// settings
+					element: 'body',
+					position: null,
+					type: "danger",
+					allow_dismiss: true,
+					newest_on_top: false,
+					showProgressbar: false,
+					placement: {
+						from: "top",
+						align: "right"
+					},
+					offset: 20,
+					spacing: 10,
+					z_index: 1031,
+					delay: 5000,
+					timer: 1000,
+					url_target: '_blank',
+					mouse_over: null,
+					animate: {
+						enter: 'animated fadeInDown',
+						exit: 'animated fadeOutUp'
+					},
+					onShow: null,
+					onShown: null,
+					onClose: null,
+					onClosed: null,
+					icon_type: 'class',
+				});
+			}
+		},
 	})
 })
 
@@ -669,14 +740,14 @@ function createCardPrescricao(data) {
 		infoCardDataProfissional(data.data, data.profissional.nome, data.profissional.numeroRegistro + " / " + data.profissional.siglaUfEmissao) +
 		"</div></div><div class='text-right'>" +
 		"<button type='button' class='btn btn-light btn-sm' data-value='" + data.id + "' onclick='imprimirPrescricao()'><i class='fa fa-print'></i> Imprimir</button>" +
-		buttonConfirmar()
+		buttonRegistros()
 		+ buttonEditar()
 		+ buttonExcluir()
 		+ "</div></div></div>";
 
-	function buttonConfirmar() {
+	function buttonRegistros() {
 		if (data.administracaoNoAtendimento) {
-			return "<button type='button' class='btn btn-light btn-sm' data-value='" + data.id + "' onclick='confirmaPrescricao(this)'><i class='fa fa-check'></i> Registro de administração</button>";
+			return "<button type='button' class='btn btn-light btn-sm' data-value='" + data.id + "' onclick='exibeRegistros(this)'><i class='fa fa-check'></i> Registros de administração</button>";
 		} else {
 			return "";
 		}
@@ -785,6 +856,7 @@ function removeInvalidFedbackPrescricaoDTO() {
 }
 
 function dataTableRegistro(id) {
+	$("#table-registros").DataTable().destroy();
 	$("#table-registros").DataTable({
 		responsive: true,
 		paging: false,
@@ -798,6 +870,13 @@ function dataTableRegistro(id) {
 			{
 				title: 'REALIZADA',
 				data: 'administracaoRealizada',
+				mRender: function(data) {
+					if (data) {
+						return "<span class='badge badge-success'>Sim</span>";
+					} else {
+						return "<span class='badge badge-danger'>Não</span>";
+					}
+				}
 			},
 			{
 				title: 'DATA',
@@ -805,13 +884,22 @@ function dataTableRegistro(id) {
 			},
 			{
 				title: 'PROFISSIONAL',
-				data: 'profissional.nome',
+				data: 'profissionalResponsavel.nome',
 			},
 			{
 				title: 'NOTA',
 				data: 'nota',
+				mRender: function(data) {
+					if (data != null) {
+						return "<div>" + data + "</div>";
+					} else {
+						return "<small class='text-muted'> Nenhuma nota resgistrada</small>";
+					}
+
+				}
 			}
 		]
+
 	})
 }
 
@@ -827,6 +915,7 @@ function submitProcedimentoAutomatico(idAtendimento, codigoProcedimento, tipoSer
 		method: 'POST',
 		data: relAtendimentoProcedimento,
 		success: function() {
+			$("#exampleModalCenter").modal("hide");
 			$.notify({
 				// options
 				icon: 'flaticon-success',

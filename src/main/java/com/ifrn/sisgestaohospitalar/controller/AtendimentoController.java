@@ -199,6 +199,11 @@ public class AtendimentoController {
 
 	}
 
+	@GetMapping("/nova-prescricao")
+	public String adicionarPrescricao() {
+		return "fragments/atendimento/nova-prescricao";
+	}
+
 	@PostMapping("/prescricao")
 	public ResponseEntity<?> prescricao(@Valid Prescricao prescricao, BindingResult result, Principal principal) {
 		System.out.println(prescricao);

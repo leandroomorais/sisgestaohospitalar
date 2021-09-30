@@ -1,9 +1,10 @@
 //JS Form Atendimento
 $(document).ready(function() {
 
-	$("#div-form-prescricao").hide();
-	$("#div-form-edit-prescricao").hide();
-	$("#div-registro-administracao").hide();
+	$("#card-nova-prescricao").hide();
+	$("#card-edit-prescricao").hide();
+	$("#card-registros-administracao").hide();
+	$("#card-novo-registro-administracao").hide();
 
 	//Função que inicia o TinyMCE
 	tinymce.init({
@@ -25,7 +26,6 @@ $(document).ready(function() {
 	//Fim da função que inicia o TinyMCE
 
 	atualizaDiagnostico();
-
 	atualizaPrescricoes();
 
 });

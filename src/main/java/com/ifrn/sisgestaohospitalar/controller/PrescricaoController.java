@@ -54,7 +54,7 @@ public class PrescricaoController {
 			@PathVariable("idPrescricao") Long idPrescricao, Principal principal) {
 		Atendimento atendimento = atendimentoRepository.getOne(idAtendimento);
 		Prescricao prescricao = prescricaoRepository.getOne(idPrescricao);
-		if (atendimento.getStatus().equals(Status.FINALIZADO)) {
+		if (atendimento.getStatus().equals(Status.FINALIZADO) || !prescricao.getRegistrosAdministracao().isEmpty()) {
 			return ResponseEntity.status(HttpStatus.FORBIDDEN).build();
 		}
 		atendimento.getPrescricoes().remove(prescricao);
