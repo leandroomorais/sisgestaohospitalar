@@ -104,7 +104,7 @@ public class AtendimentoController {
 	@PostMapping("/salvar")
 	public ModelAndView salvar(@Valid Atendimento atendimento, BindingResult result, RedirectAttributes attributes,
 			Principal principal) {
-		if (result.hasErrors()) {
+		if (result.hasErrors() || atendimento.getTipoServicos().isEmpty()) {
 			return cadastrar(atendimento.getCidadao().getId(), atendimento, principal);
 		}
 		try {
@@ -130,9 +130,7 @@ public class AtendimentoController {
 		}
 
 		attributes.addFlashAttribute("success",
-				"O Cidadão " + atendimento.getCidadao().getNome()
-						+ " foi adicionado a lista de atendimentos para o(s) serviço(s): "
-						+ atendimento.tiposServicosToString());
+				"O Cidadão " + atendimento.getCidadao().getNome() + "foi adicionado a lista de atendimentos");
 		return new ModelAndView("redirect:/atendimento/listar");
 	}
 

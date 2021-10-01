@@ -64,10 +64,6 @@
 																th:text="${cidadao.cpf}"></span>
 														</h4>
 													</div>
-													<div class="col-auto">
-														<a href="#" class="btn btn-light btn-border"><i
-															class="fa fa-print"></i> Imprimir </a>
-													</div>
 												</div>
 												<div class="page-divider"></div>
 												<div class="row">
@@ -239,7 +235,7 @@
 																		<div id="div-cep" class="col-md-6 col-lg-3">
 																			<div class="form-group">
 																				<label for="cep">&nbsp</label>
-																				<button id="button-pesquisaCep"
+																				<button type="button" id="button-pesquisaCep"
 																					class="btn btn-primary form-control">
 																					<span class="btn-label"> <i
 																						class="fa fa-search"></i>
@@ -373,11 +369,9 @@
 															</div>
 															<!-- Botões de ação do Formulário-->
 															<div class="card-action">
-																<button type="submit" class="btn btn-primary">Cadastrar
-																	na Base Local</button>
+																<button type="submit" class="btn btn-primary">Salvar</button>
 																<a href="/recepcao/adicionar-cidadao"><button
 																		type="button" class="btn btn-warning">Cancelar</button></a>
-
 															</div>
 															<!-- Fim dos Botões de ação do Formulário-->
 														</form>

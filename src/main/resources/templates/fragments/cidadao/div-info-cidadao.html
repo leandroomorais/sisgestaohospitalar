@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity"
+	xmlns:layout="http://ultraq.net.nz/thymeleaf/layout">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+</head>
+
+<body>
+	<div class="row" id="info-cidadao">
+		<div class="col-md-12">
+			<div id="errors" class="form-group row">
+				<div class="col-sm-12 mb-3 mb-sm-0"></div>
+			</div>
+
+			<input type="hidden" name="cidadao" id="idCidadao">
+
+			<div class="card">
+				<div class="card-header">
+					<div class="card-title">Dados do Cidadão</div>
+				</div>
+				<div class="card-body">
+					<div class="row">
+						<div class="col-md-4 info-invoice">
+
+							<strong class="sub">Nome:</strong>
+							<p id="info-nome"></p>
+							<strong class="sub">Dt. Nascimento:</strong>
+							<p id="info-dataNascimento"></p>
+							<strong class="sub">Nome da Mãe:</strong>
+							<p id="info-nomeMae"></p>
+							<strong class="sub">Nome do Pai:</strong>
+							<p id="info-nomePai"></p>
+						</div>
+						<div class="col-md-3 info-invoice">
+							<strong class="sub">CNS:</strong>
+							<p id="info-cns"></p>
+							<strong class="sub">CPF:</strong>
+							<p id="info-cpf"></p>
+						</div>
+						<div class="col-md-5 info-invoice">
+							<strong class="sub">Endereço:</strong>
+							<p id="info-endereco"></p>
+							<strong class="sub">CEP:</strong>
+							<p id="info-cep"></p>
+						</div>
+					</div>
+					<div class="text-right">
+						<button type="button" id="btn-detalhar-cidadao"
+							class="btn btn-secondary btn-sm">Detalhar</button>
+						<button type="button" id="btn-editar-cidadao" class="btn btn-secondary btn-sm">Editar</button>
+					</div>
+				</div>
+				<div class="card-action">
+					<button type="button" id="btn-adicionar-cidadao" class="btn btn-primary">Adicionar a lista de
+						Atendimento</button>
+					<a id="btn-cancelar-local"><button type="button" class="btn btn-warning">Cancelar</button></a>
+				</div>
+			</div>
+			<!-- Fim do Formulário para preenchimento dos dados do Cidadão -->
+		</div>
+	</div>
+</body>
+
+</html>

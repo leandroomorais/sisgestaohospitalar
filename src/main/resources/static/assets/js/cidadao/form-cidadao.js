@@ -455,12 +455,12 @@ function preenchimentoObrigatorio(small) {
 //Emite alerta ao clicar no botão de Cancelar
 $("#btn-cancelar-form").click(function() {
 	alerta("/cidadao/adicionar")
-})
+});
 
 //Emite alerta ao clicar no botão de Cancelar
 $("#btn-cancelar-local").click(function() {
 	alerta("/cidadao/adicionar")
-})
+});
 
 function alerta(redirect) {
 	swal({
@@ -485,7 +485,7 @@ function alerta(redirect) {
 			swal.close();
 		}
 	});
-}
+};
 
 $("#btn-detalhar-cidadao").click(function(){
 	$(location).attr('href','/cidadao/detalhar/' + $("#idCidadao").val());
@@ -493,6 +493,10 @@ $("#btn-detalhar-cidadao").click(function(){
 
 $("#btn-editar-cidadao").click(function(){
 	$(location).attr('href','/cidadao/editar/' + $("#idCidadao").val());
+})
+
+$("#btn-adicionar-cidadao").click(function(){
+	$(location).attr('href','/atendimento/adicionar/' + $("#idCidadao").val());
 })
 //
 //$('#btn-mudar-status').click(function(e) {

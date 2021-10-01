@@ -196,10 +196,12 @@
 							</div>
 						</div>
 						<div class="card-action">
-							<button id="submit-guia-atendimento" type="submit"
+							<button id="btn-submit-guia-atendimento" type="submit"
 								class="btn btn-primary">Adicionar a Lista de
 								Atendimento</button>
-							<a th:ref="${/listar-status}" class="btn btn-warning">Cancelar</a>
+							<button id="btn-cancela-guia-antendimento" type="button"
+								class="btn btn-warning">Cancelar</button>
+							
 						</div>
 					</form>
 				</div>
@@ -211,7 +213,8 @@
 	</div>
 
 	<th:block layout:fragment="my-js-files">
-
+		<script type="text/javascript" th:inline="javascript"
+			th:src="@{/assets/js/atendimento/form-cadastrar.js}"></script>
 	</th:block>
 </body>
 
