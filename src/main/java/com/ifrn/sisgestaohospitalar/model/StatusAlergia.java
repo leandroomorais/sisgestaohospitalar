@@ -1,6 +1,7 @@
 package com.ifrn.sisgestaohospitalar.model;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -28,6 +29,8 @@ public class StatusAlergia {
 	
 	private SituacaoCondicao situacaoCondicao;
 	
+	private LocalDateTime dataRegistro;
+	
 	@Valid
 	@OneToOne(cascade = CascadeType.DETACH)
 	@NotNull
@@ -35,51 +38,61 @@ public class StatusAlergia {
 	
 	@Transient
 	private Long idProntuario;
-	
+
 	public Long getId() {
 		return id;
 	}
+
 	public void setId(Long id) {
 		this.id = id;
 	}
+
 	public LocalDate getDataInicio() {
 		return dataInicio;
 	}
+
 	public void setDataInicio(LocalDate dataInicio) {
 		this.dataInicio = dataInicio;
 	}
+
 	public LocalDate getDataFim() {
 		return dataFim;
 	}
+
 	public void setDataFim(LocalDate dataFim) {
 		this.dataFim = dataFim;
 	}
-	
+
 	public SituacaoCondicao getSituacaoCondicao() {
 		return situacaoCondicao;
 	}
+
 	public void setSituacaoCondicao(SituacaoCondicao situacaoCondicao) {
 		this.situacaoCondicao = situacaoCondicao;
 	}
+
+	public LocalDateTime getDataRegistro() {
+		return dataRegistro;
+	}
+
+	public void setDataRegistro(LocalDateTime dataRegistro) {
+		this.dataRegistro = dataRegistro;
+	}
+
 	public Alergia getAlergia() {
 		return alergia;
 	}
+
 	public void setAlergia(Alergia alergia) {
 		this.alergia = alergia;
 	}
+
 	public Long getIdProntuario() {
 		return idProntuario;
 	}
+
 	public void setIdProntuario(Long idProntuario) {
 		this.idProntuario = idProntuario;
 	}
-	@Override
-	public String toString() {
-		return "StatusAlergia [id=" + id + ", dataInicio=" + dataInicio + ", dataFim=" + dataFim
-				+ ", alergia=" + alergia + ", idProntuario="
-				+ idProntuario + "]";
-	}
-	
-	
 	
 }

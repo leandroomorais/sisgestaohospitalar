@@ -1,0 +1,62 @@
+<div class="card">
+	<div class="card-header">
+		<div class="card-title">Procedimentos realizados</div>
+	</div>
+	<div class="card-body">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="form-group">
+					<label for="nome">Adicionar
+						Procedimentos:</label>
+					<div class="input-group">
+						<div class="input-group-prepend">
+							<button id="button-procedimento" type="button" class="btn btn-black btn-border">
+								<i id="i-procedimento" class="fa fa-search"></i>
+							</button>
+						</div>
+						<input id="procedimentos-triagem" type="text" class="form-control"
+							placeholder="Pesquisa de procedimentos">
+						<input type="hidden" id="id-procedimento"> <input type="hidden" id="nome-procedimento">
+					</div>
+				</div>
+			</div>
+			<div class="col-md-2">
+				<div class="form-group">
+					<label for="qtd-procedimento">Quantidade:
+					</label> <input id="qtd-procedimento" type="number" class="form-control">
+				</div>
+			</div>
+			<div class="col-md-12 text-right">
+				<button id="submit-procedimento" type="button" class="btn btn-primary btn-sm">
+					<i class="fa fa-plus"></i> Adicionar
+				</button>
+			</div>
+			<div class="col-md-12 mt-3">
+				<div class="card-sub">Procedimentos realizados:
+				</div>
+				<div id="div-table-procedimentos" class="table-responsive">
+					<table id="table-procedimentos" class="display table table-hover dataTable" role="grid"
+						aria-describedby="basic-datatables_info" style="width: 100%">
+						<thead>
+							<tr role="row">
+								<th></th>
+								<th></th>
+								<th></th>
+								<th></th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr role="row" class="odd">
+								<td></td>
+								<td></td>
+								<td></td>
+								<td></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+
+			</div>
+		</div>
+	</div>
+</div>

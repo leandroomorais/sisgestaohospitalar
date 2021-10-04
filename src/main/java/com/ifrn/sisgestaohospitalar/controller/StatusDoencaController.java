@@ -54,9 +54,7 @@ public class StatusDoencaController {
 			Optional<Prontuario> optional = prontuarioRepository.findById(statusDoenca.getIdProntuario());
 			if (optional.isPresent()) {
 				Doenca doenca = statusDoenca.getDoenca();
-				if (statusDoenca.getDoenca().getDataCadastro() == null) {
-					doenca.setDataCadastro(LocalDateTime.now());
-				}
+				statusDoenca.setDataRegistro(LocalDateTime.now());
 				doencaRepository.saveAndFlush(doenca);
 				statusDoencaService.save(statusDoenca);
 				Prontuario prontuario = optional.get();
@@ -91,21 +89,16 @@ public class StatusDoencaController {
 
 	@PostMapping("/editar")
 	public ResponseEntity<?> editar(@Valid StatusDoencaDTO statusDoencaDTO, BindingResult result) {
-		System.out.println("Cheguei aqui meu fiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii");
 		Map<String, String> errors = new HashMap<>();
 		if (result.hasErrors()) {
 			for (FieldError error : result.getFieldErrors()) {
 				errors.put(error.getField(), error.getDefaultMessage());
 			}
-			System.out.println("Result has errors");
 			return ResponseEntity.unprocessableEntity().body(errors);
 		}
-		
-		
 
 		Optional<StatusDoenca> optional = statusDoencaRepository.findById(statusDoencaDTO.getId());
 		if (optional.isPresent()) {
-			System.out.println("Status DoencaDTO: " + statusDoencaDTO.toString());
 			StatusDoenca statusDoenca = optional.get();
 			statusDoenca.setDataInicio(statusDoencaDTO.getDataInicio());
 			statusDoenca.setDataFim(statusDoencaDTO.getDataFim());

@@ -3,7 +3,7 @@ $(document).ready(function() {
 
 	$("#card-nova-prescricao").hide();
 	$("#card-edit-prescricao").hide();
-	$("#card-registros-administracao").hide();
+	$("#card-list-registros-administracao").hide();
 	$("#card-novo-registro-administracao").hide();
 
 	//Função que inicia o TinyMCE
@@ -30,21 +30,173 @@ $(document).ready(function() {
 
 });
 
+$("#submit-consulta").click(function() {
+	var consulta = {};
+
+	consulta.historiaClinica = tinymce.get("historia-clinica").getContent();
+	consulta['avaliacao.notas'] = tinymce.get("avaliacao").getContent();
+	consulta['atendimento'] = $("#id-atendimento").val();
+	consulta['avaliacao.sinaisVitais.pressaoArterial'] = $("#sinaisVitais-pressaoArterial").val();
+	consulta['avaliacao.sinaisVitais.temperaturaCorporal'] = $("#sinaisVitais-temperaturaCorporal").val();
+	consulta['avaliacao.sinaisVitais.frequenciaCardiaca'] = $("#sinaisVitais-frequenciaCardiaca").val();
+	consulta['avaliacao.sinaisVitais.saturacao'] = $("#sinaisVitais-saturacaoOxigenio").val();
+	consulta['avaliacao.sinaisVitais.frequenciaRespiratoria'] = $("#sinaisVitais-frequenciaRespiratoria").val();
+	consulta['avaliacao.sinaisVitais.glicemiaCapilar'] = $("#sinaisVitais-glicemiaCapilar").val();
+	consulta['avaliacao.sinaisVitais.momentoColeta'] = $("#sinaisVitais-momentoColeta option:selected").val();
+
+	$.ajax({
+		url: '/consulta/',
+		method: 'post',
+		data: consulta,
+		beforeSend: function() {
+
+		},
+		success: function() {
+			$.notify({
+				// options
+				icon: 'flaticon-success',
+				title: 'SUCESSO',
+				message: 'A Consulta foi salva',
+				target: '_blank'
+			}, {
+				// settings
+				element: 'body',
+				position: null,
+				type: "success",
+				allow_dismiss: true,
+				newest_on_top: false,
+				showProgressbar: false,
+				placement: {
+					from: "top",
+					align: "right"
+				},
+				offset: 20,
+				spacing: 10,
+				z_index: 1031,
+				delay: 5000,
+				timer: 1000,
+				url_target: '_blank',
+				mouse_over: null,
+				animate: {
+					enter: 'animated fadeInDown',
+					exit: 'animated fadeOutUp'
+				},
+				onShow: null,
+				onShown: null,
+				onClose: null,
+				onClosed: null,
+				icon_type: 'class',
+			});
+
+		},
+
+		statusCode: {
+			422: function(xhr) {
+				var errors = $.parseJSON(xhr.responseText);
+				$.each(errors, function(key, val) {
+					$.notify({
+						// options
+						icon: 'flaticon-exclamation',
+						title: 'ATENÇÃO',
+						message: val,
+						target: '_blank'
+					}, {
+						// settings
+						element: 'body',
+						position: null,
+						type: "danger",
+						allow_dismiss: true,
+						newest_on_top: false,
+						showProgressbar: false,
+						placement: {
+							from: "top",
+							align: "right"
+						},
+						offset: 20,
+						spacing: 10,
+						z_index: 1031,
+						delay: 5000,
+						timer: 1000,
+						url_target: '_blank',
+						mouse_over: null,
+						animate: {
+							enter: 'animated fadeInDown',
+							exit: 'animated fadeOutUp'
+						},
+						onShow: null,
+						onShown: null,
+						onClose: null,
+						onClosed: null,
+						icon_type: 'class',
+					});
+
+					$("input[name='" + key + "']").parent().parent().parent().addClass("has-error has-feedback");
+
+				})
+			},
+
+			error: function(xhr) {
+
+				$.notify({
+					// options
+					icon: 'flaticon-exclamation',
+					title: 'ERRO',
+					message: 'Não foi possível processar sua solicitação',
+					target: '_blank'
+				}, {
+					// settings
+					element: 'body',
+					position: null,
+					type: "danger",
+					allow_dismiss: true,
+					newest_on_top: false,
+					showProgressbar: false,
+					placement: {
+						from: "top",
+						align: "right"
+					},
+					offset: 20,
+					spacing: 10,
+					z_index: 1031,
+					delay: 5000,
+					timer: 1000,
+					url_target: '_blank',
+					mouse_over: null,
+					animate: {
+						enter: 'animated fadeInDown',
+						exit: 'animated fadeOutUp'
+					},
+					onShow: null,
+					onShown: null,
+					onClose: null,
+					onClosed: null,
+					icon_type: 'class',
+				});
+
+			}
+		},
+
+		complete: function() {
+
+		}
+	})
+
+})
+
 
 $("#submit-diagnostico").click(function() {
-	var hipoteseDiagnostica = {};
-	hipoteseDiagnostica.idAtendimento = $("#id-atendimento").val();
-	hipoteseDiagnostica['prontuario.id'] = $("#id-prontuario").val();
-	hipoteseDiagnostica['profissional.id'] = null;
-	hipoteseDiagnostica['cid.codigo'] = $("#id-cid").val();
-	hipoteseDiagnostica.nota = $("#nota").val();
+	var diagnostico = {};
+	diagnostico['atendimento'] = $("#id-atendimento").val();
+	diagnostico['prontuario'] = $("#id-prontuario").val();
+	diagnostico['cid'] = $("#id-cid").val();
+	diagnostico.nota = $("#nota").val();
 
 	console.log(hipoteseDiagnostica);
 
 	$.ajax({
-		url: '/atendimento/diagnostico',
+		url: '/diagnostico/',
 		method: 'post',
-		data: hipoteseDiagnostica,
+		data: diagnostico,
 		success: function() {
 			$("#table-diagnosticos").DataTable().ajax.reload();
 			limpaInputsDiagnostico();
@@ -155,7 +307,7 @@ function atualizaDiagnostico() {
 		searching: false,
 		ordering: false,
 		ajax: {
-			url: '/atendimento/diagnosticos/' + atendimentoId,
+			url: '/diagnostico/listar/atendimento/' + atendimentoId,
 			dataSrc: ''
 		},
 		columns: [

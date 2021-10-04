@@ -1,6 +1,7 @@
 package com.ifrn.sisgestaohospitalar.model;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -36,6 +37,8 @@ public class StatusDoenca {
 	
 	@Transient
 	private Long idProntuario;
+	
+	private LocalDateTime dataRegistro;
 
 	public Long getId() {
 		return id;
@@ -92,7 +95,13 @@ public class StatusDoenca {
 	public void setIdProntuario(Long idProntuario) {
 		this.idProntuario = idProntuario;
 	}
-	
-	
+
+	public LocalDateTime getDataRegistro() {
+		return dataRegistro;
+	}
+
+	public void setDataRegistro(LocalDateTime dataRegistro) {
+		this.dataRegistro = dataRegistro;
+	}
 
 }

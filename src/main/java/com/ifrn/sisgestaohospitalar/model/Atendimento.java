@@ -67,15 +67,6 @@ public class Atendimento {
 	@JoinTable(name = "atendimento_procedimentos", joinColumns = @JoinColumn(name = "id_atendimento"), inverseJoinColumns = @JoinColumn(name = "id_rel_procedimento"))
 	private List<AtendimentoProcedimento> atendimentoProcedimentos;
 
-	@Valid
-	@ManyToMany(cascade = CascadeType.ALL)
-	@JoinTable(name = "atendimento_prescricoes", joinColumns = @JoinColumn(name = "id_atendimento"), inverseJoinColumns = @JoinColumn(name = "id_prescricao"))
-	private List<Prescricao> prescricoes;
-
-	@ManyToMany(cascade = CascadeType.ALL)
-	@JoinTable(name = "atendimento_diagnosticos", joinColumns = @JoinColumn(name = "id_atendimento"), inverseJoinColumns = @JoinColumn(name = "id_diagnostico"))
-	private List<Diagnostico> diagnostico;
-
 	@ManyToMany(cascade = CascadeType.ALL)
 	@JoinTable(name = "atendimento_evolucoes", joinColumns = @JoinColumn(name = "id_atendimento"), inverseJoinColumns = @JoinColumn(name = "id_evolucao"))
 	private List<Evolucao> evolucoes;
@@ -84,6 +75,10 @@ public class Atendimento {
 	@Valid
 	@OneToOne(cascade = CascadeType.ALL)
 	private Triagem triagem;
+	
+	@Valid
+	@OneToOne(cascade = CascadeType.ALL)
+	private Consulta consulta;
 
 	public Long getId() {
 		return id;
@@ -188,22 +183,6 @@ public class Atendimento {
 	public void setAtendimentoProcedimentos(List<AtendimentoProcedimento> atendimentoProcedimentos) {
 		this.atendimentoProcedimentos = atendimentoProcedimentos;
 	}
-	
-	public List<Prescricao> getPrescricoes() {
-		return prescricoes;
-	}
-	
-	public void setPrescricoes(List<Prescricao> prescricoes) {
-		this.prescricoes = prescricoes;
-	}
-
-	public List<Diagnostico> getDiagnostico() {
-		return diagnostico;
-	}
-
-	public void setDiagnostico(List<Diagnostico> diagnostico) {
-		this.diagnostico = diagnostico;
-	}
 
 	public List<Evolucao> getEvolucoes() {
 		return evolucoes;
@@ -219,6 +198,14 @@ public class Atendimento {
 
 	public void setTriagem(Triagem triagem) {
 		this.triagem = triagem;
+	}
+
+	public Consulta getConsulta() {
+		return consulta;
+	}
+
+	public void setConsulta(Consulta consulta) {
+		this.consulta = consulta;
 	}
 
 }

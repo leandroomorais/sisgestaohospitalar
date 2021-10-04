@@ -51,9 +51,7 @@ public class StatusAlergiaController {
 			Optional<Prontuario> optional = prontuarioRepository.findById(statusAlergia.getIdProntuario());
 			if (optional.isPresent()) {
 				Alergia alergia = statusAlergia.getAlergia();
-				if (statusAlergia.getAlergia().getDataCadastro() == null) {
-					alergia.setDataCadastro(LocalDateTime.now());
-				}
+				statusAlergia.setDataRegistro(LocalDateTime.now());
 				alergiaRepository.saveAndFlush(alergia);
 				statusAlergiaService.save(statusAlergia);
 				Prontuario prontuario = optional.get();

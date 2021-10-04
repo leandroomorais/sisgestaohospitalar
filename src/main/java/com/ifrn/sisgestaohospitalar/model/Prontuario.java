@@ -12,6 +12,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
+import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.annotations.DynamicUpdate;
@@ -55,6 +56,15 @@ public class Prontuario {
 	@ManyToMany(cascade = CascadeType.ALL)
 	@JoinTable(name = "prontuario_atendimento", joinColumns = @JoinColumn(name = "id_prontuario"), inverseJoinColumns = @JoinColumn(name = "id_atendimento"))
 	private List<Atendimento> atendimentos;
+	
+	@Valid
+	@ManyToMany(cascade = CascadeType.ALL)
+	@JoinTable(name = "prontuario_prescricoes", joinColumns = @JoinColumn(name = "id_prontuario"), inverseJoinColumns = @JoinColumn(name = "id_prescricao"))
+	private List<Prescricao> prescricoes;
+
+	@ManyToMany(cascade = CascadeType.ALL)
+	@JoinTable(name = "prontuario_diagnosticos", joinColumns = @JoinColumn(name = "id_prontuario"), inverseJoinColumns = @JoinColumn(name = "id_diagnostico"))
+	private List<Diagnostico> diagnostico;
 
 	public Long getId() {
 		return id;
@@ -71,7 +81,7 @@ public class Prontuario {
 	public void setCidadao(Cidadao cidadao) {
 		this.cidadao = cidadao;
 	}
-	
+
 	public LocalDateTime getDataAbertura() {
 		return dataAbertura;
 	}
@@ -79,7 +89,7 @@ public class Prontuario {
 	public void setDataAbertura(LocalDateTime dataAbertura) {
 		this.dataAbertura = dataAbertura;
 	}
-	
+
 	public List<StatusDoenca> getStatusDoencas() {
 		return statusDoencas;
 	}
@@ -95,7 +105,6 @@ public class Prontuario {
 	public void setStatusAlergias(List<StatusAlergia> statusAlergias) {
 		this.statusAlergias = statusAlergias;
 	}
-	
 
 	public List<UsoContinuoMedicamento> getUsoContinuoMedicamentos() {
 		return usoContinuoMedicamentos;
@@ -127,6 +136,22 @@ public class Prontuario {
 
 	public void setAtendimentos(List<Atendimento> atendimentos) {
 		this.atendimentos = atendimentos;
+	}
+
+	public List<Prescricao> getPrescricoes() {
+		return prescricoes;
+	}
+
+	public void setPrescricoes(List<Prescricao> prescricoes) {
+		this.prescricoes = prescricoes;
+	}
+
+	public List<Diagnostico> getDiagnostico() {
+		return diagnostico;
+	}
+
+	public void setDiagnostico(List<Diagnostico> diagnostico) {
+		this.diagnostico = diagnostico;
 	}
 
 }

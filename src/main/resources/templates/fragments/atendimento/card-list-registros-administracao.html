@@ -1,0 +1,42 @@
+<div sec:authorize="hasAnyAuthority('MEDICO', 'ENFERMEIRO', 'TECNICO','AUXILIAR')" id="card-list-registro-administracao"
+	class="card">
+	<div class="card-header">
+		<div class="card-title"><a id="registro-voltar" data-toggle="tooltipe" data-placement="top"
+				title="Voltar para tela anterior" class="btn btn-light"> <i class="fa fa-flip-horizontal fa-share"></i>
+			</a> Registros de administração da prescrição</div>
+	</div>
+	<div class="card-body">
+		<div>
+			<div class="col-md-12">
+				<div class="card-sub">Registros:</div>
+				<div id="div-table-registros" class="table-responsive">
+					<table id="table-registros" class="display table table-hover dataTable" role="grid"
+						aria-describedby="basic-datatables_info" style="width: 100%">
+						<thead>
+							<tr role="row">
+								<th></th>
+								<th></th>
+								<th></th>
+								<th></th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr role="row" class="odd">
+								<td></td>
+								<td></td>
+								<td></td>
+								<td></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<div sec:authorize="hasAnyAuthority('MEDICO', 'ENFERMEIRO', 'TECNICO','AUXILIAR')" class="text-right mt-3">
+				<button type="button" id="button-novo-registro" onclick="exibeFormularioNovoRegistro(this)"
+					class="btn btn-primary btn-sm">
+					<i class="fa fa-plus"></i> Novo registro
+				</button>
+			</div>
+		</div>
+	</div>
+</div>

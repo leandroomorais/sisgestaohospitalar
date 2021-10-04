@@ -58,22 +58,7 @@ public class Procedimento {
 			@JoinColumn(name = "procedimento_id") }, inverseJoinColumns = { @JoinColumn(name = "registro_id") })
 	private List<RegistroSigtap> registros;
 
-	/**
-	 * Relacionamento entre os objetos Procedimento e Ocupacao
-	 */
-	@ManyToMany(cascade = CascadeType.ALL)
-	@JoinTable(name = "procedimento_ocupacoes", joinColumns = {
-			@JoinColumn(name = "procedimento_id") }, inverseJoinColumns = { @JoinColumn(name = "ocupacao_id") })
-	private List<Ocupacao> ocupacoes;
-
-	/**
-	 * Relacionamento entre os objetos Procedimento e Cid
-	 */
-	@LazyCollection(LazyCollectionOption.FALSE)
-	@ManyToMany(cascade = CascadeType.ALL)
-	@JoinTable(name = "procedimento_cids", joinColumns = {
-			@JoinColumn(name = "procedimento_id") }, inverseJoinColumns = { @JoinColumn(name = "cid_id") })
-	private List<Cid> cids;
+	
 
 	/** Getters and setters */
 
@@ -219,22 +204,6 @@ public class Procedimento {
 
 	public void setRegistros(List<RegistroSigtap> registros) {
 		this.registros = registros;
-	}
-
-	public List<Ocupacao> getOcupacoes() {
-		return ocupacoes;
-	}
-
-	public void setOcupacoes(List<Ocupacao> ocupacoes) {
-		this.ocupacoes = ocupacoes;
-	}
-
-	public List<Cid> getCids() {
-		return cids;
-	}
-
-	public void setCids(List<Cid> cids) {
-		this.cids = cids;
 	}
 
 }

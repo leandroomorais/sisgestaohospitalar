@@ -7,7 +7,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
-import javax.persistence.Transient;
 
 @Entity
 public class Diagnostico {
@@ -24,13 +23,13 @@ public class Diagnostico {
 
 	private String nota;
 
-	private LocalDateTime localDateTime;
+	private LocalDateTime dataRegistro;
 
 	@OneToOne
 	private Profissional profissional;
-
-	@Transient
-	private Long idAtendimento;
+	
+	@OneToOne
+	private Atendimento atendimento;
 
 	public Long getId() {
 		return id;
@@ -64,12 +63,12 @@ public class Diagnostico {
 		this.nota = nota;
 	}
 
-	public LocalDateTime getLocalDateTime() {
-		return localDateTime;
+	public LocalDateTime getDataRegistro() {
+		return dataRegistro;
 	}
 
-	public void setLocalDateTime(LocalDateTime localDateTime) {
-		this.localDateTime = localDateTime;
+	public void setDataRegistro(LocalDateTime dataRegistro) {
+		this.dataRegistro = dataRegistro;
 	}
 
 	public Profissional getProfissional() {
@@ -80,12 +79,12 @@ public class Diagnostico {
 		this.profissional = profissional;
 	}
 
-	public Long getIdAtendimento() {
-		return idAtendimento;
+	public Atendimento getAtendimento() {
+		return atendimento;
 	}
 
-	public void setIdAtendimento(Long idAtendimento) {
-		this.idAtendimento = idAtendimento;
+	public void setAtendimento(Atendimento atendimento) {
+		this.atendimento = atendimento;
 	}
 
 }

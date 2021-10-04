@@ -1,12 +1,8 @@
 package com.ifrn.sisgestaohospitalar.dto;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
 
-@Entity
 public class CidDTO {
 
-	@Id
 	private String codigo;
 
 	private String nome;

@@ -15,11 +15,13 @@ import com.ifrn.sisgestaohospitalar.model.Ocupacao;
 import com.ifrn.sisgestaohospitalar.model.Procedimento;
 import com.ifrn.sisgestaohospitalar.model.RegistroSigtap;
 import com.ifrn.sisgestaohospitalar.model.ProcedimentoCid;
+import com.ifrn.sisgestaohospitalar.model.ProcedimentoOcupacao;
 import com.ifrn.sisgestaohospitalar.repository.CidRepository;
 import com.ifrn.sisgestaohospitalar.repository.OcupacaoRepository;
 import com.ifrn.sisgestaohospitalar.repository.ProcedimentoRepository;
 import com.ifrn.sisgestaohospitalar.repository.RegistroSigtapRepository;
 import com.ifrn.sisgestaohospitalar.repository.ProcedimentoCidRepository;
+import com.ifrn.sisgestaohospitalar.repository.ProcedimentoOcupacaoRepository;
 
 /**
  * A classe <code>LeitorTxtSigtap</code> é um utilitário que contém métodos para
@@ -48,6 +50,9 @@ public class LeitorTxtSigtap {
 	
 	@Autowired
 	private ProcedimentoCidRepository procedimentoCidRepository;
+	
+	@Autowired
+	private ProcedimentoOcupacaoRepository procedimentoOcupacaoRepository;
 
 	/**
 	 * Este método realiza a leitura do arquivo TXT que contém o relacionamento
@@ -67,12 +72,12 @@ public class LeitorTxtSigtap {
 			Long CO_PROCEDIMENTO = Long.getLong(novaLinha.substring(0, 10));
 			String CO_REGISTRO = novaLinha.substring(10, 12);
 			String DT_COMPETENCIA = novaLinha.substring(12, 18);
-			Procedimento procedimentoSigtap = procedimentoRepository.findByCodigo(CO_PROCEDIMENTO);
+			Procedimento procedimento = procedimentoRepository.findByCodigo(CO_PROCEDIMENTO);
 			RegistroSigtap registroSigtap = registroSigtapRepository.findByCodigo(CO_REGISTRO);
-			procedimentoSigtap.getRegistros().add(registroSigtap);
+			procedimento.getRegistros().add(registroSigtap);
 
-			if (procedimentoSigtap.getDataCompetencia().equals(DT_COMPETENCIA)) {
-				procedimentoRepository.saveAndFlush(procedimentoSigtap);
+			if (procedimento.getDataCompetencia().equals(DT_COMPETENCIA)) {
+				procedimentoRepository.saveAndFlush(procedimento);
 			}
 		}
 	}
@@ -85,7 +90,7 @@ public class LeitorTxtSigtap {
 	 * @param arquivoRelacionamentoProcedimento_Cid
 	 * @throws IOException
 	 */
-	public void relacionamentoProcedimento_Cid(String arquivoRelacionamentoProcedimento_Cid) throws IOException {
+	public void lerProcedimento_Cid(String arquivoRelacionamentoProcedimento_Cid) throws IOException {
 		BufferedReader bufferedReader = Files.newBufferedReader(Paths.get(arquivoRelacionamentoProcedimento_Cid),
 				Charset.forName("ISO-8859-1"));
 		String linha;
@@ -100,6 +105,7 @@ public class LeitorTxtSigtap {
 			ProcedimentoCid procedimentoCid = new ProcedimentoCid();
 			procedimentoCid.setCodigoProcedimento(CO_PROCEDIMENTO);
 			procedimentoCid.setCodigoCid(CO_CID);
+			procedimentoCid.setCompetencia(DT_COMPETENCIA);
 			procedimentoCids.add(procedimentoCid);
 		}
 		procedimentoCidRepository.saveAll(procedimentoCids);
@@ -112,30 +118,29 @@ public class LeitorTxtSigtap {
 	 * @param arquivoRelacionamentoProcedimento_Ocupacao
 	 * @throws IOException
 	 */
-	public void relacionamentoProcedimento_Ocupacao(String arquivoRelacionamentoProcedimento_Ocupacao)
+	public void lerProcedimento_Ocupacao(String arquivoRelacionamentoProcedimento_Ocupacao)
 			throws IOException {
 		BufferedReader bufferedReader = Files.newBufferedReader(Paths.get(arquivoRelacionamentoProcedimento_Ocupacao),
 				Charset.forName("ISO-8859-1"));
 		String linha;
-
+		
 		while ((linha = bufferedReader.readLine()) != null) {
 			String novaLinha = new String(linha.getBytes("UTF-8"));
 
 			Long CO_PROCEDIMENTO = Long.parseLong(novaLinha.substring(0, 10));
 			String CO_OCUPACAO = novaLinha.substring(10, 16);
 			String DT_COMPETENCIA = novaLinha.substring(16, 22);
-
-			Procedimento procedimentoSigtap = procedimentoRepository.findByCodigo(CO_PROCEDIMENTO);
-			Ocupacao ocupacaoSigtap = ocupacaoRepository.findByCodigo(CO_OCUPACAO);
-
-			procedimentoSigtap.getOcupacoes().add(ocupacaoSigtap);
-
-			if (procedimentoSigtap.getDataCompetencia().equals(DT_COMPETENCIA)) {
-				procedimentoRepository.saveAndFlush(procedimentoSigtap);
-			} else {
-				System.out.println("Erro");
-			}
+			
+			ProcedimentoOcupacao procedimentoOcupacao = new ProcedimentoOcupacao();
+			procedimentoOcupacao.setCodigoProcedimento(CO_PROCEDIMENTO);
+			procedimentoOcupacao.setCodigoOcupacao(CO_OCUPACAO);
+			procedimentoOcupacao.setCompetencia(DT_COMPETENCIA);
+			
+			procedimentoOcupacaoRepository.save(procedimentoOcupacao);
+			
 		}
+		
+		
 	}
 
 	/**

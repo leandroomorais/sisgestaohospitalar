@@ -1,0 +1,68 @@
+<div id="card-nova-alergia" class="card">
+	<div class="card-header">
+		<div class="card-title"><a id="nova-alergia-voltar" data-toggle="tooltipe" data-placement="top"
+				title="Voltar para tela anterior" class="btn btn-light"> <i class="fa fa-flip-horizontal fa-share"></i>
+			</a> Cadastrar alergia</div>
+	</div>
+	<div class="card-body">
+		<div>
+			<form id="form-status-alergia" action="/status-alergia/salvar" method="post">
+
+				<div class="row">
+					<div class="col-md-12">
+						<div class="form-group">
+							<label for="alergia-nome">Nome da alergia *</label>
+							<input type="text" class="form-control" name="alergia.nome" id="alergia-nome"
+								placeholder=""> <small id="alergia-nome-small" class="form-text text-muted"></small>
+							<input name="alergia.id" type="hidden" id="id-alergia">
+						</div>
+					</div>
+					<div class="col-md-12">
+						<div class="form-group">
+							<label for="alergia-cid">Cid Associado </label> <input type="text" class="form-control"
+								name="alergia.cid" id="alergia-cid" placeholder=""> <small id="alergia-cid-small"
+								class="form-text text-muted"></small>
+							<input name="alergia.cid.id" type="hidden" id="id-cid">
+						</div>
+					</div>
+					<div class="col-md-4">
+						<div class="form-group" data-toggle="tooltip"
+							title="Data em que o Cidadão descobriu a condição">
+							<label for="dataInicio">Data Início </label> <input type="date" class="form-control"
+								name="dataInicio" id="dataInicio" placeholder=""> <small id="dataInicio-small"
+								class="form-text text-muted"></small>
+						</div>
+					</div>
+					<div class="col-md-4">
+						<div class="form-group" data-toggle="tooltip" title="Data em que o Cidadão resolveu a condição">
+							<label for="dataFim">Data Fim </label> <input type="date" class="form-control"
+								name="dataFim" id="dataFim" placeholder=""> <small id="dataFim-small"
+								class="form-text text-muted"></small>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label class="form-label">Situação *</label>
+							<div class="selectgroup w-100">
+								<th:block th:each="situacaoCondicao : ${situacoesCondicao}">
+									<label class="selectgroup-item" data-toggle="tooltip"
+										th:title="${situacaoCondicao.descricao}">
+										<input type="radio" name="situacaoCondicao" th:value="${situacaoCondicao}"
+											class="selectgroup-input"><span class="selectgroup-button"
+											th:text="${situacaoCondicao.nome}"></span>
+									</label>
+								</th:block>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="text-right">
+					<button type="submit" class="btn btn-primary btn-sm">
+						Salvar</button>
+					<button onclick="fechaFormularioAlergia()" type="button" class="btn btn-warning btn-sm">
+						Cancelar</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>

@@ -2,7 +2,6 @@ package com.ifrn.sisgestaohospitalar;
 
 import java.io.IOException;
 import java.text.ParseException;
-import java.util.List;
 
 import javax.xml.bind.JAXBException;
 
@@ -16,22 +15,15 @@ import com.ifrn.sisgestaohospitalar.model.Role;
 import com.ifrn.sisgestaohospitalar.model.TipoServico;
 import com.ifrn.sisgestaohospitalar.model.TipoUsuario;
 import com.ifrn.sisgestaohospitalar.model.ViaAdministracao;
-import com.ifrn.sisgestaohospitalar.repository.AtendimentoRepository;
 import com.ifrn.sisgestaohospitalar.repository.Cep_IbgeRepository;
-import com.ifrn.sisgestaohospitalar.repository.EnderecoRepository;
 import com.ifrn.sisgestaohospitalar.repository.EstadoRepository;
-import com.ifrn.sisgestaohospitalar.repository.FormaFarmaceuticaRepository;
-import com.ifrn.sisgestaohospitalar.repository.HabitoRepository;
 import com.ifrn.sisgestaohospitalar.repository.LogradouroRepository;
-import com.ifrn.sisgestaohospitalar.repository.MedicamentoRepository;
 import com.ifrn.sisgestaohospitalar.repository.MunicipioRepository;
 import com.ifrn.sisgestaohospitalar.repository.ProcedimentoRepository;
 import com.ifrn.sisgestaohospitalar.repository.RoleRepository;
 import com.ifrn.sisgestaohospitalar.repository.TipoServicoRepository;
 import com.ifrn.sisgestaohospitalar.repository.TipoUsuarioRepository;
 import com.ifrn.sisgestaohospitalar.repository.ViaAdministracaoRepository;
-import com.ifrn.sisgestaohospitalar.service.CidadaoService;
-import com.ifrn.sisgestaohospitalar.service.ProfissionalService;
 import com.ifrn.sisgestaohospitalar.utils.LeitorTXTMedicamentos;
 import com.ifrn.sisgestaohospitalar.utils.LeitorTxtSigtap;
 import com.ifrn.sisgestaohospitalar.utils.LeitorXmlEsus;
@@ -50,18 +42,6 @@ public class SisgestaohospitalarApplication implements ApplicationListener<Conte
 	@Autowired
 	private LeitorTxtSigtap leitorTxtSigtap;
 
-	// @Autowired
-	// private RoleService roleService;
-
-	@Autowired
-	private CidadaoService cidadaoService;
-
-	@Autowired
-	private ProfissionalService profissionalService;
-
-	// @Autowired
-	// private GuiaAtendimentoService guiaAtendimentoService;
-
 	@Autowired
 	private Cep_IbgeRepository cepIbgeRepository;
 
@@ -75,22 +55,7 @@ public class SisgestaohospitalarApplication implements ApplicationListener<Conte
 	private EstadoRepository estadoRepository;
 
 	@Autowired
-	private EnderecoRepository enderecoRepository;
-
-	@Autowired
 	private ProcedimentoRepository procedimentoRepository;
-
-	@Autowired
-	private AtendimentoRepository atendimentoRepository;
-
-	@Autowired
-	private HabitoRepository habitoRepository;
-
-	@Autowired
-	private MedicamentoRepository medicamentoRepository;
-
-	@Autowired
-	private FormaFarmaceuticaRepository formaFarmaceuticaRepository;
 
 	@Autowired
 	private ViaAdministracaoRepository viaAdministracaoRepository;
@@ -203,12 +168,16 @@ public class SisgestaohospitalarApplication implements ApplicationListener<Conte
 		try {
 			leitorTxtSigtap.lerTxtCid(urlCid);
 			leitorTxtSigtap.lerTxtProcedimentos(urlProcedimentos);
-			leitorTxtSigtap.lerTxtOcupacao(urlOcupacao);
 			leitorTxtSigtap.lerTxtRegistro(urlRegistros);
+			//leitorTxtSigtap.lerProcedimento_Cid(urlRelationProced_Cid);
+			//leitorTxtSigtap.lerProcedimento_Ocupacao(urlRelationProced_Ocupacao);
+			//leitorTxtSigtap.relacionamentoProcedimento_Registro(urlRelationProced_Registro);
+			//leitorTxtSigtap.lerTxtOcupacao(urlOcupacao);
+			
 			// leitorTxtSigtap.relacionamentoProcedimento_Cid(urlRelationProced_Cid);
 
 			// leitorTxtSigtap.relacionamentoProcedimento_Cid(urlRelationProced_Cid);
-			// leitorTxtSigtap.relacionamentoProcedimento_Ocupacao(urlRelationProced_Ocupacao);
+			//leitorTxtSigtap.relacionamentoProcedimento_Ocupacao(urlRelationProced_Ocupacao);
 			// leitorTxtSigtap.relacionamentoProcedimento_Registro(urlRelationProced_Registro);
 
 		} catch (IOException e) {

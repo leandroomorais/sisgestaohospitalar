@@ -1,6 +1,5 @@
 package com.ifrn.sisgestaohospitalar.model;
 
-import java.time.LocalDateTime;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -23,8 +22,6 @@ public class Doenca {
 	
 	@OneToOne
 	private Cid cid;
-	
-	private LocalDateTime dataCadastro;
 
 	public Long getId() {
 		return id;
@@ -58,12 +55,5 @@ public class Doenca {
 		this.cid = cid;
 	}
 
-	public LocalDateTime getDataCadastro() {
-		return dataCadastro;
-	}
-
-	public void setDataCadastro(LocalDateTime dataCadastro) {
-		this.dataCadastro = dataCadastro;
-	}
 
 }

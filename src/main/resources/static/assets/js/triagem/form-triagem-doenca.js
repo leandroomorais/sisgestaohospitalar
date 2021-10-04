@@ -139,7 +139,7 @@ $("#form-status-doenca-edit").submit(function(evt) {
 		beforeSend: function() {
 		},
 		success: function() {
-			fechaFormularioDoenca();
+			fechaFormularioEditDoenca();
 			$.notify({
 				// options
 				icon: 'flaticon-success',
@@ -225,27 +225,47 @@ $("#form-status-doenca-edit").submit(function(evt) {
 
 //Função exibe formulário Doença
 function exibeFormularioDoenca() {
-	$("#form-status-doenca input[type='text']").val("");
-	$("#form-status-doenca input[type='hidden']").val("");
-	$("#form-status-doenca input[type='date']").val("");
-	$("#div-table-doencas").hide();
-	$("#form-status-doenca").fadeIn(200);
+	limpaFormDoenca();
+	$("#card-list-doencas").fadeOut(100);
+	$("#card-nova-doenca").fadeIn(200);
 }
 //Fim Função exibe formulário Doença
 
+//Função exibe formulário Editar Doença
+function exibeFormularioEditDoenca() {
+	limpaFormEditDoenca();
+	$("#card-list-doencas").fadeOut(100);
+	$("#card-edit-doenca").fadeIn(200);
+}
+//Fim Função exibe formulário Editar Doença
+
 //Função fecha formulário de Doença
 function fechaFormularioDoenca() {
+	limpaFormDoenca();
+	$("#card-nova-doenca").fadeOut(100);
+	$("#card-list-doencas").fadeIn(100);
+}
+//Fim Função fecha formulário de Doença
+
+//Função fecha formulário edit Doença
+function fechaFormularioEditDoenca() {
+	limpaFormEditDoenca();
+	$("#card-edit-doenca").fadeOut(100);
+	$("#card-list-doencas").fadeIn(100);
+}
+//Fim Função fecha formulário edit Doença
+
+function limpaFormDoenca() {
 	$("#form-status-doenca input[type='text']").val("");
 	$("#form-status-doenca input[type='hidden']").val("");
 	$("#form-status-doenca input[type='date']").val("");
+}
+
+function limpaFormEditDoenca() {
 	$("#form-status-doenca-edit input[type='text']").val("");
 	$("#form-status-doenca-edit input[type='hidden']").val("");
 	$("#form-status-doenca-edit input[type='date']").val("");
-	$("#form-status-doenca").hide();
-	$("#form-status-doenca-edit").hide();
-	$("#div-table-doencas").fadeIn(200);
 }
-//Fim Função fecha formulário de Doença
 
 //Inicio da funcao atualizar Doenca
 function atualizaDoenca() {
@@ -307,26 +327,21 @@ function atualizaDoenca() {
 
 
 function editarDoenca(item) {
-	$("#form-status-doenca-edit input[type='text']").val("");
-	$("#form-status-doenca-edit input[type='hidden']").val("");
-	$("#form-status-doenca-edit input[type='date']").val("");
 	var statusDoencaId = $(item).attr("data-value");
-	var prontuarioId = $("#id-prontuario").val();
-
 	$.ajax({
 		method: "GET",
 		url: "/status-doenca/editar/" + statusDoencaId,
 		success: function(data) {
 			console.log(data);
+			exibeFormularioEditDoenca();
 			$("#id-status-doenca-dto").val(statusDoencaId);
-			$("#div-table-doencas").hide();
-			$("#form-status-doenca-edit").fadeIn(200);
 			$("#doenca-nome-dto").val(data.doenca.nome);
 			tinymce.get("nota-dto").setContent(data.nota);
 			$("#id-doenca-dto").val(data.doenca.id);
 			$("#doenca-cid-dto").val(data.doenca.cid.codigo + " - " + data.doenca.cid.nome);
 			$("#id-cid-doenca-dto").val(data.doenca.cid.codigo);
 			$("input[value = '" + data.situacaoCondicao + "']").prop("checked", true);
+			
 		}
 	})
 }

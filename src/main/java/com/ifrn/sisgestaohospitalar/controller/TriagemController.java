@@ -21,7 +21,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
 import com.ifrn.sisgestaohospitalar.enums.ClassificacaoDeRisco;
 import com.ifrn.sisgestaohospitalar.enums.CondutaCidadao;
 import com.ifrn.sisgestaohospitalar.enums.MomentoColeta;
@@ -30,7 +29,6 @@ import com.ifrn.sisgestaohospitalar.enums.Status;
 import com.ifrn.sisgestaohospitalar.model.Atendimento;
 import com.ifrn.sisgestaohospitalar.model.HistoricoStatus;
 import com.ifrn.sisgestaohospitalar.model.Profissional;
-import com.ifrn.sisgestaohospitalar.model.TipoServico;
 import com.ifrn.sisgestaohospitalar.model.Triagem;
 import com.ifrn.sisgestaohospitalar.repository.AtendimentoRepository;
 import com.ifrn.sisgestaohospitalar.repository.ProfissionalRepository;
@@ -38,7 +36,6 @@ import com.ifrn.sisgestaohospitalar.repository.TipoServicoRepository;
 import com.ifrn.sisgestaohospitalar.repository.UsuarioRepository;
 import com.ifrn.sisgestaohospitalar.service.TriagemDataTablesService;
 import com.ifrn.sisgestaohospitalar.service.TriagemService;
-import com.ifrn.sisgestaohospitalar.service.exception.CidadaoJaAdicionadoNaFilaException;
 
 @Controller
 @RequestMapping("/triagem")
@@ -67,7 +64,6 @@ public class TriagemController {
 			Atendimento atendimento = optional.get();
 			Profissional profissional = profissionalRepository.findByCpf(principal.getName());
 			atendimento.setStatus(Status.EMATENDIMENTO);
-
 			HistoricoStatus historicoStatus = new HistoricoStatus();
 			historicoStatus.setStatus(atendimento.getStatus());
 			historicoStatus.setTipoServicos(atendimento.getTipoServicos());
@@ -107,43 +103,15 @@ public class TriagemController {
 			return ResponseEntity.unprocessableEntity().body(errors);
 		}
 
-		try {
-			Optional<Atendimento> optional = atendimentoRepository.findById(triagem.getAtendimento().getId());
-			if (optional.isPresent()) {
-				Atendimento atendimento = optional.get();
-
-				for (TipoServico tipoServico : atendimento.getTipoServicos()) {
-					if (tipoServico.getNome() != "Inativo") {
-						atendimento.setStatus(Status.AGUARDANDOATENDIMENTO);
-					}
-
-					if (tipoServico.getNome().equals("Inativo")
-							&& triagem.getAtendimento().getStatus() != Status.NAOAGUARDOU) {
-						atendimento.setStatus(Status.FINALIZADO);
-					}
-				}
-
-				atendimento.setTipoServicos(triagem.getAtendimento().getTipoServicos());
-				atendimento.setCondutaCidadao(triagem.getAtendimento().getCondutaCidadao());
-
-				triagem.setAtendimento(atendimento);
-				triagem.setFimTriagem(LocalDateTime.now());
-				triagem.setProfissional(profissionalRepository.findByCpf(principal.getName()));
-				atendimento.setTriagem(triagem);
-
-				HistoricoStatus historicoStatus = new HistoricoStatus();
-				historicoStatus.setStatus(triagem.getAtendimento().getStatus());
-				historicoStatus.setTipoServicos(triagem.getAtendimento().getTipoServicos());
-				historicoStatus.setUltimaAtualizacao(LocalDateTime.now());
-
-				triagemService.save(triagem);
-				return ResponseEntity.ok().build();
-			}
-			return ResponseEntity.notFound().build();
-		} catch (CidadaoJaAdicionadoNaFilaException e) {
-			errors.put(e.getLocalizedMessage(), e.getMessage());
-			return ResponseEntity.unprocessableEntity().body(errors);
+		Atendimento atendimento = atendimentoRepository.getOne(triagem.getAtendimento().getId());
+		if (atendimento != null) {
+			triagem.setFimTriagem(LocalDateTime.now());
+			triagem.setProfissional(profissionalRepository.findByCpf(principal.getName()));
+			atendimento.setTriagem(triagem);
+			atendimentoRepository.saveAndFlush(atendimento);
+			return ResponseEntity.ok().build();
 		}
+		return ResponseEntity.badRequest().build();
 	}
 
 	@GetMapping("/datatables/server")
@@ -158,6 +126,16 @@ public class TriagemController {
 		mv.addObject("statusAtendimentos", Status.values());
 		mv.addObject("user", usuarioRepository.findByUsername(principal.getName()));
 		return mv;
+	}
+
+	@RequestMapping("/procedimentos/{id}")
+	public ResponseEntity<?> procedimentosTriagem(@PathVariable("id") Long id) {
+		Optional<Atendimento> optional = atendimentoRepository.findById(id);
+		if (optional.isPresent()) {
+			return ResponseEntity.ok().body(optional.get().getAtendimentoProcedimentos());
+		}
+		return ResponseEntity.badRequest().build();
+
 	}
 
 }

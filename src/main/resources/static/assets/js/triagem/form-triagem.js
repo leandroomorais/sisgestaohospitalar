@@ -2,12 +2,11 @@
 $(document).ready(function() {
 
 	$("#conduta-cidadao").hide();
-	$("#form-status-alergia").hide();
-	$("#form-status-alergia-edit").hide();
-	$("#form-status-doenca").hide();
-	$("#form-status-doenca-edit").hide();
-
-
+	$("#card-nova-alergia").hide();
+	$("#card-edit-alergia").hide();
+	$("#card-nova-doenca").hide();
+	$("#card-edit-doenca").hide();
+	
 	//Função que aplica máscara aos inputs 
 	$("#sinaisVitais-pressaoArterial").keydown(function() {
 		var pressao = $("#sinaisVitais-pressaoArterial").val();
@@ -63,17 +62,6 @@ $(document).ready(function() {
 
 //######### Funções do Formulário da Triagem ###########
 
-//Funções conduta do cidadão
-$("#customRadio2").click(function() {
-	$("#adicionar-a-lista").hide();
-	$("#conduta-cidadao").show();
-});
-
-$("#customRadio1").click(function() {
-	$("#conduta-cidadao").hide();
-	$("#adicionar-a-lista").show();
-})
-//Fim funções conduta do Cidadão
 
 //Submit do Formulário Triagem
 $("#form-triagem").submit(function(evt) {
@@ -85,7 +73,6 @@ $("#form-triagem").submit(function(evt) {
 	triagem.motivo = tinymce.get("motivo").getContent();
 	triagem.inicioTriagem = $("#inicioTriagem").val();
 	triagem.classificacaoDeRisco = $("input[name='classificacaoDeRisco']:checked").val();
-
 	triagem['sinaisVitais.pressaoArterial'] = $("#sinaisVitais-pressaoArterial").val();
 	triagem['sinaisVitais.temperaturaCorporal'] = $("#sinaisVitais-temperaturaCorporal").val();
 	triagem['sinaisVitais.frequenciaCardiaca'] = $("#sinaisVitais-frequenciaCardiaca").val();
@@ -93,25 +80,7 @@ $("#form-triagem").submit(function(evt) {
 	triagem['sinaisVitais.frequenciaRespiratoria'] = $("#sinaisVitais-frequenciaRespiratoria").val();
 	triagem['sinaisVitais.glicemiaCapilar'] = $("#sinaisVitais-glicemiaCapilar").val();
 	triagem['sinaisVitais.momentoColeta'] = $("#sinaisVitais-momentoColeta option:selected").val();
-
-	triagem['atendimento.id'] = $("#atendimento-id").val();
-	triagem['atendimento.profissionalDestino'] = $("#atendimento-profissionalDestino option:selected").val();
-	triagem['atendimento.cidadao'] = $("#cidadao-id").val();
-
-	var condutaCidadao;
-	var condutaTipoServico;
-
-	if ($("#customRadio1").is(":checked")) {
-		condutaTipoServico = $("input[name='tipoServicos']:checked").val();
-		condutaCidadao = null;
-	}
-	if ($("#customRadio2").is(":checked")) {
-		condutaCidadao = $("input[name='atendimento.condutaCidadao']:checked").val();
-		condutaTipoServico = 5;
-	}
-
-	triagem['atendimento.tipoServicos'] = condutaTipoServico;
-	triagem['atendimento.condutaCidadao'] = condutaCidadao;
+	triagem['atendimento'] = $("#atendimento-id").val();
 
 	$.ajax({
 		url: "/triagem/salvar",
@@ -120,9 +89,7 @@ $("#form-triagem").submit(function(evt) {
 		beforeSend: function() {
 
 		},
-
 		success: function() {
-
 			$.notify({
 				// options
 				icon: 'flaticon-success',
@@ -158,8 +125,6 @@ $("#form-triagem").submit(function(evt) {
 				onClosed: null,
 				icon_type: 'class',
 			});
-
-			window.location.replace("/triagem/listar");
 		},
 
 		statusCode: {
@@ -247,9 +212,7 @@ $("#form-triagem").submit(function(evt) {
 
 			}
 		},
-
 		complete: function() {
-
 		}
 	})
 
@@ -450,14 +413,14 @@ $("#sinaisVitais-pressaoArterial").change(function() {
 	var idAtendimento = $("#id-atendimento").val();
 	var tipoServico = "TRIAGEM";
 	var quantidade = 1;
-	submitProcedimentoAutomatico(idAtendimento, 301100039, tipoServico, quantidade);
+	submitProcedimento(idAtendimento, 301100039, tipoServico, quantidade);
 })
 
 $("#sinaisVitais-glicemiaCapilar").change(function() {
 	var idAtendimento = $("#id-atendimento").val();
 	var tipoServico = "TRIAGEM";
 	var quantidade = 1;
-	submitProcedimentoAutomatico(idAtendimento, 214010015, tipoServico, quantidade);
+	submitProcedimento(idAtendimento, 214010015, tipoServico, quantidade);
 })
 
 //Função que adiciona procedimentos
@@ -473,207 +436,9 @@ $("#submit-procedimento").click(function() {
 	var codigoProcedimento = $("#id-procedimento").val();
 	var tipoServico = "TRIAGEM";
 	var quantidade = $("#qtd-procedimento").val();
-	submitProcedimentoAutomatico(idAtendimento, codigoProcedimento, tipoServico, quantidade);
+	submitProcedimento(idAtendimento, codigoProcedimento, tipoServico, quantidade);
 })
 
-function submitProcedimentoAutomatico(idAtendimento, codigoProcedimento, tipoServico, quantidade) {
-	var relAtendimentoProcedimento = {};
-	relAtendimentoProcedimento.idAtendimento = idAtendimento;
-	relAtendimentoProcedimento['procedimento.codigo'] = codigoProcedimento;
-	relAtendimentoProcedimento.quantidade = quantidade;
-	relAtendimentoProcedimento.tipoServico = tipoServico;
-
-	$.ajax({
-		url: '/atendimento-procedimento/adicionar',
-		method: 'POST',
-		data: relAtendimentoProcedimento,
-		success: function() {
-
-			$("#i-procedimento").removeClass().addClass("fa fa-search");
-			limpaInputsProcedimento();
-			$.notify({
-				// options
-				icon: 'flaticon-success',
-				title: 'SUCESSO',
-				message: 'O procedimento foi adicionado ao atendimento',
-				target: '_blank'
-			}, {
-				// settings
-				element: 'body',
-				position: null,
-				type: "success",
-				allow_dismiss: true,
-				newest_on_top: false,
-				showProgressbar: false,
-				placement: {
-					from: "top",
-					align: "right"
-				},
-				offset: 20,
-				spacing: 10,
-				z_index: 1031,
-				delay: 5000,
-				timer: 1000,
-				url_target: '_blank',
-				mouse_over: null,
-				animate: {
-					enter: 'animated fadeInDown',
-					exit: 'animated fadeOutUp'
-				},
-				onShow: null,
-				onShown: null,
-				onClose: null,
-				onClosed: null,
-				icon_type: 'class',
-			});
-			$("#table-procedimentos").DataTable().ajax.reload();
-		}
-	})
-}
-
-$("#procedimentos-triagem").autocomplete({
-	source: "/procedimento/buscar",
-	focus: function(event, ui) {
-		$("#procedimentos-triagem").val(ui.item.codigo + " - " + ui.item.nome);
-		return false;
-	},
-	select: function(event, ui) {
-		$("#i-procedimento").removeClass().addClass("fa fa-times");
-		$("#qtd-procedimento").val(1);
-		$("#procedimentos-triagem").val(ui.item.codigo + " - " + ui.item.nome).attr("disabled", true);
-		$("#id-procedimento").val(ui.item.codigo);
-		$("#nome-procedimento").val(ui.item.nome);
-		return false;
-	}
-}).autocomplete("instance")._renderItem = function(ul, item) {
-	return $("<li></li>")
-		.append("<div class='h6'>" + item.codigo + " - " + item.nome + "</div>")
-		.appendTo(ul);
-};
-
-function limpaInputsProcedimento() {
-	$("#procedimentos-triagem").val("").attr("disabled", false);
-	$("#qtd-procedimento").val("");
-	$("#id-procedimento").val("");
-	$("#nome-procedimento").val("");
-}
-
-function atualizaProcedimento() {
-	var atendimentoId = $("#id-atendimento").val();
-	$("#table-procedimentos").DataTable({
-		responsive: true,
-		paging: false,
-		searching: false,
-		ordering: false,
-		ajax: {
-			url: '/atendimento/procedimentos-triagem/' + atendimentoId,
-			dataSrc: ''
-		},
-		columns: [
-			{
-				title: 'CÓDIGO',
-				data: 'procedimento.codigo',
-			},
-			{
-				title: 'NOME',
-				data: 'procedimento.nome',
-			},
-			{
-				title: 'QUANTIDADE',
-				data: 'quantidade',
-				mRender: function(data) {
-					return "<span class='badge badge-info'>" + data + "</span>"
-				}
-			},
-			{
-				title: 'AÇÕES',
-				data: 'id',
-				mRender: function(data) {
-					return "<button type='button' class='btn btn-warning btn-sm' data-value='" + data + "' onclick='removeProcedimento(this)'><i class='fa fa-trash'></i> Excluir </button>"
-				}
-			}
-		]
-	})
-}
-
-//$("#procedimentos-triagem")
-//	.on("keydown", function(event) {
-//		$(this).autocomplete("instance")._renderItem = function(select, item) {
-//			return $("<option>").append("<div>"
-//				+ item.codigo
-//				+ " - "
-//				+ item.nome
-//				+ "</div>").appendTo(select);
-//		};
-//	})
-//	.autocomplete({
-//		source: "/procedimento/buscar",
-//		focus: function(event, ui) {
-//			$("#procedimentos-triagem").val(ui.item.nome);
-//			return false;
-//		},
-//		select: function(event, ui) {
-//			$("#procedimentos-triagem").val("");
-//			$("#table-procedimento-triagem").append('<tr id="'
-//				+ ui.item.codigo
-//				+ '"><td>'
-//				+ ui.item.codigo
-//				+ '</td>'
-//				+ '<td>'
-//				+ ui.item.nome
-//				+ '</td>'
-//				+ '<td>'
-//				+ '<button onclick="removeProcedimentoTriagem(this)" type="button" class="btn btn-icon btn-round btn-danger"><i class="fa fa-trash"></i></button>'
-//				+ '</td>'
-//				+ '</tr>');
-//			$("#inputs-procedimentos").append('<input type="hidden" id="procedimento' + ui.item.codigo + '" name="procedimentos" value="' + ui.item.codigo + '">');
-//			return false;
-//		}
-//	});
-//Fim da função
-
-
-// Função para remover os Procedimentos da Tabela de Procedimentos
-function removeProcedimento(item) {
-	swal({
-		title: 'Tem certeza que deseja remover esse procedimento?',
-		icon: 'warning',
-		buttons: {
-			cancel: {
-				visible: true,
-				text: 'Não, cancelar!',
-				className: 'btn btn-primary',
-			},
-			confirm: {
-				text: 'Sim, remova!',
-				className: 'btn btn-warning'
-			}
-		}
-	}).then((willDelete) => {
-		var idAtendimento = $("#id-atendimento").val();
-		var idAtendimentoProcedimento = $(item).attr("data-value");
-
-		$.ajax({
-			url: '/atendimento-procedimento/excluir/' + idAtendimento + "/" + idAtendimentoProcedimento,
-			method: 'get',
-			success: function() {
-				swal("Procedimento removido com sucesso!", {
-					icon: "success",
-					buttons: {
-						confirm: {
-							className: 'btn btn-success'
-						}
-					}
-				});
-				$("#table-procedimentos").DataTable().ajax.reload();
-
-			}
-		})
-	});
-
-
-	return false;
-}
 //Fim da função
 //######### Fim das Funções dos Procedimentos ###########
 

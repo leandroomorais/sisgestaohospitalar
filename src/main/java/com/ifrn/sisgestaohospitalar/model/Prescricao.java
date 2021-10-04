@@ -12,7 +12,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
-import javax.persistence.Transient;
 import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -45,8 +44,8 @@ public class Prescricao {
 
 	private boolean usoContinuo;
 	
-	@Transient
-	private Long idAtendimento;
+	@OneToOne
+	private Atendimento atendimento;
 	
 	@OneToOne
 	private Prontuario prontuario;
@@ -59,7 +58,7 @@ public class Prescricao {
 	@Quantidade
 	private int quantidade;
 
-	private LocalDateTime data;
+	private LocalDateTime dataRegistro;
 
 	@OneToOne
 	private Profissional profissional;
@@ -128,12 +127,12 @@ public class Prescricao {
 		this.usoContinuo = usoContinuo;
 	}
 
-	public Long getIdAtendimento() {
-		return idAtendimento;
+	public Atendimento getAtendimento() {
+		return atendimento;
 	}
 
-	public void setIdAtendimento(Long idAtendimento) {
-		this.idAtendimento = idAtendimento;
+	public void setAtendimento(Atendimento atendimento) {
+		this.atendimento = atendimento;
 	}
 
 	public Prontuario getProntuario() {
@@ -144,7 +143,13 @@ public class Prescricao {
 		this.prontuario = prontuario;
 	}
 
-	
+	public List<RegistroAdministracao> getRegistrosAdministracao() {
+		return registrosAdministracao;
+	}
+
+	public void setRegistrosAdministracao(List<RegistroAdministracao> registrosAdministracao) {
+		this.registrosAdministracao = registrosAdministracao;
+	}
 
 	public int getQuantidade() {
 		return quantidade;
@@ -154,12 +159,12 @@ public class Prescricao {
 		this.quantidade = quantidade;
 	}
 
-	public LocalDateTime getData() {
-		return data;
+	public LocalDateTime getDataRegistro() {
+		return dataRegistro;
 	}
 
-	public void setData(LocalDateTime data) {
-		this.data = data;
+	public void setDataRegistro(LocalDateTime dataRegistro) {
+		this.dataRegistro = dataRegistro;
 	}
 
 	public Profissional getProfissional() {
@@ -169,12 +174,5 @@ public class Prescricao {
 	public void setProfissional(Profissional profissional) {
 		this.profissional = profissional;
 	}
-
-	public List<RegistroAdministracao> getRegistrosAdministracao() {
-		return registrosAdministracao;
-	}
-
-	public void setRegistrosAdministracao(List<RegistroAdministracao> registrosAdministracao) {
-		this.registrosAdministracao = registrosAdministracao;
-	}	
+	
 }

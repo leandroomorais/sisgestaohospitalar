@@ -135,7 +135,7 @@ $("#form-status-alergia-edit").submit(function(evt) {
 		beforeSend: function() {
 		},
 		success: function() {
-			fechaFormularioAlergia();
+			fechaFormularioEditAlergia();
 			$.notify({
 				// options
 				icon: 'flaticon-success',
@@ -223,8 +223,18 @@ function exibeFormularioAlergia() {
 	$("#form-status-alergia input[type='text']").val("");
 	$("#form-status-alergia input[type='hidden']").val("");
 	$("#form-status-alergia input[type='date']").val("");
-	$("#div-table-alergias").hide();
-	$("#form-status-alergia").fadeIn(200);
+	$("#card-list-alergias").hide();
+	$("#card-nova-alergia").fadeIn(100);
+}
+//Fim Função exibe formulário Alergia
+
+//Função exibe formulário Alergia
+function exibeFormularioEditAlergia() {
+	$("#form-status-alergia-edit input[type='text']").val("");
+	$("#form-status-alergia-edit input[type='hidden']").val("");
+	$("#form-status-alergia-edit input[type='date']").val("");
+	$("#card-list-alergias").fadeOut(100);
+	$("#card-edit-alergia").fadeIn(100);
 }
 //Fim Função exibe formulário Alergia
 
@@ -236,9 +246,18 @@ function fechaFormularioAlergia() {
 	$("#form-status-alergia-edit input[type='text']").val("");
 	$("#form-status-alergia-edit input[type='hidden']").val("");
 	$("#form-status-alergia-edit input[type='date']").val("");
-	$("#form-status-alergia").hide();
-	$("#form-status-alergia-edit").hide();
-	$("#div-table-alergias").fadeIn(200);
+	$("#card-nova-alergia").fadeOut(100);
+	$("#card-list-alergias").fadeIn(100);
+}
+//Fim Função fecha formulário de alergia
+
+//Função fecha formulário de alergia
+function fechaFormularioEditAlergia() {
+	$("#form-status-alergia-edit input[type='text']").val("");
+	$("#form-status-alergia-edit input[type='hidden']").val("");
+	$("#form-status-alergia-edit input[type='date']").val("");
+	$("#card-edit-alergia").fadeOut(100);
+	$("#card-list-alergias").fadeIn(100);
 }
 //Fim Função fecha formulário de alergia
 
@@ -301,16 +320,14 @@ function atualizaAlergia() {
 
 //Inicio da Função Editar Alergia
 function editarAlergia(item) {
-	$("#form-status-alergia-edit input[type='text']").val("");
-	$("#form-status-alergia-edit input[type='hidden']").val("");
-	$("#form-status-alergia-edit input[type='date']").val("");
+
 	var statusAlergiaId = $(item).attr("data-value");
-	var prontuarioId = $("#id-prontuario").val();
 
 	$.ajax({
 		method: "GET",
 		url: "/status-alergia/editar/" + statusAlergiaId,
 		success: function(data) {
+			exibeFormularioEditAlergia();
 			$("#id-status-alergia-dto").val(statusAlergiaId);
 			$("#div-table-alergias").fadeOut(200);
 			$("#form-status-alergia-edit").fadeIn(200);

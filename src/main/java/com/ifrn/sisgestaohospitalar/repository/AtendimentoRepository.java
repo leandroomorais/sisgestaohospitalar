@@ -12,7 +12,6 @@ import org.springframework.stereotype.Repository;
 import com.ifrn.sisgestaohospitalar.enums.Status;
 import com.ifrn.sisgestaohospitalar.model.Atendimento;
 import com.ifrn.sisgestaohospitalar.model.Cidadao;
-import com.ifrn.sisgestaohospitalar.model.TipoServico;
 
 @Repository
 public interface AtendimentoRepository extends JpaRepository<Atendimento, Long> {

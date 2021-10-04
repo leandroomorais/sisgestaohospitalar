@@ -34,17 +34,17 @@ $("#salva-procedimento-medicamento").click(function() {
 function exibeFormularioPrescricao() {
 	limpaPrescricao();
 	removeInvalidFedbackPrescricao();
-	$("#card-info-prescricoes").fadeOut(100);
+	$("#card-list-prescricoes").fadeOut(100);
 	//$("#card-edit-prescricao").hide();
 	//$("#card-novo-registro-administracao").hide();
-	//$("#card-registros-administracao").hide();
+	//$("#card-list-registros-administracao").hide();
 	$("#card-nova-prescricao").fadeIn(100);
 }
 
 function fechaFormularioPrescricao() {
 	limpaPrescricao();
 	$("#card-nova-prescricao").fadeOut(100);
-	$("#card-info-prescricoes").fadeIn(100);
+	$("#card-list-prescricoes").fadeIn(100);
 }
 $("#nova-prescricao-voltar").click(function() {
 	fechaFormularioPrescricao();
@@ -53,7 +53,7 @@ $("#nova-prescricao-voltar").click(function() {
 function exibeFormularioEditPrescricao() {
 	limpaPrescricaoDto();
 	removeInvalidFedbackPrescricaoDTO();
-	$("#card-info-prescricoes").fadeOut(100);
+	$("#card-list-prescricoes").fadeOut(100);
 	$("#card-edit-prescricao").fadeIn(100);
 }
 
@@ -64,26 +64,26 @@ $("#edit-prescricao-voltar").click(function() {
 function fechaFormularioEditPrescricao() {
 	limpaPrescricaoDto();
 	$("#card-edit-prescricao").fadeOut(100);
-	$("#card-info-prescricoes").fadeIn(100);
+	$("#card-list-prescricoes").fadeIn(100);
 }
 
 function exibeRegistros(element) {
 	var idPrescricao = $(element).attr("data-value");
 	$("#button-novo-registro").attr("data-value", idPrescricao);
-	$("#card-info-prescricoes").fadeOut(100);
-	$("#card-registros-administracao").fadeIn(100);
+	$("#card-list-prescricoes").fadeOut(100);
+	$("#card-list-registros-administracao").fadeIn(100);
 	dataTableRegistro(idPrescricao);
 }
 
 $("#registro-voltar").click(function() {
-	$("#card-info-prescricoes").fadeIn(100);
-	$("#card-registros-administracao").fadeOut(100);
+	$("#card-list-prescricoes").fadeIn(100);
+	$("#card-list-registros-administracao").fadeOut(100);
 })
 
 function exibeFormularioNovoRegistro(element) {
 	var idPrescricao = $(element).attr("data-value");
 	limpaNovoRegistro();
-	$("#card-registros-administracao").fadeOut(100);
+	$("#card-list-registros-administracao").fadeOut(100);
 	$("#card-novo-registro-administracao").fadeIn(100);
 	$("#card-prescricao-administracao").empty().append(detalharPrescricao(idPrescricao));
 	$("#administracaoRealizada").attr("data-value", idPrescricao);
@@ -95,13 +95,9 @@ $("#form-novo-registro-voltar").click(function() {
 
 function fechaFormularioNovoRegistro() {
 	limpaNovoRegistro();
-	$("#card-registros-administracao").fadeIn(100);
+	$("#card-list-registros-administracao").fadeIn(100);
 	$("#card-novo-registro-administracao").fadeOut(100);
 }
-
-
-
-
 
 $("#button-medicamento-dto").click(function() {
 	$("#i-medicamento-dto").removeClass("fa fa-edit").addClass("fa fa-search");
@@ -146,7 +142,7 @@ $("#form-confirma-administracao").submit(function(evt) {
 	registroAdministracao.administracaoRealizada = $("#administracaoRealizada").prop("checked");
 	registroAdministracao.idPrescricao = $("#administracaoRealizada").attr("data-value");
 	$.ajax({
-		url: '/prescricao/registro',
+		url: '/registro-administracao/registro',
 		method: 'post',
 		data: registroAdministracao,
 		success: function() {
@@ -242,11 +238,11 @@ $("#form-prescricao").submit(function(evt) {
 	prescricao.usoContinuo = $("#uso-continuo").prop("checked");
 	prescricao.administracaoNoAtendimento = $("#administracao-no-atendimento").prop("checked");
 	prescricao.quantidade = $("#quantidade").val();
-	prescricao.idAtendimento = $("#id-atendimento").val();
-	prescricao['prontuario.id'] = $("#id-prontuario").val();
+	prescricao['atendimento'] = $("#id-atendimento").val();
+	prescricao['prontuario'] = $("#id-prontuario").val();
 
 	$.ajax({
-		url: '/atendimento/prescricao',
+		url: '/prescricao/',
 		method: 'post',
 		data: prescricao,
 		beforeSend: function() {
@@ -685,7 +681,7 @@ function editarPrescricao(element) {
 
 function excluirPrescricao(element) {
 	var idPrescricao = $(element).attr("data-value");
-	var idAtendimento = $("#id-atendimento").val();
+	var idProntuario = $("#id-prontuario").val();
 
 	swal({
 		title: 'Você tem certeza disso?',
@@ -705,7 +701,7 @@ function excluirPrescricao(element) {
 	}).then((Delete) => {
 		if (Delete) {
 			$.ajax({
-				url: '/prescricao/excluir/' + idAtendimento + "/" + idPrescricao,
+				url: '/prescricao/excluir/' + idProntuario + "/" + idPrescricao,
 				method: 'delete',
 				success: function() {
 					swal({
@@ -779,7 +775,7 @@ function atualizaPrescricoes() {
 	var atendimentoId = $("#id-atendimento").val();
 	$("#div-prescricoes").empty();
 	$.ajax({
-		url: '/atendimento/prescricoes/' + atendimentoId,
+		url: '/prescricao/listar/atendimento' + atendimentoId,
 		method: 'get',
 		success: function(data) {
 			if (isEmpty(data)) {

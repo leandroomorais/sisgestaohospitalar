@@ -86,14 +86,18 @@
 												<div class="tab-pane fade" id="v-pills-atendimento-nobd" role="tabpanel"
 													aria-labelledby="v-pills-atendimento-tab-nobd">
 													<ul class="nav nav-tabs">
-														<li class="nav-item"><a class="nav-link active"
+														<li sec:authorize="hasAnyAuthority('MEDICO')"
+															class="nav-item submenu"><a class="nav-link active show"
 																data-toggle="tab"
 																href="#home"><strong>CONSULTA</strong></a></li>
-														<li class="nav-item"><a class="nav-link" data-toggle="tab"
+														<li class="nav-item submenu"><a class="nav-link"
+																data-toggle="tab"
 																href="#menu1"><strong>PRESCRIÇÕES</strong></a></li>
-														<li class="nav-item"><a class="nav-link" data-toggle="tab"
+														<li class="nav-item submenu"><a class="nav-link"
+																data-toggle="tab"
 																href="#menu2"><strong>EXAMES</strong></a></li>
-														<li class="nav-item"><a class="nav-link " data-toggle="tab"
+														<li class="nav-item submenu"><a class="nav-link"
+																data-toggle="tab"
 																href="#menu3"><strong>ATESTADOS</strong></a></li>
 													</ul>
 													<input id="id-prontuario" type="hidden"
@@ -102,7 +106,8 @@
 													<span id="nome-usuario" hidden="true"
 														th:text="${user.username}"></span>
 													<div class="tab-content">
-														<div id="home" class="tab-pane fade show active">
+														<div sec:authorize="hasAnyAuthority('MEDICO')" id="home"
+															class="tab-pane fade show active">
 															<div class="card mt-3">
 																<div class="card-header">
 																	<div class="card-title">Sumário da história
@@ -175,10 +180,6 @@
 																				<small
 																					id="sinaisVitais-frequeciaCardiaca-small"
 																					class="form-text text-muted">bpm</small>
-																				<small
-																					id="sinaisVitais-frequenciaCardiaca-error"></small>
-																				<small
-																					id="sinaisVitais-frequenciaCardiaca-error"></small>
 																			</div>
 																		</div>
 
@@ -251,7 +252,7 @@
 																		<div class="col-md-12 col-lg-12">
 																			<div class="form-group">
 																				<textarea class="form-control"
-																					name="avaliacao"
+																					name="avaliacao.nota"
 																					id="avaliacao"></textarea>
 																				<small id="avaliacao-small"
 																					class="form-text text-muted">Digite
@@ -333,10 +334,14 @@
 																	</div>
 																</div>
 															</div>
+															<div class="card-action">
+																<button id="submit-consulta" type="button" class="btn btn-primary">Salvar consulta</button>
+																<button type="button" class="btn btn-warning">Cancelar</button>
+															</div>
 														</div>
 														<div id="menu1" class="tab-pane fade">
 															<div
-																th:replace="fragments/atendimento/card-info-prescricao">
+																th:replace="fragments/atendimento/card-list-prescricoes">
 															</div>
 															<div
 																th:replace="fragments/atendimento/card-nova-prescricao">
@@ -345,7 +350,7 @@
 																th:replace="fragments/atendimento/card-edit-prescricao">
 															</div>
 															<div
-																th:replace="fragments/atendimento/card-registro-administracao-list">
+																th:replace="fragments/atendimento/card-list-registros-administracao">
 															</div>
 															<div
 																th:replace="fragments/atendimento/card-novo-registro-administracao">

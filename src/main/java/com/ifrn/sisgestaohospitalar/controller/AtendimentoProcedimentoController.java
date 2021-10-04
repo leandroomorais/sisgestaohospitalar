@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import com.ifrn.sisgestaohospitalar.model.Atendimento;
 import com.ifrn.sisgestaohospitalar.model.AtendimentoProcedimento;
+import com.ifrn.sisgestaohospitalar.model.Profissional;
 import com.ifrn.sisgestaohospitalar.repository.AtendimentoRepository;
 import com.ifrn.sisgestaohospitalar.repository.ProfissionalRepository;
 import com.ifrn.sisgestaohospitalar.repository.AtendimentoProcedimentoRepository;
@@ -45,12 +46,14 @@ public class AtendimentoProcedimentoController {
 		Optional<Atendimento> optional = atendimentoRepository.findById(atendimentoProcedimento.getIdAtendimento());
 		if (optional.isPresent()) {
 			Atendimento atendimento = optional.get();
-			atendimentoProcedimento.setProfissional(profissionalRepository.findByCpf(principal.getName()));
+			Profissional profissional = profissionalRepository.findByCpf(principal.getName());
+
+			atendimentoProcedimento.setProfissional(profissional);
 			atendimento.getAtendimentoProcedimentos().add(atendimentoProcedimento);
 			atendimentoRepository.saveAndFlush(atendimento);
 			return ResponseEntity.ok().body(atendimento);
 		}
-		return ResponseEntity.notFound().build();
+		return ResponseEntity.badRequest().build();
 	}
 
 	@GetMapping("/excluir/{idAtendimento}/{idAtendimentoProcedimento}")
@@ -63,8 +66,10 @@ public class AtendimentoProcedimentoController {
 					.findById(idAtendimentoProcedimento);
 			if (optionalRelAtendimentoProcedimento.isPresent()) {
 				AtendimentoProcedimento atendimentoProcedimento = optionalRelAtendimentoProcedimento.get();
-				if (atendimentoProcedimento.getProfissional().getCpf() != principal.getName()) {
-					return ResponseEntity.status(HttpStatus.FORBIDDEN).build();
+				if (!atendimentoProcedimento.getProfissional().getCpf().equals(principal.getName())) {
+					String msg = "Procedimento realizado por: " + atendimentoProcedimento.getProfissional().getNome()
+							+ ". Não é possível excluir";
+					return ResponseEntity.status(HttpStatus.FORBIDDEN).body(msg);
 				}
 				atendimento.getAtendimentoProcedimentos().remove(atendimentoProcedimento);
 				atendimentoRepository.saveAndFlush(atendimento);

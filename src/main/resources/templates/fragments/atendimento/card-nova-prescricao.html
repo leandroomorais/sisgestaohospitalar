@@ -1,125 +1,107 @@
-<!DOCTYPE html>
-<html lang="pt" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
-	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity"
-	xmlns:layout="http://ultraq.net.nz/thymeleaf/layout">
-
-<head>
-	<meta charset="UTF-8">
-	<title>Title</title>
-</head>
-
-<body>
-	<div sec:authorize="hasAnyAuthority('MEDICO')" id="card-nova-prescricao" class="card">
-		<div class="card-header">
-			<div class="card-title"><a id="nova-prescricao-voltar" data-toggle="tooltipe" data-placement="top"
-					title="Voltar para tela anterior" class="btn btn-light"> <i
-						class="fa fa-flip-horizontal fa-share"></i>
-				</a> Nova Prescrição</div>
-		</div>
-		<div class="card-body">
-			<div>
-				<form id="form-prescricao" action="/atendimento/prescricao" method="post">
-					<div class="row">
-						<div class="col-md-12">
-							<div class="form-group">
-								<label for="medicamento-prescricao">Adicionar
-									Medicamentos*</label>
-								<div class="input-group">
-									<div class="input-group-prepend">
-										<button id="button-medicamento" type="button" class="btn btn-black btn-border">
-											<i id="i-medicamento" class="fa fa-search"></i>
-										</button>
-									</div>
-									<input id="medicamento-prescricao" type="text" class="form-control"
-										placeholder="Pesquisa de medicamentos">
-									<input type="hidden" id="id-medicamento" name="medicamento">
+<div sec:authorize="hasAnyAuthority('MEDICO')" id="card-nova-prescricao" class="card">
+	<div class="card-header">
+		<div class="card-title"><a id="nova-prescricao-voltar" data-toggle="tooltipe" data-placement="top"
+				title="Voltar para tela anterior" class="btn btn-light"> <i class="fa fa-flip-horizontal fa-share"></i>
+			</a> Nova Prescrição</div>
+	</div>
+	<div class="card-body">
+		<div>
+			<form id="form-prescricao" action="/atendimento/prescricao" method="post">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="form-group">
+							<label for="medicamento-prescricao">Adicionar
+								Medicamentos*</label>
+							<div class="input-group">
+								<div class="input-group-prepend">
+									<button id="button-medicamento" type="button" class="btn btn-black btn-border">
+										<i id="i-medicamento" class="fa fa-search"></i>
+									</button>
 								</div>
+								<input id="medicamento-prescricao" type="text" class="form-control"
+									placeholder="Pesquisa de medicamentos">
+								<input type="hidden" id="id-medicamento" name="medicamento">
 							</div>
 						</div>
-
-						<div class="col-md-4">
-							<div class="form-group">
-								<label for="concentracao">Concentração*</label> <input type="text" class="form-control"
-									name="concentracao" id="concentracao" placeholder="" disabled="disabled"> <small
-									id="concentracao-small" class="form-text text-muted"></small>
-							</div>
-						</div>
-						<div class="col-md-4">
-							<div class="form-group">
-								<label for="forma">Forma farmacêutica*</label> <input type="text" class="form-control"
-									name="forma" id="forma" placeholder="" disabled="disabled">
-								<small id="forma-small" class="form-text text-muted"></small>
-							</div>
-						</div>
-						<div class="col-md-4">
-							<div class="form-group">
-								<label for="via">Via de administração*</label> <select id="via"
-									class="form-control form-control">
-									<option th:each="viaAdministracao : ${viasAdministracao}"
-										th:value="${viaAdministracao.id}" th:text="${viaAdministracao.nome}"></option>
-								</select> <small id="via-small" class="form-text text-muted"></small>
-							</div>
-						</div>
-						<div class="col-md-6">
-							<div class="form-group">
-								<label for="posologia">Posologia*</label> <input type="text" class="form-control"
-									name="posologia" id="posologia" placeholder=""> <small id="posologia-small"
-									class="form-text text-muted"></small>
-							</div>
-						</div>
-						<div class="col-md-4">
-							<div class="form-group">
-								<label for="quantidade">Quantidade a
-									dispensar*</label> <input type="number" class="form-control" name="quantidade"
-									id="quantidade" placeholder=""> <small id="quantidade-small"
-									class="form-text text-muted"></small>
-							</div>
-						</div>
-						<div class="col-md-4">
-							<div class="form-group">
-								<label for="dose-unica">Dose única?</label><br>
-								<input id="dose-unica" type='checkbox' data-toggle='toggle' data-on='Sim'
-									data-off='Não'>
-								<small id="dose-unica-small" class="form-text text-muted"></small>
-							</div>
-						</div>
-						<div class="col-md-4">
-							<div class="form-group">
-								<label for="uso-continuo">Uso contínuo?</label><br>
-								<input id="uso-continuo" type='checkbox' data-toggle='toggle' data-on='Sim'
-									data-off='Não'>
-								<small id="uso-continuo-small" class="form-text text-muted"></small>
-							</div>
-						</div>
-
-						<div class="col-md-4">
-							<div class="form-group">
-								<label for="administracao-no-atendimento">Adiministração
-									no atendimento?</label><br> <input id="administracao-no-atendimento" type='checkbox'
-									data-toggle='toggle' data-on='Sim' data-off='Não'>
-								<small id="administracao-no-atendimento-small" class="form-text text-muted"></small>
-							</div>
-						</div>
-
-						<div class="col-md-12">
-							<div class="form-group">
-								<label for="orientacao">Orientacões</label>
-								<textarea class="form-control" name="orientacao" id="orientacao"
-									placeholder=""></textarea>
-								<small id="orientacao-small" class="form-text text-muted"></small>
-							</div>
-						</div>
-
 					</div>
-					<div class="text-right">
-						<button id="submit-prescricao" type="submit" class="btn btn-primary btn-sm">Salvar</button>
-						<button onclick="fechaFormularioPrescricao()" type="button" class="btn btn-warning btn-sm">
-							Cancelar</button>
+
+					<div class="col-md-4">
+						<div class="form-group">
+							<label for="concentracao">Concentração*</label> <input type="text" class="form-control"
+								name="concentracao" id="concentracao" placeholder="" disabled="disabled"> <small
+								id="concentracao-small" class="form-text text-muted"></small>
+						</div>
 					</div>
-				</form>
-			</div>
+					<div class="col-md-4">
+						<div class="form-group">
+							<label for="forma">Forma farmacêutica*</label> <input type="text" class="form-control"
+								name="forma" id="forma" placeholder="" disabled="disabled">
+							<small id="forma-small" class="form-text text-muted"></small>
+						</div>
+					</div>
+					<div class="col-md-4">
+						<div class="form-group">
+							<label for="via">Via de administração*</label> <select id="via"
+								class="form-control form-control">
+								<option th:each="viaAdministracao : ${viasAdministracao}"
+									th:value="${viaAdministracao.id}" th:text="${viaAdministracao.nome}"></option>
+							</select> <small id="via-small" class="form-text text-muted"></small>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label for="posologia">Posologia*</label> <input type="text" class="form-control"
+								name="posologia" id="posologia" placeholder=""> <small id="posologia-small"
+								class="form-text text-muted"></small>
+						</div>
+					</div>
+					<div class="col-md-4">
+						<div class="form-group">
+							<label for="quantidade">Quantidade a
+								dispensar*</label> <input type="number" class="form-control" name="quantidade"
+								id="quantidade" placeholder=""> <small id="quantidade-small"
+								class="form-text text-muted"></small>
+						</div>
+					</div>
+					<div class="col-md-4">
+						<div class="form-group">
+							<label for="dose-unica">Dose única?</label><br>
+							<input id="dose-unica" type='checkbox' data-toggle='toggle' data-on='Sim' data-off='Não'>
+							<small id="dose-unica-small" class="form-text text-muted"></small>
+						</div>
+					</div>
+					<div class="col-md-4">
+						<div class="form-group">
+							<label for="uso-continuo">Uso contínuo?</label><br>
+							<input id="uso-continuo" type='checkbox' data-toggle='toggle' data-on='Sim' data-off='Não'>
+							<small id="uso-continuo-small" class="form-text text-muted"></small>
+						</div>
+					</div>
+
+					<div class="col-md-4">
+						<div class="form-group">
+							<label for="administracao-no-atendimento">Adiministração
+								no atendimento?</label><br> <input id="administracao-no-atendimento" type='checkbox'
+								data-toggle='toggle' data-on='Sim' data-off='Não'>
+							<small id="administracao-no-atendimento-small" class="form-text text-muted"></small>
+						</div>
+					</div>
+
+					<div class="col-md-12">
+						<div class="form-group">
+							<label for="orientacao">Orientacões</label>
+							<textarea class="form-control" name="orientacao" id="orientacao" placeholder=""></textarea>
+							<small id="orientacao-small" class="form-text text-muted"></small>
+						</div>
+					</div>
+
+				</div>
+				<div class="text-right">
+					<button id="submit-prescricao" type="submit" class="btn btn-primary btn-sm">Salvar</button>
+					<button onclick="fechaFormularioPrescricao()" type="button" class="btn btn-warning btn-sm">
+						Cancelar</button>
+				</div>
+			</form>
 		</div>
 	</div>
-</body>
-
-</html>
+</div>

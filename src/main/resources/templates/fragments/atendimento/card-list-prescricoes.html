@@ -1,0 +1,17 @@
+<div class="card" id="card-list-prescricoes">
+	<div id="card-header" class="card-header">
+		<div class="card-title">Prescrições do
+			Atendimento</div>
+	</div>
+	<div class="card-body">
+		<div id="info-prescricoes">
+			<div id="div-prescricoes"></div>
+			<div sec:authorize="hasAnyAuthority('MEDICO')" id="div-button-nova-prescricao" class="text-right">
+				<button type="button" onclick="exibeFormularioPrescricao()" class="btn btn-primary btn-sm">
+					<i class="fa fa-plus"></i> Nova
+					prescrição
+				</button>
+			</div>
+		</div>
+	</div>
+</div>
