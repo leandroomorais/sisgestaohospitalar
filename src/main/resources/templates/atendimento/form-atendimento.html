@@ -1,6 +1,8 @@
 <!DOCTYPE html>
-<html layout:decorate="~{/layouts/layout-modulos}" lang="pt" xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity"
+<html layout:decorate="~{/layouts/layout-modulos}" lang="pt"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity"
 	xmlns:layout="http://ultraq.net.nz/thymeleaf/layout">
 
 <body>
@@ -35,19 +37,17 @@
 														class="avatar-img rounded-circle">
 												</div>
 												<div class="demo">
-													<span class="h3-info"
-														th:text="${atendimento.cidadao.nome}"></span><br>
+													<span class="h3-info" th:text="${atendimento.cidadao.nome}"></span><br>
 													<div class="h4-info">
 														<input type="hidden" id="cpfCidadao"
-															th:value="${atendimento.cidadao.cpf}"> <input type="hidden"
-															id="dataNascimentoCidadao"
+															th:value="${atendimento.cidadao.cpf}"> <input
+															type="hidden" id="dataNascimentoCidadao"
 															th:value="${atendimento.cidadao.dataNascimento}"><i
 															class="fa fa-id-card"></i> <strong>CPF: </strong><span
 															data-mask="000.000.000-00"
 															th:text="${atendimento.cidadao.cpf}"></span> | <strong>CNS:
 														</strong> <span data-mask="000.0000.0000.0000"
-															th:text="${atendimento.cidadao.cns}"></span><br>
-														<strong>SEXO:</strong>
+															th:text="${atendimento.cidadao.cns}"></span><br> <strong>SEXO:</strong>
 														<span th:if="${atendimento.cidadao.sexo == 'M'}"> M</span><span
 															th:if="${atendimento.cidadao.sexo == 'F'}"> F</span><i></i>
 														| <strong>NASC.:</strong><span
@@ -61,50 +61,52 @@
 
 									<div class="row">
 										<div class="col-sm-3 col-md-2 col-lg-2">
-											<div class="nav flex-column nav-pills nav-secondary nav-pills-no-bd"
+											<div
+												class="nav flex-column nav-pills nav-secondary nav-pills-no-bd"
 												id="v-pills-tab-without-border" role="tablist"
 												aria-orientation="vertical">
 												<a class="nav-link active" id="v-pills-resumo-tab-nobd"
 													data-toggle="pill" href="#v-pills-resumo-nobd" role="tab"
-													aria-controls="v-pills-resumo-nobd"
-													aria-selected="true"><strong>RESUMO</strong></a>
-												<a class="nav-link" id="v-pills-atendimento-tab-nobd" data-toggle="pill"
-													href="#v-pills-atendimento-nobd" role="tab"
-													aria-controls="v-pills-atendimento-nobd"
+													aria-controls="v-pills-resumo-nobd" aria-selected="true"><strong>RESUMO</strong></a>
+												<a class="nav-link" id="v-pills-atendimento-tab-nobd"
+													data-toggle="pill" href="#v-pills-atendimento-nobd"
+													role="tab" aria-controls="v-pills-atendimento-nobd"
 													aria-selected="false"><strong>ATENDIMENTO</strong></a> <a
-													class="nav-link" id="v-pills-historico-tab-nobd" data-toggle="pill"
-													href="#v-pills-historico-nobd" role="tab"
-													aria-controls="v-pills-historico-nobd"
+													class="nav-link" id="v-pills-historico-tab-nobd"
+													data-toggle="pill" href="#v-pills-historico-nobd"
+													role="tab" aria-controls="v-pills-historico-nobd"
 													aria-selected="false"><strong>HISTÓRICO</strong></a>
 											</div>
 										</div>
 										<div class="col-sm-9 col-md-10 col-lg-10">
-											<div class="tab-content" id="v-pills-without-border-tabContent">
-												<div class="tab-pane fade show active" id="v-pills-resumo-nobd"
-													role="tabpanel" aria-labelledby="v-pills-resumo-tab-nobd"></div>
+											<div class="tab-content"
+												id="v-pills-without-border-tabContent">
+												<div class="tab-pane fade show active"
+													id="v-pills-resumo-nobd" role="tabpanel"
+													aria-labelledby="v-pills-resumo-tab-nobd">
+													<p>Resumo</p>
+												</div>
 
-												<div class="tab-pane fade" id="v-pills-atendimento-nobd" role="tabpanel"
+												<div class="tab-pane fade" id="v-pills-atendimento-nobd"
+													role="tabpanel"
 													aria-labelledby="v-pills-atendimento-tab-nobd">
 													<ul class="nav nav-tabs">
 														<li sec:authorize="hasAnyAuthority('MEDICO')"
-															class="nav-item submenu"><a class="nav-link active show"
-																data-toggle="tab"
-																href="#home"><strong>CONSULTA</strong></a></li>
+															class="nav-item submenu"><a
+															class="nav-link active show" data-toggle="tab"
+															href="#home"><strong>CONSULTA</strong></a></li>
 														<li class="nav-item submenu"><a class="nav-link"
-																data-toggle="tab"
-																href="#menu1"><strong>PRESCRIÇÕES</strong></a></li>
+															data-toggle="tab" href="#menu1"><strong>PRESCRIÇÕES</strong></a></li>
 														<li class="nav-item submenu"><a class="nav-link"
-																data-toggle="tab"
-																href="#menu2"><strong>EXAMES</strong></a></li>
+															data-toggle="tab" href="#menu2"><strong>EXAMES</strong></a></li>
 														<li class="nav-item submenu"><a class="nav-link"
-																data-toggle="tab"
-																href="#menu3"><strong>ATESTADOS</strong></a></li>
+															data-toggle="tab" href="#menu3"><strong>ATESTADOS</strong></a></li>
 													</ul>
 													<input id="id-prontuario" type="hidden"
 														th:value="${atendimento.cidadao.prontuario.id}"> <input
-														id="id-atendimento" type="hidden" th:value="${atendimento.id}">
-													<span id="nome-usuario" hidden="true"
-														th:text="${user.username}"></span>
+														id="id-atendimento" type="hidden"
+														th:value="${atendimento.id}"> <span
+														id="nome-usuario" hidden="true" th:text="${user.username}"></span>
 													<div class="tab-content">
 														<div sec:authorize="hasAnyAuthority('MEDICO')" id="home"
 															class="tab-pane fade show active">
@@ -118,12 +120,10 @@
 																		<div class="col-md-12 col-lg-12">
 																			<div class="form-group">
 																				<textarea class="form-control"
-																					name="historiaClinica"
-																					id="historia-clinica"></textarea>
+																					name="historiaClinica" id="historia-clinica"></textarea>
 																				<small id="historia-clinica-small"
 																					class="form-text text-muted">Queixa
-																					principal, tratamento, história
-																					atual da doença,
+																					principal, tratamento, história atual da doença,
 																					história pessoal e familiar</small>
 																			</div>
 																		</div>
@@ -138,112 +138,89 @@
 																	<div class="row">
 																		<div class="col-md-2">
 																			<div class="form-group">
-																				<label
-																					for="sinaisVitais-pressaoArterial">Pressão
+																				<label for="sinaisVitais-pressaoArterial">Pressão
 																					Arterial </label><input type="text"
 																					name="sinaisVitais.pressaoArterial"
 																					class="form-control"
 																					id="sinaisVitais-pressaoArterial"
 																					placeholder="___/__"> <small
 																					id="pressaoArterial-small"
-																					class="form-text text-muted">mmHg</small>
-																				<small
+																					class="form-text text-muted">mmHg</small> <small
 																					id="sinaisVitais.pressaoArterial-error"></small>
 																			</div>
 																		</div>
 
 																		<div class="col-md-2">
 																			<div class="form-group">
-																				<label
-																					for="sinaisVitais-frequenciaRespiratoria">Freq.
-																					Respiratória</label> <input
-																					type="number" class="form-control"
+																				<label for="sinaisVitais-frequenciaRespiratoria">Freq.
+																					Respiratória</label> <input type="number"
+																					class="form-control"
 																					id="sinaisVitais-frequenciaRespiratoria"
 																					name="sinaisVitais.frequenciaRespiratoria"
 																					placeholder=""><small
 																					id="sinaisVitais-frequenciaRespitatoria-small"
-																					class="form-text text-muted">rpm</small>
-																				<small
+																					class="form-text text-muted">rpm</small> <small
 																					id="sinaisVitais-frequenciaRespitatoria-error"></small>
 																			</div>
 																		</div>
 
 																		<div class="col-md-2">
 																			<div class="form-group">
-																				<label
-																					for="sinaisVitais-frequenciaCardiaca">Freq.
-																					Cardíaca</label> <input
-																					type="number" class="form-control"
+																				<label for="sinaisVitais-frequenciaCardiaca">Freq.
+																					Cardíaca</label> <input type="number" class="form-control"
 																					name="sinaisVitais.frequenciaCardiaca"
-																					id="sinaisVitais-frequenciaCardiaca"
-																					placeholder="">
-																				<small
-																					id="sinaisVitais-frequeciaCardiaca-small"
+																					id="sinaisVitais-frequenciaCardiaca" placeholder="">
+																				<small id="sinaisVitais-frequeciaCardiaca-small"
 																					class="form-text text-muted">bpm</small>
 																			</div>
 																		</div>
 
 																		<div class="col-md-2">
 																			<div class="form-group">
-																				<label
-																					for="sinaisVitais-temperaturaCorporal">Temperatura</label>
+																				<label for="sinaisVitais-temperaturaCorporal">Temperatura</label>
 																				<input type="text" class="form-control"
 																					id="sinaisVitais-temperaturaCorporal"
 																					placeholder="00.0"> <small
 																					id="temperaturacorporal-small"
-																					class="form-text text-muted">°C</small>
-																				<small
+																					class="form-text text-muted">°C</small> <small
 																					id="sinaisVitais-temperaturaCorporal-error"></small>
 																			</div>
 																		</div>
 
 																		<div class="col-md-2">
 																			<div class="form-group">
-																				<label
-																					for="sinaisVitais-saturacaoOxigenio">Saturação
+																				<label for="sinaisVitais-saturacaoOxigenio">Saturação
 																					de O<sub>2</sub>
-																				</label> <input type="number"
-																					class="form-control"
+																				</label> <input type="number" class="form-control"
 																					name="sinaisVitais.saturacaoOxigenio"
-																					id="sinaisVitais-saturacaoOxigenio"
-																					placeholder="">
-																				<small
-																					id="sinaisVitais-saturacaoOxigenio-small"
-																					class="form-text text-muted">%</small>
-																				<small
+																					id="sinaisVitais-saturacaoOxigenio" placeholder="">
+																				<small id="sinaisVitais-saturacaoOxigenio-small"
+																					class="form-text text-muted">%</small> <small
 																					id="sinaisVitais-temperaturaCorporal-error"></small>
 																			</div>
 																		</div>
 
 																		<div class="col-md-3">
 																			<div class="form-group">
-																				<label
-																					for="sinaisVitais-glicemiaCapilar">Glicemia
+																				<label for="sinaisVitais-glicemiaCapilar">Glicemia
 																					Capilar</label> <input type="number"
 																					name="sinaisVitais.glicemiaCapilar"
 																					class="form-control"
-																					id="sinaisVitais-glicemiaCapilar"
-																					placeholder="">
-																				<small
-																					id="sinaisVitais-glicemiaCapilar-small"
+																					id="sinaisVitais-glicemiaCapilar" placeholder="">
+																				<small id="sinaisVitais-glicemiaCapilar-small"
 																					class="form-text text-muted">mg/dl</small>
 																			</div>
 																		</div>
 																		<div class="col-md-4">
 																			<div class="form-group">
-																				<label
-																					for="sinaisVitais-momentoColeta">Momento
-																					coleta</label> <select
-																					name="sinaisVitais.momentoColeta"
+																				<label for="sinaisVitais-momentoColeta">Momento
+																					coleta</label> <select name="sinaisVitais.momentoColeta"
 																					class="form-control form-control"
 																					id="sinaisVitais-momentoColeta">
-																					<option
-																						th:each="momentoColeta : ${momentosColeta}"
+																					<option th:each="momentoColeta : ${momentosColeta}"
 																						th:value="${momentoColeta}"
-																						th:text="${momentoColeta.nome}">
-																					</option>
-																				</select> <small
-																					id="sinaisVitais-momentoColeta-small"
+																						th:text="${momentoColeta.nome}"></option>
+																				</select> <small id="sinaisVitais-momentoColeta-small"
 																					class="form-text text-muted"></small>
 																			</div>
 																		</div>
@@ -251,14 +228,11 @@
 																	<div class="row">
 																		<div class="col-md-12 col-lg-12">
 																			<div class="form-group">
-																				<textarea class="form-control"
-																					name="avaliacao.nota"
+																				<textarea class="form-control" name="avaliacao.nota"
 																					id="avaliacao"></textarea>
 																				<small id="avaliacao-small"
-																					class="form-text text-muted">Digite
-																					na área
-																					de texto acima as observações que
-																					achar necessário</small>
+																					class="form-text text-muted">Digite na área
+																					de texto acima as observações que achar necessário</small>
 																			</div>
 																		</div>
 																	</div>
@@ -273,33 +247,27 @@
 																		<div class="col-md-12">
 																			<div class="form-group">
 																				<label for="nome">Nota:</label>
-																				<textarea id="nota"
-																					class="form-control"></textarea>
+																				<textarea id="nota" class="form-control"></textarea>
 																			</div>
 																		</div>
 																		<div class="col-md-12">
 																			<div class="form-group">
-																				<label for="diagnostico-cid">Cid-10:
-																				</label>
+																				<label for="diagnostico-cid">Cid-10: </label>
 																				<div class="input-group">
 																					<div class="input-group-prepend">
-																						<button id="button-cid"
-																							type="button"
+																						<button id="button-cid" type="button"
 																							class="btn btn-black btn-border">
-																							<i id="i-cid"
-																								class="fa fa-search"></i>
+																							<i id="i-cid" class="fa fa-search"></i>
 																						</button>
 																					</div>
-																					<input id="diagnostico-cid"
-																						type="text" class="form-control"
-																						placeholder="Pesquisa de Cid">
+																					<input id="diagnostico-cid" type="text"
+																						class="form-control" placeholder="Pesquisa de Cid">
 																					<input type="hidden" id="id-cid">
 																				</div>
 																			</div>
 																		</div>
 																		<div class="col-md-12 text-right">
-																			<button id="submit-diagnostico"
-																				type="button"
+																			<button id="submit-diagnostico" type="button"
 																				class="btn btn-primary btn-sm">
 																				<i class="fa fa-plus"></i> Adicionar
 																			</button>
@@ -318,10 +286,12 @@
 																							<th></th>
 																							<th></th>
 																							<th></th>
+																							<th></th>
 																						</tr>
 																					</thead>
 																					<tbody>
 																						<tr role="row" class="odd">
+																							<td></td>
 																							<td></td>
 																							<td></td>
 																							<td></td>
@@ -335,7 +305,8 @@
 																</div>
 															</div>
 															<div class="card-action">
-																<button id="submit-consulta" type="button" class="btn btn-primary">Salvar consulta</button>
+																<button id="submit-consulta" type="button"
+																	class="btn btn-primary">Salvar consulta</button>
 																<button type="button" class="btn btn-warning">Cancelar</button>
 															</div>
 														</div>
@@ -357,23 +328,26 @@
 															</div>
 														</div>
 														<div id="menu2" class="tab-pane fade">
-															<div
-																th:replace="fragments/atendimento/card-list-exames">
+															<div th:replace="fragments/atendimento/card-list-exames">
 															</div>
-															<div
-																th:replace="fragments/atendimento/card-novo-exame">
+															<div th:replace="fragments/atendimento/card-novo-exame">
 															</div>
 														</div>
 														<div id="menu3" class="tab-pane fade">
-															<h3>Menu 3</h3>
-															<p>Eaque ipsa quae ab illo inventore veritatis et
-																quasi architecto beatae vitae dicta sunt explicabo.</p>
+															<div
+																th:replace="fragments/atendimento/card-list-atestados">
+															</div>
+															<div
+																th:replace="fragments/atendimento/card-novo-atestado">
+															</div>
 														</div>
 													</div>
 												</div>
-												<div class="tab-pane fade" id="v-pills-historico-nobd" role="tabpanel"
+												<div class="tab-pane fade" id="v-pills-historico-nobd"
+													role="tabpanel"
 													aria-labelledby="v-pills-historico-tab-nobd">
-													<div th:replace="fragments/tabs-historico/tabs::tabs-historico">
+													<div
+														th:replace="fragments/tabs-historico/tabs::tabs-historico">
 													</div>
 												</div>
 											</div>
@@ -409,6 +383,8 @@
 			th:src="@{/assets/js/atendimento/form-atendimento.js}"></script>
 		<script type="text/javascript" th:inline="javascript"
 			th:src="@{/assets/js/atendimento/form-atendimento-prescricao.js}"></script>
+		<script type="text/javascript" th:inline="javascript"
+			th:src="@{/assets/js/atendimento/form-atendimento-atestado.js}"></script>
 		<script type="text/javascript" th:inline="javascript"
 			th:src="@{/assets/js/atendimento/form-atendimento-exame.js}"></script>
 

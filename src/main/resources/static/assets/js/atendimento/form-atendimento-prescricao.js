@@ -142,7 +142,7 @@ $("#form-confirma-administracao").submit(function(evt) {
 	registroAdministracao.administracaoRealizada = $("#administracaoRealizada").prop("checked");
 	registroAdministracao.idPrescricao = $("#administracaoRealizada").attr("data-value");
 	$.ajax({
-		url: '/registro-administracao/registro',
+		url: '/registro-administracao/',
 		method: 'post',
 		data: registroAdministracao,
 		success: function() {
@@ -775,7 +775,7 @@ function atualizaPrescricoes() {
 	var atendimentoId = $("#id-atendimento").val();
 	$("#div-prescricoes").empty();
 	$.ajax({
-		url: '/prescricao/listar/atendimento' + atendimentoId,
+		url: '/prescricao/listar/atendimento/' + atendimentoId,
 		method: 'get',
 		success: function(data) {
 			if (isEmpty(data)) {
@@ -811,7 +811,7 @@ function createCardPrescricao(data) {
 		inforCardBooleans(data) +
 		infoCardPrescricao("Orientações: ", data.orientacoes) +
 		"</div><div class='col-md-4 text-right'>" +
-		infoCardDataProfissional(data.data, data.profissional.nome, data.profissional.numeroRegistro + " / " + data.profissional.siglaUfEmissao) +
+		infoCardDataProfissional(data.dataRegistro, data.profissional.nome, data.profissional.numeroRegistro + " / " + data.profissional.siglaUfEmissao) +
 		"</div></div><div class='text-right'>" +
 		"<button type='button' class='btn btn-light btn-sm' data-value='" + data.id + "' onclick='imprimirPrescricao()'><i class='fa fa-print'></i> Imprimir</button>" +
 		buttonRegistros()

@@ -64,14 +64,6 @@
 													data-toggle="pill" href="#v-pills-triagem-nobd" role="tab"
 													aria-controls="v-pills-triagem-nobd"
 													aria-selected="true"><strong>TRIAGEM</strong></a>
-												<a class="nav-link" id="v-pills-alergias-tab-nobd" data-toggle="pill"
-													href="#v-pills-alergias-nobd" role="tab"
-													aria-controls="v-pills-alergias-nobd"
-													aria-selected="false"><strong>ALERGIAS</strong></a>
-												<a class="nav-link" id="v-pills-doencas-tab-nobd" data-toggle="pill"
-													href="#v-pills-doencas-nobd" role="tab"
-													aria-controls="v-pills-doencas-nobd"
-													aria-selected="false"><strong>DOENÇAS</strong></a>
 												<a class="nav-link" id="v-pills-finalizar-tab-nobd" data-toggle="pill"
 													href="#v-pills-finalizar-nobd" role="tab"
 													aria-controls="v-pills-finalizar-nobd"
@@ -83,351 +75,61 @@
 												<div class="tab-pane fade show active" id="v-pills-triagem-nobd"
 													role="tabpanel" aria-labelledby="v-pills-triagem-tab-nobd">
 
-													<form id="form-triagem" method="post" action="/triagem/salvar">
-														<input id="atendimento-id" type="hidden"
-															th:value="${atendimento.id}" name="atendimento">
-														<input id="inicioTriagem" type="hidden" name="inicioTriagem"
-															th:value="${triagem.inicioTriagem}">
-														<input id="fimTriagem" type="hidden" name="fimTriagem"
-															th:value="${triagem.fimTriagem}">
-														<div class="card">
-															<div class="card-header">
-																<div class="card-title">Motivos do Atendimento</div>
-															</div>
-															<div class="card-body">
-																<div class="row">
-																	<div class="col-md-12 col-lg-12">
-																		<div class="form-group">
-																			<textarea class="form-control" name="motivo"
-																				id="motivo"></textarea>
-																			<small id="motivo-small"
-																				class="form-text text-muted">Digite
-																				na área de texto acima o(s) motivo(s) do
-																				atendimento</small>
-																		</div>
-																	</div>
-																</div>
-															</div>
-														</div>
+													<ul class="nav nav-tabs">
+														<li class="nav-item submenu"><a class="nav-link active show"
+																data-toggle="tab"
+																href="#home"><strong>ATENDIMENTO</strong></a></li>
+														<li class="nav-item submenu"><a class="nav-link"
+																data-toggle="tab"
+																href="#menu1"><strong>PROCEDIMENTOS</strong></a></li>
+														<li class="nav-item submenu"><a class="nav-link"
+																data-toggle="tab"
+																href="#menu2"><strong>ALERGIAS</strong></a></li>
+														<li class="nav-item submenu"><a class="nav-link"
+																data-toggle="tab"
+																href="#menu3"><strong>DOENÇAS</strong></a></li>
+														<li class="nav-item submenu"><a class="nav-link"
+																data-toggle="tab"
+																href="#menu4"><strong>MEDICAMENTOS</strong></a></li>
+														<li class="nav-item submenu"><a class="nav-link"
+																data-toggle="tab"
+																href="#menu5"><strong>ANTROPOMETRIA</strong></a></li>
+													</ul>
 
-														<div class="card">
-															<div class="card-header">
-																<div class="card-title">Sinais vitais</div>
-															</div>
-															<div class="card-body">
-																<div class="row">
-																	<div class="col-md-2">
-																		<div class="form-group">
-																			<label
-																				for="sinaisVitais-pressaoArterial">Pressão
-																				Arterial </label><input type="text"
-																				name="sinaisVitais.pressaoArterial"
-																				class="form-control"
-																				id="sinaisVitais-pressaoArterial"
-																				placeholder="___/__"> <small
-																				id="pressaoArterial-small"
-																				class="form-text text-muted">mmHg</small>
-																			<small
-																				id="sinaisVitais.pressaoArterial-error"></small>
-																		</div>
-																	</div>
-
-																	<div class="col-md-2">
-																		<div class="form-group">
-																			<label
-																				for="sinaisVitais-frequenciaRespiratoria">Freq.
-																				Respiratória</label> <input
-																				type="number" class="form-control"
-																				id="sinaisVitais-frequenciaRespiratoria"
-																				name="sinaisVitais.frequenciaRespiratoria"
-																				placeholder=""><small
-																				id="sinaisVitais-frequenciaRespitatoria-small"
-																				class="form-text text-muted">rpm</small>
-																			<small
-																				id="sinaisVitais-frequenciaRespitatoria-error"></small>
-																		</div>
-																	</div>
-
-																	<div class="col-md-2">
-																		<div class="form-group">
-																			<label
-																				for="sinaisVitais-frequenciaCardiaca">Freq.
-																				Cardíaca</label> <input type="number"
-																				class="form-control"
-																				name="sinaisVitais.frequenciaCardiaca"
-																				id="sinaisVitais-frequenciaCardiaca"
-																				placeholder="">
-																			<small
-																				id="sinaisVitais-frequeciaCardiaca-small"
-																				class="form-text text-muted">bpm</small>
-																			<small
-																				id="sinaisVitais-frequenciaCardiaca-error"></small>
-																			<small
-																				id="sinaisVitais-frequenciaCardiaca-error"></small>
-																		</div>
-																	</div>
-
-																	<div class="col-md-2">
-																		<div class="form-group">
-																			<label
-																				for="sinaisVitais-temperaturaCorporal">Temperatura</label>
-																			<input type="text" class="form-control"
-																				id="sinaisVitais-temperaturaCorporal"
-																				placeholder="00.0"> <small
-																				id="temperaturacorporal-small"
-																				class="form-text text-muted">°C</small>
-																			<small
-																				id="sinaisVitais-temperaturaCorporal-error"></small>
-																		</div>
-																	</div>
-
-																	<div class="col-md-2">
-																		<div class="form-group">
-																			<label
-																				for="sinaisVitais-saturacaoOxigenio">Saturação
-																				de O<sub>2</sub>
-																			</label> <input type="number"
-																				class="form-control"
-																				name="sinaisVitais.saturacaoOxigenio"
-																				id="sinaisVitais-saturacaoOxigenio"
-																				placeholder="">
-																			<small
-																				id="sinaisVitais-saturacaoOxigenio-small"
-																				class="form-text text-muted">%</small>
-																			<small
-																				id="sinaisVitais-temperaturaCorporal-error"></small>
-																		</div>
-																	</div>
-
-																	<div class="col-md-3">
-																		<div class="form-group">
-																			<label
-																				for="sinaisVitais-glicemiaCapilar">Glicemia
-																				Capilar</label> <input type="number"
-																				name="sinaisVitais.glicemiaCapilar"
-																				class="form-control"
-																				id="sinaisVitais-glicemiaCapilar"
-																				placeholder="">
-																			<small
-																				id="sinaisVitais-glicemiaCapilar-small"
-																				class="form-text text-muted">mg/dl</small>
-																		</div>
-																	</div>
-																	<div class="col-md-4">
-																		<div class="form-group">
-																			<label
-																				for="sinaisVitais-momentoColeta">Momento
-																				coleta</label> <select
-																				name="sinaisVitais.momentoColeta"
-																				class="form-control form-control"
-																				id="sinaisVitais-momentoColeta">
-																				<option
-																					th:each="momentoColeta : ${momentosColeta}"
-																					th:value="${momentoColeta}"
-																					th:text="${momentoColeta.nome}">
-																				</option>
-																			</select> <small
-																				id="sinaisVitais-momentoColeta-small"
-																				class="form-text text-muted"></small>
-																		</div>
-																	</div>
-																</div>
+													<div class="tab-content">
+														<div id="home" class="tab-pane fade show active">
+															<div th:replace="fragments/triagem/div-form-triagem">
 															</div>
 														</div>
-
-														<div class="card">
-															<div class="card-header">
-																<div class="card-title">Antropometria</div>
-															</div>
-															<div class="card-body">
-																<div class="row">
-																	<div class="col-md-3">
-																		<div class="form-group">
-																			<label for="perimetrocefalico">Perimetro
-																				Cefálico</label><input type="text"
-																				class="form-control"
-																				id="perimetrocefalico"> <small
-																				id="perimetrocefalico"
-																				class="form-text text-muted">cm</small>
-
-																		</div>
-																	</div>
-
-
-																	<div class="col-md-3">
-																		<div class="form-group">
-																			<label for="peso">Peso</label> <input
-																				type="text" class="form-control"
-																				id="peso" placeholder="">
-																			<small id="peso"
-																				class="form-text text-muted">Kg</small>
-
-																		</div>
-																	</div>
-
-																	<div class="col-md-3">
-																		<div class="form-group">
-																			<label for="altura">Altura</label> <input
-																				type="text" class="form-control"
-																				id="altura" placeholder="">
-																			<small id="altura"
-																				class="form-text text-muted">cm</small>
-
-																		</div>
-																	</div>
-
-																	<div class="col-md-2">
-																		<div class="card card-info">
-																			<div class="card-body text-center">
-																				<div class="card-opening">IMC</div>
-																				<div class="card-desc" id="resultado">
-																					<h4 class="card-title" id="imc">--.-
-																					</h4>
-																					<input type="hidden" id="valor-imc">
-																					<div class="card-opening"
-																						id="imc-desc"></div>
-																				</div>
-																			</div>
-																		</div>
-																	</div>
-																</div>
+														<div id="menu1" class="tab-pane fade">
+															<div th:replace="fragments/procedimento/card-procedimento">
 															</div>
 														</div>
-
-														<div class="card">
-															<div class="card-header">
-																<div class="card-title">Medicamentos em uso</div>
+														<div id="menu2" class="tab-pane fade">
+															<div th:replace="fragments/triagem/card-list-alergias">
 															</div>
-															<div class="card-body">
-																<div class="row">
-																	<div class="col-md-12">
-																		<div class="form-group">
-																			<label for="medicamento">Medicamento</label>
-																			<div class="input-group">
-																				<div class="input-group-prepend">
-																					<button id="button-medicamento"
-																						type="button"
-																						class="btn btn-black btn-border">
-																						<i id="i-medicamento"
-																							class="fa fa-search"></i>
-																					</button>
-																				</div>
-																				<input type="text" name="medicamento"
-																					class="form-control"
-																					id="medicamento"
-																					placeholder="Pesquisa de medicamentos">
-																				<small id="medicamento-small"
-																					class="form-text text-muted"></small>
-																				<input id="id-medicamento"
-																					type="hidden">
-																			</div>
-																		</div>
-																	</div>
+															<div th:replace="fragments/triagem/card-nova-alergia">
+															</div>
+															<div th:replace="fragments/triagem/card-edit-alergia">
+															</div>
 
-																	<div class="col-md-12">
-																		<div class="form-group">
-																			<label for="nota-uso-medicamento">Posologia
-																				/
-																				Notas</label>
-																			<textarea id="nota-uso-medicamento"
-																				class="form-control"></textarea>
-																		</div>
-																	</div>
-
-
-																	<div class="col-md-6">
-																		<div class="form-group">
-																			<label for="usoContinuo">Uso
-																				contínuo?</label><br>
-																			<input id="usoContinuo" type='checkbox'
-																				data-toggle='toggle' data-on='Sim'
-																				data-off='Não'>
-																			<small id="usoContinuo-small"
-																				class="form-text text-muted"></small>
-																		</div>
-																	</div>
-																	<div class="col-md-12 text-right">
-																		<button id="submit-uso-medicamento"
-																			type="button"
-																			class="btn btn-primary btn-sm">
-																			<i class="fa fa-plus"></i> Adicionar
-																		</button>
-																	</div>
-																</div>
-																<br>
-																<div id="medicamentos-uso-continuo">
-																	<div class="card-sub">Medicamentos de uso
-																		contínuo:</div>
-																	<ul id="uso-continuo-lista"
-																		class="list-group list-group-bordered">
-																	</ul>
-																</div>
-																<div id="medicamentos-uso">
-																	<div class="card-sub">Medicamentos em uso:</div>
-																	<ul id="uso-lista"
-																		class="list-group list-group-bordered">
-																	</ul>
-
-																</div>
-
+														</div>
+														<div id="menu3" class="tab-pane fade">
+															<div th:replace="fragments/triagem/card-list-doencas">
+															</div>
+															<div th:replace="fragments/triagem/card-nova-doenca">
+															</div>
+															<div th:replace="fragments/triagem/card-edit-doenca">
 															</div>
 														</div>
-
-														<div class="card">
-															<div class="card-header">
-																<div class="card-title">Classificação de Risco</div>
-															</div>
-															<div class="card-body">
-																<div class="row">
-																	<div class="col-md-12 row">
-																		<th:block
-																			th:each="classificacaoDeRisco : ${classificacoesRisco}">
-																			<div id="classificacaoRadios"
-																				class="form-group col-md-2 col-lg-2">
-																				<input type="radio" class="radio-class"
-																					th:id="${classificacaoDeRisco}"
-																					name="classificacaoDeRisco"
-																					th:value="${classificacaoDeRisco}"><label
-																					th:classappend="|${classificacaoDeRisco.nome == 'VERMELHO' ? 'label-input-red' : ''} ${classificacaoDeRisco.nome == 'AMARELO' ? 'label-input-yellow' : ''}
-										${classificacaoDeRisco.nome == 'AZUL' ? 'label-input-blue' : ''} ${classificacaoDeRisco.nome == 'LARANJA' ? 'label-input-orange' : ''} ${classificacaoDeRisco.nome == 'VERDE' ? 'label-input-green' : ''}|"
-																					th:for="${classificacaoDeRisco}"><span
-																						class="text-light"
-																						th:text="${classificacaoDeRisco.nome}"></span></label>
-																			</div>
-																		</th:block>
-																	</div>
-																</div>
+														<div id="menu4" class="tab-pane fade">
+															<div th:replace="fragments/triagem/card-medicamento">
 															</div>
 														</div>
-
-														<div th:replace="fragments/procedimento/card-procedimento">
+														<div id="menu5" class="tab-pane fade">
+															<div th:replace="fragments/triagem/card-antropometria">
+															</div>
 														</div>
-														<div class="card-action">
-															<button type="submit" class="btn btn-primary">Salvar
-																Triagem</button>
-															<button type="button"
-																class="btn btn-warning">Cancelar</button>
-														</div>
-													</form>
-												</div>
-
-												<div class="tab-pane fade" id="v-pills-alergias-nobd" role="tabpanel"
-													aria-labelledby="v-pills-alergias-tab-nobd">
-													<div th:replace="fragments/triagem/card-list-alergias">
-													</div>
-													<div th:replace="fragments/triagem/card-nova-alergia">
-													</div>
-													<div th:replace="fragments/triagem/card-edit-alergia">
-													</div>
-
-												</div>
-												<div class="tab-pane fade" id="v-pills-doencas-nobd" role="tabpanel"
-													aria-labelledby="v-pills-doencas-tab-nobd">
-													<div th:replace="fragments/triagem/card-list-doencas">
-													</div>
-													<div th:replace="fragments/triagem/card-nova-doenca">
-													</div>
-													<div th:replace="fragments/triagem/card-edit-doenca">
 													</div>
 												</div>
 
@@ -461,6 +163,8 @@
 			th:src="@{/assets/js/triagem/form-triagem-alergia.js}"></script>
 		<script type="text/javascript" th:inline="javascript"
 			th:src="@{/assets/js/procedimento/procedimento.js}"></script>
+		<script type="text/javascript" th:inline="javascript"
+			th:src="@{/assets/js/triagem/form-triagem-antropometria.js}"></script>
 		<script type="text/javascript" th:inline="javascript"
 			th:src="@{/assets/js/atendimento/card-finalizar-atendimento.js}"></script>
 

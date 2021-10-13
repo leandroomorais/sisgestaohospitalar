@@ -25,10 +25,9 @@ $(document).ready(
 		if ($("#hasErrors").text() != "true") {
 			$("#form-cidadao-div").hide();
 		} else {
+			$("#card-pesquisa").hide();
 			$("#form-cidadao-div").show();
 		}
-
-
 		$("#svg-status").hide();
 
 		$("#info-cidadao").hide();
@@ -73,6 +72,8 @@ $(document).ready(
 		});
 	}
 )
+
+var idCidadao = null;
 
 //Funções auxliares do Formulário de Cadastro do Cidadão
 
@@ -128,7 +129,9 @@ $("#form-busca").submit(function(evt) {
 			$("#info-cidadao").hide();
 		},
 		success: function(data) {
-			
+
+			idCidadao = data.id;
+
 			$("#form-cidadao-div").fadeOut(500);
 
 			$("#form-busca").each(function() {
@@ -143,49 +146,9 @@ $("#form-busca").submit(function(evt) {
 
 			$("#info-cidadao").fadeIn(500);
 
-			$("#idCidadao").val(data.id);
-
-			if (data.nome != null) {
-				$("#info-nome").text(data.nome);
-			}
-
-			if (data.dataNascimento != null) {
-				var dataNascimento = data.dataNascimento;
-				var ano = dataNascimento.substring(0, 4);
-				var mes = dataNascimento.substring(5, 7);
-				var dia = dataNascimento.substring(8, 10);
-				$("#info-dataNascimento").text(dia + "/" + mes + "/" + ano);
-			}
-
-			if (data.nomeMae != null) {
-				$("#info-nomeMae").text(data.nomeMae);
-			}
-
-			if (data.nomePai != null) {
-				$("#info-nomePai").text(data.nomePai);
-			}
-
-			if (data.sexo != null) {
-				$("#info-sexo").text(data.sexo);
-			}
-
-			if (data.cns != null) {
-				$("#info-cns").text(data.cns).mask('000.0000.0000.0000');
-			}
-
-			if (data.cpf != null) {
-				$("#info-cpf").text(data.cpf).mask('000.000.000-00');
-			}
+			$("#card-info-cidadao").append(creatCardDetalheCidadao(data));
 
 
-			if (data.endereco.cep != null) {
-				$("#info-cep").text(data.endereco.cep).mask('00000-000');
-			}
-
-
-			if (data.endereco.enderecoCompleto != null) {
-				$("#info-endereco").text(data.endereco.enderecoCompleto);
-			}
 
 		},
 		statusCode: {
@@ -453,6 +416,10 @@ function preenchimentoObrigatorio(small) {
 
 
 //Emite alerta ao clicar no botão de Cancelar
+$("#btn-cancelar-form-editar").click(function() {
+	alerta("/cidadao/adicionar")
+});
+
 $("#btn-cancelar-form").click(function() {
 	alerta("/cidadao/adicionar")
 });
@@ -464,19 +431,21 @@ $("#btn-cancelar-local").click(function() {
 
 function alerta(redirect) {
 	swal({
-		title: 'Deseja cancelar a operação?',
+		title: 'Tem certeza que deseja cancelar?',
 		text: "Se clicar em sim todos os dados serão apagados.",
 		type: 'warning',
 		buttons: {
-			confirm: {
-				text: 'Sim, cancelar!',
-				className: 'btn btn-warning'
-			},
+
 			cancel: {
 				text: 'Não, retornar!',
 				visible: true,
-				className: 'btn btn-primary'
-			}
+				className: 'btn btn-success btn-border'
+			},
+
+			confirm: {
+				text: 'Sim, cancelar!',
+				className: 'btn btn-success'
+			},
 		}
 	}).then((confirm) => {
 		if (confirm) {
@@ -487,17 +456,65 @@ function alerta(redirect) {
 	});
 };
 
-$("#btn-detalhar-cidadao").click(function(){
-	$(location).attr('href','/cidadao/detalhar/' + $("#idCidadao").val());
+function creatCardDetalheCidadao(data) {
+	return "<div class='card'><div class='card-body'><div class='col-md-12 row'><div class='col-md-8'>" +
+		h5CardInfoCidadao(data.nome, data.sexo) +
+		inforCardPrimary(data.cpf, data.cns) +
+		itemCardCidadaoDataNascimento(data.dataNascimento) +
+		itemCardCidadao("Nome do pai: ", data.nomePai) +
+		itemCardCidadao("Nome da mãe: ", data.nomeMae) +
+		"</div><div class='col-md-4 text-right'>" +
+		infoCardEndereco(data.endereco.enderecoCompleto, data.endereco.cep) +
+		"</div></div><div class='text-right'>" +
+		"<button type='button' onclick='detalhar()' class='btn btn-light btn-sm'><i class='fa fa-info-circle' aria-hidden='true'></i> Detalhar</button>" +
+		"<button type='button' onclick='editar()' class='btn btn-light btn-sm'><i class='fa fa-edit' aria-hidden='true'></i> Editar</button>" +
+		"</div></div></div>";
+}
+
+function h5CardInfoCidadao(nomeCompleto, sexo) {
+	var sexoExtenso = "";
+	if (sexo == "M") {
+		sexoExtenso = "MASCULINO";
+	}
+	if (sexo == "F") {
+		sexoExtenso = "FEMININO";
+	}
+	return "<h5 class='text-uppercase fw-bold mb-1'> " + nomeCompleto + " <span class='text-info text-uppercase pl-3'> " + sexoExtenso + " </span></h5>";
+}
+
+function inforCardPrimary(cpf, cns) {
+	return "<strong> CPF: </strong><span> " + cpf + " </span> | <strong> CNS: </strong><span> " + cns + " </span><br>";
+}
+
+function itemCardCidadao(text, info) {
+	return "<strong>" + text + "</strong><span> " + info + "</span><br>";
+}
+
+function itemCardCidadaoDataNascimento(dn) {
+	var data = new Date(dn);
+	data = data.toLocaleDateString('pt-BR');
+	return "<strong> Data de Nascimento: </strong><span> " + data + "</span><br>";
+}
+
+function infoCardEndereco(endereco, cep) {
+	return "<span class='text-uppercase fw-bold mb-1'> ENDEREÇO: </span><br><span class='text-muted'> " + endereco + " </span><br><strong>CEP: </strong><span class='text-muted'> " + cep + " </span><br>"
+}
+
+function detalhar() {
+	$(location).attr('href', '/cidadao/detalhar/' + idCidadao);
+}
+
+function editar() {
+	$(location).attr('href', '/cidadao/editar/' + idCidadao);
+}
+
+
+$("#btn-adicionar-cidadao").click(function() {
+	$(location).attr('href', '/atendimento/adicionar/' + idCidadao);
 })
 
-$("#btn-editar-cidadao").click(function(){
-	$(location).attr('href','/cidadao/editar/' + $("#idCidadao").val());
-})
 
-$("#btn-adicionar-cidadao").click(function(){
-	$(location).attr('href','/atendimento/adicionar/' + $("#idCidadao").val());
-})
+
 //
 //$('#btn-mudar-status').click(function(e) {
 //	swal({

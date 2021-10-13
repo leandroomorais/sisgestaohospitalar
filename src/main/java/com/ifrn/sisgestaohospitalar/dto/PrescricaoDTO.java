@@ -4,10 +4,11 @@ import java.time.LocalDateTime;
 import javax.persistence.Transient;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Positive;
+
 import com.ifrn.sisgestaohospitalar.model.Medicamento;
 import com.ifrn.sisgestaohospitalar.model.Prontuario;
 import com.ifrn.sisgestaohospitalar.model.ViaAdministracao;
-import com.ifrn.sisgestaohospitalar.validation.Quantidade;
 
 public class PrescricaoDTO {
 
@@ -29,17 +30,16 @@ public class PrescricaoDTO {
 	private boolean doseUnica;
 
 	private boolean usoContinuo;
-	
+
 	@Transient
 	private Long idAtendimento;
-	
+
 	private Prontuario prontuario;
-	
-	@Quantidade
+
+	@Positive(message = "A quantidade não pode ser igual ou inferior a 0")
 	private int quantidade;
 
 	private LocalDateTime data;
-
 
 	public Long getId() {
 		return id;
@@ -137,5 +137,4 @@ public class PrescricaoDTO {
 		this.data = data;
 	}
 
-	
 }

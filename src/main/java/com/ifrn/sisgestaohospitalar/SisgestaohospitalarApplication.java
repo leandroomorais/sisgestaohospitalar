@@ -16,6 +16,7 @@ import com.ifrn.sisgestaohospitalar.model.TipoServico;
 import com.ifrn.sisgestaohospitalar.model.TipoUsuario;
 import com.ifrn.sisgestaohospitalar.model.ViaAdministracao;
 import com.ifrn.sisgestaohospitalar.repository.Cep_IbgeRepository;
+import com.ifrn.sisgestaohospitalar.repository.CidRepository;
 import com.ifrn.sisgestaohospitalar.repository.EstadoRepository;
 import com.ifrn.sisgestaohospitalar.repository.LogradouroRepository;
 import com.ifrn.sisgestaohospitalar.repository.MunicipioRepository;
@@ -66,6 +67,8 @@ public class SisgestaohospitalarApplication implements ApplicationListener<Conte
 	private RoleRepository roleRepository;
 	@Autowired
 	private TipoUsuarioRepository tipoUsuarioRepository;
+	@Autowired
+	private CidRepository cidRepository;
 
 	public static void main(String[] args) {
 		SpringApplication.run(SisgestaohospitalarApplication.class, args);
@@ -89,13 +92,13 @@ public class SisgestaohospitalarApplication implements ApplicationListener<Conte
 	@Override
 	public void onApplicationEvent(ContextRefreshedEvent event) {
 
-		//criaRolesETipoUsuario();
-		//lerSigtab();
-		//lerMedicamentosEFormaFarmaceutica();
-		//lerXmlEsus();
-		//lerEstadosMunicipios();
-		//salvarViaAdministracao();
-		//salvarTipoServico();
+		// criaRolesETipoUsuario();
+		// lerSigtab();
+		// lerMedicamentosEFormaFarmaceutica();
+		// lerXmlEsus();
+		// lerEstadosMunicipios();
+		// salvarViaAdministracao();
+		// salvarTipoServico();
 	}
 
 	public void salvarTipoServico() {
@@ -169,15 +172,15 @@ public class SisgestaohospitalarApplication implements ApplicationListener<Conte
 			leitorTxtSigtap.lerTxtCid(urlCid);
 			leitorTxtSigtap.lerTxtProcedimentos(urlProcedimentos);
 			leitorTxtSigtap.lerTxtRegistro(urlRegistros);
-			//leitorTxtSigtap.lerProcedimento_Cid(urlRelationProced_Cid);
-			//leitorTxtSigtap.lerProcedimento_Ocupacao(urlRelationProced_Ocupacao);
-			//leitorTxtSigtap.relacionamentoProcedimento_Registro(urlRelationProced_Registro);
-			//leitorTxtSigtap.lerTxtOcupacao(urlOcupacao);
-			
+			// leitorTxtSigtap.lerProcedimento_Cid(urlRelationProced_Cid);
+			// leitorTxtSigtap.lerProcedimento_Ocupacao(urlRelationProced_Ocupacao);
+			// leitorTxtSigtap.relacionamentoProcedimento_Registro(urlRelationProced_Registro);
+			// leitorTxtSigtap.lerTxtOcupacao(urlOcupacao);
+
 			// leitorTxtSigtap.relacionamentoProcedimento_Cid(urlRelationProced_Cid);
 
 			// leitorTxtSigtap.relacionamentoProcedimento_Cid(urlRelationProced_Cid);
-			//leitorTxtSigtap.relacionamentoProcedimento_Ocupacao(urlRelationProced_Ocupacao);
+			// leitorTxtSigtap.relacionamentoProcedimento_Ocupacao(urlRelationProced_Ocupacao);
 			// leitorTxtSigtap.relacionamentoProcedimento_Registro(urlRelationProced_Registro);
 
 		} catch (IOException e) {

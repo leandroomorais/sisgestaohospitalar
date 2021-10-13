@@ -15,8 +15,9 @@ import javax.persistence.OneToOne;
 import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Positive;
 
-import com.ifrn.sisgestaohospitalar.validation.Quantidade;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Prescricao {
@@ -24,7 +25,7 @@ public class Prescricao {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
+
 	@NotNull(message = "Selecione o medicamento")
 	@OneToOne
 	private Medicamento medicamento;
@@ -43,19 +44,21 @@ public class Prescricao {
 	private boolean doseUnica;
 
 	private boolean usoContinuo;
-	
+
+	@JsonIgnore
 	@OneToOne
 	private Atendimento atendimento;
-	
+
+	@JsonIgnore
 	@OneToOne
 	private Prontuario prontuario;
-	
+
 	@Valid
 	@ManyToMany(cascade = CascadeType.ALL)
 	@JoinTable(name = "prescricao_registro_administracao", joinColumns = @JoinColumn(name = "id_prescricao"), inverseJoinColumns = @JoinColumn(name = "id_registro_administracao"))
 	private List<RegistroAdministracao> registrosAdministracao;
-	
-	@Quantidade
+
+	@Positive(message = "A quatidade não pode ser igual ou inferior a 0")
 	private int quantidade;
 
 	private LocalDateTime dataRegistro;
@@ -174,5 +177,5 @@ public class Prescricao {
 	public void setProfissional(Profissional profissional) {
 		this.profissional = profissional;
 	}
-	
+
 }

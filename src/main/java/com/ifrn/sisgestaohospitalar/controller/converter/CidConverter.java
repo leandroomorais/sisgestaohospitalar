@@ -17,7 +17,7 @@ public class CidConverter implements Converter<String, Cid> {
 	@Override
 	public Cid convert(String source) {
 		if (!StringUtils.isEmpty(source)) {
-			Cid cid = cidRepository.findByCodigo(source);
+			Cid cid = cidRepository.findByCodigoIgnoreCaseContaining(source);
 			if (cid != null) {
 				return cid;
 			}

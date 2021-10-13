@@ -3,19 +3,24 @@ package com.ifrn.sisgestaohospitalar.controller;
 import java.security.Principal;
 import java.time.LocalDateTime;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.ifrn.sisgestaohospitalar.enums.Status;
 import com.ifrn.sisgestaohospitalar.model.Atendimento;
 import com.ifrn.sisgestaohospitalar.model.Diagnostico;
 import com.ifrn.sisgestaohospitalar.model.Prontuario;
@@ -64,10 +69,37 @@ public class DiagnosticoController {
 	public ResponseEntity<?> diagnosticos(@PathVariable("idAtendimento") Long id) {
 		Atendimento atendimento = atendimentoRepository.getOne(id);
 		if (atendimento != null) {
-			return ResponseEntity.ok().body(diagnosticoRepository.findByAtendimento(atendimento));
+			List<Diagnostico> diagnosticos = diagnosticoRepository.findByAtendimento(atendimento);
+			return ResponseEntity.ok().body(diagnosticos);
 		}
 		return ResponseEntity.badRequest().build();
+	}
+	
+	@DeleteMapping("/{idDiagnostico}/{idProntuario}")
+	public ResponseEntity<?> excluir(@PathVariable("idDiagnostico") Long idDiagnostico,@PathVariable("idProntuario") Long idProntuario, Principal principal) {
+		Optional<Diagnostico> optionalDiagnostico = diagnosticoRepository.findById(idDiagnostico);
+		Optional<Prontuario> optionalProntuario = prontuarioRepository.findById(idProntuario);
+		if (optionalDiagnostico.isPresent() && optionalProntuario.isPresent()) {
+			Prontuario prontuario = optionalProntuario.get();
+			Diagnostico diagnostico = optionalDiagnostico.get();
 
+			if (!diagnostico.getProfissional().getCpf().equals(principal.getName())) {
+				String msg = "Diagnóstico cadastrado por: " + diagnostico.getProfissional().getNome()
+						+ " . Não é possível excluir";
+				return ResponseEntity.status(HttpStatus.FORBIDDEN).body(msg);
+			}
+
+			if (diagnostico.getAtendimento().getStatus().equals(Status.FINALIZADO)) {
+				String msg = "Atendimento finalizado. Não é possível excluir.";
+				return ResponseEntity.status(HttpStatus.FORBIDDEN).body(msg);
+			}
+
+			prontuario.getDiagnostico().remove(diagnostico);
+			prontuarioRepository.saveAndFlush(prontuario);
+			diagnosticoRepository.delete(diagnostico);
+			return ResponseEntity.ok().build();
+		}
+		return ResponseEntity.badRequest().build();
 	}
 
 }

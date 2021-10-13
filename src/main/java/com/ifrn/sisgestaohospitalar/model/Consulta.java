@@ -19,7 +19,7 @@ public class Consulta {
 	private Long id;
 	
 	@NotBlank(message = "É necessário preencher o campo sumário da história clínica")
-	private String hitoriaClinica;
+	private String historiaClinica;
 	
 	@Valid
 	@OneToOne(cascade = CascadeType.ALL)
@@ -37,13 +37,14 @@ public class Consulta {
 	public void setId(Long id) {
 		this.id = id;
 	}
-
-	public String getHitoriaClinica() {
-		return hitoriaClinica;
+	
+	
+	public String getHistoriaClinica() {
+		return historiaClinica;
 	}
 
-	public void setHitoriaClinica(String hitoriaClinica) {
-		this.hitoriaClinica = hitoriaClinica;
+	public void setHistoriaClinica(String historiaClinica) {
+		this.historiaClinica = historiaClinica;
 	}
 
 	public Avaliacao getAvaliacao() {
