@@ -5,6 +5,8 @@ $(document).ready(function() {
 	$("#card-edit-prescricao").hide();
 	$("#card-list-registros-administracao").hide();
 	$("#card-novo-registro-administracao").hide();
+	$("#card-novo-exame").hide();
+	//$("#card-list-exames").hide();
 
 	//Função que inicia o TinyMCE
 	tinymce.init({
@@ -27,6 +29,8 @@ $(document).ready(function() {
 
 	atualizaDiagnostico();
 	atualizaPrescricoes();
+	atualizaProcedimentoExame();
+	atualizaListaExame();
 
 });
 

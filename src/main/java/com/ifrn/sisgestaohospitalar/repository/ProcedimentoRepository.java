@@ -16,4 +16,7 @@ public interface ProcedimentoRepository extends JpaRepository<Procedimento, Long
 	@Query("select p from Procedimento p where p.nome like %:search%")
 	List<Procedimento> findByNome(@Param("search") String search);
 	
+	@Query("select p from Procedimento p where p.codigo like '20%' and p.nome like %:search%")
+	List<Procedimento> findByNomeExame(@Param("search") String search);
+	
 }

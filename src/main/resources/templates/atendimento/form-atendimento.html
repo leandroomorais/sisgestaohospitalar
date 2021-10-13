@@ -357,10 +357,12 @@
 															</div>
 														</div>
 														<div id="menu2" class="tab-pane fade">
-															<h3>Menu 2</h3>
-															<p>Sed ut perspiciatis unde omnis iste natus error
-																sit voluptatem accusantium doloremque laudantium, totam
-																rem aperiam.</p>
+															<div
+																th:replace="fragments/atendimento/card-list-exames">
+															</div>
+															<div
+																th:replace="fragments/atendimento/card-novo-exame">
+															</div>
 														</div>
 														<div id="menu3" class="tab-pane fade">
 															<h3>Menu 3</h3>
@@ -407,6 +409,8 @@
 			th:src="@{/assets/js/atendimento/form-atendimento.js}"></script>
 		<script type="text/javascript" th:inline="javascript"
 			th:src="@{/assets/js/atendimento/form-atendimento-prescricao.js}"></script>
+		<script type="text/javascript" th:inline="javascript"
+			th:src="@{/assets/js/atendimento/form-atendimento-exame.js}"></script>
 
 	</th:block>
 </body>

@@ -66,6 +66,11 @@ public class Prontuario {
 	@JoinTable(name = "prontuario_diagnosticos", joinColumns = @JoinColumn(name = "id_prontuario"), inverseJoinColumns = @JoinColumn(name = "id_diagnostico"))
 	private List<Diagnostico> diagnostico;
 
+	@Valid
+	@ManyToMany(cascade = CascadeType.ALL)
+	@JoinTable(name = "prontuario_exames", joinColumns = @JoinColumn(name = "id_prontuario"), inverseJoinColumns = @JoinColumn(name = "id_exame"))
+	private List<Exame> exames;
+	
 	public Long getId() {
 		return id;
 	}
@@ -144,6 +149,14 @@ public class Prontuario {
 
 	public void setPrescricoes(List<Prescricao> prescricoes) {
 		this.prescricoes = prescricoes;
+	}
+
+	public List<Exame> getExames() {
+		return exames;
+	}
+
+	public void setExames(List<Exame> exames) {
+		this.exames = exames;
 	}
 
 	public List<Diagnostico> getDiagnostico() {
