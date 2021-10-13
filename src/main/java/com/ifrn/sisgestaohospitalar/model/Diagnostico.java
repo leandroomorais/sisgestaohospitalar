@@ -8,16 +8,19 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Diagnostico {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-
+	
+	@JsonIgnore
 	@OneToOne
 	private Prontuario prontuario;
-
+	
 	@OneToOne
 	private Cid cid;
 
@@ -28,6 +31,7 @@ public class Diagnostico {
 	@OneToOne
 	private Profissional profissional;
 	
+	@JsonIgnore
 	@OneToOne
 	private Atendimento atendimento;
 

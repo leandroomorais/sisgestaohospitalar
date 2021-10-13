@@ -1,0 +1,82 @@
+<div class="card">
+	<div class="card-header">
+		<div class="card-title">Antropometria</div>
+	</div>
+	<div class="card-body">
+		<form id="form-antropometria" method="post" action="/antropometria/">
+			<div class="row">
+				<div class="col-md-3">
+					<div class="form-group">
+						<label for="perimetrocefalico">Perimetro
+							Cefálico</label><input type="text" name="perimetroCefalico" class="form-control"
+							id="perimetrocefalico"> <small id="perimetrocefalico"
+							class="form-text text-muted">cm</small>
+
+					</div>
+				</div>
+				<div class="col-md-3">
+					<div class="form-group">
+						<label for="peso">Peso</label> <input type="text" name="peso" class="form-control" id="peso"
+							placeholder="">
+						<small id="peso" class="form-text text-muted">Kg</small>
+					</div>
+				</div>
+				<div class="col-md-3">
+					<div class="form-group">
+						<label for="altura">Altura</label> <input type="text" name="altura" class="form-control"
+							id="altura" placeholder="">
+						<small id="altura" class="form-text text-muted">cm</small>
+					</div>
+				</div>
+				<div class="col-md-2">
+					<div class="card card-info">
+						<div class="card-body text-center">
+							<div class="card-opening">IMC</div>
+							<div class="card-desc" id="resultado">
+								<h4 class="card-title" id="imc">--.-
+								</h4>
+								<input type="hidden" id="valor-imc">
+								<div class="card-opening" id="imc-desc"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-md-12 text-right">
+					<button type="submit" class="btn btn-primary btn-sm">
+						<i class="fa fa-plus"></i> Adicionar
+					</button>
+				</div>
+			</div>
+		</form>
+		<div class="col-md-12 mt-3">
+			<div class="card-sub">Registros:
+			</div>
+			<div class="table-responsive">
+				<table id="table-antropometrias" class="display table table-hover dataTable" role="grid"
+					aria-describedby="basic-datatables_info" style="width: 100%">
+					<thead>
+						<tr role="row">
+							<th></th>
+							<th></th>
+							<th></th>
+							<th></th>
+							<th></th>
+							<th></th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr role="row" class="odd">
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</div>

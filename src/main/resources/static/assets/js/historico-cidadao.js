@@ -8,7 +8,7 @@ var examesSolicitations = [];
 var receitas = [];
 var avaliacoes = [];
 
-const baseUri = "http://localhost:9090/api"
+const baseUri = "http://localhost:8282/api"
 const uriVacinasAplicadas = baseUri + "/vacinacao/cpf/"
 const uriVacinasAgendadas = baseUri + "/vacinacao/aprazamentobycpf/"
 const uriSolicitations = baseUri + "/exames/cpf/solicitations/"

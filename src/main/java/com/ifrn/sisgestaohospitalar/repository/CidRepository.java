@@ -8,9 +8,9 @@ import org.springframework.stereotype.Repository;
 import com.ifrn.sisgestaohospitalar.model.Cid;
 
 @Repository
-public interface CidRepository extends JpaRepository<Cid, Long> {
+public interface CidRepository extends JpaRepository<Cid, String> {
 
-	Cid findByCodigo(String codigo);
+	Cid findByCodigoIgnoreCaseContaining(String codigo);
 
 	List<Cid> findByNomeIgnoreCaseContaining(String nome, Pageable pageable);
 

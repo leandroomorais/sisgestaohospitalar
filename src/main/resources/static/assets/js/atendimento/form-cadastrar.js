@@ -1,22 +1,24 @@
 $("#btn-cancela-guia-antendimento").click(function() {
-	alerta("/atendimento/listar")
+	alerta("/cidadao/adicionar")
 });
 
 function alerta(redirect) {
 	swal({
-		title: 'Deseja cancelar a operação?',
-		text: "Se clicar em sim todos os dados serão apagados.",
+		title: 'Tem certeza que deseja cancelar?',
+		text: "Se clicar em sim todos os dados serão apagados e você será redirecionado para a busca de cidadãos.",
 		type: 'warning',
 		buttons: {
-			confirm: {
-				text: 'Sim, cancelar!',
-				className: 'btn btn-warning'
-			},
+
 			cancel: {
 				text: 'Não, retornar!',
 				visible: true,
-				className: 'btn btn-primary'
-			}
+				className: 'btn btn-success btn-border'
+			},
+
+			confirm: {
+				text: 'Sim, cancelar!',
+				className: 'btn btn-success'
+			},
 		}
 	}).then((confirm) => {
 		if (confirm) {

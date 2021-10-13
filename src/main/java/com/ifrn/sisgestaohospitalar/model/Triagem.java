@@ -10,6 +10,8 @@ import javax.persistence.OneToOne;
 import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.ifrn.sisgestaohospitalar.enums.ClassificacaoDeRisco;
 
 @Entity
@@ -37,6 +39,7 @@ public class Triagem {
 	@NotNull(message = "Selecione a Classificaçao de Risco")
 	private ClassificacaoDeRisco classificacaoDeRisco;
 	
+	@JsonIgnore
 	@Valid
 	@OneToOne
 	private Atendimento atendimento;

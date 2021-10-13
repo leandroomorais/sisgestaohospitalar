@@ -65,6 +65,10 @@ public class Prontuario {
 	@ManyToMany(cascade = CascadeType.ALL)
 	@JoinTable(name = "prontuario_diagnosticos", joinColumns = @JoinColumn(name = "id_prontuario"), inverseJoinColumns = @JoinColumn(name = "id_diagnostico"))
 	private List<Diagnostico> diagnostico;
+	
+	@ManyToMany(cascade = CascadeType.ALL)
+	@JoinTable(name = "prontuario_atestados", joinColumns = @JoinColumn(name = "id_prontuario"), inverseJoinColumns = @JoinColumn(name = "id_atestado"))
+	private List<Atestado> atestados;
 
 	public Long getId() {
 		return id;
@@ -152,6 +156,14 @@ public class Prontuario {
 
 	public void setDiagnostico(List<Diagnostico> diagnostico) {
 		this.diagnostico = diagnostico;
+	}
+
+	public List<Atestado> getAtestados() {
+		return atestados;
+	}
+
+	public void setAtestados(List<Atestado> atestados) {
+		this.atestados = atestados;
 	}
 
 }

@@ -23,7 +23,7 @@ import com.ifrn.sisgestaohospitalar.repository.CidadaoRepository;
 import com.ifrn.sisgestaohospitalar.repository.UsuarioRepository;
 import com.ifrn.sisgestaohospitalar.service.CidadaoCadsusService;
 import com.ifrn.sisgestaohospitalar.service.CidadaoService;
-import com.ifrn.sisgestaohospitalar.service.exception.CidadaoJaCadastradoException;
+import com.ifrn.sisgestaohospitalar.service.exception.DataNascimentoMaiorQueDataAtualException;
 
 @Controller
 @RequestMapping("/cidadao")
@@ -64,8 +64,7 @@ public class CidadaoController {
 			cidadao.setProntuario(prontuario);
 			prontuario.setCidadao(cidadao);
 			cidadaoService.save(cidadao);
-		} catch (CidadaoJaCadastradoException e) {
-			result.rejectValue("cpf", e.getMessage(), e.getMessage());
+		} catch (DataNascimentoMaiorQueDataAtualException e) {
 			result.rejectValue("dataNascimento", e.getMessage(), e.getMessage());
 			return cadastrar(cidadao, principal);
 		}
@@ -75,12 +74,13 @@ public class CidadaoController {
 	}
 
 	@PostMapping("/atualizar")
-	public ModelAndView atualizaCidadao(@Valid Cidadao cidadao, BindingResult result, Principal principal) {
+	public ModelAndView atualizaCidadao(@Valid Cidadao cidadao, BindingResult result, Principal principal,
+			RedirectAttributes attributes) {
 		if (result.hasErrors()) {
 			return editar(cidadao.getId(), principal);
 		}
 		cidadaoService.update(cidadao);
-		return editar(cidadao.getId(), principal).addObject("success", "Os dados foram salvos");
+		return new ModelAndView("redirect:/oi");
 	}
 
 	@RequestMapping("/detalhar/{id}")

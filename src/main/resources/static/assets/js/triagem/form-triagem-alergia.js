@@ -310,7 +310,7 @@ function atualizaAlergia() {
 				data: 'id',
 				mRender: function(data) {
 					var retorno =
-						" <button class='btn btn-primary btn-sm' data-value='" + data + "' onclick='editarAlergia(this)'><i class='fa fa-edit'></i> Editar </button>"
+						" <button class='btn btn-secondary btn-sm' data-value='" + data + "' onclick='editarAlergia(this)'><i class='fa fa-edit'></i> Editar </button>"
 					return retorno;
 				}
 			}

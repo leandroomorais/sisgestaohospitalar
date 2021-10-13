@@ -1,0 +1,17 @@
+<div class="card" id="card-list-atestados">
+	<div id="card-header" class="card-header">
+		<div class="card-title">Atestados do Atendimento</div>
+	</div>
+	<div class="card-body">
+		<div id="info-atestados">
+			<div id="div-atestados">
+
+			</div>
+			<div sec:authorize="hasAnyAuthority('MEDICO')" id="div-button-nova-prescricao" class="text-right">
+				<button type="button" onclick="exibeFormularioAtestado()" class="btn btn-primary btn-sm">
+					<i class="fa fa-plus"></i> Novo atestado
+				</button>
+			</div>
+		</div>
+	</div>
+</div>

@@ -5,6 +5,7 @@ $(document).ready(function() {
 	$("#card-edit-prescricao").hide();
 	$("#card-list-registros-administracao").hide();
 	$("#card-novo-registro-administracao").hide();
+	$("#card-novo-atestado").hide();
 
 	//Função que inicia o TinyMCE
 	tinymce.init({
@@ -27,6 +28,7 @@ $(document).ready(function() {
 
 	atualizaDiagnostico();
 	atualizaPrescricoes();
+	atualizaAtestados();
 
 });
 
@@ -92,6 +94,7 @@ $("#submit-consulta").click(function() {
 
 		statusCode: {
 			422: function(xhr) {
+				console.log(consulta);
 				var errors = $.parseJSON(xhr.responseText);
 				$.each(errors, function(key, val) {
 					$.notify({
@@ -130,7 +133,7 @@ $("#submit-consulta").click(function() {
 						icon_type: 'class',
 					});
 
-					$("input[name='" + key + "']").parent().parent().parent().addClass("has-error has-feedback");
+					$("input[name='" + key + "']").addClass("has-error has-feedback");
 
 				})
 			},
@@ -190,8 +193,6 @@ $("#submit-diagnostico").click(function() {
 	diagnostico['prontuario'] = $("#id-prontuario").val();
 	diagnostico['cid'] = $("#id-cid").val();
 	diagnostico.nota = $("#nota").val();
-
-	console.log(hipoteseDiagnostica);
 
 	$.ajax({
 		url: '/diagnostico/',
@@ -320,11 +321,15 @@ function atualizaDiagnostico() {
 				data: 'cid.codigo',
 			},
 			{
+				title: 'DESCRICÃO',
+				data: 'cid.nome',
+			},
+			{
 				title: 'AÇÕES',
 				data: 'id',
 				mRender: function(data) {
 					var retorno =
-						" <button class='btn btn-primary btn-sm' data-value='" + data + "' onclick='editarAlergia(this)'><i class='fa fa-edit'></i> Editar </button>"
+						" <button class='btn btn-warning btn-sm' data-value='" + data + "' onclick='excluirDiagnostico(this)'><i class='fa fa-trash'></i> Excluir </button>"
 					return retorno;
 				}
 			}
@@ -336,4 +341,21 @@ function limpaInputsDiagnostico() {
 	$("#nota").val("");
 	$("#diagnostico-cid").val("");
 	$("#id-cid").val("");
+}
+
+function excluirDiagnostico(element) {
+	var idDiagnostico = $(element).attr("data-value");
+	var idProntuario = $("#id-prontuario").val();
+	$.ajax({
+		url: '/diagnostico/' + idDiagnostico + "/" + idProntuario,
+		method: 'delete',
+		success: function() {
+			$("#table-diagnosticos").DataTable().ajax.reload();
+			alert("Excluido");
+
+		},
+		error: function() {
+			alert("Não foi possivel excluir");
+		}
+	})
 }

@@ -56,6 +56,15 @@ public class TriagemController {
 	@Autowired
 	private UsuarioRepository usuarioRepository;
 
+	@RequestMapping("/verificar/{atendimentoId}")
+	public ResponseEntity<?> verificaTriagem(@PathVariable("atendimentoId") Long id) {
+		Atendimento atendimento = atendimentoRepository.getOne(id);
+		if (atendimento.getTriagem() != null) {
+			return ResponseEntity.ok().body(atendimento.getTriagem());
+		}
+		return ResponseEntity.badRequest().build();
+	}
+
 	@RequestMapping("/adicionar/{atendimentoId}")
 	public ModelAndView cadastrar(@PathVariable("atendimentoId") Long id, Triagem triagem,
 			RedirectAttributes attributes, Principal principal) {

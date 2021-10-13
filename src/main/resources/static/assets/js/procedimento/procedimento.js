@@ -122,81 +122,61 @@ function atualizaProcedimento() {
 // Função para remover os Procedimentos da Tabela de Procedimentos
 function removeProcedimento(item) {
 	swal({
-		title: 'Tem certeza que deseja remover esse procedimento?',
-		icon: 'warning',
+		title: 'Tem certeza que deseja excluir este Procedimento?',
+		text: "Você não poderá reverter esta ação!",
+		type: 'warning',
 		buttons: {
 			cancel: {
 				visible: true,
 				text: 'Não, cancelar!',
-				className: 'btn btn-primary',
+				className: 'btn btn-success btn-border'
 			},
 			confirm: {
-				text: 'Sim, remova!',
-				className: 'btn btn-warning'
+				text: 'Sim, excluir!',
+				className: 'btn btn-success'
 			}
 		}
 	}).then((willDelete) => {
-		var idAtendimento = $("#id-atendimento").val();
-		var idAtendimentoProcedimento = $(item).attr("data-value");
-
-		$.ajax({
-			url: '/atendimento-procedimento/excluir/' + idAtendimento + "/" + idAtendimentoProcedimento,
-			method: 'get',
-			success: function() {
-				swal("Procedimento removido com sucesso!", {
-					icon: "success",
-					buttons: {
-						confirm: {
-							className: 'btn btn-success'
+		if (willDelete) {
+			var idAtendimento = $("#id-atendimento").val();
+			var idAtendimentoProcedimento = $(item).attr("data-value");
+			$.ajax({
+				url: '/atendimento-procedimento/excluir/' + idAtendimento + "/" + idAtendimentoProcedimento,
+				method: 'get',
+				success: function() {
+					swal("Sucesso! O Procedimento foi excluido!", {
+						icon: "success",
+						buttons: {
+							confirm: {
+								className: 'btn btn-success'
+							}
 						}
-					}
-				});
-				$("#table-procedimentos").DataTable().ajax.reload();
-
-			},
-
-			statusCode: {
-				403: function(xhr) {
-					$.notify({
-						// options
-						icon: 'flaticon-exclamation',
-						title: 'ERRO',
-						message: xhr.responseText,
-						target: '_blank'
-					}, {
-						// settings
-						element: 'body',
-						position: null,
-						type: "danger",
-						allow_dismiss: true,
-						newest_on_top: false,
-						showProgressbar: false,
-						placement: {
-							from: "top",
-							align: "right"
-						},
-						offset: 20,
-						spacing: 10,
-						z_index: 1031,
-						delay: 5000,
-						timer: 1000,
-						url_target: '_blank',
-						mouse_over: null,
-						animate: {
-							enter: 'animated fadeInDown',
-							exit: 'animated fadeOutUp'
-						},
-						onShow: null,
-						onShown: null,
-						onClose: null,
-						onClosed: null,
-						icon_type: 'class',
 					});
+					$("#table-procedimentos").DataTable().ajax.reload();
+				},
+				statusCode: {
+					403: function(xhr) {
+						swal("Houve um erro!", xrh.reponseText, {
+							icon: "error",
+							buttons: {
+								confirm: {
+									className: 'btn btn-danger'
+								}
+							},
+						});
+					}
 				}
-			}
-		})
+			})
+		} else {
+			swal("Certo, não iremos excluir!", {
+				buttons: {
+					confirm: {
+						className: 'btn btn-success'
+					}
+				}
+			});
+		}
 	});
-
 
 	return false;
 }

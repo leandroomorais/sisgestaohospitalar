@@ -1,8 +1,6 @@
 <!DOCTYPE html>
-<html layout:decorate="~{/layouts/layout-modulos}" lang="pt"
-	xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:th="http://www.thymeleaf.org"
-	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity"
+<html layout:decorate="~{/layouts/layout-modulos}" lang="pt" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity"
 	xmlns:layout="http://ultraq.net.nz/thymeleaf/layout">
 
 <body>
@@ -12,23 +10,19 @@
 			<div class="page-inner">
 				<div class="alert alert-danger alert-dismissible" role="alert"
 					th:if="${#fields.hasErrors('${atendimento.*}')}">
-					<div id="hasErrors" hidden="true"
-						th:text="${#fields.hasErrors('${atendimento.*}')}"></div>
+					<div id="hasErrors" hidden="true" th:text="${#fields.hasErrors('${atendimento.*}')}"></div>
 					<button type="button" class="close" data-dismiss="alert">
 						<span aria-hidden="true">&times;</span>
 					</button>
-					<th:block
-						th:each="detailedError : ${#fields.detailedErrors('${atendimento.*}')}">
+					<th:block th:each="detailedError : ${#fields.detailedErrors('${atendimento.*}')}">
 						<div>
 							<i class="fa fa-exclamation-circle"></i>&nbsp;[[${detailedError.message}]].
 						</div>
 					</th:block>
 				</div>
-				<div class="alert alert-success alert-dismissible fade show"
-					role="alert" th:if="${success}">
+				<div class="alert alert-success alert-dismissible fade show" role="alert" th:if="${success}">
 					<strong>Sucesso!</strong> <span th:text="${success}"></span>
-					<button type="button" class="close" data-dismiss="alert"
-						aria-label="Close">
+					<button type="button" class="close" data-dismiss="alert" aria-label="Close">
 						<span aria-hidden="true">&times;</span>
 					</button>
 				</div>
@@ -38,8 +32,7 @@
 						<ul th:case="false" class="breadcrumbs">
 							<li class="nav-home"><i class="flaticon-home"></i></li>
 							<li class="separator"><i class="flaticon-right-arrow"></i></li>
-							<li class="nav-item"><a
-								th:href="@{/recepcao/adicionar-cidadao}">Adicionar Cidadão</a></li>
+							<li class="nav-item"><a th:href="@{/recepcao/adicionar-cidadao}">Adicionar Cidadão</a></li>
 							<li class="separator"><i class="flaticon-right-arrow"></i></li>
 							<li class="nav-item"><a>Dados Complementares</a></li>
 						</ul>
@@ -57,8 +50,7 @@
 
 
 				<div class="card">
-					<form method="post" th:action="@{/atendimento/salvar}"
-						th:object="${atendimento}">
+					<form method="post" th:action="@{/atendimento/salvar}" th:object="${atendimento}">
 						<!-- 						<div th:switch="${edit}" class="card-header"> -->
 						<!-- 							<h4 th:case="true" class="card-title">Editar Atendimento</h4> -->
 						<!-- 							<h4 th:case="false" class="card-title">Adicionar a Lista de -->
@@ -104,11 +96,14 @@
 																th:value="${atendimento.cidadao.dataNascimento}"><i
 																class="fa fa-id-card"></i> <strong>CPF: </strong><span
 																data-mask="000.000.000-00"
-																th:text="${atendimento.cidadao.cpf}"></span> | <strong>CNS:
+																th:text="${atendimento.cidadao.cpf}"></span> |
+															<strong>CNS:
 															</strong> <span data-mask="000.0000.0000.0000"
-																th:text="${atendimento.cidadao.cns}"></span><br> <strong>SEXO:</strong>
+																th:text="${atendimento.cidadao.cns}"></span><br>
+															<strong>SEXO:</strong>
 															<span th:if="${atendimento.cidadao.sexo == 'M'}">
-																M</span><span th:if="${atendimento.cidadao.sexo == 'F'}">
+																M</span><span
+																th:if="${atendimento.cidadao.sexo == 'F'}">
 																F</span><i></i> | <strong>NASC.:</strong><span
 																th:text="${#temporals.format(atendimento.cidadao.dataNascimento,'dd/MM/yyyy')}"></span>
 															| <strong>IDADE:</strong><span id="idadeCidadao"></span>
@@ -119,12 +114,10 @@
 										</div>
 
 										<!-- Input responsável por guardar o Id do Atendimento -->
-										<input name="id" type="hidden" th:field="*{id}"
-											th:value="${atendimento.id}" />
+										<input name="id" type="hidden" th:field="*{id}" th:value="${atendimento.id}" />
 
 										<!-- Input responsável por guardar o Cidadão -->
-										<input name="" type="hidden" th:field="*{cidadao}"
-											th:value="*{cidadao.id}" />
+										<input name="" type="hidden" th:field="*{cidadao}" th:value="*{cidadao.id}" />
 
 										<!-- Input responsável por guardar a Data de Entrada do Atendimento -->
 										<input type="hidden" th:field="*{dataEntrada}"
@@ -162,10 +155,12 @@
 														<div class="row">
 															<div class="col-md-6">
 																<div class="form-group">
-																	<label for="nome">Profissional de Destino:</label><select
+																	<label for="nome">Profissional de
+																		Destino:</label><select
 																		th:field="*{profissionalDestino}"
 																		class="form-control form-control">
-																		<option th:each="profissional : ${profissionais}"
+																		<option
+																			th:each="profissional : ${profissionais}"
 																			th:value="${profissional.id}"
 																			th:text="${profissional.nome}"></option>
 																	</select>
@@ -176,8 +171,12 @@
 																	<label>Selecione o(s) serviço(s) para este
 																		atendimento:</label><br>
 																	<th:block th:each="tipoServico : ${tipoServicos}">
-																		<div class="custom-control custom-checkbox" th:if="${tipoServico.nome} != 'Inativo'">
-																			<input th:field="*{tipoServicos}" th:value="${tipoServico.id}" type="checkbox" class="custom-control-input"
+																		<div class="custom-control custom-checkbox"
+																			th:if="${tipoServico.nome} != 'Inativo'">
+																			<input th:field="*{tipoServicos}"
+																				th:value="${tipoServico.id}"
+																				type="checkbox"
+																				class="custom-control-input"
 																				th:id="${tipoServico.id}"> <label
 																				class="custom-control-label"
 																				th:for="${tipoServico.id}"
@@ -195,14 +194,14 @@
 								</div>
 							</div>
 						</div>
+						<!-- Botões de ação do Formulário-->
 						<div class="card-action">
-							<button id="btn-submit-guia-atendimento" type="submit"
-								class="btn btn-primary">Adicionar a Lista de
-								Atendimento</button>
-							<button id="btn-cancela-guia-antendimento" type="button"
-								class="btn btn-warning">Cancelar</button>
-							
+							<button type="submit" id="btn-submit-guia-atendimento" class="btn btn-primary">Adicionar a
+								Lista de Atendimentos</button>
+							<button type="button" id="btn-cancela-guia-antendimento"
+								class="btn btn-warning btn-border">Cancelar</button>
 						</div>
+						<!-- Fim dos Botões de ação do Formulário-->
 					</form>
 				</div>
 

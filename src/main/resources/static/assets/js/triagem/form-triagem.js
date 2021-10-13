@@ -6,7 +6,7 @@ $(document).ready(function() {
 	$("#card-edit-alergia").hide();
 	$("#card-nova-doenca").hide();
 	$("#card-edit-doenca").hide();
-	
+
 	//Função que aplica máscara aos inputs 
 	$("#sinaisVitais-pressaoArterial").keydown(function() {
 		var pressao = $("#sinaisVitais-pressaoArterial").val();
@@ -58,9 +58,16 @@ $(document).ready(function() {
 	//Chamada da Função
 	atualizaProcedimento();
 
+	verificaTriagem();
+
+	atualizaAntropometria()
+
 });
 
 //######### Funções do Formulário da Triagem ###########
+
+var idAtendimeto = $("#atendimento-id").val();
+var idProntuario = $("#id-prontuario").val();
 
 
 //Submit do Formulário Triagem
@@ -70,9 +77,11 @@ $("#form-triagem").submit(function(evt) {
 
 	var triagem = {};
 
+	triagem.id = $("#idTriagem").val();
 	triagem.motivo = tinymce.get("motivo").getContent();
 	triagem.inicioTriagem = $("#inicioTriagem").val();
 	triagem.classificacaoDeRisco = $("input[name='classificacaoDeRisco']:checked").val();
+	triagem['sinaisVitais'] = $("#idSinaisVitais").val();
 	triagem['sinaisVitais.pressaoArterial'] = $("#sinaisVitais-pressaoArterial").val();
 	triagem['sinaisVitais.temperaturaCorporal'] = $("#sinaisVitais-temperaturaCorporal").val();
 	triagem['sinaisVitais.frequenciaCardiaca'] = $("#sinaisVitais-frequenciaCardiaca").val();
@@ -80,7 +89,8 @@ $("#form-triagem").submit(function(evt) {
 	triagem['sinaisVitais.frequenciaRespiratoria'] = $("#sinaisVitais-frequenciaRespiratoria").val();
 	triagem['sinaisVitais.glicemiaCapilar'] = $("#sinaisVitais-glicemiaCapilar").val();
 	triagem['sinaisVitais.momentoColeta'] = $("#sinaisVitais-momentoColeta option:selected").val();
-	triagem['atendimento'] = $("#atendimento-id").val();
+
+	triagem['atendimento'] = idAtendimeto;
 
 	$.ajax({
 		url: "/triagem/salvar",
@@ -125,6 +135,8 @@ $("#form-triagem").submit(function(evt) {
 				onClosed: null,
 				icon_type: 'class',
 			});
+
+			verificaTriagem();
 		},
 
 		statusCode: {
@@ -227,10 +239,9 @@ $("#form-triagem").submit(function(evt) {
 
 //Funções atualizar medicamentos
 function atulizaMedicamentoUsoContinuo() {
-	var prontuarioId = $("#id-prontuario").val();
 	$("#uso-continuo-lista").empty();
 	$.ajax({
-		url: '/medicamento-continuo/medicamentos/' + prontuarioId,
+		url: '/medicamento-continuo/medicamentos/' + idProntuario,
 		method: 'GET',
 		success: function(data) {
 			if ($.isEmptyObject(data)) {
@@ -307,8 +318,8 @@ $("#submit-uso-medicamento").click(function(evt) {
 	usoMedicamento['medicamento.id'] = $("#id-medicamento").val();
 	usoMedicamento.nota = $("#nota-uso-medicamento").val();
 	usoMedicamento.usoContinuo = $("#usoContinuo").prop("checked");
-	usoMedicamento.idProntuario = $("#id-prontuario").val();
-	usoMedicamento.idAtendimento = $("#id-atendimento").val();
+	usoMedicamento.idProntuario = idProntuario;
+	usoMedicamento.idAtendimento = idAtendimeto;
 
 	$.ajax({
 		url: "/uso-medicamento/salvar",
@@ -410,14 +421,12 @@ $("#submit-uso-medicamento").click(function(evt) {
 
 //Funçao que adiciona Procedimentos automaticamente
 $("#sinaisVitais-pressaoArterial").change(function() {
-	var idAtendimento = $("#id-atendimento").val();
 	var tipoServico = "TRIAGEM";
 	var quantidade = 1;
-	submitProcedimento(idAtendimento, 301100039, tipoServico, quantidade);
+	submitProcedimento(idAtendimeto, 301100039, tipoServico, quantidade);
 })
 
 $("#sinaisVitais-glicemiaCapilar").change(function() {
-	var idAtendimento = $("#id-atendimento").val();
 	var tipoServico = "TRIAGEM";
 	var quantidade = 1;
 	submitProcedimento(idAtendimento, 214010015, tipoServico, quantidade);
@@ -432,11 +441,10 @@ $("#button-procedimento").click(function() {
 })
 
 $("#submit-procedimento").click(function() {
-	var idAtendimento = $("#id-atendimento").val();
 	var codigoProcedimento = $("#id-procedimento").val();
 	var tipoServico = "TRIAGEM";
 	var quantidade = $("#qtd-procedimento").val();
-	submitProcedimento(idAtendimento, codigoProcedimento, tipoServico, quantidade);
+	submitProcedimento(idAtendimeto, codigoProcedimento, tipoServico, quantidade);
 })
 
 //Fim da função
@@ -503,3 +511,38 @@ $("#altura").change(function() {
 	}
 });
 //Fim da função
+
+function verificaTriagem() {
+	$.ajax({
+		url: '/triagem/verificar/' + idAtendimeto,
+		method: 'get',
+		success: function(data) {
+			$("#idTriagem").val(data.id);
+			$("#idSinaisVitais").val(data.sinaisVitais.id);
+			$("#inicioTriagem").val(data.inicioTriagem);
+			tinymce.get('motivo').setContent(data.motivo);
+			$("#sinaisVitais-pressaoArterial").val(data.sinaisVitais.pressaoArterial);
+			$("#sinaisVitais-frequenciaRespiratoria").val(data.sinaisVitais.frequenciaRespiratoria);
+			$("#sinaisVitais-frequenciaCardiaca").val(data.sinaisVitais.frequenciaCardiaca);
+			$("#sinaisVitais-temperaturaCorporal").val(data.sinaisVitais.temperaturaCorporal);
+			$("#sinaisVitais-saturacaoOxigenio").val(data.sinaisVitais.saturacao);
+			$("#sinaisVitais-glicemiaCapilar").val(data.sinaisVitais.glicemiaCapilar);
+			$("#sinaisVitais-momentoColeta").find("option[value=" + data.sinaisVitais.momentoColeta + "]").attr("selected", true);
+			$("input:radio[name=classificacaoDeRisco][value= " + data.classificacaoDeRisco + " ]").attr('checked', true);
+			$("input:radio[name=classificacaoDeRisco]").attr('disabled', true);
+			$('#div-form-triagem').find('input, textarea, select').attr('disabled', true);
+			$("#card-action").empty().append("<button type = 'button' onclick='editarTriagem()' class='btn btn-secondary'> Editar triagem </button>");
+		},
+
+		statusCode: {
+			400: function() {
+				$("#card-action").empty().append("<button type='submit' class='btn btn-primary'> Salvar triagem</button>");
+			}
+		}
+	})
+}
+
+function editarTriagem() {
+	$('#div-form-triagem').find('input, textarea, select').attr('disabled', false);
+	$("#card-action").empty().append("<button type='submit' class='btn btn-primary'> Salvar triagem</button>");
+}

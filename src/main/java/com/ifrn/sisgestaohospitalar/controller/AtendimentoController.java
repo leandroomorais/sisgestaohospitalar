@@ -26,6 +26,7 @@ import com.ifrn.sisgestaohospitalar.enums.Status;
 import com.ifrn.sisgestaohospitalar.model.Atendimento;
 import com.ifrn.sisgestaohospitalar.model.Cidadao;
 import com.ifrn.sisgestaohospitalar.model.HistoricoStatus;
+import com.ifrn.sisgestaohospitalar.model.TipoServico;
 import com.ifrn.sisgestaohospitalar.repository.AtendimentoRepository;
 import com.ifrn.sisgestaohospitalar.repository.CidadaoRepository;
 import com.ifrn.sisgestaohospitalar.repository.ProfissionalRepository;
@@ -132,8 +133,8 @@ public class AtendimentoController {
 				"O Cidadão " + atendimento.getCidadao().getNome() + "foi adicionado a lista de atendimentos");
 		return new ModelAndView("redirect:/atendimento/listar");
 	}
-	
-	@PostMapping("/finalizar")
+
+	@PostMapping("/finalizar/triagem")
 	public ResponseEntity<?> finalizarAtendimento(@Valid AtendimentoDTO atendimentoDTO, BindingResult result,
 			Principal principal) {
 		Map<String, String> errors = new HashMap<>();
@@ -148,6 +149,16 @@ public class AtendimentoController {
 			Atendimento atendimento = optional.get();
 			atendimento.setTipoServicos(atendimentoDTO.getTipoServicos());
 			atendimento.setCondutaCidadao(atendimentoDTO.getCondutaCidadao());
+			atendimento.setProfissionalDestino(atendimentoDTO.getProfissionalDestino());
+			for (TipoServico tipoServico : atendimento.getTipoServicos()) {
+				if (tipoServico.getNome() != "Inativo") {
+					atendimento.setStatus(Status.AGUARDANDOATENDIMENTO);
+				}
+
+				if (tipoServico.getNome().equals("Inativo") && atendimento.getStatus() != Status.NAOAGUARDOU) {
+					atendimento.setStatus(Status.FINALIZADO);
+				}
+			}
 			atendimentoRepository.saveAndFlush(atendimento);
 			return ResponseEntity.ok().build();
 		}

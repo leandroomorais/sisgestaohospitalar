@@ -1,0 +1,133 @@
+<div id="div-form-triagem">
+	<form id="form-triagem" method="post" action="/triagem/salvar">
+		<input id="atendimento-id" type="hidden" th:value="${atendimento.id}" name="atendimento">
+		<input id="inicioTriagem" type="hidden" name="inicioTriagem" th:value="${triagem.inicioTriagem}">
+		<input id="idTriagem" type="hidden">
+		<div class="card">
+			<div class="card-header">
+				<div class="card-title">Motivos do Atendimento</div>
+			</div>
+			<div class="card-body">
+				<div class="row">
+					<div class="col-md-12 col-lg-12">
+						<div class="form-group">
+							<textarea class="form-control" name="motivo" id="motivo"></textarea>
+							<small id="motivo-small" class="form-text text-muted">Digite
+								na área de texto acima o(s) motivo(s) do
+								atendimento</small>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="card">
+			<div class="card-header">
+				<div class="card-title">Sinais vitais</div>
+			</div>
+			<div class="card-body">
+				<div class="row">
+					<div class="col-md-2">
+						<div class="form-group">
+							<label for="sinaisVitais-pressaoArterial">Pressão
+								Arterial </label><input type="text" name="sinaisVitais.pressaoArterial"
+								class="form-control" id="sinaisVitais-pressaoArterial" placeholder="___/__"> <small
+								id="pressaoArterial-small" class="form-text text-muted">mmHg</small>
+							<small id="sinaisVitais.pressaoArterial-error"></small>
+							<input type="hidden" id="idSinaisVitais">
+						</div>
+					</div>
+
+					<div class="col-md-2">
+						<div class="form-group">
+							<label for="sinaisVitais-frequenciaRespiratoria">Freq.
+								Respiratória</label> <input type="number" class="form-control"
+								id="sinaisVitais-frequenciaRespiratoria" name="sinaisVitais.frequenciaRespiratoria"
+								placeholder=""><small id="sinaisVitais-frequenciaRespitatoria-small"
+								class="form-text text-muted">rpm</small>
+							<small id="sinaisVitais-frequenciaRespitatoria-error"></small>
+						</div>
+					</div>
+
+					<div class="col-md-2">
+						<div class="form-group">
+							<label for="sinaisVitais-frequenciaCardiaca">Freq.
+								Cardíaca</label> <input type="number" class="form-control"
+								name="sinaisVitais.frequenciaCardiaca" id="sinaisVitais-frequenciaCardiaca"
+								placeholder="">
+							<small id="sinaisVitais-frequeciaCardiaca-small" class="form-text text-muted">bpm</small>
+							<small id="sinaisVitais-frequenciaCardiaca-error"></small>
+							<small id="sinaisVitais-frequenciaCardiaca-error"></small>
+						</div>
+					</div>
+
+					<div class="col-md-2">
+						<div class="form-group">
+							<label for="sinaisVitais-temperaturaCorporal">Temperatura</label>
+							<input type="text" class="form-control" id="sinaisVitais-temperaturaCorporal"
+								placeholder="00.0"> <small id="temperaturacorporal-small"
+								class="form-text text-muted">°C</small>
+							<small id="sinaisVitais-temperaturaCorporal-error"></small>
+						</div>
+					</div>
+
+					<div class="col-md-2">
+						<div class="form-group">
+							<label for="sinaisVitais-saturacaoOxigenio">Saturação
+								de O<sub>2</sub>
+							</label> <input type="number" class="form-control" name="sinaisVitais.saturacaoOxigenio"
+								id="sinaisVitais-saturacaoOxigenio" placeholder="">
+							<small id="sinaisVitais-saturacaoOxigenio-small" class="form-text text-muted">%</small>
+							<small id="sinaisVitais-temperaturaCorporal-error"></small>
+						</div>
+					</div>
+
+					<div class="col-md-3">
+						<div class="form-group">
+							<label for="sinaisVitais-glicemiaCapilar">Glicemia
+								Capilar</label> <input type="number" name="sinaisVitais.glicemiaCapilar"
+								class="form-control" id="sinaisVitais-glicemiaCapilar" placeholder="">
+							<small id="sinaisVitais-glicemiaCapilar-small" class="form-text text-muted">mg/dl</small>
+						</div>
+					</div>
+					<div class="col-md-4">
+						<div class="form-group">
+							<label for="sinaisVitais-momentoColeta">Momento
+								coleta</label> <select name="sinaisVitais.momentoColeta"
+								class="form-control form-control" id="sinaisVitais-momentoColeta">
+								<option th:each="momentoColeta : ${momentosColeta}" th:value="${momentoColeta}"
+									th:text="${momentoColeta.nome}">
+								</option>
+							</select> <small id="sinaisVitais-momentoColeta-small" class="form-text text-muted"></small>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="card">
+			<div class="card-header">
+				<div class="card-title">Classificação de Risco</div>
+			</div>
+			<div class="card-body">
+				<div class="row">
+					<div class="col-md-12 row">
+						<th:block th:each="classificacaoDeRisco : ${classificacoesRisco}">
+							<div id="classificacaoRadios" class="form-group col-md-2 col-lg-2">
+								<input type="radio" class="radio-class" th:id="${classificacaoDeRisco}"
+									name="classificacaoDeRisco" th:value="${classificacaoDeRisco}"><label
+									th:classappend="|${classificacaoDeRisco.nome == 'VERMELHO' ? 'label-input-red' : ''} ${classificacaoDeRisco.nome == 'AMARELO' ? 'label-input-yellow' : ''}
+										${classificacaoDeRisco.nome == 'AZUL' ? 'label-input-blue' : ''} ${classificacaoDeRisco.nome == 'LARANJA' ? 'label-input-orange' : ''} ${classificacaoDeRisco.nome == 'VERDE' ? 'label-input-green' : ''}|"
+									th:for="${classificacaoDeRisco}"><span class="text-light"
+										th:text="${classificacaoDeRisco.nome}"></span></label>
+							</div>
+						</th:block>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div id="card-action" class="card-action">
+
+		</div>
+	</form>
+</div>
