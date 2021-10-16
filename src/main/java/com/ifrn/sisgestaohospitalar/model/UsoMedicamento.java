@@ -89,13 +89,6 @@ public class UsoMedicamento {
 	public void setUsoContinuo(boolean usoContinuo) {
 		this.usoContinuo = usoContinuo;
 	}
-
-	@Override
-	public String toString() {
-		return "UsoMedicamento [id=" + id + ", medicamento=" + medicamento + ", nota=" + nota + ", dataCadastro="
-				+ dataCadastro + ", usoContinuo=" + usoContinuo + ", idAtendimento=" + idAtendimento + ", idProntuario="
-				+ idProntuario + "]";
-	}
 	
 	
 }

@@ -62,6 +62,15 @@ public class AtendimentoController {
 	@Autowired
 	private UsuarioRepository usuarioRepository;
 
+	@GetMapping("/{id}")
+	public ResponseEntity<?> atendimento(@PathVariable("id") Long id) {
+		Optional<Atendimento> optional = atendimentoRepository.findById(id);
+		if (optional.isPresent()) {
+			return ResponseEntity.ok().body(optional.get());
+		}
+		return ResponseEntity.badRequest().build();
+	}
+
 	@GetMapping("/tabela")
 	public String mostrarTabela() {
 		return "";

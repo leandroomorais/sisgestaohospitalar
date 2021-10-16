@@ -74,15 +74,13 @@ public class DiagnosticoController {
 		}
 		return ResponseEntity.badRequest().build();
 	}
-	
-	@DeleteMapping("/{idDiagnostico}/{idProntuario}")
-	public ResponseEntity<?> excluir(@PathVariable("idDiagnostico") Long idDiagnostico,@PathVariable("idProntuario") Long idProntuario, Principal principal) {
-		Optional<Diagnostico> optionalDiagnostico = diagnosticoRepository.findById(idDiagnostico);
-		Optional<Prontuario> optionalProntuario = prontuarioRepository.findById(idProntuario);
-		if (optionalDiagnostico.isPresent() && optionalProntuario.isPresent()) {
-			Prontuario prontuario = optionalProntuario.get();
-			Diagnostico diagnostico = optionalDiagnostico.get();
 
+	@DeleteMapping("/{idDiagnostico}")
+	public ResponseEntity<?> excluir(@PathVariable("idDiagnostico") Long idDiagnostico, Principal principal) {
+		Optional<Diagnostico> optionalDiagnostico = diagnosticoRepository.findById(idDiagnostico);
+		if (optionalDiagnostico.isPresent()) {
+			Diagnostico diagnostico = optionalDiagnostico.get();
+			Prontuario prontuario = prontuarioRepository.getOne(diagnostico.getProntuario().getId());
 			if (!diagnostico.getProfissional().getCpf().equals(principal.getName())) {
 				String msg = "Diagnóstico cadastrado por: " + diagnostico.getProfissional().getNome()
 						+ " . Não é possível excluir";

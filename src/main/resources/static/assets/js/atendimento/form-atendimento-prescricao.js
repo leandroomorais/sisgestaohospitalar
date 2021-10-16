@@ -139,6 +139,7 @@ function limpaPrescricaoDto() {
 $("#form-confirma-administracao").submit(function(evt) {
 	evt.preventDefault();
 	var registroAdministracao = {};
+	registroAdministracao.nota = tinymce.get("nota-administracao").getContent();
 	registroAdministracao.administracaoRealizada = $("#administracaoRealizada").prop("checked");
 	registroAdministracao.idPrescricao = $("#administracaoRealizada").attr("data-value");
 	$.ajax({
@@ -684,81 +685,61 @@ function excluirPrescricao(element) {
 	var idProntuario = $("#id-prontuario").val();
 
 	swal({
-		title: 'Você tem certeza disso?',
+		title: 'Tem certeza que deseja excluir este CID?',
 		text: "Você não poderá reverter esta ação!",
 		icon: 'warning',
 		buttons: {
-			confirm: {
-				text: 'Sim, exclua!',
-				className: 'btn btn-success'
-			},
 			cancel: {
-				text: 'Cancelar',
 				visible: true,
-				className: 'btn btn-danger'
+				text: 'Não, cancelar!',
+				className: 'btn btn-success btn-border'
+			},
+			confirm: {
+				text: 'Sim, excluir!',
+				className: 'btn btn-success'
 			}
 		}
-	}).then((Delete) => {
-		if (Delete) {
+	}).then((willDelete) => {
+		if (willDelete) {
+			var idAtestado = $(element).attr("data-value");
 			$.ajax({
 				url: '/prescricao/excluir/' + idProntuario + "/" + idPrescricao,
 				method: 'delete',
 				success: function() {
-					swal({
-						title: 'Sucesso!',
-						text: 'A prescrição foi excluida.',
-						icon: 'success',
+					swal("Sucesso! A Prescrição foi excluida!", {
+						icon: "success",
 						buttons: {
 							confirm: {
 								className: 'btn btn-success'
 							}
 						}
 					});
-					atualizaPrescricoes();
+					atualizaAtestados();
 				},
-
 				statusCode: {
-					403: function() {
-						$.notify({
-							// options
-							icon: 'flaticon-exclamation',
-							title: 'ERRO',
-							message: 'Não é possível excluir esta prescrição, pois já existe um registro de administração cadastrado ou o atendimento já foi finalizado',
-							target: '_blank'
-						}, {
-							// settings
-							element: 'body',
-							position: null,
-							type: "danger",
-							allow_dismiss: true,
-							newest_on_top: false,
-							showProgressbar: false,
-							placement: {
-								from: "top",
-								align: "right"
+					403: function(xhr) {
+						swal("Não é possível excluir esta prescrição pois ja existe um Registro de Administração salvo", {
+							icon: "error",
+							buttons: {
+								confirm: {
+									className: 'btn btn-danger'
+								}
 							},
-							offset: 20,
-							spacing: 10,
-							z_index: 1031,
-							delay: 5000,
-							timer: 1000,
-							url_target: '_blank',
-							mouse_over: null,
-							animate: {
-								enter: 'animated fadeInDown',
-								exit: 'animated fadeOutUp'
-							},
-							onShow: null,
-							onShown: null,
-							onClose: null,
-							onClosed: null,
-							icon_type: 'class',
 						});
 					}
-				},
+				}
 			})
+		} else {
+			swal("Certo, não iremos excluir!", {
+				buttons: {
+					confirm: {
+						className: 'btn btn-success'
+					}
+				}
+			});
 		}
 	});
+
 };
 
 function detalharPrescricao(id) {
@@ -955,6 +936,11 @@ function dataTableRegistro(id) {
 			{
 				title: 'DATA',
 				data: 'dataAdministracao',
+				mRender: function(data) {
+					var dataAdministracao = new Date(data); //cria um objeto de data com o valor inserido no input
+					dataAdministracao = dataAdministracao.toLocaleDateString('pt-BR');
+					return dataAdministracao;
+				}
 			},
 			{
 				title: 'PROFISSIONAL',
@@ -963,14 +949,6 @@ function dataTableRegistro(id) {
 			{
 				title: 'NOTA',
 				data: 'nota',
-				mRender: function(data) {
-					if (data != null) {
-						return "<div>" + data + "</div>";
-					} else {
-						return "<small class='text-muted'> Nenhuma nota resgistrada</small>";
-					}
-
-				}
 			}
 		]
 

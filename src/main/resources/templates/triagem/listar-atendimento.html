@@ -1,36 +1,29 @@
 <!DOCTYPE html>
-<html layout:decorate="~{/layouts/layout-modulos}" lang="pt"
-	xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:th="http://www.thymeleaf.org"
-	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity"
+<html layout:decorate="~{/layouts/layout-modulos}" lang="pt" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity"
 	xmlns:layout="http://ultraq.net.nz/thymeleaf/layout">
 
 <body>
 	<div class="main-panel" layout:fragment="main-panel">
 		<div class="container">
 			<div class="page-inner">
-				<div class="alert alert-success alert-dismissible fade show"
-					role="alert" th:if="${success}">
+				<div class="alert alert-success alert-dismissible fade show" role="alert" th:if="${success}">
 					<strong>Sucesso!</strong> <span th:text="${success}"></span>
-					<button type="button" class="close" data-dismiss="alert"
-						aria-label="Close">
+					<button type="button" class="close" data-dismiss="alert" aria-label="Close">
 						<span aria-hidden="true">&times;</span>
 					</button>
 				</div>
-				<div class="alert alert-danger alert-dismissible fade show"
-					role="alert" th:if="${erro}">
+				<div class="alert alert-danger alert-dismissible fade show" role="alert" th:if="${erro}">
 					<strong>Erro!</strong> <span th:text="${erro}"></span>
-					<button type="button" class="close" data-dismiss="alert"
-						aria-label="Close">
+					<button type="button" class="close" data-dismiss="alert" aria-label="Close">
 						<span aria-hidden="true">&times;</span>
 					</button>
 				</div>
 				<div class="page-header">
-					<h4 class="page-title">Recepção</h4>
+					<h4 class="page-title">Triagem</h4>
 					<ul class="breadcrumbs">
-						<li class="nav-home"><a
-							th:href="@{/recepcao/adicionar-cidadao}"><i
-								class="flaticon-home"></i></a></li>
+						<li class="nav-home"><a th:href="@{/recepcao/adicionar-cidadao}"><i
+									class="flaticon-home"></i></a></li>
 						<li class="separator"><i class="flaticon-right-arrow"></i></li>
 						<li class="nav-item"><a th:href="@{/recepcao/listar-status}">Lista
 								de Atendimentos</a></li>
@@ -46,44 +39,41 @@
 							</div>
 							<div class="card-body">
 								<div class="card-body text-right">
-									<a id="btn-atualizar-tabela" class="btn btn-light btn-sm"><i
-										class="fa fa-sync"></i> Atualizar dados</a>
+									<a id="btn-atualizar-tabela" class="btn btn-light btn-sm"><i class="fa fa-sync"></i>
+										Atualizar dados</a>
 								</div>
 
 								<div class="table-responsive">
-									<table id="table-server"
-										class="display table table-hover dataTable" role="grid"
+									<table id="table-server" class="display table table-hover dataTable" role="grid"
 										aria-describedby="basic-datatables_info">
 										<thead>
 											<tr role="row">
-												<th class="text-center" tabindex="0"
-													aria-controls="basic-datatables" rowspan="1" colspan="1"
-													aria-sort="ascending"
+												<th class="text-center" tabindex="0" aria-controls="basic-datatables"
+													rowspan="1" colspan="1" aria-sort="ascending"
 													aria-label="Name: activate to sort column descending"
 													style="width: 10px;"></th>
-												<th class="text-center" tabindex="0"
-													aria-controls="basic-datatables" rowspan="1" colspan="1"
-													aria-sort="ascending"
+												<th class="text-center" tabindex="0" aria-controls="basic-datatables"
+													rowspan="1" colspan="1" aria-sort="ascending"
 													aria-label="Name: activate to sort column descending"
 													style="width: 10px;"></th>
-												<th class="text-center" tabindex="0"
-													aria-controls="basic-datatables" rowspan="1" colspan="1"
+												<th class="text-center" tabindex="0" aria-controls="basic-datatables"
+													rowspan="1" colspan="1"
 													aria-label="Position: activate to sort column ascending"
 													style="width: 217.688px;">NOME</th>
-												<th class="text-center" tabindex="0"
-													aria-controls="basic-datatables" rowspan="1" colspan="1"
+												<th class="text-center" tabindex="0" aria-controls="basic-datatables"
+													rowspan="1" colspan="1"
 													aria-label="Office: activate to sort column ascending"
 													style="width: 150.516px;">PROF. DE DESTINO</th>
-												<th class="text-center" tabindex="0"
-													aria-controls="basic-datatables" rowspan="1" colspan="1"
+												<th class="text-center" tabindex="0" aria-controls="basic-datatables"
+													rowspan="1" colspan="1"
 													aria-label="Age: activate to sort column ascending"
 													style="width: 31.1719px;">TIPO DE SERVIÇO</th>
-												<th class="text-center" tabindex="0"
-													aria-controls="basic-datatables" rowspan="1" colspan="1"
+												<th class="text-center" tabindex="0" aria-controls="basic-datatables"
+													rowspan="1" colspan="1"
 													aria-label="Start date: activate to sort column ascending"
 													style="width: 81.2969px;">STATUS ATENDIMENTO</th>
-												<th class="text-center" tabindex="0"
-													aria-controls="basic-datatables" rowspan="1" colspan="1"
+												<th class="text-center" tabindex="0" aria-controls="basic-datatables"
+													rowspan="1" colspan="1"
 													aria-label="Salary: activate to sort column ascending"
 													style="width: 155px;">AÇÕES</th>
 											</tr>
@@ -106,7 +96,7 @@
 								<strong>Legenda - Status Atendimento:</strong><br>
 								<th:block th:each="status: ${statusAtendimentos}">
 									&nbsp;<span> <i class="fa fa-circle"
-										th:classappend="|${status.descricao == 'Aguardando Atendimento' ? 'aguardando-atendimento' : ''} ${status.descricao == 'Em Atendimento' ? 'em-atendimento' : ''}
+											th:classappend="|${status.descricao == 'Aguardando Atendimento' ? 'aguardando-atendimento' : ''} ${status.descricao == 'Em Atendimento' ? 'em-atendimento' : ''}
 										${status.descricao == 'Paciente em observação' ? 'observacao' : ''} ${status.descricao == 'Não aguardou atendimento' ? 'nao-aguardou-atendimento' : ''} ${status.descricao == 'Finalizado' ? '' : ''}|"></i>
 									</span>
 									<span th:text="${status.descricao}"></span>

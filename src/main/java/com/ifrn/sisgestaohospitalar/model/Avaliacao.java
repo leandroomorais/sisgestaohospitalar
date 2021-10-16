@@ -1,5 +1,6 @@
 package com.ifrn.sisgestaohospitalar.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -15,7 +16,7 @@ public class Avaliacao {
 
 	private String notas;
 
-	@OneToOne
+	@OneToOne(cascade = CascadeType.ALL)
 	private SinaisVitais sinaisVitais;
 
 	public Long getId() {

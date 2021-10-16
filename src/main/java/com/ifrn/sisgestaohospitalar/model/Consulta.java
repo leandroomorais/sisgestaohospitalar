@@ -11,6 +11,8 @@ import javax.persistence.OneToOne;
 import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Consulta {
 	
@@ -25,6 +27,7 @@ public class Consulta {
 	@OneToOne(cascade = CascadeType.ALL)
 	private Avaliacao avaliacao;
 	
+	@JsonIgnore
 	@OneToOne
 	private Atendimento atendimento;
 	

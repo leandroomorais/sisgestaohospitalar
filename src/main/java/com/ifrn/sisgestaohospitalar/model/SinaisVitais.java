@@ -120,13 +120,4 @@ public class SinaisVitais {
 		this.ultimaAtualizacao = ultimaAtualizacao;
 	}
 
-	@Override
-	public String toString() {
-		return "SinaisVitais [id=" + id + ", pressaoArterial=" + pressaoArterial + ", temperaturaCorporal="
-				+ temperaturaCorporal + ", frequenciaCardiaca=" + frequenciaCardiaca + ", saturacao=" + saturacao
-				+ ", frequenciaRespiratoria=" + frequenciaRespiratoria + ", glicemiaCapilar=" + glicemiaCapilar
-				+ ", momentoColeta=" + momentoColeta + ", ultimaAtualizacao=" + ultimaAtualizacao + ", triagem="
-				+ triagem + "]";
-	}
-
 }

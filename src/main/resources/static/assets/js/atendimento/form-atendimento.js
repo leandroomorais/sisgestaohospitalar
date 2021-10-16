@@ -1,14 +1,16 @@
+var idAtendimento;
+var idProntuario;
 //JS Form Atendimento
 $(document).ready(function() {
+
+	idAtendimento = $("#id-atendimento").val();
+	idProntuario = $("#id-prontuario").val();
 
 	$("#card-nova-prescricao").hide();
 	$("#card-edit-prescricao").hide();
 	$("#card-list-registros-administracao").hide();
 	$("#card-novo-registro-administracao").hide();
-	$("#card-novo-exame").hide();
-	//$("#card-list-exames").hide();
 	$("#card-novo-atestado").hide();
-
 
 	//Função que inicia o TinyMCE
 	tinymce.init({
@@ -31,11 +33,14 @@ $(document).ready(function() {
 
 	atualizaDiagnostico();
 	atualizaPrescricoes();
-
-	atualizaProcedimentoExame();
-	atualizaListaExame();
-
 	atualizaAtestados();
+	//Chamada da função 
+	atulizaMedicamentoUsoContinuo();
+
+	//Chamada da Função
+	atulizaMedicamentoEmUso();
+
+	cardInfoCidadao(idAtendimento);
 
 });
 
@@ -44,7 +49,7 @@ $("#submit-consulta").click(function() {
 
 	consulta.historiaClinica = tinymce.get("historia-clinica").getContent();
 	consulta['avaliacao.notas'] = tinymce.get("avaliacao").getContent();
-	consulta['atendimento'] = $("#id-atendimento").val();
+	consulta['atendimento'] = idAtendimento;
 	consulta['avaliacao.sinaisVitais.pressaoArterial'] = $("#sinaisVitais-pressaoArterial").val();
 	consulta['avaliacao.sinaisVitais.temperaturaCorporal'] = $("#sinaisVitais-temperaturaCorporal").val();
 	consulta['avaliacao.sinaisVitais.frequenciaCardiaca'] = $("#sinaisVitais-frequenciaCardiaca").val();
@@ -196,8 +201,8 @@ $("#submit-consulta").click(function() {
 
 $("#submit-diagnostico").click(function() {
 	var diagnostico = {};
-	diagnostico['atendimento'] = $("#id-atendimento").val();
-	diagnostico['prontuario'] = $("#id-prontuario").val();
+	diagnostico['atendimento'] = idAtendimento;
+	diagnostico['prontuario'] = idProntuario;
 	diagnostico['cid'] = $("#id-cid").val();
 	diagnostico.nota = $("#nota").val();
 
@@ -308,14 +313,13 @@ $("#diagnostico-cid").autocomplete({
 
 //Inicio da funcao atualizar Diagnósticos
 function atualizaDiagnostico() {
-	var atendimentoId = $("#id-atendimento").val();
 	$("#table-diagnosticos").DataTable({
 		responsive: true,
 		paging: false,
 		searching: false,
 		ordering: false,
 		ajax: {
-			url: '/diagnostico/listar/atendimento/' + atendimentoId,
+			url: '/diagnostico/listar/atendimento/' + idAtendimento,
 			dataSrc: ''
 		},
 		columns: [
@@ -352,17 +356,59 @@ function limpaInputsDiagnostico() {
 
 function excluirDiagnostico(element) {
 	var idDiagnostico = $(element).attr("data-value");
-	var idProntuario = $("#id-prontuario").val();
-	$.ajax({
-		url: '/diagnostico/' + idDiagnostico + "/" + idProntuario,
-		method: 'delete',
-		success: function() {
-			$("#table-diagnosticos").DataTable().ajax.reload();
-			alert("Excluido");
-
-		},
-		error: function() {
-			alert("Não foi possivel excluir");
+	swal({
+		title: 'Tem certeza que deseja excluir este CID?',
+		text: "Você não poderá reverter esta ação!",
+		icon: 'warning',
+		buttons: {
+			cancel: {
+				visible: true,
+				text: 'Não, cancelar!',
+				className: 'btn btn-success btn-border'
+			},
+			confirm: {
+				text: 'Sim, excluir!',
+				className: 'btn btn-success'
+			}
 		}
-	})
+	}).then((willDelete) => {
+		if (willDelete) {
+			$.ajax({
+				url: '/diagnostico/' + idDiagnostico,
+				method: 'delete',
+				success: function() {
+					$("#table-diagnosticos").DataTable().ajax.reload();
+					swal("Sucesso! O CID foi excluido!", {
+						icon: "success",
+						buttons: {
+							confirm: {
+								className: 'btn btn-success'
+							}
+						}
+					});
+					atualizaCidAtestado();
+				},
+				statusCode: {
+					403: function(xhr) {
+						swal("Houve um erro!", xrh.reponseText, {
+							icon: "error",
+							buttons: {
+								confirm: {
+									className: 'btn btn-danger'
+								}
+							},
+						});
+					}
+				}
+			})
+		} else {
+			swal("Certo, não iremos excluir!", {
+				buttons: {
+					confirm: {
+						className: 'btn btn-success'
+					}
+				}
+			});
+		}
+	});
 }

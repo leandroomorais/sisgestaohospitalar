@@ -1,0 +1,50 @@
+<div class="card">
+	<div class="card-header">
+		<div class="card-title">Resumo do Atendimento
+		</div>
+	</div>
+	<div class="card-body">
+		<div th:if="${atendimento.triagem != null}">
+			<div class="col-md-12">
+				<h5 class="text-uppercase fw-bold mb-1"> CLASSIFICAÇÃO DE RISCO: <a
+						th:classappend="|${atendimento.triagem.classificacaoDeRisco == 'VERMELHO' ? 'red' : ''} ${atendimento.triagem.classificacaoDeRisco == 'AMARELO' ? 'yellow' : ''}
+										${atendimento.triagem.classificacaoDeRisco == 'AZUL' ? 'blue' : ''} ${atendimento.triagem.classificacaoDeRisco == 'LARANJA' ? 'orange' : ''} ${atendimento.triagem.classificacaoDeRisco == 'VERDE' ? 'green' : ''}|"
+						th:text="${atendimento.triagem.classificacaoDeRisco}" class="text-uppercase pl-3"> </a></h5>
+				<div class="separator-solid"></div>
+				<strong> MOTIVOS DO ATENDIMENTO: </strong><br>
+				<div class="card-sub">
+					[(${atendimento.triagem.motivo})]
+				</div>
+				<div class="separator-solid"></div>
+				<strong> SINAIS VITAIS: </strong><br>
+				<div class="card-sub">
+					<strong th:if="${atendimento.triagem.sinaisVitais.pressaoArterial != null}">Pressão Arterial: <span
+							class="h4 text-info" th:text="${atendimento.triagem.sinaisVitais.pressaoArterial}">
+						</span><span class="h4 text-info"> mmHg</span></strong><br>
+					<strong th:if="${atendimento.triagem.sinaisVitais.glicemiaCapilar != null}">Glicemia capilar: <span
+							class="h4 text-info" th:text="${atendimento.triagem.sinaisVitais.glicemiaCapilar}">
+						</span> <span class="h4 text-info">mg/dl -</span> <span class="h4 text-info"
+							th:text="${atendimento.triagem.sinaisVitais.momentoColeta.nome}"></span></strong><br>
+					<strong th:if="${atendimento.triagem.sinaisVitais.temperaturaCorporal != 0}">Temperatura
+						Corporal:
+						<span class="h4 text-info" th:text="${atendimento.triagem.sinaisVitais.temperaturaCorporal}">
+						</span> <span class="h4 text-info">ºC</span></strong><br>
+					<strong th:if="${atendimento.triagem.sinaisVitais.frequenciaCardiaca != 0}">Frequencia Cardíaca:
+						<span class="h4 text-info" th:text="${atendimento.triagem.sinaisVitais.frequenciaCardiaca}">
+						</span> <span class="h4 text-info">bpm</span></strong><br>
+					<strong th:if="${atendimento.triagem.sinaisVitais.saturacao != 0}">Saturação:
+						<span class="h4 text-info" th:text="${atendimento.triagem.sinaisVitais.saturacao}">
+						</span> <span class="h4 text-info">%</span></strong><br>
+				</div>
+				<div class="text-right"><strong>Profissional Responsável:
+						<span class="text-muted" th:text="${atendimento.triagem.profissional.nome}">
+						</span></strong><br> em <span
+						th:text="${#temporals.format(atendimento.triagem.fimTriagem,'dd/MM/yyyy - hh:mm:ss')}"
+						class="text-muted"></span></div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div th:replace="fragments/triagem/card-medicamento">
+</div>

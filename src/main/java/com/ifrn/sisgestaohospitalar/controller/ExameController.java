@@ -20,11 +20,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.ifrn.sisgestaohospitalar.model.Atendimento;
 import com.ifrn.sisgestaohospitalar.model.Exame;
 import com.ifrn.sisgestaohospitalar.model.Procedimento;
 import com.ifrn.sisgestaohospitalar.model.Prontuario;
-import com.ifrn.sisgestaohospitalar.repository.AtendimentoRepository;
 import com.ifrn.sisgestaohospitalar.repository.ExameRepository;
 import com.ifrn.sisgestaohospitalar.repository.ProcedimentoRepository;
 import com.ifrn.sisgestaohospitalar.repository.ProfissionalRepository;
@@ -41,12 +39,10 @@ public class ExameController {
 	@Autowired
 	private ProntuarioRepository prontuarioRepository;
 	@Autowired
-	private AtendimentoRepository atendimentoRepository;
-	@Autowired
 	private ProcedimentoRepository procedimentoRepository;
-	
+
 	List<Procedimento> procedimentos = new ArrayList<Procedimento>();
-	
+
 	@PostMapping("/")
 	public ResponseEntity<?> exame(@Valid Exame exame, BindingResult result, Principal principal) {
 		System.out.println("chegou aqui -------------------------------");
@@ -72,9 +68,10 @@ public class ExameController {
 
 		return ResponseEntity.badRequest().build();
 	}
-	
+
 	@PostMapping("/procedimentos/")
-	public ResponseEntity<?> procedimentosexame(@Valid Procedimento procedimento, BindingResult result, Principal principal) {
+	public ResponseEntity<?> procedimentosexame(@Valid Procedimento procedimento, BindingResult result,
+			Principal principal) {
 		System.out.println("chegou aqui -------------------------------");
 		Map<String, String> errors = new HashMap<>();
 		if (result.hasErrors()) {
@@ -92,48 +89,49 @@ public class ExameController {
 
 		return ResponseEntity.badRequest().build();
 	}
-	
+
 	@GetMapping("/listarprocedimentos/")
 	public ResponseEntity<?> listarprocedimentosexame() {
 		System.out.println("aqui");
-		//if (!procedimentos.isEmpty()) {
-			//System.out.println("aqui no if"); 
-			return ResponseEntity.ok().body(procedimentos);
-			
-		//}
-		//System.out.println("aqui fora do if"); 
-		//return ResponseEntity.badRequest().build();
-		
+		// if (!procedimentos.isEmpty()) {
+		// System.out.println("aqui no if");
+		return ResponseEntity.ok().body(procedimentos);
+
+		// }
+		// System.out.println("aqui fora do if");
+		// return ResponseEntity.badRequest().build();
+
 	}
-	
+
 	@GetMapping("/excluirprocedimentos/{idProcedimentoExame}")
 	public ResponseEntity<?> excluirprocedimentosexame(@PathVariable("idProcedimentoExame") Long id) {
-		for(Procedimento proc : procedimentos) {
-			if(proc.getCodigo().equals(id)) {
+		for (Procedimento proc : procedimentos) {
+			if (proc.getCodigo().equals(id)) {
 				procedimentos.remove(proc);
 				return ResponseEntity.ok().body(procedimentos);
-			}else {	}
+			} else {
+			}
 		}
 		return ResponseEntity.badRequest().build();
 	}
-	
+
 	@GetMapping("/listar/atendimento/{idAtendimento}")
 	public ResponseEntity<?> exames(@PathVariable("idAtendimento") Long id) {
-		//Atendimento atendimento = atendimentoRepository.getOne(id);
-		System.out.println("aqui"); 
-		//if (atendimento != null) {
-			System.out.println("aqui no if"); 
-			List<Exame> exames = exameRepository.findAll();
-			for(Exame e: exames) {
-				System.out.println("aqui no if"+ e.getNomeexame()); 
-			}
-			return ResponseEntity.ok().body(exames);
-		//}
-		//System.out.println("aqui fora if"); 
-		//return ResponseEntity.badRequest().build();
+		// Atendimento atendimento = atendimentoRepository.getOne(id);
+		System.out.println("aqui");
+		// if (atendimento != null) {
+		System.out.println("aqui no if");
+		List<Exame> exames = exameRepository.findAll();
+		for (Exame e : exames) {
+			System.out.println("aqui no if" + e.getNomeexame());
+		}
+		return ResponseEntity.ok().body(exames);
+		// }
+		// System.out.println("aqui fora if");
+		// return ResponseEntity.badRequest().build();
 
 	}
-	
+
 	@GetMapping("/{id}")
 	public ResponseEntity<?> getExame(@PathVariable("id") Long id) {
 		Optional<Exame> optional = exameRepository.findById(id);
