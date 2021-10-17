@@ -1,3 +1,17 @@
+$(document).ready(function(){
+    try {
+        const element = $('.nav-link, .active, .show')
+        if (element[10]){
+            const tag = element[10]
+            const attrs = tag.attributes
+            showTabs(attrs, tag, 'border-tab')
+        }
+    } catch (error) {
+        
+    }
+})
+
+
 $('.nav-link, .active, .show').click(function () {
     const attrs = $(this)[0].attributes;
     showTabs(attrs, this, 'border-tab');
