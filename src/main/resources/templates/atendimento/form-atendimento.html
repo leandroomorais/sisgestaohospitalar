@@ -31,7 +31,7 @@
 														<h5 class='text-uppercase fw-bold mb-1'>FRANCISCO LEANDRO DE
 															MORAIS PINTO</h5><i class='fa fa-id-card'
 															aria-hidden='true'></i><strong> CPF:
-														</strong><span data-mask='000.000.000-00'>098.143.544-06</span>
+														</strong><span data-mask='000.000.000-00' id="cpfCidadao">098.143.544-06</span>
 														| <strong> CNS:
 														</strong><span
 															data-mask='000.0000.0000.0000'>700.4020.9350.1644</span><br><strong>NASC.
@@ -421,6 +421,8 @@
 
 
 	<th:block layout:fragment="my-js-files">
+		<script th:src="@{/assets/js/libs/lib-view.js}"></script>
+		<script th:src="@{/assets/js/libs/lib-utils.js}"></script>
 		<script th:src="@{/assets/pdf/jsPDF/jsPdf.js}"></script>
 		<script th:src="@{/assets/pdf/jsPDF/jsPdfTable.js}"></script>
 		<script th:src="@{/assets/pdf/lib/util/Line.js}"></script>
@@ -429,6 +431,7 @@
 		<script th:src="@{/assets/pdf/lib/util/PDFUtil.js}"></script>
 		<script th:src="@{/assets/pdf/lib/controller/PDF.js}"></script>
 		<script th:src="@{/assets/js/historico-cidadao.js}"></script>
+		<script th:src="@{/assets/js/procedimentos-atendimentoMedico.js}"></script>
 		<script th:src="@{/assets/js/historico-pdf.js}"></script>
 		<script type="text/javascript" th:inline="javascript"
 			th:src="@{/assets/js/atendimento/form-atendimento.js}"></script>

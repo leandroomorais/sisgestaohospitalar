@@ -39,47 +39,47 @@ $("#diagnosticos").click(function () {
     if (avaliacoes.length > 0){
         const len = avaliacoes.length;
         $.each(avaliacoes, function (pos, object) {
-            const row = createElement('div', father, [{key: 'class', value: 'row'}], '');
+            const row = createElement('div', father, {class: 'row'}, '');
 
             const {atendimentoProfissional, ciap, cid10} = object;
             const {dataFim, dataInicio} = atendimentoProfissional;
             const {dsCiap, codicoCiap, sexo, codCid10Encaminhamento} = ciap;
 
-            createElement("div", row, [{key: 'class', value: 'col-md-4'}],
+            createElement("div", row, {class: 'col-md-4'},
                 `<strong>Diagnóstico: </strong><p>${dsCiap}</p>`)
-            createElement('div', row, [{key: 'class', value: 'col-md-4'}],
+            createElement('div', row, {class: 'col-md-4'},
                 `<strong>Sexo: </strong><p>${sexo}</p>`)
-            createElement('div', row, [{key: 'class', value: 'col-md-4'}],
+            createElement('div', row, {class: 'col-md-4'},
                 `<strong>Código CIAP: </strong><p>${codicoCiap}</p>`)
-            createElement('div', row, [{key: 'class', value: 'col-md-4'}],
+            createElement('div', row, {class: 'col-md-4'},
                 `<strong>Código Cid10 encaminhamento: </strong><p>${codCid10Encaminhamento}</p>`)
 
             const dateFimForm = new Date(dataFim);
             const dateInicioForm = new Date(dataInicio)
-            createElement('div', row, [{key: 'class', value: 'col-md-4'}],
+            createElement('div', row, {class: 'col-md-4'},
                 `<strong>Data inicial do Atendimento: </strong><p>${formDateTime(dateInicioForm)}</p>`)
 
-            createElement('div', row, [{key: 'class', value: 'col-md-4'}],
+            createElement('div', row, {class: 'col-md-4'},
                 `<strong>Data final do Atendimento: </strong><p>${formDateTime(dateFimForm)}</p>`)
 
             if (cid10 != null){
                 const {nuCid, noCid10} = cid10;
-                createElement('div', row, [{key: 'class', value: 'col-md-4'}],
+                createElement('div', row, {class: 'col-md-4'},
                     `<strong>Nome Cid10: </strong><p>${noCid10}</p>`)
 
-                createElement('div', row, [{key: 'class', value: 'col-md-4'}],
+                createElement('div', row, {class: 'col-md-4'},
                     `<strong>Número Cid10: </strong><p>${nuCid}</p>`)
 
-                createElement('div', row, [{key: 'class', value: 'col-md-4'}],
+                createElement('div', row, {class: 'col-md-4'},
                     `<strong>Sexo Cid10: </strong><p>${cid10.sexo}</p>`)
             }
 
             if (pos < len-1){
-                createElement('hr', father, [{key: 'class', value: 'col-md-11'}], '');
+                createElement('hr', father, {class: 'col-md-11'}, '');
             }
         })
     } else {
-        createElement('p', father, [{key: 'class', value: 'col-md4'}],
+        createElement('p', father, {class: 'col-md4'},
             notFound('Não Encontrado diagnósticos referente ao Cidadão'))
     }
 });
@@ -98,37 +98,40 @@ function notFound(text) {
 
 function createMedicamentosPrescritos(){
     const father = clear();
+    console.log(receitas)
     if (receitas.length > 0){
         const len = receitas.length;
         $.each(receitas, function (pos, object) {
             const {medicamento, posologia} = object;
             const {principio_ativo, concentracao} = medicamento;
             const {nomeFormaFarmaceutica} = medicamento.formaFarmaceutica;
-            const row = createElement('div', father, [{key: 'class', value: 'row'}], '');
+            const row = createElement('div', father, {class: 'row'}, '');
 
-            createElement("div", row, [{key: 'class', value: 'col-md-4'}], `<strong>Principio ativo: </strong><p>${principio_ativo}</p>`)
-            createElement('div', row, [{key: 'class', value: 'col-md-3'}],  `<strong>Forma: </strong>
+            createElement("div", row, {class: 'col-md-4'}, `<strong>Principio ativo: </strong><p>${principio_ativo}</p>`)
+            createElement('div', row, {class: 'col-md-3'},  `<strong>Forma: </strong>
                                                      <p>${nomeFormaFarmaceutica}</p>`);
 
-            createElement('div', row, [{key: 'class', value: 'col-md-3'}], `<strong>Concentração: </strong>
+            createElement('div', row, {class: 'col-md-3'}, `<strong>Concentração: </strong>
                                                      <p>${concentracao}</p>`);
 
-            createElement('div', row, [{key: 'class', value: 'col-md-4'}], `<strong>Posologia: </strong>
+            createElement('div', row, {class: 'col-md-4'}, `<strong>Posologia: </strong>
                                                      <p>${posologia}</p>`);
             const dataPrescicao = new Date(object.atendimentoProfissional.dataFim);
 
-            createElement('div', row, [{key: 'class', value: 'col-md-4'}], `<strong>Data e hora prescrição: </strong>
+            createElement('div', row, {class: 'col-md-4'}, `<strong>Data e hora prescrição: </strong>
                                                      <p>${formDateTime(dataPrescicao)}</p>`);
 
-            createElement('div', row, [{key: 'class', value: 'col-md-6'}], `<strong>Orientações: </strong>
+            createElement('div', row, {class: 'col-md-6'}, `<strong>Orientações: </strong>
                                                      <p>${object.recomendacao}</p>`);
 
             if (pos < len-1){
-                createElement('hr', father, [{key: 'class', value: 'col-md-11'}], '');
+                createElement('hr', father, {class: 'col-md-11'}, '');
             }
         })
     } else {
-        createElement('p', father, [{key: 'class', value: 'col-md4'}], notFound('Não Encontrado medicamentos prescritos ao referente Cidadão'))
+        createElement('p', father, {
+            class: 'col-md4'
+        }, notFound('Não Encontrado medicamentos prescritos ao referente Cidadão'))
     }
 }
 
@@ -136,16 +139,12 @@ $("#medicamentosPrescritos").click(function () {
     createMedicamentosPrescritos();
 });
 
-function createElement(tagName, father, options, value){
-    const element = document.createElement(tagName);
-
-    for (let i = 0; i < options.length; i++){
-        element.setAttribute(options[i].key, options[i].value)
-    }
-
-    element.innerHTML = value;
-    father.appendChild(element);
-
+function createElement(tagName, father, options, innerHTML){
+    const tag = new Tag({tagName: tagName, attrs: options})
+    const view = new TagView(tag)
+    View.append(view.element, father)
+    const element = view.element
+    element.innerHTML = innerHTML
     return element;
 }
 
@@ -155,32 +154,32 @@ function createExame(data, father){
         const row = createElement('div', father, [{key: 'class', value: 'row'}], '');
         const {nomeProcedimento, dtCompetencia, procedimentoFormaOrganizacional, procedimentoSubGrupo} = object.procedimento;
 
-        createElement("div", row, [{key: 'class', value: 'col-md-4'}], `<strong>Procedimento: </strong><p>${nomeProcedimento}</p>`)
+        createElement("div", row, {class: 'col-md-4'}, `<strong>Procedimento: </strong><p>${nomeProcedimento}</p>`)
 
 
-        createElement('div', row, [{key: 'class', value: 'col-md-3'}], `<strong>Procedimento de Forma Organizacional: </strong>
+        createElement('div', row, {class: 'col-md-3'}, `<strong>Procedimento de Forma Organizacional: </strong>
                                                      <p>${procedimentoFormaOrganizacional.noProcedFormaOrganizacional}</p>`);
 
         createElement('div', row,
-            [{key: 'class', value: 'col-md-3'}], `<strong>Procedimento Sub Grupo: </strong>
+            {class: 'col-md-3'}, `<strong>Procedimento Sub Grupo: </strong>
                                                      <p>${procedimentoSubGrupo.noProcedSubGrupo}</p>`);
 
-        createElement('div', row, [{key: 'class', value: 'col-md-4'}], `<strong>Data Competencia do Procedimento: </strong>
+        createElement('div', row, {class: 'col-md-4'}, `<strong>Data Competencia do Procedimento: </strong>
                                                      <p>${dtCompetencia}</p>`);
 
-        createElement('div', row, [{key: 'class', value: 'col-md-4'}], `<strong>Data da Solicitação: </strong>
+        createElement('div', row, {class: 'col-md-4'}, `<strong>Data da Solicitação: </strong>
                                                      <p>${object.dataSolicitacao}</p>`);
 
         if (object.dataResultado != null){
-            createElement('div', row, [{key: 'class', value: 'col-md-4'}], `<strong>Data do Resultado: </strong>
+            createElement('div', row, {class: 'col-md-4'}, `<strong>Data do Resultado: </strong>
                                                      <p>${object.dataResultado}</p>`)
 
-            createElement('div', row, [{key: 'class', value: 'col-md-6'}], `<strong>Resultado: </strong>
+            createElement('div', row, {class: 'col-md-6'}, `<strong>Resultado: </strong>
                                                      <p>${object.resultado}</p>`)
         }
 
         if (pos < len-1){
-            createElement('hr', father, [{key: 'class', value: 'col-md-11'}], '');
+            createElement('hr', father, {class: 'col-md-11'}, '');
         }
 
     })
@@ -191,7 +190,7 @@ $("#examesSolicitados").click(function () {
     if(examesSolicitations.length > 0){
         createExame(examesSolicitations, father)
     } else {
-        createElement('p', father, [{key: 'class', value: 'col-md4'}],
+        createElement('p', father, {class: 'col-md4'},
             notFound('Não Encontrado o Exame referente ao Cidadão'))
     }
 });
@@ -202,7 +201,7 @@ $("#examesResults").click(function () {
         createExame(examesResult, father)
     } else {
         createElement('p', father,
-            [{key: 'class', value: 'col-md4'}], notFound('Não Encontrado o Exame referente ao Cidadão'))
+            {class: 'col-md4'}, notFound('Não Encontrado o Exame referente ao Cidadão'))
     }
 });
 
@@ -442,35 +441,35 @@ $(document).ready(function () {
 function createVacina(data, father){
     const len = data.length;
     $.each(data, function (pos, object) {
-        const row = createElement('div', father, [{key: 'class', value: 'row'}], '');
+        const row = createElement('div', father, {class: 'row'}, '');
         const {nomeProcedimento, dtCompetencia, procedimentoFormaOrganizacional, procedimentoSubGrupo} = object.procedimento;
 
-        createElement("div", row, [{key: 'class', value: 'col-md-4'}], `<strong>Procedimento: </strong><p>${nomeProcedimento}</p>`)
+        createElement("div", row, {class: 'col-md-4'}, `<strong>Procedimento: </strong><p>${nomeProcedimento}</p>`)
 
 
-        createElement('div', row, [{key: 'class', value: 'col-md-3'}], `<strong>Procedimento de Forma Organizacional: </strong>
+        createElement('div', row, {class: 'col-md-3'}, `<strong>Procedimento de Forma Organizacional: </strong>
                                                      <p>${procedimentoFormaOrganizacional.noProcedFormaOrganizacional}</p>`);
 
         createElement('div', row,
-            [{key: 'class', value: 'col-md-3'}], `<strong>Procedimento Sub Grupo: </strong>
+            {class: 'col-md-3'}, `<strong>Procedimento Sub Grupo: </strong>
                                                      <p>${procedimentoSubGrupo.noProcedSubGrupo}</p>`);
 
-        createElement('div', row, [{key: 'class', value: 'col-md-4'}], `<strong>Data Competencia do Procedimento: </strong>
+        createElement('div', row, {class: 'col-md-4'}, `<strong>Data Competencia do Procedimento: </strong>
                                                      <p>${dtCompetencia}</p>`);
 
-        createElement('div', row, [{key: 'class', value: 'col-md-4'}], `<strong>Data da Solicitação: </strong>
+        createElement('div', row, {class: 'col-md-4'}, `<strong>Data da Solicitação: </strong>
                                                      <p>${object.dataSolicitacao}</p>`);
 
         if (object.dataResultado != null){
-            createElement('div', row, [{key: 'class', value: 'col-md-4'}], `<strong>Data do Resultado: </strong>
+            createElement('div', row, {class: 'col-md-4'}, `<strong>Data do Resultado: </strong>
                                                      <p>${object.dataResultado}</p>`)
 
-            createElement('div', row, [{key: 'class', value: 'col-md-6'}], `<strong>Resultado: </strong>
+            createElement('div', row, {class: 'col-md-6'}, `<strong>Resultado: </strong>
                                                      <p>${object.resultado}</p>`)
         }
 
         if (pos < len-1){
-            createElement('hr', father, [{key: 'class', value: 'col-md-11'}], '');
+            createElement('hr', father, {class: 'col-md-11'}, '');
         }
 
     })
