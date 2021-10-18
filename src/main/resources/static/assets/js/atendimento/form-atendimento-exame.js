@@ -8,13 +8,8 @@ function exibeFormularioExame() {
 	limpaExame();
 	removeInvalidFedbackExame();
 	$("#card-list-exames").fadeOut(100);
-	//$("#card-edit-prescricao").hide();
-	//$("#card-novo-registro-administracao").hide();
-	//$("#card-list-registros-administracao").hide();
 	$("#card-novo-exame").fadeIn(100);
-	//atualizaProcedimentoExame();
-	//atualizaPrescricoExames();
-	//atualizaProcedimentoExame();
+	
 	$("#table-procedimentos-exame").DataTable().ajax.reload();
 }
 

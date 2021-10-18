@@ -11,6 +11,7 @@ $(document).ready(function() {
 	$("#card-list-registros-administracao").hide();
 	$("#card-novo-registro-administracao").hide();
 	$("#card-novo-atestado").hide();
+	$("#card-novo-exame").hide();
 
 	//Função que inicia o TinyMCE
 	tinymce.init({

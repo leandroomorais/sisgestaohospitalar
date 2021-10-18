@@ -31,4 +31,9 @@ public class ProcedimentoController {
 		return ResponseEntity.ok(procedimentoRepository.findByNome(term));
 	}
 
+	@GetMapping("/buscarexame")
+	public ResponseEntity<?> searchExame(@Param("term") String term){
+		return ResponseEntity.ok(procedimentoRepository.findByNomeExame(term));
+	}
+
 }
