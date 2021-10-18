@@ -576,17 +576,20 @@ var Attrs = function () {
   Attrs.ignore = function (attrs, prefix) {
     if (attrs !== undefined) {
       var keys = Object.keys(attrs);
+      console.log(keys);
 
       if (keys.length > 0) {
         var newAttrs = [];
 
         for (var _i = 0, keys_3 = keys; _i < keys_3.length; _i++) {
           var key = keys_3[_i];
+          console.log(key, " ", prefix);
+          console.log(key.search(prefix));
 
           if (key.search(prefix) == -1) {
             var obj = {}; // @ts-ignore
 
-            this.createProps(obj, key.split(prefix)[1], attrs[key]); // @ts-ignore
+            this.createProps(obj, key, attrs[key]); // @ts-ignore
 
             newAttrs.push(obj);
           }

@@ -36,9 +36,9 @@ var divExames = $('' +
 $("#diagnosticos").click(function () {
     const father = clear();
 
-    if (avaliacoes.length > 0){
-        const len = avaliacoes.length;
-        $.each(avaliacoes, function (pos, object) {
+    if (avaliacoes.data.length > 0){
+        const len = avaliacoes.data.length;
+        $.each(avaliacoes.data, function (pos, object) {
             const row = createElement('div', father, {class: 'row'}, '');
 
             const {atendimentoProfissional, ciap, cid10} = object;
@@ -98,10 +98,10 @@ function notFound(text) {
 
 function createMedicamentosPrescritos(){
     const father = clear();
-    console.log(receitas)
-    if (receitas.length > 0){
-        const len = receitas.length;
-        $.each(receitas, function (pos, object) {
+    console.log("PAI ",father)
+    if (receitas.data.length > 0){
+        const len = receitas.data.length;
+        $.each(receitas.data, function (pos, object) {
             const {medicamento, posologia} = object;
             const {principio_ativo, concentracao} = medicamento;
             const {nomeFormaFarmaceutica} = medicamento.formaFarmaceutica;
@@ -139,11 +139,10 @@ $("#medicamentosPrescritos").click(function () {
     createMedicamentosPrescritos();
 });
 
-function createElement(tagName, father, options, innerHTML){
-    const tag = new Tag({tagName: tagName, attrs: options})
+function createElement(tagName, father, attrs, innerHTML){ 
+    const tag = new Tag({tagName: tagName, attrs: attrs})
     const view = new TagView(tag)
-    View.append(view.element, father)
-    const element = view.element
+    const element = View.append(view.element, father)
     element.innerHTML = innerHTML
     return element;
 }
@@ -151,7 +150,7 @@ function createElement(tagName, father, options, innerHTML){
 function createExame(data, father){
     const len = data.length;
     $.each(data, function (pos, object) {
-        const row = createElement('div', father, [{key: 'class', value: 'row'}], '');
+        const row = createElement('div', father, {class: 'row'}, '');
         const {nomeProcedimento, dtCompetencia, procedimentoFormaOrganizacional, procedimentoSubGrupo} = object.procedimento;
 
         createElement("div", row, {class: 'col-md-4'}, `<strong>Procedimento: </strong><p>${nomeProcedimento}</p>`)
@@ -187,8 +186,8 @@ function createExame(data, father){
 
 $("#examesSolicitados").click(function () {
     const father = clear();
-    if(examesSolicitations.length > 0){
-        createExame(examesSolicitations, father)
+    if(examesSolicitations.data.length > 0){
+        createExame(examesSolicitations.data, father)
     } else {
         createElement('p', father, {class: 'col-md4'},
             notFound('Não Encontrado o Exame referente ao Cidadão'))
@@ -197,8 +196,8 @@ $("#examesSolicitados").click(function () {
 
 $("#examesResults").click(function () {
     const father = clear();
-    if (examesResult.length > 0){
-        createExame(examesResult, father)
+    if (examesResult.data.length > 0){
+        createExame(examesResult.data, father)
     } else {
         createElement('p', father,
             {class: 'col-md4'}, notFound('Não Encontrado o Exame referente ao Cidadão'))
@@ -248,7 +247,6 @@ function formDateTime(date){
 }
 
 $(document).ready(function () {
-	
 	//Exibe Idade atual e data de Nascimento
 	
 	var dtNascimento = $("#dataNascimentoCidadao").val();
@@ -324,7 +322,6 @@ $(document).ready(function () {
 			return idade + " " + strAno + ", " + qtdMeses + " " + strMes + " e " + qtdDias + " " + strDia;
 		}	
 	}
-
     // Autocomplete dos Procedimentos
     $(function () {
         $("#procedimentos-atendimento-medico")

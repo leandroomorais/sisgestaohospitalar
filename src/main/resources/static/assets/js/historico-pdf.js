@@ -1,6 +1,6 @@
 
 $("#historico-pdf").click(function() {
-	const examesS = PDFUtil.extractOfArrayToKey(examesSolicitations, {
+	const examesS = PDFUtil.extractOfArrayToKey(examesSolicitations.data, {
 		procedimento: {
 			nomeProcedimento: '',
 			procedimentoFormaOrganizacional: {
@@ -13,7 +13,7 @@ $("#historico-pdf").click(function() {
 		},
 		dataSolicitacao: ''
 	});
-	const examesR = PDFUtil.extractOfArrayToKey(examesResult, {
+	const examesR = PDFUtil.extractOfArrayToKey(examesResult.data, {
 		procedimento: {
 			nomeProcedimento: '',
 			procedimentoFormaOrganizacional: {
@@ -28,7 +28,7 @@ $("#historico-pdf").click(function() {
 		dataResultado: '',
 		resultado: ''
 	});
-	const medicamentoPres = PDFUtil.extractOfArrayToKey(receitas, {
+	const medicamentoPres = PDFUtil.extractOfArrayToKey(receitas.data, {
 		medicamento: {
 			principio_ativo: '',
 			concentracao: '',
@@ -48,7 +48,7 @@ $("#historico-pdf").click(function() {
 			options: { fontStyle: 'bold', fontName: 'Times New Roman', fontSize: '10', align: 'left' }
 		},
 		{
-			text: 'Relatório Emitido às ' + PDFUtil.formTime(new Date()) + 'MIN do dia ' + PDFUtil.formDate(new Date())   '.',
+			text: 'Relatório Emitido às ' + PDFUtil.formTime(new Date()) + 'MIN do dia ' + PDFUtil.formDate(new Date()) + '.',
 			options: { fontStyle: 'bold', fontName: 'Times New Roman', fontSize: '10', align: 'left' }
 		},
 		{
@@ -86,7 +86,7 @@ $("#historico-pdf").click(function() {
 	PDF.createText('EXAMES SOLICITADOS',
 		{ fontStyle: 'bold', fontName: 'Times New Roman', fontSize: '12', align: 'left' })
 
-	DF.createTable(Extract.extractToKey([
+	PDF.createTable(Extract.extractToKey([
 		'Procedimento'.toUpperCase(),
 		'Procedimento de Forma Organizacional'.toUpperCase(),
 		'Procedimento Sub Grupo'.toUpperCase(),

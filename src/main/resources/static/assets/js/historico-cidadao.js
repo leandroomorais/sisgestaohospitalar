@@ -21,6 +21,12 @@ function request(url, param, success, error){
     Req.getJSON({uri: url, params: [param], onSuccess: success, onError: error})
 }
 /*---------------------------------------*/
+
+function setMedicamentosPrescritos(data){
+    receitas = data
+    createMedicamentosPrescritos()
+}
+
 /*realizando a requisicao e setando o resultado nas variaveis globais*/
 $(document).ready(function () {
     cpf = ValidUtil.number(cpf)
@@ -28,7 +34,7 @@ $(document).ready(function () {
 	request(uriVacinasAgendadas, cpf, (data) => vacinasAgendadas = data, () => vacinasAgendadas = [])
     request(uriSolicitations, cpf, (data) => examesSolicitations = data, () => examesSolicitations = [])
     request(uriAvaliacao, cpf, (data) => avaliacoes = data, () => avaliacoes = [])
-    request(uriReceita, cpf, (data) => receitas = data, () => receitas = [])
+    request(uriReceita, cpf, (data) => setMedicamentosPrescritos(data), () => receitas = [])
     request(uriResult, cpf, (data) => examesResult = data, () => examesResult = [])
     request('/cidadao-resource/cpf/', cpf, (data) => user = data, () => user = {})
 })
