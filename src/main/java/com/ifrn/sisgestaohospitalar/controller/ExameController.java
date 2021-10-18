@@ -62,7 +62,7 @@ public class ExameController {
 			exame.setProcedimentos(procedimentos);
 			prontuario.getExames().add(exame);
 			prontuarioRepository.saveAndFlush(prontuario);
-			procedimentos = new ArrayList<Procedimento>();
+			procedimentos.clear();
 			return ResponseEntity.ok().build();
 		}
 

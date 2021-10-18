@@ -257,7 +257,6 @@ $("#form-exame").submit(function(evt) {
 				icon_type: 'class',
 			});
 			fechaFormularioExame();
-			//atualizaProcedimentoExame();
 		},
 
 		statusCode: {
@@ -348,8 +347,6 @@ $("#form-exame").submit(function(evt) {
 
 
 function atualizaProcedimentoExame() {
-		//console.log("aqui----");
-	//var atendimentoId = $("#id-atendimento").val();
 	$("#table-procedimentos-exame").DataTable({
 		responsive: true,
 		paging: false,
@@ -357,7 +354,8 @@ function atualizaProcedimentoExame() {
 		ordering: false,
 		ajax: {
 			url: '/exame/listarprocedimentos/',
-			dataSrc: ''
+			dataSrc: '',
+			
 		},
 		columns: [
 			{
@@ -381,85 +379,61 @@ function atualizaProcedimentoExame() {
 
 // Função para remover os Procedimentos da Tabela de Procedimentos
 function removeProcedimentoExame(item) {
-	//console.log("item ---- ", item);
 	swal({
-		title: 'Tem certeza que deseja remover esse procedimento?',
+		title: 'Tem certeza que deseja excluir este Procedimento?',
+		text: "Você não poderá reverter esta ação!",
 		icon: 'warning',
 		buttons: {
 			cancel: {
 				visible: true,
 				text: 'Não, cancelar!',
-				className: 'btn btn-primary',
+				className: 'btn btn-success btn-border'
 			},
 			confirm: {
-				text: 'Sim, remova!',
-				className: 'btn btn-warning'
+				text: 'Sim, excluir!',
+				className: 'btn btn-success'
 			}
 		}
 	}).then((willDelete) => {
-		//var idAtendimento = $("#id-atendimento").val();
-		var idProcedimentoExame = $(item).attr("data-value");
-		//console.log("item ---- ", idProcedimentoExame);
-		$.ajax({
-			url: '/exame/excluirprocedimentos/' + idProcedimentoExame,
-			method: 'get',
-			success: function() {
-				swal("Procedimento removido com sucesso!", {
-					icon: "success",
-					buttons: {
-						confirm: {
-							className: 'btn btn-success'
+		if (willDelete) {
+			var idProcedimentoExame = $(item).attr("data-value");
+			$.ajax({
+				url: '/exame/excluirprocedimentos/' + idProcedimentoExame,
+				method: 'get',
+				success: function() {
+					swal("Sucesso! O CID foi excluido!", {
+						icon: "success",
+						buttons: {
+							confirm: {
+								className: 'btn btn-success'
+							}
 						}
-					}
-				});
-				$("#table-procedimentos-exame").DataTable().ajax.reload();
-				//atualizaProcedimentoExame();
-			},
-
-			statusCode: {
-				403: function(xhr) {
-					$.notify({
-						// options
-						icon: 'flaticon-exclamation',
-						title: 'ERRO',
-						message: xhr.responseText,
-						target: '_blank'
-					}, {
-						// settings
-						element: 'body',
-						position: null,
-						type: "danger",
-						allow_dismiss: true,
-						newest_on_top: false,
-						showProgressbar: false,
-						placement: {
-							from: "top",
-							align: "right"
-						},
-						offset: 20,
-						spacing: 10,
-						z_index: 1031,
-						delay: 5000,
-						timer: 1000,
-						url_target: '_blank',
-						mouse_over: null,
-						animate: {
-							enter: 'animated fadeInDown',
-							exit: 'animated fadeOutUp'
-						},
-						onShow: null,
-						onShown: null,
-						onClose: null,
-						onClosed: null,
-						icon_type: 'class',
 					});
+					$("#table-procedimentos-exame").DataTable().ajax.reload();
+				},
+				statusCode: {
+					403: function(xhr) {
+						swal("Houve um erro!", xrh.reponseText, {
+							icon: "error",
+							buttons: {
+								confirm: {
+									className: 'btn btn-danger'
+								}
+							},
+						});
+					}
 				}
-			}
-		})
+			})
+		} else {
+			swal("Certo, não iremos excluir!", {
+				buttons: {
+					confirm: {
+						className: 'btn btn-success'
+					}
+				}
+			});
+		}
 	});
-
-
-	return false;
 }
 
 function atualizaListaExames() {
@@ -496,85 +470,62 @@ function atualizaListaExames() {
 }
 
 function removeExame(item) {
-	//console.log("item ---- ", item);
+	
 	swal({
-		title: 'Tem certeza que deseja remover esse procedimento?',
+		title: 'Tem certeza que deseja excluir este Procedimento?',
+		text: "Você não poderá reverter esta ação!",
 		icon: 'warning',
 		buttons: {
 			cancel: {
 				visible: true,
 				text: 'Não, cancelar!',
-				className: 'btn btn-primary',
+				className: 'btn btn-success btn-border'
 			},
 			confirm: {
-				text: 'Sim, remova!',
-				className: 'btn btn-warning'
+				text: 'Sim, excluir!',
+				className: 'btn btn-success'
 			}
 		}
 	}).then((willDelete) => {
-		//var idAtendimento = $("#id-atendimento").val();
-		var idProcedimentoExame = $(item).attr("data-value");
-		//console.log("item ---- ", idProcedimentoExame);
-		$.ajax({
-			url: '/exame/excluirprocedimentos/' + idProcedimentoExame,
-			method: 'get',
-			success: function() {
-				swal("Procedimento removido com sucesso!", {
-					icon: "success",
-					buttons: {
-						confirm: {
-							className: 'btn btn-success'
+		if (willDelete) {
+			var idProcedimentoExame = $(item).attr("data-value");
+			$.ajax({
+				url: '/exame/excluirprocedimentos/' + idProcedimentoExame,
+				method: 'delete',
+				success: function() {
+					swal("Sucesso! O CID foi excluido!", {
+						icon: "success",
+						buttons: {
+							confirm: {
+								className: 'btn btn-success'
+							}
 						}
-					}
-				});
-				$("#table-procedimentos-exame").DataTable().ajax.reload();
-				//atualizaProcedimentoExame();
-			},
-
-			statusCode: {
-				403: function(xhr) {
-					$.notify({
-						// options
-						icon: 'flaticon-exclamation',
-						title: 'ERRO',
-						message: xhr.responseText,
-						target: '_blank'
-					}, {
-						// settings
-						element: 'body',
-						position: null,
-						type: "danger",
-						allow_dismiss: true,
-						newest_on_top: false,
-						showProgressbar: false,
-						placement: {
-							from: "top",
-							align: "right"
-						},
-						offset: 20,
-						spacing: 10,
-						z_index: 1031,
-						delay: 5000,
-						timer: 1000,
-						url_target: '_blank',
-						mouse_over: null,
-						animate: {
-							enter: 'animated fadeInDown',
-							exit: 'animated fadeOutUp'
-						},
-						onShow: null,
-						onShown: null,
-						onClose: null,
-						onClosed: null,
-						icon_type: 'class',
 					});
+					$("#table-procedimentos-exame").DataTable().ajax.reload();
+				},
+				statusCode: {
+					403: function(xhr) {
+						swal("Houve um erro!", xrh.reponseText, {
+							icon: "error",
+							buttons: {
+								confirm: {
+									className: 'btn btn-danger'
+								}
+							},
+						});
+					}
 				}
-			}
-		})
+			})
+		} else {
+			swal("Certo, não iremos excluir!", {
+				buttons: {
+					confirm: {
+						className: 'btn btn-success'
+					}
+				}
+			});
+		}
 	});
-
-
-	return false;
 }
 
 
@@ -588,7 +539,6 @@ $("#procedimento-exame").autocomplete({
 	},
 	select: function(event, ui) {
 		$("#i-procedimento").removeClass("fa fa-search").addClass("fa fa-times");
-		$("#qtd-procedimento").val(1);
 		$("#procedimento-exame").val(ui.item.codigo + " - " + ui.item.nome).attr("disabled", true);
 		$("#id-procedimento-exame").val(ui.item.codigo);
 		$("#nome-procedimento").val(ui.item.nome);
@@ -600,158 +550,158 @@ $("#procedimento-exame").autocomplete({
 		.append("<div class='h6'>" + item.codigo + " - " + item.nome + "</div>")
 		.appendTo(ul);
 };
-
-//Função pesquisa de Cids
-$("#diagnostico-cid").autocomplete({
-	source: "/cid/buscar",
-	focus: function(event, ui) {
-		$("#alergia-cid").val(ui.item.codigo + " - " + ui.item.nome);
-		return false;
-	},
-	select: function(event, ui) {
-		$("#diagnostico-cid").val(ui.item.codigo + " - " + ui.item.nome);
-		$("#id-cid").val(ui.item.codigo);
-		return false;
-	}
-}).autocomplete("instance")._renderItem = function(ul, item) {
-	return $("<li>")
-		.append("<div class='h6'>" + item.codigo + " - " + item.nome + "</div>").appendTo(ul);
-		console.log("aqui no autocomplete");
-}
-//Fim da função pesquisa Cids
-
-$("#submit-diagnostico").click(function() {
-	var diagnostico = {};
-	diagnostico['atendimento'] = $("#id-atendimento").val();
-	diagnostico['prontuario'] = $("#id-prontuario").val();
-	diagnostico['cid'] = $("#id-cid").val();
-	diagnostico.nota = $("#nota").val();
-
-	console.log(hipoteseDiagnostica);
-
-	$.ajax({
-		url: '/diagnostico/',
-		method: 'post',
-		data: diagnostico,
-		success: function() {
-			$("#table-diagnosticos").DataTable().ajax.reload();
-			limpaInputsDiagnostico();
-			$.notify({
-				// options
-				icon: 'flaticon-success',
-				title: 'SUCESSO',
-				message: 'O diagnóstico foi salvo',
-				target: '_blank'
-			}, {
-				// settings
-				element: 'body',
-				position: null,
-				type: "success",
-				allow_dismiss: true,
-				newest_on_top: false,
-				showProgressbar: false,
-				placement: {
-					from: "top",
-					align: "right"
-				},
-				offset: 20,
-				spacing: 10,
-				z_index: 1031,
-				delay: 5000,
-				timer: 1000,
-				url_target: '_blank',
-				mouse_over: null,
-				animate: {
-					enter: 'animated fadeInDown',
-					exit: 'animated fadeOutUp'
-				},
-				onShow: null,
-				onShown: null,
-				onClose: null,
-				onClosed: null,
-				icon_type: 'class',
-			});
-		},
-
-		error: function(xhr) {
-
-			$.notify({
-				// options
-				icon: 'flaticon-exclamation',
-				title: 'ERRO',
-				message: 'Não foi possível processar sua solicitação',
-				target: '_blank'
-			}, {
-				// settings
-				element: 'body',
-				position: null,
-				type: "danger",
-				allow_dismiss: true,
-				newest_on_top: false,
-				showProgressbar: false,
-				placement: {
-					from: "top",
-					align: "right"
-				},
-				offset: 20,
-				spacing: 10,
-				z_index: 1031,
-				delay: 5000,
-				timer: 1000,
-				url_target: '_blank',
-				mouse_over: null,
-				animate: {
-					enter: 'animated fadeInDown',
-					exit: 'animated fadeOutUp'
-				},
-				onShow: null,
-				onShown: null,
-				onClose: null,
-				onClosed: null,
-				icon_type: 'class',
-			});
-
-		}
-	})
-
-})
-
-//Inicio da funcao atualizar Diagnósticos
-function atualizaDiagnostico() {
-	var atendimentoId = $("#id-atendimento").val();
-	$("#table-diagnosticos").DataTable({
-		responsive: true,
-		paging: false,
-		searching: false,
-		ordering: false,
-		ajax: {
-			url: '/diagnostico/listar/atendimento/' + atendimentoId,
-			dataSrc: ''
-		},
-		columns: [
-			{
-				title: 'NOTA',
-				data: 'nota',
-			},
-			{
-				title: 'CID',
-				data: 'cid.codigo',
-			},
-			{
-				title: 'AÇÕES',
-				data: 'id',
-				mRender: function(data) {
-					var retorno =
-						" <button class='btn btn-primary btn-sm' data-value='" + data + "' onclick='editarAlergia(this)'><i class='fa fa-edit'></i> Editar </button>"
-					return retorno;
-				}
-			}
-		]
-	})
-};
-
-function limpaInputsDiagnostico() {
-	$("#nota").val("");
-	$("#diagnostico-cid").val("");
-	$("#id-cid").val("");
-}
+//
+////Função pesquisa de Cids
+//$("#diagnostico-cid").autocomplete({
+//	source: "/cid/buscar",
+//	focus: function(event, ui) {
+//		$("#alergia-cid").val(ui.item.codigo + " - " + ui.item.nome);
+//		return false;
+//	},
+//	select: function(event, ui) {
+//		$("#diagnostico-cid").val(ui.item.codigo + " - " + ui.item.nome);
+//		$("#id-cid").val(ui.item.codigo);
+//		return false;
+//	}
+//}).autocomplete("instance")._renderItem = function(ul, item) {
+//	return $("<li>")
+//		.append("<div class='h6'>" + item.codigo + " - " + item.nome + "</div>").appendTo(ul);
+//		console.log("aqui no autocomplete");
+//}
+////Fim da função pesquisa Cids
+//
+//$("#submit-diagnostico").click(function() {
+//	var diagnostico = {};
+//	diagnostico['atendimento'] = $("#id-atendimento").val();
+//	diagnostico['prontuario'] = $("#id-prontuario").val();
+//	diagnostico['cid'] = $("#id-cid").val();
+//	diagnostico.nota = $("#nota").val();
+//
+//	console.log(hipoteseDiagnostica);
+//
+//	$.ajax({
+//		url: '/diagnostico/',
+//		method: 'post',
+//		data: diagnostico,
+//		success: function() {
+//			$("#table-diagnosticos").DataTable().ajax.reload();
+//			limpaInputsDiagnostico();
+//			$.notify({
+//				// options
+//				icon: 'flaticon-success',
+//				title: 'SUCESSO',
+//				message: 'O diagnóstico foi salvo',
+//				target: '_blank'
+//			}, {
+//				// settings
+//				element: 'body',
+//				position: null,
+//				type: "success",
+//				allow_dismiss: true,
+//				newest_on_top: false,
+//				showProgressbar: false,
+//				placement: {
+//					from: "top",
+//					align: "right"
+//				},
+//				offset: 20,
+//				spacing: 10,
+//				z_index: 1031,
+//				delay: 5000,
+//				timer: 1000,
+//				url_target: '_blank',
+//				mouse_over: null,
+//				animate: {
+//					enter: 'animated fadeInDown',
+//					exit: 'animated fadeOutUp'
+//				},
+//				onShow: null,
+//				onShown: null,
+//				onClose: null,
+//				onClosed: null,
+//				icon_type: 'class',
+//			});
+//		},
+//
+//		error: function(xhr) {
+//
+//			$.notify({
+//				// options
+//				icon: 'flaticon-exclamation',
+//				title: 'ERRO',
+//				message: 'Não foi possível processar sua solicitação',
+//				target: '_blank'
+//			}, {
+//				// settings
+//				element: 'body',
+//				position: null,
+//				type: "danger",
+//				allow_dismiss: true,
+//				newest_on_top: false,
+//				showProgressbar: false,
+//				placement: {
+//					from: "top",
+//					align: "right"
+//				},
+//				offset: 20,
+//				spacing: 10,
+//				z_index: 1031,
+//				delay: 5000,
+//				timer: 1000,
+//				url_target: '_blank',
+//				mouse_over: null,
+//				animate: {
+//					enter: 'animated fadeInDown',
+//					exit: 'animated fadeOutUp'
+//				},
+//				onShow: null,
+//				onShown: null,
+//				onClose: null,
+//				onClosed: null,
+//				icon_type: 'class',
+//			});
+//
+//		}
+//	})
+//
+//})
+//
+////Inicio da funcao atualizar Diagnósticos
+//function atualizaDiagnostico() {
+//	var atendimentoId = $("#id-atendimento").val();
+//	$("#table-diagnosticos").DataTable({
+//		responsive: true,
+//		paging: false,
+//		searching: false,
+//		ordering: false,
+//		ajax: {
+//			url: '/diagnostico/listar/atendimento/' + atendimentoId,
+//			dataSrc: ''
+//		},
+//		columns: [
+//			{
+//				title: 'NOTA',
+//				data: 'nota',
+//			},
+//			{
+//				title: 'CID',
+//				data: 'cid.codigo',
+//			},
+//			{
+//				title: 'AÇÕES',
+//				data: 'id',
+//				mRender: function(data) {
+//					var retorno =
+//						" <button class='btn btn-primary btn-sm' data-value='" + data + "' onclick='editarAlergia(this)'><i class='fa fa-edit'></i> Editar </button>"
+//					return retorno;
+//				}
+//			}
+//		]
+//	})
+//};
+//
+//function limpaInputsDiagnostico() {
+//	$("#nota").val("");
+//	$("#diagnostico-cid").val("");
+//	$("#id-cid").val("");
+//}

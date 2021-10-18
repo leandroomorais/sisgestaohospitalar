@@ -35,6 +35,9 @@ $(document).ready(function() {
 	atualizaDiagnostico();
 	atualizaPrescricoes();
 	atualizaAtestados();
+	
+	atualizaProcedimentoExame();
+	
 	//Chamada da função 
 	atulizaMedicamentoUsoContinuo();
 
@@ -42,6 +45,7 @@ $(document).ready(function() {
 	atulizaMedicamentoEmUso();
 
 	cardInfoCidadao(idAtendimento);
+	
 
 });
 
