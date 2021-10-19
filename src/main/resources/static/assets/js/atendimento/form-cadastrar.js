@@ -1,3 +1,16 @@
+$(document).ready(function() {
+	var dataNascimento = $("#dt-nascimento").val();
+	dataNascimento = moment(dataNascimento).format('YYYY-MM-DD');
+	var anos = moment().diff(dataNascimento, 'years');
+	var idade;
+	if (anos == 1) {
+		idade = anos + " ano ";
+	} else if (anos > 1) {
+		idade = anos + " anos ";
+	}
+	$("#idade-cidadao").text(idade);
+});
+
 $("#btn-cancela-guia-antendimento").click(function() {
 	alerta("/cidadao/adicionar")
 });

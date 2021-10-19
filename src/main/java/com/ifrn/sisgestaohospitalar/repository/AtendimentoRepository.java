@@ -19,7 +19,7 @@ public interface AtendimentoRepository extends JpaRepository<Atendimento, Long> 
 	List<Atendimento> findByCidadao(Cidadao cidadao);
 
 	List<Atendimento> findByStatus(Status status);
-
+	
 	//Page<Atendimento> findByTipoServico(TipoServico tipoServico, Pageable pageable);
 
 	@Query("select a from Atendimento a where a.cidadao.nome like %:search% or a.profissionalDestino like %:search%")

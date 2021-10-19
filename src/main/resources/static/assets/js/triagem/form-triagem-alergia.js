@@ -104,6 +104,10 @@ $("#form-status-alergia").submit(function(evt) {
 });
 //Fim da função cadastrar nova alergia
 
+$("#nova-alergia-voltar").click(function() {
+	fechaFormularioAlergia();
+})
+
 //Submit da função editar alergia
 $("#editar-nome-alergia").click(function() {
 	$("#alergia-nome-dto").prop("disabled", false);
@@ -243,9 +247,7 @@ function fechaFormularioAlergia() {
 	$("#form-status-alergia input[type='text']").val("");
 	$("#form-status-alergia input[type='hidden']").val("");
 	$("#form-status-alergia input[type='date']").val("");
-	$("#form-status-alergia-edit input[type='text']").val("");
-	$("#form-status-alergia-edit input[type='hidden']").val("");
-	$("#form-status-alergia-edit input[type='date']").val("");
+	$("#form-status-doenca input[type='radio']").prop("checked", false);
 	$("#card-nova-alergia").fadeOut(100);
 	$("#card-list-alergias").fadeIn(100);
 }
@@ -256,6 +258,7 @@ function fechaFormularioEditAlergia() {
 	$("#form-status-alergia-edit input[type='text']").val("");
 	$("#form-status-alergia-edit input[type='hidden']").val("");
 	$("#form-status-alergia-edit input[type='date']").val("");
+	$("#form-status-doenca input[type='radio']").prop("checked", false);
 	$("#card-edit-alergia").fadeOut(100);
 	$("#card-list-alergias").fadeIn(100);
 }

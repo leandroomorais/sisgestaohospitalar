@@ -50,7 +50,48 @@
 												<div class="tab-pane fade show active" id="v-pills-resumo-nobd"
 													role="tabpanel" aria-labelledby="v-pills-resumo-tab-nobd">
 
-													<div th:replace="fragments/atendimento/resumo-atendimento">
+													<ul class="nav nav-tabs">
+														<li sec:authorize="hasAnyAuthority('MEDICO')"
+															class="nav-item submenu"><a class="nav-link active show"
+																data-toggle="tab"
+																href="#dados-triagem"><strong>DADOS DA TRIAGEM</strong></a>
+														</li>
+														<li class="nav-item submenu"><a class="nav-link"
+																data-toggle="tab"
+																href="#alergias"><strong>ALERGIAS</strong></a>
+														</li>
+														<li class="nav-item submenu"><a class="nav-link"
+																data-toggle="tab"
+																href="#doencas"><strong>DOENÇAS</strong></a>
+														</li>
+														<li class="nav-item submenu"><a class="nav-link"
+																data-toggle="tab"
+																href="#medicamentos"><strong>MEDICAMENTOS</strong></a>
+														</li>
+														<li class="nav-item submenu"><a class="nav-link"
+																data-toggle="tab"
+																href="#antropometria"><strong>ANTROPOMETRIA</strong></a>
+														</li>
+													</ul>
+
+													<div class="tab-content">
+														<div id="dados-triagem" class="tab-pane fade show active">
+															<div th:replace="fragments/atendimento/resumo-atendimento">
+															</div>
+														</div>
+														<div id="alergias" class="tab-pane fade">
+															<p>Alergias</p>
+														</div>
+														<div id="doencas" class="tab-pane fade">
+															<p>Doenças</p>
+														</div>
+														<div id="medicamentos" class="tab-pane fade">
+															<div th:replace="fragments/triagem/card-medicamento">
+															</div>
+														</div>
+														<div id="antropometria" class="tab-pane fade">
+															<p>Ant</p>
+														</div>
 													</div>
 
 												</div>

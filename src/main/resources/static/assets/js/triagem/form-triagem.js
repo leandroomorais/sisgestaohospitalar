@@ -1,10 +1,12 @@
 var idAtendimeto;
 var idProntuario;
+var idSinaisVitais;
 
 //JS Form Triagem
 $(document).ready(function() {
 	idAtendimeto = $("#atendimento-id").val();
 	idProntuario = $("#id-prontuario").val();
+	
 	$("#conduta-cidadao").hide();
 	$("#card-nova-alergia").hide();
 	$("#card-edit-alergia").hide();
@@ -92,6 +94,8 @@ $("#form-triagem").submit(function(evt) {
 	triagem['sinaisVitais.glicemiaCapilar'] = $("#sinaisVitais-glicemiaCapilar").val();
 	triagem['sinaisVitais.momentoColeta'] = $("#sinaisVitais-momentoColeta option:selected").val();
 	triagem['atendimento'] = idAtendimeto;
+	
+	console.log(triagem);
 
 	$.ajax({
 		url: "/triagem/salvar",

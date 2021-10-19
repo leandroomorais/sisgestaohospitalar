@@ -105,6 +105,10 @@ $("#form-status-doenca").submit(function(evt) {
 });
 //Fim da função cadastrar nova Doenca
 
+$("#nova-doenca-voltar").click(function(){
+	fechaFormularioDoenca();
+})
+
 //Submit da função editar doença
 //Inicio da Função Editar Doenca
 $("#editar-nome-doenca").click(function() {
@@ -259,6 +263,7 @@ function limpaFormDoenca() {
 	$("#form-status-doenca input[type='text']").val("");
 	$("#form-status-doenca input[type='hidden']").val("");
 	$("#form-status-doenca input[type='date']").val("");
+	$("#form-status-doenca input[type='radio']").prop("checked",false);
 }
 
 function limpaFormEditDoenca() {
