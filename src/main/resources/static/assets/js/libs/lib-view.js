@@ -547,6 +547,10 @@ var Attrs = function () {
     });
   };
 
+  Attrs.variables = function () {
+    return ["abort", "blur", "change", "click", "dragdrop", "error", "focus", "keydown", "keypress", "keypress", "keyup", "load", "mousedown", "mousemove", "mouseout", "mouseover", "mouseup", "move", "resize", "reset", "select", "submit", "unload"];
+  };
+
   Attrs.get = function (attrs, prefix) {
     if (attrs !== undefined) {
       var keys = Object.keys(attrs);
@@ -554,16 +558,26 @@ var Attrs = function () {
       if (keys.length > 0) {
         var newAttrs = [];
 
-        for (var _i = 0, keys_2 = keys; _i < keys_2.length; _i++) {
-          var key = keys_2[_i];
+        var _loop_1 = function _loop_1(key) {
+          var value = key.split(prefix)[1];
 
-          if (key.search(prefix) > -1) {
+          if (key.search(prefix) > -1 && this_1.variables().filter(function (v) {
+            return v === value;
+          }).length > 0) {
             var obj = {}; //@ts-ignore
 
-            this.createProps(obj, key.split(prefix)[1], attrs[key]); // @ts-ignore
+            this_1.createProps(obj, value, attrs[key]); // @ts-ignore
 
             newAttrs.push(obj);
           }
+        };
+
+        var this_1 = this;
+
+        for (var _i = 0, keys_2 = keys; _i < keys_2.length; _i++) {
+          var key = keys_2[_i];
+
+          _loop_1(key);
         }
 
         return newAttrs;
@@ -576,15 +590,12 @@ var Attrs = function () {
   Attrs.ignore = function (attrs, prefix) {
     if (attrs !== undefined) {
       var keys = Object.keys(attrs);
-      console.log(keys);
 
       if (keys.length > 0) {
         var newAttrs = [];
 
         for (var _i = 0, keys_3 = keys; _i < keys_3.length; _i++) {
           var key = keys_3[_i];
-          console.log(key, " ", prefix);
-          console.log(key.search(prefix));
 
           if (key.search(prefix) == -1) {
             var obj = {}; // @ts-ignore
@@ -847,8 +858,59 @@ var View = function () {
     }
   };
 
-  View.append = function (element, father) {
+  View.append = function (element, father, index) {
+    if (index !== undefined && element !== undefined && father !== undefined) {
+      return this.appendByIndex(element, father, index);
+    } else {
+      if (element !== undefined && father !== undefined) {
+        return this.appendOf(element, father);
+      }
+    }
+
+    return null;
+  };
+
+  View.appendOf = function (element, father) {
     father.appendChild(element);
+    return element;
+  };
+
+  View.appendByIndex = function (element, father, index) {
+    father.appendChild(element);
+
+    var swap = function swap(elements, index) {
+      if (index < elements.children.length) {
+        var elementLast = elements.children.item(elements.children.length - 1);
+
+        if (elementLast) {
+          for (var i = 0; i < elements.children.length - 1; i++) {
+            if (i === index) {
+              var newElements = [];
+
+              for (var j = i; j < elements.children.length; j++) {
+                var child = elements.children.item(i);
+
+                if (child) {
+                  newElements.push(child);
+                  child === null || child === void 0 ? void 0 : child.remove();
+                }
+              }
+
+              if (elementLast) {
+                elements.appendChild(elementLast);
+              }
+
+              for (var _i = 0, newElements_1 = newElements; _i < newElements_1.length; _i++) {
+                var el = newElements_1[_i];
+                elements.appendChild(el);
+              }
+            }
+          }
+        }
+      }
+    };
+
+    swap(father, index);
     return element;
   };
 
