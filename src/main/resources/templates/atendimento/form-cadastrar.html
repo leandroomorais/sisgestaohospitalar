@@ -77,47 +77,37 @@
 										<div class="page-divider"></div>
 										<div class="card">
 											<div class="card-body">
-												<div class="row">
-													<div class="avatar avatar-lg">
-														<img th:if="${atendimento.cidadao.sexo == 'M'}"
-															th:src="@{/assets/img/icons/masculino.png}" alt="..."
-															class="avatar-img rounded-circle"> <img
-															th:if="${atendimento.cidadao.sexo == 'F'}"
-															th:src="@{/assets/img/icons/feminino.png}" alt="..."
-															class="avatar-img rounded-circle">
-													</div>
-													<div class="demo">
-														<span class="h3-info"
-															th:text="${atendimento.cidadao.nome}"></span><br>
-														<div class="h4-info">
-															<input type="hidden" id="cpfCidadao"
-																th:value="${atendimento.cidadao.cpf}"> <input
-																type="hidden" id="dataNascimentoCidadao"
-																th:value="${atendimento.cidadao.dataNascimento}"><i
-																class="fa fa-id-card"></i> <strong>CPF: </strong><span
-																data-mask="000.000.000-00"
-																th:text="${atendimento.cidadao.cpf}"></span> |
-															<strong>CNS:
-															</strong> <span data-mask="000.0000.0000.0000"
-																th:text="${atendimento.cidadao.cns}"></span><br>
-															<strong>SEXO:</strong>
-															<span th:if="${atendimento.cidadao.sexo == 'M'}">
-																M</span><span
-																th:if="${atendimento.cidadao.sexo == 'F'}">
-																F</span><i></i> | <strong>NASC.:</strong><span
-																th:text="${#temporals.format(atendimento.cidadao.dataNascimento,'dd/MM/yyyy')}"></span>
-															| <strong>IDADE:</strong><span id="idadeCidadao"></span>
-														</div>
+												<div class="col-md-12 row">
+													<div class="col-md-12">
+														<h5 class="text-uppercase fw-bold mb-1"
+															th:text="${atendimento.cidadao.nome}"></h5><i
+															class="fa fa-id-card" aria-hidden="true"></i><strong> CPF:
+														</strong><span th:text="${atendimento.cidadao.cpf}"
+															data-mask="000.000.000-00"></span> |
+														<strong> CNS: </strong><span
+															th:text="${atendimento.cidadao.cns}"
+															data-mask="000.0000.0000.0000">
+														</span><br><strong>NASC. </strong>
+														<span
+															th:text="${#temporals.format(atendimento.cidadao.dataNascimento,'dd/MM/yyyy')}"></span>
+														| <span id="idade-cidadao"></span> <br>
+														<strong>SEXO:</strong><span
+															th:if="${atendimento.cidadao.sexo == 'M'}"> Masculino
+														</span>
+														<span th:if="${atendimento.cidadao.sexo == 'F'}"> Feminino
+														</span>
 													</div>
 												</div>
 											</div>
 										</div>
-
 										<!-- Input responsável por guardar o Id do Atendimento -->
-										<input name="id" type="hidden" th:field="*{id}" th:value="${atendimento.id}" />
+										<input id="id-atendimento" name="id" type="hidden" th:field="*{id}"
+											th:value="${atendimento.id}" />
 
 										<!-- Input responsável por guardar o Cidadão -->
 										<input name="" type="hidden" th:field="*{cidadao}" th:value="*{cidadao.id}" />
+										
+										<input  type="hidden" id="dt-nascimento" th:value="${atendimento.cidadao.dataNascimento}">
 
 										<!-- Input responsável por guardar a Data de Entrada do Atendimento -->
 										<input type="hidden" th:field="*{dataEntrada}"
@@ -214,6 +204,8 @@
 	<th:block layout:fragment="my-js-files">
 		<script type="text/javascript" th:inline="javascript"
 			th:src="@{/assets/js/atendimento/form-cadastrar.js}"></script>
+		<script type="text/javascript" th:inline="javascript"
+			th:src="@{/assets/js/card-info-cidadao/card-info-cidadao.js}"></script>
 	</th:block>
 </body>
 
