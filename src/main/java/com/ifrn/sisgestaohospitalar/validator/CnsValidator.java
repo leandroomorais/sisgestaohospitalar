@@ -9,11 +9,13 @@ public class CnsValidator implements ConstraintValidator<Cns, String> {
 
 	@Override
 	public boolean isValid(String value, ConstraintValidatorContext context) {
+		value = value.replace(".", "");
 		if (value.matches("[1-2]\\d{10}00[0-1]\\d") || value.matches("[7-9]\\d{14}")) {
 			return somaPonderada(value) % 11 == 0;
 		}
 		return false;
 	}
+
 	private int somaPonderada(String s) {
 		char[] cs = s.toCharArray();
 		int soma = 0;
