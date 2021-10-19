@@ -17,40 +17,8 @@
 							<div class="row justify-content-center">
 								<div class="col-md-12 col-lg-12 col-xl-12">
 									<div class="page-divider"></div>
-									<div class="card">
-										<div class="card-body">
-											<div class="row">
-												<div class="avatar avatar-lg">
-													<img th:if="${atendimento.cidadao.sexo == 'M'}"
-														th:src="@{/assets/img/icons/masculino.png}" alt="..."
-														class="avatar-img rounded-circle"> <img
-														th:if="${atendimento.cidadao.sexo == 'F'}"
-														th:src="@{/assets/img/icons/feminino.png}" alt="..."
-														class="avatar-img rounded-circle">
-												</div>
-												<div class="demo">
-													<span class="h3-info"
-														th:text="${atendimento.cidadao.nome}"></span><br>
-													<div class="h4-info">
-														<input type="hidden" id="cpfCidadao"
-															th:value="${atendimento.cidadao.cpf}"> <input type="hidden"
-															id="dataNascimentoCidadao"
-															th:value="${atendimento.cidadao.dataNascimento}"><i
-															class="fa fa-id-card"></i> <strong>CPF: </strong><span
-															data-mask="000.000.000-00"
-															th:text="${atendimento.cidadao.cpf}"></span> | <strong>CNS:
-														</strong> <span data-mask="000.0000.0000.0000"
-															th:text="${atendimento.cidadao.cns}"></span><br>
-														<strong>SEXO:</strong>
-														<span th:if="${atendimento.cidadao.sexo == 'M'}"> M</span><span
-															th:if="${atendimento.cidadao.sexo == 'F'}"> F</span><i></i>
-														| <strong>NASC.:</strong><span
-															th:text="${#temporals.format(atendimento.cidadao.dataNascimento,'dd/MM/yyyy')}"></span>
-														| <strong>IDADE:</strong><span id="idadeCidadao"></span>
-													</div>
-												</div>
-											</div>
-										</div>
+									<div id="info-cidadao">
+
 									</div>
 
 									<input id="id-prontuario" type="hidden"
@@ -169,6 +137,8 @@
 			th:src="@{/assets/js/usoMedicamentos/uso-medicamentos.js}"></script>
 		<script type="text/javascript" th:inline="javascript"
 			th:src="@{/assets/js/atendimento/card-finalizar-atendimento.js}"></script>
+		<script type="text/javascript" th:inline="javascript"
+			th:src="@{/assets/js/card-info-cidadao/card-info-cidadao.js}"></script>
 
 	</th:block>
 </body>

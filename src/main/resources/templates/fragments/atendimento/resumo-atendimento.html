@@ -1,6 +1,6 @@
 <div class="card">
 	<div class="card-header">
-		<div class="card-title">Resumo do Atendimento
+		<div class="card-title">Resumo da Triagem
 		</div>
 	</div>
 	<div class="card-body">
@@ -43,8 +43,18 @@
 						class="text-muted"></span></div>
 			</div>
 		</div>
+		<div th:if="${atendimento.triagem == null}">
+			<div class="card-body">
+				<div>
+					<h5 class="card-title text-center">Triagem não realizada</h5>
+					<p class="card-text text-center">Clique no botão Realizar Triagem, se deseja cadastrar</p>
+				</div>
+				<div class="text-right">
+					<button type="button" class="btn btn-primary btn-sm">
+						<i class="fa fa-plus" aria-hidden="true"></i> Realizar Triagem
+					</button>
+				</div>
+			</div>
+		</div>
 	</div>
-</div>
-
-<div th:replace="fragments/triagem/card-medicamento">
 </div>

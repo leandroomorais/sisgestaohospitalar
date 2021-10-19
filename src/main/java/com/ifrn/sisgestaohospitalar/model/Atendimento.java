@@ -71,7 +71,6 @@ public class Atendimento {
 	@JoinTable(name = "atendimento_evolucoes", joinColumns = @JoinColumn(name = "id_atendimento"), inverseJoinColumns = @JoinColumn(name = "id_evolucao"))
 	private List<Evolucao> evolucoes;
 
-	@JsonIgnore
 	@Valid
 	@OneToOne(cascade = CascadeType.ALL)
 	private Triagem triagem;

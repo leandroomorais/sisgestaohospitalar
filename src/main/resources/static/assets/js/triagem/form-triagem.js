@@ -1,6 +1,10 @@
+var idAtendimeto;
+var idProntuario;
+
 //JS Form Triagem
 $(document).ready(function() {
-
+	idAtendimeto = $("#atendimento-id").val();
+	idProntuario = $("#id-prontuario").val();
 	$("#conduta-cidadao").hide();
 	$("#card-nova-alergia").hide();
 	$("#card-edit-alergia").hide();
@@ -62,13 +66,11 @@ $(document).ready(function() {
 
 	atualizaAntropometria()
 
+	cardInfoCidadao(idAtendimento);
+
 });
 
 //######### Funções do Formulário da Triagem ###########
-
-var idAtendimeto = $("#atendimento-id").val();
-var idProntuario = $("#id-prontuario").val();
-
 
 //Submit do Formulário Triagem
 $("#form-triagem").submit(function(evt) {
@@ -89,7 +91,6 @@ $("#form-triagem").submit(function(evt) {
 	triagem['sinaisVitais.frequenciaRespiratoria'] = $("#sinaisVitais-frequenciaRespiratoria").val();
 	triagem['sinaisVitais.glicemiaCapilar'] = $("#sinaisVitais-glicemiaCapilar").val();
 	triagem['sinaisVitais.momentoColeta'] = $("#sinaisVitais-momentoColeta option:selected").val();
-
 	triagem['atendimento'] = idAtendimeto;
 
 	$.ajax({
@@ -135,8 +136,8 @@ $("#form-triagem").submit(function(evt) {
 				onClosed: null,
 				icon_type: 'class',
 			});
-
 			verificaTriagem();
+			cardInfoCidadao(idAtendimento);
 		},
 
 		statusCode: {

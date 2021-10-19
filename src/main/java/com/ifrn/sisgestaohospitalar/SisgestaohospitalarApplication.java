@@ -98,7 +98,7 @@ public class SisgestaohospitalarApplication implements ApplicationListener<Conte
 		//lerXmlEsus();
 		//lerEstadosMunicipios();
 		//salvarViaAdministracao();
-		// salvarTipoServico();
+		//salvarTipoServico();
 	}
 
 	public void salvarTipoServico() {

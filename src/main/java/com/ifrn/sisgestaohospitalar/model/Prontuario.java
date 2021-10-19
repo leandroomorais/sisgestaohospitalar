@@ -24,7 +24,8 @@ public class Prontuario {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-
+	
+	@Valid
 	@NotNull(message = "É necessário Cadastrar um Cidadão")
 	@OneToOne
 	private Cidadao cidadao;

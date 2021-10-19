@@ -17,6 +17,7 @@ import javax.validation.Valid;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 import org.hibernate.validator.constraints.br.CPF;
 
@@ -34,12 +35,11 @@ public class Cidadao implements Serializable {
 	private Long id;
 
 	@Cns(message = "O CNS digitado é inválido")
-	@Column(nullable = false, length = 15)
-	@Size(max = 15, message = "O campo CNS deve conter 15 caracteres")
+	@Column(nullable = false, length = 20)
 	@NotBlank(message = "É necessário preencher o campo CNS")
 	private String cns;
 
-	@Column(nullable = false, length = 11)
+	@Column(nullable = false, length = 15)
 	@NotBlank(message = "É necessário preencher o campo CPF")
 	@CPF(message = "O CPF digitado é inválido")
 	private String cpf;
@@ -96,7 +96,6 @@ public class Cidadao implements Serializable {
 
 	@JsonIgnore
 	@OneToOne(cascade = CascadeType.ALL)
-	@Valid
 	private Prontuario prontuario;
 
 	@PrePersist
@@ -266,4 +265,14 @@ public class Cidadao implements Serializable {
 			return false;
 		return true;
 	}
+
+	@Override
+	public String toString() {
+		return "Cidadao [id=" + id + ", cns=" + cns + ", cpf=" + cpf + ", sexo=" + sexo + ", nome=" + nome
+				+ ", nomeMae=" + nomeMae + ", nomePai=" + nomePai + ", dataNascimento=" + dataNascimento
+				+ ", codigoRaca=" + codigoRaca + ", etnia=" + etnia + ", codigoNacionalidade=" + codigoNacionalidade
+				+ ", telefone=" + telefone + ", email=" + email + ", municipioNascimento=" + municipioNascimento
+				+ ", endereco=" + endereco + ", prontuario=" + prontuario + "]";
+	}
+
 }
