@@ -29,8 +29,18 @@ function fechaFormularioExame() {
 	limpaExame();
 	$("#card-novo-exame").fadeOut(100);
 	$("#card-list-exames").fadeIn(100);
-	$("#table-list-exame").DataTable().ajax.reload();
+	
+	$.ajax({
+		url: '/exame/limparprocedimentosexame/',
+		method: 'get',
+		success: function() { },
+		statusCode: { }
+	})
+	
+	//$("#table-procedimentos-exame").DataTable().ajax.reload();
+	$("#table-lista-exame-atendimento").DataTable().ajax.reload();
 }
+
 
 $("#novo-exame-voltar").click(function() {
 	fechaFormularioExame();
@@ -217,7 +227,7 @@ $("#form-exame").submit(function(evt) {
 		method: 'post',
 		data: exame,
 		beforeSend: function() {
-			console.log(exame);
+			//console.log(exame);
 			removeInvalidFedbackExame();
 		},
 		success: function() {
@@ -440,39 +450,41 @@ function atualizaListaExames() {
 	console.log("aqui----");
 	var atendimentoId = $("#id-atendimento").val();
 	console.log("aqui----", atendimentoId);
-	$("#table-list-exame").DataTable({
+	$("#table-lista-exame-atendimento").DataTable({
 		responsive: true,
 		paging: false,
 		searching: false,
 		ordering: false,
 		ajax: {
-			url: '/exame/listar/atendimento/'+ atendimentoId,
-			dataSrc: ''
+			url: '/exame/listarexamesatendimento/' + atendimentoId,
+			dataSrc: '',
 		},
 		columns: [
 			{
 				title: 'NOME',
-				data: 'nomeexame',
+				data: 'justificativacid',
 			},
 			{
 				title: 'GRUPO',
-				data: 'grupoexame',
+				data: 'observacoes',
 			},
-//			{
-//				title: 'AÇÕES',
-//				data: 'id',
-//				mRender: function(data) {
-//					return "<button type='button' class='btn btn-warning btn-sm' data-value='" + data + "' onclick='removeExame(this)'><i class='fa fa-trash'></i> Excluir </button>"
-//				}
-//			}
+			{
+				title: 'AÇÕES',
+				data: 'id',
+				mRender: function(data) {
+					return "<button type='button' class='btn btn-warning btn-sm' data-value='" + data + "' onclick='removeExame(this)'><i class='fa fa-trash'></i> Excluir </button>"
+				}
+			}
 		]
 	})
+	
+	
 }
 
 function removeExame(item) {
 	
 	swal({
-		title: 'Tem certeza que deseja excluir este Procedimento?',
+		title: 'Tem certeza que deseja excluir este Exame?',
 		text: "Você não poderá reverter esta ação!",
 		icon: 'warning',
 		buttons: {
@@ -488,12 +500,12 @@ function removeExame(item) {
 		}
 	}).then((willDelete) => {
 		if (willDelete) {
-			var idProcedimentoExame = $(item).attr("data-value");
+			var idExame = $(item).attr("data-value");
 			$.ajax({
-				url: '/exame/excluirprocedimentos/' + idProcedimentoExame,
-				method: 'delete',
+				url: '/exame/excluir/' + idExame,
+				method: 'get',
 				success: function() {
-					swal("Sucesso! O CID foi excluido!", {
+					swal("Sucesso! O Exame foi excluido!", {
 						icon: "success",
 						buttons: {
 							confirm: {
@@ -501,7 +513,7 @@ function removeExame(item) {
 							}
 						}
 					});
-					$("#table-procedimentos-exame").DataTable().ajax.reload();
+					$("#table-lista-exame-atendimento").DataTable().ajax.reload();
 				},
 				statusCode: {
 					403: function(xhr) {

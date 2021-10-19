@@ -14,6 +14,9 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
+import org.hibernate.annotations.LazyCollection;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.ifrn.sisgestaohospitalar.enums.StatusExame;
 
 @Entity
@@ -23,31 +26,28 @@ public class Exame {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	private String grupoexame;
-	
-	private String nomeexame;
-	
-	private String procedimentocid;
-	
 	private String justificativacid;
 	
 	private String observacoes;
 	
-	private StatusExame statusexame;
-	
 	private LocalDateTime dataRegistro;
 	
+
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name = "atendimento_id")
 	private Atendimento atendimento;
 	
+	@JsonIgnore
 	@OneToOne
 	private Prontuario prontuario;
 	
+	@JsonIgnore
 	@OneToOne
 	private Profissional profissional;
 	
 	//@Valid
+	@JsonIgnore
 	@ManyToMany(cascade = CascadeType.ALL)
 	@JoinTable(name = "exame_procedimentos", joinColumns = @JoinColumn(name = "id_exame"), inverseJoinColumns = @JoinColumn(name = "id_procedimento"))
 	private List<Procedimento> procedimentos;
@@ -60,29 +60,6 @@ public class Exame {
 		this.id = id;
 	}
 
-	public String getGrupoexame() {
-		return grupoexame;
-	}
-
-	public void setGrupoexame(String grupoexame) {
-		this.grupoexame = grupoexame;
-	}
-
-	public String getNomeexame() {
-		return nomeexame;
-	}
-
-	public void setNomeexame(String nomeexame) {
-		this.nomeexame = nomeexame;
-	}
-
-	public String getProcedimentocid() {
-		return procedimentocid;
-	}
-
-	public void setProcedimentocid(String procedimentocid) {
-		this.procedimentocid = procedimentocid;
-	}
 
 	public String getJustificativacid() {
 		return justificativacid;
@@ -122,15 +99,6 @@ public class Exame {
 
 	public void setProcedimentos(List<Procedimento> procedimentos) {
 		this.procedimentos = procedimentos;
-	}
-
-
-	public StatusExame getStatusexame() {
-		return statusexame;
-	}
-
-	public void setStatusexame(StatusExame statusexame) {
-		this.statusexame = statusexame;
 	}
 
 	public LocalDateTime getDataRegistro() {

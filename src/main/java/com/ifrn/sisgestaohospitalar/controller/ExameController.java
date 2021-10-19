@@ -11,18 +11,23 @@ import java.util.Optional;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.ifrn.sisgestaohospitalar.enums.Status;
+import com.ifrn.sisgestaohospitalar.model.Atendimento;
 import com.ifrn.sisgestaohospitalar.model.Exame;
 import com.ifrn.sisgestaohospitalar.model.Procedimento;
 import com.ifrn.sisgestaohospitalar.model.Prontuario;
+import com.ifrn.sisgestaohospitalar.repository.AtendimentoRepository;
 import com.ifrn.sisgestaohospitalar.repository.ExameRepository;
 import com.ifrn.sisgestaohospitalar.repository.ProcedimentoRepository;
 import com.ifrn.sisgestaohospitalar.repository.ProfissionalRepository;
@@ -40,12 +45,14 @@ public class ExameController {
 	private ProntuarioRepository prontuarioRepository;
 	@Autowired
 	private ProcedimentoRepository procedimentoRepository;
+	@Autowired
+	private AtendimentoRepository atendimentoRepository;
 
 	List<Procedimento> procedimentos = new ArrayList<Procedimento>();
 
 	@PostMapping("/")
 	public ResponseEntity<?> exame(@Valid Exame exame, BindingResult result, Principal principal) {
-		System.out.println("chegou aqui -------------------------------");
+		
 		Map<String, String> errors = new HashMap<>();
 		if (result.hasErrors()) {
 			for (FieldError error : result.getFieldErrors()) {
@@ -72,7 +79,6 @@ public class ExameController {
 	@PostMapping("/procedimentos/")
 	public ResponseEntity<?> procedimentosexame(@Valid Procedimento procedimento, BindingResult result,
 			Principal principal) {
-		System.out.println("chegou aqui -------------------------------");
 		Map<String, String> errors = new HashMap<>();
 		if (result.hasErrors()) {
 			for (FieldError error : result.getFieldErrors()) {
@@ -92,15 +98,8 @@ public class ExameController {
 
 	@GetMapping("/listarprocedimentos/")
 	public ResponseEntity<?> listarprocedimentosexame() {
-		System.out.println("aqui");
-		// if (!procedimentos.isEmpty()) {
-		// System.out.println("aqui no if");
+		
 		return ResponseEntity.ok().body(procedimentos);
-
-		// }
-		// System.out.println("aqui fora do if");
-		// return ResponseEntity.badRequest().build();
-
 	}
 
 	@GetMapping("/excluirprocedimentos/{idProcedimentoExame}")
@@ -114,24 +113,48 @@ public class ExameController {
 		}
 		return ResponseEntity.badRequest().build();
 	}
+	
+	@GetMapping("/limparprocedimentosexame/")
+	public ResponseEntity<?> limparprocedimentosexame() {
+		
+		if (!procedimentos.isEmpty()) {
+			procedimentos.clear();	
+		} else {}
+	
+		return ResponseEntity.ok().body(procedimentos);
+	}
 
-	@GetMapping("/listar/atendimento/{idAtendimento}")
-	public ResponseEntity<?> exames(@PathVariable("idAtendimento") Long id) {
-		// Atendimento atendimento = atendimentoRepository.getOne(id);
-		System.out.println("aqui");
-		// if (atendimento != null) {
-		System.out.println("aqui no if");
-		List<Exame> exames = exameRepository.findAll();
-		for (Exame e : exames) {
-			System.out.println("aqui no if" + e.getNomeexame());
-		}
+	@GetMapping("/listarexamesatendimento/{idAtendimento}")
+	public ResponseEntity<?> listarexames(@PathVariable("idAtendimento") Long id) {
+	   
+		Atendimento atendimento = atendimentoRepository.getOne(id);
+		
+		List<Exame> exames = exameRepository.findByAtendimento(atendimento);
+		
 		return ResponseEntity.ok().body(exames);
-		// }
-		// System.out.println("aqui fora if");
-		// return ResponseEntity.badRequest().build();
 
 	}
 
+	@GetMapping("/excluir/{idExame}")
+	public ResponseEntity<?> excluirexame(@PathVariable("idExame") Long id) {
+		
+		Exame exame = exameRepository.getOne(id);
+
+		Prontuario prontuario = prontuarioRepository.getOne(exame.getProntuario().getId());
+		
+		List<Procedimento> procedimentoss = exame.getProcedimentos();
+		
+		exame.getProcedimentos().remove(procedimentoss);
+		
+		prontuario.getExames().remove(exame);
+		prontuarioRepository.saveAndFlush(prontuario);
+		exameRepository.saveAndFlush(exame);
+		exameRepository.delete(exame);
+		
+		return ResponseEntity.ok().build();
+
+	}
+	
 	@GetMapping("/{id}")
 	public ResponseEntity<?> getExame(@PathVariable("id") Long id) {
 		Optional<Exame> optional = exameRepository.findById(id);
@@ -139,6 +162,8 @@ public class ExameController {
 			Exame exame = optional.get();
 			return ResponseEntity.ok().body(exame);
 		}
+		
+		
 		return ResponseEntity.badRequest().build();
 	}
 
