@@ -60,6 +60,7 @@ function infoAtdSinaisVitais(triagem) {
 		var pa = triagem.sinaisVitais.pressaoArterial;
 		var temp = triagem.sinaisVitais.temperaturaCorporal;
 		var hgt = triagem.sinaisVitais.glicemiaCapilar;
+		var fc = triagem.sinaisVitais.frequenciaCardiaca;
 		if (cRisco == "" || cRisco == null || cRisco == undefined) {
 			cRisco = "<span class='badge badge-info'>Sem informação</span>"
 		} else {
