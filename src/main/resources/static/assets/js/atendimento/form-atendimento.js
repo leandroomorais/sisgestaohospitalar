@@ -1,10 +1,6 @@
-var idAtendimento;
-var idProntuario;
+
 //JS Form Atendimento
 $(document).ready(function() {
-
-	idAtendimento = $("#id-atendimento").val();
-	idProntuario = $("#id-prontuario").val();
 
 	$("#card-nova-prescricao").hide();
 	$("#card-edit-prescricao").hide();
@@ -39,7 +35,7 @@ $(document).ready(function() {
 	atualizaProcedimentoExame();
 	atualizaListaExames();
 	
-	//Chamada da função 
+		//Chamada da função 
 	atulizaMedicamentoUsoContinuo();
 
 	//Chamada da Função

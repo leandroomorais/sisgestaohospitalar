@@ -53,8 +53,8 @@
 													<ul class="nav nav-tabs">
 														<li sec:authorize="hasAnyAuthority('MEDICO')"
 															class="nav-item submenu"><a class="nav-link active show"
-																data-toggle="tab"
-																href="#dados-triagem"><strong>DADOS DA TRIAGEM</strong></a>
+																data-toggle="tab" href="#dados-triagem"><strong>DADOS DA
+																	TRIAGEM</strong></a>
 														</li>
 														<li class="nav-item submenu"><a class="nav-link"
 																data-toggle="tab"
@@ -80,13 +80,14 @@
 															</div>
 														</div>
 														<div id="alergias" class="tab-pane fade">
-															<p>Alergias</p>
+
 														</div>
 														<div id="doencas" class="tab-pane fade">
 															<p>Doenças</p>
 														</div>
 														<div id="medicamentos" class="tab-pane fade">
-															<div th:replace="fragments/triagem/card-medicamento">
+															<div
+																th:replace="fragments/usoMedicamentos/card-medicamento">
 															</div>
 														</div>
 														<div id="antropometria" class="tab-pane fade">
@@ -438,7 +439,7 @@
 		<script th:src="@{/assets/pdf/lib/util/PDFUtil.js}"></script>
 		<script th:src="@{/assets/pdf/lib/controller/PDF.js}"></script>
 		<script th:src="@{/assets/js/historico-cidadao.js}"></script>
-		<script th:src="@{/assets/js/procedimentos-atendimentoMedico.js}"></script>
+		<!--	<script th:src="@{/assets/js/procedimentos-atendimentoMedico.js}"></script>-->
 		<script th:src="@{/assets/js/historico-pdf.js}"></script>
 		<script type="text/javascript" th:inline="javascript"
 			th:src="@{/assets/js/atendimento/form-atendimento.js}"></script>
@@ -452,6 +453,9 @@
 			th:src="@{/assets/js/atendimento/form-atendimento-exame.js}"></script>
 		<script type="text/javascript" th:inline="javascript"
 			th:src="@{/assets/js/card-info-cidadao/card-info-cidadao.js}"></script>
+		<script type="text/javascript" th:inline="javascript"
+			th:src="@{/assets/js/usoMedicamentos/uso-medicamentos.js}"></script>
+
 
 	</th:block>
 </body>

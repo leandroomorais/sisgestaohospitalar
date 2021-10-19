@@ -1,5 +1,12 @@
 //######### Funções para Cadastro de Medicamentos ###########
 
+var idAtendimento = $("#id-atendimento").val();
+var idProntuario = $("#id-prontuario").val();
+
+
+
+
+
 //Funções atualizar medicamentos
 function atulizaMedicamentoUsoContinuo() {
 	$("#uso-continuo-lista").empty();
@@ -22,10 +29,9 @@ function atulizaMedicamentoUsoContinuo() {
 }
 
 function atulizaMedicamentoEmUso() {
-	var atendimentoId = $("#id-atendimento").val();
 	$("#uso-lista").empty();
 	$.ajax({
-		url: '/uso-medicamento/medicamentos/' + atendimentoId,
+		url: '/uso-medicamento/medicamentos/' + idAtendimento,
 		method: 'GET',
 		success: function(data) {
 			if ($.isEmptyObject(data)) {
@@ -82,7 +88,7 @@ $("#submit-uso-medicamento").click(function(evt) {
 	usoMedicamento.nota = $("#nota-uso-medicamento").val();
 	usoMedicamento.usoContinuo = $("#usoContinuo").prop("checked");
 	usoMedicamento.idProntuario = idProntuario;
-	usoMedicamento.idAtendimento = idAtendimeto;
+	usoMedicamento.idAtendimento = idAtendimento;
 
 	$.ajax({
 		url: "/uso-medicamento/salvar",
