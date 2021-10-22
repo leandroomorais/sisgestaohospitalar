@@ -19,7 +19,9 @@ public class SinaisVitais {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	private String pressaoArterial;
+	private int pressaoSistolica;
+	
+	private int pressaoDiastolica;
 	
 	@Temperatura
 	private double temperaturaCorporal;
@@ -48,12 +50,20 @@ public class SinaisVitais {
 		this.id = id;
 	}
 
-	public String getPressaoArterial() {
-		return pressaoArterial;
+	public int getPressaoSistolica() {
+		return pressaoSistolica;
 	}
 
-	public void setPressaoArterial(String pressaoArterial) {
-		this.pressaoArterial = pressaoArterial;
+	public void setPressaoSistolica(int pressaoSistolica) {
+		this.pressaoSistolica = pressaoSistolica;
+	}
+
+	public int getPressaoDiastolica() {
+		return pressaoDiastolica;
+	}
+
+	public void setPressaoDiastolica(int pressaoDiastolica) {
+		this.pressaoDiastolica = pressaoDiastolica;
 	}
 
 	public double getTemperaturaCorporal() {

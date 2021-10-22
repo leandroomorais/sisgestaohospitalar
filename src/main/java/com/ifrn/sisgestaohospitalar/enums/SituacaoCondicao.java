@@ -1,7 +1,7 @@
 package com.ifrn.sisgestaohospitalar.enums;
 
 public enum SituacaoCondicao {
-	ATIVA("Ativa", "Doença/Alergia ativa"), EMTRATAMENTO("Em tratamento", "Doença/Alergia em tratamento"),
+	ATIVA("Ativa", "Doença/Alergia ativa"),
 	LATENTE("Latente", "A  doença/alergia foi resolvida, porém pode trazer risco ao Cidadão"),
 	CURADA("Curada", "O Cidadão não possui mais a doença/alergia");
 
