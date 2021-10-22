@@ -15,7 +15,7 @@ function cardInfoCidadao(idAtendimento) {
 function createCardInfoCidadao(data) {
 	return "<div class='card'><div class='card-body'><div class='col-md-12 row'><div class='col-md-7'>" +
 		h5NomeCidadao(data.cidadao.nome) +
-		CpfAndCns(data.cidadao.cpf, data.cidadao.cns) + "<br>" +
+		CpfAndCns(data.cidadao.cns) + "<br>" +
 		NascimentoIdadeSexo(data.cidadao.dataNascimento, data.cidadao.sexo) +
 		"</div><div class='col-md-5'>" +
 		infoAtdSinaisVitais(data.triagem) +
@@ -26,8 +26,8 @@ function h5NomeCidadao(nome) {
 	return "<h5 class='text-uppercase fw-bold mb-1'> " + nome + " </h5>";
 }
 
-function CpfAndCns(cpf, cns) {
-	return "<i class='fa fa-id-card' aria-hidden='true'></i><strong> CPF: </strong><span> " + formataCPF(cpf) + " </span> | <strong> CNS: </strong><span> " + formataCNS(cns) + " </span>";
+function CpfAndCns(cns) {
+	return "<i class='fa fa-id-card' aria-hidden='true'></i><strong> CNS: </strong><span> " + formataCNS(cns) + " </span>";
 }
 
 function NascimentoIdadeSexo(dtNascimento, sexo) {
@@ -57,7 +57,8 @@ function infoAtdSinaisVitais(triagem) {
 	} else {
 		var cRisco = triagem.classificacaoDeRisco;
 		var spo2 = triagem.sinaisVitais.saturacao;
-		var pa = triagem.sinaisVitais.pressaoArterial;
+		var paSistolica = triagem.sinaisVitais.pressaoSistolica;
+		var paDiastolica = triagem.sinaisVitais.pressaoDiastolica;
 		var temp = triagem.sinaisVitais.temperaturaCorporal;
 		var hgt = triagem.sinaisVitais.glicemiaCapilar;
 		var fc = triagem.sinaisVitais.frequenciaCardiaca;
@@ -89,12 +90,21 @@ function infoAtdSinaisVitais(triagem) {
 			spo2 = createTextSinaisVitais("SPO2: ", spo2 + " % ");
 		}
 
-		if (pa == "" || pa == null || pa == undefined) {
-			pa = "";
+		if (paSistolica == "" || paSistolica == null || paSistolica == undefined) {
+			paSistolica = "";
 
 		} else {
-			pa = createTextSinaisVitais("PA: ", pa + " mmHg ");
+			paSistolica = paSistolica;
 		}
+
+		if (paDiastolica == "" || paDiastolica == null || paDiastolica == undefined) {
+			paDiastolica = "";
+
+		} else {
+			paDiastolica = paDiastolica;
+		}
+
+		var pressaoArterial = paSistolica + " / " + paDiastolica;
 
 		if (temp == "" || temp == null || temp == undefined) {
 			temp = "<br>";
@@ -116,7 +126,7 @@ function infoAtdSinaisVitais(triagem) {
 		} else {
 			fc = "<strong>FC: </strong><span class='text-danger'><i class='fa fa-heart' aria-hidden='true'></i>" + fc + " bmp " + "</span>"
 		}
-		return cRisco + pa + spo2 + temp + hgt + fc;
+		return cRisco + createTextSinaisVitais("PA:", pressaoArterial + " ") + spo2 + temp + hgt + fc;
 	}
 }
 

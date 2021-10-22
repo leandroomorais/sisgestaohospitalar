@@ -6,7 +6,7 @@ var idSinaisVitais;
 $(document).ready(function() {
 	idAtendimeto = $("#atendimento-id").val();
 	idProntuario = $("#id-prontuario").val();
-	
+
 	$("#conduta-cidadao").hide();
 	$("#card-nova-alergia").hide();
 	$("#card-edit-alergia").hide();
@@ -86,7 +86,8 @@ $("#form-triagem").submit(function(evt) {
 	triagem.inicioTriagem = $("#inicioTriagem").val();
 	triagem.classificacaoDeRisco = $("input[name='classificacaoDeRisco']:checked").val();
 	triagem['sinaisVitais'] = $("#idSinaisVitais").val();
-	triagem['sinaisVitais.pressaoArterial'] = $("#sinaisVitais-pressaoArterial").val();
+	triagem['sinaisVitais.pressaoSistolica'] = $("#sinaisVitais-pressaoSistolica").val();
+	triagem['sinaisVitais.pressaoDiastolica'] = $("#sinaisVitais-pressaoDiastolica").val();
 	triagem['sinaisVitais.temperaturaCorporal'] = $("#sinaisVitais-temperaturaCorporal").val();
 	triagem['sinaisVitais.frequenciaCardiaca'] = $("#sinaisVitais-frequenciaCardiaca").val();
 	triagem['sinaisVitais.saturacao'] = $("#sinaisVitais-saturacaoOxigenio").val();
@@ -94,7 +95,7 @@ $("#form-triagem").submit(function(evt) {
 	triagem['sinaisVitais.glicemiaCapilar'] = $("#sinaisVitais-glicemiaCapilar").val();
 	triagem['sinaisVitais.momentoColeta'] = $("#sinaisVitais-momentoColeta option:selected").val();
 	triagem['atendimento'] = idAtendimeto;
-	
+
 	console.log(triagem);
 
 	$.ajax({
@@ -346,7 +347,8 @@ function verificaTriagem() {
 			$("#idSinaisVitais").val(data.sinaisVitais.id);
 			$("#inicioTriagem").val(data.inicioTriagem);
 			tinymce.get('motivo').setContent(data.motivo);
-			$("#sinaisVitais-pressaoArterial").val(data.sinaisVitais.pressaoArterial);
+			$("#sinaisVitais-pressaoSistolica").val(data.sinaisVitais.pressaoSistolica);
+			$("#sinaisVitais-pressaoDiastolica").val(data.sinaisVitais.pressaoDiastolica);
 			$("#sinaisVitais-frequenciaRespiratoria").val(data.sinaisVitais.frequenciaRespiratoria);
 			$("#sinaisVitais-frequenciaCardiaca").val(data.sinaisVitais.frequenciaCardiaca);
 			$("#sinaisVitais-temperaturaCorporal").val(data.sinaisVitais.temperaturaCorporal);
