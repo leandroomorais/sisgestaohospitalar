@@ -24,10 +24,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.ifrn.sisgestaohospitalar.enums.Status;
 import com.ifrn.sisgestaohospitalar.model.Atendimento;
+import com.ifrn.sisgestaohospitalar.model.Cid;
 import com.ifrn.sisgestaohospitalar.model.Exame;
 import com.ifrn.sisgestaohospitalar.model.Procedimento;
 import com.ifrn.sisgestaohospitalar.model.Prontuario;
 import com.ifrn.sisgestaohospitalar.repository.AtendimentoRepository;
+import com.ifrn.sisgestaohospitalar.repository.CidRepository;
 import com.ifrn.sisgestaohospitalar.repository.ExameRepository;
 import com.ifrn.sisgestaohospitalar.repository.ProcedimentoRepository;
 import com.ifrn.sisgestaohospitalar.repository.ProfissionalRepository;
@@ -47,8 +49,11 @@ public class ExameController {
 	private ProcedimentoRepository procedimentoRepository;
 	@Autowired
 	private AtendimentoRepository atendimentoRepository;
+	@Autowired
+	private CidRepository cidRepository;
 
 	List<Procedimento> procedimentos = new ArrayList<Procedimento>();
+	private List<Cid> cidsExame = new ArrayList<>();
 
 	@PostMapping("/")
 	public ResponseEntity<?> exame(@Valid Exame exame, BindingResult result, Principal principal) {
@@ -67,9 +72,11 @@ public class ExameController {
 			exame.setDataRegistro(LocalDateTime.now());
 			exame.setProfissional(profissionalRepository.findByCpf(principal.getName()));
 			exame.setProcedimentos(procedimentos);
+			exame.setCids(cidsExame);
 			prontuario.getExames().add(exame);
 			prontuarioRepository.saveAndFlush(prontuario);
 			procedimentos.clear();
+			cidsExame.clear();
 			return ResponseEntity.ok().build();
 		}
 
@@ -120,6 +127,10 @@ public class ExameController {
 		if (!procedimentos.isEmpty()) {
 			procedimentos.clear();	
 		} else {}
+		
+		if (!cidsExame.isEmpty()) {
+			cidsExame.clear();	
+		} else {}
 	
 		return ResponseEntity.ok().body(procedimentos);
 	}
@@ -143,8 +154,10 @@ public class ExameController {
 		Prontuario prontuario = prontuarioRepository.getOne(exame.getProntuario().getId());
 		
 		List<Procedimento> procedimentoss = exame.getProcedimentos();
+		List<Cid> cidss = exame.getCids();
 		
 		exame.getProcedimentos().remove(procedimentoss);
+		exame.getCids().remove(cidss);
 		
 		prontuario.getExames().remove(exame);
 		prontuarioRepository.saveAndFlush(prontuario);
@@ -167,4 +180,35 @@ public class ExameController {
 		return ResponseEntity.badRequest().build();
 	}
 
+	
+
+	
+
+	@GetMapping("/cid/{codigoCid}")
+	public ResponseEntity<?> adicionarCid(@PathVariable("codigoCid") String codigoCid) {
+		Optional<Cid> optional = cidRepository.findById(codigoCid);
+		if (optional.isPresent()) {
+			cidsExame.add(optional.get());
+			return ResponseEntity.ok().build();
+		}
+		return ResponseEntity.badRequest().build();
+	}
+
+	@GetMapping("/listar/cids/")
+	public ResponseEntity<?> listarCidAtestado() {
+		return ResponseEntity.ok().body(cidsExame);
+	}
+	
+	@DeleteMapping("/cid/excluir/{codigoCid}")
+	public ResponseEntity<?> exlcuirCid(@PathVariable("codigoCid") String codigoCid) {
+		for (Cid cid : cidsExame) {
+			if (cid.getCodigo().equals(codigoCid)) {
+				cidsExame.remove(cid);
+				return ResponseEntity.ok().build();
+			}
+		}
+		return ResponseEntity.badRequest().build();
+	}
+
+	
 }

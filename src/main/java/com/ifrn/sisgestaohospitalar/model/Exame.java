@@ -51,6 +51,10 @@ public class Exame {
 	@ManyToMany(cascade = CascadeType.ALL)
 	@JoinTable(name = "exame_procedimentos", joinColumns = @JoinColumn(name = "id_exame"), inverseJoinColumns = @JoinColumn(name = "id_procedimento"))
 	private List<Procedimento> procedimentos;
+	
+	@ManyToMany(cascade = CascadeType.ALL)
+	@JoinTable(name = "exame_cid", joinColumns = @JoinColumn(name = "id_exame"), inverseJoinColumns = @JoinColumn(name = "id_cid"))
+	private List<Cid> cids;
 
 	public Long getId() {
 		return id;
@@ -115,6 +119,14 @@ public class Exame {
 
 	public void setAtendimento(Atendimento atendimento) {
 		this.atendimento = atendimento;
+	}
+
+	public List<Cid> getCids() {
+		return cids;
+	}
+
+	public void setCids(List<Cid> cids) {
+		this.cids = cids;
 	}
 	
 	

@@ -34,7 +34,8 @@
 						</button>
 					</div>
 
-					<div class="card">
+					
+					
 						<div class="col-md-12 mt-3">
 							<div class="card-sub">Procedimentos realizados:</div>
 							<div id="div-table-procedimentos-exame" class="table-responsive">
@@ -57,7 +58,7 @@
 								</table>
 							</div>
 						</div>
-					</div>
+					
 
 
 					<!-- 					<div class="col-md-12"> -->
@@ -106,22 +107,41 @@
 
 					<div class="col-md-12">
 						<div class="form-group">
-							<label for="diagnostico-cid">Cid-10: </label>
+							<label for="cid-exame">Adicionar CID</label>
 							<div class="input-group">
 								<div class="input-group-prepend">
-									<button id="button-cid" type="button" class="btn btn-black btn-border">
-										<i id="i-cid" class="fa fa-search"></i>
+									<button id="button-cid-exame" type="button" class="btn btn-black btn-border">
+										<i id="i-cid-exame" class="fa fa-search"></i>
 									</button>
 								</div>
-								<input id="diagnostico-cid" type="text" class="form-control"
-									placeholder="Pesquisa de Cid"> <input type="hidden" id="id-cid">
+								<input id="cid-exame" type="text" class="form-control" placeholder="Pesquisa de CID">
 							</div>
+							<small id="cid-small-exame" class="form-text text-muted">Selecione o CID para adicionar ao
+								Atestado</small>
 						</div>
 					</div>
-					<div class="col-md-12 text-right">
-						<button id="submit-diagnostico" type="button" class="btn btn-primary btn-sm">
-							<i class="fa fa-plus"></i> Selecionar
-						</button>
+					<div class="col-md-12 mt-3">
+						<div class="card-sub">CIDS:
+						</div>
+						<div id="div-table-cids-exame" class="table-responsive">
+							<table id="table-cids-exame" class="display table table-hover dataTable" role="grid"
+								aria-describedby="basic-datatables_info" style="width: 100%">
+								<thead>
+									<tr role="row">
+										<th></th>
+										<th></th>
+										<th></th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr role="row" class="odd">
+										<td></td>
+										<td></td>
+										<td></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
 					</div>
 					<!-- 					<div class="col-md-12 mt-3"> -->
 					<!-- 						<div class="card-sub">Diagnósticos:</div> -->

@@ -39,6 +39,7 @@ function fechaFormularioExame() {
 	
 	//$("#table-procedimentos-exame").DataTable().ajax.reload();
 	$("#table-lista-exame-atendimento").DataTable().ajax.reload();
+	$("#table-cids-exame").DataTable().ajax.reload();
 }
 
 
@@ -562,158 +563,198 @@ $("#procedimento-exame").autocomplete({
 		.append("<div class='h6'>" + item.codigo + " - " + item.nome + "</div>")
 		.appendTo(ul);
 };
-//
-////Função pesquisa de Cids
-//$("#diagnostico-cid").autocomplete({
-//	source: "/cid/buscar",
-//	focus: function(event, ui) {
-//		$("#alergia-cid").val(ui.item.codigo + " - " + ui.item.nome);
-//		return false;
-//	},
-//	select: function(event, ui) {
-//		$("#diagnostico-cid").val(ui.item.codigo + " - " + ui.item.nome);
-//		$("#id-cid").val(ui.item.codigo);
-//		return false;
-//	}
-//}).autocomplete("instance")._renderItem = function(ul, item) {
-//	return $("<li>")
-//		.append("<div class='h6'>" + item.codigo + " - " + item.nome + "</div>").appendTo(ul);
-//		console.log("aqui no autocomplete");
-//}
-////Fim da função pesquisa Cids
-//
-//$("#submit-diagnostico").click(function() {
-//	var diagnostico = {};
-//	diagnostico['atendimento'] = $("#id-atendimento").val();
-//	diagnostico['prontuario'] = $("#id-prontuario").val();
-//	diagnostico['cid'] = $("#id-cid").val();
-//	diagnostico.nota = $("#nota").val();
-//
-//	console.log(hipoteseDiagnostica);
-//
-//	$.ajax({
-//		url: '/diagnostico/',
-//		method: 'post',
-//		data: diagnostico,
-//		success: function() {
-//			$("#table-diagnosticos").DataTable().ajax.reload();
-//			limpaInputsDiagnostico();
-//			$.notify({
-//				// options
-//				icon: 'flaticon-success',
-//				title: 'SUCESSO',
-//				message: 'O diagnóstico foi salvo',
-//				target: '_blank'
-//			}, {
-//				// settings
-//				element: 'body',
-//				position: null,
-//				type: "success",
-//				allow_dismiss: true,
-//				newest_on_top: false,
-//				showProgressbar: false,
-//				placement: {
-//					from: "top",
-//					align: "right"
-//				},
-//				offset: 20,
-//				spacing: 10,
-//				z_index: 1031,
-//				delay: 5000,
-//				timer: 1000,
-//				url_target: '_blank',
-//				mouse_over: null,
-//				animate: {
-//					enter: 'animated fadeInDown',
-//					exit: 'animated fadeOutUp'
-//				},
-//				onShow: null,
-//				onShown: null,
-//				onClose: null,
-//				onClosed: null,
-//				icon_type: 'class',
-//			});
-//		},
-//
-//		error: function(xhr) {
-//
-//			$.notify({
-//				// options
-//				icon: 'flaticon-exclamation',
-//				title: 'ERRO',
-//				message: 'Não foi possível processar sua solicitação',
-//				target: '_blank'
-//			}, {
-//				// settings
-//				element: 'body',
-//				position: null,
-//				type: "danger",
-//				allow_dismiss: true,
-//				newest_on_top: false,
-//				showProgressbar: false,
-//				placement: {
-//					from: "top",
-//					align: "right"
-//				},
-//				offset: 20,
-//				spacing: 10,
-//				z_index: 1031,
-//				delay: 5000,
-//				timer: 1000,
-//				url_target: '_blank',
-//				mouse_over: null,
-//				animate: {
-//					enter: 'animated fadeInDown',
-//					exit: 'animated fadeOutUp'
-//				},
-//				onShow: null,
-//				onShown: null,
-//				onClose: null,
-//				onClosed: null,
-//				icon_type: 'class',
-//			});
-//
-//		}
-//	})
-//
-//})
-//
-////Inicio da funcao atualizar Diagnósticos
-//function atualizaDiagnostico() {
-//	var atendimentoId = $("#id-atendimento").val();
-//	$("#table-diagnosticos").DataTable({
-//		responsive: true,
-//		paging: false,
-//		searching: false,
-//		ordering: false,
-//		ajax: {
-//			url: '/diagnostico/listar/atendimento/' + atendimentoId,
-//			dataSrc: ''
-//		},
-//		columns: [
-//			{
-//				title: 'NOTA',
-//				data: 'nota',
-//			},
-//			{
-//				title: 'CID',
-//				data: 'cid.codigo',
-//			},
-//			{
-//				title: 'AÇÕES',
-//				data: 'id',
-//				mRender: function(data) {
-//					var retorno =
-//						" <button class='btn btn-primary btn-sm' data-value='" + data + "' onclick='editarAlergia(this)'><i class='fa fa-edit'></i> Editar </button>"
-//					return retorno;
-//				}
-//			}
-//		]
-//	})
-//};
-//
-//function limpaInputsDiagnostico() {
-//	$("#nota").val("");
-//	$("#diagnostico-cid").val("");
-//	$("#id-cid").val("");
-//}
+
+
+//Função pesquisa de Cids
+$("#cid-exame").autocomplete({
+	source: "/cid/buscar",
+	focus: function(event, ui) {
+		$("#cid-exame").val(ui.item.codigo + " - " + ui.item.nome);
+		return false;
+	},
+	select: function(event, ui) {
+		$.ajax({
+			url: '/exame/cid/' + ui.item.codigo,
+			method: 'get',
+			success: function() {
+				$("#cid-exame").val("");
+				$.notify({
+					// options
+					icon: 'flaticon-success',
+					title: 'SUCESSO',
+					message: 'O CID foi adicionado ao Exame',
+					target: '_blank'
+				}, {
+					// settings
+					element: 'body',
+					position: null,
+					type: "success",
+					allow_dismiss: true,
+					newest_on_top: false,
+					showProgressbar: false,
+					placement: {
+						from: "top",
+						align: "right"
+					},
+					offset: 20,
+					spacing: 10,
+					z_index: 1031,
+					delay: 5000,
+					timer: 1000,
+					url_target: '_blank',
+					mouse_over: null,
+					animate: {
+						enter: 'animated fadeInDown',
+						exit: 'animated fadeOutUp'
+					},
+					onShow: null,
+					onShown: null,
+					onClose: null,
+					onClosed: null,
+					icon_type: 'class',
+				});
+				$("#table-cids-exame").DataTable().ajax.reload();
+			},
+			error: function() {
+				$("#cid-exame").val("");
+				console.log("erro aqui");
+				$.notify({
+					// options
+					icon: 'flaticon-exclamation',
+					title: 'ERRO',
+					message: 'Não foi possível processar sua solicitação',
+					target: '_blank'
+				}, {
+					// settings
+					element: 'body',
+					position: null,
+					type: "danger",
+					allow_dismiss: true,
+					newest_on_top: false,
+					showProgressbar: false,
+					placement: {
+						from: "top",
+						align: "right"
+					},
+					offset: 20,
+					spacing: 10,
+					z_index: 1031,
+					delay: 5000,
+					timer: 1000,
+					url_target: '_blank',
+					mouse_over: null,
+					animate: {
+						enter: 'animated fadeInDown',
+						exit: 'animated fadeOutUp'
+					},
+					onShow: null,
+					onShown: null,
+					onClose: null,
+					onClosed: null,
+					icon_type: 'class',
+				});
+			}
+		});
+		return false;
+	}
+}).autocomplete("instance")._renderItem = function(ul, item) {
+	return $("<li>")
+		.append("<div class='h6'>" + item.codigo + " - " + item.nome + "</div>").appendTo(ul);
+}
+//Fim da função pesquisa Cids
+
+//Função atualiza tabela de cid do exame
+function atualizaCidExame() {
+	$("#table-cids-exame").DataTable().destroy();
+	$("#table-cids-exame").DataTable({
+		responsive: true,
+		paging: true,
+		searching: false,
+		ordering: false,
+		ajax: {
+			url: '/exame/listar/cids/',
+			dataSrc: '',
+		},
+		columns: [
+			{
+				title: 'CÓDIGO',
+				data: 'codigo',
+				mRender: function(data) {
+					return "<span class='badge badge-info'>" + data + "</span>";
+				}
+			},
+			{
+				title: 'DESCRIÇÃO',
+				data: 'nome',
+			},
+			{
+				title: 'AÇÕES',
+				data: 'codigo',
+				mRender: function(data) {
+					return "<button type='button' class='btn btn-warning btn-sm' data-value='" + data + "' onclick='removeCidExame(this)'><i class='fa fa-trash'></i> Excluir </button>"
+				}
+			}
+		]
+
+	})
+}
+
+function removeCidExame(item) {
+	swal({
+		title: 'Tem certeza que deseja excluir este CID?',
+		text: "Você não poderá reverter esta ação!",
+		icon: 'warning',
+		buttons: {
+			cancel: {
+				visible: true,
+				text: 'Não, cancelar!',
+				className: 'btn btn-success btn-border'
+			},
+			confirm: {
+				text: 'Sim, excluir!',
+				className: 'btn btn-success'
+			}
+		}
+	}).then((willDelete) => {
+		if (willDelete) {
+			var codigoCid = $(item).attr("data-value");
+			$.ajax({
+				url: '/exame/cid/excluir/' + codigoCid,
+				method: 'delete',
+				success: function() {
+					swal("Sucesso! O CID foi excluido!", {
+						icon: "success",
+						buttons: {
+							confirm: {
+								className: 'btn btn-success'
+							}
+						}
+					});
+					atualizaCidExame();
+				},
+				statusCode: {
+					403: function(xhr) {
+						swal("Houve um erro!", xrh.reponseText, {
+							icon: "error",
+							buttons: {
+								confirm: {
+									className: 'btn btn-danger'
+								}
+							},
+						});
+					}
+				}
+			})
+		} else {
+			swal("Certo, não iremos excluir!", {
+				buttons: {
+					confirm: {
+						className: 'btn btn-success'
+					}
+				}
+			});
+		}
+	});
+}
+
+

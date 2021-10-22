@@ -34,6 +34,7 @@ $(document).ready(function() {
 	
 	atualizaProcedimentoExame();
 	atualizaListaExames();
+	atualizaCidExame();
 	
 		//Chamada da função 
 	atulizaMedicamentoUsoContinuo();
