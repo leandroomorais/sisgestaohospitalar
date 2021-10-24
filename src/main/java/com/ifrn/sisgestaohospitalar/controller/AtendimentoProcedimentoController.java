@@ -49,9 +49,20 @@ public class AtendimentoProcedimentoController {
 			Profissional profissional = profissionalRepository.findByCpf(principal.getName());
 
 			atendimentoProcedimento.setProfissional(profissional);
+			for (AtendimentoProcedimento atendimentoProcedimentoAux : atendimento.getAtendimentoProcedimentos()) {
+				if (atendimentoProcedimento.getProcedimento().getCodigo()
+						.equals(atendimentoProcedimentoAux.getProcedimento().getCodigo())
+						&& atendimentoProcedimento.getProfissional().getCpf().equals(profissional.getCpf())) {
+					atendimentoProcedimentoAux.setQuantidade(
+							atendimentoProcedimentoAux.getQuantidade() + atendimentoProcedimento.getQuantidade());
+					atendimentoProcedimentoRepository.saveAndFlush(atendimentoProcedimentoAux);
+					return ResponseEntity.ok().build();
+
+				}
+			}
 			atendimento.getAtendimentoProcedimentos().add(atendimentoProcedimento);
 			atendimentoRepository.saveAndFlush(atendimento);
-			return ResponseEntity.ok().body(atendimento);
+			return ResponseEntity.ok().build();
 		}
 		return ResponseEntity.badRequest().build();
 	}
