@@ -150,7 +150,7 @@ $("#cid-atestado").autocomplete({
 	},
 	select: function(event, ui) {
 		$.ajax({
-			url: '/atestado/cid/' + ui.item.codigo,
+			url: '/atestado/cid/' + ui.item.id,
 			method: 'get',
 			success: function() {
 				$("#cid-atestado").val("");
@@ -305,7 +305,7 @@ function atualizaCidAtestado() {
 			},
 			{
 				title: 'AÇÕES',
-				data: 'codigo',
+				data: 'id',
 				mRender: function(data) {
 					return "<button type='button' class='btn btn-warning btn-sm' data-value='" + data + "' onclick='removeCid(this)'><i class='fa fa-trash'></i> Excluir </button>"
 				}
@@ -337,9 +337,9 @@ function removeCid(item) {
 		}
 	}).then((willDelete) => {
 		if (willDelete) {
-			var codigoCid = $(item).attr("data-value");
+			var idCid = $(item).attr("data-value");
 			$.ajax({
-				url: '/atestado/cid/excluir/' + codigoCid,
+				url: '/atestado/cid/excluir/' + idCid,
 				method: 'delete',
 				success: function() {
 					swal("Sucesso! O CID foi excluido!", {

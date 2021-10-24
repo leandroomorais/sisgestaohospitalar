@@ -344,7 +344,7 @@ function editarDoenca(item) {
 			tinymce.get("nota-dto").setContent(data.nota);
 			$("#id-doenca-dto").val(data.doenca.id);
 			$("#doenca-cid-dto").val(data.doenca.cid.codigo + " - " + data.doenca.cid.nome);
-			$("#id-cid-doenca-dto").val(data.doenca.cid.codigo);
+			$("#id-cid-doenca-dto").val(data.doenca.cid.id);
 			$("input[value = '" + data.situacaoCondicao + "']").prop("checked", true);
 			
 		}
@@ -364,7 +364,7 @@ $("#doenca-nome").autocomplete({
 		$("#doenca-nome").val(ui.item.nome);
 		$("#id-doenca").val(ui.item.id);
 		$("#doenca-cid").val(ui.item.cid.codigo + " - " + ui.item.cid.nome);
-		$("#id-cid-doenca").val(ui.item.cid.codigo);
+		$("#id-cid-doenca").val(ui.item.cid.id);
 		return false;
 	}
 }).autocomplete("instance")._renderItem = function(ul, item) {
@@ -404,7 +404,7 @@ $("#doenca-cid").autocomplete({
 	},
 	select: function(event, ui) {
 		$("#doenca-cid").val(ui.item.codigo + " - " + ui.item.nome);
-		$("#id-cid-doenca").val(ui.item.codigo);
+		$("#id-cid-doenca").val(ui.item.id);
 		return false;
 	}
 }).autocomplete("instance")._renderItem = function(ul, item) {
@@ -444,7 +444,7 @@ $("#doenca-cid-dto").on("keydown", function(event) {
 	},
 	select: function(event, ui) {
 		$("#doenca-cid-dto").val(ui.item.codigo + " - " + ui.item.nome);
-		$("#id-cid-doenca-dto").val(ui.item.codigo);
+		$("#id-cid-doenca-dto").val(ui.item.id);
 		return false;
 	}
 })

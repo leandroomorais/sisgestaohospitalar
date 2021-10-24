@@ -337,7 +337,7 @@ function editarAlergia(item) {
 			$("#alergia-nome-dto").val(data.alergia.nome);
 			$("#id-alergia-dto").val(data.alergia.id);
 			$("#alergia-cid-dto").val(data.alergia.cid.codigo + " - " + data.alergia.cid.nome);
-			$("#id-cid-dto").val(data.alergia.cid.codigo);
+			$("#id-cid-dto").val(data.alergia.cid.id);
 			$("input[value = '" + data.situacaoCondicao + "']").prop("checked", true);
 		}
 	})
@@ -407,7 +407,7 @@ $("#alergia-nome").autocomplete({
 		$("#alegia-nome").val(ui.item.nome);
 		$("#id-alergia").val(ui.item.id);
 		$("#alergia-cid").val(ui.item.cid.codigo + " - " + ui.item.cid.nome);
-		$("#id-cid").val(ui.item.cid.codigo);
+		$("#id-cid").val(ui.item.cid.id);
 		return false;
 	}
 }).autocomplete("instance")._renderItem = function(ul, item) {
@@ -427,7 +427,7 @@ $("#alergia-cid").autocomplete({
 	},
 	select: function(event, ui) {
 		$("#alegia-cid").val(ui.item.codigo + " - " + ui.item.nome);
-		$("#id-cid").val(ui.item.codigo);
+		$("#id-cid").val(ui.item.id);
 		return false;
 	}
 }).autocomplete("instance")._renderItem = function(ul, item) {

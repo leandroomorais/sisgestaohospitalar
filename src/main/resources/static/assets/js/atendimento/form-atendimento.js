@@ -208,6 +208,7 @@ $("#submit-diagnostico").click(function() {
 	diagnostico['prontuario'] = idProntuario;
 	diagnostico['cid'] = $("#id-cid").val();
 	diagnostico.nota = $("#nota").val();
+	console.log(diagnostico);
 
 	$.ajax({
 		url: '/diagnostico/',
@@ -305,7 +306,7 @@ $("#diagnostico-cid").autocomplete({
 	},
 	select: function(event, ui) {
 		$("#diagnostico-cid").val(ui.item.codigo + " - " + ui.item.nome);
-		$("#id-cid").val(ui.item.codigo);
+		$("#id-cid").val(ui.item.id);
 		return false;
 	}
 }).autocomplete("instance")._renderItem = function(ul, item) {
