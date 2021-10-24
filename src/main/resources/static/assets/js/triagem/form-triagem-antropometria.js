@@ -1,5 +1,6 @@
 var idAtendimento = $("#id-atendimento").val();
 var idProntuario = $("#id-prontuario").val();
+
 $("#form-antropometria").submit(function(evt) {
 	evt.preventDefault();
 	var antropometria = {};

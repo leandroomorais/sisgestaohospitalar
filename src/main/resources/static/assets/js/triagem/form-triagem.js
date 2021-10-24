@@ -246,7 +246,11 @@ $("#form-triagem").submit(function(evt) {
 //######### Funções dos Procedimentos ###########
 
 //Funçao que adiciona Procedimentos automaticamente
-$("#sinaisVitais-pressaoArterial").change(function() {
+$("#sinaisVitais-pressaoDiastolica").change(function() {
+	var pressaoSistolica = $("#sinaisVitais-pressaoSistolica").val();
+	if (this == "" && pressaoSistolica == "") {
+		return 0;
+	}
 	var tipoServico = "TRIAGEM";
 	var quantidade = 1;
 	submitProcedimento(idAtendimeto, 301100039, tipoServico, quantidade);
@@ -357,7 +361,9 @@ function verificaTriagem() {
 			$("#sinaisVitais-momentoColeta").find("option[value=" + data.sinaisVitais.momentoColeta + "]").attr("selected", true);
 			$("input:radio[name=classificacaoDeRisco][value= " + data.classificacaoDeRisco + " ]").attr('checked', true);
 			$("input:radio[name=classificacaoDeRisco]").attr('disabled', true);
-			$('#div-form-triagem').find('input, textarea, select').attr('disabled', true);
+			$("form-triagem").each(function() {
+				$(this).find('input, textarea, select').attr('disabled', true);
+			});
 			$("#card-action").empty().append("<button type = 'button' onclick='editarTriagem()' class='btn btn-secondary'> Editar triagem </button>");
 		},
 
@@ -370,6 +376,8 @@ function verificaTriagem() {
 }
 
 function editarTriagem() {
-	$('#div-form-triagem').find('input, textarea, select').attr('disabled', false);
+	$("form-triagem").each(function() {
+		$(this).find('input, textarea, select').attr('disabled', false);
+	});
 	$("#card-action").empty().append("<button type='submit' class='btn btn-primary'> Salvar triagem</button>");
 }
