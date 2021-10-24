@@ -16,14 +16,12 @@ public class CidController {
 
 	@Autowired
 	private CidRepository cidRepository;
-	
+
 	Pageable pageable = PageRequest.of(0, 10);
-	
+
 	@GetMapping("/buscar")
 	public ResponseEntity<?> search(@Param("term") String term) {
-		return ResponseEntity.ok(cidRepository.findByNomeIgnoreCaseContaining(term,pageable));
+		return ResponseEntity.ok(cidRepository.findByNomeIgnoreCaseContaining(term, pageable));
 	}
-	
-
 
 }

@@ -11,7 +11,6 @@ import java.util.Optional;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -22,7 +21,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.ifrn.sisgestaohospitalar.enums.Status;
 import com.ifrn.sisgestaohospitalar.model.Atendimento;
 import com.ifrn.sisgestaohospitalar.model.Cid;
 import com.ifrn.sisgestaohospitalar.model.Exame;
@@ -57,7 +55,7 @@ public class ExameController {
 
 	@PostMapping("/")
 	public ResponseEntity<?> exame(@Valid Exame exame, BindingResult result, Principal principal) {
-		
+
 		Map<String, String> errors = new HashMap<>();
 		if (result.hasErrors()) {
 			for (FieldError error : result.getFieldErrors()) {
@@ -105,7 +103,7 @@ public class ExameController {
 
 	@GetMapping("/listarprocedimentos/")
 	public ResponseEntity<?> listarprocedimentosexame() {
-		
+
 		return ResponseEntity.ok().body(procedimentos);
 	}
 
@@ -120,54 +118,56 @@ public class ExameController {
 		}
 		return ResponseEntity.badRequest().build();
 	}
-	
+
 	@GetMapping("/limparprocedimentosexame/")
 	public ResponseEntity<?> limparprocedimentosexame() {
-		
+
 		if (!procedimentos.isEmpty()) {
-			procedimentos.clear();	
-		} else {}
-		
+			procedimentos.clear();
+		} else {
+		}
+
 		if (!cidsExame.isEmpty()) {
-			cidsExame.clear();	
-		} else {}
-	
+			cidsExame.clear();
+		} else {
+		}
+
 		return ResponseEntity.ok().body(procedimentos);
 	}
 
 	@GetMapping("/listarexamesatendimento/{idAtendimento}")
 	public ResponseEntity<?> listarexames(@PathVariable("idAtendimento") Long id) {
-	   
+
 		Atendimento atendimento = atendimentoRepository.getOne(id);
-		
+
 		List<Exame> exames = exameRepository.findByAtendimento(atendimento);
-		
+
 		return ResponseEntity.ok().body(exames);
 
 	}
 
 	@GetMapping("/excluir/{idExame}")
 	public ResponseEntity<?> excluirexame(@PathVariable("idExame") Long id) {
-		
+
 		Exame exame = exameRepository.getOne(id);
 
 		Prontuario prontuario = prontuarioRepository.getOne(exame.getProntuario().getId());
-		
+
 		List<Procedimento> procedimentoss = exame.getProcedimentos();
 		List<Cid> cidss = exame.getCids();
-		
+
 		exame.getProcedimentos().remove(procedimentoss);
 		exame.getCids().remove(cidss);
-		
+
 		prontuario.getExames().remove(exame);
 		prontuarioRepository.saveAndFlush(prontuario);
 		exameRepository.saveAndFlush(exame);
 		exameRepository.delete(exame);
-		
+
 		return ResponseEntity.ok().build();
 
 	}
-	
+
 	@GetMapping("/{id}")
 	public ResponseEntity<?> getExame(@PathVariable("id") Long id) {
 		Optional<Exame> optional = exameRepository.findById(id);
@@ -175,18 +175,13 @@ public class ExameController {
 			Exame exame = optional.get();
 			return ResponseEntity.ok().body(exame);
 		}
-		
-		
+
 		return ResponseEntity.badRequest().build();
 	}
 
-	
-
-	
-
-	@GetMapping("/cid/{codigoCid}")
-	public ResponseEntity<?> adicionarCid(@PathVariable("codigoCid") String codigoCid) {
-		Optional<Cid> optional = cidRepository.findById(codigoCid);
+	@GetMapping("/cid/{id}")
+	public ResponseEntity<?> adicionarCid(@PathVariable("id") Long id) {
+		Optional<Cid> optional = cidRepository.findById(id);
 		if (optional.isPresent()) {
 			cidsExame.add(optional.get());
 			return ResponseEntity.ok().build();
@@ -198,7 +193,7 @@ public class ExameController {
 	public ResponseEntity<?> listarCidAtestado() {
 		return ResponseEntity.ok().body(cidsExame);
 	}
-	
+
 	@DeleteMapping("/cid/excluir/{codigoCid}")
 	public ResponseEntity<?> exlcuirCid(@PathVariable("codigoCid") String codigoCid) {
 		for (Cid cid : cidsExame) {
@@ -210,5 +205,4 @@ public class ExameController {
 		return ResponseEntity.badRequest().build();
 	}
 
-	
 }
