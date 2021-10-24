@@ -194,10 +194,10 @@ public class ExameController {
 		return ResponseEntity.ok().body(cidsExame);
 	}
 
-	@DeleteMapping("/cid/excluir/{codigoCid}")
-	public ResponseEntity<?> exlcuirCid(@PathVariable("codigoCid") String codigoCid) {
+	@DeleteMapping("/cid/excluir/{id}")
+	public ResponseEntity<?> exlcuirCid(@PathVariable("id") Long id) {
 		for (Cid cid : cidsExame) {
-			if (cid.getCodigo().equals(codigoCid)) {
+			if (cid.getId().equals(id)) {
 				cidsExame.remove(cid);
 				return ResponseEntity.ok().build();
 			}
