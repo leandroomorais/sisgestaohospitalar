@@ -713,7 +713,7 @@ $("#cid-exame").autocomplete({
 	},
 	select: function(event, ui) {
 		$.ajax({
-			url: '/exame/cid/' + ui.item.codigo,
+			url: '/exame/cid/' + ui.item.id,
 			method: 'get',
 			success: function() {
 				$("#cid-exame").val("");
@@ -828,7 +828,7 @@ function atualizaCidExame() {
 			},
 			{
 				title: 'AÇÕES',
-				data: 'codigo',
+				data: 'id',
 				mRender: function(data) {
 					return "<button type='button' class='btn btn-warning btn-sm' data-value='" + data + "' onclick='removeCidExame(this)'><i class='fa fa-trash'></i> Excluir </button>"
 				}
@@ -856,9 +856,9 @@ function removeCidExame(item) {
 		}
 	}).then((willDelete) => {
 		if (willDelete) {
-			var codigoCid = $(item).attr("data-value");
+			var idCid = $(item).attr("data-value");
 			$.ajax({
-				url: '/exame/cid/excluir/' + codigoCid,
+				url: '/exame/cid/excluir/' + idCid,
 				method: 'delete',
 				success: function() {
 					swal("Sucesso! O CID foi excluido!", {

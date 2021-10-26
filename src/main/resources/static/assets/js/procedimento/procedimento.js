@@ -24,7 +24,7 @@ function submitProcedimento(idAtendimento, codigoProcedimento, tipoServico, quan
 				// settings
 				element: 'body',
 				position: null,
-				type: "success",
+				icon: "success",
 				allow_dismiss: true,
 				newest_on_top: false,
 				showProgressbar: false,
@@ -124,7 +124,7 @@ function removeProcedimento(item) {
 	swal({
 		title: 'Tem certeza que deseja excluir este Procedimento?',
 		text: "Você não poderá reverter esta ação!",
-		type: 'warning',
+		icon: 'warning',
 		buttons: {
 			cancel: {
 				visible: true,

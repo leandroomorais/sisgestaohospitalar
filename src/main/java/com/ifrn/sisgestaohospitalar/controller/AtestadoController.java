@@ -50,9 +50,9 @@ public class AtestadoController {
 
 	private List<Cid> cidsAtestado = new ArrayList<>();
 
-	@GetMapping("/cid/{codigoCid}")
-	public ResponseEntity<?> adicionarCid(@PathVariable("codigoCid") String codigoCid) {
-		Optional<Cid> optional = cidRepository.findById(codigoCid);
+	@GetMapping("/cid/{id}")
+	public ResponseEntity<?> adicionarCid(@PathVariable("id") Long id) {
+		Optional<Cid> optional = cidRepository.findById(id);
 		if (optional.isPresent()) {
 			cidsAtestado.add(optional.get());
 			return ResponseEntity.ok().build();
@@ -128,10 +128,10 @@ public class AtestadoController {
 		return ResponseEntity.ok().build();
 	}
 
-	@DeleteMapping("/cid/excluir/{codigoCid}")
-	public ResponseEntity<?> exlcuirCid(@PathVariable("codigoCid") String codigoCid) {
+	@DeleteMapping("/cid/excluir/{id}")
+	public ResponseEntity<?> exlcuirCid(@PathVariable("id") Long id) {
 		for (Cid cid : cidsAtestado) {
-			if (cid.getCodigo().equals(codigoCid)) {
+			if (cid.getId().equals(id)) {
 				cidsAtestado.remove(cid);
 				return ResponseEntity.ok().build();
 			}
