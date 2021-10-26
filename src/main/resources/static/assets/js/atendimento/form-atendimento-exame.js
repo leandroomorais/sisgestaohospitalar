@@ -65,147 +65,7 @@ function removeInvalidFedbackExame() {
 //})
 
 
-$("#submit-procedimento-exame").click(function() {	
-	var procedimento = {};
-	
-	procedimento.codigo = $("#id-procedimento-exame").val();
-	
-$.ajax({
-		url: '/exame/procedimentos/',
-		method: 'post',
-		data: procedimento,
-		beforeSend: function() {
-			//console.log(procedimento);
-			removeInvalidFedbackExame();
-		},
-		success: function() {
-			$.notify({
-				// options
-				icon: 'flaticon-success',
-				title: 'SUCESSO',
-				message: 'O procedimento foi salvo',
-				target: '_blank'
-			}, {
-				// settings
-				element: 'body',
-				position: null,
-				type: "success",
-				allow_dismiss: true,
-				newest_on_top: false,
-				showProgressbar: false,
-				placement: {
-					from: "top",
-					align: "right"
-				},
-				offset: 20,
-				spacing: 10,
-				z_index: 1031,
-				delay: 5000,
-				timer: 1000,
-				url_target: '_blank',
-				mouse_over: null,
-				animate: {
-					enter: 'animated fadeInDown',
-					exit: 'animated fadeOutUp'
-				},
-				onShow: null,
-				onShown: null,
-				onClose: null,
-				onClosed: null,
-				icon_type: 'class',
-			});
-			limpaExame();
-			//fechaFormularioExame();
-			//atualizaExames();
-			//atualizaPrescricoExames();
-			$("#table-procedimentos-exame").DataTable().ajax.reload();
-		},
 
-		statusCode: {
-			400: function() {
-				$.notify({
-					// options
-					icon: 'flaticon-exclamation',
-					title: 'ERRO',
-					message: 'Não foi possível processar sua solicitação',
-					target: '_blank'
-				}, {
-					// settings
-					element: 'body',
-					position: null,
-					type: "danger",
-					allow_dismiss: true,
-					newest_on_top: false,
-					showProgressbar: false,
-					placement: {
-						from: "top",
-						align: "right"
-					},
-					offset: 20,
-					spacing: 10,
-					z_index: 1031,
-					delay: 5000,
-					timer: 1000,
-					url_target: '_blank',
-					mouse_over: null,
-					animate: {
-						enter: 'animated fadeInDown',
-						exit: 'animated fadeOutUp'
-					},
-					onShow: null,
-					onShown: null,
-					onClose: null,
-					onClosed: null,
-					icon_type: 'class',
-				});
-			},
-			422: function(xhr) {
-				var errors = $.parseJSON(xhr.responseText);
-				$.each(errors, function(key, val) {
-					$.notify({
-						// options
-						icon: 'flaticon-exclamation',
-						title: 'ATENÇÃO',
-						message: val,
-						target: '_blank'
-					}, {
-						// settings
-						element: 'body',
-						position: null,
-						type: "danger",
-						allow_dismiss: true,
-						newest_on_top: false,
-						showProgressbar: false,
-						placement: {
-							from: "top",
-							align: "right"
-						},
-						offset: 20,
-						spacing: 10,
-						z_index: 1031,
-						delay: 5000,
-						timer: 1000,
-						url_target: '_blank',
-						mouse_over: null,
-						animate: {
-							enter: 'animated fadeInDown',
-							exit: 'animated fadeOutUp'
-						},
-						onShow: null,
-						onShown: null,
-						onClose: null,
-						onClosed: null,
-						icon_type: 'class',
-					});
-
-					$("input[name='" + key + "']").parent().parent().addClass("has-error has-feedback");
-
-				})
-			}
-		},
-
-	})
-})
 
 $("#form-exame").submit(function(evt) {
 	evt.preventDefault();
@@ -544,6 +404,7 @@ function removeExame(item) {
 
 //************Funções autocomplete */
 //Função autocomplete Procedimentos
+
 $("#procedimento-exame").autocomplete({
 	source: "/procedimento/buscarexame",
 	focus: function(event, ui) {
@@ -551,18 +412,296 @@ $("#procedimento-exame").autocomplete({
 		return false;
 	},
 	select: function(event, ui) {
-		$("#i-procedimento").removeClass("fa fa-search").addClass("fa fa-times");
-		$("#procedimento-exame").val(ui.item.codigo + " - " + ui.item.nome).attr("disabled", true);
-		$("#id-procedimento-exame").val(ui.item.codigo);
-		$("#nome-procedimento").val(ui.item.nome);
+		$.ajax({
+			url: '/exame/procedimento/' + ui.item.codigo,
+			method: 'get',
+			success: function() {
+				$("#procedimento-exame").val("");
+				$.notify({
+					// options
+					icon: 'flaticon-success',
+					title: 'SUCESSO',
+					message: 'O Procedimento foi adicionado ao Exame',
+					target: '_blank'
+				}, {
+					// settings
+					element: 'body',
+					position: null,
+					type: "success",
+					allow_dismiss: true,
+					newest_on_top: false,
+					showProgressbar: false,
+					placement: {
+						from: "top",
+						align: "right"
+					},
+					offset: 20,
+					spacing: 10,
+					z_index: 1031,
+					delay: 5000,
+					timer: 1000,
+					url_target: '_blank',
+					mouse_over: null,
+					animate: {
+						enter: 'animated fadeInDown',
+						exit: 'animated fadeOutUp'
+					},
+					onShow: null,
+					onShown: null,
+					onClose: null,
+					onClosed: null,
+					icon_type: 'class',
+				});
+				$("#table-procedimentos-exame").DataTable().ajax.reload();
+			},
+			error: function() {
+				$("#procedimento-exame").val("");
+				console.log("erro aqui");
+				$.notify({
+					// options
+					icon: 'flaticon-exclamation',
+					title: 'ERRO',
+					message: 'Não foi possível processar sua solicitação',
+					target: '_blank'
+				}, {
+					// settings
+					element: 'body',
+					position: null,
+					type: "danger",
+					allow_dismiss: true,
+					newest_on_top: false,
+					showProgressbar: false,
+					placement: {
+						from: "top",
+						align: "right"
+					},
+					offset: 20,
+					spacing: 10,
+					z_index: 1031,
+					delay: 5000,
+					timer: 1000,
+					url_target: '_blank',
+					mouse_over: null,
+					animate: {
+						enter: 'animated fadeInDown',
+						exit: 'animated fadeOutUp'
+					},
+					onShow: null,
+					onShown: null,
+					onClose: null,
+					onClosed: null,
+					icon_type: 'class',
+				});
+			}
+//			alert: function() {
+//				$("#procedimento-exame").val("");
+//				console.log("erro aqui");
+//				$.notify({
+//					// options
+//					icon: 'flaticon-exclamation',
+//					title: 'ERRO',
+//					message: 'Não foi possível processar sua solicitação',
+//					target: '_blank'
+//				}, {
+//					// settings
+//					element: 'body',
+//					position: null,
+//					type: "danger",
+//					allow_dismiss: true,
+//					newest_on_top: false,
+//					showProgressbar: false,
+//					placement: {
+//						from: "top",
+//						align: "right"
+//					},
+//					offset: 20,
+//					spacing: 10,
+//					z_index: 1031,
+//					delay: 5000,
+//					timer: 1000,
+//					url_target: '_blank',
+//					mouse_over: null,
+//					animate: {
+//						enter: 'animated fadeInDown',
+//						exit: 'animated fadeOutUp'
+//					},
+//					onShow: null,
+//					onShown: null,
+//					onClose: null,
+//					onClosed: null,
+//					icon_type: 'class',
+//				});
+//			}
+			
+		});
 		return false;
-
 	}
 }).autocomplete("instance")._renderItem = function(ul, item) {
-	return $("<li></li>")
-		.append("<div class='h6'>" + item.codigo + " - " + item.nome + "</div>")
-		.appendTo(ul);
-};
+	return $("<li>")
+		.append("<div class='h6'>" + item.codigo + " - " + item.nome + "</div>").appendTo(ul);
+}
+
+//$("#procedimento-exame").autocomplete({
+//	source: "/procedimento/buscarexame",
+//	focus: function(event, ui) {
+//		$("#procedimento-exame").val(ui.item.codigo + " ; " + ui.item.nome);
+//		return false;
+//	},
+//	select: function(event, ui) {
+//		$("#i-procedimento").removeClass("fa fa-search").addClass("fa fa-times");
+//		$("#procedimento-exame").val(ui.item.codigo + " - " + ui.item.nome).attr("disabled", true);
+//		$("#id-procedimento-exame").val(ui.item.codigo);
+//		$("#nome-procedimento").val(ui.item.nome);
+//		return false;
+//
+//	}
+//}).autocomplete("instance")._renderItem = function(ul, item) {
+//	return $("<li></li>")
+//		.append("<div class='h6'>" + item.codigo + " - " + item.nome + "</div>")
+//		.appendTo(ul);
+//};
+//
+//$("#submit-procedimento-exame").click(function() {	
+//	var procedimento = {};
+//	
+//	procedimento.codigo = $("#id-procedimento-exame").val();
+//	
+//$.ajax({
+//		url: '/exame/procedimentos/',
+//		method: 'post',
+//		data: procedimento,
+//		beforeSend: function() {
+//			//console.log(procedimento);
+//			removeInvalidFedbackExame();
+//		},
+//		success: function() {
+//			$.notify({
+//				// options
+//				icon: 'flaticon-success',
+//				title: 'SUCESSO',
+//				message: 'O procedimento foi salvo',
+//				target: '_blank'
+//			}, {
+//				// settings
+//				element: 'body',
+//				position: null,
+//				type: "success",
+//				allow_dismiss: true,
+//				newest_on_top: false,
+//				showProgressbar: false,
+//				placement: {
+//					from: "top",
+//					align: "right"
+//				},
+//				offset: 20,
+//				spacing: 10,
+//				z_index: 1031,
+//				delay: 5000,
+//				timer: 1000,
+//				url_target: '_blank',
+//				mouse_over: null,
+//				animate: {
+//					enter: 'animated fadeInDown',
+//					exit: 'animated fadeOutUp'
+//				},
+//				onShow: null,
+//				onShown: null,
+//				onClose: null,
+//				onClosed: null,
+//				icon_type: 'class',
+//			});
+//			limpaExame();
+//			//fechaFormularioExame();
+//			//atualizaExames();
+//			//atualizaPrescricoExames();
+//			$("#table-procedimentos-exame").DataTable().ajax.reload();
+//		},
+//
+//		statusCode: {
+//			400: function() {
+//				$.notify({
+//					// options
+//					icon: 'flaticon-exclamation',
+//					title: 'ERRO',
+//					message: 'Não foi possível processar sua solicitação',
+//					target: '_blank'
+//				}, {
+//					// settings
+//					element: 'body',
+//					position: null,
+//					type: "danger",
+//					allow_dismiss: true,
+//					newest_on_top: false,
+//					showProgressbar: false,
+//					placement: {
+//						from: "top",
+//						align: "right"
+//					},
+//					offset: 20,
+//					spacing: 10,
+//					z_index: 1031,
+//					delay: 5000,
+//					timer: 1000,
+//					url_target: '_blank',
+//					mouse_over: null,
+//					animate: {
+//						enter: 'animated fadeInDown',
+//						exit: 'animated fadeOutUp'
+//					},
+//					onShow: null,
+//					onShown: null,
+//					onClose: null,
+//					onClosed: null,
+//					icon_type: 'class',
+//				});
+//			},
+//			422: function(xhr) {
+//				var errors = $.parseJSON(xhr.responseText);
+//				$.each(errors, function(key, val) {
+//					$.notify({
+//						// options
+//						icon: 'flaticon-exclamation',
+//						title: 'ATENÇÃO',
+//						message: val,
+//						target: '_blank'
+//					}, {
+//						// settings
+//						element: 'body',
+//						position: null,
+//						type: "danger",
+//						allow_dismiss: true,
+//						newest_on_top: false,
+//						showProgressbar: false,
+//						placement: {
+//							from: "top",
+//							align: "right"
+//						},
+//						offset: 20,
+//						spacing: 10,
+//						z_index: 1031,
+//						delay: 5000,
+//						timer: 1000,
+//						url_target: '_blank',
+//						mouse_over: null,
+//						animate: {
+//							enter: 'animated fadeInDown',
+//							exit: 'animated fadeOutUp'
+//						},
+//						onShow: null,
+//						onShown: null,
+//						onClose: null,
+//						onClosed: null,
+//						icon_type: 'class',
+//					});
+//
+//					$("input[name='" + key + "']").parent().parent().addClass("has-error has-feedback");
+//
+//				})
+//			}
+//		},
+//
+//	})
+//})
 
 
 //Função pesquisa de Cids

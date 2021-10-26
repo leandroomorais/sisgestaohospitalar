@@ -83,23 +83,36 @@ public class ExameController {
 		return ResponseEntity.badRequest().build();
 	}
 
-	@PostMapping("/procedimentos/")
-	public ResponseEntity<?> procedimentosexame(@Valid Procedimento procedimento, BindingResult result,
-			Principal principal) {
-		Map<String, String> errors = new HashMap<>();
-		if (result.hasErrors()) {
-			for (FieldError error : result.getFieldErrors()) {
-				errors.put(error.getField(), error.getDefaultMessage());
-			}
-			return ResponseEntity.unprocessableEntity().body(errors);
-		}
-
-		Procedimento procedimentook = procedimentoRepository.findByCodigo(procedimento.getCodigo());
-		if (procedimentook != null) {
-			procedimentos.add(procedimentook);
+//	@PostMapping("/procedimentos/")
+//	public ResponseEntity<?> procedimentosexame(@Valid Procedimento procedimento, BindingResult result,
+//			Principal principal) {
+//		Map<String, String> errors = new HashMap<>();
+//		if (result.hasErrors()) {
+//			for (FieldError error : result.getFieldErrors()) {
+//				errors.put(error.getField(), error.getDefaultMessage());
+//			}
+//			return ResponseEntity.unprocessableEntity().body(errors);
+//		}
+//
+//		Procedimento procedimentook = procedimentoRepository.findByCodigo(procedimento.getCodigo());
+//		if (procedimentook != null) {
+//			procedimentos.add(procedimentook);
+//			return ResponseEntity.ok().build();
+//		}
+//
+//		return ResponseEntity.badRequest().build();
+//	}
+	
+	@GetMapping("/procedimento/{codigoProcedimento}")
+	public ResponseEntity<?> adicionarProcedimento(@PathVariable("codigoProcedimento") Long codigoProcedimento) {
+		Optional<Procedimento> optional = procedimentoRepository.findById(codigoProcedimento);
+		if (optional.isPresent()) {
+			procedimentos.add(optional.get());
 			return ResponseEntity.ok().build();
 		}
-
+//		if() {
+//			return ResponseEntity.a
+//		}
 		return ResponseEntity.badRequest().build();
 	}
 
@@ -187,6 +200,7 @@ public class ExameController {
 	@GetMapping("/cid/{codigoCid}")
 	public ResponseEntity<?> adicionarCid(@PathVariable("codigoCid") String codigoCid) {
 		Optional<Cid> optional = cidRepository.findById(codigoCid);
+		System.out.println("AQUI codigo ======"+ codigoCid);
 		if (optional.isPresent()) {
 			cidsExame.add(optional.get());
 			return ResponseEntity.ok().build();
