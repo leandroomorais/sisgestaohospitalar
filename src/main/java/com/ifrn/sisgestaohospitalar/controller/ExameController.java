@@ -200,7 +200,7 @@ public class ExameController {
 	@GetMapping("/cid/{codigoCid}")
 	public ResponseEntity<?> adicionarCid(@PathVariable("codigoCid") String codigoCid) {
 		Optional<Cid> optional = cidRepository.findById(codigoCid);
-		System.out.println("AQUI codigo ======"+ codigoCid);
+		
 		if (optional.isPresent()) {
 			cidsExame.add(optional.get());
 			return ResponseEntity.ok().build();
@@ -224,5 +224,10 @@ public class ExameController {
 		return ResponseEntity.badRequest().build();
 	}
 
+	
+	
+	
+	
+	
 	
 }
