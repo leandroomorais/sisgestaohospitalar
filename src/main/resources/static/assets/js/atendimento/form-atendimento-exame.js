@@ -39,6 +39,7 @@ function fechaFormularioExame() {
 	
 	$("#table-procedimentos-exame").DataTable().ajax.reload();
 	$("#table-lista-exame-atendimento").DataTable().ajax.reload();
+	atualizaExames();
 
 }
 
@@ -363,6 +364,67 @@ function removeExame(item) {
 						}
 					});
 					$("#table-lista-exame-atendimento").DataTable().ajax.reload();
+					atualizaExames();
+				},
+				statusCode: {
+					403: function(xhr) {
+						swal("Houve um erro!", xrh.reponseText, {
+							icon: "error",
+							buttons: {
+								confirm: {
+									className: 'btn btn-danger'
+								}
+							},
+						});
+					}
+				}
+			})
+		} else {
+			swal("Certo, não iremos excluir!", {
+				buttons: {
+					confirm: {
+						className: 'btn btn-success'
+					}
+				}
+			});
+		}
+	});
+}
+
+function excluirExame(item) {
+	
+	swal({
+		title: 'Tem certeza que deseja excluir este Exame?',
+		text: "Você não poderá reverter esta ação!",
+		icon: 'warning',
+		buttons: {
+			cancel: {
+				visible: true,
+				text: 'Não, cancelar!',
+				className: 'btn btn-success btn-border'
+			},
+			confirm: {
+				text: 'Sim, excluir!',
+				className: 'btn btn-success'
+			}
+		}
+	}).then((willDelete) => {
+		if (willDelete) {
+			var idExame = $(item).attr("data-value");
+			$.ajax({
+				url: '/exame/excluir/' + idExame,
+				method: 'get',
+				success: function() {
+					swal("Sucesso! O Exame foi excluido!", {
+						icon: "success",
+						buttons: {
+							confirm: {
+								className: 'btn btn-success'
+							}
+						}
+					});
+					$("#table-lista-exame-atendimento").DataTable().ajax.reload();
+					atualizaExames();
 				},
 				statusCode: {
 					403: function(xhr) {
@@ -508,3 +570,124 @@ $("#exame-cid").autocomplete({
 		.append("<div class='h6'>" + item.codigo + " - " + "<b>" + item.nome + "</b>" + "</div>")
 		.appendTo(ul);
 };
+
+// Card de exames
+function atualizaExames() {
+	var atendimentoId = $("#id-atendimento").val();
+	$("#div-exames").empty();
+	$.ajax({
+		url: '/exame/listarexamesatendimento/' + atendimentoId,
+		method: 'get',
+		success: function(data) {
+			if (isEmpty(data)) {
+				$("#div-exames").append("<h5 class='card-title text-center'>Não existem Exames para este atendimento</h5><p class='card-text text-center'>Clique no botão Novo Exame para cadastrar um.</p>");
+			} else {
+				$.each(data, function(key, item) {
+					$("#div-exames").append(createCardExame(item));
+				})
+			}
+
+		},
+	})
+};
+
+function createCardExame(data) {
+	console.log("aqui" + data);
+	
+	return "<div class='card'><div class='card-body'><div class='col-md-12 row'><div class='col-md-8'>" +
+		//h5CarPrescricao(data.medicamento.principioAtivo, data.viaAdministracao.nome) + inforCardPrimary(data.medicamento.concentracao, data.medicamento.formaFarmaceutica.nome) +
+		infoCardProcedimentos(data.procedimentos) +
+		infoCardCid(data.cid.nome) +
+		infoCardJustificativa(data.justificativacid) +
+		infoCardObservacoes(data.observacoes) +
+		//inforCardBooleans(data) +
+		//infoCardPrescricao("Orientações: ", data.orientacoes) +
+		"</div><div class='col-md-4 text-right'>" +
+		infoCardDataProfissional(data.dataRegistro, data.profissional.nome, data.profissional.numeroRegistro + " / " + data.profissional.siglaUfEmissao) +
+		"</div></div><div class='text-right'>" +
+		"<button type='button' class='btn btn-light btn-sm' data-value='" + data.id + "' onclick='imprimirExame()'><i class='fa fa-print'></i> Imprimir</button>"
+		+ buttonExcluir()
+		+ "</div></div></div>";
+
+
+	function buttonExcluir() {
+		var username = $("#nome-usuario").text();
+		if (data.profissional.cpf != username) {
+			return "";
+		} else if (data.profissional.cpf == username) {
+			return "<button type='button' class='btn btn-light btn-sm' data-value='" + data.id + "' onclick='excluirExame(this)'><i class='fa fa-trash'></i> Excluir</button>";
+		}
+	}
+}
+
+//function h5CardExame(principioAtivo, viaAdmnistracao) {
+//	return "<h5 class='text-uppercase fw-bold mb-1'> " + principioAtivo + " <span class='text-danger text-uppercase pl-3'> " + viaAdmnistracao + " </span></h5>";
+//}
+//
+//function inforCardPrimary(info, formaFarmaceutica) {
+//	return "<strong> Concentração: </strong><span> " + info + " </span> | <strong> Forma farmacêutica: </strong><span> " + formaFarmaceutica + " </span><br>";
+//}
+
+function infoCardProcedimentos(procedimentos){
+	return "<strong>Procedimentos: </strong><br><div>" +  listaProcedimentos(procedimentos) +"</div>"; 
+}
+
+function listaProcedimentos(procedimentos){
+	return $.each(procedimentos, function(ul, item) {
+				$("<li>")
+						.append("<div class='h6'>" + item.codigo + " - " + "<b>" + item.nome + "</b>" + "</div>")
+						.appendTo(ul);
+				}) 
+};
+
+//function listaProcedimentos(procedimentos){
+//	return 	"<table>"+
+//				"<thead>"+
+//					"<tr>"+
+//						"<th> Código </th>"+
+//						"<th> Nome </th>"+
+//					"</tr>"+
+//				"</thead>"+
+//				"<tbody>"+
+//					"<tr 'each'='procedimento : ${procedimentos}'>"+
+//						"<td 'text'='${procedimento.codigo}'></td>"+
+//						"<td 'text'='${procedimento.nome}'></td>"+
+//					"</tr>"+
+//				"</tbody>"+
+//			"</table>"
+//};
+
+
+//function infoCardProcedimentos(procedimentos){
+//	return "<strong>Procedimentos: </strong><br><div>" + $.each(procedimentos, function(ul, item) {
+//															$("<li>")
+//																.append("<div class='h6'>" + item.codigo + " - " + "<b>" + item.nome + "</b>" + "</div>")
+//																.appendTo(ul);
+//														}) +"</div>"; 
+//}
+
+//.autocomplete("instance")._renderItem = function(ul, item) {
+//	return $("<li>")
+//		.append("<div class='h6'>" + item.codigo + " - " + "<b>" + item.nome + "</b>" + "</div>")
+//		.appendTo(ul);
+//};
+
+function infoCardCid(cid) {
+	return "<strong>CID Relacionado: </strong><span> " + cid + " </span><br>"
+}
+
+function infoCardJustificativa(justificativa) {
+	return "<strong>Justificativa: </strong><span> " + justificativa + " </span><br>"
+}
+
+function infoCardObservacoes(observacoes) {
+	return "<strong>Observações: </strong><span> " + observacoes + " </span><br>"
+}
+
+function infoCardDataProfissional(date, nomeProfissional, crm) {
+	return "<span class='text-warning'> " + date + " </span><br><span class='text-muted'> " + nomeProfissional + " </span><br><strong>CRM: </strong><span class='text-muted'> " + crm + " </span><br>"
+}
+
+function imprimirExame() {
+	return "";
+}

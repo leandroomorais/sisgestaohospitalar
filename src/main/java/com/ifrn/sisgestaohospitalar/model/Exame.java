@@ -42,7 +42,6 @@ public class Exame {
 	@OneToOne
 	private Prontuario prontuario;
 	
-	@JsonIgnore
 	@OneToOne
 	private Profissional profissional;
 	

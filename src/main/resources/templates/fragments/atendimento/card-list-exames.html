@@ -5,38 +5,37 @@
 	</div>
 	<div class="card-body">
 		<div id="info-exames">
-						<div id="div-exames">
-							<div class="col-md-12">
-							<div class="card-sub">Exames:</div>
-							<div id="div-table-exames" class="table-responsive">
-								<table id="table-lista-exame-atendimento" class="display table table-hover dataTable" role="grid"
-									aria-describedby="basic-datatables_info" style="width: 100%">
-									<thead>
-										<tr role="row">
-											<th></th>
-											<th></th>
-											<th></th>
-
-										</tr>
-									</thead>
-									<tbody>
-										<tr role="row" class="odd">
-											<td></td>
-											<td></td>
-											<td></td>
-
-										</tr>
-									</tbody>
-								</table>
-							</div>
-						</div>
-						</div>
+			<div id="div-exames"></div>			
+			<div sec:authorize="hasAnyAuthority('MEDICO')" id="div-button-novo-exame" class="text-right">
+				<button type="button" onclick="exibeFormularioExame()" class="btn btn-primary btn-sm">
+					<i class="fa fa-plus"></i> Novo
+					Exame
+				</button>
+			</div>
 		
-		<div sec:authorize="hasAnyAuthority('MEDICO')" id="div-button-novo-exame" class="text-right">
-			<button type="button" onclick="exibeFormularioExame()" class="btn btn-primary btn-sm">
-				<i class="fa fa-plus"></i> Novo
-				exame comum
-			</button>
+		<div class="col-md-12">
+			<div class="card-sub">Exames:</div>
+			<div id="div-table-exames" class="table-responsive">
+				<table id="table-lista-exame-atendimento" class="display table table-hover dataTable" role="grid"
+					aria-describedby="basic-datatables_info" style="width: 100%">
+					<thead>
+						<tr role="row">
+							<th></th>
+							<th></th>
+							<th></th>
+
+						</tr>
+					</thead>
+					<tbody>
+						<tr role="row" class="odd">
+							<td></td>
+							<td></td>
+							<td></td>
+
+						</tr>
+					</tbody>
+				</table>
+			</div>
 		</div>
 		</div>
 	</div>
