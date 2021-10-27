@@ -47,11 +47,8 @@ public class ExameController {
 	private ProcedimentoRepository procedimentoRepository;
 	@Autowired
 	private AtendimentoRepository atendimentoRepository;
-	@Autowired
-	private CidRepository cidRepository;
 
 	List<Procedimento> procedimentos = new ArrayList<Procedimento>();
-	private List<Cid> cidsExame = new ArrayList<>();
 
 	@PostMapping("/")
 	public ResponseEntity<?> exame(@Valid Exame exame, BindingResult result, Principal principal) {
@@ -70,36 +67,16 @@ public class ExameController {
 			exame.setDataRegistro(LocalDateTime.now());
 			exame.setProfissional(profissionalRepository.findByCpf(principal.getName()));
 			exame.setProcedimentos(procedimentos);
-			exame.setCids(cidsExame);
 			prontuario.getExames().add(exame);
 			prontuarioRepository.saveAndFlush(prontuario);
 			procedimentos.clear();
-			cidsExame.clear();
+
 			return ResponseEntity.ok().build();
 		}
 
 		return ResponseEntity.badRequest().build();
 	}
 
-//	@PostMapping("/procedimentos/")
-//	public ResponseEntity<?> procedimentosexame(@Valid Procedimento procedimento, BindingResult result,
-//			Principal principal) {
-//		Map<String, String> errors = new HashMap<>();
-//		if (result.hasErrors()) {
-//			for (FieldError error : result.getFieldErrors()) {
-//				errors.put(error.getField(), error.getDefaultMessage());
-//			}
-//			return ResponseEntity.unprocessableEntity().body(errors);
-//		}
-//
-//		Procedimento procedimentook = procedimentoRepository.findByCodigo(procedimento.getCodigo());
-//		if (procedimentook != null) {
-//			procedimentos.add(procedimentook);
-//			return ResponseEntity.ok().build();
-//		}
-//
-//		return ResponseEntity.badRequest().build();
-//	}
 	
 	@GetMapping("/procedimento/{codigoProcedimento}")
 	public ResponseEntity<?> adicionarProcedimento(@PathVariable("codigoProcedimento") Long codigoProcedimento) {
@@ -108,9 +85,7 @@ public class ExameController {
 			procedimentos.add(optional.get());
 			return ResponseEntity.ok().build();
 		}
-//		if() {
-//			return ResponseEntity.a
-//		}
+
 		return ResponseEntity.badRequest().build();
 	}
 
@@ -135,16 +110,8 @@ public class ExameController {
 	@GetMapping("/limparprocedimentosexame/")
 	public ResponseEntity<?> limparprocedimentosexame() {
 
-		if (!procedimentos.isEmpty()) {
-			procedimentos.clear();
-		} else {
-		}
-
-		if (!cidsExame.isEmpty()) {
-			cidsExame.clear();
-		} else {
-		}
-
+		procedimentos.clear();
+		
 		return ResponseEntity.ok().body(procedimentos);
 	}
 
@@ -167,10 +134,9 @@ public class ExameController {
 		Prontuario prontuario = prontuarioRepository.getOne(exame.getProntuario().getId());
 
 		List<Procedimento> procedimentoss = exame.getProcedimentos();
-		List<Cid> cidss = exame.getCids();
 
 		exame.getProcedimentos().remove(procedimentoss);
-		exame.getCids().remove(cidss);
+	
 
 		prontuario.getExames().remove(exame);
 		prontuarioRepository.saveAndFlush(prontuario);
@@ -189,33 +155,6 @@ public class ExameController {
 			return ResponseEntity.ok().body(exame);
 		}
 
-		return ResponseEntity.badRequest().build();
-	}
-
-
-	@GetMapping("/cid/{id}")
-	public ResponseEntity<?> adicionarCid(@PathVariable("id") Long id) {
-		Optional<Cid> optional = cidRepository.findById(id);
-		if (optional.isPresent()) {
-			cidsExame.add(optional.get());
-			return ResponseEntity.ok().build();
-		}
-		return ResponseEntity.badRequest().build();
-	}
-
-	@GetMapping("/listar/cids/")
-	public ResponseEntity<?> listarCidAtestado() {
-		return ResponseEntity.ok().body(cidsExame);
-	}
-
-	@DeleteMapping("/cid/excluir/{id}")
-	public ResponseEntity<?> exlcuirCid(@PathVariable("id") Long id) {
-		for (Cid cid : cidsExame) {
-			if (cid.getId().equals(id)) {
-				cidsExame.remove(cid);
-				return ResponseEntity.ok().build();
-			}
-		}
 		return ResponseEntity.badRequest().build();
 	}
 

@@ -11,17 +11,17 @@ function exibeFormularioExame() {
 	$("#card-novo-exame").fadeIn(100);
 	
 	$("#table-procedimentos-exame").DataTable().ajax.reload();
+	
+	$("#i-procedimento").removeClass().addClass("fa fa-search");
+	$("#i-exame-cid").removeClass().addClass("fa fa-search");
 }
 
 function limpaExame() {
 	$("#procedimento-exame").val("").attr("disabled", false);
 	$("#id-procedimento-exame").val("");
-	$("#grupoexame").val("");
-	$("#nomeexame").val("");
-	$("#procedimentocid").val("");
 	$("#justificativacid").val("");
 	$("#observacoes").val("");
-	$("#procedimentocid").val("");
+	$("#exame-cid").val("");
 }
 
 
@@ -37,9 +37,9 @@ function fechaFormularioExame() {
 		statusCode: { }
 	})
 	
-	//$("#table-procedimentos-exame").DataTable().ajax.reload();
+	$("#table-procedimentos-exame").DataTable().ajax.reload();
 	$("#table-lista-exame-atendimento").DataTable().ajax.reload();
-	$("#table-cids-exame").DataTable().ajax.reload();
+
 }
 
 
@@ -59,29 +59,17 @@ function removeInvalidFedbackExame() {
 	);
 }
 
-//$("#button-procedimento-exame").click(function() {
-//	$("#i-procedimento-exame").removeClass().addClass("fa fa-search");
-//	limpaInputsProcedimento();
-//})
-
-
-
 
 $("#form-exame").submit(function(evt) {
 	evt.preventDefault();
 	var exame = {};
 
-	//exame['medicamento'] = $("#id-medicamento").val();
-	//exame['viaAdministracao'] = $("#via option:selected").val();
-	//exame['procedimentos'] = $("#id-procedimento-exame").val();
-	//exame['procedimentos'] = procedimentos();
-	exame.grupoexame = $("#grupoexame").val();
-	exame.nomeexame = $("#nomeexame").val();
-	exame.procedimentocid = $("#procedimentocid").val();
+	
 	exame.justificativacid = $("#justificativacid").val();
 	exame.observacoes = $("#observacoes").val();
 	exame['atendimento'] = $("#id-atendimento").val();
 	exame['prontuario'] = $("#id-prontuario").val();
+	exame['cid'] = $("#id-cid").val();
 
 	$.ajax({
 		url: '/exame/',
@@ -272,7 +260,7 @@ function removeProcedimentoExame(item) {
 				url: '/exame/excluirprocedimentos/' + idProcedimentoExame,
 				method: 'get',
 				success: function() {
-					swal("Sucesso! O CID foi excluido!", {
+					swal("Sucesso! O Procedimento foi excluido!", {
 						icon: "success",
 						buttons: {
 							confirm: {
@@ -308,9 +296,9 @@ function removeProcedimentoExame(item) {
 }
 
 function atualizaListaExames() {
-	console.log("aqui----");
+	//console.log("aqui----");
 	var atendimentoId = $("#id-atendimento").val();
-	console.log("aqui----", atendimentoId);
+	//console.log("aqui----", atendimentoId);
 	$("#table-lista-exame-atendimento").DataTable({
 		responsive: true,
 		paging: false,
@@ -493,407 +481,30 @@ $("#procedimento-exame").autocomplete({
 					icon_type: 'class',
 				});
 			}
-//			alert: function() {
-//				$("#procedimento-exame").val("");
-//				console.log("erro aqui");
-//				$.notify({
-//					// options
-//					icon: 'flaticon-exclamation',
-//					title: 'ERRO',
-//					message: 'Não foi possível processar sua solicitação',
-//					target: '_blank'
-//				}, {
-//					// settings
-//					element: 'body',
-//					position: null,
-//					type: "danger",
-//					allow_dismiss: true,
-//					newest_on_top: false,
-//					showProgressbar: false,
-//					placement: {
-//						from: "top",
-//						align: "right"
-//					},
-//					offset: 20,
-//					spacing: 10,
-//					z_index: 1031,
-//					delay: 5000,
-//					timer: 1000,
-//					url_target: '_blank',
-//					mouse_over: null,
-//					animate: {
-//						enter: 'animated fadeInDown',
-//						exit: 'animated fadeOutUp'
-//					},
-//					onShow: null,
-//					onShown: null,
-//					onClose: null,
-//					onClosed: null,
-//					icon_type: 'class',
-//				});
-//			}
 			
 		});
 		return false;
 	}
 }).autocomplete("instance")._renderItem = function(ul, item) {
 	return $("<li>")
-		.append("<div class='h6'>" + item.codigo + " - " + item.nome + "</div>").appendTo(ul);
+		.append("<div class='h6'>" + item.codigo + " - " + "<b>" + item.nome + "<b>" + "</div>").appendTo(ul);
 }
 
-//$("#procedimento-exame").autocomplete({
-//	source: "/procedimento/buscarexame",
-//	focus: function(event, ui) {
-//		$("#procedimento-exame").val(ui.item.codigo + " ; " + ui.item.nome);
-//		return false;
-//	},
-//	select: function(event, ui) {
-//		$("#i-procedimento").removeClass("fa fa-search").addClass("fa fa-times");
-//		$("#procedimento-exame").val(ui.item.codigo + " - " + ui.item.nome).attr("disabled", true);
-//		$("#id-procedimento-exame").val(ui.item.codigo);
-//		$("#nome-procedimento").val(ui.item.nome);
-//		return false;
-//
-//	}
-//}).autocomplete("instance")._renderItem = function(ul, item) {
-//	return $("<li></li>")
-//		.append("<div class='h6'>" + item.codigo + " - " + item.nome + "</div>")
-//		.appendTo(ul);
-//};
-//
-//$("#submit-procedimento-exame").click(function() {	
-//	var procedimento = {};
-//	
-//	procedimento.codigo = $("#id-procedimento-exame").val();
-//	
-//$.ajax({
-//		url: '/exame/procedimentos/',
-//		method: 'post',
-//		data: procedimento,
-//		beforeSend: function() {
-//			//console.log(procedimento);
-//			removeInvalidFedbackExame();
-//		},
-//		success: function() {
-//			$.notify({
-//				// options
-//				icon: 'flaticon-success',
-//				title: 'SUCESSO',
-//				message: 'O procedimento foi salvo',
-//				target: '_blank'
-//			}, {
-//				// settings
-//				element: 'body',
-//				position: null,
-//				type: "success",
-//				allow_dismiss: true,
-//				newest_on_top: false,
-//				showProgressbar: false,
-//				placement: {
-//					from: "top",
-//					align: "right"
-//				},
-//				offset: 20,
-//				spacing: 10,
-//				z_index: 1031,
-//				delay: 5000,
-//				timer: 1000,
-//				url_target: '_blank',
-//				mouse_over: null,
-//				animate: {
-//					enter: 'animated fadeInDown',
-//					exit: 'animated fadeOutUp'
-//				},
-//				onShow: null,
-//				onShown: null,
-//				onClose: null,
-//				onClosed: null,
-//				icon_type: 'class',
-//			});
-//			limpaExame();
-//			//fechaFormularioExame();
-//			//atualizaExames();
-//			//atualizaPrescricoExames();
-//			$("#table-procedimentos-exame").DataTable().ajax.reload();
-//		},
-//
-//		statusCode: {
-//			400: function() {
-//				$.notify({
-//					// options
-//					icon: 'flaticon-exclamation',
-//					title: 'ERRO',
-//					message: 'Não foi possível processar sua solicitação',
-//					target: '_blank'
-//				}, {
-//					// settings
-//					element: 'body',
-//					position: null,
-//					type: "danger",
-//					allow_dismiss: true,
-//					newest_on_top: false,
-//					showProgressbar: false,
-//					placement: {
-//						from: "top",
-//						align: "right"
-//					},
-//					offset: 20,
-//					spacing: 10,
-//					z_index: 1031,
-//					delay: 5000,
-//					timer: 1000,
-//					url_target: '_blank',
-//					mouse_over: null,
-//					animate: {
-//						enter: 'animated fadeInDown',
-//						exit: 'animated fadeOutUp'
-//					},
-//					onShow: null,
-//					onShown: null,
-//					onClose: null,
-//					onClosed: null,
-//					icon_type: 'class',
-//				});
-//			},
-//			422: function(xhr) {
-//				var errors = $.parseJSON(xhr.responseText);
-//				$.each(errors, function(key, val) {
-//					$.notify({
-//						// options
-//						icon: 'flaticon-exclamation',
-//						title: 'ATENÇÃO',
-//						message: val,
-//						target: '_blank'
-//					}, {
-//						// settings
-//						element: 'body',
-//						position: null,
-//						type: "danger",
-//						allow_dismiss: true,
-//						newest_on_top: false,
-//						showProgressbar: false,
-//						placement: {
-//							from: "top",
-//							align: "right"
-//						},
-//						offset: 20,
-//						spacing: 10,
-//						z_index: 1031,
-//						delay: 5000,
-//						timer: 1000,
-//						url_target: '_blank',
-//						mouse_over: null,
-//						animate: {
-//							enter: 'animated fadeInDown',
-//							exit: 'animated fadeOutUp'
-//						},
-//						onShow: null,
-//						onShown: null,
-//						onClose: null,
-//						onClosed: null,
-//						icon_type: 'class',
-//					});
-//
-//					$("input[name='" + key + "']").parent().parent().addClass("has-error has-feedback");
-//
-//				})
-//			}
-//		},
-//
-//	})
-//})
-
-
-//Função pesquisa de Cids
-$("#cid-exame").autocomplete({
+//Função autocomplete CID 
+$("#exame-cid").autocomplete({
 	source: "/cid/buscar",
 	focus: function(event, ui) {
-		$("#cid-exame").val(ui.item.codigo + " - " + ui.item.nome);
+		$("#exame-cid").val(ui.item.codigo + " - " + ui.item.nome);
 		return false;
 	},
 	select: function(event, ui) {
-		$.ajax({
-			url: '/exame/cid/' + ui.item.id,
-			method: 'get',
-			success: function() {
-				$("#cid-exame").val("");
-				$.notify({
-					// options
-					icon: 'flaticon-success',
-					title: 'SUCESSO',
-					message: 'O CID foi adicionado ao Exame',
-					target: '_blank'
-				}, {
-					// settings
-					element: 'body',
-					position: null,
-					type: "success",
-					allow_dismiss: true,
-					newest_on_top: false,
-					showProgressbar: false,
-					placement: {
-						from: "top",
-						align: "right"
-					},
-					offset: 20,
-					spacing: 10,
-					z_index: 1031,
-					delay: 5000,
-					timer: 1000,
-					url_target: '_blank',
-					mouse_over: null,
-					animate: {
-						enter: 'animated fadeInDown',
-						exit: 'animated fadeOutUp'
-					},
-					onShow: null,
-					onShown: null,
-					onClose: null,
-					onClosed: null,
-					icon_type: 'class',
-				});
-				$("#table-cids-exame").DataTable().ajax.reload();
-			},
-			error: function() {
-				$("#cid-exame").val("");
-				console.log("erro aqui");
-				$.notify({
-					// options
-					icon: 'flaticon-exclamation',
-					title: 'ERRO',
-					message: 'Não foi possível processar sua solicitação',
-					target: '_blank'
-				}, {
-					// settings
-					element: 'body',
-					position: null,
-					type: "danger",
-					allow_dismiss: true,
-					newest_on_top: false,
-					showProgressbar: false,
-					placement: {
-						from: "top",
-						align: "right"
-					},
-					offset: 20,
-					spacing: 10,
-					z_index: 1031,
-					delay: 5000,
-					timer: 1000,
-					url_target: '_blank',
-					mouse_over: null,
-					animate: {
-						enter: 'animated fadeInDown',
-						exit: 'animated fadeOutUp'
-					},
-					onShow: null,
-					onShown: null,
-					onClose: null,
-					onClosed: null,
-					icon_type: 'class',
-				});
-			}
-		});
+		$("#i-exame-cid").removeClass("fa fa-search").addClass("fa fa-times");
+		$("#id-cid").val(ui.item.id);
 		return false;
+
 	}
 }).autocomplete("instance")._renderItem = function(ul, item) {
 	return $("<li>")
-		.append("<div class='h6'>" + item.codigo + " - " + item.nome + "</div>").appendTo(ul);
-}
-//Fim da função pesquisa Cids
-
-//Função atualiza tabela de cid do exame
-function atualizaCidExame() {
-	$("#table-cids-exame").DataTable().destroy();
-	$("#table-cids-exame").DataTable({
-		responsive: true,
-		paging: true,
-		searching: false,
-		ordering: false,
-		ajax: {
-			url: '/exame/listar/cids/',
-			dataSrc: '',
-		},
-		columns: [
-			{
-				title: 'CÓDIGO',
-				data: 'codigo',
-				mRender: function(data) {
-					return "<span class='badge badge-info'>" + data + "</span>";
-				}
-			},
-			{
-				title: 'DESCRIÇÃO',
-				data: 'nome',
-			},
-			{
-				title: 'AÇÕES',
-				data: 'id',
-				mRender: function(data) {
-					return "<button type='button' class='btn btn-warning btn-sm' data-value='" + data + "' onclick='removeCidExame(this)'><i class='fa fa-trash'></i> Excluir </button>"
-				}
-			}
-		]
-
-	})
-}
-
-function removeCidExame(item) {
-	swal({
-		title: 'Tem certeza que deseja excluir este CID?',
-		text: "Você não poderá reverter esta ação!",
-		icon: 'warning',
-		buttons: {
-			cancel: {
-				visible: true,
-				text: 'Não, cancelar!',
-				className: 'btn btn-success btn-border'
-			},
-			confirm: {
-				text: 'Sim, excluir!',
-				className: 'btn btn-success'
-			}
-		}
-	}).then((willDelete) => {
-		if (willDelete) {
-			var idCid = $(item).attr("data-value");
-			$.ajax({
-				url: '/exame/cid/excluir/' + idCid,
-				method: 'delete',
-				success: function() {
-					swal("Sucesso! O CID foi excluido!", {
-						icon: "success",
-						buttons: {
-							confirm: {
-								className: 'btn btn-success'
-							}
-						}
-					});
-					atualizaCidExame();
-				},
-				statusCode: {
-					403: function(xhr) {
-						swal("Houve um erro!", xrh.reponseText, {
-							icon: "error",
-							buttons: {
-								confirm: {
-									className: 'btn btn-danger'
-								}
-							},
-						});
-					}
-				}
-			})
-		} else {
-			swal("Certo, não iremos excluir!", {
-				buttons: {
-					confirm: {
-						className: 'btn btn-success'
-					}
-				}
-			});
-		}
-	});
-}
-
-
+		.append("<div class='h6'>" + item.codigo + " - " + "<b>" + item.nome + "</b>" + "</div>")
+		.appendTo(ul);
+};
