@@ -579,6 +579,7 @@ function atualizaExames() {
 		url: '/exame/listarexamesatendimento/' + atendimentoId,
 		method: 'get',
 		success: function(data) {
+			//console.log(data);
 			if (isEmpty(data)) {
 				$("#div-exames").append("<h5 class='card-title text-center'>Não existem Exames para este atendimento</h5><p class='card-text text-center'>Clique no botão Novo Exame para cadastrar um.</p>");
 			} else {
@@ -592,11 +593,40 @@ function atualizaExames() {
 };
 
 function createCardExame(data) {
-	console.log("aqui" + data);
+//	var nomeprocedimento = [];
+
+//	$.ajax({
+//		url: '/exame/buscarprocedimentos/' + data.id,
+//		method: 'get',
+//		success: function(data1) {
+//			console.log(data1);
+//			if (isEmpty(data1)) {
+//				//$("#div-exames").append("<h5 class='card-title text-center'>Não</h5><p class='card-text text-center'>um.</p>");
+//			} else {
+//				$.each(data1, function(key, item) {
+//					//"<li>" + item.nome + "</li>";
+//					//$("<li>" + item.nome + "</li>");
+//					
+//					 nomeprocedimento.push(item.nome); 
+//					//printProcedimentos(item.nome);
+//					//console.log("aqui ------ "+item.nome);
+//				})
+//			}
+//
+//		},
+//	})
+
+	//console.log("Procedimentos aqui: " + data.procedimentos[0].nome);
 	
 	return "<div class='card'><div class='card-body'><div class='col-md-12 row'><div class='col-md-8'>" +
 		//h5CarPrescricao(data.medicamento.principioAtivo, data.viaAdministracao.nome) + inforCardPrimary(data.medicamento.concentracao, data.medicamento.formaFarmaceutica.nome) +
-		infoCardProcedimentos(data.procedimentos) +
+		//infoCardProcedimentos(data.procedimentos[0].nome) +
+		"<strong>Procedimentos: </strong><br>" +
+		$.each(data.procedimentos, function(key, item) {
+			"<div>" + item.codigo + " - " + "<b>" + item.nome + "</b>" + "</div>"
+			console.log("Procedimentos aqui: " + item.nome);	 
+		}) +
+		"<br>"+
 		infoCardCid(data.cid.nome) +
 		infoCardJustificativa(data.justificativacid) +
 		infoCardObservacoes(data.observacoes) +
@@ -628,17 +658,74 @@ function createCardExame(data) {
 //	return "<strong> Concentração: </strong><span> " + info + " </span> | <strong> Forma farmacêutica: </strong><span> " + formaFarmaceutica + " </span><br>";
 //}
 
-function infoCardProcedimentos(procedimentos){
-	return "<strong>Procedimentos: </strong><br><div>" +  listaProcedimentos(procedimentos) +"</div>"; 
+//function infoCardProcedimentos(id){
+//	//console.log("Aquiiii:" + procedimentos);
+//	
+//		return "<strong>Procedimentos: </strong><br><div id='div'>" + buscarProcedimentos(id) + "</div>"; 
+//
+//}
+
+//function infoCardProcedimentos(id){
+//	//console.log("Aquiiii:" + procedimentos);
+//	
+//		return "<strong>Procedimentos: </strong><br><div>" + id + "</div>"; 
+//
+//}
+
+//function infoCardProcedimentos(data){
+//	//console.log("aqui ------ "+data.nome);
+//	return "<div></div>"; 
+//}
+
+function buscarProcedimentos(id){
+	$.ajax({
+		url: '/exame/buscarprocedimentos/' + id,
+		method: 'get',
+		success: function(data) {
+			console.log(data);
+			if (isEmpty(data)) {
+				//$("#div-exames").append("<h5 class='card-title text-center'>Não</h5><p class='card-text text-center'>um.</p>");
+			} else {
+				$.each(data, function(key, item) {
+					//"<li>" + item.nome + "</li>";
+					//$("<li>" + item.nome + "</li>");
+					
+					 item.nome 
+					//printProcedimentos(item.nome);
+					console.log("aqui ------ "+item.nome);
+				})
+			}
+
+		},
+	})
+};
+
+function printProcedimentos(nome){
+
+console.log("aqui em baico ------ "+nome);
+	return "<span>" + nome + "</span>"
 }
 
-function listaProcedimentos(procedimentos){
-	return $.each(procedimentos, function(ul, item) {
-				$("<li>")
-						.append("<div class='h6'>" + item.codigo + " - " + "<b>" + item.nome + "</b>" + "</div>")
-						.appendTo(ul);
-				}) 
-};
+function listaProcedimentos(item){
+	console.log(" aqui ----- ");
+	$("li").each(function(index, item) {
+		console.log(" aqui ----- "+ item.nome );
+		//"<div>" + item.codigo + " - " + "<b>" + item.nome + "</b>" + "</div>";
+		//console.log(item.nome);
+		if( $( this ).is( "#i" )){
+		$( "div" ).text( "Stopped at div index #" + index + " " +item[0].nome);
+		}
+	}); 
+}
+
+// essa ta mais ou menos
+//function listaProcedimentos(procedimentos){
+//	return $.each(procedimentos, function(ul, item) {
+//				$("<li>")
+//						.append("<div class='h6'>" + item.codigo + " - " + "<b>" + item.nome + "</b>" + "</div>")
+//						.appendTo(ul);
+//				}) 
+//};
 
 //function listaProcedimentos(procedimentos){
 //	return 	"<table>"+

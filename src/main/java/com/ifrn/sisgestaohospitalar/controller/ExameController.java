@@ -114,6 +114,16 @@ public class ExameController {
 		
 		return ResponseEntity.ok().body(procedimentos);
 	}
+	
+	@GetMapping("/buscarprocedimentos/{codigoExame}")
+	public ResponseEntity<?> buscarProcedimento(@PathVariable("codigoExame") Long codigoExame) {
+		List<Procedimento> procedimentos = procedimentoRepository.findByIdExame(codigoExame);
+		if (!procedimentos.isEmpty()) {
+			return ResponseEntity.ok().body(procedimentos);
+		}
+
+		return ResponseEntity.badRequest().build();
+	}
 
 	@GetMapping("/listarexamesatendimento/{idAtendimento}")
 	public ResponseEntity<?> listarexames(@PathVariable("idAtendimento") Long id) {

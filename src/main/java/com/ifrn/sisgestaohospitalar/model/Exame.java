@@ -46,7 +46,7 @@ public class Exame {
 	private Profissional profissional;
 	
 	//@Valid
-	@JsonIgnore
+	//@JsonIgnore
 	@ManyToMany(cascade = CascadeType.ALL)
 	@JoinTable(name = "exame_procedimentos", joinColumns = @JoinColumn(name = "id_exame"), inverseJoinColumns = @JoinColumn(name = "id_procedimento"))
 	private List<Procedimento> procedimentos;
