@@ -35,12 +35,40 @@ function validDateOne(element){
         return;
     }
     const valid = !isValidSearchDate(element.val(), $("#date-two").val())
-    console.log(valid)
     if (valid){
         showAlert("A primeira Data não pode ser maior que a segunda!", element[0])
     } else {
         hideAlert(element[0])
     }
+} 
+
+function switchSpinner(action){
+    switch(action){
+        case "create":
+            document.getElementById("show-spinner").setAttribute('class', "row is-loading is-loading-lg")
+            break
+        case "clean":
+            document.getElementById("show-spinner").setAttribute('class', "row")
+            break
+    }
+}
+
+function error(obj, value){
+    switchSpinner("clean")
+    $("#show-result").show()
+    $("#show-button-pdf").show()
+    obj = value
+}
+
+function onConsult(date1, date2){
+    switchSpinner("create")
+    Req.getJSON({uri: `${baseUri}/receitamedicamentos/cpf/filter/`, params: ['09814354406', date1, date2],
+     onSuccess: (data) => setMedicamentosPrescritos(data), onError: (data) => error(receitas, data)})
+    Req.getJSON({uri: `${baseUri}/avaliacoes/cpf/filter/`, params: ['09814354406', date1, date2], onSuccess: (data) => avaliacoes = data, onError: (data) => error(avaliacoes, data)})
+    Req.getJSON({uri: `${baseUri}/exames/solicitations/cpf/filter/`, params: ['09814354406', date1, date2], onSuccess: (data) => examesSolicitations = data, onError: (data) => error(examesSolicitations, data)})
+    Req.getJSON({uri: `${baseUri}/exames/results/cpf/filter/`, params: ['09814354406', date1, date2], onSuccess: (data) => examesResult = data, onError: (data) => error(examesResult, data)})
+    Req.getJSON({uri: `${baseUri}/vacinacao/aplicacao/cpf/filter/`, params: ['09814354406', date1, date2], onSuccess: (data) => vacinasAplicadas = data, onError: (data) => error(vacinasAplicadas, data)})
+    Req.getJSON({uri: `${baseUri}/vacinacao/aprazamento/cpf/filter/`, params: ['09814354406', date1, date2], onSuccess: (data) => vacinasAgendadas = data, onError: (data) => error(vacinasAgendadas, data)})
 }
 
 $("#busca-pec").click((e) => {
@@ -56,11 +84,11 @@ $("#busca-pec").click((e) => {
 
     if (isValidInputDateOne && isValidInputDateTwo) {
         const valid = isValidSearchDate(dateOne, dateTwo)
-        console.log(valid)
         if (!valid) {
             showAlert("A primeira Data não pode ser maior que a segunda!", dateOneElement)
         } else {
             hideAlert(dateOneElement)
+            onConsult(dateOne, dateTwo)
         }
     }
 })
@@ -95,10 +123,9 @@ function hideAlert(element) {
 function isValidSearchDate(date1, date2) {
     const dateOne = new Date(date1)
     const dateTwo = new Date(date2)
-    console.log(dateOne.getDate(), dateTwo.getDate())
     if (dateOne.getFullYear() <= dateTwo.getFullYear()) {
         if (dateOne.getMonth() <= dateTwo.getMonth()) {
-            if (dateOne.getDate() < dateTwo.getDate()) {
+            if (dateOne.getDate() <= dateTwo.getDate()) {
                 return true;
             }
         }

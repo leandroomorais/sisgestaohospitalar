@@ -3,36 +3,6 @@
 //Variável que guarda os Ids dos Procedimentos adicionados;
 //var idProcedimentos = [];
 
-
-var div = $('<div class="col-md-4"><strong>Principio ativo: </strong><p id="principioAtivo"></p>' +
-    '</div><div class="col-md-3"><strong>Forma: </strong><p id="forma"></p></div>' +
-    '<div class="col-md-3"><strong>Concentração: </strong><p id="concentracao"></p></div>' +
-    '<div class="col-md-4"><strong>Posologia: </strong><p id="posologia"></p></div>' +
-    '<div class="col-md-4"><strong>Data e hora prescrição: </strong><p id="prescricao">' +
-    '</p></div><div class="col-md-6"><strong>Orientações: </strong><p id="orientacao"></p></div>');
-var divExames = $('' +
-    '   <div class="col-md-4">' +
-    '       <strong>Procedimento: </strong>' +
-    '       <p id="procedimento"></p>' +
-    '   </div>' +
-    '   <div class="col-md-3">' +
-    '       <strong>Procedimento de Forma Organizacional: </strong>' +
-    '       <p id="procedimentoFormaOrg">' +
-    '       </p>' +
-    '   </div>' +
-    '   <div class="col-md-3">' +
-    '       <strong>Procedimento Sub Grupo: </strong>' +
-    '       <p id="procedimentoSubGrupo"></p>' +
-    '   </div>' +
-    '   <div class="col-md-4">' +
-    '       <strong>Data Competencia do Procedimento: </strong>' +
-    '       <p id="dataCompetencia"></p>' +
-    '   </div>' +
-    '   <div class="col-md-4">' +
-    '   <strong>Data e hora da Solicitação: </strong>' +
-    '   <p id="dataHoraSolicitacao"></p>' +
-    '   </div>', '<hr />');
-
 $("#diagnosticos").click(function () {
     const father = clear();
 
@@ -248,6 +218,8 @@ function formDateTime(date) {
 $(document).ready(function () {
     //Exibe Idade atual e data de Nascimento
 
+    $("#show-result").hide()
+    $("#show-button-pdf").hide()
     var dtNascimento = $("#dataNascimentoCidadao").val();
     var ano_aniversario = dtNascimento.split('-')[0];
     var mes_aniversario = dtNascimento.split('-')[1];

@@ -30,12 +30,12 @@ function setMedicamentosPrescritos(data){
 /*realizando a requisicao e setando o resultado nas variaveis globais*/
 $(document).ready(function () {
     cpf = ValidUtil.number(cpf)
-	request(uriVacinasAplicadas, cpf, (data) => vacinasAplicadas = data, (data) => vacinasAplicadas = data)
+	/*request(uriVacinasAplicadas, cpf, (data) => vacinasAplicadas = data, (data) => vacinasAplicadas = data)
 	request(uriVacinasAgendadas, cpf, (data) => vacinasAgendadas = data, (data) => vacinasAgendadas = data)
     request(uriSolicitations, cpf, (data) => examesSolicitations = data, (data) => examesSolicitations = data)
     request(uriAvaliacao, cpf, (data) => avaliacoes = data, () => avaliacoes = data)
     request(uriReceita, cpf, (data) => setMedicamentosPrescritos(data), (data) => receitas = data)
-    request(uriResult, cpf, (data) => examesResult = data, (data) => examesResult = data)
+    request(uriResult, cpf, (data) => examesResult = data, (data) => examesResult = data)*/
     request('/cidadao-resource/cpf/', cpf, (data) => user = data, (data) => user = {})
 })
 /*-----------------------------------------*/
