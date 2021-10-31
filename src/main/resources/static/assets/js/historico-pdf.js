@@ -40,6 +40,21 @@ $("#historico-pdf").click(function() {
 		recomendacao: ''
 	})
 
+	const vacinasApp = PDFUtil.extractOfArrayToKey(vacinasAplicadas.data, {
+		observacao: '',
+		dataAplicacao: '',
+		codigoImunobiologico: {
+			nomeViadministracaoVacina: '',
+			nomeImunobiologico: '',
+			codigoClasseImunobiologico: ''
+		},
+		codigoDoseImunobiologico:{
+			sgDoseImunobiologico: '',
+			nomeDoseImunobiologico: '',
+			numeroOrdem: ''
+		}
+	})
+
 	PDF.config()
 
 	PDF.createFooterAutoPage([
@@ -131,6 +146,21 @@ $("#historico-pdf").click(function() {
 		'recomendação'.toUpperCase(),
 	]), medicamentoPres, {
 		text: 'Conteúdo Medicamento prescrito',
+		options: {
+			auto: true,
+		}
+	});
+
+	PDF.createText("Vacinas Aplicadas".toUpperCase(),
+		{ fontStyle: 'bold', fontName: 'Times New Roman', fontSize: '12', align: 'left' })
+	PDF.createTable(Extract.extractToKey([
+		'Principio ativo'.toUpperCase(),
+		'Concentração'.toUpperCase(),
+		'Forma'.toUpperCase(),
+		'Posologia'.toUpperCase(),
+		'recomendação'.toUpperCase(),
+	]), vacinasApp, {
+		text: 'Conteúdo Vacina aplicada',
 		options: {
 			auto: true,
 		}

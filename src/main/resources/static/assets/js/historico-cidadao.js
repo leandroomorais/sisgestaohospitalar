@@ -25,6 +25,7 @@ function request(url, param, success, error){
 function setMedicamentosPrescritos(data){
     receitas = data
     createMedicamentosPrescritos()
+    
 }
 
 /*realizando a requisicao e setando o resultado nas variaveis globais*/

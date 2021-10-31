@@ -6,7 +6,7 @@
 $("#diagnosticos").click(function () {
     const father = clear();
 
-    if (avaliacoes.data.length > 0) {
+    if (avaliacoes.data.length > 0 && avaliacoes.data !== null) {
         const len = avaliacoes.data.length;
         $.each(avaliacoes.data, function (pos, object) {
             const row = createElement('div', father, { class: 'row' }, '');
@@ -63,12 +63,12 @@ function clear() {
 }
 
 function notFound(text) {
-    return `<div class="pl-4"><p class="text-info"> <i class="fas fa-exclamation-circle"></i>${text}</p></div>`;
+    return `<span class="pl-4"><p class="text-info"> <i class="fas fa-exclamation-circle"></i>${text}</p></span>`;
 }
 
 function createMedicamentosPrescritos() {
     const father = clear();
-    if (receitas.data.length > 0) {
+    if (receitas.data.length > 0 && receitas.data !== null) {
         const len = receitas.data.length;
         $.each(receitas.data, function (pos, object) {
             const { medicamento, posologia } = object;
@@ -405,14 +405,15 @@ $(document).ready(function () {
     })(jQuery);
 })
 
-function tab(father, data, index) {
-    if (father.parentElement.children.length > 5) {
-        father.parentElement.children.item(4).remove()
+function tab(title, father, data, index) {
+    const element = father.parentElement.children.item(index)
+    if (element !== null) {
+        element.remove()
     }
     const div = new TagView(new Tag({ tagName: 'div', attrs: { class: 'tab-content mt-2 row pl-4' } }))
-    View.append(div.element, father.parentElement, 4)
-    tabs(index)
-    createVacina(data, div.element)
+    View.append(div.element, father.parentElement, index)
+    //tabs(index)
+    createVacina(title, data, div.element)
 }
 
 
@@ -429,52 +430,27 @@ function tabs(index) {
     }
 }
 
-function createTabs(father, dataAplicacao, dataAgendada) {
-
-    const iVacinaAplicadas = new Tag({ tagName: 'i', attrs: { class: 'fas fa-syringe' } })
-    const pVacinaAplicadas = new Tag({ tagName: 'span', value: ' Vacinas Aplicadas' })
-    const aVacinaAplicadas = new Tag({
-        tagName: 'a', attrs: {
-            class: 'nav-link', "data-toggle": "pill", href: '#'
-            , role: 'tab', historico: 'true', "aria-controls": 'pills-contact',
-            "aria-selected": "false", onclick: () => tab(father, dataAplicacao, 23)
-        }, children: [iVacinaAplicadas, pVacinaAplicadas]
-    })
-
-    const liVacinaAplicadas = new Tag({ tagName: 'li', attrs: { class: 'nav-item submenu' }, children: [aVacinaAplicadas] })
-
-    const iVacinaAgendada = new Tag({ tagName: 'i', attrs: { class: 'fas fa-syringe' } })
-    const pVacinaAgendada = new Tag({ tagName: 'span', value: ' Vacinas Agendadas' })
-    const aVacinaAgendada = new Tag({
-        tagName: 'a', attrs: {
-            class: 'nav-link', "data-toggle": "pill", href: '#'
-            , role: 'tab', historico: 'true', "aria-controls": 'pills-contact',
-            "aria-selected": "false", onclick: () => tab(father, dataAgendada, 24)
-        }, children: [iVacinaAgendada, pVacinaAgendada]
-    })
-
-    const liVacinaAgendada = new Tag({ tagName: 'li', attrs: { class: 'nav-item submenu' }, children: [aVacinaAgendada] })
-    const ul = new Tag({ tagName: 'ul', attrs: { class: 'nav nav-tabs', id: 'pills-tab', role: 'tablist' }, children: [liVacinaAplicadas, liVacinaAgendada] })
-    const ulView = new TagView(ul)
-    const element = ulView.element
-    View.append(element, father)
-    tab(father, dataAplicacao, 23)
-
-
+function createVacinas(father, dataAplicacao, dataAgendada) {
+    tab("Vacinas Aplicadas", father, dataAplicacao, 3)
+    tab("Vacinas Agendadas", father, dataAgendada, 4)
 }
 
 $("#vacinas").click(function () {
-    const father = clear(); 
-    createTabs(father, vacinasAplicadas.data, vacinasAgendadas.data)
+    const father = clear();
+    createVacinas(father, vacinasAplicadas.data, vacinasAgendadas.data)
 });
 
 
-function createVacina(data, father) {
-    if (data === null) {
-        createElement('p', father,
-            { class: 'col-md4' }, notFound('Não Encontrado as vacinas referente ao Cidadão'))
+function createVacina(title, data, father) { 
+
+    createElement('div', father, {class: 'card-header col-md-12'}, "<div class='card-title'>"+title+"</div>")
+
+    if (data === null || data?.length === 0 || data === undefined) {
+        const row = createElement('div', father, {class: 'row'}, '')
+        createElement('div', row, {class: 'col-md-12'}, notFound('Não Encontrado as vacinas referente ao Cidadão'))
         return;
     }
+
     const len = data.length;
     $.each(data, function (pos, object) {
         const row = createElement('div', father, { class: 'row' }, '');

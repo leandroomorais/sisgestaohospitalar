@@ -1,8 +1,9 @@
 $(document).ready(function(){
     try {
-        const element = $('.nav-link, .active, .show')
-        if (element[10]){
-            const tag = element[10]
+        const element = $('#medicamentosPrescritos')[0]
+        console.log(element)
+        if (element){
+            const tag = element
             const attrs = tag.attributes
             showTabs(attrs, tag, 'border-tab')
         }
