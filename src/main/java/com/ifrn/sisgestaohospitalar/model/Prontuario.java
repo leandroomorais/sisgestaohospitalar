@@ -17,6 +17,8 @@ import javax.validation.constraints.NotNull;
 
 import org.hibernate.annotations.DynamicUpdate;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @DynamicUpdate
 public class Prontuario {
@@ -25,6 +27,7 @@ public class Prontuario {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
+	@JsonIgnore
 	@Valid
 	@NotNull(message = "É necessário Cadastrar um Cidadão")
 	@OneToOne
