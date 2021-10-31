@@ -1,18 +1,16 @@
-var idAtendimeto;
+var idAtendimento;
 var idProntuario;
 var idSinaisVitais;
 
 //JS Form Triagem
 $(document).ready(function() {
-	idAtendimeto = $("#atendimento-id").val();
+	idAtendimento = $("#id-atendimento").val();
 	idProntuario = $("#id-prontuario").val();
-
 	$("#conduta-cidadao").hide();
 	$("#card-nova-alergia").hide();
 	$("#card-edit-alergia").hide();
 	$("#card-nova-doenca").hide();
 	$("#card-edit-doenca").hide();
-
 	//Função que aplica máscara aos inputs 
 	$("#sinaisVitais-pressaoArterial").keydown(function() {
 		var pressao = $("#sinaisVitais-pressaoArterial").val();
@@ -94,7 +92,7 @@ $("#form-triagem").submit(function(evt) {
 	triagem['sinaisVitais.frequenciaRespiratoria'] = $("#sinaisVitais-frequenciaRespiratoria").val();
 	triagem['sinaisVitais.glicemiaCapilar'] = $("#sinaisVitais-glicemiaCapilar").val();
 	triagem['sinaisVitais.momentoColeta'] = $("#sinaisVitais-momentoColeta option:selected").val();
-	triagem['atendimento'] = idAtendimeto;
+	triagem['atendimento'] = idAtendimento;
 
 	console.log(triagem);
 
@@ -248,12 +246,9 @@ $("#form-triagem").submit(function(evt) {
 //Funçao que adiciona Procedimentos automaticamente
 $("#sinaisVitais-pressaoDiastolica").change(function() {
 	var pressaoSistolica = $("#sinaisVitais-pressaoSistolica").val();
-	if (this == "" && pressaoSistolica == "") {
-		return 0;
-	}
 	var tipoServico = "TRIAGEM";
 	var quantidade = 1;
-	submitProcedimento(idAtendimeto, 301100039, tipoServico, quantidade);
+	submitProcedimento(idAtendimento, 301100039, tipoServico, quantidade);
 })
 
 $("#sinaisVitais-glicemiaCapilar").change(function() {
@@ -274,7 +269,7 @@ $("#submit-procedimento").click(function() {
 	var codigoProcedimento = $("#id-procedimento").val();
 	var tipoServico = "TRIAGEM";
 	var quantidade = $("#qtd-procedimento").val();
-	submitProcedimento(idAtendimeto, codigoProcedimento, tipoServico, quantidade);
+	submitProcedimento(idAtendimento, codigoProcedimento, tipoServico, quantidade);
 })
 
 //Fim da função
@@ -344,7 +339,7 @@ $("#altura").change(function() {
 
 function verificaTriagem() {
 	$.ajax({
-		url: '/triagem/verificar/' + idAtendimeto,
+		url: '/triagem/verificar/' + idAtendimento,
 		method: 'get',
 		success: function(data) {
 			$("#idTriagem").val(data.id);
@@ -361,7 +356,7 @@ function verificaTriagem() {
 			$("#sinaisVitais-momentoColeta").find("option[value=" + data.sinaisVitais.momentoColeta + "]").attr("selected", true);
 			$("input:radio[name=classificacaoDeRisco][value= " + data.classificacaoDeRisco + " ]").attr('checked', true);
 			$("input:radio[name=classificacaoDeRisco]").attr('disabled', true);
-			$("form-triagem").each(function() {
+			$("#form-triagem").each(function() {
 				$(this).find('input, textarea, select').attr('disabled', true);
 			});
 			$("#card-action").empty().append("<button type = 'button' onclick='editarTriagem()' class='btn btn-secondary'> Editar triagem </button>");
@@ -376,7 +371,7 @@ function verificaTriagem() {
 }
 
 function editarTriagem() {
-	$("form-triagem").each(function() {
+	$("#form-triagem").each(function() {
 		$(this).find('input, textarea, select').attr('disabled', false);
 	});
 	$("#card-action").empty().append("<button type='submit' class='btn btn-primary'> Salvar triagem</button>");
