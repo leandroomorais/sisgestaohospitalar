@@ -75,7 +75,6 @@ public class Atendimento {
 	@OneToOne(cascade = CascadeType.ALL)
 	private Triagem triagem;
 	
-	@JsonIgnore
 	@Valid
 	@OneToOne(cascade = CascadeType.ALL)
 	private Consulta consulta;
