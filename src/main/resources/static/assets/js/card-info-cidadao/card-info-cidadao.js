@@ -13,24 +13,77 @@ function cardInfoCidadao(idAtendimento) {
 }
 
 function createCardInfoCidadao(data) {
-	return "<div class='card'><div class='card-body'><div class='col-md-12 row'><div class='col-md-7'>" +
+	return "<div class='card'><div class='card-body'><div class='col-md-12 row'><div class='col-md-6'>" +
 		h5NomeCidadao(data.cidadao.nome) +
-		CpfAndCns(data.cidadao.cns) + "<br>" +
-		NascimentoIdadeSexo(data.cidadao.dataNascimento, data.cidadao.sexo) +
-		"</div><div class='col-md-5'>" +
-		infoAtdSinaisVitais(data.triagem) +
-		"</div></div></div></div>";
+		cns(data.cidadao.cns) +
+		nascimentoIdadeSexo(data.cidadao.dataNascimento, data.cidadao.sexo) +
+		"</div><div class='col-md-4'>" +
+		classificacaoDeRisco(data.triagem) + "<br>" +
+		verificaSinaisVitais(data) +
+		"</div><div class='col-md-2'>" +
+		antropometria(data.cidadao.prontuario.antropometrias) +
+		"</div></div>" +
+		motivosAtendimento(data) +
+		"</div></div></div>";
 }
 
 function h5NomeCidadao(nome) {
 	return "<h5 class='text-uppercase fw-bold mb-1'> " + nome + " </h5>";
 }
 
-function CpfAndCns(cns) {
+function motivosAtendimento(data) {
+	if (data.triagem != null) {
+		if (data.triagem.motivo != null) {
+			return "<div class='col-md-12 mt-1'><strong>Motivos do Atendimento: </strong><div class='card-sub'>" + data.triagem.motivo +
+				"</div>";
+		}
+	} else {
+		return "";
+	}
+}
+
+function cns(cns) {
 	return "<i class='fa fa-id-card' aria-hidden='true'></i><strong> CNS: </strong><span> " + formataCNS(cns) + " </span>";
 }
 
-function NascimentoIdadeSexo(dtNascimento, sexo) {
+function antropometria(antropometria) {
+	if (antropometria.length != 0) {
+		var registro
+		$.each(antropometria, function(index, item) {
+			registro = createTextSinaisVitais("PESO: ", item.peso + " kg") + createTextSinaisVitais(" ALTURA: ", item.altura + " cm") + "<br>" + createTextSinaisVitais(" IMC: ", item.imc);
+		})
+		return registro;
+	} else {
+		return "<span class='badge badge-info'></span>";
+	}
+}
+
+function classificacaoDeRisco(triagem) {
+	if (triagem == null) {
+		return "<span class='badge badge-info'> Sem classificação de risco </span>"
+	} else {
+		var classDeRisco = triagem.classificacaoDeRisco;
+		if (classDeRisco == 'AZUL') {
+			return "<span class='badge badge-primary'>AZUL</span>";
+		}
+		if (classDeRisco == 'VERDE') {
+			return "<span class='badge badge-success'>VERDE</span>";
+		}
+		if (classDeRisco == 'AMARELO') {
+			return "<span class='badge badge-warning'>AMARELO</span>";
+		}
+		if (classDeRisco == 'LARANJA') {
+			return "<span class='badge badge-warning'>LARANJA</span>";
+		}
+		if (classDeRisco == 'VERMELHO') {
+			return "<span class='badge badge-danger'>VERMELHO</span>";
+		}
+
+		return "";
+	}
+}
+
+function nascimentoIdadeSexo(dtNascimento, sexo) {
 
 	var anos = moment().diff(dtNascimento, 'years');
 	var idade;
@@ -50,84 +103,89 @@ function NascimentoIdadeSexo(dtNascimento, sexo) {
 		"</strong><span> " + sexo + " </span>";
 }
 
-function infoAtdSinaisVitais(triagem) {
-
-	if (triagem == null) {
-		return "<span class='badge badge-info'>Triagem não realizada</span>";
-	} else {
-		var cRisco = triagem.classificacaoDeRisco;
-		var spo2 = triagem.sinaisVitais.saturacao;
-		var paSistolica = triagem.sinaisVitais.pressaoSistolica;
-		var paDiastolica = triagem.sinaisVitais.pressaoDiastolica;
-		var temp = triagem.sinaisVitais.temperaturaCorporal;
-		var hgt = triagem.sinaisVitais.glicemiaCapilar;
-		var fc = triagem.sinaisVitais.frequenciaCardiaca;
-		if (cRisco == "" || cRisco == null || cRisco == undefined) {
-			cRisco = "<span class='badge badge-info'>Sem informação</span>"
-		} else {
-			var classe;
-			if (cRisco == "AZUL") {
-				classe = "badge badge-primary";
-			}
-			if (cRisco == "VERDE") {
-				classe = "badge badge-success";
-			}
-			if (cRisco == "AMARELO") {
-				classe = "badge badge-warning";
-			}
-			if (cRisco == "LARANJA") {
-				classe = "badge badge-warning";
-			}
-			if (cRisco == "VERMELHO") {
-				classe = "badge badge-danger";
-			}
-			cRisco = "<span class='" + classe + "'>" + cRisco + "</span><br>";
+function verificaSinaisVitais(data) {
+	if (data.triagem != null) {
+		if (data.triagem.sinaisVitais != null) {
+			var sinaisVitaisTriagem = data.triagem.sinaisVitais;
 		}
-
-		if (spo2 == 0 || spo2 == null || spo2 == undefined) {
-			spo2 = "";
-		} else {
-			spo2 = createTextSinaisVitais("SPO2: ", spo2 + " % ");
-		}
-
-		if (paSistolica == "" || paSistolica == null || paSistolica == undefined) {
-			paSistolica = "";
-
-		} else {
-			paSistolica = paSistolica;
-		}
-
-		if (paDiastolica == "" || paDiastolica == null || paDiastolica == undefined) {
-			paDiastolica = "";
-
-		} else {
-			paDiastolica = paDiastolica;
-		}
-
-		var pressaoArterial = paSistolica + " / " + paDiastolica;
-
-		if (temp == "" || temp == null || temp == undefined) {
-			temp = "<br>";
-
-		} else {
-			temp = createTextSinaisVitais("TEMP: ", temp + " ºC ") + "<br>";
-		}
-
-		if (hgt == 0 || hgt == null || hgt == undefined) {
-			hgt = "";
-
-		} else {
-			hgt = createTextSinaisVitais("HGT: ", hgt + " mg/dl ");
-		}
-
-		if (fc == "" || fc == null || fc == undefined) {
-			fc = "";
-
-		} else {
-			fc = "<strong>FC: </strong><span class='text-danger'><i class='fa fa-heart' aria-hidden='true'></i>" + fc + " bmp " + "</span>"
-		}
-		return cRisco + createTextSinaisVitais("PA:", pressaoArterial + " ") + spo2 + temp + hgt + fc;
 	}
+	if (data.consulta != null) {
+		if (data.consulta.avaliacao != null) {
+			if (data.consulta.avaliacao.sinaisVitais != null) {
+				var sinaisVitaisAvaliacao = data.consulta.avaliacao.sinaisVitais;
+			}
+		}
+	}
+
+	if (sinaisVitaisTriagem != null && sinaisVitaisAvaliacao != null) {
+		var ultimaAtualizacaoTriagem = sinaisVitaisTriagem.ultimaAtualizacao;
+		var ultimaAtualizacaoAvaliacao = sinaisVitaisAvaliacao.ultimaAtualizacao;
+		if (moment(ultimaAtualizacaoAvaliacao).isAfter(ultimaAtualizacaoTriagem)) {
+			return infoAtdSinaisVitais(sinaisVitaisAvaliacao);
+		} else {
+			return infoAtdSinaisVitais(sinaisVitaisTriagem);
+		}
+	} else if (sinaisVitaisTriagem != null && sinaisVitaisAvaliacao == null) {
+		console.log("Sinais vitais Triagem : " + sinaisVitaisTriagem + " Sinais vitais avali: " + sinaisVitaisAvaliacao);
+		return infoAtdSinaisVitais(sinaisVitaisTriagem);
+	} else if (sinaisVitaisAvaliacao != null && sinaisVitaisTriagem == null) {
+		return infoAtdSinaisVitais(sinaisVitaisAvaliacao);
+	}
+	return "<span class='badge badge-info'>Nenhum registro de sinais vitais cadastrado</span>";
+}
+
+function infoAtdSinaisVitais(sinaisVitais) {
+
+	var spo2 = sinaisVitais.saturacao;
+	var paSistolica = sinaisVitais.pressaoSistolica;
+	var paDiastolica = sinaisVitais.pressaoDiastolica;
+	var temp = sinaisVitais.temperaturaCorporal;
+	var hgt = sinaisVitais.glicemiaCapilar;
+	var fc = sinaisVitais.frequenciaCardiaca;
+
+	if (spo2 == 0 || spo2 == null || spo2 == undefined) {
+		spo2 = "";
+	} else {
+		spo2 = createTextSinaisVitais("SPO2: ", spo2 + " % ");
+	}
+
+	if (paSistolica == "" || paSistolica == null || paSistolica == undefined) {
+		paSistolica = "";
+
+	} else {
+		paSistolica = paSistolica;
+	}
+
+	if (paDiastolica == "" || paDiastolica == null || paDiastolica == undefined) {
+		paDiastolica = "";
+
+	} else {
+		paDiastolica = paDiastolica;
+	}
+
+	var pressaoArterial = paSistolica + " / " + paDiastolica;
+
+	if (temp == "" || temp == null || temp == undefined) {
+		temp = "<br>";
+
+	} else {
+		temp = createTextSinaisVitais("TEMP: ", temp + " ºC ") + "<br>";
+	}
+
+	if (hgt == 0 || hgt == null || hgt == undefined) {
+		hgt = "";
+
+	} else {
+		hgt = createTextSinaisVitais("HGT: ", hgt + " mg/dl ");
+	}
+
+	if (fc == "" || fc == null || fc == undefined) {
+		fc = "";
+
+	} else {
+		fc = "<strong>FC: </strong><span class='text-danger'><i class='fa fa-heart' aria-hidden='true'></i>" + fc + " bmp " + "</span>"
+	}
+	return createTextSinaisVitais("PA:", pressaoArterial + " ") + spo2 + temp + hgt + fc;
 }
 
 function createTextSinaisVitais(info, text) {

@@ -34,7 +34,7 @@ $(document).ready(function() {
 	
 	atualizaProcedimentoExame();
 	
-	atualizaListaExames();
+	//atualizaListaExames();
 	atualizaExames();
 	
 		//Chamada da função 
