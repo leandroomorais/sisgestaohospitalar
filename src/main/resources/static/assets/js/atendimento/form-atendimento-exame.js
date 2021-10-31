@@ -9,9 +9,9 @@ function exibeFormularioExame() {
 	removeInvalidFedbackExame();
 	$("#card-list-exames").fadeOut(100);
 	$("#card-novo-exame").fadeIn(100);
-	
+
 	$("#table-procedimentos-exame").DataTable().ajax.reload();
-	
+
 	$("#i-procedimento").removeClass().addClass("fa fa-search");
 	$("#i-exame-cid").removeClass().addClass("fa fa-search");
 }
@@ -29,14 +29,14 @@ function fechaFormularioExame() {
 	limpaExame();
 	$("#card-novo-exame").fadeOut(100);
 	$("#card-list-exames").fadeIn(100);
-	
+
 	$.ajax({
 		url: '/exame/limparprocedimentosexame/',
 		method: 'get',
 		success: function() { },
-		statusCode: { }
+		statusCode: {}
 	})
-	
+
 	$("#table-procedimentos-exame").DataTable().ajax.reload();
 	$("#table-lista-exame-atendimento").DataTable().ajax.reload();
 	atualizaExames();
@@ -65,7 +65,7 @@ $("#form-exame").submit(function(evt) {
 	evt.preventDefault();
 	var exame = {};
 
-	
+
 	exame.justificativacid = $("#justificativacid").val();
 	exame.observacoes = $("#observacoes").val();
 	exame['atendimento'] = $("#id-atendimento").val();
@@ -215,7 +215,7 @@ function atualizaProcedimentoExame() {
 		ajax: {
 			url: '/exame/listarprocedimentos/',
 			dataSrc: '',
-			
+
 		},
 		columns: [
 			{
@@ -327,12 +327,12 @@ function atualizaListaExames() {
 			}
 		]
 	})
-	
-	
+
+
 }
 
 function removeExame(item) {
-	
+
 	swal({
 		title: 'Tem certeza que deseja excluir este Exame?',
 		text: "Você não poderá reverter esta ação!",
@@ -392,7 +392,7 @@ function removeExame(item) {
 }
 
 function excluirExame(item) {
-	
+
 	swal({
 		title: 'Tem certeza que deseja excluir este Exame?',
 		text: "Você não poderá reverter esta ação!",
@@ -543,7 +543,7 @@ $("#procedimento-exame").autocomplete({
 					icon_type: 'class',
 				});
 			}
-			
+
 		});
 		return false;
 	}
@@ -593,40 +593,38 @@ function atualizaExames() {
 };
 
 function createCardExame(data) {
-//	var nomeprocedimento = [];
+	//	var nomeprocedimento = [];
 
-//	$.ajax({
-//		url: '/exame/buscarprocedimentos/' + data.id,
-//		method: 'get',
-//		success: function(data1) {
-//			console.log(data1);
-//			if (isEmpty(data1)) {
-//				//$("#div-exames").append("<h5 class='card-title text-center'>Não</h5><p class='card-text text-center'>um.</p>");
-//			} else {
-//				$.each(data1, function(key, item) {
-//					//"<li>" + item.nome + "</li>";
-//					//$("<li>" + item.nome + "</li>");
-//					
-//					 nomeprocedimento.push(item.nome); 
-//					//printProcedimentos(item.nome);
-//					//console.log("aqui ------ "+item.nome);
-//				})
-//			}
-//
-//		},
-//	})
+	//	$.ajax({
+	//		url: '/exame/buscarprocedimentos/' + data.id,
+	//		method: 'get',
+	//		success: function(data1) {
+	//			console.log(data1);
+	//			if (isEmpty(data1)) {
+	//				//$("#div-exames").append("<h5 class='card-title text-center'>Não</h5><p class='card-text text-center'>um.</p>");
+	//			} else {
+	//				$.each(data1, function(key, item) {
+	//					//"<li>" + item.nome + "</li>";
+	//					//$("<li>" + item.nome + "</li>");
+	//					
+	//					 nomeprocedimento.push(item.nome); 
+	//					//printProcedimentos(item.nome);
+	//					//console.log("aqui ------ "+item.nome);
+	//				})
+	//			}
+	//
+	//		},
+	//	})
 
 	//console.log("Procedimentos aqui: " + data.procedimentos[0].nome);
 	
+console.log(data);
+
 	return "<div class='card'><div class='card-body'><div class='col-md-12 row'><div class='col-md-8'>" +
 		//h5CarPrescricao(data.medicamento.principioAtivo, data.viaAdministracao.nome) + inforCardPrimary(data.medicamento.concentracao, data.medicamento.formaFarmaceutica.nome) +
 		//infoCardProcedimentos(data.procedimentos[0].nome) +
 		"<strong>Procedimentos: </strong><br>" +
-		$.each(data.procedimentos, function(key, item) {
-			"<div>" + item.codigo + " - " + "<b>" + item.nome + "</b>" + "</div>"
-			console.log("Procedimentos aqui: " + item.nome);	 
-		}) +
-		"<br>"+
+		"<br>" + procedimentos(data.procedimentos) +
 		infoCardCid(data.cid.nome) +
 		infoCardJustificativa(data.justificativacid) +
 		infoCardObservacoes(data.observacoes) +
@@ -648,6 +646,16 @@ function createCardExame(data) {
 			return "<button type='button' class='btn btn-light btn-sm' data-value='" + data.id + "' onclick='excluirExame(this)'><i class='fa fa-trash'></i> Excluir</button>";
 		}
 	}
+}
+
+function procedimentos(procedimentos) {
+	var retorno;
+	var retornoConcat = "";
+	$.each(procedimentos, function(key, item) {
+		retorno = "<div>" + item.codigo + " - " + "<b>" + item.nome + "</b>" + "</div>";
+		retornoConcat += retorno ;
+	})
+	return retornoConcat;
 }
 
 //function h5CardExame(principioAtivo, viaAdmnistracao) {
@@ -677,7 +685,7 @@ function createCardExame(data) {
 //	return "<div></div>"; 
 //}
 
-function buscarProcedimentos(id){
+function buscarProcedimentos(id) {
 	$.ajax({
 		url: '/exame/buscarprocedimentos/' + id,
 		method: 'get',
@@ -689,10 +697,10 @@ function buscarProcedimentos(id){
 				$.each(data, function(key, item) {
 					//"<li>" + item.nome + "</li>";
 					//$("<li>" + item.nome + "</li>");
-					
-					 item.nome 
+
+					item.nome
 					//printProcedimentos(item.nome);
-					console.log("aqui ------ "+item.nome);
+					console.log("aqui ------ " + item.nome);
 				})
 			}
 
@@ -700,22 +708,22 @@ function buscarProcedimentos(id){
 	})
 };
 
-function printProcedimentos(nome){
+function printProcedimentos(nome) {
 
-console.log("aqui em baico ------ "+nome);
+	console.log("aqui em baico ------ " + nome);
 	return "<span>" + nome + "</span>"
 }
 
-function listaProcedimentos(item){
+function listaProcedimentos(item) {
 	console.log(" aqui ----- ");
 	$("li").each(function(index, item) {
-		console.log(" aqui ----- "+ item.nome );
+		console.log(" aqui ----- " + item.nome);
 		//"<div>" + item.codigo + " - " + "<b>" + item.nome + "</b>" + "</div>";
 		//console.log(item.nome);
-		if( $( this ).is( "#i" )){
-		$( "div" ).text( "Stopped at div index #" + index + " " +item[0].nome);
+		if ($(this).is("#i")) {
+			$("div").text("Stopped at div index #" + index + " " + item[0].nome);
 		}
-	}); 
+	});
 }
 
 // essa ta mais ou menos
