@@ -19,13 +19,8 @@ public interface ProcedimentoRepository extends JpaRepository<Procedimento, Long
 	@Query("select p from Procedimento p where p.codigo like '20%' and p.nome like %:search%")
 	List<Procedimento> findByNomeExame(@Param("search") String search);
 	
-//	@Query(value="select p.codigo, p.codigo_financiamento, p.codigo_rubrica, p.data_competencia, p.nome, "
-//			+ "p.qtd_dias_permanencia, p.qtd_maxima_execucao, p.qtd_pontos, p.qtd_tempo_permanencia, p.quantidade, "
-//			+ "p.tipo_complexidade, p.tipo_sexo, p.vl_idade_maxima, p.vl_idade_minina, p.vlsa, p.vlsh, p.vlsp from exame e inner join exame_procedimentos ep on(e.id = ep.id_exame) "
+	
+//	@Query(value="select p.* from exame e inner join exame_procedimentos ep on(e.id = ep.id_exame) "
 //			+ "inner join procedimento p on(ep.id_procedimento = p.codigo) where e.id  = :id", nativeQuery=true)
 //	List<Procedimento> findByIdExame(@Param("id") Long id);
-	
-	@Query(value="select p.* from exame e inner join exame_procedimentos ep on(e.id = ep.id_exame) "
-			+ "inner join procedimento p on(ep.id_procedimento = p.codigo) where e.id  = :id", nativeQuery=true)
-	List<Procedimento> findByIdExame(@Param("id") Long id);
 }

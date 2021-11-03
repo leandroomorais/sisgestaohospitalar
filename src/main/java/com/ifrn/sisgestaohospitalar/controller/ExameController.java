@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.ifrn.sisgestaohospitalar.enums.StatusExame;
 import com.ifrn.sisgestaohospitalar.model.Atendimento;
 import com.ifrn.sisgestaohospitalar.model.Cid;
 import com.ifrn.sisgestaohospitalar.model.Exame;
@@ -60,11 +61,16 @@ public class ExameController {
 			}
 			return ResponseEntity.unprocessableEntity().body(errors);
 		}
+		
+		if(procedimentos.isEmpty()) {
+			return ResponseEntity.badRequest().build();
+		}
 
 		Optional<Prontuario> optional = prontuarioRepository.findById(exame.getProntuario().getId());
 		if (optional.isPresent()) {
 			Prontuario prontuario = optional.get();
 			exame.setDataRegistro(LocalDateTime.now());
+			//exame.setStatus(StatusExame.SOLICITADO);
 			exame.setProfissional(profissionalRepository.findByCpf(principal.getName()));
 			exame.setProcedimentos(procedimentos);
 			prontuario.getExames().add(exame);
@@ -81,7 +87,12 @@ public class ExameController {
 	@GetMapping("/procedimento/{codigoProcedimento}")
 	public ResponseEntity<?> adicionarProcedimento(@PathVariable("codigoProcedimento") Long codigoProcedimento) {
 		Optional<Procedimento> optional = procedimentoRepository.findById(codigoProcedimento);
+		
 		if (optional.isPresent()) {
+			if(procedimentos.contains(optional.get())) {
+				return ResponseEntity.badRequest().build();
+			}	
+			
 			procedimentos.add(optional.get());
 			return ResponseEntity.ok().build();
 		}
@@ -115,15 +126,6 @@ public class ExameController {
 		return ResponseEntity.ok().body(procedimentos);
 	}
 	
-	@GetMapping("/buscarprocedimentos/{codigoExame}")
-	public ResponseEntity<?> buscarProcedimento(@PathVariable("codigoExame") Long codigoExame) {
-		List<Procedimento> procedimentos = procedimentoRepository.findByIdExame(codigoExame);
-		if (!procedimentos.isEmpty()) {
-			return ResponseEntity.ok().body(procedimentos);
-		}
-
-		return ResponseEntity.badRequest().build();
-	}
 
 	@GetMapping("/listarexamesatendimento/{idAtendimento}")
 	public ResponseEntity<?> listarexames(@PathVariable("idAtendimento") Long id) {

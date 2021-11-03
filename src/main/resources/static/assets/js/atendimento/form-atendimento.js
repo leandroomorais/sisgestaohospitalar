@@ -32,10 +32,10 @@ $(document).ready(function() {
 	atualizaPrescricoes();
 	atualizaAtestados();
 	
+	// Funções dos Exames
 	atualizaProcedimentoExame();
-	
-	//atualizaListaExames();
 	atualizaExames();
+	//ExamesSolicitados();
 	
 		//Chamada da função 
 	atulizaMedicamentoUsoContinuo();

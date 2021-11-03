@@ -13,6 +13,9 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
+import javax.validation.Valid;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 import org.hibernate.annotations.LazyCollection;
 
@@ -26,13 +29,15 @@ public class Exame {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	private String justificativacid;
+	@NotBlank(message = "Informe a justificativa do procedimento")
+	private String justificativa;
 	
 	private String observacoes;
 	
 	private LocalDateTime dataRegistro;
 	
-
+	//private StatusExame status;
+	
 	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name = "atendimento_id")
@@ -45,18 +50,13 @@ public class Exame {
 	@OneToOne
 	private Profissional profissional;
 	
-	//@Valid
-	//@JsonIgnore
-	@ManyToMany(cascade = CascadeType.ALL)
+	@Valid
+	@ManyToMany
 	@JoinTable(name = "exame_procedimentos", joinColumns = @JoinColumn(name = "id_exame"), inverseJoinColumns = @JoinColumn(name = "id_procedimento"))
 	private List<Procedimento> procedimentos;
 	
 	@OneToOne
 	private Cid cid;
-	
-	//@ManyToMany(cascade = CascadeType.ALL)
-	//@JoinTable(name = "exame_cid", joinColumns = @JoinColumn(name = "id_exame"), inverseJoinColumns = @JoinColumn(name = "id_cid"))
-	//private List<Cid> cids;
 
 	public Long getId() {
 		return id;
@@ -67,12 +67,12 @@ public class Exame {
 	}
 
 
-	public String getJustificativacid() {
-		return justificativacid;
+	public String getJustificativa() {
+		return justificativa;
 	}
 
-	public void setJustificativacid(String justificativacid) {
-		this.justificativacid = justificativacid;
+	public void setJustificativa(String justificativa) {
+		this.justificativa = justificativa;
 	}
 
 	public String getObservacoes() {
@@ -82,6 +82,7 @@ public class Exame {
 	public void setObservacoes(String observacoes) {
 		this.observacoes = observacoes;
 	}
+
 
 	public Prontuario getProntuario() {
 		return prontuario;
