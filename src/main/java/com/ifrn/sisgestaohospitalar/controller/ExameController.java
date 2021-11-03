@@ -69,8 +69,8 @@ public class ExameController {
 		Optional<Prontuario> optional = prontuarioRepository.findById(exame.getProntuario().getId());
 		if (optional.isPresent()) {
 			Prontuario prontuario = optional.get();
-			exame.setDataRegistro(LocalDateTime.now());
-			//exame.setStatus(StatusExame.SOLICITADO);
+			exame.setDataSolicitacao(LocalDateTime.now());
+			exame.setStatus(StatusExame.SOLICITADO);
 			exame.setProfissional(profissionalRepository.findByCpf(principal.getName()));
 			exame.setProcedimentos(procedimentos);
 			prontuario.getExames().add(exame);

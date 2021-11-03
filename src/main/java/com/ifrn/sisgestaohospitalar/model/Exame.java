@@ -12,6 +12,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
@@ -34,9 +35,9 @@ public class Exame {
 	
 	private String observacoes;
 	
-	private LocalDateTime dataRegistro;
+	private LocalDateTime dataSolicitacao;
 	
-	//private StatusExame status;
+	private StatusExame status;
 	
 	@JsonIgnore
 	@ManyToOne
@@ -54,6 +55,9 @@ public class Exame {
 	@ManyToMany
 	@JoinTable(name = "exame_procedimentos", joinColumns = @JoinColumn(name = "id_exame"), inverseJoinColumns = @JoinColumn(name = "id_procedimento"))
 	private List<Procedimento> procedimentos;
+	
+	//@OneToMany
+	//private List<ResultadoExame> resultados;
 	
 	@OneToOne
 	private Cid cid;
@@ -108,12 +112,12 @@ public class Exame {
 		this.procedimentos = procedimentos;
 	}
 
-	public LocalDateTime getDataRegistro() {
-		return dataRegistro;
+	public LocalDateTime getDataSolicitacao() {
+		return dataSolicitacao;
 	}
 
-	public void setDataRegistro(LocalDateTime dataRegistro) {
-		this.dataRegistro = dataRegistro;
+	public void setDataSolicitacao(LocalDateTime dataSolicitacao) {
+		this.dataSolicitacao = dataSolicitacao;
 	}
 
 	public Atendimento getAtendimento() {
@@ -130,6 +134,14 @@ public class Exame {
 
 	public void setCid(Cid cid) {
 		this.cid = cid;
+	}
+
+	public StatusExame getStatus() {
+		return status;
+	}
+
+	public void setStatus(StatusExame status) {
+		this.status = status;
 	}
 
 
