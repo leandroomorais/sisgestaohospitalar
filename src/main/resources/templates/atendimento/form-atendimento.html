@@ -31,14 +31,14 @@
 											<div class="nav flex-column nav-pills nav-secondary nav-pills-no-bd"
 												id="v-pills-tab-without-border" role="tablist"
 												aria-orientation="vertical">
-												<a class="nav-link active" id="v-pills-resumo-tab-nobd"
-													data-toggle="pill" href="#v-pills-resumo-nobd" role="tab"
-													aria-controls="v-pills-resumo-nobd"
-													aria-selected="true"><strong>RESUMO</strong></a>
-												<a class="nav-link" id="v-pills-atendimento-tab-nobd" data-toggle="pill"
+												<a class="nav-link active" id="v-pills-atendimento-tab-nobd" data-toggle="pill"
 													href="#v-pills-atendimento-nobd" role="tab"
 													aria-controls="v-pills-atendimento-nobd"
 													aria-selected="false"><strong>ATENDIMENTO</strong></a>
+												<a class="nav-link" id="v-pills-resumo-tab-nobd"
+													data-toggle="pill" href="#v-pills-resumo-nobd" role="tab"
+													aria-controls="v-pills-resumo-nobd"
+													aria-selected="true"><strong>RESUMO</strong></a>
 												<a class="nav-link" id="v-pills-historico-tab-nobd" data-toggle="pill"
 													href="#v-pills-historico-nobd" role="tab"
 													aria-controls="v-pills-historico-nobd"
@@ -47,7 +47,7 @@
 										</div>
 										<div class="col-sm-9 col-md-10 col-lg-10">
 											<div class="tab-content" id="v-pills-without-border-tabContent">
-												<div class="tab-pane fade show active" id="v-pills-resumo-nobd"
+												<div class="tab-pane fade" id="v-pills-resumo-nobd"
 													role="tabpanel" aria-labelledby="v-pills-resumo-tab-nobd">
 
 													<ul class="nav nav-tabs">
@@ -56,10 +56,7 @@
 																data-toggle="tab" href="#dados-triagem"><strong>DADOS DA
 																	TRIAGEM</strong></a>
 														</li>
-														<li class="nav-item submenu"><a class="nav-link"
-																data-toggle="tab"
-																href="#alergias"><strong>ALERGIAS</strong></a>
-														</li>
+
 														<li class="nav-item submenu"><a class="nav-link"
 																data-toggle="tab"
 																href="#doencas"><strong>DOENÇAS</strong></a>
@@ -97,7 +94,7 @@
 
 												</div>
 
-												<div class="tab-pane fade" id="v-pills-atendimento-nobd" role="tabpanel"
+												<div class="tab-pane fade show active" id="v-pills-atendimento-nobd" role="tabpanel"
 													aria-labelledby="v-pills-atendimento-tab-nobd">
 													<ul class="nav nav-tabs">
 														<li sec:authorize="hasAnyAuthority('MEDICO')"
@@ -118,263 +115,10 @@
 																href="#menu3"><strong>ATESTADOS</strong></a>
 														</li>
 													</ul>
-													<input id="id-prontuario" type="hidden"
-														th:value="${atendimento.cidadao.prontuario.id}">
-													<input id="id-atendimento" type="hidden"
-														th:value="${atendimento.id}">
-													<span id="nome-usuario" hidden="true"
-														th:text="${user.username}"></span>
+
 													<div class="tab-content">
-														<div sec:authorize="hasAnyAuthority('MEDICO')" id="home"
-															class="tab-pane fade show active">
-															<div class="card mt-3">
-																<div class="card-header">
-																	<div class="card-title">Sumário da
-																		história
-																		clínica</div>
-																</div>
-																<div class="card-body">
-																	<div class="row">
-																		<div class="col-md-12 col-lg-12">
-																			<div class="form-group">
-																				<textarea class="form-control"
-																					name="historiaClinica"
-																					id="historia-clinica"></textarea>
-																				<small id="historia-clinica-small"
-																					class="form-text text-muted">Queixa
-																					principal,
-																					tratamento, história
-																					atual da doença,
-																					história pessoal e
-																					familiar</small>
-																			</div>
-																		</div>
-																	</div>
-																</div>
-															</div>
-															<div class="card mt-3">
-																<div class="card-header">
-																	<div class="card-title">Avaliação
-																	</div>
-																</div>
-																<div class="card-body">
-																	<div class="row">
-																		<div class="col-md-2">
-																			<div class="form-group">
-																				<label
-																					for="sinaisVitais-pressaoArterial">Pressão
-																					Arterial
-																				</label><input type="text"
-																					name="sinaisVitais.pressaoArterial"
-																					class="form-control"
-																					id="sinaisVitais-pressaoArterial"
-																					placeholder="___/__">
-																				<small id="pressaoArterial-small"
-																					class="form-text text-muted">mmHg</small>
-																				<small
-																					id="sinaisVitais.pressaoArterial-error"></small>
-																			</div>
-																		</div>
-
-																		<div class="col-md-2">
-																			<div class="form-group">
-																				<label
-																					for="sinaisVitais-frequenciaRespiratoria">Freq.
-																					Respiratória</label>
-																				<input type="number"
-																					class="form-control"
-																					id="sinaisVitais-frequenciaRespiratoria"
-																					name="sinaisVitais.frequenciaRespiratoria"
-																					placeholder=""><small
-																					id="sinaisVitais-frequenciaRespitatoria-small"
-																					class="form-text text-muted">rpm</small>
-																				<small
-																					id="sinaisVitais-frequenciaRespitatoria-error"></small>
-																			</div>
-																		</div>
-
-																		<div class="col-md-2">
-																			<div class="form-group">
-																				<label
-																					for="sinaisVitais-frequenciaCardiaca">Freq.
-																					Cardíaca</label>
-																				<input type="number"
-																					class="form-control"
-																					name="sinaisVitais.frequenciaCardiaca"
-																					id="sinaisVitais-frequenciaCardiaca"
-																					placeholder="">
-																				<small
-																					id="sinaisVitais-frequeciaCardiaca-small"
-																					class="form-text text-muted">bpm</small>
-																			</div>
-																		</div>
-
-																		<div class="col-md-2">
-																			<div class="form-group">
-																				<label
-																					for="sinaisVitais-temperaturaCorporal">Temperatura</label>
-																				<input type="text" class="form-control"
-																					id="sinaisVitais-temperaturaCorporal"
-																					placeholder="00.0">
-																				<small id="temperaturacorporal-small"
-																					class="form-text text-muted">°C</small>
-																				<small
-																					id="sinaisVitais-temperaturaCorporal-error"></small>
-																			</div>
-																		</div>
-
-																		<div class="col-md-2">
-																			<div class="form-group">
-																				<label
-																					for="sinaisVitais-saturacaoOxigenio">Saturação
-																					de O<sub>2</sub>
-																				</label> <input type="number"
-																					class="form-control"
-																					name="sinaisVitais.saturacaoOxigenio"
-																					id="sinaisVitais-saturacaoOxigenio"
-																					placeholder="">
-																				<small
-																					id="sinaisVitais-saturacaoOxigenio-small"
-																					class="form-text text-muted">%</small>
-																				<small
-																					id="sinaisVitais-temperaturaCorporal-error"></small>
-																			</div>
-																		</div>
-
-																		<div class="col-md-3">
-																			<div class="form-group">
-																				<label
-																					for="sinaisVitais-glicemiaCapilar">Glicemia
-																					Capilar</label>
-																				<input type="number"
-																					name="sinaisVitais.glicemiaCapilar"
-																					class="form-control"
-																					id="sinaisVitais-glicemiaCapilar"
-																					placeholder="">
-																				<small
-																					id="sinaisVitais-glicemiaCapilar-small"
-																					class="form-text text-muted">mg/dl</small>
-																			</div>
-																		</div>
-																		<div class="col-md-4">
-																			<div class="form-group">
-																				<label
-																					for="sinaisVitais-momentoColeta">Momento
-																					coleta</label>
-																				<select
-																					name="sinaisVitais.momentoColeta"
-																					class="form-control form-control"
-																					id="sinaisVitais-momentoColeta">
-																					<option
-																						th:each="momentoColeta : ${momentosColeta}"
-																						th:value="${momentoColeta}"
-																						th:text="${momentoColeta.nome}">
-																					</option>
-																				</select> <small
-																					id="sinaisVitais-momentoColeta-small"
-																					class="form-text text-muted"></small>
-																			</div>
-																		</div>
-																	</div>
-																	<div class="row">
-																		<div class="col-md-12 col-lg-12">
-																			<div class="form-group">
-																				<textarea class="form-control"
-																					name="avaliacao.nota"
-																					id="avaliacao"></textarea>
-																				<small id="avaliacao-small"
-																					class="form-text text-muted">Digite
-																					na área
-																					de texto acima as
-																					observações que
-																					achar
-																					necessário</small>
-																			</div>
-																		</div>
-																	</div>
-																</div>
-															</div>
-															<div class="card mt-3">
-																<div class="card-header">
-																	<div class="card-title">Diagnóstico
-																	</div>
-																</div>
-																<div class="card-body">
-																	<div class="row">
-																		<div class="col-md-12">
-																			<div class="form-group">
-																				<label for="nome">Nota:</label>
-																				<textarea id="nota"
-																					class="form-control"></textarea>
-																			</div>
-																		</div>
-																		<div class="col-md-12">
-																			<div class="form-group">
-																				<label for="diagnostico-cid">Cid-10:
-																				</label>
-																				<div class="input-group">
-																					<div class="input-group-prepend">
-																						<button id="button-cid"
-																							type="button"
-																							class="btn btn-black btn-border">
-																							<i id="i-cid"
-																								class="fa fa-search"></i>
-																						</button>
-																					</div>
-																					<input id="diagnostico-cid"
-																						type="text" class="form-control"
-																						placeholder="Pesquisa de Cid">
-																					<input type="hidden" id="id-cid">
-																				</div>
-																			</div>
-																		</div>
-																		<div class="col-md-12 text-right">
-																			<button id="submit-diagnostico"
-																				type="button"
-																				class="btn btn-primary btn-sm">
-																				<i class="fa fa-plus"></i>
-																				Adicionar
-																			</button>
-																		</div>
-																		<div class="col-md-12 mt-3">
-																			<div class="card-sub">
-																				Diagnósticos:</div>
-																			<div id="div-table-diagnosticos"
-																				class="table-responsive">
-																				<table id="table-diagnosticos"
-																					class="display table table-hover dataTable"
-																					role="grid"
-																					aria-describedby="basic-datatables_info"
-																					style="width: 100%">
-																					<thead>
-																						<tr role="row">
-																							<th></th>
-																							<th></th>
-																							<th></th>
-																							<th></th>
-																						</tr>
-																					</thead>
-																					<tbody>
-																						<tr role="row" class="odd">
-																							<td></td>
-																							<td></td>
-																							<td></td>
-																							<td></td>
-																						</tr>
-																					</tbody>
-																				</table>
-																			</div>
-
-																		</div>
-																	</div>
-																</div>
-															</div>
-															<div class="card-action">
-																<button id="submit-consulta" type="button"
-																	class="btn btn-primary">Salvar
-																	consulta</button>
-																<button type="button"
-																	class="btn btn-warning">Cancelar</button>
+														<div id="home" class="tab-pane fade show active">
+															<div th:replace="fragments/atendimento/div-form-consulta">
 															</div>
 														</div>
 														<div id="menu1" class="tab-pane fade">
@@ -456,8 +200,7 @@
 			th:src="@{/assets/js/card-info-cidadao/card-info-cidadao.js}"></script>
 		<script type="text/javascript" th:inline="javascript"
 			th:src="@{/assets/js/usoMedicamentos/uso-medicamentos.js}"></script>
-		<script type="text/javascript" th:inline="javascript"
-			th:src="@{/assets/js/pec/busca.js}"></script>
+		<script type="text/javascript" th:inline="javascript" th:src="@{/assets/js/pec/busca.js}"></script>
 
 	</th:block>
 </body>

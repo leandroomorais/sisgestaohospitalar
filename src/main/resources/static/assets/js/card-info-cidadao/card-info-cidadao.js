@@ -23,7 +23,11 @@ function createCardInfoCidadao(data) {
 		"</div><div class='col-md-2'>" +
 		antropometria(data.cidadao.prontuario.antropometrias) +
 		"</div></div>" +
+		"<div class='page-divider'></div>" +
+		"<div class='col-md-12 row'>" +
 		motivosAtendimento(data) +
+		alergias(data.cidadao.prontuario.statusAlergias) +
+		"</div>" +
 		"</div></div></div>";
 }
 
@@ -34,12 +38,47 @@ function h5NomeCidadao(nome) {
 function motivosAtendimento(data) {
 	if (data.triagem != null) {
 		if (data.triagem.motivo != null) {
-			return "<div class='col-md-12 mt-1'><strong>Motivos do Atendimento: </strong><div class='card-sub'>" + data.triagem.motivo +
+			return "<div class='col-md-7 mt-2'><strong>Motivos do Atendimento: </strong>" + data.triagem.motivo +
 				"</div>";
 		}
 	} else {
-		return "";
+		return ""
 	}
+}
+
+function alergias(alergias) {
+	if (alergias.length != 0) {
+		var retorno;
+		var retornoConcat = "";
+		var classe;
+
+		$.each(alergias, function(index, item) {
+			if (item.situacaoCondicao == "ATIVA") {
+				classe = "badge badge-danger";
+			}
+
+			if (item.situacaoCondicao == "LATENTE") {
+				classe = "badge badge-warning";
+			}
+
+			if (item.situacaoCondicao == "CURADA") {
+				classe = "badge badge-success";
+			}
+
+			if (item.situacaoCondicao == "ATIVA" || item.situacaoCondicao == "LATENTE") {
+				retorno = "<span class='" + classe + "'>" + item.alergia.nome + "</span><br>";
+			}else{
+				retorno = "<span class='badge badge-info'> Nenhuma alergia ativa</span><br>";
+			}
+
+			retornoConcat += retorno;
+		})
+
+		return "<div class='col-md-5 mt-2'><strong>Alergias: </strong><br>" + retornoConcat + "</div>";
+	} else {
+		return "<div class='col-md-5 mt-2'><strong>Alergias: </strong><div class='card-sub'><span class='badge badge-info'>Nenhum registro de Alergia cadastrado</span></div></div>";
+	}
+
 }
 
 function cns(cns) {
@@ -48,7 +87,7 @@ function cns(cns) {
 
 function antropometria(antropometria) {
 	if (antropometria.length != 0) {
-		var registro
+		var registro;
 		$.each(antropometria, function(index, item) {
 			registro = createTextSinaisVitais("PESO: ", item.peso + " kg") + createTextSinaisVitais(" ALTURA: ", item.altura + " cm") + "<br>" + createTextSinaisVitais(" IMC: ", item.imc);
 		})
@@ -104,15 +143,17 @@ function nascimentoIdadeSexo(dtNascimento, sexo) {
 }
 
 function verificaSinaisVitais(data) {
+	var sinaisVitaisTriagem = null;
+	var sinaisVitaisAvaliacao = null;
 	if (data.triagem != null) {
 		if (data.triagem.sinaisVitais != null) {
-			var sinaisVitaisTriagem = data.triagem.sinaisVitais;
+			sinaisVitaisTriagem = data.triagem.sinaisVitais;
 		}
 	}
 	if (data.consulta != null) {
 		if (data.consulta.avaliacao != null) {
 			if (data.consulta.avaliacao.sinaisVitais != null) {
-				var sinaisVitaisAvaliacao = data.consulta.avaliacao.sinaisVitais;
+				sinaisVitaisAvaliacao = data.consulta.avaliacao.sinaisVitais;
 			}
 		}
 	}
@@ -120,17 +161,17 @@ function verificaSinaisVitais(data) {
 	if (sinaisVitaisTriagem != null && sinaisVitaisAvaliacao != null) {
 		var ultimaAtualizacaoTriagem = sinaisVitaisTriagem.ultimaAtualizacao;
 		var ultimaAtualizacaoAvaliacao = sinaisVitaisAvaliacao.ultimaAtualizacao;
-		if (moment(ultimaAtualizacaoAvaliacao).isAfter(ultimaAtualizacaoTriagem)) {
+		if (moment(ultimaAtualizacaoAvaliacao).isAfter(ultimaAtualizacaoTriagem, 'minute')) {
 			return infoAtdSinaisVitais(sinaisVitaisAvaliacao);
 		} else {
 			return infoAtdSinaisVitais(sinaisVitaisTriagem);
 		}
 	} else if (sinaisVitaisTriagem != null && sinaisVitaisAvaliacao == null) {
-		console.log("Sinais vitais Triagem : " + sinaisVitaisTriagem + " Sinais vitais avali: " + sinaisVitaisAvaliacao);
 		return infoAtdSinaisVitais(sinaisVitaisTriagem);
 	} else if (sinaisVitaisAvaliacao != null && sinaisVitaisTriagem == null) {
 		return infoAtdSinaisVitais(sinaisVitaisAvaliacao);
 	}
+
 	return "<span class='badge badge-info'>Nenhum registro de sinais vitais cadastrado</span>";
 }
 

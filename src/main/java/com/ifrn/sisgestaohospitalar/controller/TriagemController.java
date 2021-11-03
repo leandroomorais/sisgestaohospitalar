@@ -35,7 +35,6 @@ import com.ifrn.sisgestaohospitalar.repository.ProfissionalRepository;
 import com.ifrn.sisgestaohospitalar.repository.TipoServicoRepository;
 import com.ifrn.sisgestaohospitalar.repository.UsuarioRepository;
 import com.ifrn.sisgestaohospitalar.service.TriagemDataTablesService;
-import com.ifrn.sisgestaohospitalar.service.TriagemService;
 
 @Controller
 @RequestMapping("/triagem")
@@ -50,8 +49,6 @@ public class TriagemController {
 	@Autowired
 	private TipoServicoRepository tipoServicoRepository;
 
-	@Autowired
-	private TriagemService triagemService;
 
 	@Autowired
 	private UsuarioRepository usuarioRepository;
@@ -116,6 +113,7 @@ public class TriagemController {
 		if (atendimento != null) {
 			triagem.setFimTriagem(LocalDateTime.now());
 			triagem.setProfissional(profissionalRepository.findByCpf(principal.getName()));
+			triagem.getSinaisVitais().setUltimaAtualizacao(LocalDateTime.now());
 			atendimento.setTriagem(triagem);
 			atendimentoRepository.saveAndFlush(atendimento);
 			return ResponseEntity.ok().build();

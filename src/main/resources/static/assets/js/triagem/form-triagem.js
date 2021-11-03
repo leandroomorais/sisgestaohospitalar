@@ -12,15 +12,8 @@ $(document).ready(function() {
 	$("#card-nova-doenca").hide();
 	$("#card-edit-doenca").hide();
 	//Função que aplica máscara aos inputs 
-	$("#sinaisVitais-pressaoArterial").keydown(function() {
-		var pressao = $("#sinaisVitais-pressaoArterial").val();
-		if (pressao < 5) {
-			$("#sinaisVitais-pressaoArterial").mask("000/00");
-		}
-		else {
-			$("#sinaisVitais-pressaoArterial").mask("000/000");
-		}
-	});
+	$("#sinaisVitais-pressaoSistolica").mask('000');
+	$("#sinaisVitais-pressaoDiastolica").mask('000');
 	$("#sinaisVitais-frequenciaRespiratoria").mask("000");
 	$("#sinaisVitais-frequenciaCardiaca").mask("000");
 	$("#sinaisVitais-temperaturaCorporal").mask("00.0");
@@ -93,8 +86,6 @@ $("#form-triagem").submit(function(evt) {
 	triagem['sinaisVitais.glicemiaCapilar'] = $("#sinaisVitais-glicemiaCapilar").val();
 	triagem['sinaisVitais.momentoColeta'] = $("#sinaisVitais-momentoColeta option:selected").val();
 	triagem['atendimento'] = idAtendimento;
-
-	console.log(triagem);
 
 	$.ajax({
 		url: "/triagem/salvar",
