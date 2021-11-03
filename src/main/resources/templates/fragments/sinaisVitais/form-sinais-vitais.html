@@ -1,0 +1,75 @@
+<div class="row">
+	<div class="col-md-3">
+		<div class="form-group">
+			<label>Pressão Arterial</label>
+			<div class="input-group">
+				<input name="sinaisVitais.pressaoSistolica" id="sinaisVitais-pressaoSistolica" type="text"
+					class="form-control">
+				<div class="input-group-prepend">
+					<span class="input-group-text">/</span>
+				</div>
+				<input name="sinaisVitais.pressaoDiastolica" id="sinaisVitais-pressaoDiastolica" type="text"
+					class="form-control">
+			</div>
+			<small class="text-muted">mmHg</small>
+		</div>
+	</div>
+	<div class="col-md-3">
+		<div class="form-group">
+			<label for="sinaisVitais-frequenciaRespiratoria">Freq.
+				Respiratória</label> <input type="number" class="form-control" id="sinaisVitais-frequenciaRespiratoria"
+				name="sinaisVitais.frequenciaRespiratoria" placeholder=""><small
+				id="sinaisVitais-frequenciaRespitatoria-small" class="form-text text-muted">rpm</small>
+			<small id="sinaisVitais-frequenciaRespitatoria-error"></small>
+		</div>
+	</div>
+
+	<div class="col-md-3">
+		<div class="form-group">
+			<label for="sinaisVitais-frequenciaCardiaca">Freq.
+				Cardíaca</label> <input type="number" class="form-control" name="sinaisVitais.frequenciaCardiaca"
+				id="sinaisVitais-frequenciaCardiaca" placeholder="">
+			<small id="sinaisVitais-frequeciaCardiaca-small" class="form-text text-muted">bpm</small>
+			<small id="sinaisVitais-frequenciaCardiaca-error"></small>
+			<small id="sinaisVitais-frequenciaCardiaca-error"></small>
+		</div>
+	</div>
+
+	<div class="col-md-3">
+		<div class="form-group">
+			<label for="sinaisVitais-temperaturaCorporal">Temperatura</label>
+			<input type="text" class="form-control" id="sinaisVitais-temperaturaCorporal" placeholder="00.0">
+			<small id="temperaturacorporal-small" class="form-text text-muted">°C</small>
+			<small id="sinaisVitais-temperaturaCorporal-error"></small>
+		</div>
+	</div>
+	<div class="col-md-3">
+		<div class="form-group">
+			<label for="sinaisVitais-saturacaoOxigenio">Saturação
+				de O<sub>2</sub>
+			</label> <input type="number" class="form-control" name="sinaisVitais.saturacaoOxigenio"
+				id="sinaisVitais-saturacaoOxigenio" placeholder="">
+			<small id="sinaisVitais-saturacaoOxigenio-small" class="form-text text-muted">%</small>
+			<small id="sinaisVitais-temperaturaCorporal-error"></small>
+		</div>
+	</div>
+	<div class="col-md-3">
+		<div class="form-group">
+			<label for="sinaisVitais-glicemiaCapilar">Glicemia
+				Capilar</label> <input type="number" name="sinaisVitais.glicemiaCapilar" class="form-control"
+				id="sinaisVitais-glicemiaCapilar" placeholder="">
+			<small id="sinaisVitais-glicemiaCapilar-small" class="form-text text-muted">mg/dl</small>
+		</div>
+	</div>
+	<div class="col-md-4">
+		<div class="form-group">
+			<label for="sinaisVitais-momentoColeta">Momento
+				coleta</label> <select name="sinaisVitais.momentoColeta" class="form-control form-control"
+				id="sinaisVitais-momentoColeta">
+				<option th:each="momentoColeta : ${momentosColeta}" th:value="${momentoColeta}"
+					th:text="${momentoColeta.nome}">
+				</option>
+			</select> <small id="sinaisVitais-momentoColeta-small" class="form-text text-muted"></small>
+		</div>
+	</div>
+</div>

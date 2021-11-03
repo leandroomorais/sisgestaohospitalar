@@ -8,6 +8,16 @@ $(document).ready(function() {
 	$("#card-novo-registro-administracao").hide();
 	$("#card-novo-atestado").hide();
 	$("#card-novo-exame").hide();
+	
+	//Função que aplica máscara aos inputs 
+	$("#sinaisVitais-pressaoSistolica").mask('000');
+	$("#sinaisVitais-pressaoDiastolica").mask('000');
+	$("#sinaisVitais-frequenciaRespiratoria").mask("000");
+	$("#sinaisVitais-frequenciaCardiaca").mask("000");
+	$("#sinaisVitais-temperaturaCorporal").mask("00.0");
+	$("#sinaisVitais-glicemiaCapilar").mask("000");
+	$("#sinaisVitais-saturacaoOxigenio").mask("000");
+	//Fim da função
 
 	//Função que inicia o TinyMCE
 	tinymce.init({
@@ -417,3 +427,17 @@ function excluirDiagnostico(element) {
 		}
 	});
 }
+
+//function verificaConsulta(){
+//	$.ajax({
+//		url: '/consulta/verificar/' + idAtendimento,
+//		method: 'get',
+//		success: function(data){
+//			$("#idConsulta").val(data.id);
+//			$("#idSinaisVitais").val(data.sinaisVitais.id);
+//			$("#inicioConsulta").val(data.inicioConsuta);
+//			
+//			
+//		}
+//	})
+//}

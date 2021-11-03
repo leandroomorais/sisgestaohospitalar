@@ -23,7 +23,7 @@ public class ConsultaController {
 
 	@Autowired
 	private AtendimentoRepository atendimentoRepository;
-	
+
 	@PostMapping("/")
 	public ResponseEntity<?> salvar(@Valid Consulta consulta, BindingResult result, Principal principal) {
 		Map<String, String> errors = new HashMap<>();
@@ -37,6 +37,7 @@ public class ConsultaController {
 		if (optional.isPresent()) {
 			Atendimento atendimento = optional.get();
 			consulta.setDataRegistro(LocalDateTime.now());
+			consulta.getAvaliacao().getSinaisVitais().setUltimaAtualizacao(LocalDateTime.now());
 			atendimento.setConsulta(consulta);
 			atendimentoRepository.saveAndFlush(atendimento);
 			return ResponseEntity.ok().build();

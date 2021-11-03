@@ -1,0 +1,128 @@
+<div id="div-form-consulta">
+	<form id="form-consulta" method="post" action="/consulta/salvar">
+
+		<input id="id-prontuario" type="hidden" th:value="${atendimento.cidadao.prontuario.id}">
+		<input id="id-atendimento" type="hidden" th:value="${atendimento.id}">
+		<input type="hidden" id="idConsulta">
+		<span id="nome-usuario" hidden="true" th:text="${user.username}"></span>
+
+		<div sec:authorize="hasAnyAuthority('MEDICO')">
+			<div class="card mt-3">
+				<div class="card-header">
+					<div class="card-title">Sumário da
+						história
+						clínica</div>
+				</div>
+				<div class="card-body">
+					<div class="row">
+						<div class="col-md-12 col-lg-12">
+							<div class="form-group">
+								<textarea class="form-control" name="historiaClinica" id="historia-clinica"></textarea>
+								<small id="historia-clinica-small" class="form-text text-muted">Queixa
+									principal,
+									tratamento, história
+									atual da doença,
+									história pessoal e
+									familiar</small>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="card mt-3">
+				<div class="card-header">
+					<div class="card-title">Avaliação
+					</div>
+				</div>
+				<div class="card-body">
+					<div th:replace="fragments/sinaisVitais/form-sinais-vitais">
+					</div>
+					<div class="row">
+						<div class="col-md-12 col-lg-12">
+							<div class="form-group">
+								<label for="avaliacao">Notas / observações</label>
+								<textarea class="form-control" name="avaliacao.nota" id="avaliacao"></textarea>
+								<small id="avaliacao-small" class="form-text text-muted">Digite
+									na área
+									de texto acima as
+									observações que
+									achar
+									necessário</small>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="card mt-3">
+				<div class="card-header">
+					<div class="card-title">Diagnóstico
+					</div>
+				</div>
+				<div class="card-body">
+					<div class="row">
+						<div class="col-md-12">
+							<div class="form-group">
+								<label for="nome">Nota:</label>
+								<textarea id="nota" class="form-control"></textarea>
+							</div>
+						</div>
+						<div class="col-md-12">
+							<div class="form-group">
+								<label for="diagnostico-cid">Cid-10:
+								</label>
+								<div class="input-group">
+									<div class="input-group-prepend">
+										<button id="button-cid" type="button" class="btn btn-black btn-border">
+											<i id="i-cid" class="fa fa-search"></i>
+										</button>
+									</div>
+									<input id="diagnostico-cid" type="text" class="form-control"
+										placeholder="Pesquisa de Cid">
+									<input type="hidden" id="id-cid">
+								</div>
+							</div>
+						</div>
+						<div class="col-md-12 text-right">
+							<button id="submit-diagnostico" type="button" class="btn btn-primary btn-sm">
+								<i class="fa fa-plus"></i>
+								Adicionar
+							</button>
+						</div>
+						<div class="col-md-12 mt-3">
+							<div class="card-sub">
+								Diagnósticos:</div>
+							<div id="div-table-diagnosticos" class="table-responsive">
+								<table id="table-diagnosticos" class="display table table-hover dataTable" role="grid"
+									aria-describedby="basic-datatables_info" style="width: 100%">
+									<thead>
+										<tr role="row">
+											<th></th>
+											<th></th>
+											<th></th>
+											<th></th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr role="row" class="odd">
+											<td></td>
+											<td></td>
+											<td></td>
+											<td></td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="card-action">
+				<button id="submit-consulta" type="button" class="btn btn-primary">Salvar
+					consulta</button>
+				<button type="button" class="btn btn-warning">Cancelar</button>
+			</div>
+		</div>
+
+	</form>
+</div>
