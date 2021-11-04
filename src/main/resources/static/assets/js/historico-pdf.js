@@ -1,59 +1,103 @@
 
-$("#historico-pdf").click(function() {
-	const examesS = PDFUtil.extractOfArrayToKey(examesSolicitations.data, {
-		procedimento: {
-			nomeProcedimento: '',
-			procedimentoFormaOrganizacional: {
-				noProcedFormaOrganizacional: ''
-			},
-			procedimentoSubGrupo: {
-				noProcedSubGrupo: ''
-			},
-			dtCompetencia: '',
-		},
-		dataSolicitacao: ''
-	});
-	const examesR = PDFUtil.extractOfArrayToKey(examesResult.data, {
-		procedimento: {
-			nomeProcedimento: '',
-			procedimentoFormaOrganizacional: {
-				noProcedFormaOrganizacional: ''
-			},
-			procedimentoSubGrupo: {
-				noProcedSubGrupo: ''
-			},
-			dtCompetencia: '',
-		},
-		dataSolicitacao: '',
-		dataResultado: '',
-		resultado: ''
-	});
-	const medicamentoPres = PDFUtil.extractOfArrayToKey(receitas.data, {
-		medicamento: {
-			principio_ativo: '',
-			concentracao: '',
-			formaFarmaceutica: {
-				nomeFormaFarmaceutica: '',
-			}
-		},
-		posologia: '',
-		recomendacao: ''
-	})
+function checkNotUnderfined(obj) {
+	return obj?.data !== undefined
+}
 
-	const vacinasApp = PDFUtil.extractOfArrayToKey(vacinasAplicadas.data, {
-		observacao: '',
-		dataAplicacao: '',
-		codigoImunobiologico: {
-			nomeViadministracaoVacina: '',
-			nomeImunobiologico: '',
-			codigoClasseImunobiologico: ''
-		},
-		codigoDoseImunobiologico:{
-			sgDoseImunobiologico: '',
-			nomeDoseImunobiologico: '',
-			numeroOrdem: ''
-		}
-	})
+function checkNotNull(obj) {
+	return obj !== null
+}
+
+$("#historico-pdf").click(function () {
+	let examesS = null
+
+	if (checkUnderfined(examesSolicitations)) {
+		examesS = PDFUtil.extractOfArrayToKey(examesSolicitations.data, {
+			procedimento: {
+				nomeProcedimento: '',
+				procedimentoFormaOrganizacional: {
+					noProcedFormaOrganizacional: ''
+				},
+				procedimentoSubGrupo: {
+					noProcedSubGrupo: ''
+				},
+				dtCompetencia: '',
+			},
+			dataSolicitacao: ''
+		});
+	}
+
+	let examesR = null
+
+	if (checkUnderfined(examesResult)) {
+		examesResult = PDFUtil.extractOfArrayToKey(examesResult.data, {
+			procedimento: {
+				nomeProcedimento: '',
+				procedimentoFormaOrganizacional: {
+					noProcedFormaOrganizacional: ''
+				},
+				procedimentoSubGrupo: {
+					noProcedSubGrupo: ''
+				},
+				dtCompetencia: '',
+			},
+			dataSolicitacao: '',
+			dataResultado: '',
+			resultado: ''
+		});
+	}
+
+	let medicamentoPres = null
+
+	if (checkUnderfined(receitas)) {
+		medicamentoPres = PDFUtil.extractOfArrayToKey(receitas.data, {
+			medicamento: {
+				principio_ativo: '',
+				concentracao: '',
+				formaFarmaceutica: {
+					nomeFormaFarmaceutica: '',
+				}
+			},
+			posologia: '',
+			recomendacao: ''
+		})
+	}
+
+	let vacinasApp = null
+
+	if (checkUnderfined(vacinasAplicadas)) {
+		vacinasApp = PDFUtil.extractOfArrayToKey(vacinasAplicadas.data, {
+			observacao: '',
+			dataAplicacao: '',
+			codigoImunobiologico: {
+				nomeViadministracaoVacina: '',
+				//nomeImunobiologico: '',
+				//codigoClasseImunobiologico: ''
+			},
+			codigoDoseImunobiologico: {
+				//sgDoseImunobiologico: '',
+				nomeDoseImunobiologico: '',
+				//numeroOrdem: ''
+			}
+		})
+	}
+
+	let vacinasAgen = null
+	if (checkUnderfined(vacinasAgendadas)) {
+		vacinasAgen = PDFUtil.extractOfArrayToKey(vacinasAgendadas.data, {
+			observacao: '',
+			dataAprazamento: '',
+			codigoImunobiologico: {
+				nomeViadministracaoVacina: '',
+				//nomeImunobiologico: '',
+				//codigoClasseImunobiologico: ''
+			},
+			codigoDoseImunobiologico: {
+				//sgDoseImunobiologico: '',
+				nomeDoseImunobiologico: '',
+				//numeroOrdem: ''
+			}
+		})
+	}
 
 	PDF.config()
 
@@ -98,73 +142,100 @@ $("#historico-pdf").click(function() {
 	PDF.createText('HISTÓRICO DE ATENDIMENTO NA ATENÇÃO BÁSICA',
 		{ fontStyle: 'bold', fontName: 'Times New Roman', fontSize: '12', align: 'center' })
 
-	PDF.createText('EXAMES SOLICITADOS',
-		{ fontStyle: 'bold', fontName: 'Times New Roman', fontSize: '12', align: 'left' })
+	if (checkNotNull(examesS)) {
+		PDF.createText('EXAMES SOLICITADOS',
+			{ fontStyle: 'bold', fontName: 'Times New Roman', fontSize: '12', align: 'left' })
 
-	PDF.createTable(Extract.extractToKey([
-		'Procedimento'.toUpperCase(),
-		'Procedimento de Forma Organizacional'.toUpperCase(),
-		'Procedimento Sub Grupo'.toUpperCase(),
-		'Data Competencia do Procedimento'.toUpperCase(),
-		'Data da Solicitação'.toUpperCase(),
-	]), examesS, {
-		text: 'Conteúdo do Exame Solicitado',
-		options: {
-			auto: true,
-		}
-	});
+		PDF.createTable(Extract.extractToKey([
+			'Procedimento'.toUpperCase(),
+			'Procedimento de Forma Organizacional'.toUpperCase(),
+			'Procedimento Sub Grupo'.toUpperCase(),
+			'Data Competencia do Procedimento'.toUpperCase(),
+			'Data da Solicitação'.toUpperCase(),
+		]), examesS, {
+			text: 'Conteúdo do Exame Solicitado',
+			options: {
+				auto: true,
+			}
+		});
+	}
 
 	PDF.createSpace();
 
-	PDF.createText('RESULTADOS DE EXAMES',
-		{
-			fontStyle: 'bold', fontName: 'Times New Roman', fontSize: '12', align: 'left'
-		})
+	if (checkNotNull(examesR)) {
+		PDF.createText('RESULTADOS DE EXAMES',
+			{
+				fontStyle: 'bold', fontName: 'Times New Roman', fontSize: '12', align: 'left'
+			})
 
-	PDF.createTable(Extract.extractToKey([
-		'Procedimento'.toUpperCase(),
-		'Procedimento de Forma Organizacional'.toUpperCase(),
-		'Procedimento Sub Grupo'.toUpperCase(),
-		'Data Competencia do Procedimento'.toUpperCase(),
-		'Data da Solicitação'.toUpperCase(),
-		'Data do Resultado'.toUpperCase(),
-		'Resultado'.toUpperCase()
-	]), examesR, {
-		text: 'Conteúdo do Resultado de Exame',
-		options: {
-			auto: true,
-		}
-	});
+		PDF.createTable(Extract.extractToKey([
+			'Procedimento'.toUpperCase(),
+			'Procedimento de Forma Organizacional'.toUpperCase(),
+			'Procedimento Sub Grupo'.toUpperCase(),
+			'Data Competencia do Procedimento'.toUpperCase(),
+			'Data da Solicitação'.toUpperCase(),
+			'Data do Resultado'.toUpperCase(),
+			'Resultado'.toUpperCase()
+		]), examesR, {
+			text: 'Conteúdo do Resultado de Exame',
+			options: {
+				auto: true,
+			}
+		});
+	}
 
-	PDF.createText("medicamentos prescritos".toUpperCase(),
-		{ fontStyle: 'bold', fontName: 'Times New Roman', fontSize: '12', align: 'left' })
-	PDF.createTable(Extract.extractToKey([
-		'Principio ativo'.toUpperCase(),
-		'Concentração'.toUpperCase(),
-		'Forma'.toUpperCase(),
-		'Posologia'.toUpperCase(),
-		'recomendação'.toUpperCase(),
-	]), medicamentoPres, {
-		text: 'Conteúdo Medicamento prescrito',
-		options: {
-			auto: true,
-		}
-	});
+	if (checkNotNull(medicamentoPres)) {
+		PDF.createText("medicamentos prescritos".toUpperCase(),
+			{ fontStyle: 'bold', fontName: 'Times New Roman', fontSize: '12', align: 'left' })
 
-	PDF.createText("Vacinas Aplicadas".toUpperCase(),
-		{ fontStyle: 'bold', fontName: 'Times New Roman', fontSize: '12', align: 'left' })
-	PDF.createTable(Extract.extractToKey([
-		'Principio ativo'.toUpperCase(),
-		'Concentração'.toUpperCase(),
-		'Forma'.toUpperCase(),
-		'Posologia'.toUpperCase(),
-		'recomendação'.toUpperCase(),
-	]), vacinasApp, {
-		text: 'Conteúdo Vacina aplicada',
-		options: {
-			auto: true,
-		}
-	});
+		PDF.createTable(Extract.extractToKey([
+			'Principio ativo'.toUpperCase(),
+			'Concentração'.toUpperCase(),
+			'Forma'.toUpperCase(),
+			'Posologia'.toUpperCase(),
+			'recomendação'.toUpperCase(),
+		]), medicamentoPres, {
+			text: 'Conteúdo Medicamento prescrito',
+			options: {
+				auto: true,
+			}
+		});
+	}
+
+	if (checkNotNull(vacinasApp)) {
+		PDF.createText("Vacinas Aplicadas".toUpperCase(),
+			{ fontStyle: 'bold', fontName: 'Times New Roman', fontSize: '12', align: 'left' })
+
+		PDF.createTable(Extract.extractToKey([
+			'observação'.toUpperCase(),
+			'Data da Aplicação'.toUpperCase(),
+			'Vacina'.toUpperCase(),
+			'Dose'.toUpperCase(),
+			//'recomendação'.toUpperCase(),
+		]), vacinasApp, {
+			text: 'Conteúdo Vacina aplicada',
+			options: {
+				auto: true,
+			}
+		});
+	}
+
+	if (checkNotNull(vacinasAgen)) {
+		PDF.createText("Vacinas agentadas".toUpperCase(),
+			{ fontStyle: 'bold', fontName: 'Times New Roman', fontSize: '12', align: 'left' })
+		PDF.createTable(Extract.extractToKey([
+			'observação'.toUpperCase(),
+			'Data da Aprazamento'.toUpperCase(),
+			'Vacina'.toUpperCase(),
+			'Dose'.toUpperCase(),
+			//'recomendação'.toUpperCase(),
+		]), vacinasAgen, {
+			text: 'Conteúdo Vacina Agendada',
+			options: {
+				auto: true,
+			}
+		});
+	}
 
 	PDF.save('Relatório Emitido às ' + PDFUtil.formTime(new Date()) + 'MIN do dia ' + PDFUtil.formDate(new Date()) + '.');
 });

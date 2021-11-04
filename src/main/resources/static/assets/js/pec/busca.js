@@ -1,4 +1,4 @@
-
+let countNotFound = 0
 
 let isValidInputDateOne = false
 let isValidInputDateTwo = false
@@ -53,22 +53,42 @@ function switchSpinner(action){
     }
 }
 
-function error(obj, value){
+function error(obj, value, len){
     switchSpinner("clean")
     $("#show-result").show()
-    $("#show-button-pdf").show()
     obj = value
+
+    if (len === 1){
+        countNotFound+=len
+    } 
+
+    if (countNotFound > 0 && countNotFound < 6){
+        $("#show-button-pdf").show()
+    } else {
+        $("#show-result").html("")
+        $("#show-button-pdf").hide()
+        createElement('p', document.getElementById("show-result"), { class: 'col-md4' },
+            notFound('Não Encontrado resultados referente ao Cidadão', 'pl-4'))
+    }
 }
 
 function onConsult(date1, date2){
     switchSpinner("create")
-    Req.getJSON({uri: `${baseUri}/receitamedicamentos/cpf/filter/`, params: ['09814354406', date1, date2],
-     onSuccess: (data) => setMedicamentosPrescritos(data), onError: (data) => error(receitas, data)})
-    Req.getJSON({uri: `${baseUri}/avaliacoes/cpf/filter/`, params: ['09814354406', date1, date2], onSuccess: (data) => avaliacoes = data, onError: (data) => error(avaliacoes, data)})
-    Req.getJSON({uri: `${baseUri}/exames/solicitations/cpf/filter/`, params: ['09814354406', date1, date2], onSuccess: (data) => examesSolicitations = data, onError: (data) => error(examesSolicitations, data)})
-    Req.getJSON({uri: `${baseUri}/exames/results/cpf/filter/`, params: ['09814354406', date1, date2], onSuccess: (data) => examesResult = data, onError: (data) => error(examesResult, data)})
-    Req.getJSON({uri: `${baseUri}/vacinacao/aplicacao/cpf/filter/`, params: ['09814354406', date1, date2], onSuccess: (data) => vacinasAplicadas = data, onError: (data) => error(vacinasAplicadas, data)})
-    Req.getJSON({uri: `${baseUri}/vacinacao/aprazamento/cpf/filter/`, params: ['09814354406', date1, date2], onSuccess: (data) => vacinasAgendadas = data, onError: (data) => error(vacinasAgendadas, data)})
+    Req.getJSON({uri: `${baseUri}/receitamedicamentos/cpf/filter/`, params: [cpf, date1, date2],
+     onSuccess: (data) => setMedicamentosPrescritos(data), onError: (data) => {
+        error(receitas, data, 1)
+        setMedicamentosPrescritos(data)
+     }})
+    Req.getJSON({uri: `${baseUri}/avaliacoes/cpf/filter/`, params: [cpf, date1, date2],
+        onSuccess: (data) => avaliacoes = data, onError: (data) => error(avaliacoes, data, 1)})
+    Req.getJSON({uri: `${baseUri}/exames/solicitations/cpf/filter/`, params: [cpf, date1, date2],
+        onSuccess: (data) => examesSolicitations = data, onError: (data) => error(examesSolicitations, data, 1)})
+    Req.getJSON({uri: `${baseUri}/exames/results/cpf/filter/`, params: [cpf, date1, date2], 
+        onSuccess: (data) => examesResult = data, onError: (data) => error(examesResult, data, 1)})
+    Req.getJSON({uri: `${baseUri}/vacinacao/aplicacao/cpf/filter/`, params: [cpf, date1, date2], 
+        onSuccess: (data) => vacinasAplicadas = data, onError: (data) => error(vacinasAplicadas, data, 1)})
+    Req.getJSON({uri: `${baseUri}/vacinacao/aprazamento/cpf/filter/`, params: [cpf, date1, date2], 
+        onSuccess: (data) => vacinasAgendadas = data, onError: (data) => error(vacinasAgendadas, data, 1)})
 }
 
 $("#busca-pec").click((e) => {
@@ -123,12 +143,8 @@ function hideAlert(element) {
 function isValidSearchDate(date1, date2) {
     const dateOne = new Date(date1)
     const dateTwo = new Date(date2)
-    if (dateOne.getFullYear() <= dateTwo.getFullYear()) {
-        if (dateOne.getMonth() <= dateTwo.getMonth()) {
-            if (dateOne.getDate() <= dateTwo.getDate()) {
-                return true;
-            }
-        }
+    if (dateOne.getTime() <= dateTwo.getTime()) {
+        return true
     }
     return false;
 }

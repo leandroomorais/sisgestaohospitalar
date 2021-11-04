@@ -5,8 +5,7 @@
 
 $("#diagnosticos").click(function () {
     const father = clear();
-
-    if (avaliacoes.data.length > 0 && avaliacoes.data !== null) {
+    if (checkNotUnderfined(avaliacoes)) {
         const len = avaliacoes.data.length;
         $.each(avaliacoes.data, function (pos, object) {
             const row = createElement('div', father, { class: 'row' }, '');
@@ -62,13 +61,13 @@ function clear() {
     return father;
 }
 
-function notFound(text) {
-    return `<span class="pl-4"><p class="text-info"> <i class="fas fa-exclamation-circle"></i>${text}</p></span>`;
+function notFound(text, classP) {
+    return `<span class="pl-4"><p class="text-info ${classP ? classP : null}"> <i class="fas fa-exclamation-circle"></i>${text}</p></span>`;
 }
 
 function createMedicamentosPrescritos() {
     const father = clear();
-    if (receitas.data.length > 0 && receitas.data !== null) {
+    if (checkNotNull(receitas.data)) {
         const len = receitas.data.length;
         $.each(receitas.data, function (pos, object) {
             const { medicamento, posologia } = object;
@@ -155,7 +154,7 @@ function createExame(data, father) {
 
 $("#examesSolicitados").click(function () {
     const father = clear();
-    if (examesSolicitations.data.length > 0) {
+    if (checkNotUnderfined(examesSolicitations)) {
         createExame(examesSolicitations.data, father)
     } else {
         createElement('p', father, { class: 'col-md4' },
@@ -165,7 +164,7 @@ $("#examesSolicitados").click(function () {
 
 $("#examesResults").click(function () {
     const father = clear();
-    if (examesResult.data.length > 0) {
+    if (checkNotUnderfined(examesResult)) {
         createExame(examesResult.data, father)
     } else {
         createElement('p', father,
@@ -405,14 +404,9 @@ $(document).ready(function () {
     })(jQuery);
 })
 
-function tab(title, father, data, index) {
-    const element = father.parentElement.children.item(index)
-    if (element !== null) {
-        element.remove()
-    }
+function tab(title, father, data) { 
     const div = new TagView(new Tag({ tagName: 'div', attrs: { class: 'tab-content mt-2 row pl-4' } }))
-    View.append(div.element, father.parentElement, index)
-    //tabs(index)
+    View.append(div.element, father)
     createVacina(title, data, div.element)
 }
 
@@ -431,8 +425,8 @@ function tabs(index) {
 }
 
 function createVacinas(father, dataAplicacao, dataAgendada) {
-    tab("Vacinas Aplicadas", father, dataAplicacao, 3)
-    tab("Vacinas Agendadas", father, dataAgendada, 4)
+    tab("Vacinas Aplicadas", father, dataAplicacao)
+    tab("Vacinas Agendadas", father, dataAgendada)
 }
 
 $("#vacinas").click(function () {

@@ -1,7 +1,7 @@
 /*variaveis globais*/
 var vacinasAplicadas = []
 var vacinasAgendadas = []
-var cpf = $("#cpfCidadao").text();
+var cpf = '098143544063' //$("#cpfCidadao").text();
 var user = {};
 var examesResult = [];
 var examesSolicitations = [];
