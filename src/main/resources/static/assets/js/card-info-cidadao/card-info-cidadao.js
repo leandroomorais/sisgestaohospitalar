@@ -4,7 +4,6 @@ function cardInfoCidadao(idAtendimento) {
 		method: 'get',
 		success: function(data) {
 			$("#info-cidadao").empty().append(createCardInfoCidadao(data));
-			console.log(data);
 		},
 		error: function() {
 			$("#info-cidadao").empty().append("<h5 class='card-title text-center'>Não foi possível recuperar as informações do Cidadão</h5>");
@@ -67,7 +66,7 @@ function alergias(alergias) {
 
 			if (item.situacaoCondicao == "ATIVA" || item.situacaoCondicao == "LATENTE") {
 				retorno = "<span class='" + classe + "'>" + item.alergia.nome + "</span><br>";
-			}else{
+			} else {
 				retorno = "<span class='badge badge-info'> Nenhuma alergia ativa</span><br>";
 			}
 
@@ -143,33 +142,39 @@ function nascimentoIdadeSexo(dtNascimento, sexo) {
 }
 
 function verificaSinaisVitais(data) {
+
+
 	var sinaisVitaisTriagem = null;
-	var sinaisVitaisAvaliacao = null;
+	//	var sinaisVitaisAvaliacao = null;
 	if (data.triagem != null) {
 		if (data.triagem.sinaisVitais != null) {
 			sinaisVitaisTriagem = data.triagem.sinaisVitais;
 		}
 	}
-	if (data.consulta != null) {
-		if (data.consulta.avaliacao != null) {
-			if (data.consulta.avaliacao.sinaisVitais != null) {
-				sinaisVitaisAvaliacao = data.consulta.avaliacao.sinaisVitais;
-			}
-		}
-	}
+	//	if (data.consulta != null) {
+	//		if (data.consulta.avaliacao != null) {
+	//			if (data.consulta.avaliacao.sinaisVitais != null) {
+	//				sinaisVitaisAvaliacao = data.consulta.avaliacao.sinaisVitais;
+	//			}
+	//		}
+	//	}
+	//
+	//	if (sinaisVitaisTriagem != null && sinaisVitaisAvaliacao != null) {
+	//		var ultimaAtualizacaoTriagem = sinaisVitaisTriagem.ultimaAtualizacao;
+	//		var ultimaAtualizacaoAvaliacao = sinaisVitaisAvaliacao.ultimaAtualizacao;
+	//		if (moment(ultimaAtualizacaoAvaliacao).isAfter(ultimaAtualizacaoTriagem, 'minute')) {
+	//			return infoAtdSinaisVitais(sinaisVitaisAvaliacao);
+	//		} else {
+	//			return infoAtdSinaisVitais(sinaisVitaisTriagem);
+	//		}
+	//	} else if (sinaisVitaisTriagem != null && sinaisVitaisAvaliacao == null) {
+	//		return infoAtdSinaisVitais(sinaisVitaisTriagem);
+	//	} else if (sinaisVitaisAvaliacao != null && sinaisVitaisTriagem == null) {
+	//		return infoAtdSinaisVitais(sinaisVitaisAvaliacao);
+	//	}
 
-	if (sinaisVitaisTriagem != null && sinaisVitaisAvaliacao != null) {
-		var ultimaAtualizacaoTriagem = sinaisVitaisTriagem.ultimaAtualizacao;
-		var ultimaAtualizacaoAvaliacao = sinaisVitaisAvaliacao.ultimaAtualizacao;
-		if (moment(ultimaAtualizacaoAvaliacao).isAfter(ultimaAtualizacaoTriagem, 'minute')) {
-			return infoAtdSinaisVitais(sinaisVitaisAvaliacao);
-		} else {
-			return infoAtdSinaisVitais(sinaisVitaisTriagem);
-		}
-	} else if (sinaisVitaisTriagem != null && sinaisVitaisAvaliacao == null) {
+	if (sinaisVitaisTriagem != null) {
 		return infoAtdSinaisVitais(sinaisVitaisTriagem);
-	} else if (sinaisVitaisAvaliacao != null && sinaisVitaisTriagem == null) {
-		return infoAtdSinaisVitais(sinaisVitaisAvaliacao);
 	}
 
 	return "<span class='badge badge-info'>Nenhum registro de sinais vitais cadastrado</span>";
