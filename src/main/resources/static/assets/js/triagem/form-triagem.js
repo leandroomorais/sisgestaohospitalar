@@ -6,6 +6,9 @@ var idSinaisVitais;
 $(document).ready(function() {
 	idAtendimento = $("#id-atendimento").val();
 	idProntuario = $("#id-prontuario").val();
+
+	verificaTriagem();
+
 	$("#conduta-cidadao").hide();
 	$("#card-nova-alergia").hide();
 	$("#card-edit-alergia").hide();
@@ -54,8 +57,6 @@ $(document).ready(function() {
 
 	//Chamada da Função
 	atualizaProcedimento();
-
-	verificaTriagem();
 
 	atualizaAntropometria()
 
@@ -336,7 +337,7 @@ function verificaTriagem() {
 			$("#idTriagem").val(data.id);
 			$("#idSinaisVitais").val(data.sinaisVitais.id);
 			$("#inicioTriagem").val(data.inicioTriagem);
-			tinymce.get('motivo').setContent(data.motivo);
+			$("#motivo").html(data.motivo);
 			$("#sinaisVitais-pressaoSistolica").val(data.sinaisVitais.pressaoSistolica);
 			$("#sinaisVitais-pressaoDiastolica").val(data.sinaisVitais.pressaoDiastolica);
 			$("#sinaisVitais-frequenciaRespiratoria").val(data.sinaisVitais.frequenciaRespiratoria);
@@ -350,6 +351,7 @@ function verificaTriagem() {
 			$("#form-triagem").each(function() {
 				$(this).find('input, textarea, select').attr('disabled', true);
 			});
+			tinymce.get("motivo").setMode('readonly');
 			$("#card-action").empty().append("<button type = 'button' onclick='editarTriagem()' class='btn btn-secondary'> Editar triagem </button>");
 		},
 
@@ -365,5 +367,8 @@ function editarTriagem() {
 	$("#form-triagem").each(function() {
 		$(this).find('input, textarea, select').attr('disabled', false);
 	});
+	tinymce.get("motivo").setMode('design');
+	
+
 	$("#card-action").empty().append("<button type='submit' class='btn btn-primary'> Salvar triagem</button>");
 }
