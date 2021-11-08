@@ -11,6 +11,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import com.ifrn.sisgestaohospitalar.model.Atendimento;
@@ -23,6 +25,16 @@ public class ConsultaController {
 
 	@Autowired
 	private AtendimentoRepository atendimentoRepository;
+
+	@GetMapping("/verificar/{id}")
+	public ResponseEntity<?> verificar(@PathVariable("id") Long id) {
+		Atendimento atendimento = atendimentoRepository.getOne(id);
+		Consulta consulta = atendimento.getConsulta();
+		if (consulta != null) {
+			return ResponseEntity.ok().body(consulta);
+		}
+		return ResponseEntity.badRequest().build();
+	}
 
 	@PostMapping("/")
 	public ResponseEntity<?> salvar(@Valid Consulta consulta, BindingResult result, Principal principal) {
