@@ -56,8 +56,9 @@ public class TriagemController {
 	@RequestMapping("/verificar/{atendimentoId}")
 	public ResponseEntity<?> verificaTriagem(@PathVariable("atendimentoId") Long id) {
 		Atendimento atendimento = atendimentoRepository.getOne(id);
-		if (atendimento.getTriagem() != null) {
-			return ResponseEntity.ok().body(atendimento.getTriagem());
+		Triagem triagem = atendimento.getTriagem();
+		if (triagem != null) {
+			return ResponseEntity.ok().body(triagem);
 		}
 		return ResponseEntity.badRequest().build();
 	}
