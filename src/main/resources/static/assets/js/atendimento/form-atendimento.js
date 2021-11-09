@@ -1,6 +1,13 @@
-
+var idAtendimento;
+var idAvaliacao;
+var idSinaisVitais;
+var inicioConsulta;
 //JS Form Atendimento
 $(document).ready(function() {
+
+	idAtendimento = $("#id-atendimento").val();
+
+	verificaConsulta();
 
 	$("#card-nova-prescricao").hide();
 	$("#card-edit-prescricao").hide();
@@ -8,7 +15,7 @@ $(document).ready(function() {
 	$("#card-novo-registro-administracao").hide();
 	$("#card-novo-atestado").hide();
 	$("#card-novo-exame").hide();
-	
+
 	//Função que aplica máscara aos inputs 
 	$("#sinaisVitais-pressaoSistolica").mask('000');
 	$("#sinaisVitais-pressaoDiastolica").mask('000');
@@ -41,36 +48,43 @@ $(document).ready(function() {
 	atualizaDiagnostico();
 	atualizaPrescricoes();
 	atualizaAtestados();
-	
+
 	// Funções dos Exames
 	atualizaProcedimentoExame();
 	atualizaExames();
 	//ExamesSolicitados();
-	
-		//Chamada da função 
+
+	//Chamada da função 
 	atulizaMedicamentoUsoContinuo();
 
 	//Chamada da Função
 	atulizaMedicamentoEmUso();
 
 	cardInfoCidadao(idAtendimento);
-	
+
 
 });
 
-$("#submit-consulta").click(function() {
+$("#form-consulta").submit(function(evt) {
+	evt.preventDefault();
 	var consulta = {};
 
+	consulta.id = $("#idConsulta").val();
 	consulta.historiaClinica = tinymce.get("historia-clinica").getContent();
-	consulta['avaliacao.notas'] = tinymce.get("avaliacao").getContent();
 	consulta['atendimento'] = idAtendimento;
-	consulta['avaliacao.sinaisVitais.pressaoArterial'] = $("#sinaisVitais-pressaoArterial").val();
+	consulta['avaliacao.id'] = $("#idAvaliacao").val();
+	consulta['avaliacao.notas'] = tinymce.get("avaliacao").getContent();
+	consulta['avaliacao.sinaisVitais'] = $("#idSinaisVitais").val();
+	consulta['avaliacao.sinaisVitais.pressaoSistolica'] = $("#sinaisVitais-pressaoSistolica").val();
+	consulta['avaliacao.sinaisVitais.pressaoDiastolica'] = $("#sinaisVitais-pressaoDiastolica").val();
 	consulta['avaliacao.sinaisVitais.temperaturaCorporal'] = $("#sinaisVitais-temperaturaCorporal").val();
 	consulta['avaliacao.sinaisVitais.frequenciaCardiaca'] = $("#sinaisVitais-frequenciaCardiaca").val();
 	consulta['avaliacao.sinaisVitais.saturacao'] = $("#sinaisVitais-saturacaoOxigenio").val();
 	consulta['avaliacao.sinaisVitais.frequenciaRespiratoria'] = $("#sinaisVitais-frequenciaRespiratoria").val();
 	consulta['avaliacao.sinaisVitais.glicemiaCapilar'] = $("#sinaisVitais-glicemiaCapilar").val();
 	consulta['avaliacao.sinaisVitais.momentoColeta'] = $("#sinaisVitais-momentoColeta option:selected").val();
+
+	console.log(consulta);
 
 	$.ajax({
 		url: '/consulta/',
@@ -115,12 +129,13 @@ $("#submit-consulta").click(function() {
 				onClosed: null,
 				icon_type: 'class',
 			});
+			
+			verificaConsulta();
 
 		},
 
 		statusCode: {
 			422: function(xhr) {
-				console.log(consulta);
 				var errors = $.parseJSON(xhr.responseText);
 				$.each(errors, function(key, val) {
 					$.notify({
@@ -219,7 +234,6 @@ $("#submit-diagnostico").click(function() {
 	diagnostico['prontuario'] = idProntuario;
 	diagnostico['cid'] = $("#id-cid").val();
 	diagnostico.nota = $("#nota").val();
-	console.log(diagnostico);
 
 	$.ajax({
 		url: '/diagnostico/',
@@ -355,7 +369,7 @@ function atualizaDiagnostico() {
 				data: 'id',
 				mRender: function(data) {
 					var retorno =
-						" <button class='btn btn-warning btn-sm' data-value='" + data + "' onclick='excluirDiagnostico(this)'><i class='fa fa-trash'></i> Excluir </button>"
+						" <button type='button' class='btn btn-warning btn-sm' data-value='" + data + "' onclick='excluirDiagnostico(this)'><i class='fa fa-trash'></i> Excluir </button>"
 					return retorno;
 				}
 			}
@@ -393,7 +407,7 @@ function excluirDiagnostico(element) {
 				method: 'delete',
 				success: function() {
 					$("#table-diagnosticos").DataTable().ajax.reload();
-					swal("Sucesso! O CID foi excluido!", {
+					swal("Sucesso! O Daiagnóstico foi excluido!", {
 						icon: "success",
 						buttons: {
 							confirm: {
@@ -428,16 +442,48 @@ function excluirDiagnostico(element) {
 	});
 }
 
-//function verificaConsulta(){
-//	$.ajax({
-//		url: '/consulta/verificar/' + idAtendimento,
-//		method: 'get',
-//		success: function(data){
-//			$("#idConsulta").val(data.id);
-//			$("#idSinaisVitais").val(data.sinaisVitais.id);
-//			$("#inicioConsulta").val(data.inicioConsuta);
-//			
-//			
-//		}
-//	})
-//}
+function verificaConsulta() {
+	$.ajax({
+		url: '/consulta/verificar/' + idAtendimento,
+		method: 'get',
+		success: function(data) {
+			$("#idConsulta").val(data.id);
+			$("#historia-clinica").html(data.historiaClinica);
+			$("#idAvaliacao").val(data.avaliacao.id);
+			$("#inicioConsulta").val(data.inicioConsuta);
+			$("#idSinaisVitais").val(data.avaliacao.sinaisVitais.id);
+			$("#sinaisVitais-pressaoSistolica").val(data.avaliacao.sinaisVitais.pressaoSistolica);
+			$("#sinaisVitais-pressaoDiastolica").val(data.avaliacao.sinaisVitais.pressaoDiastolica);
+			$("#sinaisVitais-frequenciaRespiratoria").val(data.avaliacao.sinaisVitais.frequenciaRespiratoria);
+			$("#sinaisVitais-frequenciaCardiaca").val(data.avaliacao.sinaisVitais.frequenciaCardiaca);
+			$("#sinaisVitais-temperaturaCorporal").val(data.avaliacao.sinaisVitais.temperaturaCorporal);
+			$("#sinaisVitais-saturacaoOxigenio").val(data.avaliacao.sinaisVitais.saturacao);
+			$("#sinaisVitais-glicemiaCapilar").val(data.avaliacao.sinaisVitais.glicemiaCapilar);
+			$("#sinaisVitais-momentoColeta").find("option[value=" + data.avaliacao.sinaisVitais.momentoColeta + "]").attr("selected", true);
+			$("#avaliacao").html(data.avaliacao.notas);
+			$("#form-consulta").each(function() {
+				$(this).find('input, textarea').attr('disabled', true);
+			})
+			tinymce.get("historia-clinica").setMode('readonly');
+			tinymce.get("avaliacao").setMode('readonly');
+			$("#card-action").empty().append("<button type = 'button' onclick='editarConsulta()' class='btn btn-secondary'> Editar consulta </button>");
+		},
+
+		statusCode: {
+			400: function() {
+				$("#card-action").empty().append("<button class='btn btn-primary'> Salvar consulta</button>");
+			}
+		}
+	})
+}
+
+function editarConsulta() {
+	$("#form-consulta").each(function() {
+		$(this).find('input, textarea, select').attr('disabled', false);
+	});
+	tinymce.get("historia-clinica").setMode('design');
+	tinymce.get("avaliacao").setMode('design');
+
+
+	$("#card-action").empty().append("<button class='btn btn-primary'> Salvar</button>");
+}

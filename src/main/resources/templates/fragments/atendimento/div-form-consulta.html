@@ -1,9 +1,12 @@
 <div id="div-form-consulta">
-	<form id="form-consulta" method="post" action="/consulta/salvar">
+	<form id="form-consulta" method="post" action="/consulta/">
 
 		<input id="id-prontuario" type="hidden" th:value="${atendimento.cidadao.prontuario.id}">
 		<input id="id-atendimento" type="hidden" th:value="${atendimento.id}">
+		<input id="inicioConsulta" type="hidden">
 		<input type="hidden" id="idConsulta">
+		<input type="hidden" id="idAvaliacao">
+		<input type="hidden" id="idSinaisVitais">
 		<span id="nome-usuario" hidden="true" th:text="${user.username}"></span>
 
 		<div sec:authorize="hasAnyAuthority('MEDICO')">
@@ -40,6 +43,7 @@
 					<div class="row">
 						<div class="col-md-12 col-lg-12">
 							<div class="form-group">
+								<input type="hidden" id="id-avaliacao">
 								<label for="avaliacao">Notas / observações</label>
 								<textarea class="form-control" name="avaliacao.nota" id="avaliacao"></textarea>
 								<small id="avaliacao-small" class="form-text text-muted">Digite
@@ -117,10 +121,8 @@
 					</div>
 				</div>
 			</div>
-			<div class="card-action">
-				<button id="submit-consulta" type="button" class="btn btn-primary">Salvar
-					consulta</button>
-				<button type="button" class="btn btn-warning">Cancelar</button>
+			<div id="card-action" class="card-action">
+
 			</div>
 		</div>
 
