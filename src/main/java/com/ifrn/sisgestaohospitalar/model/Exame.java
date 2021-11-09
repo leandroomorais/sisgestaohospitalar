@@ -56,8 +56,10 @@ public class Exame {
 	@JoinTable(name = "exame_procedimentos", joinColumns = @JoinColumn(name = "id_exame"), inverseJoinColumns = @JoinColumn(name = "id_procedimento"))
 	private List<Procedimento> procedimentos;
 	
-	//@OneToMany
-	//private List<ResultadoExame> resultados;
+	//@JsonIgnore
+	@OneToMany(mappedBy = "exame", cascade = CascadeType.ALL)
+	//@JoinTable(name = "exame_resultados", joinColumns = @JoinColumn(name = "id_exame"), inverseJoinColumns = @JoinColumn(name = "id_resultado"))
+	private List<ResultadoExame> resultados;
 	
 	@OneToOne
 	private Cid cid;
@@ -142,6 +144,14 @@ public class Exame {
 
 	public void setStatus(StatusExame status) {
 		this.status = status;
+	}
+
+	public List<ResultadoExame> getResultados() {
+		return resultados;
+	}
+
+	public void setResultados(List<ResultadoExame> resultados) {
+		this.resultados = resultados;
 	}
 
 

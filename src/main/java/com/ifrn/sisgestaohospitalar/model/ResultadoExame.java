@@ -8,6 +8,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class ResultadoExame {
@@ -23,12 +26,24 @@ public class ResultadoExame {
 	private LocalDateTime dataResultado;
 	
 	@ManyToOne
+	@JoinColumn(name = "procedimento_id")
+	private Procedimento procedimento;
+	
+	@JsonIgnore
+	@ManyToOne
 	@JoinColumn(name = "exame_id")
 	private Exame exame;
 	
-	@ManyToOne
-	@JoinColumn(name = "procedimento_id")
-	private Procedimento procedimento;
+	public Exame getExame() {
+		return exame;
+	}
+
+	public void setExame(Exame exame) {
+		this.exame = exame;
+	}
+
+	@OneToOne
+	private Profissional profissional;
 
 	public Long getId() {
 		return id;
@@ -62,14 +77,6 @@ public class ResultadoExame {
 		this.dataResultado = dataResultado;
 	}
 
-	public Exame getExame() {
-		return exame;
-	}
-
-	public void setExame(Exame exame) {
-		this.exame = exame;
-	}
-
 	public Procedimento getProcedimento() {
 		return procedimento;
 	}
@@ -77,4 +84,13 @@ public class ResultadoExame {
 	public void setProcedimento(Procedimento procedimento) {
 		this.procedimento = procedimento;
 	}
+
+	public Profissional getProfissional() {
+		return profissional;
+	}
+
+	public void setProfissional(Profissional profissional) {
+		this.profissional = profissional;
+	}
+	
 }

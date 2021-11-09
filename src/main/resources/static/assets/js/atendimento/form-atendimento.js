@@ -8,6 +8,7 @@ $(document).ready(function() {
 	$("#card-novo-registro-administracao").hide();
 	$("#card-novo-atestado").hide();
 	$("#card-novo-exame").hide();
+	$("#card-novo-resultado-exame").hide();
 	
 	//Função que aplica máscara aos inputs 
 	$("#sinaisVitais-pressaoSistolica").mask('000');
@@ -45,7 +46,9 @@ $(document).ready(function() {
 	// Funções dos Exames
 	atualizaProcedimentoExame();
 	atualizaExames();
+	//tabelaTodosExame();
 	//ExamesSolicitados();
+	 atualizaTodosExames();
 	
 		//Chamada da função 
 	atulizaMedicamentoUsoContinuo();

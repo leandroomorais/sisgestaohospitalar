@@ -60,6 +60,49 @@ function removeInvalidFedbackExame() {
 }
 
 
+//function tabelaTodosExame() {
+//	idProntuario = $("#id-prontuario").val();
+//
+//	$("#table-todos-exames").DataTable({
+//		responsive: true,
+//		paging: false,
+//		searching: false,
+//		ordering: false,
+//		ajax: {
+//			url: '/exame/listartodosexames/' + idProntuario,
+//			dataSrc: '',
+//
+//		},
+//		columns: [
+//			{
+//				title: 'CÓDIGO',
+//				data: 'codigo',
+//			},
+//			{
+//				title: 'CÓDIGO',
+//				data: 'codigo',
+//			},
+//			{
+//				title: 'NOME',
+//				data: 'nome',
+//			},
+//			{
+//				title: 'AÇÕES',
+//				data: 'codigo',
+//				mRender: function(data) {
+//					return "<button type='button' class='btn btn-warning btn-sm' data-value='" + data + "' onclick='removeProcedimentoExame(this)'><i class='fa fa-trash'></i> Excluir </button>"
+//				}
+//			}
+//		]
+//	})
+//}
+
+
+
+
+
+
+
 $("#form-exame").submit(function(evt) {
 	evt.preventDefault();
 	var exame = {};
@@ -116,6 +159,7 @@ $("#form-exame").submit(function(evt) {
 				icon_type: 'class',
 			});
 			fechaFormularioExame();
+			atualizaTodosExames();
 		},
 
 		statusCode: {
@@ -328,6 +372,7 @@ function excluirExame(item) {
 						}
 					});
 					atualizaExames();
+					atualizaTodosExames();
 				},
 				statusCode: {
 					403: function(xhr) {
@@ -559,19 +604,24 @@ function imprimirExame() {
 	return "";
 }
 
-// Card de exames Solicitados
-function ExamesSolicitados() {
+
+
+// função do card de todos exames
+function atualizaTodosExames() {
 	var atendimentoId = $("#id-atendimento").val();
-	$("#div-exames-solicitados").empty();
+	$("#div-todos-exames").empty();
 	$.ajax({
 		url: '/exame/listarexamesatendimento/' + atendimentoId,
 		method: 'get',
 		success: function(data) {
 			if (isEmpty(data)) {
-				$("#div-exames").append("<h5 class='card-title text-center'>Nenhum Exame Solicitado</h5><p class='card-text text-center'>Clique no botão Novo Exame para cadastrar um.</p>");
+				$("#div-todos-exames").append("<h5 class='card-title text-center'>Não existem Exames para este atendimento</h5><p class='card-text text-center'>Clique no botão Novo Exame para cadastrar um.</p>");
 			} else {
-				$.each(data, function(key, item) {
-					$("#div-exames-solicitados").append(createCardExameSolicitado(item));
+				$("#div-todos-exames").append(createCardTitulo());
+				$.each(data, function(key1, item1) {
+					$.each(item1.procedimentos, function(key, item) {
+						$("#div-todos-exames").append(createCardTodosExame(item1, item));
+					})
 				})
 			}
 
@@ -579,18 +629,52 @@ function ExamesSolicitados() {
 	})
 };
 
-function createCardExameSolicitado(data) {
+function createCardTodosExame(data1, data) {
 	
-	return "<div class='card'><div class='card-body'><div class='col-md-12 row'><div class='col-md-8'>" +
-		"<strong>Procedimentos: </strong>" +
-		"<br>" + infoProcedimentos(data.procedimentos) +
-		infoCardCid(data.cid) +
-		infoCardJustificativa(data.justificativa) +
-		infoCardObservacoes(data.observacoes) +
-		"</div><div class='col-md-4 text-right'>" +
-		infoCardDataProfissional(data.dataRegistro, data.profissional.nome, data.profissional.numeroRegistro + " / " + data.profissional.siglaUfEmissao) +
-		"</div></div><div class='text-right'>" +
-		"<button type='button' class='btn btn-light btn-sm' data-value='" + data.id + "' onclick='imprimirExame()'><i class='fa fa-print'></i> Imprimir</button>"
-		+ "</div></div></div>";
+	return "<div class='card'><div class='card-body'><div class='col-md-12 row'>" +
+		infoResultado(data1, data) +
+	    "</div></div></div>";
+}
+
+
+function procedimentos(item1, item){
+	var dataSolicitacao = dataFormatada(item1.dataSolicitacao);
+	
+	return "<div class='col-md-2'>"+dataSolicitacao +" </div><div class='col-md-5'><b> " +  item.nome + "</b></div>";
+}
+
+function infoResultado(data1, data){
+	var resultados = data1.resultados;
+	
+	if(isEmpty(resultados)){
+		return procedimentos(data1, data) + "<div class='col-md-2'>"+ "</div><div class='col-md-3'><b> Não </b>" + "<button type='button' class='btn btn-light btn-sm' data-value='" + data1.id + "' onclick='resgistroResultadoExame("+data1.id+","+data.codigo+");'><i class='fa fa-pencil-square-o' style='font-size:15px;color:red'></i></button></div>";
+	
+	}else{
+		for(let resultado of resultados){
+			if(resultado.procedimento.codigo == data.codigo){
+				var dataResultado = dataFormatada(resultado.dataResultado);
+				
+				return procedimentos(data1, data) + "<div class='col-md-2'>" + dataResultado + "</div><div class='col-md-3'><b> Sim </b>" + "<button type='button' class='btn btn-light btn-sm' data-value='" + data1.id + "' onclick='resgistroResultadoExame("+data1.id+","+data.codigo+");'><i class='fa fa-pencil-square-o' style='font-size:15px;color:red'></i></button></div>";
+			}
+		}
+		return procedimentos(data1, data) + "<div class='col-md-2'>"+ "</div><div class='col-md-3'><b> Não </b>" + "<button type='button' class='btn btn-light btn-sm' data-value='" + data1.id + "' onclick='resgistroResultadoExame("+data1.id+","+data.codigo+");'><i class='fa fa-pencil-square-o' style='font-size:15px;color:red'></i></button></div>";
+	}
+
+}
+
+function createCardTitulo(){
+
+	return "<div class='card'><div class='card-body'><div class='col-md-12 row'><div class='col-md-2'>" +
+			"<b>SOLICITADO </b></div><div class='col-md-5'><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; NOME EXAME</b></div><div class='col-md-2'>" +
+			"<b>AVALIADO </b></div><div class='col-md-3'><b>&nbsp;RESULTADO</b></div>" +
+		 	"</div></div></div>";
+}
+
+function dataFormatada(dataAtual){
+    	let data = new Date(dataAtual),
+        dia  = data.getDate().toString().padStart(2, '0'),
+        mes  = (data.getMonth()+1).toString().padStart(2, '0'),
+        ano  = data.getFullYear();
+    return `${dia}/${mes}/${ano}`;
 }
 

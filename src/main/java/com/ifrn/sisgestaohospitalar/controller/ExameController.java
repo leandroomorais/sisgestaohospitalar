@@ -159,7 +159,7 @@ public class ExameController {
 
 	}
 
-	@GetMapping("/{id}")
+	@GetMapping("/id/{id}")
 	public ResponseEntity<?> getExame(@PathVariable("id") Long id) {
 		Optional<Exame> optional = exameRepository.findById(id);
 		if (optional.isPresent()) {
@@ -168,6 +168,23 @@ public class ExameController {
 		}
 
 		return ResponseEntity.badRequest().build();
+	}
+	
+	@GetMapping("/listartodosexames/{idProntuario}")
+	public ResponseEntity<?> listartodosexames(@PathVariable("idProntuario") Long id) {
+
+		List<Procedimento> listaprocedimentos = new ArrayList<Procedimento>();
+		
+		Prontuario prontuario = prontuarioRepository.getOne(id);
+
+		List<Exame> exames = prontuario.getExames();
+		
+		for(Exame e : exames ) {
+			listaprocedimentos.addAll(e.getProcedimentos());
+		}
+		
+		return ResponseEntity.ok().body(listaprocedimentos);
+
 	}
 
 }
