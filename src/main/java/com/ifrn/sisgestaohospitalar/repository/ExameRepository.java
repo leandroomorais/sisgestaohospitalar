@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
+import com.ifrn.sisgestaohospitalar.enums.StatusExame;
 import com.ifrn.sisgestaohospitalar.model.Atendimento;
 import com.ifrn.sisgestaohospitalar.model.Exame;
 import com.ifrn.sisgestaohospitalar.model.Procedimento;
@@ -21,4 +22,6 @@ public interface ExameRepository extends JpaRepository<Exame, Long> {
 
 	//select p.codigo, p.nome from exame e inner join exame_procedimentos ep on(e.id = ep.id_exame) 
 	//inner join procedimento p on(ep.id_procedimento = p.codigo) where e.id =
+	
+	List<Exame> findByStatus(StatusExame status);
 }

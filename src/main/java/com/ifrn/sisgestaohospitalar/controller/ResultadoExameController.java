@@ -48,9 +48,18 @@ public class ResultadoExameController {
 			return ResponseEntity.unprocessableEntity().body(errors);
 		}
 		
+		
+		
 		resultadoexame.setDataResultado(LocalDateTime.now());
 		resultadoexame.setProfissional(profissionalRepository.findByCpf(principal.getName()));
 		resultadoexameRepository.save(resultadoexame);
+		
+		Exame exame = resultadoexame.getExame();
+		if(exame.getProcedimentos().size() == exame.getResultados().size()) {
+			exame.setStatus(StatusExame.AVALIADO);
+			exameRepository.save(exame);
+		}
+		
 		return ResponseEntity.ok().build();
 		
 		//Optional<Prontuario> optional = prontuarioRepository.findById(exame.getProntuario().getId());

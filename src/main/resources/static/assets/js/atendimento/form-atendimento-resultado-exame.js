@@ -6,6 +6,7 @@
 
 var exame;
 var procedimento;
+var idResultadoExameEdicao;
 
 function resgistroResultadoExame(idExame, codigoProcedimento){
 	
@@ -41,9 +42,8 @@ function resgistroResultadoExame(idExame, codigoProcedimento){
 	})
 }
 
-function detalheResultadoExame(data1,data,resultadoId){
-	console.log(data1,data,resultadoId);
-	$("#modalResultadoExame").modal("show");
+function detalheResultadoExame(resultadoId){
+
 	
 	$.ajax({
 		url: '/resultadoexame/id/' + resultadoId,
@@ -84,8 +84,54 @@ function dataResultadoResultadoExame(data){
 	return "<span> " + dataFormatada(data.dataResultado) + "</span>";
 }
 
-function editarResultadoExame(data1, data){
-	return "";
+function editarResultadoExame(idExame, codigoProcedimento, resultadoId){
+	
+	
+	
+	$.ajax({
+		url: '/exame/id/' + idExame,
+		method: 'get',
+		success: function(data) {
+			if (isEmpty(data)) {
+				$("#div-resultado-exame-solicitado").append("<h5 class='card-title text-center'>O Exame solicitado não foi encontrado</h5>");
+			} else {
+				exame = data;
+				$("#div-resultado-exame-solicitado").append(createCardResultadoExame(data));
+			}
+
+		},
+	})
+	
+	$.ajax({
+		url: '/procedimento/codigo/' + codigoProcedimento,
+		method: 'get',
+		success: function(data) {
+			if (isEmpty(data)) {
+				$("#div-procedimento-exame-solicitado").append("<h5 class='card-title text-center'>O Procedimento solicitado não foi encontrado</h5>");
+			} else {
+				procedimento = data;
+				$("#div-procedimento-exame-solicitado").append(createCardProcedimentoResultadoExame(data));
+			}
+
+		},
+	})
+	
+	$.ajax({
+		url: '/resultadoexame/id/' + resultadoId,
+		method: 'get',
+		success: function(data) {
+			idResultadoExameEdicao = data.id;
+			//$("#procedimentos-admin-medicamento").val(data.viaAdministracao.procedimento.codigo + " - " + data.viaAdministracao.procedimento.nome);
+			//$("#procedimentos-admin-medicamento").attr("data-toggle", "tooltip").attr("title", $("#procedimentos-admin-medicamento").val());
+			//$("#id").val(data.viaAdministracao.procedimento.codigo);
+			$("#descricao").val(data.descricao);
+			//$("#divDecricaoResultadoExame").append(createCardModalResultadoExame(data));
+		}
+	})
+	
+	$("#card-list-exames").fadeOut(100);
+	$("#card-novo-resultado-exame").fadeIn(100);
+	
 }
 
 function createCardResultadoExame(data) {
@@ -188,13 +234,17 @@ function removeInvalidFedbackResultadoExame() {
 $("#form-resultado-exame").submit(function(evt) {
 	evt.preventDefault();
 	var resultadoexame = {};
-
-
+	
+	if(idResultadoExameEdicao != null){
+		resultadoexame.id = idResultadoExameEdicao;
+		console.log("entrou no if");
+	}
+	
 	resultadoexame.descricao = $("#descricao").val();
 	resultadoexame['procedimento'] = procedimento.codigo;
 	resultadoexame['exame'] = exame.id;
 
-	console.log("descricao", exame.id)
+	//console.log("descricao", exame.id)
 	//console.log("descricao", $("#descricao").val() ,"procedimento", $("#procedimento").attr("data-value") ,"resultado", idExameGlobal);
 
 	$.ajax({
@@ -243,6 +293,9 @@ $("#form-resultado-exame").submit(function(evt) {
 			});
 			atualizaTodosExames();
 			fechaFormularioResultadoExame();
+			exame = null;
+			procedimento = null;
+			idResultadoExameEdicao = null;
 		},
 
 		statusCode: {

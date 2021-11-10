@@ -521,14 +521,14 @@ $("#exame-cid").autocomplete({
 
 // Card de exames
 function atualizaExames() {
-	var atendimentoId = $("#id-atendimento").val();
+	var prontuarioId = $("#id-prontuario").val();
 	$("#div-exames").empty();
 	$.ajax({
-		url: '/exame/listarexamesatendimento/' + atendimentoId,
+		url: '/exame/listarexamesporstatus/' + prontuarioId,
 		method: 'get',
 		success: function(data) {
 			if (isEmpty(data)) {
-				$("#div-exames").append("<h5 class='card-title text-center'>Não existem Exames para este atendimento</h5><p class='card-text text-center'>Clique no botão Novo Exame para cadastrar um.</p>");
+				$("#div-exames").append("<h5 class='card-title text-center'>Não existem Exames Solicitados para este Prontuario</h5><p class='card-text text-center'>Clique no botão Novo Exame para cadastrar um.</p>");
 			} else {
 				$.each(data, function(key, item) {
 					$("#div-exames").append(createCardExame(item));
@@ -597,7 +597,7 @@ function infoCardObservacoes(observacoes) {
 }
 
 function infoCardDataProfissional(date, nomeProfissional, crm) {
-	return "<span class='text-warning'> " + date + " </span><br><span class='text-muted'> " + nomeProfissional + " </span><br><strong>CRM: </strong><span class='text-muted'> " + crm + " </span><br>"
+	return "<span class='text-warning'> " + dataFormatada(date) + " </span><br><span class='text-muted'> " + nomeProfissional + " </span><br><strong>CRM: </strong><span class='text-muted'> " + crm + " </span><br>"
 }
 
 function imprimirExame() {
@@ -608,10 +608,10 @@ function imprimirExame() {
 
 // função do card de todos exames
 function atualizaTodosExames() {
-	var atendimentoId = $("#id-atendimento").val();
+	var prontuarioId = $("#id-prontuario").val();
 	$("#div-todos-exames").empty();
 	$.ajax({
-		url: '/exame/listarexamesatendimento/' + atendimentoId,
+		url: '/exame/listarexamesdoprontuario/' + prontuarioId,
 		method: 'get',
 		success: function(data) {
 			if (isEmpty(data)) {
@@ -655,8 +655,8 @@ function infoResultado(data1, data){
 				var dataResultado = dataFormatada(resultado.dataResultado);
 				
 				return procedimentos(data1, data) + "<div class='col-md-2'>" + dataResultado + 
-				"</div><div class='col-md-3'><b> Sim </b>" + "<button type='button' class='btn btn-light btn-sm' onclick='detalheResultadoExame("+data1.id+","+data.codigo+","+resultado.id+");'><i class='fa fa-search' style='font-size:18px;color:blue'></i></button>"
-				+ "<button type='button' class='btn btn-light btn-sm' data-value='" + data1.id + "' onclick='editarResultadoExame("+data1.id+","+data.codigo+");'><i class='fa fa-pencil-square-o' style='font-size:18px;color:red'></i></button></div>";
+				"</div><div class='col-md-3'><b> Sim </b>" + "<button type='button' class='btn btn-light btn-sm' onclick='detalheResultadoExame("+resultado.id+");'><i class='fa fa-search' style='font-size:18px;color:blue'></i></button>"
+				+ "<button type='button' class='btn btn-light btn-sm' data-value='" + data1.id + "' onclick='editarResultadoExame("+data1.id+","+data.codigo+","+resultado.id+");'><i class='fa fa-pencil-square-o' style='font-size:18px;color:red'></i></button></div>";
 			}
 		}
 		return procedimentos(data1, data) + "<div class='col-md-2'>"+ 

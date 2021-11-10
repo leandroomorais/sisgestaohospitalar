@@ -186,5 +186,33 @@ public class ExameController {
 		return ResponseEntity.ok().body(listaprocedimentos);
 
 	}
+	
+	@GetMapping("/listarexamesdoprontuario/{idProntuario}")
+	public ResponseEntity<?> listartodosexamesdoprontuario(@PathVariable("idProntuario") Long id) {
+		
+		Prontuario prontuario = prontuarioRepository.getOne(id);
 
+		List<Exame> exames = prontuario.getExames();
+		
+		return ResponseEntity.ok().body(exames);
+
+	}
+	
+	@GetMapping("/listarexamesporstatus/{idProntuario}")
+	public ResponseEntity<?> listartodosexamesporstatus(@PathVariable("idProntuario") Long id) {
+
+		List<Exame> examesstatus = new ArrayList<Exame>();
+		Prontuario prontuario = prontuarioRepository.getOne(id);
+		
+		List<Exame> exames = prontuario.getExames();
+		
+		for(Exame e : exames ) {
+			if(e.getStatus().equals(StatusExame.SOLICITADO)) {
+				examesstatus.add(e);
+			}
+		}
+		
+		return ResponseEntity.ok().body(examesstatus);
+
+	}
 }
