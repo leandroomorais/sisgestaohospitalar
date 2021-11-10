@@ -647,17 +647,21 @@ function infoResultado(data1, data){
 	var resultados = data1.resultados;
 	
 	if(isEmpty(resultados)){
-		return procedimentos(data1, data) + "<div class='col-md-2'>"+ "</div><div class='col-md-3'><b> Não </b>" + "<button type='button' class='btn btn-light btn-sm' data-value='" + data1.id + "' onclick='resgistroResultadoExame("+data1.id+","+data.codigo+");'><i class='fa fa-pencil-square-o' style='font-size:15px;color:red'></i></button></div>";
+		return procedimentos(data1, data) + "<div class='col-md-2'>"+ "</div><div class='col-md-3'><b> Não </b>" + "<button type='button' class='btn btn-light btn-sm' data-value='" + data1.id + "' onclick='resgistroResultadoExame("+data1.id+","+data.codigo+");'><i class='fas fa-share' style='font-size:18px;color:green'></i></button></div>";
 	
 	}else{
 		for(let resultado of resultados){
 			if(resultado.procedimento.codigo == data.codigo){
 				var dataResultado = dataFormatada(resultado.dataResultado);
 				
-				return procedimentos(data1, data) + "<div class='col-md-2'>" + dataResultado + "</div><div class='col-md-3'><b> Sim </b>" + "<button type='button' class='btn btn-light btn-sm' data-value='" + data1.id + "' onclick='resgistroResultadoExame("+data1.id+","+data.codigo+");'><i class='fa fa-pencil-square-o' style='font-size:15px;color:red'></i></button></div>";
+				return procedimentos(data1, data) + "<div class='col-md-2'>" + dataResultado + 
+				"</div><div class='col-md-3'><b> Sim </b>" + "<button type='button' class='btn btn-light btn-sm' onclick='detalheResultadoExame("+data1.id+","+data.codigo+","+resultado.id+");'><i class='fa fa-search' style='font-size:18px;color:blue'></i></button>"
+				+ "<button type='button' class='btn btn-light btn-sm' data-value='" + data1.id + "' onclick='editarResultadoExame("+data1.id+","+data.codigo+");'><i class='fa fa-pencil-square-o' style='font-size:18px;color:red'></i></button></div>";
 			}
 		}
-		return procedimentos(data1, data) + "<div class='col-md-2'>"+ "</div><div class='col-md-3'><b> Não </b>" + "<button type='button' class='btn btn-light btn-sm' data-value='" + data1.id + "' onclick='resgistroResultadoExame("+data1.id+","+data.codigo+");'><i class='fa fa-pencil-square-o' style='font-size:15px;color:red'></i></button></div>";
+		return procedimentos(data1, data) + "<div class='col-md-2'>"+ 
+		"</div><div class='col-md-3'><b> Não </b>" + 
+		"<button type='button' class='btn btn-light btn-sm' data-value='" + data1.id + "' onclick='resgistroResultadoExame("+data1.id+","+data.codigo+");'><i class='fas fa-share' style='font-size:18px;color:green'></i></button></div>";
 	}
 
 }

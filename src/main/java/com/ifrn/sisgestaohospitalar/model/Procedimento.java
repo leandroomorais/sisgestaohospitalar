@@ -62,14 +62,6 @@ public class Procedimento {
 	@JoinTable(name = "procedimento_tiposregistro", joinColumns = {
 			@JoinColumn(name = "procedimento_id") }, inverseJoinColumns = { @JoinColumn(name = "registro_id") })
 	private List<RegistroSigtap> registros;
-
-//	@JsonIgnore
-//	@ManyToMany(mappedBy = "procedimentos")
-//	private List<Exame> exames;
-//	
-//	@JsonIgnore
-//	@OneToMany(mappedBy = "procedimento")
-//	private List<ResultadoExame> resultadosexame;
 	
 
 	/** Getters and setters */

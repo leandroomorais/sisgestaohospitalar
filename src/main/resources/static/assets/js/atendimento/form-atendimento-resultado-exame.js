@@ -41,6 +41,53 @@ function resgistroResultadoExame(idExame, codigoProcedimento){
 	})
 }
 
+function detalheResultadoExame(data1,data,resultadoId){
+	console.log(data1,data,resultadoId);
+	$("#modalResultadoExame").modal("show");
+	
+	$.ajax({
+		url: '/resultadoexame/id/' + resultadoId,
+		method: 'get',
+		success: function(data) {
+			$("#modalResultadoExame").modal("show");
+			$("#divDecricaoResultadoExame").append(createCardModalResultadoExame(data));
+		}
+	})
+		
+}
+
+function createCardModalResultadoExame(data){
+
+	return "<div class='card'><div class='card-body'><div class='col-md-12 row'><div class='col-md-12'>" +
+		"<strong>Descrição: </strong>" +
+		"<br>" + descricaoResultadoExame(data) + 
+		"</div><div class='col-md-12 row'><div class='col-md-6'><strong>Realizado: </strong>" +
+		dataRealizacaoResultadoExame(data)
+		+"</div><div class='col-md-6'> <strong>Resultado: </strong>"+
+		dataResultadoResultadoExame(data)
+		+"</div></div></div></div></div>";
+}
+
+function descricaoResultadoExame(data){
+	return "<span>" + data.descricao + "</span><br><br>";
+}
+
+function dataRealizacaoResultadoExame(data){
+	if(data.dataRealizacao == null){
+		return "<span> "+" "+" </span>";
+	}
+
+	return "<span> " + dataFormatada(data.dataRealizacao) + " </span>";
+}
+
+function dataResultadoResultadoExame(data){
+	return "<span> " + dataFormatada(data.dataResultado) + "</span>";
+}
+
+function editarResultadoExame(data1, data){
+	return "";
+}
+
 function createCardResultadoExame(data) {
 	
 	return "<div class='card'><div class='card-body'><div class='col-md-12 row'><div class='col-md-9'>" +
@@ -194,6 +241,7 @@ $("#form-resultado-exame").submit(function(evt) {
 				onClosed: null,
 				icon_type: 'class',
 			});
+			atualizaTodosExames();
 			fechaFormularioResultadoExame();
 		},
 

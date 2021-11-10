@@ -81,4 +81,15 @@ public class ResultadoExameController {
 
 		return ResponseEntity.badRequest().build();
 	}
+	
+	@GetMapping("/id/{id}")
+	public ResponseEntity<?> getResultadoExame(@PathVariable("id") Long id) {
+		Optional<ResultadoExame> optional = resultadoexameRepository.findById(id);
+		if (optional.isPresent()) {
+			ResultadoExame resultadoexame = optional.get();
+			return ResponseEntity.ok().body(resultadoexame);
+		}
+
+		return ResponseEntity.badRequest().build();
+	}
 }
