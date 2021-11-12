@@ -60,48 +60,6 @@ function removeInvalidFedbackExame() {
 }
 
 
-//function tabelaTodosExame() {
-//	idProntuario = $("#id-prontuario").val();
-//
-//	$("#table-todos-exames").DataTable({
-//		responsive: true,
-//		paging: false,
-//		searching: false,
-//		ordering: false,
-//		ajax: {
-//			url: '/exame/listartodosexames/' + idProntuario,
-//			dataSrc: '',
-//
-//		},
-//		columns: [
-//			{
-//				title: 'CÓDIGO',
-//				data: 'codigo',
-//			},
-//			{
-//				title: 'CÓDIGO',
-//				data: 'codigo',
-//			},
-//			{
-//				title: 'NOME',
-//				data: 'nome',
-//			},
-//			{
-//				title: 'AÇÕES',
-//				data: 'codigo',
-//				mRender: function(data) {
-//					return "<button type='button' class='btn btn-warning btn-sm' data-value='" + data + "' onclick='removeProcedimentoExame(this)'><i class='fa fa-trash'></i> Excluir </button>"
-//				}
-//			}
-//		]
-//	})
-//}
-
-
-
-
-
-
 
 $("#form-exame").submit(function(evt) {
 	evt.preventDefault();
@@ -119,7 +77,6 @@ $("#form-exame").submit(function(evt) {
 		method: 'post',
 		data: exame,
 		beforeSend: function() {
-			//console.log(exame);
 			removeInvalidFedbackExame();
 		},
 		success: function() {
@@ -615,7 +572,7 @@ function atualizaTodosExames() {
 		method: 'get',
 		success: function(data) {
 			if (isEmpty(data)) {
-				$("#div-todos-exames").append("<h5 class='card-title text-center'>Não existem Exames para este atendimento</h5><p class='card-text text-center'>Clique no botão Novo Exame para cadastrar um.</p>");
+				$("#div-todos-exames").append("<h5 class='card-title text-center'>Não existem Exames para este Prontuario</h5><p class='card-text text-center'>Clique no botão Novo Exame para cadastrar um.</p>");
 			} else {
 				$("#div-todos-exames").append(createCardTitulo());
 				$.each(data, function(key1, item1) {
