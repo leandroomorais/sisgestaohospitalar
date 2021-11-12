@@ -14,10 +14,10 @@ function resgistroResultadoExame(idExame, codigoProcedimento){
 		method: 'get',
 		success: function(data) {
 			if (isEmpty(data)) {
-				$("#div-resultado-exame-solicitado").append("<h5 class='card-title text-center'>O Exame solicitado não foi encontrado</h5>");
+				$("#div-resultado-exame-solicitado").empty().append("<h5 class='card-title text-center'>O Exame solicitado não foi encontrado</h5>");
 			} else {
 				exame = data;
-				$("#div-resultado-exame-solicitado").append(createCardResultadoExame(data));
+				$("#div-resultado-exame-solicitado").empty().append(createCardResultadoExame(data));
 			}
 
 		},
@@ -28,10 +28,10 @@ function resgistroResultadoExame(idExame, codigoProcedimento){
 		method: 'get',
 		success: function(data) {
 			if (isEmpty(data)) {
-				$("#div-procedimento-exame-solicitado").append("<h5 class='card-title text-center'>O Procedimento solicitado não foi encontrado</h5>");
+				$("#div-procedimento-exame-solicitado").empty().append("<h5 class='card-title text-center'>O Procedimento solicitado não foi encontrado</h5>");
 			} else {
 				procedimento = data;
-				$("#div-procedimento-exame-solicitado").append(createCardProcedimentoResultadoExame(data));
+				$("#div-procedimento-exame-solicitado").empty().append(createCardProcedimentoResultadoExame(data));
 			}
 
 		},
@@ -45,8 +45,8 @@ function detalheResultadoExame(resultadoId){
 		url: '/resultadoexame/id/' + resultadoId,
 		method: 'get',
 		success: function(data) {
-			$("#modalResultadoExame").modal("show");
-			$("#divDecricaoResultadoExame").append(createCardModalResultadoExame(data));
+			$("#divDecricaoResultadoExame").empty().append(createCardModalResultadoExame(data));
+			$("#modalResultadoExame").modal("show");		
 		}
 	})
 		
@@ -89,10 +89,10 @@ function editarResultadoExame(idExame, codigoProcedimento, resultadoId){
 		method: 'get',
 		success: function(data) {
 			if (isEmpty(data)) {
-				$("#div-resultado-exame-solicitado").append("<h5 class='card-title text-center'>O Exame solicitado não foi encontrado</h5>");
+				$("#div-resultado-exame-solicitado").empty().append("<h5 class='card-title text-center'>O Exame solicitado não foi encontrado</h5>");
 			} else {
 				exame = data;
-				$("#div-resultado-exame-solicitado").append(createCardResultadoExame(data));
+				$("#div-resultado-exame-solicitado").empty().append(createCardResultadoExame(data));
 			}
 
 		},
@@ -103,10 +103,10 @@ function editarResultadoExame(idExame, codigoProcedimento, resultadoId){
 		method: 'get',
 		success: function(data) {
 			if (isEmpty(data)) {
-				$("#div-procedimento-exame-solicitado").append("<h5 class='card-title text-center'>O Procedimento solicitado não foi encontrado</h5>");
+				$("#div-procedimento-exame-solicitado").empty().append("<h5 class='card-title text-center'>O Procedimento solicitado não foi encontrado</h5>");
 			} else {
 				procedimento = data;
-				$("#div-procedimento-exame-solicitado").append(createCardProcedimentoResultadoExame(data));
+				$("#div-procedimento-exame-solicitado").empty().append(createCardProcedimentoResultadoExame(data));
 			}
 
 		},
