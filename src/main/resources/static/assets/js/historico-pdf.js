@@ -7,11 +7,116 @@ function checkNotNull(obj) {
 	return obj !== null
 }
 
-$("#historico-pdf").click(function () {
-	let examesS = null
+function loadCSS() {
+    return `body {
+        width: 21cm;
+        height: 29.7cm;
+        margin: 0;
+        padding: 0;
+    }
 
-	if (checkUnderfined(examesSolicitations)) {
-		examesS = PDFUtil.extractOfArrayToKey(examesSolicitations.data, {
+    .content {
+        display: flex;
+        flex-direction: row;
+        align-content: center;
+        justify-content: space-between;
+        align-items: center;
+        padding: 5px;
+        margin: 2px;
+    }
+
+    .box {
+        width: auto;
+        height: auto;
+        border: 2px solid #686868;
+        border-radius: 10px;
+        margin-top: 0.5cm;
+    }
+
+    .box-title {
+        margin-top: 2px;
+        display: flex;
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+        flex-direction: column;
+        padding: 5px;
+    }
+
+    .header {
+        font-size: 18pt;
+        text-transform: uppercase;
+        font-weight: bold;
+        text-align: center;
+    }
+
+    .title {
+        font-size: 14pt;
+        text-transform: uppercase;
+        font-weight: bold;
+        text-align: center;
+    }
+
+    .left-text {
+        margin-left: 2px;
+    }
+
+    .space-simple-top {
+        margin-top: 0.5cm;
+    }
+
+    .space-simple-bottom {
+        margin-bottom: 0.5cm;
+    }
+
+    .space-duplo-top {
+        margin-top: 1cm;
+    }
+
+    .space-duplo-bottom {
+        margin-bottom: 1cm;
+    }
+
+    .paragraph-justify {
+        font-size: 12pt;
+        text-align: justify;
+    }
+
+    .paragraph-left {
+        font-size: 12pt;
+        text-align: left;
+    }
+
+    .paragraph-center {
+        font-size: 12pt;
+        text-align: center;
+    }`
+}
+
+$("#historico-pdf").click(function () {
+	console.log(profissional)
+	const doc = new Doc({ url: '', target: '', features: 'height=2970,width=2100' })
+    const document = doc.getDoc()
+    const templateDoc = new TemplateDoc(document)
+    templateDoc.openHtml({ label: "Documento gerado pelo SGH" })
+    templateDoc.createStyle({ value: loadCSS() })
+    templateDoc.openBody()
+	templateDoc.createHeader({
+        value: `MINISTÉRIO DA SAÚDE
+    ESTADO DE RIO GRANDE DO NORTE
+    MUNICÍPIO DE SEVERIANO MELO
+    UNIDADE DE SAÚDE Hospital Maternidade Municipal de Severiano Melo`})
+	let examesS = null
+	let examesSLabels = null
+
+	if (checkNotUnderfined(examesSolicitations)) {
+
+		examesSLabels = [
+			'Procedimento',
+			'Procedimento de Forma Organizacional',
+			'Procedimento Sub Grupo',
+		]
+
+		examesS = ExtractPDF.extractOfArrayNotKey(examesSolicitations.data, {
 			procedimento: {
 				nomeProcedimento: '',
 				procedimentoFormaOrganizacional: {
@@ -20,16 +125,23 @@ $("#historico-pdf").click(function () {
 				procedimentoSubGrupo: {
 					noProcedSubGrupo: ''
 				},
-				dtCompetencia: '',
-			},
-			dataSolicitacao: ''
+			}
 		});
 	}
 
 	let examesR = null
+	let examesRLabels = null
 
-	if (checkUnderfined(examesResult)) {
-		examesResult = PDFUtil.extractOfArrayToKey(examesResult.data, {
+	if (checkNotUnderfined(examesResult)) {
+		examesRLabels = [
+			'Procedimento',
+			'Procedimento de Forma Organizacional',
+			'Procedimento Sub Grupo',
+			'Data Solicitação',
+			'Data Resultado',
+			'Resultado'
+		]
+		examesResult = ExtractPDF.extractOfArrayNotKey(examesResult.data, {
 			procedimento: {
 				nomeProcedimento: '',
 				procedimentoFormaOrganizacional: {
@@ -37,8 +149,7 @@ $("#historico-pdf").click(function () {
 				},
 				procedimentoSubGrupo: {
 					noProcedSubGrupo: ''
-				},
-				dtCompetencia: '',
+				}
 			},
 			dataSolicitacao: '',
 			dataResultado: '',
@@ -47,9 +158,17 @@ $("#historico-pdf").click(function () {
 	}
 
 	let medicamentoPres = null
+	let medicamentoLabels = null
 
-	if (checkUnderfined(receitas)) {
-		medicamentoPres = PDFUtil.extractOfArrayToKey(receitas.data, {
+	if (checkNotUnderfined(receitas)) {
+		medicamentoLabels = [
+			'Principio Ativo',
+			'Concentração',
+			'Forma',
+			'Posologia',
+			'Recomendação'
+		]
+		medicamentoPres = ExtractPDF.extractOfArrayNotKey(receitas.data, {
 			medicamento: {
 				principio_ativo: '',
 				concentracao: '',
@@ -63,9 +182,16 @@ $("#historico-pdf").click(function () {
 	}
 
 	let vacinasApp = null
+	let vacinasAppLabels = null
 
-	if (checkUnderfined(vacinasAplicadas)) {
-		vacinasApp = PDFUtil.extractOfArrayToKey(vacinasAplicadas.data, {
+	if (checkNotUnderfined(vacinasAplicadas)) {
+		vacinasAppLabels = [
+			'Observação',
+			'Data Aplicação',
+			'Vacina',
+			'Codigo Dose'
+		]
+		vacinasApp = ExtractPDF.extractOfArrayNotKey(vacinasAplicadas.data, {
 			observacao: '',
 			dataAplicacao: '',
 			codigoImunobiologico: {
@@ -82,7 +208,14 @@ $("#historico-pdf").click(function () {
 	}
 
 	let vacinasAgen = null
-	if (checkUnderfined(vacinasAgendadas)) {
+	let vacinasAgenLabels = null
+	if (checkNotUnderfined(vacinasAgendadas)) {
+		vacinasAgenLabels = [
+			'Observação',
+			'Data Aprazamento',
+			'Vacina',
+			'Codigo Dose'
+		]
 		vacinasAgen = PDFUtil.extractOfArrayToKey(vacinasAgendadas.data, {
 			observacao: '',
 			dataAprazamento: '',
@@ -99,143 +232,143 @@ $("#historico-pdf").click(function () {
 		})
 	}
 
-	PDF.config()
-
-	PDF.createFooterAutoPage([
-		{
-			text: 'SGH - Versão 1.0 Beta SGH -',
-			options: { fontStyle: 'bold', fontName: 'Times New Roman', fontSize: '10', align: 'left' }
-		},
-		{
-			text: 'Relatório Emitido às ' + PDFUtil.formTime(new Date()) + 'MIN do dia ' + PDFUtil.formDate(new Date()) + '.',
-			options: { fontStyle: 'bold', fontName: 'Times New Roman', fontSize: '10', align: 'left' }
-		},
-		{
-			text: 'OBSERVAÇÃO:',
-			options: { fontStyle: 'bold', fontName: 'Times New Roman', fontSize: '10', align: 'left' }
-		},
-		{
-			text: 'DADOS CONSULTADOS NA BASE DE DADOS DO E-SUS',
-			options: {
-				fontStyle: 'bold', fontName: 'Times New Roman', fontSize: '10', align: 'left'
-			}
-		}
-	])
-
-	PDF.createTitle('MUNICÍPIO DE MODELO\n' +
-		'SECRETARIA MUNICIPAL DE SAÚDE\n' +
-		'HOSPITAL MUNICIPAL DE MODELO', {
-		align: 'center',
-		le: 'bold'
-	})
-
-	PDF.createSpace();
-
-	PDF.createSpace();
-
-	PDF.createText(`CIDADÃO: ${user.nome}`.toUpperCase(),
-		{ fontStyle: 'bold', fontName: 'Times New Roman', fontSize: '12', align: 'left' });
-
-	PDF.createText(`CPF.: ${user.cpf}\tCNS.: ${user.cns}\tDATA NASCIMENTO: ${user.datanascimento}`,
-		{ fontStyle: 'bold', fontName: 'Times New Roman', fontSize: '12', align: 'left' });
-
-	PDF.createText('HISTÓRICO DE ATENDIMENTO NA ATENÇÃO BÁSICA',
-		{ fontStyle: 'bold', fontName: 'Times New Roman', fontSize: '12', align: 'center' })
-
 	if (checkNotNull(examesS)) {
-		PDF.createText('EXAMES SOLICITADOS',
-			{ fontStyle: 'bold', fontName: 'Times New Roman', fontSize: '12', align: 'left' })
-
-		PDF.createTable(Extract.extractToKey([
-			'Procedimento'.toUpperCase(),
-			'Procedimento de Forma Organizacional'.toUpperCase(),
-			'Procedimento Sub Grupo'.toUpperCase(),
-			'Data Competencia do Procedimento'.toUpperCase(),
-			'Data da Solicitação'.toUpperCase(),
-		]), examesS, {
-			text: 'Conteúdo do Exame Solicitado',
-			options: {
-				auto: true,
-			}
-		});
+		console.log(examesS, examesSLabels)
+		templateDoc.createText({ value: `EXAMES SOLICITADOS`, attrsChild: { style: "font-weight: bold" }, attrsFather: { class: 'paragraph-left' }, attrsFatherParent: { class: 'space-simple-top' } })
+		const values = ExtractPDF.extractOfElements(examesSLabels, examesS, 2)
+		templateDoc.createElements({
+			values: values, onRender: (values, index) => `<div class="box">
+			<div class="box-title">
+				<p style="
+		margin: 0;
+		font-weight: bold;
+		">${index + 1}. Exame </p>
+				<hr width="100%" color="#686868" size="0.5px">
+			</div>
+				${ExtractPDF.extractMap(values.cols, (tCol, index) =>
+					`<div class="content">
+						${ExtractPDF.extractMap(tCol.elements, (value, index) =>
+							`<span style="margin-right: 10px
+							;">
+								<b>${value.label}: </b>
+								<p class="left-text">${value.value}</p>
+							</span>`
+						)}
+					</div>`
+				)}
+		</div>`})
 	}
 
-	PDF.createSpace();
-
-	if (checkNotNull(examesR)) {
-		PDF.createText('RESULTADOS DE EXAMES',
-			{
-				fontStyle: 'bold', fontName: 'Times New Roman', fontSize: '12', align: 'left'
-			})
-
-		PDF.createTable(Extract.extractToKey([
-			'Procedimento'.toUpperCase(),
-			'Procedimento de Forma Organizacional'.toUpperCase(),
-			'Procedimento Sub Grupo'.toUpperCase(),
-			'Data Competencia do Procedimento'.toUpperCase(),
-			'Data da Solicitação'.toUpperCase(),
-			'Data do Resultado'.toUpperCase(),
-			'Resultado'.toUpperCase()
-		]), examesR, {
-			text: 'Conteúdo do Resultado de Exame',
-			options: {
-				auto: true,
-			}
-		});
+	if (checkNotNull(examesR)) { 
+		templateDoc.createText({ value: `RESULTADOS DE EXAMES`, attrsChild: { style: "font-weight: bold" }, attrsFather: { class: 'paragraph-left' }, attrsFatherParent: { class: 'space-simple-top' } })
+		const values = ExtractPDF.extractOfElements(examesRLabels, examesR, 2)
+		templateDoc.createElements({
+			values: values, onRender: (values, index) => `<div class="box">
+			<div class="box-title">
+				<p style="
+		margin: 0;
+		font-weight: bold;
+		">${index + 1}. Exame </p>
+				<hr width="100%" color="#686868" size="0.5px">
+			</div>
+				${ExtractPDF.extractMap(values.cols, (tCol, index) =>
+					`<div class="content">
+						${ExtractPDF.extractMap(tCol.elements, (value, index) =>
+							`<span style="margin-right: 10px
+							;">
+								<b>${value.label}: </b>
+								<p class="left-text">${value.value}</p>
+							</span>`
+						)}
+					</div>`
+				)}
+		</div>`})
 	}
 
 	if (checkNotNull(medicamentoPres)) {
-		PDF.createText("medicamentos prescritos".toUpperCase(),
-			{ fontStyle: 'bold', fontName: 'Times New Roman', fontSize: '12', align: 'left' })
+		templateDoc.createText({ value: `medicamentos prescritos`.toUpperCase(), attrsChild: { style: "font-weight: bold" }, attrsFather: { class: 'paragraph-left' }, attrsFatherParent: { class: 'space-simple-top' } })
 
-		PDF.createTable(Extract.extractToKey([
-			'Principio ativo'.toUpperCase(),
-			'Concentração'.toUpperCase(),
-			'Forma'.toUpperCase(),
-			'Posologia'.toUpperCase(),
-			'recomendação'.toUpperCase(),
-		]), medicamentoPres, {
-			text: 'Conteúdo Medicamento prescrito',
-			options: {
-				auto: true,
-			}
-		});
+		const values = ExtractPDF.extractOfElements(medicamentoLabels, medicamentoPres, 2)
+		templateDoc.createElements({
+			values: values, onRender: (values, index) => `<div class="box">
+			<div class="box-title">
+				<p style="
+		margin: 0;
+		font-weight: bold;
+		">${index + 1}. Medicamento </p>
+				<hr width="100%" color="#686868" size="0.5px">
+			</div>
+				${ExtractPDF.extractMap(values.cols, (tCol, index) =>
+					`<div class="content">
+						${ExtractPDF.extractMap(tCol.elements, (value, index) =>
+							`<span style="margin-right: 10px
+							;">
+								<b>${value.label}: </b>
+								<p class="left-text">${value.value}</p>
+							</span>`
+						)}
+					</div>`
+				)}
+		</div>`})
 	}
 
 	if (checkNotNull(vacinasApp)) {
-		PDF.createText("Vacinas Aplicadas".toUpperCase(),
-			{ fontStyle: 'bold', fontName: 'Times New Roman', fontSize: '12', align: 'left' })
 
-		PDF.createTable(Extract.extractToKey([
-			'observação'.toUpperCase(),
-			'Data da Aplicação'.toUpperCase(),
-			'Vacina'.toUpperCase(),
-			'Dose'.toUpperCase(),
-			//'recomendação'.toUpperCase(),
-		]), vacinasApp, {
-			text: 'Conteúdo Vacina aplicada',
-			options: {
-				auto: true,
-			}
-		});
+		templateDoc.createText({ value: `Vacinas Aplicadas`.toUpperCase(), attrsChild: { style: "font-weight: bold" }, attrsFather: { class: 'paragraph-left' }, attrsFatherParent: { class: 'space-simple-top' } })
+
+		const values = ExtractPDF.extractOfElements(vacinasAppLabels, vacinasApp, 2)
+		templateDoc.createElements({
+			values: values, onRender: (values, index) => `<div class="box">
+			<div class="box-title">
+				<p style="
+		margin: 0;
+		font-weight: bold;
+		">${index + 1}. Vacina </p>
+				<hr width="100%" color="#686868" size="0.5px">
+			</div>
+				${ExtractPDF.extractMap(values.cols, (tCol, index) =>
+					`<div class="content">
+						${ExtractPDF.extractMap(tCol.elements, (value, index) =>
+							`<span style="margin-right: 10px
+							;">
+								<b>${value.label}: </b>
+								<p class="left-text">${value.value}</p>
+							</span>`
+						)}
+					</div>`
+				)}
+		</div>`})
 	}
 
 	if (checkNotNull(vacinasAgen)) {
-		PDF.createText("Vacinas agentadas".toUpperCase(),
-			{ fontStyle: 'bold', fontName: 'Times New Roman', fontSize: '12', align: 'left' })
-		PDF.createTable(Extract.extractToKey([
-			'observação'.toUpperCase(),
-			'Data da Aprazamento'.toUpperCase(),
-			'Vacina'.toUpperCase(),
-			'Dose'.toUpperCase(),
-			//'recomendação'.toUpperCase(),
-		]), vacinasAgen, {
-			text: 'Conteúdo Vacina Agendada',
-			options: {
-				auto: true,
-			}
-		});
-	}
+		templateDoc.createText({ value: `Vacinas agentadas`.toUpperCase(), attrsChild: { style: "font-weight: bold" }, attrsFather: { class: 'paragraph-left' }, attrsFatherParent: { class: 'space-simple-top' } })
 
-	PDF.save('Relatório Emitido às ' + PDFUtil.formTime(new Date()) + 'MIN do dia ' + PDFUtil.formDate(new Date()) + '.');
+		const values = ExtractPDF.extractOfElements(vacinasAppLabels, vacinasApp, 2)
+		templateDoc.createElements({
+			values: values, onRender: (values, index) => `<div class="box">
+			<div class="box-title">
+				<p style="
+		margin: 0;
+		font-weight: bold;
+		">${index + 1}. Vacina </p>
+				<hr width="100%" color="#686868" size="0.5px">
+			</div>
+				${ExtractPDF.extractMap(values.cols, (tCol, index) =>
+					`<div class="content">
+						${ExtractPDF.extractMap(tCol.elements, (value, index) =>
+							`<span style="margin-right: 10px
+							;">
+								<b>${value.label}: </b>
+								<p class="left-text">${value.value}</p>
+							</span>`
+						)}
+					</div>`
+				)}
+		</div>`})
+	}
+    templateDoc.createText({ value: `Solicitante`, attrsChild: { style: "font-weight: bold" }, attrsFather: { class: 'paragraph-center' }, attrsFatherParent: { class: 'space-simple-bottom' } })
+    templateDoc.closeBody()
+    templateDoc.closeHtml()
+    doc.print()
+
 });

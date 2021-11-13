@@ -1,12 +1,13 @@
 /*variaveis globais*/
 var vacinasAplicadas = []
 var vacinasAgendadas = []
-var cpf = '098143544063' //$("#cpfCidadao").text();
+var cpf = '09814354406' //$("#cpfCidadao").text();
 var user = {};
 var examesResult = [];
 var examesSolicitations = [];
 var receitas = [];
 var avaliacoes = [];
+var profissional = {};
 
 const baseUri = "http://localhost:8082/api"
 const uriVacinasAplicadas = baseUri + "/vacinacao/cpf/"
@@ -31,6 +32,7 @@ function setMedicamentosPrescritos(data){
 /*realizando a requisicao e setando o resultado nas variaveis globais*/
 $(document).ready(function () {
     cpf = ValidUtil.number(cpf)
+    
 	/*request(uriVacinasAplicadas, cpf, (data) => vacinasAplicadas = data, (data) => vacinasAplicadas = data)
 	request(uriVacinasAgendadas, cpf, (data) => vacinasAgendadas = data, (data) => vacinasAgendadas = data)
     request(uriSolicitations, cpf, (data) => examesSolicitations = data, (data) => examesSolicitations = data)
@@ -38,5 +40,6 @@ $(document).ready(function () {
     request(uriReceita, cpf, (data) => setMedicamentosPrescritos(data), (data) => receitas = data)
     request(uriResult, cpf, (data) => examesResult = data, (data) => examesResult = data)*/
     request('/cidadao-resource/cpf/', cpf, (data) => user = data, (data) => user = {})
+    request('/api/profissionais', document.getElementsByClassName('low').item(0).textContent, (data) => console.log(data) = data, (data) => profissional = {})
 })
 /*-----------------------------------------*/

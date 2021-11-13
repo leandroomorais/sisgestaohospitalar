@@ -93,4 +93,8 @@ public class ProfissionalService {
 		return repository.findByEmail(email);
 	}
 
+	public Profissional findByNome(String nome){
+		return repository.findByNome(nome);
+	}
+
 }

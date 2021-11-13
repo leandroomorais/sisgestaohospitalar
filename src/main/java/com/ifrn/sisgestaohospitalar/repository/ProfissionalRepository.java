@@ -19,4 +19,6 @@ public interface ProfissionalRepository extends JpaRepository<Profissional, Long
 
 	Profissional findByEmail(String email);
 
+	Profissional findByNome(String nome);
+
 }
