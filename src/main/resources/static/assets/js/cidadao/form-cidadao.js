@@ -146,7 +146,7 @@ $("#form-busca").submit(function(evt) {
 
 			$("#info-cidadao").fadeIn(500);
 
-			$("#card-info-cidadao").append(creatCardDetalheCidadao(data));
+			$("#card-info-cidadao").empty().append(creatCardDetalheCidadao(data));
 
 
 
