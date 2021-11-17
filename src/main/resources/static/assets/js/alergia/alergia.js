@@ -109,6 +109,16 @@ $("#form-status-alergia").submit(function(evt) {
 });
 //Fim da função cadastrar nova alergia
 
+$("#button-nome-alergia").click(function() {
+	$("#alergia-nome").val("");
+	$("#id-alergia").val("");
+})
+
+$("#button-cid-alergia").click(function() {
+	$("#alergia-cid").val("");
+	$("#id-cid").val("");
+})
+
 $("#nova-alergia-voltar").click(function() {
 	fechaFormularioAlergia();
 })
@@ -314,8 +324,11 @@ function atualizaAlergia() {
 				}
 			},
 			{
-				title: 'CID',
-				data: 'alergia.cid.codigo',
+				title: 'DATA REGISTRO',
+				data: 'dataRegistro',
+				mRender: function(data){
+					return  moment(data).format("DD/MM/YYYY");
+				}
 			},
 			{
 				title: 'AÇÕES',
