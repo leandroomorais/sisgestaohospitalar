@@ -124,7 +124,7 @@ public class TriagemController {
 
 	@GetMapping("/datatables/server")
 	public ResponseEntity<?> dataTables(HttpServletRequest request) {
-		Map<String, Object> data = new TriagemDataTablesService().execute(atendimentoRepository, request);
+		Map<String, Object> data = new TriagemDataTablesService().execute(atendimentoRepository, tipoServicoRepository, request);
 		return ResponseEntity.ok(data);
 	}
 

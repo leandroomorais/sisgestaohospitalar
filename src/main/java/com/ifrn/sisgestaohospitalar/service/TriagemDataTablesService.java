@@ -1,7 +1,6 @@
 package com.ifrn.sisgestaohospitalar.service;
 
 import java.util.LinkedHashMap;
-import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -12,14 +11,17 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.domain.Sort.Direction;
 import com.ifrn.sisgestaohospitalar.model.Atendimento;
+import com.ifrn.sisgestaohospitalar.model.TipoServico;
 import com.ifrn.sisgestaohospitalar.repository.AtendimentoRepository;
+import com.ifrn.sisgestaohospitalar.repository.TipoServicoRepository;
 
 public class TriagemDataTablesService {
 
-	private String[] cols = { "dataEntrada", "cidadao.sexo", "cidadao.nome", "profissionalDestino.nome",
-			"tipoServicos", "status", "" };
+	private String[] cols = { "dataEntrada", "cidadao.sexo", "cidadao.nome", "profissionalDestino.nome", "tipoServicos",
+			"status", "" };
 
-	public Map<String, Object> execute(AtendimentoRepository repository, HttpServletRequest request) {
+	public Map<String, Object> execute(AtendimentoRepository repository, TipoServicoRepository tipoServicoRepository,
+			HttpServletRequest request) {
 
 		int start = Integer.parseInt(request.getParameter("start"));
 		int length = Integer.parseInt(request.getParameter("length"));
@@ -34,7 +36,7 @@ public class TriagemDataTablesService {
 
 		Pageable pageable = PageRequest.of(current, length, direction, column);
 
-		Page<Atendimento> page = queryBy(search, repository, pageable);
+		Page<Atendimento> page = queryBy(search, repository, tipoServicoRepository, pageable);
 
 		Map<String, Object> json = new LinkedHashMap<>();
 		json.put("draw", draw);
@@ -44,9 +46,11 @@ public class TriagemDataTablesService {
 		return json;
 	}
 
-	private Page<Atendimento> queryBy(String search, AtendimentoRepository repository, Pageable pageable) {
+	private Page<Atendimento> queryBy(String search, AtendimentoRepository repository,
+			TipoServicoRepository tipoServicoRepository, Pageable pageable) {
 		if (search.isEmpty()) {
-			return repository.findAll(pageable);
+			TipoServico tipoServico = tipoServicoRepository.findByNome("Triagem");
+			return repository.findByTipoServicos(pageable, tipoServico);
 		}
 		return repository.findByCidadaoOrProfissionalOrTipoServico(search, pageable);
 	}

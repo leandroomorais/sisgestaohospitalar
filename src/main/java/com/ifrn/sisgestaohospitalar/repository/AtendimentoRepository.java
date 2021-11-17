@@ -12,6 +12,7 @@ import org.springframework.stereotype.Repository;
 import com.ifrn.sisgestaohospitalar.enums.Status;
 import com.ifrn.sisgestaohospitalar.model.Atendimento;
 import com.ifrn.sisgestaohospitalar.model.Cidadao;
+import com.ifrn.sisgestaohospitalar.model.TipoServico;
 
 @Repository
 public interface AtendimentoRepository extends JpaRepository<Atendimento, Long> {
@@ -19,8 +20,8 @@ public interface AtendimentoRepository extends JpaRepository<Atendimento, Long> 
 	List<Atendimento> findByCidadao(Cidadao cidadao);
 
 	List<Atendimento> findByStatus(Status status);
-	
-	//Page<Atendimento> findByTipoServico(TipoServico tipoServico, Pageable pageable);
+
+	Page<Atendimento> findByTipoServicos(Pageable pageable, TipoServico tipoServico);
 
 	@Query("select a from Atendimento a where a.cidadao.nome like %:search% or a.profissionalDestino like %:search%")
 	Page<Atendimento> findByCidadaoOrProfissionalOrTipoServico(@Param("search") String search, Pageable pageable);
