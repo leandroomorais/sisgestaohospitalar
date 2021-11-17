@@ -217,7 +217,6 @@ $("#form-resultado-exame").submit(function(evt) {
 	
 	if(idResultadoExameEdicao != null){
 		resultadoexame.id = idResultadoExameEdicao;
-		console.log("entrou no if");
 	}
 	
 	resultadoexame.descricao = $("#descricao").val();
@@ -268,6 +267,7 @@ $("#form-resultado-exame").submit(function(evt) {
 				icon_type: 'class',
 			});
 			atualizaTodosExames();
+			atualizaExames();
 			fechaFormularioResultadoExame();
 			exame = null;
 			procedimento = null;
