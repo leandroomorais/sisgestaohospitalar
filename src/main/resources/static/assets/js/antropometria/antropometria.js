@@ -108,6 +108,7 @@ function atualizaAntropometria() {
 		paging: true,
 		searching: false,
 		ordering: false,
+		order: [[5, "asc"]],
 		ajax: {
 			url: '/antropometria/listar/prontuario/' + idProntuario,
 			dataSrc: '',
@@ -204,3 +205,42 @@ function removeInvalidFedbackAntropometria() {
 		}
 	);
 }
+
+//Função que calcula o IMC
+$("#altura").change(function() {
+	var peso = $("#peso").val();
+	var altura = $("#altura").val();
+	var imc = (peso / (altura * altura)) * 10000;
+	$("#imc").text(imc.toFixed(2));
+	$("#valor-imc").val(imc.toFixed(2));
+	if (imc < 17) {
+		$("#imc-desc").text("Muito abaixo do peso");
+		$("#div-imc").removeClass();
+		$("#div-imc").addClass("card card-danger");
+	} else if (imc > 17 && imc < 18.49) {
+		$("#imc-desc").text("Abaixo do Peso");
+		$("#div-imc").removeClass();
+		$("#div-imc").addClass("card card-warning");
+	} else if (imc > 18.5 && imc < 24.99) {
+		$("#imc-desc").text("Normal");
+		$("#div-imc").removeClass();
+		$("#div-imc").addClass("card card-success");
+	} else if (imc > 25 && imc < 29.99) {
+		$("#imc-desc").text("Acima do Peso");
+		$("#div-imc").removeClass();
+		$("#div-imc").addClass("card card-warning");
+	} else if (imc > 30 && imc < 34.99) {
+		$("#imc-desc").text("Obesidade I");
+		$("#div-imc").removeClass();
+		$("#div-imc").addClass("card card-danger");
+	} else if (imc > 35 && imc < 39.99) {
+		$("#imc-desc").text("Obesidade II");
+		$("#div-imc").removeClass();
+		$("#div-imc").addClass("card card-danger");
+	} else if (imc > 40) {
+		$("#imc-desc").text("Obesidade III");
+		$("#div-imc").removeClass();
+		$("#div-imc").addClass("card card-danger");
+	}
+});
+//Fim da função

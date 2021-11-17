@@ -8,6 +8,9 @@ $(document).ready(function() {
 	idAtendimento = $("#id-atendimento").val();
 
 	verificaConsulta();
+	
+	ocultarAlergia();
+	ocultarDoenca();
 
 	$("#card-nova-prescricao").hide();
 	$("#card-edit-prescricao").hide();
@@ -29,7 +32,7 @@ $(document).ready(function() {
 
 	//Função que inicia o TinyMCE
 	tinymce.init({
-		selector: '#historia-clinica, #avaliacao, #nota-administracao',
+		selector: '#historia-clinica, #avaliacao, #nota-administracao,  #nota, #nota-dto',
 		language: 'pt_BR',
 		height: 150,
 		menubar: false,
@@ -49,6 +52,12 @@ $(document).ready(function() {
 	atualizaDiagnostico();
 	atualizaPrescricoes();
 	atualizaAtestados();
+	
+	//Chamada da função 
+	atualizaAlergia();
+
+	//Chamada da função 
+	atualizaDoenca();
 
 	// Funções dos Exames
 	atualizaProcedimentoExame();
@@ -61,9 +70,12 @@ $(document).ready(function() {
 
 	//Chamada da função 
 	atulizaMedicamentoUsoContinuo();
+	
+	atualizaAntropometria();
 
 	//Chamada da Função
 	atulizaMedicamentoEmUso();
+
 
 	cardInfoCidadao(idAtendimento);
 
@@ -88,9 +100,6 @@ $("#form-consulta").submit(function(evt) {
 	consulta['avaliacao.sinaisVitais.frequenciaRespiratoria'] = $("#sinaisVitais-frequenciaRespiratoria").val();
 	consulta['avaliacao.sinaisVitais.glicemiaCapilar'] = $("#sinaisVitais-glicemiaCapilar").val();
 	consulta['avaliacao.sinaisVitais.momentoColeta'] = $("#sinaisVitais-momentoColeta option:selected").val();
-
-	console.log(consulta);
-
 	$.ajax({
 		url: '/consulta/',
 		method: 'post',

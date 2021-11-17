@@ -67,7 +67,7 @@ function alergias(alergias) {
 			if (item.situacaoCondicao == "ATIVA" || item.situacaoCondicao == "LATENTE") {
 				retorno = "<span class='" + classe + "'>" + item.alergia.nome + "</span><br>";
 			} else {
-				retorno = "<span class='badge badge-info'> Nenhuma alergia ativa</span><br>";
+				retorno = "";
 			}
 
 			retornoConcat += retorno;
@@ -235,7 +235,7 @@ function infoAtdSinaisVitais(sinaisVitais) {
 }
 
 function createTextSinaisVitais(info, text) {
-	return "<strong>" + info + "</strong><span class='text-warning'>" + text + "</span>";
+	return "<strong>" + info + "</strong><span class='text-info'>" + text + "</span>";
 }
 
 function formataCPF(cpf) {

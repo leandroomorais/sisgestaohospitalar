@@ -64,17 +64,17 @@
 															</div>
 														</div>
 														<div id="menu2" class="tab-pane fade">
-															<div th:replace="fragments/triagem/card-list-alergias">
+															<div th:replace="fragments/alergia/card-list-alergias">
 															</div>
-															<div th:replace="fragments/triagem/card-nova-alergia">
+															<div th:replace="fragments/alergia/card-nova-alergia">
 															</div>
-															<div th:replace="fragments/triagem/card-edit-alergia">
+															<div th:replace="fragments/alergia/card-edit-alergia">
 															</div>
-															<div th:replace="fragments/triagem/card-list-doencas">
+															<div th:replace="fragments/doenca/card-list-doencas">
 															</div>
-															<div th:replace="fragments/triagem/card-nova-doenca">
+															<div th:replace="fragments/doenca/card-nova-doenca">
 															</div>
-															<div th:replace="fragments/triagem/card-edit-doenca">
+															<div th:replace="fragments/doenca/card-edit-doenca">
 															</div>
 														</div>
 													</div>
@@ -105,13 +105,13 @@
 	<th:block layout:fragment="my-js-files">
 		<script type="text/javascript" th:inline="javascript" th:src="@{/assets/js/triagem/form-triagem.js}"></script>
 		<script type="text/javascript" th:inline="javascript"
-			th:src="@{/assets/js/triagem/form-triagem-doenca.js}"></script>
+			th:src="@{/assets/js/doenca/doenca.js}"></script>
 		<script type="text/javascript" th:inline="javascript"
-			th:src="@{/assets/js/triagem/form-triagem-alergia.js}"></script>
+			th:src="@{/assets/js/alergia/alergia.js}"></script>
 		<script type="text/javascript" th:inline="javascript"
 			th:src="@{/assets/js/procedimento/procedimento.js}"></script>
 		<script type="text/javascript" th:inline="javascript"
-			th:src="@{/assets/js/triagem/form-triagem-antropometria.js}"></script>
+			th:src="@{/assets/js/antropometria/antropometria.js}"></script>
 		<script type="text/javascript" th:inline="javascript"
 			th:src="@{/assets/js/usoMedicamentos/uso-medicamentos.js}"></script>
 		<script type="text/javascript" th:inline="javascript"

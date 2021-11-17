@@ -31,12 +31,12 @@
 											<div class="nav flex-column nav-pills nav-secondary nav-pills-no-bd"
 												id="v-pills-tab-without-border" role="tablist"
 												aria-orientation="vertical">
-												<a class="nav-link active" id="v-pills-atendimento-tab-nobd" data-toggle="pill"
-													href="#v-pills-atendimento-nobd" role="tab"
+												<a class="nav-link active" id="v-pills-atendimento-tab-nobd"
+													data-toggle="pill" href="#v-pills-atendimento-nobd" role="tab"
 													aria-controls="v-pills-atendimento-nobd"
 													aria-selected="false"><strong>ATENDIMENTO</strong></a>
-												<a class="nav-link" id="v-pills-resumo-tab-nobd"
-													data-toggle="pill" href="#v-pills-resumo-nobd" role="tab"
+												<a class="nav-link" id="v-pills-resumo-tab-nobd" data-toggle="pill"
+													href="#v-pills-resumo-nobd" role="tab"
 													aria-controls="v-pills-resumo-nobd"
 													aria-selected="true"><strong>RESUMO</strong></a>
 												<a class="nav-link" id="v-pills-historico-tab-nobd" data-toggle="pill"
@@ -47,27 +47,14 @@
 										</div>
 										<div class="col-sm-9 col-md-10 col-lg-10">
 											<div class="tab-content" id="v-pills-without-border-tabContent">
-												<div class="tab-pane fade" id="v-pills-resumo-nobd"
-													role="tabpanel" aria-labelledby="v-pills-resumo-tab-nobd">
+												<div class="tab-pane fade" id="v-pills-resumo-nobd" role="tabpanel"
+													aria-labelledby="v-pills-resumo-tab-nobd">
 
 													<ul class="nav nav-tabs">
 														<li sec:authorize="hasAnyAuthority('MEDICO')"
 															class="nav-item submenu"><a class="nav-link active show"
-																data-toggle="tab" href="#dados-triagem"><strong>DADOS DA
-																	TRIAGEM</strong></a>
-														</li>
-
-														<li class="nav-item submenu"><a class="nav-link"
 																data-toggle="tab"
-																href="#doencas"><strong>DOENÇAS</strong></a>
-														</li>
-														<li class="nav-item submenu"><a class="nav-link"
-																data-toggle="tab"
-																href="#medicamentos"><strong>MEDICAMENTOS</strong></a>
-														</li>
-														<li class="nav-item submenu"><a class="nav-link"
-																data-toggle="tab"
-																href="#antropometria"><strong>ANTROPOMETRIA</strong></a>
+																href="#dados-triagem"><strong>RESUMO</strong></a>
 														</li>
 													</ul>
 
@@ -76,26 +63,11 @@
 															<div th:replace="fragments/atendimento/resumo-atendimento">
 															</div>
 														</div>
-														<div id="alergias" class="tab-pane fade">
-
-														</div>
-														<div id="doencas" class="tab-pane fade">
-															<p>Doenças</p>
-														</div>
-														<div id="medicamentos" class="tab-pane fade">
-															<div
-																th:replace="fragments/usoMedicamentos/card-medicamento">
-															</div>
-														</div>
-														<div id="antropometria" class="tab-pane fade">
-															<p>Ant</p>
-														</div>
 													</div>
-
 												</div>
 
-												<div class="tab-pane fade show active" id="v-pills-atendimento-nobd" role="tabpanel"
-													aria-labelledby="v-pills-atendimento-tab-nobd">
+												<div class="tab-pane fade show active" id="v-pills-atendimento-nobd"
+													role="tabpanel" aria-labelledby="v-pills-atendimento-tab-nobd">
 													<ul class="nav nav-tabs">
 														<li sec:authorize="hasAnyAuthority('MEDICO')"
 															class="nav-item submenu"><a class="nav-link active show"
@@ -143,7 +115,8 @@
 															</div>
 															<div th:replace="fragments/atendimento/card-novo-exame">
 															</div>
-															<div th:replace="fragments/atendimento/card-novo-resultado-exame">
+															<div
+																th:replace="fragments/atendimento/card-novo-resultado-exame">
 															</div>
 														</div>
 														<div id="menu3" class="tab-pane fade">
@@ -177,13 +150,21 @@
 	<th:block layout:fragment="my-js-files">
 		<script th:src="@{/assets/js/libs/lib-view.js}"></script>
 		<script th:src="@{/assets/js/libs/lib-utils.js}"></script>
-		<script th:src="@{/assets/js/libs/lib-pdf.js}"></script>
+		<script th:src="@{/assets/pdf/jsPDF/jsPdf.js}"></script>
+		<script th:src="@{/assets/pdf/jsPDF/jsPdfTable.js}"></script>
+		<script th:src="@{/assets/pdf/lib/util/Line.js}"></script>
+		<script th:src="@{/assets/pdf/lib/util/Extract.js}"></script>
+		<script th:src="@{/assets/pdf/lib/util/PDFConfig.js}"></script>
+		<script th:src="@{/assets/pdf/lib/util/PDFUtil.js}"></script>
+		<script th:src="@{/assets/pdf/lib/controller/PDF.js}"></script>
 		<script th:src="@{/assets/js/procedimentos-atendimentoMedico.js}"></script>
 		<script th:src="@{/assets/js/historico-cidadao.js}"></script>
 		<!--	<script th:src="@{/assets/js/procedimentos-atendimentoMedico.js}"></script>-->
 		<script th:src="@{/assets/js/historico-pdf.js}"></script>
 		<script type="text/javascript" th:inline="javascript"
 			th:src="@{/assets/js/atendimento/form-atendimento.js}"></script>
+		<script type="text/javascript" th:inline="javascript" th:src="@{/assets/js/doenca/doenca.js}"></script>
+		<script type="text/javascript" th:inline="javascript" th:src="@{/assets/js/alergia/alergia.js}"></script>
 		<script type="text/javascript" th:inline="javascript"
 			th:src="@{/assets/js/atendimento/form-atendimento-prescricao.js}"></script>
 		<script type="text/javascript" th:inline="javascript"
@@ -192,14 +173,13 @@
 			th:src="@{/assets/js/usoMedicamentos/uso-medicamentos.js}"></script>
 		<script type="text/javascript" th:inline="javascript"
 			th:src="@{/assets/js/atendimento/form-atendimento-exame.js}"></script>
-			<script type="text/javascript" th:inline="javascript"
-			th:src="@{/assets/js/atendimento/form-atendimento-resultado-exame.js}"></script>
 		<script type="text/javascript" th:inline="javascript"
 			th:src="@{/assets/js/card-info-cidadao/card-info-cidadao.js}"></script>
 		<script type="text/javascript" th:inline="javascript"
 			th:src="@{/assets/js/usoMedicamentos/uso-medicamentos.js}"></script>
+		<script type="text/javascript" th:inline="javascript"
+			th:src="@{/assets/js/antropometria/antropometria.js}"></script>
 		<script type="text/javascript" th:inline="javascript" th:src="@{/assets/js/pec/busca.js}"></script>
-
 	</th:block>
 </body>
 
