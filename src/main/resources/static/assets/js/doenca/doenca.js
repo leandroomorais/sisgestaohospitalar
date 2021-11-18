@@ -308,6 +308,13 @@ function atualizaDoenca() {
 				data: 'doenca.nome',
 			},
 			{
+				title: 'CID',
+				data: 'doenca.cid',
+				mRender: function(data) {
+					return "<small>" + data.codigo + " - " + data.nome + "</small>";
+				}
+			},
+			{
 				title: 'SITUAÇÃO',
 				data: 'situacaoCondicao',
 				mRender: function(data) {
@@ -364,10 +371,16 @@ function editarDoenca(item) {
 			$("#doenca-nome-dto").val(data.doenca.nome);
 			tinymce.get("nota-dto").setContent(data.nota);
 			$("#id-doenca-dto").val(data.doenca.id);
-			$("#doenca-cid-dto").val(data.doenca.cid.codigo + " - " + data.doenca.cid.nome);
-			$("#id-cid-doenca-dto").val(data.doenca.cid.id);
+			if (data.doenca.cid != null) {
+				$("#doenca-cid-dto").val(data.doenca.cid.codigo + " - " + data.doenca.cid.nome).attr("disabled", true);
+				$("#id-cid-doenca-dto").val(data.doenca.cid.id);
+			} else {
+				$("#doenca-cid-dto").val("").attr("disabled", true);
+				$("#id-cid-doenca-dto").val("");
+			}
+			$("#dataInicio-doenca-dto").val(data.dataInicio);
+			$("#dataFim-doenca-dto").val(data.dataFim);
 			$("input[value = '" + data.situacaoCondicao + "']").prop("checked", true);
-
 		}
 	})
 }

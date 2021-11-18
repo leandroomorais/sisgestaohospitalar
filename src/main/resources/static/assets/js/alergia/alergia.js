@@ -301,6 +301,13 @@ function atualizaAlergia() {
 				data: 'alergia.nome',
 			},
 			{
+				title: 'CID',
+				data: 'alergia.cid',
+				mRender: function(data) {
+					return "<small>" + data.codigo + " - " + data.nome + "</small>";
+				}
+			},
+			{
 				title: 'SITUAÇÃO',
 				data: 'situacaoCondicao',
 				mRender: function(data) {
@@ -326,8 +333,8 @@ function atualizaAlergia() {
 			{
 				title: 'DATA REGISTRO',
 				data: 'dataRegistro',
-				mRender: function(data){
-					return  moment(data).format("DD/MM/YYYY");
+				mRender: function(data) {
+					return moment(data).format("DD/MM/YYYY");
 				}
 			},
 			{
@@ -358,8 +365,14 @@ function editarAlergia(item) {
 			$("#form-status-alergia-edit").fadeIn(200);
 			$("#alergia-nome-dto").val(data.alergia.nome);
 			$("#id-alergia-dto").val(data.alergia.id);
-			$("#alergia-cid-dto").val(data.alergia.cid.codigo + " - " + data.alergia.cid.nome);
-			$("#id-cid-dto").val(data.alergia.cid.id);
+			if (data.alergia.cid != null) {
+				$("#alergia-cid-dto").val(data.alergia.cid.codigo + " - " + data.alergia.cid.nome).attr("disabled", true);
+				$("#id-cid-dto").val(data.alergia.cid.id);
+			} else {
+				$("#alergia-cid-dto").val("");
+				$("#id-cid-dto").val("");
+			}
+
 			$("input[value = '" + data.situacaoCondicao + "']").prop("checked", true);
 		}
 	})
@@ -450,6 +463,22 @@ $("#alergia-cid").autocomplete({
 	select: function(event, ui) {
 		$("#alegia-cid").val(ui.item.codigo + " - " + ui.item.nome);
 		$("#id-cid").val(ui.item.id);
+		return false;
+	}
+}).autocomplete("instance")._renderItem = function(ul, item) {
+	return $("<li>")
+		.append("<div class='h6'>" + item.codigo + " - " + item.nome + "</div>").appendTo(ul);
+}
+
+$("#alergia-cid-dto").autocomplete({
+	source: "/cid/buscar",
+	focus: function(event, ui) {
+		$("#alergia-cid-dto").val(ui.item.codigo + " - " + ui.item.nome);
+		return false;
+	},
+	select: function(event, ui) {
+		$("#alegia-cid-dto").val(ui.item.codigo + " - " + ui.item.nome);
+		$("#id-cid-dto").val(ui.item.id);
 		return false;
 	}
 }).autocomplete("instance")._renderItem = function(ul, item) {
