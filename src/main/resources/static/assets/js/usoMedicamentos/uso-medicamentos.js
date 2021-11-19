@@ -4,60 +4,6 @@ var idAtendimento = $("#id-atendimento").val();
 var idProntuario = $("#id-prontuario").val();
 
 
-
-
-
-//Funções atualizar medicamentos
-function atulizaMedicamentoUsoContinuo() {
-	$("#uso-continuo-lista").empty();
-	$.ajax({
-		url: '/medicamento-continuo/medicamentos/' + idProntuario,
-		method: 'GET',
-		success: function(data) {
-			if ($.isEmptyObject(data)) {
-				$("#uso-continuo-lista").append("<li class='list-group-item'> Sem dados para serem exibidos </li>")
-			}
-			$.each(data, function(index, value) {
-				$("#uso-continuo-lista").append("<li class='list-group-item'>" + value.medicamento.principioAtivo + " ; " + value.medicamento.concentracao + " ; " + value.medicamento.formaFarmaceutica.nome + " | " + value.nota + "</li>");
-			})
-		},
-
-		error: function() {
-			$("#uso-lista").append("<li class='list-group-item'> Sem dados para serem exibidos - Houve um erro ao recuperar as informações </li>")
-		}
-	})
-}
-
-function atulizaMedicamentoEmUso() {
-	$("#uso-lista").empty();
-	$.ajax({
-		url: '/uso-medicamento/medicamentos/' + idAtendimento,
-		method: 'GET',
-		success: function(data) {
-			if ($.isEmptyObject(data)) {
-				$("#uso-lista").append("<li class='list-group-item'> Sem dados para serem exibidos </li>")
-			}
-			$.each(data, function(index, value) {
-				$("#uso-lista").append("<li class='list-group-item'>" + value.medicamento.principioAtivo + " ; " + value.medicamento.concentracao + " ; " + value.medicamento.formaFarmaceutica.nome + " | " + value.nota + "</li>");
-			})
-		},
-
-		error: function() {
-			$("#uso-lista").append("<li class='list-group-item'> Sem dados para serem exibidos - Houve um erro ao recuperar as informações </li>")
-		}
-	})
-}
-
-//Função Habilita pesquisa de Medicamentos
-$("#button-medicamento").click(function() {
-	$("#i-medicamento").removeClass().addClass("fa fa-search");
-	$("#medicamento").val("").attr("disabled", false);
-})
-//Fim da função habilita pesquisa de Medicamentos
-
-
-
-
 //Função autocomplete Medicamentos
 $("#medicamento").autocomplete({
 	source: "/medicamento/buscar",
@@ -81,7 +27,7 @@ $("#medicamento").autocomplete({
 //Fim da função autocomplete Medicamentos
 
 //Submit dos medicamentos
-$("#submit-uso-medicamento").click(function(evt) {
+$("#form-uso-medicamento").submit(function(evt) {
 	evt.preventDefault();
 	var usoMedicamento = {};
 	usoMedicamento['medicamento.id'] = $("#id-medicamento").val();
@@ -96,12 +42,7 @@ $("#submit-uso-medicamento").click(function(evt) {
 		data: usoMedicamento,
 
 		success: function() {
-			$("#id-medicamento").val("");
-			$("#nota-uso-medicamento").val("");
-			$("#usoContinuo").prop("checked", false);
-			$("#medicamento").val("");
-			$("#i-medicamento").removeClass().addClass("fa fa-search");
-			$("#medicamento").val("").attr("disabled", false);
+			limpaFormulario();
 			atulizaMedicamentoEmUso();
 			atulizaMedicamentoUsoContinuo();
 			$.notify({
@@ -183,5 +124,62 @@ $("#submit-uso-medicamento").click(function(evt) {
 
 
 })
+
+//Funções atualizar medicamentos
+function atulizaMedicamentoUsoContinuo() {
+	$("#uso-continuo-lista").empty();
+	$.ajax({
+		url: '/medicamento-continuo/medicamentos/' + idProntuario,
+		method: 'GET',
+		success: function(data) {
+			if ($.isEmptyObject(data)) {
+				$("#uso-continuo-lista").append("<li class='list-group-item'> Sem dados para serem exibidos </li>")
+			}
+			$.each(data, function(index, value) {
+				$("#uso-continuo-lista").append("<li class='list-group-item'>" + value.medicamento.principioAtivo + " ; " + value.medicamento.concentracao + " ; " + value.medicamento.formaFarmaceutica.nome + " | " + value.nota + "</li>");
+			})
+		},
+
+		error: function() {
+			$("#uso-lista").append("<li class='list-group-item'> Sem dados para serem exibidos - Houve um erro ao recuperar as informações </li>")
+		}
+	})
+}
+
+function atulizaMedicamentoEmUso() {
+	$("#uso-lista").empty();
+	$.ajax({
+		url: '/uso-medicamento/medicamentos/' + idAtendimento,
+		method: 'GET',
+		success: function(data) {
+			if ($.isEmptyObject(data)) {
+				$("#uso-lista").append("<li class='list-group-item'> Sem dados para serem exibidos </li>")
+			}
+			$.each(data, function(index, value) {
+				$("#uso-lista").append("<li class='list-group-item'>" + value.medicamento.principioAtivo + " ; " + value.medicamento.concentracao + " ; " + value.medicamento.formaFarmaceutica.nome + " | " + value.nota + "</li>");
+			})
+		},
+
+		error: function() {
+			$("#uso-lista").append("<li class='list-group-item'> Sem dados para serem exibidos - Houve um erro ao recuperar as informações </li>")
+		}
+	})
+}
+
+//Função Habilita pesquisa de Medicamentos
+$("#button-medicamento").click(function() {
+	$("#i-medicamento").removeClass().addClass("fa fa-search");
+	$("#medicamento").val("").attr("disabled", false);
+})
+//Fim da função habilita pesquisa de Medicamentos
 //Fim submit dos medicamentos
 //######### Fim das Funções para Cadastro de Medicamentos ###########
+
+function limpaFormulario() {
+	$("#id-medicamento").val("");
+	$("#nota-uso-medicamento").val("");
+	$("#usoContinuo").prop("checked", false);
+	$("#medicamento").val("");
+	$("#i-medicamento").removeClass().addClass("fa fa-search");
+	$("#medicamento").val("").attr("disabled", false);
+}
