@@ -784,6 +784,10 @@ function createCardDetalhePrescricao(data) {
 		"</div></div></div>";
 }
 
+function imprimirPrescricao(){
+	Docs.docReceituario()
+}
+
 function createCardPrescricao(data) {
 	return "<div class='card'><div class='card-body'><div class='col-md-12 row'><div class='col-md-8'>" +
 		h5CarPrescricao(data.medicamento.principioAtivo, data.viaAdministracao.nome) + inforCardPrimary(data.medicamento.concentracao, data.medicamento.formaFarmaceutica.nome) +
