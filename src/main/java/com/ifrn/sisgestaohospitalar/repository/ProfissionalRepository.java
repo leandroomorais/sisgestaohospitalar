@@ -3,6 +3,8 @@ package com.ifrn.sisgestaohospitalar.repository;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import com.ifrn.sisgestaohospitalar.enums.TipoProfissional;
@@ -19,6 +21,8 @@ public interface ProfissionalRepository extends JpaRepository<Profissional, Long
 
 	Profissional findByEmail(String email);
 
-	Profissional findByNome(String nome);
+	@Query(value = "select * from profissional p where p.nome "
+				+" like concat('%', :name, '%')", nativeQuery = true)
+	Profissional findByNome(@Param("name") String nome);
 
 }

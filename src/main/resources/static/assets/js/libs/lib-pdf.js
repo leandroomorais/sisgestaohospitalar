@@ -35,8 +35,14 @@ function () {
     this.openHtml = function (_a) {
       var _b;
 
-      var label = _a.label;
-      (_b = _this.document) === null || _b === void 0 ? void 0 : _b.write("<!DOCTYPE html>\n        <html lang=\"pt-br\">\n        \n        <head>\n            <meta charset=\"UTF-8\">\n            <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\n            <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n            <title>" + label + "</title>\n        </head>");
+      var title = _a.title,
+          links = _a.links,
+          scripts = _a.scripts;
+      (_b = _this.document) === null || _b === void 0 ? void 0 : _b.write("<!DOCTYPE html>\n        <html lang=\"pt-br\">\n        \n        <head>\n            <meta charset=\"UTF-8\">\n            <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\n            <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n            <title>" + title + "</title>\n            " + ExtractPDF.extractMap(links, function (t, index) {
+        return "<link href='" + t.href + "' ref='" + t.rel + "' type='" + t.type + "'/>";
+      }) + "\n            " + ExtractPDF.extractMap(scripts, function (t, index) {
+        return "<script src='" + t.src + "' type='" + t.type + "'></script>";
+      }) + "\n        </head>");
     };
 
     this.closeHtml = function () {
@@ -61,76 +67,79 @@ function () {
 
       (_a = _this.document) === null || _a === void 0 ? void 0 : _a.write(innerHTML);
     };
+    /* createTitle = ({ value, attrsChild, attrsFather, attrsFatherParent }: TParameter) => {
+        this.create("p", attrsChild, attrsFather, attrsFatherParent, value, this.document)
+    }; */
 
-    this.createTitle = function (_a) {
-      var value = _a.value,
-          attrsChild = _a.attrsChild,
-          attrsFather = _a.attrsFather,
-          attrsFatherParent = _a.attrsFatherParent;
+    /* createHeader = ({ value, attrsChild, attrsFatherParent }: TParameter) => {
+        this.create("p", attrsChild, { class: 'header' }, attrsFatherParent, value, this.document)
+    };
+         createText = ({ value, attrsChild, attrsFather, attrsFatherParent }: TParameter) => {
+        this.create("p", attrsChild, attrsFather, attrsFatherParent, value, this.document)
+    };
+         createLineVertical = ({ attrsChild, attrsFather, attrsFatherParent }: TParameter) => {
+        this.create("hr", attrsChild, attrsFather, attrsFatherParent, undefined, this.document)
+    };
+         private create(tagChild: string, attrsChild: {} | undefined, attrsFather: {} | undefined, attrsFatherParent: {} | undefined, value: string | number | object | undefined, document: Document | undefined | null) {
+        //@ts-ignore
+        const tag = new Tag({ tagName: tagChild, attrs: attrsChild, value: value })
+        //@ts-ignore
+        const div = new Tag({ tagName: 'div', attrs: attrsFather, children: [tag] })
+        //@ts-ignore
+        const divSpace = new Tag({ tagName: 'div', attrs: attrsFatherParent, children: [div] })
+        //@ts-ignore
+        const divParent = new Tag({ tagName: 'div', children: [divSpace] })
+        //@ts-ignore
+        const divView = new TagView(divParent)
+        //@ts-ignore
+        const element: Element = divView.element
+        document?.write(element.innerHTML)
+    } */
 
-      _this.create("p", attrsChild, attrsFather, attrsFatherParent, value, _this.document);
+
+    this.createHTML = function (_a) {
+      var _b;
+
+      var innerHTML = _a.innerHTML;
+      (_b = _this.document) === null || _b === void 0 ? void 0 : _b.write(innerHTML);
     };
 
-    this.createHeader = function (_a) {
-      var value = _a.value,
-          attrsChild = _a.attrsChild,
-          attrsFatherParent = _a.attrsFatherParent;
+    this.createScript = function (_a) {
+      var _b;
 
-      _this.create("p", attrsChild, {
-        "class": 'header'
-      }, attrsFatherParent, value, _this.document);
+      var src = _a.src,
+          type = _a.type; //@ts-ignore
+
+      var script = new Tag({
+        tagName: 'script',
+        attrs: {
+          src: src,
+          type: type
+        }
+      });
+      View.append(new TagView(script).element, (_b = _this.document) === null || _b === void 0 ? void 0 : _b.body);
     };
 
-    this.createText = function (_a) {
-      var value = _a.value,
-          attrsChild = _a.attrsChild,
-          attrsFather = _a.attrsFather,
-          attrsFatherParent = _a.attrsFatherParent;
+    this.createLink = function (_a) {
+      var _b;
 
-      _this.create("p", attrsChild, attrsFather, attrsFatherParent, value, _this.document);
-    };
+      var href = _a.href,
+          rel = _a.rel,
+          type = _a.type; //@ts-ignore
 
-    this.createLineVertical = function (_a) {
-      var attrsChild = _a.attrsChild,
-          attrsFather = _a.attrsFather,
-          attrsFatherParent = _a.attrsFatherParent;
-
-      _this.create("hr", attrsChild, attrsFather, attrsFatherParent, undefined, _this.document);
+      var link = new Tag({
+        tagName: 'link',
+        attrs: {
+          href: href,
+          rel: rel,
+          type: type
+        }
+      });
+      View.append(new TagView(link).element, (_b = _this.document) === null || _b === void 0 ? void 0 : _b.head);
     };
 
     this.document = document;
   }
-
-  TemplateDoc.prototype.create = function (tagChild, attrsChild, attrsFather, attrsFatherParent, value, document) {
-    //@ts-ignore
-    var tag = new Tag({
-      tagName: tagChild,
-      attrs: attrsChild,
-      value: value
-    }); //@ts-ignore
-
-    var div = new Tag({
-      tagName: 'div',
-      attrs: attrsFather,
-      children: [tag]
-    }); //@ts-ignore
-
-    var divSpace = new Tag({
-      tagName: 'div',
-      attrs: attrsFatherParent,
-      children: [div]
-    }); //@ts-ignore
-
-    var divParent = new Tag({
-      tagName: 'div',
-      children: [divSpace]
-    }); //@ts-ignore
-
-    var divView = new TagView(divParent); //@ts-ignore
-
-    var element = divView.element;
-    document === null || document === void 0 ? void 0 : document.write(element.innerHTML);
-  };
 
   return TemplateDoc;
 }();
@@ -318,7 +327,7 @@ function () {
     for (var j = 0; j < values.length; j++) {
       var tValue = {
         cols: []
-      };
+      }; //@ts-ignore
 
       if (labels.length != values[j].length) {
         return [];
@@ -360,10 +369,14 @@ function () {
   };
 
   ExtractPDF.extractMap = function (values, funct) {
-    var str = "" + values.map(function (tCol, index) {
-      return funct(tCol, index);
-    });
-    return str.replace(/[,]/g, '');
+    if (typeof values !== 'undefined' && typeof funct === 'function') {
+      var str = "" + (values === null || values === void 0 ? void 0 : values.map(function (t, index) {
+        return funct(t, index);
+      }));
+      return str.replace(/[,]/g, '');
+    }
+
+    return '';
   };
 
   return ExtractPDF;

@@ -72,6 +72,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		//.antMatchers("/paciente/**").hasAnyAuthority("ADM", "ATD", "TEC", "SUPER")
 		//.antMatchers("/profissional/**").hasAnyAuthority("ADM", "TEC", "ENF", "MED", "SUPER")
 		.antMatchers("/api/usuario/**").permitAll()
+		.antMatchers("/api/**").permitAll()
 		.antMatchers("/recuperar-senha/**").permitAll()
 		.antMatchers("/nova-senha/**").permitAll()
 		.antMatchers("/cadastra-senha/**").permitAll()

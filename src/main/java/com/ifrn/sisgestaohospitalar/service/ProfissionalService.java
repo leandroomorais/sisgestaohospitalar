@@ -94,6 +94,8 @@ public class ProfissionalService {
 	}
 
 	public Profissional findByNome(String nome){
+		nome = nome.replaceAll("%", "");
+		System.err.println("Consult by nome "+nome);
 		return repository.findByNome(nome);
 	}
 
