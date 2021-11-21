@@ -1,11 +1,9 @@
-<div sec:authorize="hasAnyAuthority('MEDICO')" id="card-novo-exame"
-	class="card">
+<div sec:authorize="hasAnyAuthority('MEDICO')" id="card-novo-exame" class="card">
 	<div class="card-header">
 		<div class="card-title">
-			<a id="novo-exame-voltar" data-toggle="tooltipe" data-placement="top"
-				title="Voltar para tela anterior" class="btn btn-light"> <i
-				class="fa fa-flip-horizontal fa-share"></i>
-			</a>Novo Exame
+			<a id="novo-exame-voltar" data-toggle="tooltipe" data-placement="top" title="Voltar para tela anterior"
+				class="btn btn-light"> <i class="fa fa-flip-horizontal fa-share"></i>
+			</a>Nova solicitação de Exame(s)
 		</div>
 	</div>
 	<div class="card-body">
@@ -18,26 +16,24 @@
 							<label for="procedimento-exame">Adicionar Procedimento*</label>
 							<div class="input-group">
 								<div class="input-group-prepend">
-									<button id="button-procedimento" type="button"
-										class="btn btn-black btn-border">
+									<button id="button-procedimento" type="button" class="btn btn-black btn-border">
 										<i id="i-procedimento" class="fa fa-search"></i>
 									</button>
 								</div>
 								<input id="procedimento-exame" type="text" class="form-control"
-									placeholder="Pesquisa de procedimentos"> <input
-									type="hidden" id="id-procedimento-exame" name="procedimento">
+									placeholder="Pesquisa de procedimentos"> <input type="hidden"
+									id="id-procedimento-exame" name="procedimento">
 							</div>
-							<small id="cid-small-procedimento" class="form-text text-muted">Selecione
-								o Procedimento para adicionar ao Exame</small>
+							<small id="cid-small-procedimento" class="form-text text-muted">Use a pesquisa de
+								procedimentos para adicionar o(s) procedimento(s) a esta solicitação</small>
 						</div>
 					</div>
 
 					<div class="col-md-12 mt-3">
-						<div class="card-sub">Procedimentos realizados:</div>
+						<div class="card-sub">Procedimentos solicitados:</div>
 						<div id="div-table-procedimentos-exame" class="table-responsive">
-							<table id="table-procedimentos-exame"
-								class="display table table-hover dataTable" role="grid"
-								aria-describedby="basic-datatables_info" style="width: 100%">
+							<table id="table-procedimentos-exame" class="display table table-hover dataTable"
+								role="grid" aria-describedby="basic-datatables_info" style="width: 100%">
 								<thead>
 									<tr role="row">
 										<th></th>
@@ -55,7 +51,7 @@
 							</table>
 						</div>
 					</div>
-					
+
 
 					<div class="col-md-12">
 						<div class="form-group">
@@ -66,38 +62,36 @@
 										<i id="i-exame-cid" class="fa fa-search"></i>
 									</button>
 								</div>
-								<input id="exame-cid" type="text" class="form-control"
-									placeholder="Pesquisa de Cid">
+								<input id="exame-cid" type="text" class="form-control" placeholder="Pesquisa de Cid">
 								<input type="hidden" id="id-cid" name="cid">
 							</div>
-							<small id="cid-small-exame" class="form-text text-muted">Selecione 
+							<small id="cid-small-exame" class="form-text text-muted">Selecione
 								o CID para adicionar ao Exame</small>
 						</div>
 					</div>
-					
+
 					<div class="col-md-12">
 						<div class="form-group">
 							<label for="justificativa">Justificativa do
 								Procedimento*</label>
-							<textarea class="form-control" name="justificativa"
-								id="justificativa" placeholder=""></textarea>
+							<textarea class="form-control" name="justificativa" id="justificativa"
+								placeholder=""></textarea>
 							<small id="justificativa-small" class="form-text text-muted"></small>
 						</div>
 					</div>
 
 					<div class="col-md-12">
 						<div class="form-group">
-							<label for="observacoes">Observa��es</label>
-							<textarea class="form-control" name="observacoes"
-								id="observacoes" placeholder=""></textarea>
+							<label for="observacoes">Observações</label>
+							<textarea class="form-control" name="observacoes" id="observacoes"
+								placeholder=""></textarea>
 							<small id="observacoes-small" class="form-text text-muted"></small>
 						</div>
 					</div>
 
 				</div>
 				<div class="text-right">
-					<button id="submit-exame" type="submit"
-						class="btn btn-primary btn-sm">Salvar</button>
+					<button id="submit-exame" type="submit" class="btn btn-primary btn-sm">Salvar</button>
 					<button onclick="fechaFormularioExame()" type="button"
 						class="btn btn-warning btn-sm">Cancelar</button>
 				</div>

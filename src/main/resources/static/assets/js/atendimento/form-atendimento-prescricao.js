@@ -941,9 +941,7 @@ function dataTableRegistro(id) {
 				title: 'DATA',
 				data: 'dataAdministracao',
 				mRender: function(data) {
-					var dataAdministracao = new Date(data); //cria um objeto de data com o valor inserido no input
-					dataAdministracao = dataAdministracao.toLocaleDateString('pt-BR');
-					return dataAdministracao;
+					return moment(data).format("DD/MM/YYYY - hh:mm:ss")
 				}
 			},
 			{

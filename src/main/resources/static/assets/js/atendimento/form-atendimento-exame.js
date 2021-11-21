@@ -8,6 +8,7 @@ function exibeFormularioExame() {
 	limpaExame();
 	removeInvalidFedbackExame();
 	$("#card-list-exames").fadeOut(100);
+	$("#card-list-todos-exames").fadeOut(100);
 	$("#card-novo-exame").fadeIn(100);
 
 	$("#table-procedimentos-exame").DataTable().ajax.reload();
@@ -29,6 +30,7 @@ function fechaFormularioExame() {
 	limpaExame();
 	$("#card-novo-exame").fadeOut(100);
 	$("#card-list-exames").fadeIn(100);
+	$("#card-list-todos-exames").fadeIn(100);
 
 	$.ajax({
 		url: '/exame/limparprocedimentosexame/',
@@ -485,7 +487,7 @@ function atualizaExames() {
 		method: 'get',
 		success: function(data) {
 			if (isEmpty(data)) {
-				$("#div-exames").append("<h5 class='card-title text-center'>Não existem Exames Solicitados para este Prontuario</h5><p class='card-text text-center'>Clique no botão Novo Exame para cadastrar um.</p>");
+				$("#div-exames").append("<h5 class='card-title text-center'>Não existem solicitações de exames para este Prontuário</h5><p class='card-text text-center'>Clique no botão Nova solicitação para cadastrar uma.</p>");
 			} else {
 				$.each(data, function(key, item) {
 					$("#div-exames").append(createCardExame(item));
@@ -572,7 +574,7 @@ function atualizaTodosExames() {
 		method: 'get',
 		success: function(data) {
 			if (isEmpty(data)) {
-				$("#div-todos-exames").append("<h5 class='card-title text-center'>Não existem Exames para este Prontuario</h5><p class='card-text text-center'>Clique no botão Novo Exame para cadastrar um.</p>");
+				$("#div-todos-exames").append("<h5 class='card-title text-center'>Não existem resultados de exames cadastrados neste Prontuario</h5><p class='card-text text-center'>Clique no botão Novo Exame para cadastrar um.</p>");
 			} else {
 				$("#div-todos-exames").append(createCardTitulo());
 				$.each(data, function(key1, item1) {

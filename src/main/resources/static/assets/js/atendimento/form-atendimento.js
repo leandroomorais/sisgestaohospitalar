@@ -65,7 +65,7 @@ $(document).ready(function() {
 	//tabelaTodosExame();
 	//ExamesSolicitados();
 
-	 atualizaTodosExames();
+	atualizaTodosExames();
 
 
 	//Chamada da função 
@@ -246,9 +246,9 @@ $("#submit-diagnostico").click(function() {
 	var diagnostico = {};
 	diagnostico['atendimento'] = idAtendimento;
 	diagnostico['prontuario'] = idProntuario;
+	diagnostico.nota = tinymce.get("nota").getContent();
 	diagnostico['cid'] = $("#id-cid").val();
-	diagnostico.nota = $("#nota").val();
-
+	
 	$.ajax({
 		url: '/diagnostico/',
 		method: 'post',
