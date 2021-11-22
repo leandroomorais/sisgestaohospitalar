@@ -143,6 +143,10 @@ public class ExameController {
 
 		Exame exame = exameRepository.getOne(id);
 
+		if(!exame.getResultados().isEmpty()) {
+			return ResponseEntity.notFound().build();
+		}
+		
 		Prontuario prontuario = prontuarioRepository.getOne(exame.getProntuario().getId());
 
 		List<Procedimento> procedimentoss = exame.getProcedimentos();
@@ -192,7 +196,7 @@ public class ExameController {
 		
 		Prontuario prontuario = prontuarioRepository.getOne(id);
 
-		List<Exame> exames = prontuario.getExames();
+		List<Exame> exames = exameRepository.findByProntuarioOrderByDataSolicitacaoDesc(prontuario);
 		
 		return ResponseEntity.ok().body(exames);
 

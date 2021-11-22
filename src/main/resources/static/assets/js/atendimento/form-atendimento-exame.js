@@ -334,8 +334,18 @@ function excluirExame(item) {
 					atualizaTodosExames();
 				},
 				statusCode: {
-					403: function(xhr) {
-						swal("Houve um erro!", xrh.reponseText, {
+					400: function() {
+						swal("Houve um erro!", {
+							icon: "error",
+							buttons: {
+								confirm: {
+									className: 'btn btn-danger'
+								}
+							},
+						});
+					},
+					404: function() {
+						swal("Essa Solicitação de Exame não pode ser Excluida!", {
 							icon: "error",
 							buttons: {
 								confirm: {
