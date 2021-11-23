@@ -1,54 +1,53 @@
 "use strict";
 
-var TemplateDoc =
+var __rest = this && this.__rest || function (s, e) {
+  var t = {};
+
+  for (var p in s) {
+    if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0) t[p] = s[p];
+  }
+
+  if (s != null && typeof Object.getOwnPropertySymbols === "function") for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
+    if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i])) t[p[i]] = s[p[i]];
+  }
+  return t;
+};
+
+var TemplateDefault =
 /** @class */
 function () {
-  function TemplateDoc(document) {
+  function TemplateDefault(doc) {
     var _this = this;
 
-    this.document = null;
+    this._document = null;
+    this._doc = null;
 
-    this.createStyle = function (_a) {
-      var _b, _c, _d;
+    this.getBody = function (_a) {
+      var _b;
 
-      var value = _a.value;
+      var rest = __rest(_a, []);
 
-      if (typeof value !== "undefined" && typeof value === 'string') {
-        (_b = _this.document) === null || _b === void 0 ? void 0 : _b.write("<style>");
-        (_c = _this.document) === null || _c === void 0 ? void 0 : _c.write(value);
-        (_d = _this.document) === null || _d === void 0 ? void 0 : _d.write("</style>");
-      }
+      Attrs.set((_b = _this._document) === null || _b === void 0 ? void 0 : _b.body, rest);
     };
 
-    this.openBody = function () {
-      var _a;
-
-      (_a = _this.document) === null || _a === void 0 ? void 0 : _a.write("<body>");
-    };
-
-    this.closeBody = function () {
-      var _a;
-
-      (_a = _this.document) === null || _a === void 0 ? void 0 : _a.write("</body>");
-    };
-
-    this.openHtml = function (_a) {
+    this.getHtml = function (_a) {
       var _b;
 
       var title = _a.title,
-          links = _a.links,
-          scripts = _a.scripts;
-      (_b = _this.document) === null || _b === void 0 ? void 0 : _b.write("<!DOCTYPE html>\n        <html lang=\"pt-br\">\n        \n        <head>\n            <meta charset=\"UTF-8\">\n            <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\n            <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n            <title>" + title + "</title>\n            " + ExtractPDF.extractMap(links, function (t, index) {
-        return "<link href='" + t.href + "' ref='" + t.rel + "' type='" + t.type + "'/>";
-      }) + "\n            " + ExtractPDF.extractMap(scripts, function (t, index) {
-        return "<script src='" + t.src + "' type='" + t.type + "'></script>";
-      }) + "\n        </head>");
+          links = _a.links;
+      (_b = _this.document) === null || _b === void 0 ? void 0 : _b.write("<!DOCTYPE html>\n        <html lang=\"pt-br\">\n        \n        <head>\n            <meta charset=\"UTF-8\">\n            <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\n            <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n            <title>" + title + "</title>\n            <style>\n                " + ExtractPDF.extractMap(links, function (t, index) {
+        return "@import '" + t.href + "';";
+      }) + "\n            </style>\n        </head>");
     };
 
-    this.closeHtml = function () {
-      var _a;
+    this.createHTML = function (_a) {
+      var _b;
 
-      (_a = _this.document) === null || _a === void 0 ? void 0 : _a.write("</html>");
+      var innerHTML = _a.innerHTML;
+
+      if (typeof innerHTML !== 'undefined') {
+        (_b = _this.document) === null || _b === void 0 ? void 0 : _b.write(innerHTML);
+      }
     };
 
     this.createElements = function (_a) {
@@ -57,58 +56,28 @@ function () {
 
       if (onRender) {
         values === null || values === void 0 ? void 0 : values.map(function (value, index) {
-          return _this.createElement(onRender(value, index));
+          return _this.createHTML({
+            innerHTML: onRender(value, index)
+          });
         });
       }
     };
 
-    this.createElement = function (innerHTML) {
-      var _a;
-
-      (_a = _this.document) === null || _a === void 0 ? void 0 : _a.write(innerHTML);
-    };
-    /* createTitle = ({ value, attrsChild, attrsFather, attrsFatherParent }: TParameter) => {
-        this.create("p", attrsChild, attrsFather, attrsFatherParent, value, this.document)
-    }; */
-
-    /* createHeader = ({ value, attrsChild, attrsFatherParent }: TParameter) => {
-        this.create("p", attrsChild, { class: 'header' }, attrsFatherParent, value, this.document)
-    };
-         createText = ({ value, attrsChild, attrsFather, attrsFatherParent }: TParameter) => {
-        this.create("p", attrsChild, attrsFather, attrsFatherParent, value, this.document)
-    };
-         createLineVertical = ({ attrsChild, attrsFather, attrsFatherParent }: TParameter) => {
-        this.create("hr", attrsChild, attrsFather, attrsFatherParent, undefined, this.document)
-    };
-         private create(tagChild: string, attrsChild: {} | undefined, attrsFather: {} | undefined, attrsFatherParent: {} | undefined, value: string | number | object | undefined, document: Document | undefined | null) {
-        //@ts-ignore
-        const tag = new Tag({ tagName: tagChild, attrs: attrsChild, value: value })
-        //@ts-ignore
-        const div = new Tag({ tagName: 'div', attrs: attrsFather, children: [tag] })
-        //@ts-ignore
-        const divSpace = new Tag({ tagName: 'div', attrs: attrsFatherParent, children: [div] })
-        //@ts-ignore
-        const divParent = new Tag({ tagName: 'div', children: [divSpace] })
-        //@ts-ignore
-        const divView = new TagView(divParent)
-        //@ts-ignore
-        const element: Element = divView.element
-        document?.write(element.innerHTML)
-    } */
-
-
-    this.createHTML = function (_a) {
+    this.createStyle = function (_a) {
       var _b;
 
-      var innerHTML = _a.innerHTML;
-      (_b = _this.document) === null || _b === void 0 ? void 0 : _b.write(innerHTML);
+      var value = _a.value;
+      var style = value.trim() !== '' ? "<style> " + value + " </style>" : "<style>\n        .row {\n            display: flex;\n            align-items: center;\n            flex-direction: row;\n            justify-content: space-between;\n        }\n\n        .left {\n            display: flex;\n            justify-content: flex-start;\n            max-width: 50%;\n        }\n\n        .right {\n            display: flex;\n            justify-content: flex-end;\n            max-width: 50%;\n        }\n\n        .center {\n            display: flex;\n            flex-wrap: nowrap;\n            flex-direction: row;\n            align-content: center;\n            justify-content: center;\n            align-items: center;\n            text-align: center;\n        }\n\n        .container {\n            display: flex;\n            flex-direction: column;\n            flex-wrap: wrap;\n            align-content: stretch;\n            justify-content: center;\n            align-items: stretch;\n        }\n    </style>";
+      (_b = _this._document) === null || _b === void 0 ? void 0 : _b.write(style);
     };
 
     this.createScript = function (_a) {
       var _b;
 
       var src = _a.src,
-          type = _a.type; //@ts-ignore
+          type = _a.type,
+          rest = __rest(_a, ["src", "type"]); //@ts-ignore
+
 
       var script = new Tag({
         tagName: 'script',
@@ -116,7 +85,8 @@ function () {
           src: src,
           type: type
         }
-      });
+      }); //@ts-ignore
+
       View.append(new TagView(script).element, (_b = _this.document) === null || _b === void 0 ? void 0 : _b.body);
     };
 
@@ -125,7 +95,9 @@ function () {
 
       var href = _a.href,
           rel = _a.rel,
-          type = _a.type; //@ts-ignore
+          type = _a.type,
+          rest = __rest(_a, ["href", "rel", "type"]); //@ts-ignore
+
 
       var link = new Tag({
         tagName: 'link',
@@ -134,15 +106,64 @@ function () {
           rel: rel,
           type: type
         }
-      });
+      }); //@ts-ignore
+
       View.append(new TagView(link).element, (_b = _this.document) === null || _b === void 0 ? void 0 : _b.head);
     };
 
-    this.document = document;
+    this._document = doc.getDoc();
+  }
+
+  Object.defineProperty(TemplateDefault.prototype, "document", {
+    get: function get() {
+      return this._document;
+    },
+    enumerable: false,
+    configurable: true
+  });
+  return TemplateDefault;
+}();
+"use strict";
+
+var __extends = this && this.__extends || function () {
+  var _extendStatics = function extendStatics(d, b) {
+    _extendStatics = Object.setPrototypeOf || {
+      __proto__: []
+    } instanceof Array && function (d, b) {
+      d.__proto__ = b;
+    } || function (d, b) {
+      for (var p in b) {
+        if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p];
+      }
+    };
+
+    return _extendStatics(d, b);
+  };
+
+  return function (d, b) {
+    if (typeof b !== "function" && b !== null) throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
+
+    _extendStatics(d, b);
+
+    function __() {
+      this.constructor = d;
+    }
+
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+  };
+}();
+
+var TemplateDoc =
+/** @class */
+function (_super) {
+  __extends(TemplateDoc, _super);
+
+  function TemplateDoc(doc) {
+    return _super.call(this, doc) || this;
   }
 
   return TemplateDoc;
-}();
+}(TemplateDefault);
 "use strict";
 
 var Doc =

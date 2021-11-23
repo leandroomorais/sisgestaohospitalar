@@ -1,18 +1,18 @@
 
 //Função Habilita pesquisa de Medicamentos
-$("#button-medicamento").click(function() {
+$("#button-medicamento").click(function () {
 	limpaPrescricao();
 	$("#i-medicamento").removeClass().addClass("fa fa-search");
 })
 //Fim da função habilita pesquisa de Medicamentos
 
-$("#administracaoRealizada").click(function() {
+$("#administracaoRealizada").click(function () {
 	if ($(this).prop("checked") == true) {
 		var prescricaoId = $(this).attr("data-value");
 		$.ajax({
 			url: '/prescricao/' + prescricaoId,
 			method: 'get',
-			success: function(data) {
+			success: function (data) {
 				$("#exampleModalCenter").modal("show");
 				$("#procedimentos-admin-medicamento").val(data.viaAdministracao.procedimento.codigo + " - " + data.viaAdministracao.procedimento.nome);
 				$("#procedimentos-admin-medicamento").attr("data-toggle", "tooltip").attr("title", $("#procedimentos-admin-medicamento").val());
@@ -24,7 +24,7 @@ $("#administracaoRealizada").click(function() {
 	}
 })
 
-$("#salva-procedimento-medicamento").click(function() {
+$("#salva-procedimento-medicamento").click(function () {
 	var idAtendimento = $("#id-atendimento").val();
 	var procedimeto = $("#id-procedimento").val();
 	var quantidade = $("#qtd-procedimento").val();
@@ -46,7 +46,7 @@ function fechaFormularioPrescricao() {
 	$("#card-nova-prescricao").fadeOut(100);
 	$("#card-list-prescricoes").fadeIn(100);
 }
-$("#nova-prescricao-voltar").click(function() {
+$("#nova-prescricao-voltar").click(function () {
 	fechaFormularioPrescricao();
 })
 
@@ -57,7 +57,7 @@ function exibeFormularioEditPrescricao() {
 	$("#card-edit-prescricao").fadeIn(100);
 }
 
-$("#edit-prescricao-voltar").click(function() {
+$("#edit-prescricao-voltar").click(function () {
 	fechaFormularioEditPrescricao();
 })
 
@@ -75,7 +75,7 @@ function exibeRegistros(element) {
 	dataTableRegistro(idPrescricao);
 }
 
-$("#registro-voltar").click(function() {
+$("#registro-voltar").click(function () {
 	$("#card-list-prescricoes").fadeIn(100);
 	$("#card-list-registros-administracao").fadeOut(100);
 })
@@ -89,7 +89,7 @@ function exibeFormularioNovoRegistro(element) {
 	$("#administracaoRealizada").attr("data-value", idPrescricao);
 }
 
-$("#form-novo-registro-voltar").click(function() {
+$("#form-novo-registro-voltar").click(function () {
 	fechaFormularioNovoRegistro();
 })
 
@@ -99,7 +99,7 @@ function fechaFormularioNovoRegistro() {
 	$("#card-novo-registro-administracao").fadeOut(100);
 }
 
-$("#button-medicamento-dto").click(function() {
+$("#button-medicamento-dto").click(function () {
 	$("#i-medicamento-dto").removeClass("fa fa-edit").addClass("fa fa-search");
 	$("#medicamento-prescricao-dto").attr("disabled", false);
 	limpaPrescricaoDto();
@@ -136,7 +136,7 @@ function limpaPrescricaoDto() {
 
 }
 
-$("#form-confirma-administracao").submit(function(evt) {
+$("#form-confirma-administracao").submit(function (evt) {
 	evt.preventDefault();
 	var registroAdministracao = {};
 	registroAdministracao.nota = tinymce.get("nota-administracao").getContent();
@@ -146,7 +146,7 @@ $("#form-confirma-administracao").submit(function(evt) {
 		url: '/registro-administracao/',
 		method: 'post',
 		data: registroAdministracao,
-		success: function() {
+		success: function () {
 			$.notify({
 				// options
 				icon: 'flaticon-success',
@@ -186,7 +186,7 @@ $("#form-confirma-administracao").submit(function(evt) {
 			$("#table-registros").DataTable().ajax.reload();
 		},
 
-		error: function() {
+		error: function () {
 			$.notify({
 				// options
 				icon: 'flaticon-exclamation',
@@ -227,7 +227,7 @@ $("#form-confirma-administracao").submit(function(evt) {
 })
 
 
-$("#form-prescricao").submit(function(evt) {
+$("#form-prescricao").submit(function (evt) {
 	evt.preventDefault();
 	var prescricao = {};
 
@@ -246,11 +246,11 @@ $("#form-prescricao").submit(function(evt) {
 		url: '/prescricao/',
 		method: 'post',
 		data: prescricao,
-		beforeSend: function() {
+		beforeSend: function () {
 			console.log(prescricao);
 			removeInvalidFedbackPrescricao();
 		},
-		success: function() {
+		success: function () {
 			$.notify({
 				// options
 				icon: 'flaticon-success',
@@ -291,7 +291,7 @@ $("#form-prescricao").submit(function(evt) {
 		},
 
 		statusCode: {
-			400: function() {
+			400: function () {
 				$.notify({
 					// options
 					icon: 'flaticon-exclamation',
@@ -328,9 +328,9 @@ $("#form-prescricao").submit(function(evt) {
 					icon_type: 'class',
 				});
 			},
-			422: function(xhr) {
+			422: function (xhr) {
 				var errors = $.parseJSON(xhr.responseText);
-				$.each(errors, function(key, val) {
+				$.each(errors, function (key, val) {
 					$.notify({
 						// options
 						icon: 'flaticon-exclamation',
@@ -376,7 +376,7 @@ $("#form-prescricao").submit(function(evt) {
 	})
 })
 
-$("#form-edit-prescricao").submit(function(evt) {
+$("#form-edit-prescricao").submit(function (evt) {
 	evt.preventDefault();
 	var prescricaoDTO = {};
 
@@ -396,10 +396,10 @@ $("#form-edit-prescricao").submit(function(evt) {
 		url: '/prescricao/editar',
 		method: 'post',
 		data: prescricaoDTO,
-		beforeSend: function() {
+		beforeSend: function () {
 			removeInvalidFedbackPrescricaoDTO();
 		},
-		success: function() {
+		success: function () {
 			$.notify({
 				// options
 				icon: 'flaticon-success',
@@ -441,7 +441,7 @@ $("#form-edit-prescricao").submit(function(evt) {
 		},
 
 		statusCode: {
-			400: function() {
+			400: function () {
 				$.notify({
 					// options
 					icon: 'flaticon-exclamation',
@@ -478,9 +478,9 @@ $("#form-edit-prescricao").submit(function(evt) {
 					icon_type: 'class',
 				});
 			},
-			422: function(xhr) {
+			422: function (xhr) {
 				var errors = $.parseJSON(xhr.responseText);
-				$.each(errors, function(key, val) {
+				$.each(errors, function (key, val) {
 					$.notify({
 						// options
 						icon: 'flaticon-exclamation',
@@ -520,13 +520,13 @@ $("#form-edit-prescricao").submit(function(evt) {
 					if (key == 'medicamento') {
 						$("#medicamento-prescricao-dto").parent().parent().addClass("has-error has-feedback");
 					}
-					$("#form-edit-prescricao input[name='" + key + "']").each(function(index) {
+					$("#form-edit-prescricao input[name='" + key + "']").each(function (index) {
 						$(this).parent().parent().addClass("has-error has-feedback");
 					})
 				})
 			},
 
-			403: function() {
+			403: function () {
 				$.notify({
 					// options
 					icon: 'flaticon-exclamation',
@@ -574,7 +574,7 @@ function editarPrescricao(element) {
 	$.ajax({
 		url: '/prescricao/editar/' + idPrescricao,
 		method: 'get',
-		success: function(data) {
+		success: function (data) {
 			exibeFormularioEditPrescricao()
 			$("#id-prescricao").val(data.id);
 			$("#medicamento-prescricao-dto").val(data.medicamento.principioAtivo);
@@ -599,7 +599,7 @@ function editarPrescricao(element) {
 		},
 
 		statusCode: {
-			400: function() {
+			400: function () {
 				$.notify({
 					// options
 					icon: 'flaticon-exclamation',
@@ -638,7 +638,7 @@ function editarPrescricao(element) {
 			},
 
 
-			403: function() {
+			403: function () {
 				$.notify({
 					// options
 					icon: 'flaticon-exclamation',
@@ -705,7 +705,7 @@ function excluirPrescricao(element) {
 			$.ajax({
 				url: '/prescricao/excluir/' + idProntuario + "/" + idPrescricao,
 				method: 'delete',
-				success: function() {
+				success: function () {
 					swal("Sucesso! A Prescrição foi excluida!", {
 						icon: "success",
 						buttons: {
@@ -717,7 +717,7 @@ function excluirPrescricao(element) {
 					atualizaAtestados();
 				},
 				statusCode: {
-					403: function(xhr) {
+					403: function (xhr) {
 						swal("Não é possível excluir esta prescrição pois ja existe um Registro de Administração salvo", {
 							icon: "error",
 							buttons: {
@@ -746,7 +746,7 @@ function detalharPrescricao(id) {
 	$.ajax({
 		url: '/prescricao/' + id,
 		method: 'get',
-		success: function(data) {
+		success: function (data) {
 			$("#card-prescricao-administracao").append(createCardDetalhePrescricao(data));
 		}
 	})
@@ -758,11 +758,11 @@ function atualizaPrescricoes() {
 	$.ajax({
 		url: '/prescricao/listar/atendimento/' + atendimentoId,
 		method: 'get',
-		success: function(data) {
+		success: function (data) {
 			if (isEmpty(data)) {
 				$("#div-prescricoes").append("<h5 class='card-title text-center'>Não existem prescrições para este atendimento</h5><p class='card-text text-center'>Clique no botão Nova prescrição para cadastrar uma.</p>");
 			} else {
-				$.each(data, function(key, item) {
+				$.each(data, function (key, item) {
 					$("#div-prescricoes").append(createCardPrescricao(item));
 				})
 			}
@@ -784,8 +784,49 @@ function createCardDetalhePrescricao(data) {
 		"</div></div></div>";
 }
 
-function imprimirPrescricao(){
-	Docs.docReceituario()
+function imprimirPrescricao(data) {
+	const { principioAtivo, concentracao, formaFarmaceutica } = data.medicamento
+	const div = `
+	<div class="card">
+		<div class="card-header text-center">
+			<p>#title</p>
+		</div>
+		<div class="card-body">
+			<div class="text-center">
+				<h1 class="strong">Receituário</h1>
+			</div>
+			<div class="text-left">
+				<p>Nome do Paciente: Antonio Almeida</p>
+			</div>
+			<div class="text-left">
+				<p>CPF.: 000.000.000-00</p>
+			</div>
+			<div class="text-left">
+				<p>Medicamento</p>
+			</div>
+			<div class="card">
+				<div class="card-body" style="border: 2px solid #686868;
+					border-radius: 5px;">
+					<b>Princípio Ativo: </b><span>${principioAtivo}</span> | <b>Concentração: </b><span>${concentracao}</span> | <b>Quantidade: </b><span>${data.quantidade}</span> |
+					<b>Forma Farmacêutica: </b><span>${formaFarmaceutica.nome}</span> |
+					<b>Posologia: </b><span>${data.posologia}</span> <br/>
+					<b>Orientações: </b><span>${data.orientacoes}</span>
+				</div>   
+			</div>
+			<div class="text-center">
+				<p>Data: 20/11/2021</p>
+			</div>
+			<br/>
+			<div class="text-center">
+				<p>${data.profissional.nome}</p>
+				<span>CRM: ${data.profissional.numeroRegistro + " / " + data.profissional.siglaUfEmissao}</span>
+			</div>
+		</div>
+		<div class="card-footer">
+			<button class="btn btn-primary" onclick="window.print()">Imprimir</button>
+		</div>
+	</div>`
+	Docs.doc(div)
 }
 
 function createCardPrescricao(data) {
@@ -798,7 +839,7 @@ function createCardPrescricao(data) {
 		"</div><div class='col-md-4 text-right'>" +
 		infoCardDataProfissional(data.dataRegistro, data.profissional.nome, data.profissional.numeroRegistro + " / " + data.profissional.siglaUfEmissao) +
 		"</div></div><div class='text-right'>" +
-		"<button type='button' class='btn btn-light btn-sm' data-value='" + data.id + "' onclick='imprimirPrescricao()'><i class='fa fa-print'></i> Imprimir</button>" +
+		"<button type='button' class='btn btn-light btn-sm' data-value='" + data.id + "' onclick='imprimirPrescricao("+JSON.stringify(data)+")'><i class='fa fa-print'></i> Imprimir</button>" +
 		buttonRegistros()
 		+ buttonEditar()
 		+ buttonExcluir()
@@ -893,7 +934,7 @@ function isSet(val) {
 
 function removeInvalidFedbackPrescricao() {
 	$("#form-prescricao input, #form-prescricao textarea").each(
-		function(index) {
+		function (index) {
 			var str = $(this).parent().parent().attr("class");
 			if (str.match(/has-error/)) {
 				$(this).parent().parent().removeClass("has-error has-feedback");
@@ -905,7 +946,7 @@ function removeInvalidFedbackPrescricao() {
 
 function removeInvalidFedbackPrescricaoDTO() {
 	$("#form-edit-prescricao input, #form-edit-prescricao textarea").each(
-		function(index) {
+		function (index) {
 			var str = $(this).parent().parent().attr("class");
 			if (str.match(/has-error/)) {
 				$(this).parent().parent().removeClass("has-error has-feedback");
@@ -929,7 +970,7 @@ function dataTableRegistro(id) {
 			{
 				title: 'REALIZADA',
 				data: 'administracaoRealizada',
-				mRender: function(data) {
+				mRender: function (data) {
 					if (data) {
 						return "<span class='badge badge-success'>Sim</span>";
 					} else {
@@ -940,7 +981,7 @@ function dataTableRegistro(id) {
 			{
 				title: 'DATA',
 				data: 'dataAdministracao',
-				mRender: function(data) {
+				mRender: function (data) {
 					return moment(data).format("DD/MM/YYYY - hh:mm:ss")
 				}
 			},
@@ -968,7 +1009,7 @@ function submitProcedimentoAutomatico(idAtendimento, codigoProcedimento, tipoSer
 		url: '/atendimento-procedimento/adicionar',
 		method: 'POST',
 		data: relAtendimentoProcedimento,
-		success: function() {
+		success: function () {
 			$("#exampleModalCenter").modal("hide");
 			$.notify({
 				// options
@@ -1013,11 +1054,11 @@ function submitProcedimentoAutomatico(idAtendimento, codigoProcedimento, tipoSer
 //Função autocomplete Medicamentos
 $("#medicamento-prescricao").autocomplete({
 	source: "/medicamento/buscar",
-	focus: function(event, ui) {
+	focus: function (event, ui) {
 		$("#medicamento-prescricao").val(ui.item.principioAtivo + " ; " + ui.item.concentracao + " ; " + ui.item.formaFarmaceutica.nome);
 		return false;
 	},
-	select: function(event, ui) {
+	select: function (event, ui) {
 		$("#i-medicamento").removeClass("fa fa-search").addClass("fa fa-times");
 		$("#medicamento-prescricao").val(ui.item.principioAtivo).attr("disabled", true);
 		$("#id-medicamento").val(ui.item.id);
@@ -1028,7 +1069,7 @@ $("#medicamento-prescricao").autocomplete({
 		return false;
 
 	}
-}).autocomplete("instance")._renderItem = function(ul, item) {
+}).autocomplete("instance")._renderItem = function (ul, item) {
 	return $("<li>")
 		.append("<div class='h6'>" + item.principioAtivo + " ; " + "<b>" + item.concentracao + "</b>" + "<br>" + item.formaFarmaceutica.nome + " | " + item.unidadeFornecimento + "</div>")
 		.appendTo(ul);
@@ -1037,11 +1078,11 @@ $("#medicamento-prescricao").autocomplete({
 //Função autocomplete Medicamentos
 $("#medicamento-prescricao-dto").autocomplete({
 	source: "/medicamento/buscar",
-	focus: function(event, ui) {
+	focus: function (event, ui) {
 		$("#medicamento-prescricao-dto").val(ui.item.principioAtivo + " ; " + ui.item.concentracao + " ; " + ui.item.formaFarmaceutica.nome);
 		return false;
 	},
-	select: function(event, ui) {
+	select: function (event, ui) {
 		$("#i-medicamento-dto").removeClass("fa fa-search").addClass("fa fa-times");
 		$("#medicamento-prescricao-dto").val(ui.item.principioAtivo).attr("disabled", true);
 		$("#id-medicamento-dto").val(ui.item.id);
@@ -1051,7 +1092,7 @@ $("#medicamento-prescricao-dto").autocomplete({
 		return false;
 
 	}
-}).autocomplete("instance")._renderItem = function(ul, item) {
+}).autocomplete("instance")._renderItem = function (ul, item) {
 	return $("<li>")
 		.append("<div class='h6'>" + item.principioAtivo + " ; " + "<b>" + item.concentracao + "</b>" + "<br>" + item.formaFarmaceutica.nome + " | " + item.unidadeFornecimento + "</div>")
 		.appendTo(ul);
