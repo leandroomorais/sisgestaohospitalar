@@ -377,6 +377,51 @@ function removeCid(item) {
 	});
 }
 
+function imprimirAtestado(data){
+	const { principioAtivo, concentracao, formaFarmaceutica } = data.medicamento
+	const div = `
+	<div class="card">
+		<div class="card-header text-center">
+			<p>#title</p>
+		</div>
+		<div class="card-body">
+			<div class="text-center">
+				<h1 class="strong">Receituário</h1>
+			</div>
+			<div class="text-left">
+				<p>Nome do Paciente: Antonio Almeida</p>
+			</div>
+			<div class="text-left">
+				<p>CPF.: 000.000.000-00</p>
+			</div>
+			<div class="text-left">
+				<p>Medicamento</p>
+			</div>
+			<div class="card">
+				<div class="card-body" style="border: 2px solid #686868;
+					border-radius: 5px;">
+					<b>Princípio Ativo: </b><span>${principioAtivo}</span> | <b>Concentração: </b><span>${concentracao}</span> | <b>Quantidade: </b><span>${data.quantidade}</span> |
+					<b>Forma Farmacêutica: </b><span>${formaFarmaceutica.nome}</span> |
+					<b>Posologia: </b><span>${data.posologia}</span> <br/>
+					<b>Orientações: </b><span>${data.orientacoes}</span>
+				</div>   
+			</div>
+			<div class="text-center">
+				<p>Data: 20/11/2021</p>
+			</div>
+			<br/>
+			<div class="text-center">
+				<p>${data.profissional.nome}</p>
+				<span>CRM: ${data.profissional.numeroRegistro + " / " + data.profissional.siglaUfEmissao}</span>
+			</div>
+		</div>
+		<div class="card-footer">
+			<button class="btn btn-primary" onclick="window.print()">Imprimir</button>
+		</div>
+	</div>`
+	Docs.doc(div)
+}
+
 function creatCardAtestado(data) {
 	return "<div class='card'><div class='card-body'><div class='col-md-12 row'><div class='col-md-8'>" +
 		h5CardAtestado(data.periodo) +
@@ -384,7 +429,7 @@ function creatCardAtestado(data) {
 		"</div><div class='col-md-4 text-right'>" +
 		infoCardDataProfissional(data.dataRegistro, data.profissional.nome, data.profissional.numeroRegistro + " / " + data.profissional.siglaUfEmissao) +
 		"</div></div><div class='text-right'>" +
-		"<button type='button' class='btn btn-light btn-sm' data-value='" + data.id + "' onclick='imprimirPrescricao()'><i class='fa fa-print'></i> Imprimir</button>" +
+		"<button type='button' class='btn btn-light btn-sm' data-value='" + data.id + "' onclick='imprimirAtestado("+JSON.stringify(data)+")'><i class='fa fa-print'></i> Imprimir</button>" +
 		buttonExcluir(data) +
 		"</div></div></div>";
 }
