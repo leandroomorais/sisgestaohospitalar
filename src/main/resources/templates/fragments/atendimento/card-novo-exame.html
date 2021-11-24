@@ -25,7 +25,10 @@
 									id="id-procedimento-exame" name="procedimento">
 							</div>
 							<small id="cid-small-procedimento" class="form-text text-muted">Use a pesquisa de
-								procedimentos para adicionar o(s) procedimento(s) a esta solicitação</small>
+								procedimentos para adicionar o(s) procedimento(s) a esta solicitação ou <a href="#"
+									id="listaExameSimplificada" class="text-info">use a
+									lista
+									simplificada</a></small>
 						</div>
 					</div>
 
@@ -51,7 +54,6 @@
 							</table>
 						</div>
 					</div>
-
 
 					<div class="col-md-12">
 						<div class="form-group">
@@ -96,6 +98,26 @@
 						class="btn btn-warning btn-sm">Cancelar</button>
 				</div>
 			</form>
+		</div>
+		<!-- Modal Exibe Resultado de Exame -->
+		<div class="modal fade" id="modalListaSimplificada" tabindex="-1" role="dialog"
+			aria-labelledby="exampleModalCenterListaSimplicada" aria-hidden="true">
+			<div class="modal-dialog modal-dialog-centered" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="exampleModalListaSimplificada">Solicitação de Exames</h5>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div id="modal-body" class="modal-body">
+
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-warning" data-dismiss="modal">Fechar</button>
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
 </div>
