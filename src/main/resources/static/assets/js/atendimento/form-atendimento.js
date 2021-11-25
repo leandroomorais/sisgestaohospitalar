@@ -32,7 +32,7 @@ $(document).ready(function() {
 
 	//Função que inicia o TinyMCE
 	tinymce.init({
-		selector: '#historia-clinica, #avaliacao, #nota-administracao,  #nota, #nota-dto',
+		selector: '#historia-clinica, #avaliacao, #nota-administracao,  #nota, #nota-dto, #descricao',
 		language: 'pt_BR',
 		height: 150,
 		menubar: false,

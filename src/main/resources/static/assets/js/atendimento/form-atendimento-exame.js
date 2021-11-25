@@ -1,3 +1,51 @@
+$("#listaExameSimplificada").click(function() {
+	var form;
+	var formConcat;
+	$.ajax({
+		url: '/grupo-exame/',
+		method: 'get',
+		success: function(data) {
+			$("#modalListaSimplificada").modal("show");
+			$.each(data, function(key, item) {
+				form = createCardListaSimplificada(item);
+				formConcat += form;
+			})
+			$("#modal-body").empty().append(formConcat);
+			$("input[type=checkbox]").each(function(index) {
+				$(this).on("click", function() {
+					if ($(this).is(":checked")) {
+						adicionaProcedimento($(this).val());
+					} else {
+							
+
+					}
+				});
+			});
+		}
+	})
+})
+
+function createCardListaSimplificada(item) {
+	return "<div class='card'><div class='card-body'>" +
+		"<h5 class='card-title mb-3'>" + item.nome + "</h5>" +
+		"<div class='form-check'>" +
+		createChecbox(item.exameSimplificados) +
+		"</div></div></div>";
+}
+
+function createChecbox(exameSimplificados) {
+	var retorno;
+	var retornoConcat = "";
+	$.each(exameSimplificados, function(key, item) {
+		retorno = "<div class='custom-control custom-checkbox'>" +
+			"<input value='" + item.procedimentoAssociado.codigo + "' type='checkbox' class='custom-control-input' id='" + item.procedimentoAssociado.codigo + "'>" +
+			"<label class='custom-control-label' for='" + item.procedimentoAssociado.codigo + "'>" + item.nome + "</label>" +
+			"</div>";
+		retornoConcat += retorno;
+	})
+	return retornoConcat;
+}
+
 //Função Habilita pesquisa de Medicamentos
 $("#button-procedimento").click(function() {
 	limpaExame();
@@ -211,7 +259,7 @@ $("#form-exame").submit(function(evt) {
 function atualizaProcedimentoExame() {
 	$("#table-procedimentos-exame").DataTable({
 		responsive: true,
-		paging: false,
+		paging: true,
 		searching: false,
 		ordering: false,
 		ajax: {
@@ -379,89 +427,7 @@ $("#procedimento-exame").autocomplete({
 		return false;
 	},
 	select: function(event, ui) {
-		$.ajax({
-			url: '/exame/procedimento/' + ui.item.codigo,
-			method: 'get',
-			success: function() {
-				$("#procedimento-exame").val("");
-				$.notify({
-					// options
-					icon: 'flaticon-success',
-					title: 'SUCESSO',
-					message: 'O Procedimento foi adicionado ao Exame',
-					target: '_blank'
-				}, {
-					// settings
-					element: 'body',
-					position: null,
-					type: "success",
-					allow_dismiss: true,
-					newest_on_top: false,
-					showProgressbar: false,
-					placement: {
-						from: "top",
-						align: "right"
-					},
-					offset: 20,
-					spacing: 10,
-					z_index: 1031,
-					delay: 5000,
-					timer: 1000,
-					url_target: '_blank',
-					mouse_over: null,
-					animate: {
-						enter: 'animated fadeInDown',
-						exit: 'animated fadeOutUp'
-					},
-					onShow: null,
-					onShown: null,
-					onClose: null,
-					onClosed: null,
-					icon_type: 'class',
-				});
-				$("#table-procedimentos-exame").DataTable().ajax.reload();
-			},
-			error: function() {
-				$("#procedimento-exame").val("");
-				console.log("erro aqui");
-				$.notify({
-					// options
-					icon: 'flaticon-exclamation',
-					title: 'ERRO',
-					message: 'Não foi possível processar sua solicitação',
-					target: '_blank'
-				}, {
-					// settings
-					element: 'body',
-					position: null,
-					type: "danger",
-					allow_dismiss: true,
-					newest_on_top: false,
-					showProgressbar: false,
-					placement: {
-						from: "top",
-						align: "right"
-					},
-					offset: 20,
-					spacing: 10,
-					z_index: 1031,
-					delay: 5000,
-					timer: 1000,
-					url_target: '_blank',
-					mouse_over: null,
-					animate: {
-						enter: 'animated fadeInDown',
-						exit: 'animated fadeOutUp'
-					},
-					onShow: null,
-					onShown: null,
-					onClose: null,
-					onClosed: null,
-					icon_type: 'class',
-				});
-			}
-
-		});
+		adicionaProcedimento(ui.item.codigo);
 		return false;
 	}
 }).autocomplete("instance")._renderItem = function(ul, item) {
@@ -509,7 +475,7 @@ function atualizaExames() {
 };
 
 function createCardExame(data) {
-	
+
 	return "<div class='card'><div class='card-body'><div class='col-md-12 row'><div class='col-md-8'>" +
 		"<strong>Procedimentos: </strong>" +
 		"<br>" + infoProcedimentos(data.procedimentos) +
@@ -539,18 +505,18 @@ function infoProcedimentos(procedimentos) {
 	var retornoConcat = "";
 	$.each(procedimentos, function(key, item) {
 		retorno = "<div>" + item.codigo + " - " + "<b>" + item.nome + "</b>" + "</div>";
-		retornoConcat += retorno ;
+		retornoConcat += retorno;
 	})
 	return retornoConcat;
 }
 
 
 function infoCardCid(cid) {
-	if(cid == null){
+	if (cid == null) {
 		return "<strong>CID Relacionado: </strong><br><span><i> Nenhum CID Informado! </i></span><br>"
-	}else{
-     	return "<strong>CID Relacionado: </strong><br><span> " + cid.nome + " </span><br>"
-     }
+	} else {
+		return "<strong>CID Relacionado: </strong><br><span> " + cid.nome + " </span><br>"
+	}
 }
 
 function infoCardJustificativa(justificativa) {
@@ -558,9 +524,9 @@ function infoCardJustificativa(justificativa) {
 }
 
 function infoCardObservacoes(observacoes) {
-	if(observacoes == ""){
+	if (observacoes == "") {
 		return "<strong>Observações: </strong><br><span><i> Nenhuma Observação Registrada! </i></span><br>"
-	}else{
+	} else {
 		return "<strong>Observações: </strong><br><span> " + observacoes + " </span><br>"
 	}
 }
@@ -599,55 +565,141 @@ function atualizaTodosExames() {
 };
 
 function createCardTodosExame(data1, data) {
-	
+
 	return "<div class='card'><div class='card-body'><div class='col-md-12 row'>" +
 		infoResultado(data1, data) +
-	    "</div></div></div>";
+		"</div></div></div>";
 }
 
 
-function procedimentos(item1, item){
+function procedimentos(item1, item) {
 	var dataSolicitacao = dataFormatada(item1.dataSolicitacao);
-	
-	return "<div class='col-md-2'>"+dataSolicitacao +" </div><div class='col-md-5'><b> " +  item.nome + "</b></div>";
+
+	return "<div class='col-md-2'>" + dataSolicitacao + " </div><div class='col-md-5'><b> " + item.nome + "</b></div>";
 }
 
-function infoResultado(data1, data){
+function infoResultado(data1, data) {
 	var resultados = data1.resultados;
-	
-	if(isEmpty(resultados)){
-		return procedimentos(data1, data) + "<div class='col-md-2'>"+ "</div><div class='col-md-3'><b> Não </b>" + "<button type='button' class='btn btn-light btn-sm' data-value='" + data1.id + "' onclick='resgistroResultadoExame("+data1.id+","+data.codigo+");'><i class='fas fa-share' style='font-size:18px;color:green'></i></button></div>";
-	
-	}else{
-		for(let resultado of resultados){
-			if(resultado.procedimento.codigo == data.codigo){
+
+	if (isEmpty(resultados)) {
+		return procedimentos(data1, data) + "<div class='col-md-2'>" + "</div><div class='col-md-3'><b> Não </b>" + "<button type='button' class='btn btn-light btn-sm' data-value='" + data1.id + "' onclick='resgistroResultadoExame(" + data1.id + "," + data.codigo + ");'><i class='fas fa-share' style='font-size:18px;color:green'></i></button></div>";
+
+	} else {
+		for (let resultado of resultados) {
+			if (resultado.procedimento.codigo == data.codigo) {
 				var dataResultado = dataFormatada(resultado.dataResultado);
-				
-				return procedimentos(data1, data) + "<div class='col-md-2'>" + dataResultado + 
-				"</div><div class='col-md-3'><b> Sim </b>" + "<button type='button' class='btn btn-light btn-sm' onclick='detalheResultadoExame("+resultado.id+");'><i class='fa fa-search' style='font-size:18px;color:blue'></i></button>"
-				+ "<button type='button' class='btn btn-light btn-sm' data-value='" + data1.id + "' onclick='editarResultadoExame("+data1.id+","+data.codigo+","+resultado.id+");'><i class='fa fa-pencil-square-o' style='font-size:18px;color:red'></i></button></div>";
+
+				return procedimentos(data1, data) + "<div class='col-md-2'>" + dataResultado +
+					"</div><div class='col-md-3'><b> Sim </b>" + "<button type='button' class='btn btn-light btn-sm' onclick='detalheResultadoExame(" + resultado.id + ");'><i class='fa fa-search' style='font-size:18px;color:blue'></i></button>"
+					+ "<button type='button' class='btn btn-light btn-sm' data-value='" + data1.id + "' onclick='editarResultadoExame(" + data1.id + "," + data.codigo + "," + resultado.id + ");'><i class='fa fa-pencil-square-o' style='font-size:18px;color:red'></i></button></div>";
 			}
 		}
-		return procedimentos(data1, data) + "<div class='col-md-2'>"+ 
-		"</div><div class='col-md-3'><b> Não </b>" + 
-		"<button type='button' class='btn btn-light btn-sm' data-value='" + data1.id + "' onclick='resgistroResultadoExame("+data1.id+","+data.codigo+");'><i class='fas fa-share' style='font-size:18px;color:green'></i></button></div>";
+		return procedimentos(data1, data) + "<div class='col-md-2'>" +
+			"</div><div class='col-md-3'><b> Não </b>" +
+			"<button type='button' class='btn btn-light btn-sm' data-value='" + data1.id + "' onclick='resgistroResultadoExame(" + data1.id + "," + data.codigo + ");'><i class='fas fa-share' style='font-size:18px;color:green'></i></button></div>";
 	}
 
 }
 
-function createCardTitulo(){
+function createCardTitulo() {
 
 	return "<div class='card'><div class='card-body'><div class='col-md-12 row'><div class='col-md-2'>" +
-			"<b>SOLICITADO </b></div><div class='col-md-5'><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; NOME EXAME</b></div><div class='col-md-2'>" +
-			"<b>AVALIADO </b></div><div class='col-md-3'><b>&nbsp;RESULTADO</b></div>" +
-		 	"</div></div></div>";
+		"<b>SOLICITADO </b></div><div class='col-md-5'><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; NOME EXAME</b></div><div class='col-md-2'>" +
+		"<b>AVALIADO </b></div><div class='col-md-3'><b>&nbsp;RESULTADO</b></div>" +
+		"</div></div></div>";
 }
 
-function dataFormatada(dataAtual){
-    	let data = new Date(dataAtual),
-        dia  = data.getDate().toString().padStart(2, '0'),
-        mes  = (data.getMonth()+1).toString().padStart(2, '0'),
-        ano  = data.getFullYear();
-    return `${dia}/${mes}/${ano}`;
+function dataFormatada(dataAtual) {
+	let data = new Date(dataAtual),
+		dia = data.getDate().toString().padStart(2, '0'),
+		mes = (data.getMonth() + 1).toString().padStart(2, '0'),
+		ano = data.getFullYear();
+	return `${dia}/${mes}/${ano}`;
+}
+
+function adicionaProcedimento(codigo) {
+	$.ajax({
+		url: '/exame/procedimento/' + codigo,
+		method: 'get',
+		success: function() {
+			$("#procedimento-exame").val("");
+			$.notify({
+				// options
+				icon: 'flaticon-success',
+				title: 'SUCESSO',
+				message: 'O Procedimento foi adicionado a solicitação',
+				target: '_blank'
+			}, {
+				// settings
+				element: 'body',
+				position: null,
+				type: "success",
+				allow_dismiss: true,
+				newest_on_top: false,
+				showProgressbar: false,
+				placement: {
+					from: "top",
+					align: "right"
+				},
+				offset: 20,
+				spacing: 10,
+				z_index: 1031,
+				delay: 5000,
+				timer: 1000,
+				url_target: '_blank',
+				mouse_over: null,
+				animate: {
+					enter: 'animated fadeInDown',
+					exit: 'animated fadeOutUp'
+				},
+				onShow: null,
+				onShown: null,
+				onClose: null,
+				onClosed: null,
+				icon_type: 'class',
+			});
+			$("#table-procedimentos-exame").DataTable().ajax.reload();
+		},
+		error: function() {
+			$("#procedimento-exame").val("");
+			console.log("erro aqui");
+			$.notify({
+				// options
+				icon: 'flaticon-exclamation',
+				title: 'ERRO',
+				message: 'Não foi possível processar sua solicitação',
+				target: '_blank'
+			}, {
+				// settings
+				element: 'body',
+				position: null,
+				type: "danger",
+				allow_dismiss: true,
+				newest_on_top: false,
+				showProgressbar: false,
+				placement: {
+					from: "top",
+					align: "right"
+				},
+				offset: 20,
+				spacing: 10,
+				z_index: 1031,
+				delay: 5000,
+				timer: 1000,
+				url_target: '_blank',
+				mouse_over: null,
+				animate: {
+					enter: 'animated fadeInDown',
+					exit: 'animated fadeOutUp'
+				},
+				onShow: null,
+				onShown: null,
+				onClose: null,
+				onClosed: null,
+				icon_type: 'class',
+			});
+		}
+
+	});
 }
 
