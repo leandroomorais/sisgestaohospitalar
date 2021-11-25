@@ -532,7 +532,7 @@ function infoCardObservacoes(observacoes) {
 }
 
 function infoCardDataProfissional(date, nomeProfissional, crm) {
-	return "<span class='text-warning'> " + dataFormatada(date) + " </span><br><span class='text-muted'> " + nomeProfissional + " </span><br><strong>CRM: </strong><span class='text-muted'> " + crm + " </span><br>"
+	return "<span class='text-warning'> " + dataFormatadaJava(date) + " </span><br><span class='text-muted'> " + nomeProfissional + " </span><br><strong>CRM: </strong><span class='text-muted'> " + crm + " </span><br>"
 }
 
 function imprimirExame() {
@@ -550,7 +550,7 @@ function atualizaTodosExames() {
 		method: 'get',
 		success: function(data) {
 			if (isEmpty(data)) {
-				$("#div-todos-exames").append("<h5 class='card-title text-center'>Não existem resultados de exames cadastrados neste Prontuario</h5><p class='card-text text-center'>Clique no botão Novo Exame para cadastrar um.</p>");
+				$("#div-todos-exames").append("<h5 class='card-title text-center'>Não existem resultados de exames cadastrados neste Prontuario</h5><p class='card-text text-center'>Clique no botão Nova solicitação para cadastrar uma.</p>");
 			} else {
 				$("#div-todos-exames").append(createCardTitulo());
 				$.each(data, function(key1, item1) {
@@ -573,7 +573,7 @@ function createCardTodosExame(data1, data) {
 
 
 function procedimentos(item1, item) {
-	var dataSolicitacao = dataFormatada(item1.dataSolicitacao);
+	var dataSolicitacao = dataFormatadaJava(item1.dataSolicitacao);
 
 	return "<div class='col-md-2'>" + dataSolicitacao + " </div><div class='col-md-5'><b> " + item.nome + "</b></div>";
 }
@@ -587,7 +587,7 @@ function infoResultado(data1, data) {
 	} else {
 		for (let resultado of resultados) {
 			if (resultado.procedimento.codigo == data.codigo) {
-				var dataResultado = dataFormatada(resultado.dataResultado);
+				var dataResultado = dataFormatadaJS(resultado.dataResultado);
 
 				return procedimentos(data1, data) + "<div class='col-md-2'>" + dataResultado +
 					"</div><div class='col-md-3'><b> Sim </b>" + "<button type='button' class='btn btn-light btn-sm' onclick='detalheResultadoExame(" + resultado.id + ");'><i class='fa fa-search' style='font-size:18px;color:blue'></i></button>"
@@ -609,9 +609,17 @@ function createCardTitulo() {
 		"</div></div></div>";
 }
 
-function dataFormatada(dataAtual) {
+function dataFormatadaJava(dataAtual) {
 	let data = new Date(dataAtual),
-		dia = data.getDate().toString().padStart(2, '0'),
+		dia = (data.getDate()).toString().padStart(2, '0'),
+		mes = (data.getMonth() + 1).toString().padStart(2, '0'),
+		ano = data.getFullYear();
+	return `${dia}/${mes}/${ano}`;
+}
+
+function dataFormatadaJS(dataAtual) {
+	let data = new Date(dataAtual),
+		dia = (data.getDate() + 1).toString().padStart(2, '0'),
 		mes = (data.getMonth() + 1).toString().padStart(2, '0'),
 		ano = data.getFullYear();
 	return `${dia}/${mes}/${ano}`;

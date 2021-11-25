@@ -70,14 +70,23 @@ function dataRealizacaoResultadoExame(data) {
 		return "<span> " + " " + " </span>";
 	}
 
-	return "<span> " + dataFormatada(data.dataRealizacao) + " </span>";
+	return "<span> " + dataFormatadaJS(data.dataRealizacao) + " </span>";
 }
 
 function dataResultadoResultadoExame(data) {
-	return "<span> " + dataFormatada(data.dataResultado) + "</span>";
+	if (data.dataResultado == null) {
+		return "<span> " + " " + " </span>";
+	}
+
+	return "<span> " + dataFormatadaJS(data.dataResultado) + "</span>";
 }
 
 function editarResultadoExame(idExame, codigoProcedimento, resultadoId) {
+
+	$("#card-list-exames").fadeOut(100);
+	$("#card-list-todos-exames").fadeOut(100);
+	$("#card-novo-resultado-exame").fadeIn(100);
+
 	$.ajax({
 		url: '/exame/id/' + idExame,
 		method: 'get',
@@ -109,11 +118,14 @@ function editarResultadoExame(idExame, codigoProcedimento, resultadoId) {
 		method: 'get',
 		success: function(data) {
 			idResultadoExameEdicao = data.id;
-			$("#descricao").val(data.descricao);
+			//tinymce.get("descricao").setMode('design');
+			tinymce.get("descricao").setContent(data.descricao);
+			//$("#descricao").html(data.descricao);
+			$("#dataRealizacao").val(data.dataRealizacao);
+			$("#dataResultado").val(data.dataResultado);
 		}
 	})
-	$("#card-list-exames").fadeOut(100);
-	$("#card-novo-resultado-exame").fadeIn(100);
+
 }
 
 function createCardResultadoExame(data) {
@@ -159,7 +171,7 @@ function infoCardObservacoesResultadoExame(observacoes) {
 }
 
 function infoCardDataProfissionalResultadoExame(date, nomeProfissional, crm) {
-	let dataExame = dataFormatada(date);
+	let dataExame = dataFormatadaJava(date);
 	return "<span class='text-warning'> " + dataExame + " </span><br><span class='text-muted'> " + nomeProfissional + " </span><br><strong>CRM: </strong><span class='text-muted'> " + crm + " </span><br>"
 }
 
@@ -170,7 +182,9 @@ function createCardProcedimentoResultadoExame(data) {
 }
 
 function limpaResultadoExame() {
-	$("#descricao").val("");
+	tinymce.get("descricao").setContent("");
+	$("#dataRealizacao").val("");
+	$("#dataResultado").val("");
 }
 
 function fechaFormularioResultadoExame() {
@@ -386,7 +400,7 @@ $("#form-resultado-exame").submit(function(evt) {
 	})
 })
 
-$("#dataResultado").on("change", function() {
+$("#dataResultado, #dataRealizacao").on("change", function() {
 	var dataResultado = $(this).val();
 	var dataRealizacao = $("#dataRealizacao").val();
 	if (moment(dataRealizacao).isAfter(dataResultado)) {
