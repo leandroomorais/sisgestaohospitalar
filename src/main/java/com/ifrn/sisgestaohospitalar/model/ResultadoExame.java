@@ -1,5 +1,6 @@
 package com.ifrn.sisgestaohospitalar.model;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 import javax.persistence.Entity;
@@ -21,9 +22,11 @@ public class ResultadoExame {
 	
 	private String descricao;
 	
-	private LocalDateTime dataRealizacao;
+	private LocalDate dataRealizacao;
 	
-	private LocalDateTime dataResultado;
+	private LocalDate dataResultado;
+	
+	private LocalDateTime dataCadastro;
 	
 	@ManyToOne
 	@JoinColumn(name = "procedimento_id")
@@ -61,20 +64,28 @@ public class ResultadoExame {
 		this.descricao = descricao;
 	}
 
-	public LocalDateTime getDataRealizacao() {
+	public LocalDate getDataRealizacao() {
 		return dataRealizacao;
 	}
 
-	public void setDataRealizacao(LocalDateTime dataRealizacao) {
+	public void setDataRealizacao(LocalDate dataRealizacao) {
 		this.dataRealizacao = dataRealizacao;
 	}
 
-	public LocalDateTime getDataResultado() {
+	public LocalDate getDataResultado() {
 		return dataResultado;
 	}
 
-	public void setDataResultado(LocalDateTime dataResultado) {
+	public void setDataResultado(LocalDate dataResultado) {
 		this.dataResultado = dataResultado;
+	}
+
+	public LocalDateTime getDataCadastro() {
+		return dataCadastro;
+	}
+
+	public void setDataCadastro(LocalDateTime dataCadastro) {
+		this.dataCadastro = dataCadastro;
 	}
 
 	public Procedimento getProcedimento() {
@@ -93,4 +104,5 @@ public class ResultadoExame {
 		this.profissional = profissional;
 	}
 	
+		
 }

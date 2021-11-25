@@ -4,11 +4,11 @@ var exame;
 var procedimento;
 var idResultadoExameEdicao;
 
-function resgistroResultadoExame(idExame, codigoProcedimento){
-	
+function resgistroResultadoExame(idExame, codigoProcedimento) {
 	$("#card-list-exames").fadeOut(100);
+	$("#card-list-todos-exames").fadeOut(100);
 	$("#card-novo-resultado-exame").fadeIn(100);
-	
+
 	$.ajax({
 		url: '/exame/id/' + idExame,
 		method: 'get',
@@ -22,7 +22,7 @@ function resgistroResultadoExame(idExame, codigoProcedimento){
 
 		},
 	})
-	
+
 	$.ajax({
 		url: '/procedimento/codigo/' + codigoProcedimento,
 		method: 'get',
@@ -38,52 +38,46 @@ function resgistroResultadoExame(idExame, codigoProcedimento){
 	})
 }
 
-function detalheResultadoExame(resultadoId){
-
-	
+function detalheResultadoExame(resultadoId) {
 	$.ajax({
 		url: '/resultadoexame/id/' + resultadoId,
 		method: 'get',
 		success: function(data) {
 			$("#divDecricaoResultadoExame").empty().append(createCardModalResultadoExame(data));
-			$("#modalResultadoExame").modal("show");		
+			$("#modalResultadoExame").modal("show");
 		}
 	})
-		
+
 }
 
-function createCardModalResultadoExame(data){
-
+function createCardModalResultadoExame(data) {
 	return "<div class='card'><div class='card-body'><div class='col-md-12 row'><div class='col-md-12'>" +
 		"<strong>Descrição: </strong>" +
-		"<br>" + descricaoResultadoExame(data) + 
+		"<br>" + descricaoResultadoExame(data) +
 		"</div><div class='col-md-12 row'><div class='col-md-6'><strong>Realizado: </strong>" +
 		dataRealizacaoResultadoExame(data)
-		+"</div><div class='col-md-6'> <strong>Resultado: </strong>"+
+		+ "</div><div class='col-md-6'> <strong>Resultado: </strong>" +
 		dataResultadoResultadoExame(data)
-		+"</div></div></div></div></div>";
+		+ "</div></div></div></div></div>";
 }
 
-function descricaoResultadoExame(data){
+function descricaoResultadoExame(data) {
 	return "<span>" + data.descricao + "</span><br><br>";
 }
 
-function dataRealizacaoResultadoExame(data){
-	if(data.dataRealizacao == null){
-		return "<span> "+" "+" </span>";
+function dataRealizacaoResultadoExame(data) {
+	if (data.dataRealizacao == null) {
+		return "<span> " + " " + " </span>";
 	}
 
 	return "<span> " + dataFormatada(data.dataRealizacao) + " </span>";
 }
 
-function dataResultadoResultadoExame(data){
+function dataResultadoResultadoExame(data) {
 	return "<span> " + dataFormatada(data.dataResultado) + "</span>";
 }
 
-function editarResultadoExame(idExame, codigoProcedimento, resultadoId){
-	
-	
-	
+function editarResultadoExame(idExame, codigoProcedimento, resultadoId) {
 	$.ajax({
 		url: '/exame/id/' + idExame,
 		method: 'get',
@@ -97,7 +91,7 @@ function editarResultadoExame(idExame, codigoProcedimento, resultadoId){
 
 		},
 	})
-	
+
 	$.ajax({
 		url: '/procedimento/codigo/' + codigoProcedimento,
 		method: 'get',
@@ -108,10 +102,8 @@ function editarResultadoExame(idExame, codigoProcedimento, resultadoId){
 				procedimento = data;
 				$("#div-procedimento-exame-solicitado").empty().append(createCardProcedimentoResultadoExame(data));
 			}
-
 		},
 	})
-	
 	$.ajax({
 		url: '/resultadoexame/id/' + resultadoId,
 		method: 'get',
@@ -120,14 +112,11 @@ function editarResultadoExame(idExame, codigoProcedimento, resultadoId){
 			$("#descricao").val(data.descricao);
 		}
 	})
-	
 	$("#card-list-exames").fadeOut(100);
 	$("#card-novo-resultado-exame").fadeIn(100);
-	
 }
 
 function createCardResultadoExame(data) {
-	
 	return "<div class='card'><div class='card-body'><div class='col-md-12 row'><div class='col-md-9'>" +
 		"<strong>Procedimentos da Solicitação: </strong>" +
 		"<br>" + infoProcedimentosResultadoExame(data.procedimentos) +
@@ -144,17 +133,17 @@ function infoProcedimentosResultadoExame(procedimentos) {
 	var retornoConcat = "";
 	$.each(procedimentos, function(key, item) {
 		retorno = "<div>" + item.codigo + " - " + "<b>" + item.nome + "</b>" + "</div>";
-		retornoConcat += retorno ;
+		retornoConcat += retorno;
 	})
 	return retornoConcat;
 }
 
 function infoCardCidResultadoExame(cid) {
-	if(cid == null){
+	if (cid == null) {
 		return "<strong>CID Relacionado: </strong><br><span><i> Nenhum CID Informado! </i></span><br>"
-	}else{
-     	return "<strong>CID Relacionado: </strong><br><span> " + cid.nome + " </span><br>"
-     }
+	} else {
+		return "<strong>CID Relacionado: </strong><br><span> " + cid.nome + " </span><br>"
+	}
 }
 
 function infoCardJustificativaResultadoExame(justificativa) {
@@ -162,9 +151,9 @@ function infoCardJustificativaResultadoExame(justificativa) {
 }
 
 function infoCardObservacoesResultadoExame(observacoes) {
-	if(observacoes == ""){
+	if (observacoes == "") {
 		return "<strong>Observações: </strong><br><span><i> Nenhuma Observação Registrada! </i></span><br>"
-	}else{
+	} else {
 		return "<strong>Observações: </strong><br><span> " + observacoes + " </span><br>"
 	}
 }
@@ -174,15 +163,11 @@ function infoCardDataProfissionalResultadoExame(date, nomeProfissional, crm) {
 	return "<span class='text-warning'> " + dataExame + " </span><br><span class='text-muted'> " + nomeProfissional + " </span><br><strong>CRM: </strong><span class='text-muted'> " + crm + " </span><br>"
 }
 
-function createCardProcedimentoResultadoExame(data){
+function createCardProcedimentoResultadoExame(data) {
 	return "<div class='card'><div class='card-body'><div class='col-md-12 row'>" +
 		"<div>" + data.codigo + " - " + "<b>" + data.nome + "</b>" + "</div>" +
-	    "</div></div></div>";
+		"</div></div></div>";
 }
-
-
-
-
 
 function limpaResultadoExame() {
 	$("#descricao").val("");
@@ -192,8 +177,8 @@ function fechaFormularioResultadoExame() {
 	limpaResultadoExame();
 	$("#card-novo-resultado-exame").fadeOut(100);
 	$("#card-list-exames").fadeIn(100);
+	$("#card-list-todos-exames").fadeIn(100);
 }
-
 
 $("#novo-resultado-exame-voltar").click(function() {
 	fechaFormularioResultadoExame();
@@ -214,12 +199,14 @@ function removeInvalidFedbackResultadoExame() {
 $("#form-resultado-exame").submit(function(evt) {
 	evt.preventDefault();
 	var resultadoexame = {};
-	
-	if(idResultadoExameEdicao != null){
+
+	if (idResultadoExameEdicao != null) {
 		resultadoexame.id = idResultadoExameEdicao;
 	}
-	
-	resultadoexame.descricao = $("#descricao").val();
+
+	resultadoexame.descricao = tinymce.get("descricao").getContent();
+	resultadoexame.dataResultado = $("#dataResultado").val();
+	resultadoexame.dataRealizacao = $("#dataRealizacao").val();
 	resultadoexame['procedimento'] = procedimento.codigo;
 	resultadoexame['exame'] = exame.id;
 
@@ -354,8 +341,66 @@ $("#form-resultado-exame").submit(function(evt) {
 					$("input[name='" + key + "']").parent().parent().addClass("has-error has-feedback");
 
 				})
-			}
+			},
+			500: function(xhr) {
+				var resposta = $.parseJSON(xhr.responseText);
+				console.log(resposta)
+				$.notify({
+					// options
+					icon: 'flaticon-exclamation',
+					title: 'ERRO',
+					message: resposta.message,
+					target: '_blank'
+				}, {
+					// settings
+					element: 'body',
+					position: null,
+					type: "danger",
+					allow_dismiss: true,
+					newest_on_top: false,
+					showProgressbar: false,
+					placement: {
+						from: "top",
+						align: "right"
+					},
+					offset: 20,
+					spacing: 10,
+					z_index: 1031,
+					delay: 5000,
+					timer: 1000,
+					url_target: '_blank',
+					mouse_over: null,
+					animate: {
+						enter: 'animated fadeInDown',
+						exit: 'animated fadeOutUp'
+					},
+					onShow: null,
+					onShown: null,
+					onClose: null,
+					onClosed: null,
+					icon_type: 'class',
+				});
+			},
 		},
 
 	})
+})
+
+$("#dataResultado").on("change", function() {
+	var dataResultado = $(this).val();
+	var dataRealizacao = $("#dataRealizacao").val();
+	if (moment(dataRealizacao).isAfter(dataResultado)) {
+
+		$("#dataRealizacao").parent().parent().addClass("has-error");
+		$("#dataRealizacao-small").removeClass().addClass("text-danger").text("A data de realização do exame não pode ser maior que a data do resultado");
+
+		$("#dataResultado").parent().parent().addClass("has-error");
+		$("#dataResultado-small").removeClass().addClass("text-danger").text("A data do resultado do exame não pode ser menor que a data de realização");
+	} else {
+		$("#dataRealizacao").parent().parent().removeClass("has-error");
+		$("#dataRealizacao-small").removeClass().text("");
+
+		$("#dataResultado").parent().parent().removeClass("has-error");
+		$("#dataResultado-small").removeClass().text("");
+	}
 })

@@ -11,6 +11,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
 
+import com.ifrn.sisgestaohospitalar.model.ExameSimplificado;
 import com.ifrn.sisgestaohospitalar.model.Role;
 import com.ifrn.sisgestaohospitalar.model.TipoServico;
 import com.ifrn.sisgestaohospitalar.model.TipoUsuario;
@@ -25,6 +26,7 @@ import com.ifrn.sisgestaohospitalar.repository.RoleRepository;
 import com.ifrn.sisgestaohospitalar.repository.TipoServicoRepository;
 import com.ifrn.sisgestaohospitalar.repository.TipoUsuarioRepository;
 import com.ifrn.sisgestaohospitalar.repository.ViaAdministracaoRepository;
+import com.ifrn.sisgestaohospitalar.utils.LeitorTXTExames;
 import com.ifrn.sisgestaohospitalar.utils.LeitorTXTMedicamentos;
 import com.ifrn.sisgestaohospitalar.utils.LeitorTxtSigtap;
 import com.ifrn.sisgestaohospitalar.utils.LeitorXmlEsus;
@@ -33,6 +35,9 @@ import com.ifrn.sisgestaohospitalar.utils.SalvarLogradouros;
 
 @SpringBootApplication
 public class SisgestaohospitalarApplication implements ApplicationListener<ContextRefreshedEvent> {
+
+	@Autowired
+	LeitorTXTExames leitorTXTExames;
 
 	@Autowired
 	LeitorTXTMedicamentos leitorTXTMedicamentos;
@@ -88,7 +93,9 @@ public class SisgestaohospitalarApplication implements ApplicationListener<Conte
 	String urlRelationProced_Ocupacao = System.getProperty("user.dir") + "/SigtapSUS/rl_procedimento_ocupacao.txt";
 	String txtMedicamentos = System.getProperty("user.dir") + "/medicamento/medicamentos_rename.txt";
 	String txtFormaFarmaceutica = System.getProperty("user.dir") + "/medicamento/formafarmaceutica.txt";
-
+	String txtGruposExames = System.getProperty("user.dir") + "/exames/gruposExames.txt";
+	String txtExamesSimplificado = System.getProperty("user.dir") + "/exames/examesSimplificado.txt";
+	
 	@Override
 	public void onApplicationEvent(ContextRefreshedEvent event) {
 
@@ -99,8 +106,8 @@ public class SisgestaohospitalarApplication implements ApplicationListener<Conte
 		//lerEstadosMunicipios();
 		//salvarViaAdministracao();
 		//salvarTipoServico();
-		
-		//commit testando o git
+		//LerExames();
+		//leitorTXTExames.atualizaGrupo();
 	}
 
 	public void salvarTipoServico() {
@@ -146,6 +153,15 @@ public class SisgestaohospitalarApplication implements ApplicationListener<Conte
 		viaAdministracaoRepository.saveAndFlush(parenteralIntraVenosa);
 		viaAdministracaoRepository.saveAndFlush(parenteralSubcultanea);
 		viaAdministracaoRepository.saveAndFlush(topica);
+	}
+
+	public void LerExames() {
+		try {
+			leitorTXTExames.lerTXTFormaGrupos(txtGruposExames);
+			leitorTXTExames.lerTXTExames(txtExamesSimplificado);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 	public void lerMedicamentosEFormaFarmaceutica() {
