@@ -3,6 +3,7 @@
 var exame;
 var procedimento;
 var idResultadoExameEdicao;
+var dataSolicitacaoExame;
 
 function resgistroResultadoExame(idExame, codigoProcedimento) {
 	$("#card-list-exames").fadeOut(100);
@@ -17,6 +18,7 @@ function resgistroResultadoExame(idExame, codigoProcedimento) {
 				$("#div-resultado-exame-solicitado").empty().append("<h5 class='card-title text-center'>O Exame solicitado não foi encontrado</h5>");
 			} else {
 				exame = data;
+				dataSolicitacaoExame = dataFormatadaJSComTraco(data.dataSolicitacao);
 				$("#div-resultado-exame-solicitado").empty().append(createCardResultadoExame(data));
 			}
 
@@ -95,6 +97,7 @@ function editarResultadoExame(idExame, codigoProcedimento, resultadoId) {
 				$("#div-resultado-exame-solicitado").empty().append("<h5 class='card-title text-center'>O Exame solicitado não foi encontrado</h5>");
 			} else {
 				exame = data;
+				dataSolicitacaoExame = dataFormatadaJSComTraco(data.dataSolicitacao);
 				$("#div-resultado-exame-solicitado").empty().append(createCardResultadoExame(data));
 			}
 
@@ -185,6 +188,11 @@ function limpaResultadoExame() {
 	tinymce.get("descricao").setContent("");
 	$("#dataRealizacao").val("");
 	$("#dataResultado").val("");
+	
+	exame = null;
+	procedimento = null;
+	idResultadoExameEdicao = null;
+	dataSolicitacaoExame = null;
 }
 
 function fechaFormularioResultadoExame() {
@@ -270,9 +278,10 @@ $("#form-resultado-exame").submit(function(evt) {
 			atualizaTodosExames();
 			atualizaExames();
 			fechaFormularioResultadoExame();
-			exame = null;
-			procedimento = null;
-			idResultadoExameEdicao = null;
+//			exame = null;
+//			procedimento = null;
+//			idResultadoExameEdicao = null;
+//			dataSolicitacaoExame = null;
 		},
 
 		statusCode: {
@@ -400,9 +409,15 @@ $("#form-resultado-exame").submit(function(evt) {
 	})
 })
 
-$("#dataResultado, #dataRealizacao").on("change", function() {
+
+// verifica se a data da realizaçao e do resultado são menores que a data solicitada  
+
+$("#dataResultado").on("change", function() {
 	var dataResultado = $(this).val();
 	var dataRealizacao = $("#dataRealizacao").val();
+	
+	var dataAtual = dataFormatadaJSComTraco(new Date());
+	
 	if (moment(dataRealizacao).isAfter(dataResultado)) {
 
 		$("#dataRealizacao").parent().parent().addClass("has-error");
@@ -417,4 +432,72 @@ $("#dataResultado, #dataRealizacao").on("change", function() {
 		$("#dataResultado").parent().parent().removeClass("has-error");
 		$("#dataResultado-small").removeClass().text("");
 	}
+	
+	if (moment(dataSolicitacaoExame).isAfter(dataResultado)) {
+
+		$("#dataResultado").parent().parent().addClass("has-error");
+		$("#dataResultado-small").removeClass().addClass("text-danger").text("A data do resultado do exame não pode ser menor que a data da solicitção do exame");
+		$("#dataResultado").val("");	
+	} else {
+
+		$("#dataResultado").parent().parent().removeClass("has-error");
+		$("#dataResultado-small").removeClass().text("");
+	}
+	
+	if (moment(dataResultado).isAfter(dataAtual)) {
+
+		$("#dataResultado").parent().parent().addClass("has-error");
+		$("#dataResultado-small").removeClass().addClass("text-danger").text("A data do resultado do exame não pode ser maior que a data atual");
+		$("#dataResultado").val("");	
+	} else {
+
+		$("#dataResultado").parent().parent().removeClass("has-error");
+		$("#dataResultado-small").removeClass().text("");
+	}
 })
+
+
+$("#dataRealizacao").on("change", function() {
+	var dataRealizacao = $(this).val();
+	var dataResultado = $("#dataResultado").val();
+	
+	var dataAtual = dataFormatadaJSComTraco(new Date());
+	
+	if (moment(dataRealizacao).isAfter(dataResultado)) {
+
+		$("#dataRealizacao").parent().parent().addClass("has-error");
+		$("#dataRealizacao-small").removeClass().addClass("text-danger").text("A data de realização do exame não pode ser maior que a data do resultado");
+
+		$("#dataResultado").parent().parent().addClass("has-error");
+		$("#dataResultado-small").removeClass().addClass("text-danger").text("A data do resultado do exame não pode ser menor que a data de realização");
+	} else {
+		$("#dataRealizacao").parent().parent().removeClass("has-error");
+		$("#dataRealizacao-small").removeClass().text("");
+
+		$("#dataResultado").parent().parent().removeClass("has-error");
+		$("#dataResultado-small").removeClass().text("");
+	}
+	
+	if (moment(dataSolicitacaoExame).isAfter(dataRealizacao)) {
+
+		$("#dataRealizacao").parent().parent().addClass("has-error");
+		$("#dataRealizacao-small").removeClass().addClass("text-danger").text("A data de realização do exame não pode ser menor que a data da solicitção do exame");
+		$("#dataRealizacao").val("");
+	} else {
+		$("#dataRealizacao").parent().parent().removeClass("has-error");
+		$("#dataRealizacao-small").removeClass().text("");
+
+	}
+	
+	if (moment(dataRealizacao).isAfter(dataAtual)) {
+
+		$("#dataRealizacao").parent().parent().addClass("has-error");
+		$("#dataRealizacao-small").removeClass().addClass("text-danger").text("A data de realização do exame não pode ser maior que a data atual");
+		$("#dataRealizacao").val("");
+	} else {
+		$("#dataRealizacao").parent().parent().removeClass("has-error");
+		$("#dataRealizacao-small").removeClass().text("");
+
+	}
+})
+

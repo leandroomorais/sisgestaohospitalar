@@ -65,6 +65,7 @@ public class ExameController {
 		if(procedimentos.isEmpty()) {
 			return ResponseEntity.badRequest().build();
 		}
+		
 
 		Optional<Prontuario> optional = prontuarioRepository.findById(exame.getProntuario().getId());
 		if (optional.isPresent()) {
@@ -86,15 +87,19 @@ public class ExameController {
 	
 	@GetMapping("/procedimento/{codigoProcedimento}")
 	public ResponseEntity<?> adicionarProcedimento(@PathVariable("codigoProcedimento") Long codigoProcedimento) {
-		Optional<Procedimento> optional = procedimentoRepository.findById(codigoProcedimento);
+		Procedimento procedimento = procedimentoRepository.findByCodigo(codigoProcedimento);
 		
-		if (optional.isPresent()) {
-			if(procedimentos.contains(optional.get())) {
-				return ResponseEntity.badRequest().build();
-			}	
+		if (procedimento != null) {
 			
-			procedimentos.add(optional.get());
+			for(Procedimento pro : procedimentos) {
+				if(pro.getCodigo().equals(procedimento.getCodigo())) {
+					return ResponseEntity.notFound().build();
+				}
+			}
+			
+			procedimentos.add(procedimento);
 			return ResponseEntity.ok().build();
+			
 		}
 
 		return ResponseEntity.badRequest().build();

@@ -427,7 +427,7 @@ $("#procedimento-exame").autocomplete({
 		return false;
 	},
 	select: function(event, ui) {
-		adicionaProcedimento(ui.item.codigo);
+		adicionaProcedimentoaoExame(ui.item.codigo);
 		return false;
 	}
 }).autocomplete("instance")._renderItem = function(ul, item) {
@@ -625,10 +625,19 @@ function dataFormatadaJS(dataAtual) {
 	return `${dia}/${mes}/${ano}`;
 }
 
-function adicionaProcedimento(codigo) {
+function dataFormatadaJSComTraco(dataAtual) {
+	let data = new Date(dataAtual),
+		dia = (data.getDate()).toString().padStart(2, '0'),
+		mes = (data.getMonth() + 1).toString().padStart(2, '0'),
+		ano = data.getFullYear();
+	return `${ano}-${mes}-${dia}`;
+}
+
+function adicionaProcedimentoaoExame(codigo) {
 	$.ajax({
 		url: '/exame/procedimento/' + codigo,
 		method: 'get',
+		
 		success: function() {
 			$("#procedimento-exame").val("");
 			$.notify({
@@ -670,7 +679,7 @@ function adicionaProcedimento(codigo) {
 		},
 		error: function() {
 			$("#procedimento-exame").val("");
-			console.log("erro aqui");
+			
 			$.notify({
 				// options
 				icon: 'flaticon-exclamation',

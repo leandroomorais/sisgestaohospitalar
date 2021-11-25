@@ -106,8 +106,8 @@ public class SisgestaohospitalarApplication implements ApplicationListener<Conte
 		//lerEstadosMunicipios();
 		//salvarViaAdministracao();
 		//salvarTipoServico();
-		LerExames();
-		leitorTXTExames.atualizaGrupo();
+		//LerExames();
+		//leitorTXTExames.atualizaGrupo();
 	}
 
 	public void salvarTipoServico() {
