@@ -99,8 +99,7 @@ public class SisgestaohospitalarApplication implements ApplicationListener<Conte
 		//lerEstadosMunicipios();
 		//salvarViaAdministracao();
 		//salvarTipoServico();
-		
-		//commit testando o git
+
 	}
 
 	public void salvarTipoServico() {
