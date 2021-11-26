@@ -1,5 +1,38 @@
 "use strict";
 
+var ElementsUtils =
+/** @class */
+function () {
+  function ElementsUtils() {}
+
+  ElementsUtils.setInnerHTML = function (_a, document) {
+    var innerHTML = _a.innerHTML,
+        parentElement = _a.parentElement;
+
+    if (parentElement) {
+      var id = parentElement.id,
+          className = parentElement.className;
+
+      if (id) {
+        var element = document === null || document === void 0 ? void 0 : document.getElementById(id);
+
+        if (element) {
+          element.innerHTML += innerHTML;
+        }
+      } else if (className) {
+        var element = document === null || document === void 0 ? void 0 : document.getElementsByClassName(className)[0];
+
+        if (element) {
+          element.innerHTML += innerHTML;
+        }
+      }
+    }
+  };
+
+  return ElementsUtils;
+}();
+"use strict";
+
 var __rest = this && this.__rest || function (s, e) {
   var t = {};
 
@@ -19,6 +52,8 @@ function () {
   function TemplateDefault(doc) {
     var _this = this;
 
+    var _a;
+
     this._document = null;
     this._doc = null;
 
@@ -34,41 +69,54 @@ function () {
       var _b;
 
       var title = _a.title,
-          links = _a.links;
-      (_b = _this.document) === null || _b === void 0 ? void 0 : _b.write("<!DOCTYPE html>\n        <html lang=\"pt-br\">\n        \n        <head>\n            <meta charset=\"UTF-8\">\n            <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\n            <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n            <title>" + title + "</title>\n            <style>\n                " + ExtractPDF.extractMap(links, function (t, index) {
+          links = _a.links; //@ts-ignore
+
+      (_b = _this._document) === null || _b === void 0 ? void 0 : _b.head.innerHTML = "<meta charset=\"UTF-8\">\n        <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\n        <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n        <title>" + title + "</title>\n        <style>\n            " + ExtractPDF.extractMap(links, function (t, index) {
         return "@import '" + t.href + "';";
-      }) + "\n            </style>\n        </head>");
+      }) + "\n        </style>";
     };
 
     this.createHTML = function (_a) {
       var _b;
 
-      var innerHTML = _a.innerHTML;
+      var innerHTML = _a.innerHTML,
+          parentElement = _a.parentElement;
 
       if (typeof innerHTML !== 'undefined') {
-        (_b = _this.document) === null || _b === void 0 ? void 0 : _b.write(innerHTML);
+        if (!parentElement) {
+          //@ts-ignore
+          (_b = _this.document) === null || _b === void 0 ? void 0 : _b.body.innerHTML += innerHTML;
+        } else {
+          ElementsUtils.setInnerHTML({
+            innerHTML: innerHTML,
+            parentElement: parentElement
+          }, _this._document);
+        }
       }
     };
 
     this.createElements = function (_a) {
       var values = _a.values,
-          onRender = _a.onRender;
+          onRender = _a.onRender,
+          parentElement = _a.parentElement;
 
       if (onRender) {
         values === null || values === void 0 ? void 0 : values.map(function (value, index) {
           return _this.createHTML({
-            innerHTML: onRender(value, index)
+            innerHTML: onRender(value, index),
+            parentElement: parentElement
           });
         });
       }
     };
 
     this.createStyle = function (_a) {
-      var _b;
+      var _b, _c;
 
       var value = _a.value;
-      var style = value.trim() !== '' ? "<style> " + value + " </style>" : "<style>\n        .row {\n            display: flex;\n            align-items: center;\n            flex-direction: row;\n            justify-content: space-between;\n        }\n\n        .left {\n            display: flex;\n            justify-content: flex-start;\n            max-width: 50%;\n        }\n\n        .right {\n            display: flex;\n            justify-content: flex-end;\n            max-width: 50%;\n        }\n\n        .center {\n            display: flex;\n            flex-wrap: nowrap;\n            flex-direction: row;\n            align-content: center;\n            justify-content: center;\n            align-items: center;\n            text-align: center;\n        }\n\n        .container {\n            display: flex;\n            flex-direction: column;\n            flex-wrap: wrap;\n            align-content: stretch;\n            justify-content: center;\n            align-items: stretch;\n        }\n    </style>";
-      (_b = _this._document) === null || _b === void 0 ? void 0 : _b.write(style);
+      var style = value.trim() !== '' ? "<style> " + value + " </style>" : "<style>\n        .row {\n            display: flex;\n            align-items: center;\n            flex-direction: row;\n            justify-content: space-between;\n        }\n\n        .left {\n            display: flex;\n            justify-content: flex-start;\n            max-width: 50%;\n        }\n\n        .right {\n            display: flex;\n            justify-content: flex-end;\n            max-width: 50%;\n        }\n\n        .center {\n            display: flex;\n            flex-wrap: nowrap;\n            flex-direction: row;\n            align-content: center;\n            justify-content: center;\n            align-items: center;\n            text-align: center;\n        }\n\n        .container {\n            display: flex;\n            flex-direction: column;\n            flex-wrap: wrap;\n            align-content: stretch;\n            justify-content: center;\n            align-items: stretch;\n        }\n    </style>"; //@ts-ignore
+
+      (_c = (_b = _this._document) === null || _b === void 0 ? void 0 : _b.head) === null || _c === void 0 ? void 0 : _c.innerHTML += style;
     };
 
     this.createScript = function (_a) {
@@ -111,7 +159,8 @@ function () {
       View.append(new TagView(link).element, (_b = _this.document) === null || _b === void 0 ? void 0 : _b.head);
     };
 
-    this._document = doc.getDoc();
+    this._document = (_a = doc.get()) === null || _a === void 0 ? void 0 : _a.document;
+    this._doc = doc;
   }
 
   Object.defineProperty(TemplateDefault.prototype, "document", {

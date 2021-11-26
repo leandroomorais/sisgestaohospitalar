@@ -789,7 +789,8 @@ function imprimirPrescricao(data) {
 	const div = `
 	<div class="card">
 		<div class="card-header text-center">
-			<p>#title</p>
+			<p>MINISTÉRIO DA SAÚDE<br> ESTADO DE RIO GRANDE DO NORTE<br> MUNICÍPIO DE SEVERIANO MELO<br> UNIDADE DE
+				SAÚDE Hospital Maternidade Municipal de Severiano Melo</p>
 		</div>
 		<div class="card-body">
 			<div class="text-center">
@@ -805,8 +806,7 @@ function imprimirPrescricao(data) {
 				<p>Medicamento</p>
 			</div>
 			<div class="card">
-				<div class="card-body" style="border: 2px solid #686868;
-					border-radius: 5px;">
+				<div class="card-body">
 					<b>Princípio Ativo: </b><span>${principioAtivo}</span> | <b>Concentração: </b><span>${concentracao}</span> | <b>Quantidade: </b><span>${data.quantidade}</span> |
 					<b>Forma Farmacêutica: </b><span>${formaFarmaceutica.nome}</span> |
 					<b>Posologia: </b><span>${data.posologia}</span> <br/>

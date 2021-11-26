@@ -808,13 +808,6 @@ var TagView = function (_super) {
     enumerable: false,
     configurable: true
   });
-  Object.defineProperty(TagView.prototype, "element", {
-    get: function get() {
-      return this.element;
-    },
-    enumerable: false,
-    configurable: true
-  });
 
   TagView.prototype.check = function (tag, value) {
     if (tag) {

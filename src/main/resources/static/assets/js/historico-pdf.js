@@ -7,21 +7,46 @@ function checkNotNull(obj) {
 	return obj !== null
 }
 
-
+function title(value) {
+	return `<div class="text-left">
+				<h4 class="strong">${value}</h4>
+			</div>`
+}
 
 $("#historico-pdf").click(function () {
-	console.log(profissional)
 	const doc = new Doc({ url: '', target: '', features: 'height=2970,width=2100' })
-    const document = doc.getDoc()
-    const templateDoc = new TemplateDoc(document)
-    templateDoc.openHtml({ label: "Documento gerado pelo SGH" })
-    templateDoc.createStyle({ value: loadCSS() })
-    templateDoc.openBody()
-	templateDoc.createHeader({
-        value: `MINISTÉRIO DA SAÚDE
-    ESTADO DE RIO GRANDE DO NORTE
-    MUNICÍPIO DE SEVERIANO MELO
-    UNIDADE DE SAÚDE Hospital Maternidade Municipal de Severiano Melo`})
+	const templateDoc = new TemplateDoc(doc)
+	const elementsCount = 1;
+	templateDoc.getHtml({
+		title: "Documento gerado pelo SGH", links: [
+			{ type: 'text/css', href: 'http://localhost:9090/assets/css/bootstrap.min.css' },
+			{ type: 'text/css', href: 'http://localhost:9090/assets/css/atlantis.css' },
+		]
+	})
+	templateDoc.createStyle({
+		value: `@media print {
+					.card-footer {
+						display: none;
+					}
+        		}
+				.strong {
+					text-transform: uppercase;
+				}
+				`})
+	templateDoc.getBody({class: 'card'})
+	templateDoc.createHTML({
+		innerHTML: `<div class="card-header text-center">
+						<p>MINISTÉRIO DA SAÚDE<br> ESTADO DE RIO GRANDE DO NORTE<br> MUNICÍPIO DE SEVERIANO MELO<br> UNIDADE DE
+							SAÚDE Hospital Maternidade Municipal de Severiano Melo</p>
+					</div>
+					<div class="card-body">
+						<div class="text-center">
+							<h2 class="strong">Histórico da Atenção Básica - ESUS</h2>
+						</div>
+						<span id="children">
+						</span>
+					</div>
+					`})
 	let examesS = null
 	let examesSLabels = null
 
@@ -76,7 +101,6 @@ $("#historico-pdf").click(function () {
 
 	let medicamentoPres = null
 	let medicamentoLabels = null
-
 	if (checkNotUnderfined(receitas)) {
 		medicamentoLabels = [
 			'Principio Ativo',
@@ -149,143 +173,157 @@ $("#historico-pdf").click(function () {
 		})
 	}
 
-	if (checkNotNull(examesS)) {
-		console.log(examesS, examesSLabels)
-		templateDoc.createText({ value: `EXAMES SOLICITADOS`, attrsChild: { style: "font-weight: bold" }, attrsFather: { class: 'paragraph-left' }, attrsFatherParent: { class: 'space-simple-top' } })
-		const values = ExtractPDF.extractOfElements(examesSLabels, examesS, 2)
-		templateDoc.createElements({
-			values: values, onRender: (values, index) => `<div class="box">
-			<div class="box-title">
-				<p style="
-		margin: 0;
-		font-weight: bold;
-		">${index + 1}. Exame </p>
-				<hr width="100%" color="#686868" size="0.5px">
-			</div>
-				${ExtractPDF.extractMap(values.cols, (tCol, index) =>
-					`<div class="content">
-						${ExtractPDF.extractMap(tCol.elements, (value, index) =>
-							`<span style="margin-right: 10px
-							;">
-								<b>${value.label}: </b>
-								<p class="left-text">${value.value}</p>
-							</span>`
-						)}
-					</div>`
-				)}
-		</div>`})
-	}
-
-	if (checkNotNull(examesR)) { 
-		templateDoc.createText({ value: `RESULTADOS DE EXAMES`, attrsChild: { style: "font-weight: bold" }, attrsFather: { class: 'paragraph-left' }, attrsFatherParent: { class: 'space-simple-top' } })
-		const values = ExtractPDF.extractOfElements(examesRLabels, examesR, 2)
-		templateDoc.createElements({
-			values: values, onRender: (values, index) => `<div class="box">
-			<div class="box-title">
-				<p style="
-		margin: 0;
-		font-weight: bold;
-		">${index + 1}. Exame </p>
-				<hr width="100%" color="#686868" size="0.5px">
-			</div>
-				${ExtractPDF.extractMap(values.cols, (tCol, index) =>
-					`<div class="content">
-						${ExtractPDF.extractMap(tCol.elements, (value, index) =>
-							`<span style="margin-right: 10px
-							;">
-								<b>${value.label}: </b>
-								<p class="left-text">${value.value}</p>
-							</span>`
-						)}
-					</div>`
-				)}
-		</div>`})
-	}
-
 	if (checkNotNull(medicamentoPres)) {
-		templateDoc.createText({ value: `medicamentos prescritos`.toUpperCase(), attrsChild: { style: "font-weight: bold" }, attrsFather: { class: 'paragraph-left' }, attrsFatherParent: { class: 'space-simple-top' } })
+		templateDoc.createHTML({parentElement: {id: 'children'}, innerHTML: `${title("medicamentos prescritos")}`})
 
-		const values = ExtractPDF.extractOfElements(medicamentoLabels, medicamentoPres, 2)
+		const values = ExtractPDF.extractOfElements(medicamentoLabels, medicamentoPres, 1)
 		templateDoc.createElements({
-			values: values, onRender: (values, index) => `<div class="box">
-			<div class="box-title">
+			parentElement: {id: 'children'},
+			values: values, onRender: (values, index) => `<div class="card">
+			<div class="card-header">
 				<p style="
 		margin: 0;
 		font-weight: bold;
 		">${index + 1}. Medicamento </p>
-				<hr width="100%" color="#686868" size="0.5px">
 			</div>
+		    <div class="row">
 				${ExtractPDF.extractMap(values.cols, (tCol, index) =>
-					`<div class="content">
+					`<div class="card-body">
 						${ExtractPDF.extractMap(tCol.elements, (value, index) =>
-							`<span style="margin-right: 10px
-							;">
+							`<span>
 								<b>${value.label}: </b>
 								<p class="left-text">${value.value}</p>
 							</span>`
 						)}
 					</div>`
 				)}
+			</div>		
+		</div>`})
+	}
+
+	if (checkNotNull(examesS)) {
+		templateDoc.createHTML({ innerHTML: `${title("EXAMES SOLICITADOS")}`,
+								parentElement: {id: 'children'}})
+		const values = ExtractPDF.extractOfElements(examesSLabels, examesS, elementsCount)
+		templateDoc.createElements({
+			parentElement: {id: 'children'},
+			values: values, onRender: (values, index) => `<div class="card">
+			<div class="card-header">
+				<p style="
+		margin: 0;
+		font-weight: bold;
+		">${index + 1}. Exame </p>
+			</div>
+			<div class="row">
+				${ExtractPDF.extractMap(values.cols, (tCol, index) =>
+					`<div class="card-body">
+						${ExtractPDF.extractMap(tCol.elements, (value, index) =>
+							`<span>
+								<b>${value.label}: </b>
+								<p class="left-text">${value.value}</p>
+							</span>`
+						)}
+					</div>`
+				)}
+			</div>
+		</div>`})
+	}
+
+	if (checkNotNull(examesR)) {
+		templateDoc.createHTML({  innerHTML: `${title("RESULTADOS DE EXAMES")}`, parentElement: {id: 'children'},})
+		const values = ExtractPDF.extractOfElements(examesRLabels, examesR, elementsCount)
+		templateDoc.createElements({
+			parentElement: {id: 'children'},
+			values: values, onRender: (values, index) => `<div class="card">
+			<div class="card-header">
+				<p style="
+		margin: 0;
+		font-weight: bold;
+		">${index + 1}. Exame </p>
+			</div>
+				<div class="row">
+					${ExtractPDF.extractMap(values.cols, (tCol, index) =>
+						`<div class="card-body">
+							${ExtractPDF.extractMap(tCol.elements, (value, index) =>
+								`<span>
+									<b>${value.label}: </b>
+									<p class="left-text">${value.value}</p>
+								</span>`
+							)}
+						</div>`
+					)}
+				</div>
 		</div>`})
 	}
 
 	if (checkNotNull(vacinasApp)) {
 
-		templateDoc.createText({ value: `Vacinas Aplicadas`.toUpperCase(), attrsChild: { style: "font-weight: bold" }, attrsFather: { class: 'paragraph-left' }, attrsFatherParent: { class: 'space-simple-top' } })
+		templateDoc.createHTML({parentElement: {id: 'children'}, innerHTML: `${title("Vacinas Aplicadas")}`})
 
-		const values = ExtractPDF.extractOfElements(vacinasAppLabels, vacinasApp, 2)
+		const values = ExtractPDF.extractOfElements(vacinasAppLabels, vacinasApp, elementsCount)
 		templateDoc.createElements({
-			values: values, onRender: (values, index) => `<div class="box">
-			<div class="box-title">
+			parentElement: {id: 'children'},
+			values: values, onRender: (values, index) => `<div class="card">
+			<div class="card-header">
 				<p style="
 		margin: 0;
 		font-weight: bold;
 		">${index + 1}. Vacina </p>
-				<hr width="100%" color="#686868" size="0.5px">
 			</div>
+			<div class="row">
 				${ExtractPDF.extractMap(values.cols, (tCol, index) =>
-					`<div class="content">
+					`<div class="card-body">
 						${ExtractPDF.extractMap(tCol.elements, (value, index) =>
-							`<span style="margin-right: 10px
-							;">
+							`<span>
 								<b>${value.label}: </b>
 								<p class="left-text">${value.value}</p>
 							</span>`
 						)}
 					</div>`
 				)}
+			</div>
 		</div>`})
 	}
 
 	if (checkNotNull(vacinasAgen)) {
-		templateDoc.createText({ value: `Vacinas agentadas`.toUpperCase(), attrsChild: { style: "font-weight: bold" }, attrsFather: { class: 'paragraph-left' }, attrsFatherParent: { class: 'space-simple-top' } })
+		templateDoc.createHTML({parentElement: {id: 'children'}, innerHTML: `${title("Vacinas agentadas")}`})
 
-		const values = ExtractPDF.extractOfElements(vacinasAppLabels, vacinasApp, 2)
+		const values = ExtractPDF.extractOfElements(vacinasAppLabels, vacinasApp, elementsCount)
 		templateDoc.createElements({
-			values: values, onRender: (values, index) => `<div class="box">
-			<div class="box-title">
+			parentElement: {id: 'children'},
+			values: values, onRender: (values, index) => `<div class="card">
+			<div class="card-header">
 				<p style="
-		margin: 0;
-		font-weight: bold;
-		">${index + 1}. Vacina </p>
-				<hr width="100%" color="#686868" size="0.5px">
+					margin: 0;
+					font-weight: bold;
+					">${index + 1}. Vacina 
+				</p>
 			</div>
-				${ExtractPDF.extractMap(values.cols, (tCol, index) =>
-					`<div class="content">
-						${ExtractPDF.extractMap(tCol.elements, (value, index) =>
-							`<span style="margin-right: 10px
-							;">
-								<b>${value.label}: </b>
-								<p class="left-text">${value.value}</p>
-							</span>`
-						)}
-					</div>`
-				)}
+				<div class="row">
+					${ExtractPDF.extractMap(values.cols, (tCol, index) =>
+						`<div class="card-body">
+								${ExtractPDF.extractMap(tCol.elements, (value, index) =>
+									`<span>
+										<b>${value.label}: </b>
+										<p class="left-text">${value.value}</p>
+									</span>`
+								)}
+						</div>`
+					)}
+				</div>
 		</div>`})
 	}
-    templateDoc.createText({ value: `Solicitante`, attrsChild: { style: "font-weight: bold" }, attrsFather: { class: 'paragraph-center' }, attrsFatherParent: { class: 'space-simple-bottom' } })
-    templateDoc.closeBody()
-    templateDoc.closeHtml()
-    doc.print()
-
+	templateDoc.createHTML({parentElement: {id: 'children'}, innerHTML: `
+	<div class="text-center">
+		<p>Data: 20/11/2021</p>
+	</div>
+	<br/>
+	<div class="text-center">
+		<p>ZIRALDO GOMES HOLANDA MELO</p>
+		<span>CRM: 8392 / RN</span>
+	</div>
+	`})
+	templateDoc.createHTML({innerHTML: `<div class="card-footer">
+			<button onclick="window.print()" class="btn btn-primary">Imprimir</button>
+	</div>`})
 });

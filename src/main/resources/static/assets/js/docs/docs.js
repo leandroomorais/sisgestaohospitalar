@@ -9,15 +9,17 @@ class Docs{
     static doc(innerHTML){
         const doc = new Doc({ url: '', target: '', features: 'height=2970,width=2100' })
         const templateDoc = new TemplateDoc(doc)
+        
+        templateDoc.getHtml({ title: "Documento gerado pelo SGH", links: [
+            {type: 'text/css', href: 'http://localhost:9090/assets/css/bootstrap.min.css'},
+            {type: 'text/css', href: 'http://localhost:9090/assets/css/atlantis.css'},
+        ]})
         templateDoc.createStyle({value: `@media print {
             .card-footer {
                 display: none;
             }
         }`})
-        templateDoc.getHtml({ title: "Documento gerado pelo SGH", links: [
-            {type: 'text/css', href: 'http://localhost:9090/assets/css/bootstrap.min.css'},
-            {type: 'text/css', href: 'http://localhost:9090/assets/css/atlantis.css'},
-        ]})
+        //templateDoc.getBody({class: 'card'})
         templateDoc.createHTML({innerHTML: innerHTML})
         //doc.print()
         //onclick(doc)
