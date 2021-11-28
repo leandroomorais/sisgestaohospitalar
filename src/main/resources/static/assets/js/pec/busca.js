@@ -73,21 +73,34 @@ function error(obj, value, len){
 }
 
 function onConsult(date1, date2){
+    const basic = "Basic c2doX3dlYl9iZXRhMC4xOnNnaF93ZWJfYmV0YTAuMQ=="
     switchSpinner("create")
-    Req.getJSON({uri: `${baseUri}/receitamedicamentos/cpf/filter/`, params: [cpf, date1, date2],
+    Req.getJSON({uri: `${baseUri}/receitamedicamentos/cpf/filter/`, headers: {
+        Authorization: basic
+    }, params: [cpf, date1, date2],
      onSuccess: (data) => setMedicamentosPrescritos(data), onError: (data) => {
         error(receitas, data, 1)
         setMedicamentosPrescritos(data)
      }})
-    Req.getJSON({uri: `${baseUri}/avaliacoes/cpf/filter/`, params: [cpf, date1, date2],
+    Req.getJSON({uri: `${baseUri}/avaliacoes/cpf/filter/`, headers: {
+        Authorization: basic
+    }, params: [cpf, date1, date2],
         onSuccess: (data) => avaliacoes = data, onError: (data) => error(avaliacoes, data, 1)})
-    Req.getJSON({uri: `${baseUri}/exames/solicitations/cpf/filter/`, params: [cpf, date1, date2],
+    Req.getJSON({uri: `${baseUri}/exames/solicitations/cpf/filter/`, headers: {
+        Authorization: basic
+    }, params: [cpf, date1, date2],
         onSuccess: (data) => examesSolicitations = data, onError: (data) => error(examesSolicitations, data, 1)})
-    Req.getJSON({uri: `${baseUri}/exames/results/cpf/filter/`, params: [cpf, date1, date2], 
+    Req.getJSON({uri: `${baseUri}/exames/results/cpf/filter/`, headers: {
+        Authorization: basic
+    }, params: [cpf, date1, date2], 
         onSuccess: (data) => examesResult = data, onError: (data) => error(examesResult, data, 1)})
-    Req.getJSON({uri: `${baseUri}/vacinacao/aplicacao/cpf/filter/`, params: [cpf, date1, date2], 
+    Req.getJSON({uri: `${baseUri}/vacinacao/aplicacao/cpf/filter/`, headers: {
+        Authorization: basic
+    }, params: [cpf, date1, date2], 
         onSuccess: (data) => vacinasAplicadas = data, onError: (data) => error(vacinasAplicadas, data, 1)})
-    Req.getJSON({uri: `${baseUri}/vacinacao/aprazamento/cpf/filter/`, params: [cpf, date1, date2], 
+    Req.getJSON({uri: `${baseUri}/vacinacao/aprazamento/cpf/filter/`, headers: {
+        Authorization: basic
+    }, params: [cpf, date1, date2], 
         onSuccess: (data) => vacinasAgendadas = data, onError: (data) => error(vacinasAgendadas, data, 1)})
 }
 
