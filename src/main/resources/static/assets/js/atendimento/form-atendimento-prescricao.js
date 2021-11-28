@@ -814,7 +814,7 @@ function imprimirPrescricao(data) {
 				</div>   
 			</div>
 			<div class="text-center">
-				<p>Data: 20/11/2021</p>
+				<p>Data: ${moment(new Date()).format("DD/MM/YYYY")}</p>
 			</div>
 			<br/>
 			<div class="text-center">

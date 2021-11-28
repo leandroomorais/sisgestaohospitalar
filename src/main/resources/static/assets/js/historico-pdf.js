@@ -313,14 +313,15 @@ $("#historico-pdf").click(function () {
 				</div>
 		</div>`})
 	}
+
 	templateDoc.createHTML({parentElement: {id: 'children'}, innerHTML: `
 	<div class="text-center">
-		<p>Data: 20/11/2021</p>
+		<p>Data: ${moment(new Date()).format("DD/MM/YYYY")}</p>
 	</div>
 	<br/>
 	<div class="text-center">
-		<p>ZIRALDO GOMES HOLANDA MELO</p>
-		<span>CRM: 8392 / RN</span>
+		<p>${profissional.nome}</p>
+		<span>CRM: ${profissional.numeroRegistro} / ${profissional.siglaUfEmissao}</span>
 	</div>
 	`})
 	templateDoc.createHTML({innerHTML: `<div class="card-footer">

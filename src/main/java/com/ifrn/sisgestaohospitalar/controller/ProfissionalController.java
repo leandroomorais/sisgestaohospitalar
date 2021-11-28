@@ -21,7 +21,7 @@ public class ProfissionalController {
 
     @GetMapping("/findByName/{name}")
     public ResponseEntity<Profissional> findByName(@PathVariable("name") String name){
-        System.err.println();
+        System.err.println(name);
         Profissional profissional =  profissionalService.findByNome(name);
         if (profissional != null){
             return ResponseEntity.ok(profissional);

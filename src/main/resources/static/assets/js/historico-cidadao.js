@@ -40,6 +40,6 @@ $(document).ready(function () {
     request(uriReceita, cpf, (data) => setMedicamentosPrescritos(data), (data) => receitas = data)
     request(uriResult, cpf, (data) => examesResult = data, (data) => examesResult = data)*/
     request('/cidadao-resource/cpf/', cpf, (data) => user = data, (data) => user = {})
-    request('/api/profissionais', document.getElementsByClassName('low').item(0).textContent, (data) => console.log(data) = data, (data) => profissional = {})
+    request('/api/profissionais/findByName/', document.getElementsByClassName("low").item(0).textContent, ({data}) => profissional = data, (data) => profissional = {})
 })
 /*-----------------------------------------*/
