@@ -377,8 +377,23 @@ function removeCid(item) {
 	});
 }
 
-function imprimirAtestado(data, isAuthorization, cids) {
-	const { principioAtivo, concentracao, formaFarmaceutica } = data.medicamento
+function imprimirAtestado(data) {
+	const {cids, profissional, texto, dataRegistro, autorizaImpressaoCid} = data
+	const innerHTML = autorizaImpressaoCid ? `
+	<div class="text-left">
+		<p class="strong">CIDS:</p>
+	</div>
+	<div class="row">
+		${ExtractPDF.extractMap(cids, (value, index) =>
+			`<span style="padding-left: 12px;"> 
+				<p>${value.codigo}</p>
+			</span>`
+		)}
+	</div>
+	<div class="text-center">
+		<p>Autorizo a listagem dos CIDS nesse atestado</p>
+	</div>` 
+		: ''
 	const div = `
 	<div class="card">
 		<div class="card-header text-center">
@@ -390,30 +405,19 @@ function imprimirAtestado(data, isAuthorization, cids) {
 				<h1 class="strong">Atestado</h1>
 			</div>
 			<div class="text-justify">
-                <p>${document.getElementById("conteudo-atestado").textContent}</p>
+                <p>${texto}</p>
             </div>
-			${isAuthorization && (
-				`${cids.map((cid) => 
-					`<div class="text-left">
-						<p>${cid}</p>
-					 </div>
-					`
-				)}`	
-				`<div class="text-center">
-					<p>Autorizo a listagem dos CIDS nesse atestado</p>
-				 </div>
-				`
-			)}
+			${innerHTML}
 			<div class="text-center">
 				<p>Antonio Almeida</p>
 			</div>
 			<div class="text-center">
-				<p>Data: ${moment(new Date()).format("DD/MM/YYYY")}</p>
+				<p>Data: ${moment(dataRegistro).format("DD/MM/YYYY")}</p>
 			</div>
 			<br/>
 			<div class="text-center">
-				<p>${data.profissional.nome}</p>
-				<span>CRM: ${data.profissional.numeroRegistro + " / " + data.profissional.siglaUfEmissao}</span>
+				<p>${profissional.nome}</p>
+				<span>CRM: ${profissional.numeroRegistro + " / " + profissional.siglaUfEmissao}</span>
 			</div>
 		</div>
 		<div class="card-footer">
@@ -430,7 +434,7 @@ function creatCardAtestado(data) {
 		"</div><div class='col-md-4 text-right'>" +
 		infoCardDataProfissional(data.dataRegistro, data.profissional.nome, data.profissional.numeroRegistro + " / " + data.profissional.siglaUfEmissao) +
 		"</div></div><div class='text-right'>" +
-		"<button type='button' class='btn btn-light btn-sm' data-value='" + data.id + "' onclick='imprimirAtestado(" + JSON.stringify(data, document.getElementById("autorizaImpressaoCid").checkeds) + ")'><i class='fa fa-print'></i> Imprimir</button>" +
+		"<button type='button' class='btn btn-light btn-sm' data-value='" + data.id + "' onclick='imprimirAtestado("+ JSON.stringify(data) + ")'><i class='fa fa-print'></i> Imprimir</button>" +
 		buttonExcluir(data) +
 		"</div></div></div>";
 }
