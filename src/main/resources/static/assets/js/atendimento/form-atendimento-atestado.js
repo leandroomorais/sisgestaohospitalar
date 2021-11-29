@@ -1,7 +1,7 @@
 var idAtendimento = $("#id-atendimento").val();
 var idProntuario = $("#id-prontuario").val();
 
-$("#form-atestado").submit(function(evt) {
+$("#form-atestado").submit(function (evt) {
 	evt.preventDefault();
 	var atestado = {};
 	atestado.texto = $("#conteudo-atestado").text();
@@ -14,7 +14,7 @@ $("#form-atestado").submit(function(evt) {
 		url: '/atestado/',
 		method: 'post',
 		data: atestado,
-		success: function() {
+		success: function () {
 			fechaFormularioAtestado();
 			atualizaAtestados();
 			$.notify({
@@ -55,7 +55,7 @@ $("#form-atestado").submit(function(evt) {
 		},
 
 		statusCode: {
-			400: function() {
+			400: function () {
 				$.notify({
 					// options
 					icon: 'flaticon-exclamation',
@@ -92,9 +92,9 @@ $("#form-atestado").submit(function(evt) {
 					icon_type: 'class',
 				});
 			},
-			422: function(xhr) {
+			422: function (xhr) {
 				var errors = $.parseJSON(xhr.responseText);
-				$.each(errors, function(key, val) {
+				$.each(errors, function (key, val) {
 					$.notify({
 						// options
 						icon: 'flaticon-exclamation',
@@ -137,22 +137,22 @@ $("#form-atestado").submit(function(evt) {
 	})
 })
 
-$("#cancelar-atestado").click(function() {
+$("#cancelar-atestado").click(function () {
 
 })
 
 //Função pesquisa de Cids
 $("#cid-atestado").autocomplete({
 	source: "/cid/buscar",
-	focus: function(event, ui) {
+	focus: function (event, ui) {
 		$("#cid-atestado").val(ui.item.codigo + " - " + ui.item.nome);
 		return false;
 	},
-	select: function(event, ui) {
+	select: function (event, ui) {
 		$.ajax({
 			url: '/atestado/cid/' + ui.item.id,
 			method: 'get',
-			success: function() {
+			success: function () {
 				$("#cid-atestado").val("");
 				$.notify({
 					// options
@@ -191,7 +191,7 @@ $("#cid-atestado").autocomplete({
 				});
 				$("#table-cids").DataTable().ajax.reload();
 			},
-			error: function() {
+			error: function () {
 				$("#cid-atestado").val("");
 				$.notify({
 					// options
@@ -232,13 +232,13 @@ $("#cid-atestado").autocomplete({
 		});
 		return false;
 	}
-}).autocomplete("instance")._renderItem = function(ul, item) {
+}).autocomplete("instance")._renderItem = function (ul, item) {
 	return $("<li>")
 		.append("<div class='h6'>" + item.codigo + " - " + item.nome + "</div>").appendTo(ul);
 }
 //Fim da função pesquisa Cids
 
-$("#periodo").on('change', function() {
+$("#periodo").on('change', function () {
 	$("#strong-periodo").text($(this).val());
 });
 
@@ -265,16 +265,16 @@ function atualizaAtestados() {
 	$.ajax({
 		url: '/atestado/listar/atendimento/' + idAtendimento,
 		method: 'get',
-		success: function(data) {
+		success: function (data) {
 			if (isEmpty(data)) {
 				$("#div-atestados").empty().append("<h5 class='card-title text-center'>Não existem atestados para este atendimento</h5><p class='card-text text-center'>Clique no botão Nova prescrição para cadastrar um.</p>");
 			} else {
-				$.each(data, function(key, item) {
+				$.each(data, function (key, item) {
 					$("#div-atestados").empty().append(creatCardAtestado(item));
 				})
 			}
 		},
-		error: function() {
+		error: function () {
 			$("#div-atestados").empty().append("<h5 class='card-title text-center'>Houve um erro ao recuperar os dados para este Atendimento</h5><p class='card-text text-center'>Clique no botão Nova prescrição para cadastrar um.</p>");
 		}
 	})
@@ -295,7 +295,7 @@ function atualizaCidAtestado() {
 			{
 				title: 'CÓDIGO',
 				data: 'codigo',
-				mRender: function(data) {
+				mRender: function (data) {
 					return "<span class='badge badge-info'>" + data + "</span>";
 				}
 			},
@@ -306,7 +306,7 @@ function atualizaCidAtestado() {
 			{
 				title: 'AÇÕES',
 				data: 'id',
-				mRender: function(data) {
+				mRender: function (data) {
 					return "<button type='button' class='btn btn-warning btn-sm' data-value='" + data + "' onclick='removeCid(this)'><i class='fa fa-trash'></i> Excluir </button>"
 				}
 			}
@@ -315,7 +315,7 @@ function atualizaCidAtestado() {
 	})
 }
 
-$("#novo-atestado-voltar").click(function() {
+$("#novo-atestado-voltar").click(function () {
 	excluirAtestadoFuncaoVoltar();
 })
 
@@ -341,7 +341,7 @@ function removeCid(item) {
 			$.ajax({
 				url: '/atestado/cid/excluir/' + idCid,
 				method: 'delete',
-				success: function() {
+				success: function () {
 					swal("Sucesso! O CID foi excluido!", {
 						icon: "success",
 						buttons: {
@@ -353,7 +353,7 @@ function removeCid(item) {
 					atualizaCidAtestado();
 				},
 				statusCode: {
-					403: function(xhr) {
+					403: function (xhr) {
 						swal("Houve um erro!", xrh.reponseText, {
 							icon: "error",
 							buttons: {
@@ -377,37 +377,38 @@ function removeCid(item) {
 	});
 }
 
-function imprimirAtestado(data){
+function imprimirAtestado(data, isAuthorization, cids) {
 	const { principioAtivo, concentracao, formaFarmaceutica } = data.medicamento
 	const div = `
 	<div class="card">
 		<div class="card-header text-center">
-			<p>#title</p>
+			<p>MINISTÉRIO DA SAÚDE<br> ESTADO DE RIO GRANDE DO NORTE<br> MUNICÍPIO DE SEVERIANO MELO<br> UNIDADE DE
+				SAÚDE Hospital Maternidade Municipal de Severiano Melo</p>
 		</div>
 		<div class="card-body">
 			<div class="text-center">
-				<h1 class="strong">Receituário</h1>
+				<h1 class="strong">Atestado</h1>
 			</div>
-			<div class="text-left">
-				<p>Nome do Paciente: Antonio Almeida</p>
-			</div>
-			<div class="text-left">
-				<p>CPF.: 000.000.000-00</p>
-			</div>
-			<div class="text-left">
-				<p>Medicamento</p>
-			</div>
-			<div class="card">
-				<div class="card-body" style="border: 2px solid #686868;
-					border-radius: 5px;">
-					<b>Princípio Ativo: </b><span>${principioAtivo}</span> | <b>Concentração: </b><span>${concentracao}</span> | <b>Quantidade: </b><span>${data.quantidade}</span> |
-					<b>Forma Farmacêutica: </b><span>${formaFarmaceutica.nome}</span> |
-					<b>Posologia: </b><span>${data.posologia}</span> <br/>
-					<b>Orientações: </b><span>${data.orientacoes}</span>
-				</div>   
+			<div class="text-justify">
+                <p>${document.getElementById("conteudo-atestado").textContent}</p>
+            </div>
+			${isAuthorization && (
+				`${cids.map((cid) => 
+					`<div class="text-left">
+						<p>${cid}</p>
+					 </div>
+					`
+				)}`	
+				`<div class="text-center">
+					<p>Autorizo a listagem dos CIDS nesse atestado</p>
+				 </div>
+				`
+			)}
+			<div class="text-center">
+				<p>Antonio Almeida</p>
 			</div>
 			<div class="text-center">
-				<p>Data: 20/11/2021</p>
+				<p>Data: ${moment(new Date()).format("DD/MM/YYYY")}</p>
 			</div>
 			<br/>
 			<div class="text-center">
@@ -429,7 +430,7 @@ function creatCardAtestado(data) {
 		"</div><div class='col-md-4 text-right'>" +
 		infoCardDataProfissional(data.dataRegistro, data.profissional.nome, data.profissional.numeroRegistro + " / " + data.profissional.siglaUfEmissao) +
 		"</div></div><div class='text-right'>" +
-		"<button type='button' class='btn btn-light btn-sm' data-value='" + data.id + "' onclick='imprimirAtestado("+JSON.stringify(data)+")'><i class='fa fa-print'></i> Imprimir</button>" +
+		"<button type='button' class='btn btn-light btn-sm' data-value='" + data.id + "' onclick='imprimirAtestado(" + JSON.stringify(data, document.getElementById("autorizaImpressaoCid").checkeds) + ")'><i class='fa fa-print'></i> Imprimir</button>" +
 		buttonExcluir(data) +
 		"</div></div></div>";
 }
@@ -469,7 +470,7 @@ function excluirAtestado(element) {
 			$.ajax({
 				url: '/atestado/excluir/' + idAtestado,
 				method: 'delete',
-				success: function() {
+				success: function () {
 					swal("Sucesso! O Atestado foi excluido!", {
 						icon: "success",
 						buttons: {
@@ -481,7 +482,7 @@ function excluirAtestado(element) {
 					atualizaAtestados();
 				},
 				statusCode: {
-					403: function(xhr) {
+					403: function (xhr) {
 						swal("Houve um erro!", xrh.reponseText, {
 							icon: "error",
 							buttons: {
@@ -514,7 +515,7 @@ function buttonExcluir(data) {
 	}
 }
 
-var my_date_format = function(d) {
+var my_date_format = function (d) {
 	var month = ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'];
 	var date = d.getDate() + " " + month[d.getMonth()] + ", " + d.getFullYear();
 	var time = d.toLocaleTimeString().toLowerCase();
