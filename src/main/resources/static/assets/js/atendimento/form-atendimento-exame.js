@@ -1,22 +1,22 @@
-$("#listaExameSimplificada").click(function() {
+$("#listaExameSimplificada").click(function () {
 	var form;
 	var formConcat;
 	$.ajax({
 		url: '/grupo-exame/',
 		method: 'get',
-		success: function(data) {
+		success: function (data) {
 			$("#modalListaSimplificada").modal("show");
-			$.each(data, function(key, item) {
+			$.each(data, function (key, item) {
 				form = createCardListaSimplificada(item);
 				formConcat += form;
 			})
 			$("#modal-body").empty().append(formConcat);
-			$("input[type=checkbox]").each(function(index) {
-				$(this).on("click", function() {
+			$("input[type=checkbox]").each(function (index) {
+				$(this).on("click", function () {
 					if ($(this).is(":checked")) {
 						adicionaProcedimento($(this).val());
 					} else {
-							
+
 
 					}
 				});
@@ -36,7 +36,7 @@ function createCardListaSimplificada(item) {
 function createChecbox(exameSimplificados) {
 	var retorno;
 	var retornoConcat = "";
-	$.each(exameSimplificados, function(key, item) {
+	$.each(exameSimplificados, function (key, item) {
 		retorno = "<div class='custom-control custom-checkbox'>" +
 			"<input value='" + item.procedimentoAssociado.codigo + "' type='checkbox' class='custom-control-input' id='" + item.procedimentoAssociado.codigo + "'>" +
 			"<label class='custom-control-label' for='" + item.procedimentoAssociado.codigo + "'>" + item.nome + "</label>" +
@@ -47,7 +47,7 @@ function createChecbox(exameSimplificados) {
 }
 
 //Função Habilita pesquisa de Medicamentos
-$("#button-procedimento").click(function() {
+$("#button-procedimento").click(function () {
 	limpaExame();
 	$("#i-procedimento").removeClass().addClass("fa fa-search");
 })
@@ -83,7 +83,7 @@ function fechaFormularioExame() {
 	$.ajax({
 		url: '/exame/limparprocedimentosexame/',
 		method: 'get',
-		success: function() { },
+		success: function () { },
 		statusCode: {}
 	})
 
@@ -93,13 +93,13 @@ function fechaFormularioExame() {
 }
 
 
-$("#novo-exame-voltar").click(function() {
+$("#novo-exame-voltar").click(function () {
 	fechaFormularioExame();
 })
 
 function removeInvalidFedbackExame() {
 	$("#form-exame input, #form-exame textarea").each(
-		function(index) {
+		function (index) {
 			var str = $(this).parent().parent().attr("class");
 			if (str.match(/has-error/)) {
 				$(this).parent().parent().removeClass("has-error has-feedback");
@@ -111,7 +111,7 @@ function removeInvalidFedbackExame() {
 
 
 
-$("#form-exame").submit(function(evt) {
+$("#form-exame").submit(function (evt) {
 	evt.preventDefault();
 	var exame = {};
 
@@ -126,10 +126,10 @@ $("#form-exame").submit(function(evt) {
 		url: '/exame/',
 		method: 'post',
 		data: exame,
-		beforeSend: function() {
+		beforeSend: function () {
 			removeInvalidFedbackExame();
 		},
-		success: function() {
+		success: function () {
 			$.notify({
 				// options
 				icon: 'flaticon-success',
@@ -170,7 +170,7 @@ $("#form-exame").submit(function(evt) {
 		},
 
 		statusCode: {
-			400: function() {
+			400: function () {
 				$.notify({
 					// options
 					icon: 'flaticon-exclamation',
@@ -207,9 +207,9 @@ $("#form-exame").submit(function(evt) {
 					icon_type: 'class',
 				});
 			},
-			422: function(xhr) {
+			422: function (xhr) {
 				var errors = $.parseJSON(xhr.responseText);
-				$.each(errors, function(key, val) {
+				$.each(errors, function (key, val) {
 					$.notify({
 						// options
 						icon: 'flaticon-exclamation',
@@ -279,7 +279,7 @@ function atualizaProcedimentoExame() {
 			{
 				title: 'AÇÕES',
 				data: 'codigo',
-				mRender: function(data) {
+				mRender: function (data) {
 					return "<button type='button' class='btn btn-warning btn-sm' data-value='" + data + "' onclick='removeProcedimentoExame(this)'><i class='fa fa-trash'></i> Excluir </button>"
 				}
 			}
@@ -310,7 +310,7 @@ function removeProcedimentoExame(item) {
 			$.ajax({
 				url: '/exame/excluirprocedimentos/' + idProcedimentoExame,
 				method: 'get',
-				success: function() {
+				success: function () {
 					swal("Sucesso! O Procedimento foi excluido!", {
 						icon: "success",
 						buttons: {
@@ -322,7 +322,7 @@ function removeProcedimentoExame(item) {
 					$("#table-procedimentos-exame").DataTable().ajax.reload();
 				},
 				statusCode: {
-					403: function(xhr) {
+					403: function (xhr) {
 						swal("Houve um erro!", xrh.reponseText, {
 							icon: "error",
 							buttons: {
@@ -369,7 +369,7 @@ function excluirExame(item) {
 			$.ajax({
 				url: '/exame/excluir/' + idExame,
 				method: 'get',
-				success: function() {
+				success: function () {
 					swal("Sucesso! O Exame foi excluido!", {
 						icon: "success",
 						buttons: {
@@ -382,7 +382,7 @@ function excluirExame(item) {
 					atualizaTodosExames();
 				},
 				statusCode: {
-					400: function() {
+					400: function () {
 						swal("Houve um erro!", {
 							icon: "error",
 							buttons: {
@@ -392,7 +392,7 @@ function excluirExame(item) {
 							},
 						});
 					},
-					404: function() {
+					404: function () {
 						swal("Essa Solicitação de Exame não pode ser Excluida!", {
 							icon: "error",
 							buttons: {
@@ -422,15 +422,15 @@ function excluirExame(item) {
 
 $("#procedimento-exame").autocomplete({
 	source: "/procedimento/buscarexame",
-	focus: function(event, ui) {
+	focus: function (event, ui) {
 		$("#procedimento-exame").val(ui.item.codigo + " ; " + ui.item.nome);
 		return false;
 	},
-	select: function(event, ui) {
+	select: function (event, ui) {
 		adicionaProcedimentoaoExame(ui.item.codigo);
 		return false;
 	}
-}).autocomplete("instance")._renderItem = function(ul, item) {
+}).autocomplete("instance")._renderItem = function (ul, item) {
 	return $("<li>")
 		.append("<div class='h6'>" + item.codigo + " - " + "<b>" + item.nome + "<b>" + "</div>").appendTo(ul);
 }
@@ -438,17 +438,17 @@ $("#procedimento-exame").autocomplete({
 //Função autocomplete CID 
 $("#exame-cid").autocomplete({
 	source: "/cid/buscar",
-	focus: function(event, ui) {
+	focus: function (event, ui) {
 		$("#exame-cid").val(ui.item.codigo + " - " + ui.item.nome);
 		return false;
 	},
-	select: function(event, ui) {
+	select: function (event, ui) {
 		$("#i-exame-cid").removeClass("fa fa-search").addClass("fa fa-times");
 		$("#id-cid").val(ui.item.id);
 		return false;
 
 	}
-}).autocomplete("instance")._renderItem = function(ul, item) {
+}).autocomplete("instance")._renderItem = function (ul, item) {
 	return $("<li>")
 		.append("<div class='h6'>" + item.codigo + " - " + "<b>" + item.nome + "</b>" + "</div>")
 		.appendTo(ul);
@@ -461,11 +461,11 @@ function atualizaExames() {
 	$.ajax({
 		url: '/exame/listarexamesporstatus/' + prontuarioId,
 		method: 'get',
-		success: function(data) {
+		success: function (data) {
 			if (isEmpty(data)) {
 				$("#div-exames").append("<h5 class='card-title text-center'>Não existem solicitações de exames para este Prontuário</h5><p class='card-text text-center'>Clique no botão Nova solicitação para cadastrar uma.</p>");
 			} else {
-				$.each(data, function(key, item) {
+				$.each(data, function (key, item) {
 					$("#div-exames").append(createCardExame(item));
 				})
 			}
@@ -485,7 +485,7 @@ function createCardExame(data) {
 		"</div><div class='col-md-4 text-right'>" +
 		infoCardDataProfissional(data.dataSolicitacao, data.profissional.nome, data.profissional.numeroRegistro + " / " + data.profissional.siglaUfEmissao) +
 		"</div></div><div class='text-right'>" +
-		"<button type='button' class='btn btn-light btn-sm' data-value='" + data.id + "' onclick='imprimirExame()'><i class='fa fa-print'></i> Imprimir</button>"
+		"<button type='button' class='btn btn-light btn-sm' data-value='" + data.id + "' onclick='imprimirExame(" + JSON.stringify(data) + ")'><i class='fa fa-print'></i> Imprimir</button>"
 		+ buttonExcluir()
 		+ "</div></div></div>";
 
@@ -503,7 +503,7 @@ function createCardExame(data) {
 function infoProcedimentos(procedimentos) {
 	var retorno;
 	var retornoConcat = "";
-	$.each(procedimentos, function(key, item) {
+	$.each(procedimentos, function (key, item) {
 		retorno = "<div>" + item.codigo + " - " + "<b>" + item.nome + "</b>" + "</div>";
 		retornoConcat += retorno;
 	})
@@ -535,8 +535,51 @@ function infoCardDataProfissional(date, nomeProfissional, crm) {
 	return "<span class='text-warning'> " + dataFormatadaJava(date) + " </span><br><span class='text-muted'> " + nomeProfissional + " </span><br><strong>CRM: </strong><span class='text-muted'> " + crm + " </span><br>"
 }
 
-function imprimirExame() {
-	return "";
+function imprimirExame(data) {
+	const { procedimentos } = data
+	const div = `
+	<div class="card">
+		<div class="card-header text-center">
+			<p>MINISTÉRIO DA SAÚDE<br> ESTADO DE RIO GRANDE DO NORTE<br> MUNICÍPIO DE SEVERIANO MELO<br> UNIDADE DE
+				SAÚDE Hospital Maternidade Municipal de Severiano Melo</p>
+		</div>
+		<div class="card-body">
+			<div class="text-center">
+				<h1 class="strong">Solicitação de Exames</h1>
+			</div>
+			<div class="text-left">
+				<p>Nome do Paciente: Antonio Almeida</p>
+			</div>
+			<div class="text-left">
+				<p>CPF.: 000.000.000-00</p>
+			</div>
+			<div class="text-left">
+				<p>Idade.: 00</p>
+			</div>
+			<div class="text-left">
+				<p>Procedimentos solicitados</p>
+			</div>
+			<div class="card">
+				${ExtractPDF.extractMap(procedimentos, ({codigo, nome, dataCompetencia}) =>
+					`<div class="card-body">
+						<b>Código: </b><span>${codigo}</span> | <b>Nome: </b><span>${nome}</span> | <b>Data Competência: </b><span>${dataCompetencia}</span>
+					</div>`
+				)}   
+			</div>
+			<div class="text-center">
+				<p>Data da Solicitação: ${moment(data.dataSolicitacao).format("DD/MM/YYYY")}</p>
+			</div>
+			<br/>
+			<div class="text-center">
+				<p>${data.profissional.nome}</p>
+				<span>CRM: ${data.profissional.numeroRegistro + " / " + data.profissional.siglaUfEmissao}</span>
+			</div>
+		</div>
+		<div class="card-footer">
+			<button class="btn btn-primary" onclick="window.print()">Imprimir</button>
+		</div>
+	</div>`
+	Docs.doc(div)
 }
 
 
@@ -548,13 +591,13 @@ function atualizaTodosExames() {
 	$.ajax({
 		url: '/exame/listarexamesdoprontuario/' + prontuarioId,
 		method: 'get',
-		success: function(data) {
+		success: function (data) {
 			if (isEmpty(data)) {
 				$("#div-todos-exames").append("<h5 class='card-title text-center'>Não existem resultados de exames cadastrados neste Prontuario</h5><p class='card-text text-center'>Clique no botão Nova solicitação para cadastrar uma.</p>");
 			} else {
 				$("#div-todos-exames").append(createCardTitulo());
-				$.each(data, function(key1, item1) {
-					$.each(item1.procedimentos, function(key, item) {
+				$.each(data, function (key1, item1) {
+					$.each(item1.procedimentos, function (key, item) {
 						$("#div-todos-exames").append(createCardTodosExame(item1, item));
 					})
 				})
@@ -637,8 +680,8 @@ function adicionaProcedimentoaoExame(codigo) {
 	$.ajax({
 		url: '/exame/procedimento/' + codigo,
 		method: 'get',
-		
-		success: function() {
+
+		success: function () {
 			$("#procedimento-exame").val("");
 			$.notify({
 				// options
@@ -677,9 +720,9 @@ function adicionaProcedimentoaoExame(codigo) {
 			});
 			$("#table-procedimentos-exame").DataTable().ajax.reload();
 		},
-		error: function() {
+		error: function () {
 			$("#procedimento-exame").val("");
-			
+
 			$.notify({
 				// options
 				icon: 'flaticon-exclamation',
