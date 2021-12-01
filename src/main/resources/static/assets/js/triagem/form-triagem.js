@@ -248,23 +248,7 @@ $("#sinaisVitais-glicemiaCapilar").change(function() {
 	submitProcedimento(idAtendimento, 214010015, tipoServico, quantidade);
 })
 
-//Função que adiciona procedimentos
-//Autocomplete Procedimentos
 
-$("#button-procedimento").click(function() {
-	$("#i-procedimento").removeClass().addClass("fa fa-search");
-	limpaInputsProcedimento();
-})
-
-$("#submit-procedimento").click(function() {
-	var codigoProcedimento = $("#id-procedimento").val();
-	var tipoServico = "TRIAGEM";
-	var quantidade = $("#qtd-procedimento").val();
-	submitProcedimento(idAtendimento, codigoProcedimento, tipoServico, quantidade);
-})
-
-//Fim da função
-//######### Fim das Funções dos Procedimentos ###########
 
 
 //Função para atualizar checkbox Habitos

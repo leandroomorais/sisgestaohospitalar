@@ -8,7 +8,7 @@ $(document).ready(function() {
 	idAtendimento = $("#id-atendimento").val();
 
 	verificaConsulta();
-	
+
 	ocultarAlergia();
 	ocultarDoenca();
 
@@ -19,7 +19,7 @@ $(document).ready(function() {
 	$("#card-novo-atestado").hide();
 	$("#card-novo-exame").hide();
 	$("#card-novo-resultado-exame").hide();
-	
+
 	//Função que aplica máscara aos inputs 
 	$("#sinaisVitais-pressaoSistolica").mask('000');
 	$("#sinaisVitais-pressaoDiastolica").mask('000');
@@ -52,7 +52,7 @@ $(document).ready(function() {
 	atualizaDiagnostico();
 	atualizaPrescricoes();
 	atualizaAtestados();
-	
+
 	//Chamada da função 
 	atualizaAlergia();
 
@@ -67,10 +67,13 @@ $(document).ready(function() {
 
 	atualizaTodosExames();
 
+	//Chamada da Função
+	atualizaProcedimento();
+
 
 	//Chamada da função 
 	atulizaMedicamentoUsoContinuo();
-	
+
 	atualizaAntropometria();
 
 	//Chamada da Função
@@ -143,7 +146,7 @@ $("#form-consulta").submit(function(evt) {
 				onClosed: null,
 				icon_type: 'class',
 			});
-			
+
 			verificaConsulta();
 
 		},
@@ -248,7 +251,7 @@ $("#submit-diagnostico").click(function() {
 	diagnostico['prontuario'] = idProntuario;
 	diagnostico.nota = tinymce.get("nota").getContent();
 	diagnostico['cid'] = $("#id-cid").val();
-	
+
 	$.ajax({
 		url: '/diagnostico/',
 		method: 'post',

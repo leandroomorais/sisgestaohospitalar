@@ -1,3 +1,41 @@
+//Função que adiciona procedimentos
+//Autocomplete Procedimentos
+
+$("#procedimentos-geral").autocomplete({
+	source: "/procedimento/buscar",
+	focus: function(event, ui) {
+		$("#procedimentos-geral").val(ui.item.codigo + " - " + ui.item.nome);
+		return false;
+	},
+	select: function(event, ui) {
+		$("#i-procedimento-geral").removeClass().addClass("fa fa-times");
+		$("#qtd-procedimento-geral").val(1);
+		$("#procedimentos-geral").val(ui.item.codigo + " - " + ui.item.nome).attr("disabled", true);
+		$("#id-procedimento-geral").val(ui.item.codigo);
+		$("#nome-procedimento").val(ui.item.nome);
+		return false;
+	}
+}).autocomplete("instance")._renderItem = function(ul, item) {
+	return $("<li></li>")
+		.append("<div class='h6'>" + item.codigo + " - " + item.nome + "</div>")
+		.appendTo(ul);
+};
+
+$("#button-procedimento").click(function() {
+	$("#i-procedimento-geral").removeClass().addClass("fa fa-search");
+	limpaInputsProcedimento();
+})
+
+$("#submit-procedimento").click(function() {
+	var codigoProcedimento = $("#id-procedimento-geral").val();
+	//var tipoServico = "TRIAGEM";
+	var quantidade = $("#qtd-procedimento-geral").val();
+	console.log("cdProc: " + codigoProcedimento + " ")
+	submitProcedimento(idAtendimento, codigoProcedimento, null, quantidade);
+})
+
+//Fim da função
+//######### Fim das Funções dos Procedimentos ###########
 
 function submitProcedimento(idAtendimento, codigoProcedimento, tipoServico, quantidade) {
 	var relAtendimentoProcedimento = {};
@@ -12,7 +50,7 @@ function submitProcedimento(idAtendimento, codigoProcedimento, tipoServico, quan
 		data: relAtendimentoProcedimento,
 		success: function() {
 
-			$("#i-procedimento").removeClass().addClass("fa fa-search");
+			$("#i-procedimento-geral").removeClass().addClass("fa fa-search");
 			limpaInputsProcedimento();
 			$.notify({
 				// options
@@ -54,30 +92,10 @@ function submitProcedimento(idAtendimento, codigoProcedimento, tipoServico, quan
 	})
 }
 
-$("#procedimentos-triagem").autocomplete({
-	source: "/procedimento/buscar",
-	focus: function(event, ui) {
-		$("#procedimentos-triagem").val(ui.item.codigo + " - " + ui.item.nome);
-		return false;
-	},
-	select: function(event, ui) {
-		$("#i-procedimento").removeClass().addClass("fa fa-times");
-		$("#qtd-procedimento").val(1);
-		$("#procedimentos-triagem").val(ui.item.codigo + " - " + ui.item.nome).attr("disabled", true);
-		$("#id-procedimento").val(ui.item.codigo);
-		$("#nome-procedimento").val(ui.item.nome);
-		return false;
-	}
-}).autocomplete("instance")._renderItem = function(ul, item) {
-	return $("<li></li>")
-		.append("<div class='h6'>" + item.codigo + " - " + item.nome + "</div>")
-		.appendTo(ul);
-};
-
 function limpaInputsProcedimento() {
-	$("#procedimentos-triagem").val("").attr("disabled", false);
-	$("#qtd-procedimento").val("");
-	$("#id-procedimento").val("");
+	$("#procedimentos-geral").val("").attr("disabled", false);
+	$("#qtd-procedimento-geral").val("");
+	$("#id-procedimento-geral").val("");
 	$("#nome-procedimento").val("");
 }
 
