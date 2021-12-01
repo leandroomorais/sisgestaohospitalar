@@ -22,6 +22,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.ifrn.sisgestaohospitalar.dto.AtendimentoDTO;
+import com.ifrn.sisgestaohospitalar.enums.CondutaCidadao;
 import com.ifrn.sisgestaohospitalar.enums.MomentoColeta;
 import com.ifrn.sisgestaohospitalar.enums.SituacaoCondicao;
 import com.ifrn.sisgestaohospitalar.enums.Status;
@@ -109,6 +110,7 @@ public class AtendimentoController {
 			mv.addObject("momentosColeta", MomentoColeta.values());
 			mv.addObject("profissionais", profissionalRepository.findAll());
 			mv.addObject("viasAdministracao", viaAdministracaoRepository.findAll());
+			mv.addObject("condutasCidadao", CondutaCidadao.values());
 		}
 		return mv;
 

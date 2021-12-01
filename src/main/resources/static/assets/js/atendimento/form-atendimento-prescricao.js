@@ -685,7 +685,7 @@ function excluirPrescricao(element) {
 	var idProntuario = $("#id-prontuario").val();
 
 	swal({
-		title: 'Tem certeza que deseja excluir este CID?',
+		title: 'Tem certeza que deseja excluir esta Prescrição?',
 		text: "Você não poderá reverter esta ação!",
 		icon: 'warning',
 		buttons: {
@@ -718,7 +718,7 @@ function excluirPrescricao(element) {
 				},
 				statusCode: {
 					403: function (xhr) {
-						swal("Não é possível excluir esta prescrição pois ja existe um Registro de Administração salvo", {
+						swal("Não é possível excluir esta prescrição pois ja existe um Registro de Administração salvo ou o Atendimento já foi finalizado", {
 							icon: "error",
 							buttons: {
 								confirm: {

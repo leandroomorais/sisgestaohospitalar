@@ -37,7 +37,7 @@ $("#form-finalizar-atendimento").submit(function(evt) {
 				// options
 				icon: 'flaticon-success',
 				title: 'SUCESSO',
-				message: 'O procedimento foi adicionado ao atendimento',
+				message: 'Atendimento finalizado com sucessso',
 				target: '_blank'
 			}, {
 				// settings

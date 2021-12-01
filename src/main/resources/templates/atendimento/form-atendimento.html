@@ -43,6 +43,10 @@
 													href="#v-pills-historico-nobd" role="tab"
 													aria-controls="v-pills-historico-nobd"
 													aria-selected="false"><strong>HISTÓRICO</strong></a>
+												<a class="nav-link" id="v-pills-finalizar-tab-nobd" data-toggle="pill"
+													href="#v-pills-finalizar-nobd" role="tab"
+													aria-controls="v-pills-finalizar-nobd"
+													aria-selected="false"><strong>FINALIZAR</strong></a>
 											</div>
 										</div>
 										<div class="col-sm-9 col-md-10 col-lg-10">
@@ -141,6 +145,11 @@
 													<div th:replace="fragments/tabs-historico/tabs::tabs-historico">
 													</div>
 												</div>
+												<div class="tab-pane fade" id="v-pills-finalizar-nobd" role="tabpanel"
+													aria-labelledby="v-pills-finalizar-tab-nobd">
+													<div th:replace="fragments/atendimento/card-finalizar-atendimento">
+													</div>
+												</div>
 											</div>
 										</div>
 									</div>
@@ -185,6 +194,8 @@
 			th:src="@{/assets/js/usoMedicamentos/uso-medicamentos.js}"></script>
 		<script type="text/javascript" th:inline="javascript"
 			th:src="@{/assets/js/antropometria/antropometria.js}"></script>
+		<script type="text/javascript" th:inline="javascript"
+			th:src="@{/assets/js/atendimento/card-finalizar-atendimento.js}"></script>
 		<script type="text/javascript" th:inline="javascript" th:src="@{/assets/js/pec/busca.js}"></script>
 		<script type="text/javascript" th:inline="javascript" th:src="@{/assets/js/doenca/doenca.js}"></script>
 		<script type="text/javascript" th:inline="javascript" th:src="@{/assets/js/alergia/alergia.js}"></script>

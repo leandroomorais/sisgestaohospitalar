@@ -51,8 +51,9 @@
 				<div class="col-md-10 col-lg-10">
 					<div class="row">
 						<th:block th:each="condutaCidadao : ${condutasCidadao}">
-							<label th:for="${condutaCidadao}" class="form-radio-label" data-toggle="tooltip"
-								th:title="${condutaCidadao.descricao}">
+							<label th:for="${condutaCidadao}"
+								th:if="${condutaCidadao.nome != 'Observação' && condutaCidadao.nome != 'Alta após prescrição' && condutaCidadao.nome != 'Alta do episódio'}"
+								class="form-radio-label" data-toggle="tooltip" th:title="${condutaCidadao.descricao}">
 								<input th:id="${condutaCidadao}" th:value="${condutaCidadao}"
 									name="atendimento.condutaCidadao" class="form-radio-input" type="radio"><span
 									class="form-radio-sign" th:text="${condutaCidadao.nome}"></span>
