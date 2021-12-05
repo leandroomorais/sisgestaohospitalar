@@ -33,10 +33,7 @@ public class LeitorTXTMedicamentos {
 			String novaLinha = new String(linha.getBytes("UTF-8"));
 			String[] formaFarmaceuticaDTO = novaLinha.split(";");
 			FormaFarmaceutica formaFarmaceutica = new FormaFarmaceutica();
-
-			// if (formaFarmaceuticaDTO[0] != "" || formaFarmaceuticaDTO[0] != null) {
 			formaFarmaceutica.setId(Long.parseLong(formaFarmaceuticaDTO[0]));
-			// }
 			formaFarmaceutica.setNome(formaFarmaceuticaDTO[1]);
 			formaFarmaceutica.setNomeFiltro(formaFarmaceuticaDTO[2]);
 			formasFarmaceuticas.add(formaFarmaceutica);
@@ -48,20 +45,11 @@ public class LeitorTXTMedicamentos {
 		BufferedReader bufferedReader = Files.newBufferedReader(Paths.get(arquivoMedicamento),
 				Charset.forName("UTF-8"));
 		String linha;
-		// int i = 0;
 		List<Medicamento> medicamentos = new ArrayList<>();
 		while ((linha = bufferedReader.readLine()) != null) {
 			String novaLinha = new String(linha.getBytes("UTF-8"));
 			String[] medicamentoDTO = novaLinha.split(";");
 			Medicamento medicamento = new Medicamento();
-
-			System.out.println("CODIGO: " + medicamentoDTO[0] + " | Principio ativo: " + medicamentoDTO[1]
-					+ " | CONCENTRAÇÃO: " + medicamentoDTO[2] + " | CODIGO FORMA: " + medicamentoDTO[3] + " | FORN.: "
-					+ medicamentoDTO[4]);
-
-			// System.out.println("Linha: " + i++ + " | Unidade Fornecimento: " +
-			// medicamentoDTO[4]);
-
 			if (medicamentoDTO[0] != "" || medicamentoDTO[0] != null) {
 				medicamento.setId(Long.parseLong(medicamentoDTO[0]));
 			}
@@ -79,9 +67,6 @@ public class LeitorTXTMedicamentos {
 
 			medicamentos.add(medicamento);
 		}
-
 		medicamentoRepository.saveAll(medicamentos);
-
 	}
-
 }
