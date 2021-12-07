@@ -40,7 +40,7 @@ function atualizarTabela() {
 				title: 'SERVIÇO', data: 'tipoServicos',
 				mRender: function(data) {
 					var retorno = "";
-					$.each(data,function(key,item){
+					$.each(data, function(key, item) {
 						retorno += createSpan(item.nome);
 					})
 					return retorno;
@@ -54,10 +54,10 @@ function atualizarTabela() {
 					if (data == "EMATENDIMENTO") {
 						return "<i class='fa fa-circle em-atendimento'></i>"
 					}
-					if (data = "NAOAGUARDOU") {
+					if (data == "NAOAGUARDOU") {
 						return "<i class='fa fa-circle nao-aguardou-atendimento'></i>"
 					}
-					if (data = "FINALIZADO") {
+					if (data == "FINALIZADO") {
 						return "<i class='fa fa-circle'></i>"
 					}
 				}
@@ -73,10 +73,10 @@ function atualizarTabela() {
 	});
 }
 
-function createSpan(item){
+function createSpan(item) {
 	var abreSpan = "<span class='badge badge-info'>";
 	var fechaSpan = "</span>";
 	var span = abreSpan + item + fechaSpan;
 	return span;
-	
+
 }

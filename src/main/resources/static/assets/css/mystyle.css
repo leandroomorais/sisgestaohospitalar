@@ -1,10 +1,10 @@
-/* Estilização Status Atendimento*/
+/* Estilizaï¿½ï¿½o Status Atendimento*/
 .aguardando-atendimento{
 	color: #00FF00;
 }
 
 .em-atendimento{
-	color: #4B0082;
+	color: #7900D2;
 }
 
 .observacao{
@@ -15,9 +15,13 @@
 	color: #A9A9A9;
 }
 
+.finalizado{
+	color: rgb(0, 0, 51);
+}
 
 
-/*Fim estilização Status Atendimento*/
+
+/*Fim estilizaï¿½ï¿½o Status Atendimento*/
 
 .info-historico {
 	border-bottom: 1px;
@@ -35,7 +39,7 @@
 	text-align: center;
 }
 
-/* Estilização de elementos da Sidebar */
+/* Estilizaï¿½ï¿½o de elementos da Sidebar */
 span.low {
 	font-size: 09px;
 	align-content: center;
@@ -50,9 +54,9 @@ span.type-user {
 	text-align: center;
 	font-weight: bold;
 }
-/* Fim da Estilização de elementos da Sidebar */
+/* Fim da Estilizaï¿½ï¿½o de elementos da Sidebar */
 
-/* Estilização do Loader */
+/* Estilizaï¿½ï¿½o do Loader */
 .loadersearch, loading:after {
 	display: block;
 	width: 1.5rem;
@@ -64,7 +68,7 @@ span.type-user {
 	border-radius: 50%;
 	animation: 1s spin linear infinite;
 }
-/* Fim da estilização do Loader */
+/* Fim da estilizaï¿½ï¿½o do Loader */
 .sexo-info {
 	position: relative;
 	display: inline-block;

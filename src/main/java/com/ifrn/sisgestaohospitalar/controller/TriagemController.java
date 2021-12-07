@@ -2,9 +2,7 @@ package com.ifrn.sisgestaohospitalar.controller;
 
 import java.security.Principal;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
@@ -27,7 +25,6 @@ import com.ifrn.sisgestaohospitalar.enums.MomentoColeta;
 import com.ifrn.sisgestaohospitalar.enums.SituacaoCondicao;
 import com.ifrn.sisgestaohospitalar.enums.Status;
 import com.ifrn.sisgestaohospitalar.model.Atendimento;
-import com.ifrn.sisgestaohospitalar.model.HistoricoStatus;
 import com.ifrn.sisgestaohospitalar.model.Profissional;
 import com.ifrn.sisgestaohospitalar.model.Triagem;
 import com.ifrn.sisgestaohospitalar.repository.AtendimentoRepository;
@@ -71,15 +68,6 @@ public class TriagemController {
 			Atendimento atendimento = optional.get();
 			Profissional profissional = profissionalRepository.findByCpf(principal.getName());
 			atendimento.setStatus(Status.EMATENDIMENTO);
-			HistoricoStatus historicoStatus = new HistoricoStatus();
-			historicoStatus.setStatus(atendimento.getStatus());
-			historicoStatus.setTipoServicos(atendimento.getTipoServicos());
-			historicoStatus.setProfissional(profissional);
-			historicoStatus.setUltimaAtualizacao(LocalDateTime.now());
-
-			List<HistoricoStatus> listHistoricoStatus = new ArrayList<>();
-			listHistoricoStatus.add(historicoStatus);
-			atendimento.setHistoricoStatus(listHistoricoStatus);
 			atendimentoRepository.saveAndFlush(atendimento);
 			triagem.setAtendimento(atendimento);
 			triagem.setInicioTriagem(LocalDateTime.now());

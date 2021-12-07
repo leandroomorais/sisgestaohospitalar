@@ -2,11 +2,12 @@ package com.ifrn.sisgestaohospitalar.enums;
 
 public enum CondutaCidadao {
 
-	UBS("UBS", "O Cidadão foi liberado e orientado a procurar UBS"),
-	ALTAEPISODIOAPOSPRESCRICAO("Alta após prescrição", "O Cidadão pode ser liberado após a administração da prescrição"),
-	ALTAEPISODIO("Alta do episódio", "Cidadão liberado após atendimento"),
+	UBS("UBS", "O Cidadão foi liberado e orientado a procurar uma UBS"),
+	ALTAEPISODIOAPOSPRESCRICAO("Liberar após administrar prescrição",
+			"O Cidadão pode ser liberado após a administração da prescrição"),
 	TRANSFERIDO("Transferido", "Transferido para serviço de maior complexidade"),
-	OBSERVACAO("Observação", "Manter paciente em observação"), LIBERADO("Liberado", "Cidadão liberado do atendimento");
+	OBSERVACAO("Observação", "Manter paciente em observação"), LIBERADO("Liberado", "Cidadão liberado do atendimento"),
+	NAOAGUARDOUATENDIMENTO("Não aguardou atendimento", "O Cidadão deixou a unidade sem aguardar atendimento");
 
 	private String nome;
 	private String descricao;

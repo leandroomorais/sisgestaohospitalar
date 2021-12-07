@@ -48,6 +48,8 @@ public class AtendimentoDTO {
 
 	@Valid
 	private Triagem triagem;
+	
+	private int tempoObservacao;
 
 	public Long getId() {
 		return id;
@@ -143,6 +145,14 @@ public class AtendimentoDTO {
 
 	public void setTriagem(Triagem triagem) {
 		this.triagem = triagem;
+	}
+
+	public int getTempoObservacao() {
+		return tempoObservacao;
+	}
+
+	public void setTempoObservacao(int tempoObservacao) {
+		this.tempoObservacao = tempoObservacao;
 	}
 
 }

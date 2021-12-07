@@ -55,13 +55,10 @@ function atualizarTabela() {
 					if (data == "EMATENDIMENTO") {
 						return "<i class='fa fa-circle em-atendimento'></i>"
 					}
-					if (data = "OBSERVACAO") {
-						return "<i class='fa fa-circle observacao'></i>"
-					}
-					if (data = "NAOAGUARDOU") {
+					if (data == "NAOAGUARDOU") {
 						return "<i class='fa fa-circle nao-aguardou-atendimento'></i>"
 					}
-					if (data = "FINALIZADO") {
+					if (data == "FINALIZADO") {
 						return "<i class='fa fa-circle'></i>"
 					}
 				}

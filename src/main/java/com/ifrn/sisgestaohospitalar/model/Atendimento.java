@@ -14,8 +14,9 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Positive;
+
 import org.hibernate.annotations.DynamicUpdate;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.ifrn.sisgestaohospitalar.enums.CaraterAtendimento;
 import com.ifrn.sisgestaohospitalar.enums.CondutaCidadao;
 import com.ifrn.sisgestaohospitalar.enums.Status;
@@ -30,8 +31,6 @@ public class Atendimento {
 
 	private String responsavel;
 
-	private String historiaClinia;
-
 	@OneToOne
 	private Cidadao cidadao;
 
@@ -42,6 +41,8 @@ public class Atendimento {
 	private Status status;
 
 	private CaraterAtendimento caraterAtendimento;
+
+	private int tempoObservacao;
 
 	@NotNull(message = "É necessário selecionar o Profissional de destino")
 	@OneToOne
@@ -74,7 +75,7 @@ public class Atendimento {
 	@Valid
 	@OneToOne(cascade = CascadeType.ALL)
 	private Triagem triagem;
-	
+
 	@Valid
 	@OneToOne(cascade = CascadeType.ALL)
 	private Consulta consulta;
@@ -93,14 +94,6 @@ public class Atendimento {
 
 	public void setResponsavel(String responsavel) {
 		this.responsavel = responsavel;
-	}
-
-	public String getHistoriaClinia() {
-		return historiaClinia;
-	}
-
-	public void setHistoriaClinia(String historiaClinia) {
-		this.historiaClinia = historiaClinia;
 	}
 
 	public Cidadao getCidadao() {
@@ -141,6 +134,14 @@ public class Atendimento {
 
 	public void setCaraterAtendimento(CaraterAtendimento caraterAtendimento) {
 		this.caraterAtendimento = caraterAtendimento;
+	}
+
+	public int getTempoObservacao() {
+		return tempoObservacao;
+	}
+
+	public void setTempoObservacao(int tempoObservacao) {
+		this.tempoObservacao = tempoObservacao;
 	}
 
 	public Profissional getProfissionalDestino() {

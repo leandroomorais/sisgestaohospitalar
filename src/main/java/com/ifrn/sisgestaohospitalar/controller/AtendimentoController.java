@@ -2,9 +2,7 @@ package com.ifrn.sisgestaohospitalar.controller;
 
 import java.security.Principal;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import javax.servlet.http.HttpServletRequest;
@@ -22,13 +20,13 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.ifrn.sisgestaohospitalar.dto.AtendimentoDTO;
+import com.ifrn.sisgestaohospitalar.enums.CaraterAtendimento;
 import com.ifrn.sisgestaohospitalar.enums.CondutaCidadao;
 import com.ifrn.sisgestaohospitalar.enums.MomentoColeta;
 import com.ifrn.sisgestaohospitalar.enums.SituacaoCondicao;
 import com.ifrn.sisgestaohospitalar.enums.Status;
 import com.ifrn.sisgestaohospitalar.model.Atendimento;
 import com.ifrn.sisgestaohospitalar.model.Cidadao;
-import com.ifrn.sisgestaohospitalar.model.HistoricoStatus;
 import com.ifrn.sisgestaohospitalar.model.TipoServico;
 import com.ifrn.sisgestaohospitalar.repository.AtendimentoRepository;
 import com.ifrn.sisgestaohospitalar.repository.CidadaoRepository;
@@ -111,6 +109,7 @@ public class AtendimentoController {
 			mv.addObject("profissionais", profissionalRepository.findAll());
 			mv.addObject("viasAdministracao", viaAdministracaoRepository.findAll());
 			mv.addObject("condutasCidadao", CondutaCidadao.values());
+			mv.addObject("tiposAtendimento", CaraterAtendimento.values());
 		}
 		return mv;
 
@@ -130,14 +129,6 @@ public class AtendimentoController {
 				atendimento.setStatus(atendimento.getStatus());
 			}
 			atendimento.setStatus(Status.AGUARDANDOATENDIMENTO);
-			HistoricoStatus historicoStatus = new HistoricoStatus();
-			historicoStatus.setStatus(atendimento.getStatus());
-			historicoStatus.setTipoServicos(atendimento.getTipoServicos());
-			historicoStatus.setProfissional(profissionalRepository.findByCpf(principal.getName()));
-			historicoStatus.setUltimaAtualizacao(LocalDateTime.now());
-			List<HistoricoStatus> listHistoricoStatus = new ArrayList<>();
-			listHistoricoStatus.add(historicoStatus);
-			atendimento.setHistoricoStatus(listHistoricoStatus);
 			atendimentoService.save(atendimento);
 		} catch (CidadaoJaAdicionadoNaFilaException e) {
 			result.rejectValue("cidadao", e.getMessage(), e.getMessage());
@@ -149,7 +140,7 @@ public class AtendimentoController {
 		return new ModelAndView("redirect:/atendimento/listar");
 	}
 
-	@PostMapping("/finalizar/triagem")
+	@PostMapping("/finalizar")
 	public ResponseEntity<?> finalizarAtendimento(@Valid AtendimentoDTO atendimentoDTO, BindingResult result,
 			Principal principal) {
 		Map<String, String> errors = new HashMap<>();
@@ -165,15 +156,52 @@ public class AtendimentoController {
 			atendimento.setTipoServicos(atendimentoDTO.getTipoServicos());
 			atendimento.setCondutaCidadao(atendimentoDTO.getCondutaCidadao());
 			atendimento.setProfissionalDestino(atendimentoDTO.getProfissionalDestino());
+			atendimento.setTempoObservacao(atendimentoDTO.getTempoObservacao());
 			for (TipoServico tipoServico : atendimento.getTipoServicos()) {
 				if (tipoServico.getNome() != "Inativo") {
 					atendimento.setStatus(Status.AGUARDANDOATENDIMENTO);
 				}
-
 				if (tipoServico.getNome().equals("Inativo") && atendimento.getStatus() != Status.NAOAGUARDOU) {
 					atendimento.setStatus(Status.FINALIZADO);
 				}
 			}
+			atendimentoRepository.saveAndFlush(atendimento);
+			return ResponseEntity.ok().build();
+		}
+		return ResponseEntity.badRequest().build();
+	}
+
+	@PostMapping("/finalizar/triagem")
+	public ResponseEntity<?> finalizarAtendimentoTriagem(@Valid AtendimentoDTO atendimentoDTO, BindingResult result,
+			Principal principal) {
+		Map<String, String> errors = new HashMap<>();
+		if (result.hasErrors()) {
+			for (FieldError error : result.getFieldErrors()) {
+				errors.put(error.getField(), error.getDefaultMessage());
+			}
+			return ResponseEntity.unprocessableEntity().body(errors);
+		}
+		Optional<Atendimento> optional = atendimentoRepository.findById(atendimentoDTO.getId());
+		if (optional.isPresent()) {
+			Atendimento atendimento = optional.get();
+			atendimento.setTipoServicos(atendimentoDTO.getTipoServicos());
+			atendimento.setCondutaCidadao(atendimentoDTO.getCondutaCidadao());
+			atendimento.setProfissionalDestino(atendimentoDTO.getProfissionalDestino());
+			if (atendimentoDTO.getCondutaCidadao() != null) {
+				if (atendimentoDTO.getCondutaCidadao().equals(CondutaCidadao.LIBERADO)
+						|| atendimentoDTO.getCondutaCidadao().equals(CondutaCidadao.UBS)) {
+					atendimento.setStatus(Status.FINALIZADO);
+					atendimento.getTipoServicos().clear();
+					atendimento.getTipoServicos().add(tipoServicoRepository.findByNome("Inativo"));
+				}
+			}
+
+			if (atendimentoDTO.getCondutaCidadao().equals(CondutaCidadao.NAOAGUARDOUATENDIMENTO)) {
+				atendimento.setStatus(Status.NAOAGUARDOU);
+				atendimento.getTipoServicos().clear();
+				atendimento.getTipoServicos().add(tipoServicoRepository.findByNome("Inativo"));
+			}
+
 			atendimentoRepository.saveAndFlush(atendimento);
 			return ResponseEntity.ok().build();
 		}
@@ -198,6 +226,7 @@ public class AtendimentoController {
 	@RequestMapping("/editar/{id}")
 	public ModelAndView editar(@PathVariable("id") Long id, Principal principal) {
 		Optional<Atendimento> optional = atendimentoRepository.findById(id);
+		System.out.println("outru status aquiiiiiiiiiiiiiiiiiiiiiiiii" + optional.get().getStatus());
 		return cadastrar(optional.get().getCidadao().getId(), optional.get(), principal);
 	}
 

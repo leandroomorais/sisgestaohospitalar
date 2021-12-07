@@ -14,7 +14,6 @@ import javax.validation.constraints.NotBlank;
 
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
-import org.springframework.context.annotation.Lazy;
 
 @Entity
 public class GrupoExame {

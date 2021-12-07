@@ -1,45 +1,46 @@
+//Funções conduta do cidadão
+$("#customRadio2").click(function() {
+	$("#adicionar-a-lista").hide();
+	$("#conduta-cidadao").show();
+});
 
-$("#customRadio1").on("click", function() {
-	if ($(this).is(':checked')) {
-		$("#adicionar-a-lista").fadeIn(100);
-	} else {
-		$("#adicionar-a-lista").fadeOut(100);
-	}
+$("#customRadio1").click(function() {
+	$("#conduta-cidadao").hide();
+	$("#adicionar-a-lista").show();
 })
-
-
-$("input[name='atendimento.condutaCidadao']").click(function() {
-	if ($("input[name='atendimento.condutaCidadao']:checked").val() == "OBSERVACAO") {
-		$("#form-observacao").fadeIn(100);
-	} else {
-		$("#form-observacao").fadeOut(100);
-	}
-})
+//Fim funções conduta do Cidadão
 
 $("#form-finalizar-atendimento").submit(function(evt) {
 	evt.preventDefault();
 	var atendimentoDTO = {};
 	atendimentoDTO.id = $("#id-atendimento").val();
 	atendimentoDTO['profissionalDestino'] = $("#atendimento-profissionalDestino").val();
-
 	var condutaCidadao;
 	var tipoServicos = new Array();
 	$.each($("input[name='tipoServicos']:checked"), function() {
 		tipoServicos.push($(this).val());
 	})
+	if ($("#customRadio1").is(":checked")) {
+		tipoServicos = tipoServicos;
+		condutaCidadao = null;
+	}
+	if ($("#customRadio2").is(":checked")) {
+		condutaCidadao = $("input[name='atendimento.condutaCidadao']:checked").val();
+		tipoServicos = null;
+	}
 
-	$.each($("input[name='tipoServicos']:checked"), function() {
-		tipoServicos.push($(this).val());
-	})
-
-
-	atendimentoDTO.tempoObservacao = $("#tempo-observacao").val();
-	atendimentoDTO.caraterAtendimento = $("input[name='atendimento.tipoAtendimento']:checked").val();
+	if (tipoServicos != null) {
+		atendimentoDTO['tipoServicos'] = tipoServicos.toString();
+	} else {
+		atendimentoDTO['tipoServicos'] = tipoServicos;
+	}
+	atendimentoDTO['condutaCidadao'] = condutaCidadao;
 	$.ajax({
 		url: '/atendimento/finalizar/triagem',
 		method: 'post',
 		data: atendimentoDTO,
 		success: function(data) {
+			window.location.replace("/triagem/listar");
 			$.notify({
 				// options
 				icon: 'flaticon-success',

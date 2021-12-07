@@ -1,20 +1,33 @@
-<div class="card">
-	<div class="card-header">
-		<div class="card-title">Finalização do Atendimento</div>
+<form id="form-finalizar-atendimento" action="/atendimento/finalizar" method="post">
+	<div class="card">
+		<div class="card-header">
+			<div class="card-title">Tipo do Atendimento</div>
+		</div>
+		<div class="card-body">
+			<div class="form-check">
+				<div class="col-md-12 col-lg-12">
+					<div class="row">
+						<th:block th:each="tipoAtendimento : ${tiposAtendimento}">
+							<label th:for="${tipoAtendimento}" class="form-radio-label">
+								<input th:id="${tipoAtendimento}" th:value="${tipoAtendimento}"
+									name="atendimento.tipoAtendimento" class="form-radio-input" type="radio"> <span
+									class="form-radio-sign" th:text="${tipoAtendimento.descricao}"></span>
+							</label>
+						</th:block>
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
-	<div class="card-body">
-		<form id="form-finalizar-atendimento" action="/atendimento/finalizar" method="post">
-			<div class="form-check form-check-inline">
-				<div class="custom-control custom-radio">
-					<input type="radio" id="customRadio1" name="customRadio" class="custom-control-input" checked>
-					<label class="custom-control-label" for="customRadio1">Adicionar a Lista de
-						Atendimentos</label>
-				</div>
-				<div class="custom-control custom-radio">
-					<input type="radio" id="customRadio2" name="customRadio" class="custom-control-input">
-					<label class="custom-control-label" for="customRadio2">Informar
-						conduta</label>
-				</div>
+	<div class="card">
+		<div class="card-header">
+			<div class="card-title">Desfecho do Atendimento</div>
+		</div>
+		<div class="card-body">
+
+			<div class="custom-control custom-checkbox">
+				<input id="customRadio1" name="customRadio" type="checkbox" class="custom-control-input">
+				<label class="custom-control-label" for="customRadio1">Adicionar a lista de atendimentos</label>
 			</div>
 			<div class="col-md-12" id="adicionar-a-lista">
 				<div class="row">
@@ -54,17 +67,24 @@
 							<label th:for="${condutaCidadao}" class="form-radio-label" data-toggle="tooltip"
 								th:title="${condutaCidadao.descricao}">
 								<input th:id="${condutaCidadao}" th:value="${condutaCidadao}"
-									name="atendimento.condutaCidadao" class="form-radio-input" type="radio"><span
+									name="atendimento.condutaCidadao" class="form-radio-input" type="radio"> <span
 									class="form-radio-sign" th:text="${condutaCidadao.nome}"></span>
 							</label>
 						</th:block>
 					</div>
 				</div>
+				<div class="col-md-4" id="form-observacao">
+					<div class="form-group">
+						<label for="tempo-observacao">Manter em observação por:*</label> <input type="text"
+							class="form-control" name="tempo.observacao" id="tempo-observacao" placeholder=""><small
+							id="posologia-small" class="form-text text-muted"> Horas</small>
+					</div>
+				</div>
 			</div>
-			<div class="card-action">
-				<button type="submit" class="btn btn-primary">Finalizar Atendimento</button>
-				<button type="button" class="btn btn-warning btn-border">Cancelar</button>
-			</div>
-		</form>
+		</div>
 	</div>
-</div>
+	<div class="card-action">
+		<button type="submit" class="btn btn-primary">Finalizar Atendimento</button>
+		<button type="button" class="btn btn-warning btn-border">Cancelar</button>
+	</div>
+</form>
