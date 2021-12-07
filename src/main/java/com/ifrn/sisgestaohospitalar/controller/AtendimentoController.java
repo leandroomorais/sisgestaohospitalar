@@ -36,6 +36,7 @@ import com.ifrn.sisgestaohospitalar.repository.UsuarioRepository;
 import com.ifrn.sisgestaohospitalar.repository.ViaAdministracaoRepository;
 import com.ifrn.sisgestaohospitalar.service.AtendimentoDataTablesService;
 import com.ifrn.sisgestaohospitalar.service.AtendimentoService;
+import com.ifrn.sisgestaohospitalar.service.ListaAtendimentoDataTablesService;
 import com.ifrn.sisgestaohospitalar.service.exception.CidadaoJaAdicionadoNaFilaException;
 
 @Controller
@@ -72,9 +73,10 @@ public class AtendimentoController {
 		return ResponseEntity.badRequest().build();
 	}
 
-	@GetMapping("/tabela")
-	public String mostrarTabela() {
-		return "";
+	@GetMapping("/listaatendimento/datatables/server")
+	public ResponseEntity<?> dataTablesListaAtendimento(HttpServletRequest request) {
+		Map<String, Object> data = new ListaAtendimentoDataTablesService().execute(atendimentoRepository, request);
+		return ResponseEntity.ok(data);
 	}
 
 	@GetMapping("/datatables/server")

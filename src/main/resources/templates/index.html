@@ -1,62 +1,58 @@
 <!DOCTYPE html>
-<html lang="pt" xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:th="http://www.thymeleaf.org"
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
 	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity"
 	xmlns:layout="http://ultraq.net.nz/thymeleaf/layout">
+
 <head>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<title>SGH - Bem Vindo!</title>
-<meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no'
-	name='viewport' />
-<link rel="icon" th:href="@{/assets/img/favicon.png}"
-	type="image/x-icon" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<title>SGH - Bem Vindo!</title>
+	<meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
+	<link rel="icon" th:href="@{/assets/img/favicon.png}" type="image/x-icon" />
 
-<!-- Fonts and icons -->
-<script th:src="@{/assets/js/plugin/webfont/webfont.min.js}"></script>
-<script>
-	WebFont.load({
-		google : {
-			"families" : [ "Lato:300,400,700,900" ]
-		},
-		custom : {
-			"families" : [ "Flaticon", "Font Awesome 5 Solid",
+	<!-- Fonts and icons -->
+	<script th:src="@{/assets/js/plugin/webfont/webfont.min.js}"></script>
+	<script>
+		WebFont.load({
+			google: {
+				"families": ["Lato:300,400,700,900"]
+			},
+			custom: {
+				"families": ["Flaticon", "Font Awesome 5 Solid",
 					"Font Awesome 5 Regular", "Font Awesome 5 Brands",
-					"simple-line-icons" ],
-			urls : [ '../assets/css/fonts.min.css' ]
-		},
-		active : function() {
-			sessionStorage.fonts = true;
-		}
-	});
-</script>
+					"simple-line-icons"],
+				urls: ['../assets/css/fonts.min.css']
+			},
+			active: function () {
+				sessionStorage.fonts = true;
+			}
+		});
+	</script>
 
-<!-- CSS Files -->
-<link rel="stylesheet" th:href="@{/assets/css/bootstrap.min.css}">
-<link rel="stylesheet" th:href="@{/assets/css/atlantis.css}">
+	<!-- CSS Files -->
+	<link rel="stylesheet" th:href="@{/assets/css/bootstrap.min.css}">
+	<link rel="stylesheet" th:href="@{/assets/css/atlantis.css}">
 
 </head>
+
 <body>
 	<div class="wrapper">
 		<div class="main-header">
 			<!-- Logo Header -->
 			<div class="logo-header" data-background-color="with">
 
-				<a class="logo"> <img width="100px"
-					th:src="@{/assets/img/logosgh.png}" alt="navbar brand"
-					class="navbar-brand">
+				<a class="logo"> <img width="100px" th:src="@{/assets/img/logosgh.png}" alt="navbar brand"
+						class="navbar-brand">
 				</a>
 			</div>
 			<!-- End Logo Header -->
 
 			<!-- Navbar Header -->
-			<nav class="navbar navbar-header navbar-expand-lg"
-				data-background-color="blue2">
+			<nav class="navbar navbar-header navbar-expand-lg" data-background-color="blue2">
 
 				<div class="container-fluid">
 					<ul class="navbar-nav topbar-nav ml-md-auto align-items-center">
-						<li class="nav-item"><a th:href="@{/logout}"
-							class="nav-link quick-sidebar-toggler"> <i
-								class="fa fa-sign-out-alt"> </i></a></li>
+						<li class="nav-item"><a th:href="@{/logout}" class="nav-link quick-sidebar-toggler"> <i
+									class="fa fa-sign-out-alt"> </i></a></li>
 					</ul>
 				</div>
 			</nav>
@@ -68,8 +64,7 @@
 				<div class="container">
 					<div class="panel-header bg-primary-gradient">
 						<div class="page-inner py-5">
-							<div
-								class="d-flex align-items-left align-items-md-center flex-column flex-md-row">
+							<div class="d-flex align-items-left align-items-md-center flex-column flex-md-row">
 								<div>
 									<h2 class="text-white pb-2 fw-bold">Sistema de Gestão
 										Hospitalar</h2>
@@ -100,7 +95,8 @@
 															</div>
 															<div class="col-7 col-stats">
 																<div class="numbers">
-																	<a th:href="@{/administracao/}" class="card-title">Administração</a>
+																	<a th:href="@{/administracao/}"
+																		class="card-title">Administração</a>
 																</div>
 															</div>
 														</div>
@@ -108,7 +104,7 @@
 												</div>
 											</div>
 
-											<dilass="col-sm-6 col-md-3"
+											<div class="col-sm-6 col-md-3"
 												sec:authorize="hasAnyAuthority('TECNICO','SUPER')">
 												<div class="card card-stats card-primary card-round">
 													<div class="card-body">
@@ -121,7 +117,7 @@
 															</div>
 															<div class="col-7 col-stats">
 																<div class="numbers">
-																	<a th:href="@{/cidadao/adicionar}"
+																	<a th:href="@{/atendimento/listar}"
 																		class="card-title">Recepção</a>
 																</div>
 															</div>
@@ -131,8 +127,7 @@
 											</div>
 
 											<div class="col-sm-6 col-md-3"
-												sec:authorize="hasAnyAuthority('ENFERMEIRO','SUPER')">
-
+												sec:authorize="hasAnyAuthority('ENFERMEIRO','SUPER','MEDICO')">
 												<div class="card card-stats card-primary card-round">
 													<div class="card-body">
 														<div class="row">
@@ -144,7 +139,8 @@
 															</div>
 															<div class="col-7 col-stats">
 																<div class="numbers">
-																	<a th:href="@{/triagem/listar}" class="card-title">Triagem</a>
+																	<a th:href="@{/triagem/listar}"
+																		class="card-title">Atendimentos - Triagem</a>
 																</div>
 															</div>
 														</div>
@@ -160,46 +156,20 @@
 														<div class="row">
 															<div class="col-3">
 																<div class="icon-big text-center">
-																	<img
-																		th:src="@{assets/img/icons/atendimentomedico-icon.png}"
+																	<img th:src="@{assets/img/icons/atendimentomedico-icon.png}"
 																		alt="some text">
 																</div>
 															</div>
 															<div class="col-7 col-stats">
 																<div class="numbers">
 																	<a th:href="@{/}"
-																		class="card-title">Atendimento Médico</a>
+																		class="card-title">Atendimentos</a>
 																</div>
 															</div>
 														</div>
 													</div>
 												</div>
 											</div>
-
-
-											<div class="col-sm-6 col-md-3"
-												sec:authorize="hasAnyAuthority('TECNICO','SUPER')">
-												<div class="card card-stats card-primary card-round">
-													<div class="card-body">
-														<div class="row">
-															<div class="col-3">
-																<div class="icon-big text-center">
-																	<img
-																		th:src="@{assets/img/icons/adminmedicamentos-icon.png}"
-																		alt="some text">
-																</div>
-															</div>
-															<div class="col-7 col-stats">
-																<div class="numbers">
-																	<a th:href="@{/administracao-medicamento/cidadaos-atendimento}"
-																		class="card-title">Admin. de Medicamentos</a>
-																</div>
-															</div>
-														</div>
-													</div>
-												</div>
-											</div>
-
 										</div>
 									</div>
 								</div>
@@ -223,4 +193,5 @@
 		</div>
 	</div>
 </body>
+
 </html>
