@@ -21,22 +21,23 @@ $("#form-finalizar-atendimento").submit(function(evt) {
 	var atendimentoDTO = {};
 	atendimentoDTO.id = $("#id-atendimento").val();
 	atendimentoDTO['profissionalDestino'] = $("#atendimento-profissionalDestino").val();
+	atendimentoDTO['condutaCidadao'] = $("input[name='atendimento.condutaCidadao']:checked").val();
 
-	var condutaCidadao;
 	var tipoServicos = new Array();
-	$.each($("input[name='tipoServicos']:checked"), function() {
-		tipoServicos.push($(this).val());
-	})
 
 	$.each($("input[name='tipoServicos']:checked"), function() {
 		tipoServicos.push($(this).val());
 	})
 
-
+	if (tipoServicos.length > 0) {
+		atendimentoDTO['tipoServicos'] = tipoServicos.toString();
+	} else if (tipoServicos.length == 0) {
+		atendimentoDTO['tipoServicos'] = null;
+	}
 	atendimentoDTO.tempoObservacao = $("#tempo-observacao").val();
 	atendimentoDTO.caraterAtendimento = $("input[name='atendimento.tipoAtendimento']:checked").val();
 	$.ajax({
-		url: '/atendimento/finalizar/triagem',
+		url: '/atendimento/finalizar/',
 		method: 'post',
 		data: atendimentoDTO,
 		success: function(data) {
@@ -76,5 +77,52 @@ $("#form-finalizar-atendimento").submit(function(evt) {
 				icon_type: 'class',
 			});
 		},
+		statusCode: {
+			422: function(xhr) {
+				var errors = $.parseJSON(xhr.responseText);
+				$.each(errors, function(key, val) {
+					$.notify({
+						// options
+						icon: 'flaticon-exclamation',
+						title: 'ATENÇÃO',
+						message: val,
+						target: '_blank'
+					}, {
+						// settings
+						element: 'body',
+						position: null,
+						type: "danger",
+						allow_dismiss: true,
+						newest_on_top: false,
+						showProgressbar: false,
+						placement: {
+							from: "top",
+							align: "right"
+						},
+						offset: 20,
+						spacing: 10,
+						z_index: 1031,
+						delay: 5000,
+						timer: 1000,
+						url_target: '_blank',
+						mouse_over: null,
+						animate: {
+							enter: 'animated fadeInDown',
+							exit: 'animated fadeOutUp'
+						},
+						onShow: null,
+						onShown: null,
+						onClose: null,
+						onClosed: null,
+						icon_type: 'class',
+					});
+
+					$("input[name='" + key + "']").parent().parent().parent().addClass("has-error has-feedback");
+
+				})
+			}
+		}
+
+
 	})
 })

@@ -2,15 +2,18 @@ package com.ifrn.sisgestaohospitalar.enums;
 
 public enum ClassificacaoDeRisco {
 
-	AZUL("AZUL", "Casos não urgentes"), VERDE("VERDE", "Casos pouco urgentes"), AMARELO("AMARELO", "Casos de urgência"),
-	LARANJA("LARANJA", "Casos muito urgentes"), VERMELHO("VERMELHO", "Casos de emergência");
+	AZUL("AZUL", "Casos não urgentes", 1), VERDE("VERDE", "Casos pouco urgentes", 2),
+	AMARELO("AMARELO", "Casos de urgência", 3), LARANJA("LARANJA", "Casos muito urgentes", 4),
+	VERMELHO("VERMELHO", "Casos de emergência", 5);
 
 	String nome;
 	String descricao;
+	int valor;
 
-	private ClassificacaoDeRisco(String nome, String descricao) {
+	private ClassificacaoDeRisco(String nome, String descricao, int valor) {
 		this.nome = nome;
 		this.descricao = descricao;
+		this.valor = valor;
 	}
 
 	public String getNome() {
@@ -28,4 +31,13 @@ public enum ClassificacaoDeRisco {
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
 	}
+
+	public int getPrioridade() {
+		return valor;
+	}
+
+	public void setPrioridade(int prioridade) {
+		this.valor = prioridade;
+	}
+
 }

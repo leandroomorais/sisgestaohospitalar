@@ -36,7 +36,6 @@ import com.ifrn.sisgestaohospitalar.repository.UsuarioRepository;
 import com.ifrn.sisgestaohospitalar.repository.ViaAdministracaoRepository;
 import com.ifrn.sisgestaohospitalar.service.AtendimentoDataTablesService;
 import com.ifrn.sisgestaohospitalar.service.AtendimentoService;
-import com.ifrn.sisgestaohospitalar.service.ListaAtendimentoDataTablesService;
 import com.ifrn.sisgestaohospitalar.service.exception.CidadaoJaAdicionadoNaFilaException;
 
 @Controller
@@ -71,12 +70,6 @@ public class AtendimentoController {
 			return ResponseEntity.ok().body(optional.get());
 		}
 		return ResponseEntity.badRequest().build();
-	}
-
-	@GetMapping("/listaatendimento/datatables/server")
-	public ResponseEntity<?> dataTablesListaAtendimento(HttpServletRequest request) {
-		Map<String, Object> data = new ListaAtendimentoDataTablesService().execute(atendimentoRepository, request);
-		return ResponseEntity.ok(data);
 	}
 
 	@GetMapping("/datatables/server")
@@ -146,12 +139,36 @@ public class AtendimentoController {
 	public ResponseEntity<?> finalizarAtendimento(@Valid AtendimentoDTO atendimentoDTO, BindingResult result,
 			Principal principal) {
 		Map<String, String> errors = new HashMap<>();
+
 		if (result.hasErrors()) {
 			for (FieldError error : result.getFieldErrors()) {
 				errors.put(error.getField(), error.getDefaultMessage());
 			}
 			return ResponseEntity.unprocessableEntity().body(errors);
 		}
+
+		if (atendimentoDTO.getCondutaCidadao() == null) {
+			errors.put("atendimento.condutaCidadao", "É necessário informar a conduta do cidadão");
+			return ResponseEntity.unprocessableEntity().body(errors);
+		}
+
+		if (atendimentoDTO.getCondutaCidadao().equals(CondutaCidadao.ALTAEPISODIOAPOSPRESCRICAO)
+				&& atendimentoDTO.getTipoServicos().isEmpty()) {
+			errors.put("tipoServicos", "É necessário selecionar o tipo de serviço");
+			return ResponseEntity.unprocessableEntity().body(errors);
+		}
+
+		if (atendimentoDTO.getCondutaCidadao().equals(CondutaCidadao.OBSERVACAO)
+				&& atendimentoDTO.getTempoObservacao() <= 0) {
+			errors.put("tempoObservacao", "O tempo de observação não pode ser menor ou igual a 0");
+			return ResponseEntity.unprocessableEntity().body(errors);
+		}
+
+		if (atendimentoDTO.getCaraterAtendimento() == null) {
+			errors.put("atendimento.tipoAtendimento", "Selecione o tipo do atendimento");
+			return ResponseEntity.unprocessableEntity().body(errors);
+		}
+
 		Optional<Atendimento> optional = atendimentoRepository.findById(atendimentoDTO.getId());
 		if (optional.isPresent()) {
 			Atendimento atendimento = optional.get();
@@ -159,13 +176,23 @@ public class AtendimentoController {
 			atendimento.setCondutaCidadao(atendimentoDTO.getCondutaCidadao());
 			atendimento.setProfissionalDestino(atendimentoDTO.getProfissionalDestino());
 			atendimento.setTempoObservacao(atendimentoDTO.getTempoObservacao());
-			for (TipoServico tipoServico : atendimento.getTipoServicos()) {
-				if (tipoServico.getNome() != "Inativo") {
-					atendimento.setStatus(Status.AGUARDANDOATENDIMENTO);
-				}
-				if (tipoServico.getNome().equals("Inativo") && atendimento.getStatus() != Status.NAOAGUARDOU) {
-					atendimento.setStatus(Status.FINALIZADO);
-				}
+			if (atendimentoDTO.getCondutaCidadao().equals(CondutaCidadao.UBS)
+					|| atendimentoDTO.getCondutaCidadao().equals(CondutaCidadao.LIBERADO)
+					|| atendimentoDTO.getCondutaCidadao().equals(CondutaCidadao.TRANSFERIDO)) {
+				atendimento.getTipoServicos().clear();
+				atendimento.getTipoServicos().add(tipoServicoRepository.findByNome("Inativo"));
+				atendimento.setStatus(Status.FINALIZADO);
+			}
+			if (atendimentoDTO.getCondutaCidadao().equals(CondutaCidadao.OBSERVACAO)) {
+				atendimento.setStatus(Status.OBSERVACAO);
+			}
+			if (atendimentoDTO.getCondutaCidadao().equals(CondutaCidadao.ALTAEPISODIOAPOSPRESCRICAO)) {
+				atendimento.setStatus(Status.AGUARDANDOATENDIMENTO);
+			}
+			if (atendimentoDTO.getCondutaCidadao().equals(CondutaCidadao.NAOAGUARDOUATENDIMENTO)) {
+				atendimento.getTipoServicos().clear();
+				atendimento.getTipoServicos().add(tipoServicoRepository.findByNome("Inativo"));
+				atendimento.setStatus(Status.NAOAGUARDOU);
 			}
 			atendimentoRepository.saveAndFlush(atendimento);
 			return ResponseEntity.ok().build();
@@ -183,6 +210,12 @@ public class AtendimentoController {
 			}
 			return ResponseEntity.unprocessableEntity().body(errors);
 		}
+
+		if (atendimentoDTO.getCondutaCidadao() == null && atendimentoDTO.getTipoServicos().isEmpty()) {
+			errors.put("tipoServicos", "Selecione o(s) serviço(s) para o atendimento");
+			return ResponseEntity.unprocessableEntity().body(errors);
+		}
+
 		Optional<Atendimento> optional = atendimentoRepository.findById(atendimentoDTO.getId());
 		if (optional.isPresent()) {
 			Atendimento atendimento = optional.get();
@@ -203,7 +236,6 @@ public class AtendimentoController {
 				atendimento.getTipoServicos().clear();
 				atendimento.getTipoServicos().add(tipoServicoRepository.findByNome("Inativo"));
 			}
-
 			atendimentoRepository.saveAndFlush(atendimento);
 			return ResponseEntity.ok().build();
 		}
@@ -220,15 +252,12 @@ public class AtendimentoController {
 			mv.addObject("historicosStatus", optional.get().getHistoricoStatus());
 			return mv;
 		}
-
 		return listar(principal).addObject("erro", "Atendimento não localizado");
-
 	}
 
 	@RequestMapping("/editar/{id}")
 	public ModelAndView editar(@PathVariable("id") Long id, Principal principal) {
 		Optional<Atendimento> optional = atendimentoRepository.findById(id);
-		System.out.println("outru status aquiiiiiiiiiiiiiiiiiiiiiiiii" + optional.get().getStatus());
 		return cadastrar(optional.get().getCidadao().getId(), optional.get(), principal);
 	}
 
