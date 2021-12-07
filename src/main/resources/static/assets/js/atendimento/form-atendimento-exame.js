@@ -14,7 +14,7 @@ $("#listaExameSimplificada").click(function () {
 			$("input[type=checkbox]").each(function (index) {
 				$(this).on("click", function () {
 					if ($(this).is(":checked")) {
-						adicionaProcedimento($(this).val());
+						adicionaProcedimentoaoExame($(this).val());
 					} else {
 
 
@@ -447,12 +447,19 @@ $("#exame-cid").autocomplete({
 		$("#id-cid").val(ui.item.id);
 		return false;
 
-	}
+	}	
 }).autocomplete("instance")._renderItem = function (ul, item) {
 	return $("<li>")
 		.append("<div class='h6'>" + item.codigo + " - " + "<b>" + item.nome + "</b>" + "</div>")
 		.appendTo(ul);
 };
+
+function limpaInputCid(){
+	$("#exame-cid").val("");
+	$("#id-cid").val("");
+	$("#i-exame-cid").removeClass("fa fa-times").addClass("fa fa-search");
+	return false;
+}
 
 // Card de exames
 function atualizaExames() {

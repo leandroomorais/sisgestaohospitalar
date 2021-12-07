@@ -1,17 +1,21 @@
-<div sec:authorize="hasAnyAuthority('MEDICO')" id="card-novo-resultado-exame" class="card">
+<div sec:authorize="hasAnyAuthority('MEDICO')"
+	id="card-novo-resultado-exame" class="card">
 	<div class="card-header">
 		<div class="card-title">
-			<a id="novo-resultado-exame-voltar" data-toggle="tooltipe" data-placement="top"
-				title="Voltar para tela anterior" class="btn btn-light"> <i class="fa fa-flip-horizontal fa-share"></i>
+			<a id="novo-resultado-exame-voltar" data-toggle="tooltipe"
+				data-placement="top" title="Voltar para tela anterior"
+				class="btn btn-light"> <i class="fa fa-flip-horizontal fa-share"></i>
 			</a>Resultados de Exame
 		</div>
 	</div>
 	<div class="card-body">
 		<div>
-			<form id="form-resultado-exame" action="/atendimento/resultadoexame" method="post">
+			<form id="form-resultado-exame" action="/atendimento/resultadoexame"
+				method="post">
 				<div class="row">
 					<div class="col-md-12">
-						<label><strong>Detalhes da Solicitação de Exames</strong></label>
+						<label><strong>Detalhes da Solicitação de
+								Exames</strong></label>
 						<div id="div-resultado-exame-solicitado"></div>
 					</div>
 					<div class="col-md-12">
@@ -20,32 +24,37 @@
 
 						<div class="col-md-4">
 							<div class="form-group">
-								<label for="dataRealizacao">Data da realização*</label>
-								<input type="date" class="form-control" name="dataRealizacao" id="dataRealizacao">
-								<small id="dataRealizacao-small" class="form-text text-muted"></small>
+								<label for="dataRealizacao">Data da realização*</label> <input
+									type="date" class="form-control" name="dataRealizacao"
+									id="dataRealizacao"> <small id="dataRealizacao-small"
+									class="form-text text-muted"></small>
 							</div>
 						</div>
 
 						<div class="col-md-4">
 							<div class="form-group">
-								<label for="dataResultado">Data do resultado*</label>
-								<input type="date" class="form-control" name="dataResultado" id="dataResultado">
-								<small id="dataResultado-small" class="form-text text-muted"></small>
+								<label for="dataResultado">Data do resultado*</label> <input
+									type="date" class="form-control" name="dataResultado"
+									id="dataResultado"> <small id="dataResultado-small"
+									class="form-text text-muted"></small>
 							</div>
 						</div>
 
 						<div class="form-group">
 							<label for="descricao">Descrição*</label>
-							<textarea class="form-control" name="descricao" id="descricao" placeholder=""></textarea>
-							<small id="descricao-small" class="form-text text-muted">Valores obtidos no exame</small>
+							<textarea class="form-control" name="descricao" id="descricao"
+								placeholder=""></textarea>
+							<small id="descricao-small" class="form-text text-muted">Valores
+								obtidos no exame</small>
 						</div>
 					</div>
+				</div>
 
-					<div class="text-right">
-						<button id="submit-resultado-exame" type="submit" class="btn btn-primary btn-sm">Salvar</button>
-						<button onclick="fechaFormularioResultadoExame()" type="button"
-							class="btn btn-warning btn-sm">Cancelar</button>
-					</div>
+				<div class="text-right">
+					<button id="submit-resultado-exame" type="submit"
+						class="btn btn-primary btn-sm">Salvar</button>
+					<button onclick="fechaFormularioResultadoExame()" type="button"
+						class="btn btn-warning btn-sm">Cancelar</button>
 				</div>
 			</form>
 		</div>
