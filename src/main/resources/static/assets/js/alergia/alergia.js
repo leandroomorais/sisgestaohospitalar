@@ -304,7 +304,12 @@ function atualizaAlergia() {
 				title: 'CID',
 				data: 'alergia.cid',
 				mRender: function(data) {
-					return "<small>" + data.codigo + " - " + data.nome + "</small>";
+					if (data != null) {
+						return "<small>" + data.codigo + " - " + data.nome + "</small>";
+					} else {
+						return "<small> CID não cadastrado</small>";
+					}
+
 				}
 			},
 			{
