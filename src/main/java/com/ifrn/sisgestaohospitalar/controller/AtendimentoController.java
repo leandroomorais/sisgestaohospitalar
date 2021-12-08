@@ -229,6 +229,7 @@ public class AtendimentoController {
 			atendimento.setTipoServicos(atendimentoDTO.getTipoServicos());
 			atendimento.setCondutaCidadao(atendimentoDTO.getCondutaCidadao());
 			atendimento.setProfissionalDestino(atendimentoDTO.getProfissionalDestino());
+
 			if (atendimentoDTO.getCondutaCidadao() != null) {
 				if (atendimentoDTO.getCondutaCidadao().equals(CondutaCidadao.LIBERADO)
 						|| atendimentoDTO.getCondutaCidadao().equals(CondutaCidadao.UBS)) {
@@ -237,13 +238,18 @@ public class AtendimentoController {
 					atendimento.getTipoServicos().add(tipoServicoRepository.findByNome("Inativo"));
 				}
 			}
-			
+
 			if (atendimentoDTO.getCondutaCidadao() != null) {
 				if (atendimentoDTO.getCondutaCidadao().equals(CondutaCidadao.NAOAGUARDOUATENDIMENTO)) {
 					atendimento.setStatus(Status.NAOAGUARDOU);
 					atendimento.getTipoServicos().clear();
 					atendimento.getTipoServicos().add(tipoServicoRepository.findByNome("Inativo"));
 				}
+			}
+
+			if (atendimentoDTO.getTipoServicos() != null && !atendimentoDTO.getTipoServicos().isEmpty()
+					&& atendimentoDTO.getCondutaCidadao() == null) {
+				atendimento.setStatus(Status.AGUARDANDOATENDIMENTO);
 			}
 			atendimentoRepository.saveAndFlush(atendimento);
 			return ResponseEntity.ok().build();
