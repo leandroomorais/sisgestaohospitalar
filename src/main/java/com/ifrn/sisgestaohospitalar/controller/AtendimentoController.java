@@ -230,11 +230,13 @@ public class AtendimentoController {
 					atendimento.getTipoServicos().add(tipoServicoRepository.findByNome("Inativo"));
 				}
 			}
-
-			if (atendimentoDTO.getCondutaCidadao().equals(CondutaCidadao.NAOAGUARDOUATENDIMENTO)) {
-				atendimento.setStatus(Status.NAOAGUARDOU);
-				atendimento.getTipoServicos().clear();
-				atendimento.getTipoServicos().add(tipoServicoRepository.findByNome("Inativo"));
+			
+			if (atendimentoDTO.getCondutaCidadao() != null) {
+				if (atendimentoDTO.getCondutaCidadao().equals(CondutaCidadao.NAOAGUARDOUATENDIMENTO)) {
+					atendimento.setStatus(Status.NAOAGUARDOU);
+					atendimento.getTipoServicos().clear();
+					atendimento.getTipoServicos().add(tipoServicoRepository.findByNome("Inativo"));
+				}
 			}
 			atendimentoRepository.saveAndFlush(atendimento);
 			return ResponseEntity.ok().build();
