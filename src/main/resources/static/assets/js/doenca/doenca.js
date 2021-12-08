@@ -157,7 +157,7 @@ $("#form-status-doenca-edit").submit(function(evt) {
 				// options
 				icon: 'flaticon-success',
 				title: 'SUCESSO',
-				message: 'A doenca foi salva',
+				message: 'A condição de saúde foi salva',
 				target: '_blank'
 			}, {
 				// settings
@@ -311,7 +311,12 @@ function atualizaDoenca() {
 				title: 'CID',
 				data: 'doenca.cid',
 				mRender: function(data) {
-					return "<small>" + data.codigo + " - " + data.nome + "</small>";
+					if (data != null) {
+						return "<small>" + data.codigo + " - " + data.nome + "</small>";
+					} else {
+						return "<small> CID não cadastrado </small>";
+					}
+
 				}
 			},
 			{
