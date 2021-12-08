@@ -183,6 +183,7 @@ public class AtendimentoController {
 			atendimento.setCondutaCidadao(atendimentoDTO.getCondutaCidadao());
 			atendimento.setProfissionalDestino(atendimentoDTO.getProfissionalDestino());
 			atendimento.setTempoObservacao(atendimentoDTO.getTempoObservacao());
+			atendimento.setCaraterAtendimento(atendimentoDTO.getCaraterAtendimento());
 			if (atendimentoDTO.getCondutaCidadao().equals(CondutaCidadao.UBS)
 					|| atendimentoDTO.getCondutaCidadao().equals(CondutaCidadao.LIBERADO)
 					|| atendimentoDTO.getCondutaCidadao().equals(CondutaCidadao.TRANSFERIDO)) {
@@ -229,7 +230,6 @@ public class AtendimentoController {
 			atendimento.setTipoServicos(atendimentoDTO.getTipoServicos());
 			atendimento.setCondutaCidadao(atendimentoDTO.getCondutaCidadao());
 			atendimento.setProfissionalDestino(atendimentoDTO.getProfissionalDestino());
-
 			if (atendimentoDTO.getCondutaCidadao() != null) {
 				if (atendimentoDTO.getCondutaCidadao().equals(CondutaCidadao.LIBERADO)
 						|| atendimentoDTO.getCondutaCidadao().equals(CondutaCidadao.UBS)) {

@@ -36,6 +36,7 @@ $("#form-finalizar-atendimento").submit(function(evt) {
 	}
 	atendimentoDTO.tempoObservacao = $("#tempo-observacao").val();
 	atendimentoDTO.caraterAtendimento = $("input[name='atendimento.tipoAtendimento']:checked").val();
+	console.log(atendimentoDTO);
 	$.ajax({
 		url: '/atendimento/finalizar/',
 		method: 'post',
