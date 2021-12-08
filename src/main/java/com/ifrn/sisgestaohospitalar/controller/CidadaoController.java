@@ -57,9 +57,7 @@ public class CidadaoController {
 			Principal principal) {
 		cidadao.setCns(cidadao.getCns().replace(".", ""));
 		cidadao.setCpf(cidadao.getCpf().replace(".", "").replace("-", ""));
-		System.out.println(cidadao.toString());
 		if (result.hasErrors()) {
-			System.out.println(cidadao.toString());
 			return cadastrar(cidadao, principal).addObject("hasErrors", true);
 		}
 		try {
@@ -68,7 +66,6 @@ public class CidadaoController {
 			cidadao.setProntuario(prontuario);
 			prontuario.setCidadao(cidadao);
 			cidadaoService.save(cidadao);
-			
 
 		} catch (DataNascimentoMaiorQueDataAtualException e) {
 			result.rejectValue("dataNascimento", e.getMessage(), e.getMessage());
