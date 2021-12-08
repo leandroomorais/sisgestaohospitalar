@@ -106,8 +106,9 @@
 
 										<!-- Input responsável por guardar o Cidadão -->
 										<input name="" type="hidden" th:field="*{cidadao}" th:value="*{cidadao.id}" />
-										
-										<input  type="hidden" id="dt-nascimento" th:value="${atendimento.cidadao.dataNascimento}">
+
+										<input type="hidden" id="dt-nascimento"
+											th:value="${atendimento.cidadao.dataNascimento}">
 
 										<!-- Input responsável por guardar a Data de Entrada do Atendimento -->
 										<input type="hidden" th:field="*{dataEntrada}"
@@ -157,7 +158,8 @@
 																</div>
 															</div>
 															<div class="col-md-6">
-																<div class="form-check">
+																<div class="form-check"
+																	th:classappend="${#fields.hasErrors('tipoServicos')} ? has-error">
 																	<label>Selecione o(s) serviço(s) para este
 																		atendimento:</label><br>
 																	<th:block th:each="tipoServico : ${tipoServicos}">

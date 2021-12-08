@@ -113,9 +113,16 @@ public class AtendimentoController {
 	@PostMapping("/salvar")
 	public ModelAndView salvar(@Valid Atendimento atendimento, BindingResult result, RedirectAttributes attributes,
 			Principal principal) {
-		if (result.hasErrors() || atendimento.getTipoServicos().isEmpty()) {
+
+		if (result.hasErrors()) {
 			return cadastrar(atendimento.getCidadao().getId(), atendimento, principal);
 		}
+
+		if (atendimento.getTipoServicos().isEmpty()) {
+			result.rejectValue("tipoServicos", "Não pode ser nulo", "Selecione o(s) serviço(s) para este atendimento");
+			return cadastrar(atendimento.getCidadao().getId(), atendimento, principal);
+		}
+
 		try {
 			if (atendimento.getDataEntrada() == null) {
 				atendimento.setDataEntrada(LocalDateTime.now());
