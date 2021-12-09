@@ -31,6 +31,7 @@ import com.ifrn.sisgestaohospitalar.repository.AtendimentoRepository;
 import com.ifrn.sisgestaohospitalar.repository.ProfissionalRepository;
 import com.ifrn.sisgestaohospitalar.repository.TipoServicoRepository;
 import com.ifrn.sisgestaohospitalar.repository.UsuarioRepository;
+import com.ifrn.sisgestaohospitalar.service.HistoricoAtendimentoService;
 import com.ifrn.sisgestaohospitalar.service.TriagemDataTablesService;
 
 @Controller
@@ -46,9 +47,11 @@ public class TriagemController {
 	@Autowired
 	private TipoServicoRepository tipoServicoRepository;
 
-
 	@Autowired
 	private UsuarioRepository usuarioRepository;
+
+	@Autowired
+	private HistoricoAtendimentoService historicoAtendimentoService;
 
 	@RequestMapping("/verificar/{atendimentoId}")
 	public ResponseEntity<?> verificaTriagem(@PathVariable("atendimentoId") Long id) {
@@ -68,6 +71,8 @@ public class TriagemController {
 			Atendimento atendimento = optional.get();
 			Profissional profissional = profissionalRepository.findByCpf(principal.getName());
 			atendimento.setStatus(Status.EMATENDIMENTO);
+			atendimento.getHistoricosAtendimento().add(historicoAtendimentoService.criaHistoricoAtendimento(
+					"INICIO TRIAGEM", null, atendimento.getStatus(), null, null, null, profissional));
 			atendimentoRepository.saveAndFlush(atendimento);
 			triagem.setAtendimento(atendimento);
 			triagem.setInicioTriagem(LocalDateTime.now());
@@ -112,7 +117,8 @@ public class TriagemController {
 
 	@GetMapping("/datatables/server")
 	public ResponseEntity<?> dataTables(HttpServletRequest request) {
-		Map<String, Object> data = new TriagemDataTablesService().execute(atendimentoRepository, tipoServicoRepository, request);
+		Map<String, Object> data = new TriagemDataTablesService().execute(atendimentoRepository, tipoServicoRepository,
+				request);
 		return ResponseEntity.ok(data);
 	}
 

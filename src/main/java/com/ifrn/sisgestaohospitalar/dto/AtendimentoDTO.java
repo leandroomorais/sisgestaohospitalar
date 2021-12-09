@@ -3,7 +3,6 @@ package com.ifrn.sisgestaohospitalar.dto;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
-
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
@@ -12,7 +11,6 @@ import javax.validation.constraints.NotNull;
 import com.ifrn.sisgestaohospitalar.enums.CaraterAtendimento;
 import com.ifrn.sisgestaohospitalar.enums.CondutaCidadao;
 import com.ifrn.sisgestaohospitalar.enums.Status;
-import com.ifrn.sisgestaohospitalar.model.HistoricoStatus;
 import com.ifrn.sisgestaohospitalar.model.Profissional;
 import com.ifrn.sisgestaohospitalar.model.TipoServico;
 import com.ifrn.sisgestaohospitalar.model.AtendimentoProcedimento;
@@ -41,8 +39,6 @@ public class AtendimentoDTO {
 
 	@NotNull(message = "É necessário selecionar o Profissional de destino")
 	private Profissional profissionalDestino;
-
-	private List<HistoricoStatus> historicoStatus;
 
 	private List<AtendimentoProcedimento> atendimentoProcedimentos;
 
@@ -123,13 +119,6 @@ public class AtendimentoDTO {
 		this.profissionalDestino = profissionalDestino;
 	}
 
-	public List<HistoricoStatus> getHistoricoStatus() {
-		return historicoStatus;
-	}
-
-	public void setHistoricoStatus(List<HistoricoStatus> historicoStatus) {
-		this.historicoStatus = historicoStatus;
-	}
 
 	public List<AtendimentoProcedimento> getAtendimentoProcedimentos() {
 		return atendimentoProcedimentos;

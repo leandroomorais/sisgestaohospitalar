@@ -95,19 +95,19 @@ public class SisgestaohospitalarApplication implements ApplicationListener<Conte
 	String txtFormaFarmaceutica = System.getProperty("user.dir") + "/medicamento/formafarmaceutica.txt";
 	String txtGruposExames = System.getProperty("user.dir") + "/exames/gruposExames.txt";
 	String txtExamesSimplificado = System.getProperty("user.dir") + "/exames/examesSimplificado.txt";
-	
+
 	@Override
 	public void onApplicationEvent(ContextRefreshedEvent event) {
 
-		//criaRolesETipoUsuario();
-		//lerSigtab();
-		//lerMedicamentosEFormaFarmaceutica();
-		//lerXmlEsus();
-		//lerEstadosMunicipios();
-		//salvarViaAdministracao();
-		//salvarTipoServico();
-		//LerExames();
-		//leitorTXTExames.atualizaGrupo();
+		// criaRolesETipoUsuario();
+		// lerSigtab();
+		// lerMedicamentosEFormaFarmaceutica();
+		// lerXmlEsus();
+		// lerEstadosMunicipios();
+		// salvarViaAdministracao();
+		// salvarTipoServico();
+		// LerExames();
+		// leitorTXTExames.atualizaGrupo();
 	}
 
 	public void salvarTipoServico() {

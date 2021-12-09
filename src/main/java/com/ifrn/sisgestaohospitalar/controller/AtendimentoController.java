@@ -2,6 +2,7 @@ package com.ifrn.sisgestaohospitalar.controller;
 
 import java.security.Principal;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
@@ -27,7 +28,7 @@ import com.ifrn.sisgestaohospitalar.enums.SituacaoCondicao;
 import com.ifrn.sisgestaohospitalar.enums.Status;
 import com.ifrn.sisgestaohospitalar.model.Atendimento;
 import com.ifrn.sisgestaohospitalar.model.Cidadao;
-import com.ifrn.sisgestaohospitalar.model.TipoServico;
+import com.ifrn.sisgestaohospitalar.model.HistoricoAtendimento;
 import com.ifrn.sisgestaohospitalar.repository.AtendimentoRepository;
 import com.ifrn.sisgestaohospitalar.repository.CidadaoRepository;
 import com.ifrn.sisgestaohospitalar.repository.ProfissionalRepository;
@@ -36,6 +37,7 @@ import com.ifrn.sisgestaohospitalar.repository.UsuarioRepository;
 import com.ifrn.sisgestaohospitalar.repository.ViaAdministracaoRepository;
 import com.ifrn.sisgestaohospitalar.service.AtendimentoDataTablesService;
 import com.ifrn.sisgestaohospitalar.service.AtendimentoService;
+import com.ifrn.sisgestaohospitalar.service.HistoricoAtendimentoService;
 import com.ifrn.sisgestaohospitalar.service.exception.CidadaoJaAdicionadoNaFilaException;
 
 @Controller
@@ -62,6 +64,9 @@ public class AtendimentoController {
 
 	@Autowired
 	private UsuarioRepository usuarioRepository;
+
+	@Autowired
+	private HistoricoAtendimentoService historicoAtendimentoService;
 
 	@GetMapping("/{id}")
 	public ResponseEntity<?> atendimento(@PathVariable("id") Long id) {
@@ -105,9 +110,13 @@ public class AtendimentoController {
 			mv.addObject("viasAdministracao", viaAdministracaoRepository.findAll());
 			mv.addObject("condutasCidadao", CondutaCidadao.values());
 			mv.addObject("tiposAtendimento", CaraterAtendimento.values());
+			Atendimento atendimento = optional.get();
+			atendimento.setStatus(Status.EMATENDIMENTO);
+			atendimento.getHistoricosAtendimento().add(historicoAtendimentoService.criaHistoricoAtendimento(
+					"INICIO ATENDIMENTO", null, atendimento.getStatus(), null, principal, null, null));
+			atendimentoRepository.saveAndFlush(atendimento);
 		}
 		return mv;
-
 	}
 
 	@PostMapping("/salvar")
@@ -131,6 +140,11 @@ public class AtendimentoController {
 				atendimento.setStatus(atendimento.getStatus());
 			}
 			atendimento.setStatus(Status.AGUARDANDOATENDIMENTO);
+			atendimento.setHistoricosAtendimento(new ArrayList<HistoricoAtendimento>());
+			atendimento.getHistoricosAtendimento()
+					.add(historicoAtendimentoService.criaHistoricoAtendimento("ADICIONADO A LISTA DE ATENDIMENTOS",
+							atendimento.getCondutaCidadao(), atendimento.getStatus(), atendimento.getTipoServicos(),
+							principal, atendimento.getProfissionalDestino(), null));
 			atendimentoService.save(atendimento);
 		} catch (CidadaoJaAdicionadoNaFilaException e) {
 			result.rejectValue("cidadao", e.getMessage(), e.getMessage());
@@ -202,6 +216,10 @@ public class AtendimentoController {
 				atendimento.getTipoServicos().add(tipoServicoRepository.findByNome("Inativo"));
 				atendimento.setStatus(Status.NAOAGUARDOU);
 			}
+			atendimento.getHistoricosAtendimento()
+					.add(historicoAtendimentoService.criaHistoricoAtendimento("FIM ATENDIMENTO",
+							atendimento.getCondutaCidadao(), atendimento.getStatus(), atendimento.getTipoServicos(),
+							principal, atendimento.getProfissionalDestino(), null));
 			atendimentoRepository.saveAndFlush(atendimento);
 			return ResponseEntity.ok().build();
 		}
@@ -251,6 +269,12 @@ public class AtendimentoController {
 					&& atendimentoDTO.getCondutaCidadao() == null) {
 				atendimento.setStatus(Status.AGUARDANDOATENDIMENTO);
 			}
+
+			atendimento.getHistoricosAtendimento()
+					.add(historicoAtendimentoService.criaHistoricoAtendimento("FIM TRIAGEM",
+							atendimento.getCondutaCidadao(), atendimento.getStatus(), atendimento.getTipoServicos(),
+							principal, atendimento.getProfissionalDestino(), null));
+
 			atendimentoRepository.saveAndFlush(atendimento);
 			return ResponseEntity.ok().build();
 		}
@@ -264,7 +288,6 @@ public class AtendimentoController {
 			ModelAndView mv = new ModelAndView("atendimento/detalhe-atendimento");
 			mv.addObject("user", usuarioRepository.findByUsername(principal.getName()));
 			mv.addObject("atendimento", optional.get());
-			mv.addObject("historicosStatus", optional.get().getHistoricoStatus());
 			return mv;
 		}
 		return listar(principal).addObject("erro", "Atendimento não localizado");

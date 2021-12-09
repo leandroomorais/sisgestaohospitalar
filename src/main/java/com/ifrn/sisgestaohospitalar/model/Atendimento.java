@@ -2,7 +2,6 @@ package com.ifrn.sisgestaohospitalar.model;
 
 import java.time.LocalDateTime;
 import java.util.List;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -14,8 +13,6 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Positive;
-
 import org.hibernate.annotations.DynamicUpdate;
 import com.ifrn.sisgestaohospitalar.enums.CaraterAtendimento;
 import com.ifrn.sisgestaohospitalar.enums.CondutaCidadao;
@@ -58,10 +55,9 @@ public class Atendimento {
 	@JoinTable(name = "atendimento_uso_medicamentos", joinColumns = @JoinColumn(name = "id_atendimento"), inverseJoinColumns = @JoinColumn(name = "id_uso_medicamento"))
 	private List<UsoMedicamento> usoMedicamentos;
 
-	@Valid
 	@ManyToMany(cascade = CascadeType.ALL)
-	@JoinTable(name = "atendimento_historico_status", joinColumns = @JoinColumn(name = "id_atendimento"), inverseJoinColumns = @JoinColumn(name = "id_historico"))
-	private List<HistoricoStatus> historicoStatus;
+	@JoinTable(name = "atendimento_historico", joinColumns = @JoinColumn(name = "id_atendimento"), inverseJoinColumns = @JoinColumn(name = "id_historico"))
+	private List<HistoricoAtendimento> historicosAtendimento;
 
 	@Valid
 	@ManyToMany(cascade = CascadeType.ALL)
@@ -168,12 +164,12 @@ public class Atendimento {
 		this.usoMedicamentos = usoMedicamentos;
 	}
 
-	public List<HistoricoStatus> getHistoricoStatus() {
-		return historicoStatus;
+	public List<HistoricoAtendimento> getHistoricosAtendimento() {
+		return historicosAtendimento;
 	}
 
-	public void setHistoricoStatus(List<HistoricoStatus> historicoStatus) {
-		this.historicoStatus = historicoStatus;
+	public void setHistoricosAtendimento(List<HistoricoAtendimento> historicosAtendimento) {
+		this.historicosAtendimento = historicosAtendimento;
 	}
 
 	public List<AtendimentoProcedimento> getAtendimentoProcedimentos() {
@@ -207,5 +203,4 @@ public class Atendimento {
 	public void setConsulta(Consulta consulta) {
 		this.consulta = consulta;
 	}
-
 }
