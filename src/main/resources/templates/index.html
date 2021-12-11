@@ -74,7 +74,6 @@
 							</div>
 						</div>
 					</div>
-
 					<div class="page-inner mt--5">
 						<div class="row">
 							<div class="col-md-12">
@@ -83,7 +82,7 @@
 										<div class="row">
 
 											<div class="col-sm-6 col-md-3"
-												sec:authorize="hasAnyAuthority('ADMINISTRADOR','SUPER')">
+												sec:authorize="hasAnyAuthority('ADMINISTRADOR')">
 												<div class="card card-stats card-primary card-round">
 													<div class="card-body">
 														<div class="row">
@@ -105,7 +104,7 @@
 											</div>
 
 											<div class="col-sm-6 col-md-3"
-												sec:authorize="hasAnyAuthority('TECNICO','SUPER')">
+												sec:authorize="hasAnyAuthority('ENFERMEIRO','TECNICO','AUXILIAR')">
 												<div class="card card-stats card-primary card-round">
 													<div class="card-body">
 														<div class="row">
@@ -127,7 +126,7 @@
 											</div>
 
 											<div class="col-sm-6 col-md-3"
-												sec:authorize="hasAnyAuthority('ENFERMEIRO','SUPER','MEDICO')">
+												sec:authorize="hasAnyAuthority('ENFERMEIRO','MEDICO')">
 												<div class="card card-stats card-primary card-round">
 													<div class="card-body">
 														<div class="row">
@@ -140,17 +139,15 @@
 															<div class="col-7 col-stats">
 																<div class="numbers">
 																	<a th:href="@{/triagem/listar}"
-																		class="card-title">Atendimentos - Triagem</a>
+																		class="card-title">Triagem</a>
 																</div>
 															</div>
 														</div>
 													</div>
 												</div>
 											</div>
-
-
 											<div class="col-sm-6 col-md-3"
-												sec:authorize="hasAnyAuthority('MEDICO','SUPER')">
+												sec:authorize="hasAnyAuthority('MEDICO','ENFERMEIRO','TECNICO','AUXILIAR')">
 												<div class="card card-stats card-primary card-round">
 													<div class="card-body">
 														<div class="row">
@@ -162,7 +159,7 @@
 															</div>
 															<div class="col-7 col-stats">
 																<div class="numbers">
-																	<a th:href="@{/}"
+																	<a th:href="@{/atendimento/listar-atendimentos}"
 																		class="card-title">Atendimentos</a>
 																</div>
 															</div>

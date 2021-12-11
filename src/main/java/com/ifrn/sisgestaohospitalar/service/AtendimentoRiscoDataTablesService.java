@@ -2,9 +2,7 @@ package com.ifrn.sisgestaohospitalar.service;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
-
 import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -14,12 +12,12 @@ import org.springframework.data.domain.Sort.Direction;
 import com.ifrn.sisgestaohospitalar.model.Atendimento;
 import com.ifrn.sisgestaohospitalar.repository.AtendimentoRepository;
 
-public class AtendimentoDataTablesService {
+public class AtendimentoRiscoDataTablesService {
 
-	private String[] cols = { "dataEntrada", "cidadao.sexo", "cidadao.nome", "profissionalDestino.nome", "tipoServicos",
+	private String[] cols = { "cidadao.sexo", "cidadao.nome", "profissionalDestino.nome", "tipoServicos",
 			"status.descricao", "" };
 
-	public Map<String, Object> execute(AtendimentoRepository repository, HttpServletRequest request) {
+	public Map<String, Object> execute(AtendimentoRepository atendimentoRepository, HttpServletRequest request) {
 
 		int start = Integer.parseInt(request.getParameter("start"));
 		int length = Integer.parseInt(request.getParameter("length"));
@@ -34,7 +32,7 @@ public class AtendimentoDataTablesService {
 
 		Pageable pageable = PageRequest.of(current, length, direction, column);
 
-		Page<Atendimento> page = queryBy(search, repository, pageable);
+		Page<Atendimento> page = queryBy(search, atendimentoRepository, pageable);
 
 		Map<String, Object> json = new LinkedHashMap<>();
 		json.put("draw", draw);
@@ -45,10 +43,7 @@ public class AtendimentoDataTablesService {
 	}
 
 	private Page<Atendimento> queryBy(String search, AtendimentoRepository repository, Pageable pageable) {
-		if (search.isEmpty()) {
-			return repository.findAll(pageable);
-		}
-		return repository.findByCidadaoOrProfissionalOrTipoServico(search, pageable);
+		return repository.findAtendimentos(pageable);
 	}
 
 	private String searchBy(HttpServletRequest request) {

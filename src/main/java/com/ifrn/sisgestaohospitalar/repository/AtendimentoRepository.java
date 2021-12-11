@@ -17,6 +17,9 @@ import com.ifrn.sisgestaohospitalar.model.TipoServico;
 @Repository
 public interface AtendimentoRepository extends JpaRepository<Atendimento, Long> {
 
+	@Query("select a from Atendimento a join a.tipoServicos tp where tp.nome != 'Triagem' and a.status != 4 and a.status != 3")
+	Page<Atendimento> findAtendimentos(Pageable pageable);
+
 	List<Atendimento> findByCidadao(Cidadao cidadao);
 
 	List<Atendimento> findByStatus(Status status);

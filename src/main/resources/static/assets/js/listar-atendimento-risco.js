@@ -12,18 +12,12 @@ function atualizarTabela() {
 		processing: true,
 		serverSide: true,
 		responsive: true,
-		destroy: true,
 		lengthMenu: [10, 15, 20, 25],
 		ajax: {
-			url: "/triagem/datatables/server",
+			url: "/atendimento/datatables-risco/server",
 			data: "data",
 		},
 		columns: [
-			{
-				title: '',
-				data: 'dataEntrada',
-				visible: false,
-			},
 			{
 				title: '',
 				data: 'cidadao.sexo',
@@ -48,7 +42,7 @@ function atualizarTabela() {
 				}
 			},
 			{
-				title: 'STATUS', data: 'status', mRender: function(data) {
+				title: 'STATUS', data: 'status', className: "dt[-head|-body]-center", mRender: function(data) {
 					if (data == "AGUARDANDOATENDIMENTO") {
 						return "<i class='fa fa-circle aguardando-atendimento'></i>"
 					}
@@ -68,7 +62,7 @@ function atualizarTabela() {
 			},
 			{
 				title: 'AÇÕES', data: 'id', mRender: function(data) {
-					var retorno = "<a class='btn btn-primary btn-sm' " + "href='/triagem/adicionar/" + data + "'><i class='fa fa-stethoscope'></i> Atender</a>"
+					var retorno = "<a class='btn btn-primary btn-sm' " + "href='/atendimento/atender/" + data + "'><i class='fa fa-user-md'></i> Atender</a>"
 					return retorno;
 				}
 			}

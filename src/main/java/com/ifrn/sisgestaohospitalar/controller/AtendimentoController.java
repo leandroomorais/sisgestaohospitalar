@@ -36,6 +36,7 @@ import com.ifrn.sisgestaohospitalar.repository.TipoServicoRepository;
 import com.ifrn.sisgestaohospitalar.repository.UsuarioRepository;
 import com.ifrn.sisgestaohospitalar.repository.ViaAdministracaoRepository;
 import com.ifrn.sisgestaohospitalar.service.AtendimentoDataTablesService;
+import com.ifrn.sisgestaohospitalar.service.AtendimentoRiscoDataTablesService;
 import com.ifrn.sisgestaohospitalar.service.AtendimentoService;
 import com.ifrn.sisgestaohospitalar.service.HistoricoAtendimentoService;
 import com.ifrn.sisgestaohospitalar.service.exception.CidadaoJaAdicionadoNaFilaException;
@@ -80,6 +81,12 @@ public class AtendimentoController {
 	@GetMapping("/datatables/server")
 	public ResponseEntity<?> dataTables(HttpServletRequest request) {
 		Map<String, Object> data = new AtendimentoDataTablesService().execute(atendimentoRepository, request);
+		return ResponseEntity.ok(data);
+	}
+
+	@GetMapping("/datatables-risco/server")
+	public ResponseEntity<?> dataTablesRisco(HttpServletRequest request) {
+		Map<String, Object> data = new AtendimentoRiscoDataTablesService().execute(atendimentoRepository, request);
 		return ResponseEntity.ok(data);
 	}
 
@@ -302,6 +309,14 @@ public class AtendimentoController {
 	@RequestMapping("/listar")
 	public ModelAndView listar(Principal principal) {
 		ModelAndView mv = new ModelAndView("atendimento/listar-atendimento");
+		mv.addObject("user", usuarioRepository.findByUsername(principal.getName()));
+		mv.addObject("statusAtendimentos", Status.values());
+		return mv;
+	}
+
+	@RequestMapping("/listar-atendimentos")
+	public ModelAndView listarPorRisco(Principal principal) {
+		ModelAndView mv = new ModelAndView("atendimento/listar-atendimento-risco");
 		mv.addObject("user", usuarioRepository.findByUsername(principal.getName()));
 		mv.addObject("statusAtendimentos", Status.values());
 		return mv;
