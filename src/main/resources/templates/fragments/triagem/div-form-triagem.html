@@ -39,11 +39,13 @@
 					<div class="col-md-12 row">
 						<th:block th:each="classificacaoDeRisco : ${classificacoesRisco}">
 							<div id="classificacaoRadios" class="form-group col-md-2 col-lg-2">
-								<input type="radio" class="radio-class" th:id="${classificacaoDeRisco}"
-									name="classificacaoDeRisco" th:value="${classificacaoDeRisco}"><label
+								<input th:if="${classificacaoDeRisco.nome != 'NÃO INFORMADA'}" type="radio"
+									class="radio-class" th:id="${classificacaoDeRisco.nome}" name="classificacaoDeRisco"
+									th:value="${classificacaoDeRisco.id}"><label
+									th:if="${classificacaoDeRisco.nome != 'NÃO INFORMADA'}"
 									th:classappend="|${classificacaoDeRisco.nome == 'VERMELHO' ? 'label-input-red' : ''} ${classificacaoDeRisco.nome == 'AMARELO' ? 'label-input-yellow' : ''}
 										${classificacaoDeRisco.nome == 'AZUL' ? 'label-input-blue' : ''} ${classificacaoDeRisco.nome == 'LARANJA' ? 'label-input-orange' : ''} ${classificacaoDeRisco.nome == 'VERDE' ? 'label-input-green' : ''}|"
-									th:for="${classificacaoDeRisco}"><span class="text-light"
+									th:for="${classificacaoDeRisco.nome}"><span class="text-light"
 										th:text="${classificacaoDeRisco.nome}"></span></label>
 							</div>
 						</th:block>

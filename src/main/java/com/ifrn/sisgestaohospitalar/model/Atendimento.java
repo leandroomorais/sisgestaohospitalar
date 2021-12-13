@@ -41,6 +41,9 @@ public class Atendimento {
 
 	private int tempoObservacao;
 
+	@OneToOne
+	private ClassificacaoDeRisco classificacaoDeRisco;
+
 	@NotNull(message = "É necessário selecionar o Profissional de destino")
 	@OneToOne
 	private Profissional profissionalDestino;
@@ -140,6 +143,14 @@ public class Atendimento {
 		this.tempoObservacao = tempoObservacao;
 	}
 
+	public ClassificacaoDeRisco getClassificacaoDeRisco() {
+		return classificacaoDeRisco;
+	}
+
+	public void setClassificacaoDeRisco(ClassificacaoDeRisco classificacaoDeRisco) {
+		this.classificacaoDeRisco = classificacaoDeRisco;
+	}
+
 	public Profissional getProfissionalDestino() {
 		return profissionalDestino;
 	}
@@ -203,4 +214,5 @@ public class Atendimento {
 	public void setConsulta(Consulta consulta) {
 		this.consulta = consulta;
 	}
+
 }

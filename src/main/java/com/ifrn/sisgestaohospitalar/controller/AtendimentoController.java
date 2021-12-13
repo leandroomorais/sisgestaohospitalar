@@ -31,6 +31,7 @@ import com.ifrn.sisgestaohospitalar.model.Cidadao;
 import com.ifrn.sisgestaohospitalar.model.HistoricoAtendimento;
 import com.ifrn.sisgestaohospitalar.repository.AtendimentoRepository;
 import com.ifrn.sisgestaohospitalar.repository.CidadaoRepository;
+import com.ifrn.sisgestaohospitalar.repository.ClassificacaoDeRiscoRepository;
 import com.ifrn.sisgestaohospitalar.repository.ProfissionalRepository;
 import com.ifrn.sisgestaohospitalar.repository.TipoServicoRepository;
 import com.ifrn.sisgestaohospitalar.repository.UsuarioRepository;
@@ -69,6 +70,9 @@ public class AtendimentoController {
 	@Autowired
 	private HistoricoAtendimentoService historicoAtendimentoService;
 
+	@Autowired
+	private ClassificacaoDeRiscoRepository classificacaoDeRiscoRepository;
+
 	@GetMapping("/{id}")
 	public ResponseEntity<?> atendimento(@PathVariable("id") Long id) {
 		Optional<Atendimento> optional = atendimentoRepository.findById(id);
@@ -87,6 +91,8 @@ public class AtendimentoController {
 	@GetMapping("/datatables-risco/server")
 	public ResponseEntity<?> dataTablesRisco(HttpServletRequest request) {
 		Map<String, Object> data = new AtendimentoRiscoDataTablesService().execute(atendimentoRepository, request);
+		System.out.println("Aqui");
+		System.out.println(new AtendimentoRiscoDataTablesService().execute(atendimentoRepository, request).toString());
 		return ResponseEntity.ok(data);
 	}
 
@@ -129,7 +135,6 @@ public class AtendimentoController {
 	@PostMapping("/salvar")
 	public ModelAndView salvar(@Valid Atendimento atendimento, BindingResult result, RedirectAttributes attributes,
 			Principal principal) {
-
 		if (result.hasErrors()) {
 			return cadastrar(atendimento.getCidadao().getId(), atendimento, principal);
 		}
@@ -146,6 +151,7 @@ public class AtendimentoController {
 			if (atendimento.getStatus() != null) {
 				atendimento.setStatus(atendimento.getStatus());
 			}
+			atendimento.setClassificacaoDeRisco(classificacaoDeRiscoRepository.getOne((long) 6));
 			atendimento.setStatus(Status.AGUARDANDOATENDIMENTO);
 			atendimento.setHistoricosAtendimento(new ArrayList<HistoricoAtendimento>());
 			atendimento.getHistoricosAtendimento()

@@ -1,5 +1,6 @@
 package com.ifrn.sisgestaohospitalar.service;
 
+import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
@@ -14,8 +15,8 @@ import com.ifrn.sisgestaohospitalar.repository.AtendimentoRepository;
 
 public class AtendimentoRiscoDataTablesService {
 
-	private String[] cols = { "cidadao.sexo", "cidadao.nome", "profissionalDestino.nome", "tipoServicos",
-			"status.descricao", "" };
+	private String[] cols = { "classificacaoDeRisco.prioridade", "cidadao.sexo", "cidadao.nome",
+			"profissionalDestino.nome", "tipoServicos", "status.descricao", "triagem.classificacaoDeRisco.nome" };
 
 	public Map<String, Object> execute(AtendimentoRepository atendimentoRepository, HttpServletRequest request) {
 
@@ -43,6 +44,10 @@ public class AtendimentoRiscoDataTablesService {
 	}
 
 	private Page<Atendimento> queryBy(String search, AtendimentoRepository repository, Pageable pageable) {
+		for (Iterator<Atendimento> iterator = repository.findAtendimentos(pageable).iterator(); iterator.hasNext();) {
+			Atendimento atendimento = iterator.next();
+			System.out.println(atendimento.getCidadao().getNome());
+		}
 		return repository.findAtendimentos(pageable);
 	}
 

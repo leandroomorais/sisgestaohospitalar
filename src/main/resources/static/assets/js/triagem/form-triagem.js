@@ -8,10 +8,10 @@ $(document).ready(function() {
 	idProntuario = $("#id-prontuario").val();
 
 	verificaTriagem();
-	
+
 	ocultarAlergia();
 	ocultarDoenca();
-	
+
 	$("#sinaisVitais-pressaoSistolica").mask('000');
 	$("#sinaisVitais-pressaoDiastolica").mask('000');
 	$("#sinaisVitais-frequenciaRespiratoria").mask("000");
@@ -75,7 +75,7 @@ $("#form-triagem").submit(function(evt) {
 	triagem.id = $("#idTriagem").val();
 	triagem.motivo = tinymce.get("motivo").getContent();
 	triagem.inicioTriagem = $("#inicioTriagem").val();
-	triagem.classificacaoDeRisco = $("input[name='classificacaoDeRisco']:checked").val();
+	triagem['classificacaoDeRisco.id'] = $("input[name='classificacaoDeRisco']:checked").val();
 	triagem['sinaisVitais'] = $("#idSinaisVitais").val();
 	triagem['sinaisVitais.pressaoSistolica'] = $("#sinaisVitais-pressaoSistolica").val();
 	triagem['sinaisVitais.pressaoDiastolica'] = $("#sinaisVitais-pressaoDiastolica").val();
@@ -86,6 +86,8 @@ $("#form-triagem").submit(function(evt) {
 	triagem['sinaisVitais.glicemiaCapilar'] = $("#sinaisVitais-glicemiaCapilar").val();
 	triagem['sinaisVitais.momentoColeta'] = $("#sinaisVitais-momentoColeta option:selected").val();
 	triagem['atendimento'] = idAtendimento;
+
+	console.log(triagem);
 
 	$.ajax({
 		url: "/triagem/salvar",
@@ -281,7 +283,9 @@ function verificaTriagem() {
 		method: 'get',
 		success: function(data) {
 			$("#idTriagem").val(data.id);
-			$("#idSinaisVitais").val(data.sinaisVitais.id);
+			if (data.sinaisVitais.id != null) {
+				$("#idSinaisVitais").val(data.sinaisVitais.id);
+			}
 			$("#inicioTriagem").val(data.inicioTriagem);
 			$("#motivo").html(data.motivo);
 			$("#sinaisVitais-pressaoSistolica").val(data.sinaisVitais.pressaoSistolica);
@@ -292,7 +296,7 @@ function verificaTriagem() {
 			$("#sinaisVitais-saturacaoOxigenio").val(data.sinaisVitais.saturacao);
 			$("#sinaisVitais-glicemiaCapilar").val(data.sinaisVitais.glicemiaCapilar);
 			$("#sinaisVitais-momentoColeta").find("option[value=" + data.sinaisVitais.momentoColeta + "]").attr("selected", true);
-			$("input:radio[name=classificacaoDeRisco][value= " + data.classificacaoDeRisco + " ]").attr('checked', true);
+			$("input:radio[name=classificacaoDeRisco][value= " + data.classificacaoDeRisco.id + " ]").attr('checked', true);
 			$("input:radio[name=classificacaoDeRisco]").attr('disabled', true);
 			$("#form-triagem").each(function() {
 				$(this).find('input, textarea, select').attr('disabled', true);

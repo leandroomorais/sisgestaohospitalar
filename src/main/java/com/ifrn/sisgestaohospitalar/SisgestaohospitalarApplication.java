@@ -11,6 +11,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
 
+import com.ifrn.sisgestaohospitalar.model.ClassificacaoDeRisco;
 import com.ifrn.sisgestaohospitalar.model.ExameSimplificado;
 import com.ifrn.sisgestaohospitalar.model.Role;
 import com.ifrn.sisgestaohospitalar.model.TipoServico;
@@ -18,6 +19,7 @@ import com.ifrn.sisgestaohospitalar.model.TipoUsuario;
 import com.ifrn.sisgestaohospitalar.model.ViaAdministracao;
 import com.ifrn.sisgestaohospitalar.repository.Cep_IbgeRepository;
 import com.ifrn.sisgestaohospitalar.repository.CidRepository;
+import com.ifrn.sisgestaohospitalar.repository.ClassificacaoDeRiscoRepository;
 import com.ifrn.sisgestaohospitalar.repository.EstadoRepository;
 import com.ifrn.sisgestaohospitalar.repository.LogradouroRepository;
 import com.ifrn.sisgestaohospitalar.repository.MunicipioRepository;
@@ -74,6 +76,8 @@ public class SisgestaohospitalarApplication implements ApplicationListener<Conte
 	private TipoUsuarioRepository tipoUsuarioRepository;
 	@Autowired
 	private CidRepository cidRepository;
+	@Autowired
+	private ClassificacaoDeRiscoRepository classificacaoDeRiscoRepository;
 
 	public static void main(String[] args) {
 		SpringApplication.run(SisgestaohospitalarApplication.class, args);
@@ -99,15 +103,16 @@ public class SisgestaohospitalarApplication implements ApplicationListener<Conte
 	@Override
 	public void onApplicationEvent(ContextRefreshedEvent event) {
 
-		//criaRolesETipoUsuario();
-		//lerSigtab();
-		//lerMedicamentosEFormaFarmaceutica();
-		//lerXmlEsus();
-		//lerEstadosMunicipios();
-		//salvarViaAdministracao();
-		//salvarTipoServico();
-		//LerExames();
-		//leitorTXTExames.atualizaGrupo();
+		// criaRolesETipoUsuario();
+		// lerSigtab();
+		// lerMedicamentosEFormaFarmaceutica();
+		// lerXmlEsus();
+		// lerEstadosMunicipios();
+		// salvarViaAdministracao();
+		// salvarTipoServico();
+		// LerExames();
+		// leitorTXTExames.atualizaGrupo();
+		// criaClassificacaoDeRisco();
 	}
 
 	public void salvarTipoServico() {
@@ -253,6 +258,46 @@ public class SisgestaohospitalarApplication implements ApplicationListener<Conte
 		roleRepository.saveAndFlush(roleTecnico);
 		roleRepository.saveAndFlush(roleAuxiliar);
 		roleRepository.saveAndFlush(roleAdministrador);
+
+	}
+
+	public void criaClassificacaoDeRisco() {
+		ClassificacaoDeRisco vermelho = new ClassificacaoDeRisco();
+		vermelho.setNome("VERMELHO");
+		vermelho.setDescricao("Casos de emergência");
+		vermelho.setPrioridade(0);
+
+		ClassificacaoDeRisco laranja = new ClassificacaoDeRisco();
+		laranja.setNome("LARANJA");
+		laranja.setDescricao("Casos muito urgentes");
+		laranja.setPrioridade(1);
+
+		ClassificacaoDeRisco amarelo = new ClassificacaoDeRisco();
+		amarelo.setNome("AMARELO");
+		amarelo.setDescricao("Casos de urgência");
+		amarelo.setPrioridade(2);
+
+		ClassificacaoDeRisco verde = new ClassificacaoDeRisco();
+		verde.setNome("VERDE");
+		verde.setDescricao("Casos pouco urgentes");
+		verde.setPrioridade(3);
+
+		ClassificacaoDeRisco azul = new ClassificacaoDeRisco();
+		azul.setNome("AZUL");
+		azul.setDescricao("Casos não urgentes");
+		azul.setPrioridade(4);
+
+		ClassificacaoDeRisco naoInformada = new ClassificacaoDeRisco();
+		naoInformada.setNome("Não informada");
+		naoInformada.setDescricao("Risco não classificasdo");
+		naoInformada.setPrioridade(5);
+
+		classificacaoDeRiscoRepository.save(vermelho);
+		classificacaoDeRiscoRepository.save(laranja);
+		classificacaoDeRiscoRepository.save(amarelo);
+		classificacaoDeRiscoRepository.save(verde);
+		classificacaoDeRiscoRepository.save(azul);
+		classificacaoDeRiscoRepository.save(naoInformada);
 
 	}
 

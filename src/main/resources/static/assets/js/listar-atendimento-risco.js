@@ -3,16 +3,16 @@ $(document).ready(function() {
 });
 
 $("#btn-atualizar-tabela").click(function() {
-	$("#table-server").DataTable().ajax.reload();
+	$("#table-server-risco").DataTable().ajax.reload();
 })
 
 
 function atualizarTabela() {
-	$("#table-server").DataTable({
+	$("#table-server-risco").DataTable({
 		processing: true,
 		serverSide: true,
 		responsive: true,
-		lengthMenu: [10, 15, 20, 25],
+		lengthMenu: [5, 10, 15, 20],
 		ajax: {
 			url: "/atendimento/datatables-risco/server",
 			data: "data",
@@ -20,6 +20,13 @@ function atualizarTabela() {
 		columns: [
 			{
 				title: '',
+				orderable: false,
+				visible: false,
+				data: 'classificacaoDeRisco.prioridade',
+			},
+			{
+				title: '',
+				orderable: false,
 				data: 'cidadao.sexo',
 				mRender: function(data) {
 					if (data == "F") {
@@ -29,10 +36,19 @@ function atualizarTabela() {
 					}
 				}
 			},
-			{ title: 'NOME', data: 'cidadao.nome' },
-			{ title: 'PROF. DE DESTINO', data: 'profissionalDestino.nome' },
+			{
+				title: 'NOME',
+				orderable: false,
+				data: 'cidadao.nome'
+			},
+			{
+				title: 'PROF. DE DESTINO',
+				orderable: false,
+				data: 'profissionalDestino.nome'
+			},
 			{
 				title: 'SERVIÇO', data: 'tipoServicos',
+				orderable: false,
 				mRender: function(data) {
 					var retorno = "";
 					$.each(data, function(key, item) {
@@ -42,7 +58,9 @@ function atualizarTabela() {
 				}
 			},
 			{
-				title: 'STATUS', data: 'status', className: "dt[-head|-body]-center", mRender: function(data) {
+				title: 'STATUS', data: 'status',
+				orderable: false,
+				className: "dt[-head|-body]-center", mRender: function(data) {
 					if (data == "AGUARDANDOATENDIMENTO") {
 						return "<i class='fa fa-circle aguardando-atendimento'></i>"
 					}
@@ -61,7 +79,38 @@ function atualizarTabela() {
 				}
 			},
 			{
-				title: 'AÇÕES', data: 'id', mRender: function(data) {
+				title: 'C. RISCO',
+				orderable: false,
+				data: 'classificacaoDeRisco.nome', mRender: function(data) {
+					console.log(data);
+					if (data != null) {
+						if (data === "VERMELHO") {
+							return "<span class='badge badge-danger'>Vermelho</span>";
+						}
+						if (data === "LARANJA") {
+							return "<span class='badge badge-warning'>Laranja</span>";
+						}
+						if (data === "AMARELO") {
+							return "<span class='badge badge-amarelo'>Amarelo</span>";
+						}
+						if (data === "VERDE") {
+							return "<span class='badge badge-success'>Verde</span>";
+						}
+						if (data === "AZUL") {
+							return "<span class='badge badge-primary'>Azul</span>";
+						}
+						if (data === "NÃO INFORMADA") {
+							return "<span class='badge badge-info'>Não informado</span>";
+						}
+					} else {
+						return "<span class='badge badge-info'>Não informado</span>";
+					}
+				}
+			},
+			{
+				title: 'AÇÕES',
+				orderable: false,
+				data: 'id', mRender: function(data) {
 					var retorno = "<a class='btn btn-primary btn-sm' " + "href='/atendimento/atender/" + data + "'><i class='fa fa-user-md'></i> Atender</a>"
 					return retorno;
 				}

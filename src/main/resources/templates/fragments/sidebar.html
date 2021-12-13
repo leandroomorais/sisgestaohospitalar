@@ -31,193 +31,21 @@
 					<h4 class="text-section">Ações</h4>
 				</li>
 
-
-				<li class="nav-item"><a th:href="@{/cidadao/adicionar}"> <i class="fas fa-user-plus"></i>
+				<li sec:authorize="hasAnyAuthority('TECNICO','ENFERMEIRO','MEDICO','AUXILIAR')" class="nav-item"><a
+						th:href="@{/cidadao/adicionar}"> <i class="fas fa-user-plus"></i>
 						<p>Cidadão</p> <span class="caret"></span>
 					</a></li>
-
-				<li class="nav-item"><a th:href="@{/triagem/listar}"> <i class="fa fa-users"></i>
+				<li sec:authorize="hasAnyAuthority('ENFERMEIRO','MEDICO')" class="nav-item"><a
+						th:href="@{/triagem/listar}"> <i class="fa fa-users"></i>
 						<p>Triagem</p>
 					</a></li>
-				<li class="nav-item"><a th:href="@{/atendimento/listar-atendimentos}"> <i class="fa fa-users"></i>
-						<p>Atendimento</p>
+				<li sec:authorize="hasAnyAuthority('MEDICO','ENFERMEIRO','TECNICO','AUXILIAR')" class="nav-item"><a
+						th:href="@{/atendimento/listar-atendimentos}"> <i class="fa fa-users"></i>
+						<p>Atendimentos</p>
 					</a></li>
 			</ul>
 		</div>
 	</div>
 </div>
-<!-- End Sidebar -->
-
-
-
-<!-- <div th:fragment="sidebar" class="sidebar"> -->
-<!-- 	<div class="sidebar-wrapper scrollbar scrollbar-inner"> -->
-<!-- 		<div class="sidebar-content"> -->
-<!-- 			<div class="user"> -->
-<!-- 				<div class="avatar-sm float-left mr-2"> -->
-<!-- 					<img th:src="@{/assets/img/person-male.png}" alt="..." -->
-<!-- 						class="avatar-img rounded-circle"> -->
-<!-- 				</div> -->
-<!-- 				<div class="info"> -->
-<!-- 					<a data-toggle="collapse" href="#collapseExample" -->
-<!-- 						aria-expanded="true"> <span class="low"> NOME -->
-<!-- 							PROFISSIONAL</span> <span class="type-user">TIPO PROFISSIONAL</span> -->
-<!-- 					</a> -->
-<!-- 					<div class="clearfix"></div> -->
-
-<!-- 					<div class="collapse in" id="collapseExample"> -->
-<!-- 						<ul class="nav"> -->
-<!-- 							<li><a -->
-<!-- 								th:href="@{/administracao/meu-perfil/{id} (id=${user.id})}"> -->
-<!-- 									<span class="link-collapse">Meu perfil</span> -->
-<!-- 							</a></li> -->
-
-<!-- 						</ul> -->
-<!-- 					</div> -->
-<!-- 				</div> -->
-<!-- 			</div> -->
-<!-- 			<ul class="nav nav-primary"> -->
-<!-- 				<li class="nav-section"><span class="sidebar-mini-icon"> -->
-<!-- 						<i class="fa fa-ellipsis-h"></i> -->
-<!-- 				</span></li> -->
-<!-- 				<li class="nav-item"><a th:href="@{/administracao/}"> <i -->
-<!-- 						class="fas fa-home"></i> -->
-<!-- 						<p>Início</p> -->
-<!-- 				</a></li> -->
-<!-- 				<li class="nav-item"><a data-toggle="collapse" -->
-<!-- 					th:href="@{#base}"> <i class="fas fa-clipboard"></i> -->
-<!-- 						<p>Cadastros</p> <span class="caret"></span> -->
-<!-- 				</a> -->
-<!-- 					<div class="collapse" id="base"> -->
-<!-- 						<ul class="nav nav-collapse"> -->
-<!-- 							<li><a th:href="@{/administracao/cadastrar-profissional}"> -->
-<!-- 									<span class="sub-item">Profissionais</span> -->
-<!-- 							</a></li> -->
-<!-- 						</ul> -->
-<!-- 					</div></li> -->
-<!-- 				<li class="nav-item"><a data-toggle="collapse" -->
-<!-- 					href="#sidebarLayouts"> <i class="fas fa-search"></i> -->
-<!-- 						<p>Consultas</p> <span class="caret"></span> -->
-<!-- 				</a> -->
-<!-- 					<div class="collapse" id="sidebarLayouts"> -->
-<!-- 						<ul class="nav nav-collapse"> -->
-<!-- 							<li><a th:href="@{/administracao/listar-profissional}"> -->
-<!-- 									<span class="sub-item">Profissionais</span> -->
-<!-- 							</a></li> -->
-
-<!-- 							<li><a th:href="@{/administracao/buscar-atendimento}"> <span -->
-<!-- 									class="sub-item">Atendimentos</span> -->
-<!-- 							</a></li> -->
-
-<!-- 							<li><a th:href="@{/administracao/buscar-cidadaos}"> <span -->
-<!-- 									class="sub-item">Cidadãos</span> -->
-<!-- 							</a></li> -->
-
-<!-- 						</ul> -->
-<!-- 					</div> -->
-<!-- 				<li class="nav-item"><a data-toggle="collapse" href="#forms"> -->
-<!-- 						<i class="fas fa-download"></i> -->
-<!-- 						<p>Arquivo BPA</p> <span class="caret"></span> -->
-<!-- 				</a> -->
-<!-- 					<div class="collapse" id="forms"> -->
-<!-- 						<ul class="nav nav-collapse"> -->
-<!-- 							<li><a th:href="@{/administracao/gerarbpa}"> <span -->
-<!-- 									class="sub-item">Gerar Arquivo BPA</span> -->
-<!-- 							</a></li> -->
-<!-- 							<li><a th:href="@{/administracao/listar-bpa}"> <span -->
-<!-- 									class="sub-item">Competências Geradas</span> -->
-<!-- 							</a></li> -->
-<!-- 						</ul> -->
-<!-- 					</div></li> -->
-<!-- 				<li class="nav-item"><a data-toggle="collapse" href="#tables"> -->
-<!-- 						<i class="fas fa-upload"></i> -->
-<!-- 						<p>Importação</p> <span class="caret"></span> -->
-<!-- 				</a> -->
-<!-- 					<div class="collapse" id="tables"> -->
-<!-- 						<ul class="nav nav-collapse"> -->
-<!-- 							<li><a th:href="@{/administracao/form-upload}"> <span -->
-<!-- 									class="sub-item">Importar .xml ESUS</span> -->
-<!-- 							</a></li> -->
-<!-- 						</ul> -->
-<!-- 					</div></li> -->
-<!-- 			</ul> -->
-<!-- 		</div> -->
-<!-- 	</div> -->
-<!-- </div> -->
-<!-- End Sidebar -->
-
-<!-- <!-- Sidebar Módulos - Recepção, Triagem, Atendimento Médico e Admin de Medicamentos -->
--->
-<!-- <div th:fragment="sidebar-modulos" class="sidebar sidebar-style-2"> -->
-<!-- 	<div class="sidebar-wrapper scrollbar scrollbar-inner"> -->
-<!-- 		<div class="sidebar-content"> -->
-<!-- 			<ul class="nav nav-primary"> -->
-<!-- 				<li class="nav-item"><a data-toggle="collapse" -->
-<!-- 					href="#dashboard" class="collapsed" aria-expanded="false"> <img -->
-<!-- 						alt="" width="40" th:src="@{/assets/img/person-male.png}"> <span -->
-<!-- 						th:text="${user.firstname}" class="low"></span><span -->
-<!-- 						class="type-user" th:text="${user.tipoprofissional}"></span> <span -->
-<!-- 						class="caret"></span> -->
-<!-- 				</a> -->
-<!-- 					<div class="collapse" id="dashboard"> -->
-<!-- 						<ul class="nav nav-collapse"> -->
-<!-- 							<li><a href="../demo1/index.html"> <span -->
-<!-- 									class="sub-item">Meu Perfil</span> -->
-<!-- 							</a></li> -->
-<!-- 						</ul> -->
-<!-- 					</div></li> -->
-<!-- 				<li class="nav-section"><span class="sidebar-mini-icon"> -->
-<!-- 						<i class="fa fa-ellipsis-h"></i> -->
-<!-- 				</span> -->
-<!-- 					<h4 class="text-section">Ações</h4></li> -->
-
-
-<!-- 				<li sec:authorize="hasAnyAuthority('TEC','SUPER')" class="nav-item" -->
-<!-- 					th:classappend="${navItem1} ? active : ''"><a -->
-<!-- 					th:href="@{/recepcao/adicionar-cidadao}"> <i -->
-<!-- 						class="fas fa-user-plus"></i> -->
-<!-- 						<p>Adicionar Cidadão</p> <span class="caret"></span> -->
-<!-- 				</a></li> -->
-
-
-<!-- 				<li sec:authorize="hasAnyAuthority('TEC','SUPER')" class="nav-item" -->
-<!-- 					th:classappend="${navItem2} ? active : ''"><a -->
-<!-- 					th:href="@{/recepcao/listar-status}"> <i class="fa fa-users"></i> -->
-<!-- 						<p>Fila de Atendimento</p> -->
-<!-- 				</a></li> -->
-
-
-<!-- 				<li sec:authorize="hasAnyAuthority('ENF','SUPER')" class="nav-item" -->
-<!-- 					th:classappend="${navItem1} ? active : ''"><a -->
-<!-- 					th:href="@{/triagem/cidadaos-atendimento}"> <i -->
-<!-- 						class="fas fa-users"></i> -->
-<!-- 						<p>Fila de Atendimento</p> <span class="caret"></span> -->
-<!-- 				</a></li> -->
-
-<!-- 				<li sec:authorize="hasAnyAuthority('MED','SUPER')" class="nav-item" -->
-<!-- 					th:classappend="${navItem1} ? active : ''"><a -->
-<!-- 					th:href="@{/atendimento-medico/cidadaos-atendimento}"> <i -->
-<!-- 						class="fas fa-users"></i> -->
-<!-- 						<p>Fila de Atendimento</p> <span class="caret"></span> -->
-<!-- 				</a></li> -->
-
-<!-- 				<li sec:authorize="hasAnyAuthority('TEC','SUPER')" class="nav-item" -->
-<!-- 					th:classappend="${navItem1} ? active : ''"><a -->
-<!-- 					th:href="@{/administracao-medicamento/cidadaos-atendimento}"> <i -->
-<!-- 						class="fas fa-users"></i> -->
-<!-- 						<p>Fila de Atendimento</p> <span class="caret"></span> -->
-<!-- 				</a></li> -->
-
-
-<!-- 								<li class="nav-item" th:classappend="${navItem2} ? active : ''"><a -->
-<!-- 									th:href="@{/triagem/listar-realizadas}"> <i class="fa fa-users"></i> -->
-<!-- 										<p>Realizadas</p> -->
-<!-- 								</a></li> -->
-
-<!-- 			</ul> -->
-<!-- 		</div> -->
-<!-- 	</div> -->
-<!-- </div> -->
-<!-- <!-- End Sidebar -->
 
 </html>

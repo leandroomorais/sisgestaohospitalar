@@ -7,12 +7,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
+import javax.persistence.Transient;
 import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.ifrn.sisgestaohospitalar.enums.ClassificacaoDeRisco;
 
 @Entity
 public class Triagem {
@@ -23,22 +22,21 @@ public class Triagem {
 
 	@NotBlank(message = "É necessário preencher o motivo do Atendimento")
 	private String motivo;
-	
+
 	private LocalDateTime inicioTriagem;
-	
+
 	private LocalDateTime fimTriagem;
-	
+
 	@Valid
 	@OneToOne(cascade = CascadeType.ALL)
 	private SinaisVitais sinaisVitais;
 
-	//@NotNull
 	@OneToOne
 	private Profissional profissional;
 
-	@NotNull(message = "Selecione a Classificaçao de Risco")
+	@Transient
 	private ClassificacaoDeRisco classificacaoDeRisco;
-	
+
 	@JsonIgnore
 	@Valid
 	@OneToOne
@@ -107,14 +105,5 @@ public class Triagem {
 	public void setAtendimento(Atendimento atendimento) {
 		this.atendimento = atendimento;
 	}
-
-	@Override
-	public String toString() {
-		return "Triagem [id=" + id + ", motivo=" + motivo + ", inicioTriagem=" + inicioTriagem + ", fimTriagem="
-				+ fimTriagem + ", sinaisVitais=" + sinaisVitais + ", profissional=" + profissional
-				+ ", classificacaoDeRisco=" + classificacaoDeRisco + ", atendimento=" + atendimento + "]";
-	}
-	
-	
 
 }
