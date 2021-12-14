@@ -1,411 +1,411 @@
-165001Referência para Atenção Integral às Pessoas em Situação de Violência Sexual                                                                           202109
-166001Água de Consumo                                                                                                                                       202109
-167001ODONTOLOGIA - PROJETO SAÚDE NA ESCOLA (PSE)                                                                                                           202109
-168001Atenção Especializada Em Doenças Raras                                                                                                                202109
-169001Urologia em Geral                                                                                                                                     202109
-170001Núcleo de Segurança do Paciente                                                                                                                       202109
-173001Recebimento e Inspeção                                                                                                                                202109
-174001Indivíduos em Geral                                                                                                                                   202109
-100001Atendimento em presídio até 100 presos                                                                                                                202109
-101001Saúde da família                                                                                                                                      202109
-102001Estratégia de Agentes Comunitários de Saúde - EACS                                                                                                    202109
-103001Ambulância de transporte                                                                                                                              202109
-104001Central de Regulação de Internações Hospitalares                                                                                                      202109
-105001Neurocirurgia do trauma e anomalias do desenvolvimento                                                                                                202109
-106001Testagem e aconselhamento                                                                                                                             202109
-107001Serviço de Atenção à Saúde Auditiva na Média Complexidade                                                                                             202109
-108001Atendimento/acompanhamento em saúde do trabalhador                                                                                                    202109
-109001Unidade sócio-educativa com até 40 adolecentes                                                                                                        202109
-110001Atenção à infertilidade                                                                                                                               202109
-111001Diagnóstico e tratamento                                                                                                                              202109
-112001Acompanhamento do pré-natal de risco habitual                                                                                                         202109
-113001Assitência Domiciliar                                                                                                                                 202109
-114001Dentística                                                                                                                                            202109
-115001Residência terapêutica em saúde mental                                                                                                                202109
-116001Eletrofisiologia                                                                                                                                      202109
-117001Tratamento da lipodistrofia do portador de HIV / AIDS                                                                                                 202109
-118001Cirurgia torácica                                                                                                                                     202109
-119001Abordagem e tratamento do fumante                                                                                                                     202109
-120001Exames anatomopatológicos                                                                                                                             202109
-121001Radiologia                                                                                                                                            202109
-122001Teste Ergométrico                                                                                                                                     202109
-123001OPM auxiliares de locomoção                                                                                                                           202109
-124001Diagnóstico/Tratamento das doenças endócrinas, metabólicas e nutricionais                                                                             202109
-125001Dispensação de Medicamentos do Componente Especializado da Assistência Farmaceutica.                                                                  202109
-126001Assistência fisioterapêutica em alterações obstétricas, neonatais e uroginecológicas                                                                  202109
-127001Tratamento clínico, cirúrgico, reparador e acompanhamento ao obeso                                                                                    202109
-128001Procedimentos destinados à obtenção do sangue para fins de assitência hemoterápica                                                                    202109
-129001Exames de histocompatibilidade por meio de sorologia                                                                                                  202109
-130001Tratamento Dialítico-Hemodiálise                                                                                                                      202109
-131001Diagnóstico em oftalmologia                                                                                                                           202109
-132001Oncologia pediátrica                                                                                                                                  202109
-133001Tratamento de Doenças das Vias Aéreas Inferiores                                                                                                      202109
-134001Acupuntura                                                                                                                                            202109
-135001Reabilitação Visual                                                                                                                                   202109
-136001Enteral                                                                                                                                               202109
-137001Exame eletrocardiográfico por telemedicina                                                                                                            202109
-138001Diagnóstico e tratamento em cintura escapular                                                                                                         202109
-139001Tratamento de recém-nascido com hipotireoidismo e fenilcetonuria                                                                                      202109
-141001Vigilância epidemiológica                                                                                                                             202109
-142001Do aparelho digestivo                                                                                                                                 202109
-143001Transporte terrestre                                                                                                                                  202109
-144001Coleta realizada fora das estrutura laboratorial                                                                                                      202109
-145001Exames Bioquimicos                                                                                                                                    202109
-146001Diagnóstica                                                                                                                                           202109
-147001NASF 1                                                                                                                                                202109
-148001Saúde mental                                                                                                                                          202109
-149001Rim                                                                                                                                                   202109
-150001Fístula arteriovenosa sem enxerto                                                                                                                     202109
-151001Medicina nuclear in vivo                                                                                                                              202109
-152001Atenção Básica à Populações Indígenas                                                                                                                 202109
-153001Acompanhamento Clínico, pré e pós operatório e hormonioterapia.                                                                                       202109
-154001Banco de valvula cardiaca humana                                                                                                                      202109
-155001Serviço de Traumatologia e Ortopedia                                                                                                                  202109
-156001Atenção as Pessoas Ostomizadas I                                                                                                                      202109
-157001Laboratorio Regional de Protese Dentaria                                                                                                              202109
-158001Serviço de Atenção Integral em Hanseniase Tipo I                                                                                                      202109
-159001Atenção Primária                                                                                                                                      202109
-160001Teleconsultoria Assíncrona                                                                                                                            202109
-161001Equipe de Consultório na Rua - Modalidade I                                                                                                           202109
-162001ADULTO                                                                                                                                                202109
-163001NEONATAL CONVENCIONAL                                                                                                                                 202109
-164001Dispensação de OPM Auxiliares de Locomoção                                                                                                            202109
-100002Atendimento em manicômio até 100 presos                                                                                                               202109
-174002Grupos Especiais                                                                                                                                      202109
-102002Estratégia de Agentes Comunitários de Saúde com Saúde Bucal - (modalidade I)                                                                          202109
-103002Unidade de suporte básico de vida terrestre (USB)                                                                                                     202109
-104002Cental de Regulação de Consultas e Exames                                                                                                             202109
-105002Coluna e nervos periféricos                                                                                                                           202109
-106002Diagnóstico e tratamento                                                                                                                              202109
-107002Serviço de Atenção à Saúde Auditiva na Alta Complexidade                                                                                              202109
-108002Centro de referência em saúde do trabalhador CEREST estadual                                                                                          202109
-109002Unidade sócio-educativa com de 41 a 100 adolecentes                                                                                                   202109
-110002Contracepção clínica                                                                                                                                  202109
-111002Tratamento multidrogas resistentes                                                                                                                    202109
-112002Acompanhamento do pré-natal de alto risco                                                                                                             202109
-113002Internação Domiciliar                                                                                                                                 202109
-114002Endodontia                                                                                                                                            202109
-115002Atendimento psicossocial                                                                                                                              202109
-116002Cirurgia cardiovascular (adulto)                                                                                                                      202109
-117002Tratamento em queimados                                                                                                                               202109
-120002Exames citopatológicos                                                                                                                                202109
-121002Ultra-sonografia                                                                                                                                      202109
-122002Teste de Holter                                                                                                                                       202109
-123002OPM ortopédicas                                                                                                                                       202109
-124002Cirurgia de glândulas endócrinas                                                                                                                      202109
-125002Farmácia Popular                                                                                                                                      202109
-126002Assistência fisioterapêutica em alterações oncológicas                                                                                                202109
-128002Diagnóstico em hemoterapia                                                                                                                            202109
-129002Exames de histocompatibilidade por sorologia e biologia                                                                                               202109
-131002Tratamento clínico do aparelho da visão                                                                                                               202109
-132002Hematologia                                                                                                                                           202109
-133002Diagnóstico em Pneumologia                                                                                                                            202109
-134002Fitoterapia                                                                                                                                           202109
-135002Reabilitação Intelectual                                                                                                                              202109
-136002Enteral/Parenteral                                                                                                                                    202109
-138002Diagnóstico e tratamento em membros superiores                                                                                                        202109
-139002Tratamento de recém-nascido com doenças falciformes                                                                                                   202109
-141002Vigilância sanitária                                                                                                                                  202109
-142002Do aparelho respiratório                                                                                                                              202109
-143002Transporte aéreo                                                                                                                                      202109
-145002Exames hematológicos e hemostasia                                                                                                                     202109
-146002Cirúrgica                                                                                                                                             202109
-147002NASF 2                                                                                                                                                202109
-148002AIDS                                                                                                                                                  202109
-149002Medula óssea                                                                                                                                          202109
-150002Fístula arteriovenosa com enxerto                                                                                                                     202109
-151002Medicina nuclear in vitro                                                                                                                             202109
-153002Cirurgia e Acompanhamento pré e pós oreratório                                                                                                        202109
-154002Banco de tecido musculo esqueletico                                                                                                                   202109
-155002Serviço de Traumatologia e Ortopedia Pediátrica (até 21 anos de idade)                                                                                202109
-156002Atenção as Pessoas Ostomizadas II                                                                                                                     202109
-158002Serviço de Atenção Integral em Hanseniase Tipo II                                                                                                     202109
-159002Atenção Básica com Saúde Bucal                                                                                                                        202109
-160002Teleconsultoria Síncrona                                                                                                                              202109
-161002Equipe de Consultório na Rua - Modalidade II                                                                                                          202109
-162002NEONATAL                                                                                                                                              202109
-163002NEONATAL CANGURU                                                                                                                                      202109
-164002Manutenção e Adaptação de OPM Auxiliares de Locomoção                                                                                                 202109
-165002Serviço de Referência para Atenção Integral à Saúde de Adolescentes em Situação de Violência Sexual                                                   202109
-166002Água de Ambiental                                                                                                                                     202109
-167002ODONTOLOGIA - PROJETO BRASIL ALFABETIZADO (PBA)                                                                                                       202109
-168002Referência em Doenças Raras                                                                                                                           202109
-169002Litotripsia                                                                                                                                           202109
-173002Armazenamento e Controle                                                                                                                              202109
-101002Saúde bucal MI                                                                                                                                        202109
-100003Atendimento em presídio acima de 100 presos                                                                                                           202109
-101003Saúde bucal MII                                                                                                                                       202109
-102003Estratégia de Agentes Comunitários de Saúde com Saúde Bucal - (modalidade II)                                                                         202109
-103003Unidade de suporte avançado de vida terrestre (USA)                                                                                                   202109
-104003Central de Regulação de Urgências                                                                                                                     202109
-105003Tumores do sistema nervoso                                                                                                                            202109
-106003Diagnóstico, tratamento e capacitação técnica                                                                                                         202109
-107003Terapia fonoaudiológica                                                                                                                               202109
-108003VIGILÂNCIA EM SAÚDE DO TRABALHADOR (VISAT)                                                                                                            202109
-109003Unidade sócio-educativa com de 101 a 180 adolecentes                                                                                                  202109
-110003Laqueadura                                                                                                                                            202109
-112003Parto em gestação de risco habitual                                                                                                                   202109
-113003Equipe Multidisciplinar de Atenção Domiciliar - EMAD                                                                                                  202109
-114003Periodontia clínica                                                                                                                                   202109
-115003Serviço Hospitalar para Atenção a Saúde Mental                                                                                                        202109
-116003Cirurgia cardiovascular (Pediátrico)                                                                                                                  202109
-117003Tratamento da lipoatrofia facial do portador de HIV / AIDS                                                                                            202109
-120003Monitoramento Externo da Qualidade dos Exames Citopatologicos do Colo do Útero                                                                        202109
-121003Tomografia computadorizada                                                                                                                            202109
-122003Exame Eletrocardiográfico                                                                                                                             202109
-123003OPM auditivas                                                                                                                                         202109
-125003Farmácia com manipulação homeopática                                                                                                                  202109
-126003Assistência fisioterapêutica em oftalmologia                                                                                                          202109
-128003Procedimentos especiais em hemoterapia                                                                                                                202109
-130003Confeccção/Intervenção de Acessos para Diálise                                                                                                        202109
-131003Tratamento cirúrgico do aparelho da visão                                                                                                             202109
-132003Oncologia clínica                                                                                                                                     202109
-133003Diagnóstico em Pneumologia por Telemedicina                                                                                                           202109
-134003Outras Práticas em Medicina Tradicional Chinesa                                                                                                       202109
-135003Reabilitação Física                                                                                                                                   202109
-136003Enteral/Parenteral, com manipulação/fabricação                                                                                                        202109
-138003Diagnóstico e tratamento em coluna vertebral e caixa torácica                                                                                         202109
-139003Tratamento de recém-nascido com fibrose cística                                                                                                       202109
-141003Vigilância ambiental                                                                                                                                  202109
-142003Do aparelho urinário                                                                                                                                  202109
-143003Transporte marítimo                                                                                                                                   202109
-145003Exames sorológicos e imunológicos                                                                                                                     202109
-147003NASF Intermunicipal                                                                                                                                   202109
-148003Geriátrico                                                                                                                                            202109
-149003Coração                                                                                                                                               202109
-151003Medicina nuclear in vivo por telemedicina                                                                                                             202109
-155003Serviço de Traumatologia e Ortopedia de Urgência                                                                                                      202109
-158003Serviço de Atenção Integral em Hanseniase Tipo III                                                                                                    202109
-159003Academia da Saúde                                                                                                                                     202109
-160003Segunda Opinião Formativa                                                                                                                             202109
-161003Equipe de Consultório na Rua - Modalidade III                                                                                                         202109
-162003PEDIÁTRICO                                                                                                                                            202109
-163003PEDIÁTRICO                                                                                                                                            202109
-164003Dispensação de OPM Ortopédica                                                                                                                         202109
-165003Serviço de Referência para Atenção Integral à Saúde de Crianças em Situação de Violência Sexual                                                       202109
-166003Água de Hemodiálise                                                                                                                                   202109
-167003OFTALMOLOGIA - PROJETO SAÚDE NA ESCOLA (PSE)                                                                                                          202109
-173003Distribuição                                                                                                                                          202109
-152004Saneamento a Populações Indígenas                                                                                                                     202109
-159004Estratégia de Saúde da Família                                                                                                                        202109
-162004QUEIMADOS                                                                                                                                             202109
-163004ADULTO                                                                                                                                                202109
-164004Manutenção e Adaptação de OPM Ortopédica                                                                                                              202109
-165004Serviço de Referência para Atenção Integral à Saúde de Homens em Situação de Violência Sexual                                                         202109
-166004Água Mineral                                                                                                                                          202109
-167004OFTALMOLOGIA - PROJETO BRASIL ALFABETIZADO (PBA)                                                                                                      202109
-173004Transporte                                                                                                                                            202109
-125004Dispensação de medicamentos estratégicos                                                                                                              202109
-126004Assistência fisioterapêutica cardiovasculares e pneumo-funcionais                                                                                     202109
-128004Medicina transfusional                                                                                                                                202109
-130004Tratamento Nefrologia em Geral                                                                                                                        202109
-131004Projeto Olhar Brasil                                                                                                                                  202109
-132004Radioterapia                                                                                                                                          202109
-134004Práticas Corpo-mente                                                                                                                                  202109
-135004Reabilitação visual/mental/múltiplas deficiências                                                                                                     202109
-138004Diagnóstico e tratamento em cintura pélvica                                                                                                           202109
-139004Tratamento de recém-nascido com outras doenças congênitas                                                                                             202109
-140004Estabilização de paciente crítico/grave                                                                                                               202109
-141004Núcleo de vigilância hospitalar                                                                                                                       202109
-142004Do aparelho ginecológico                                                                                                                              202109
-145004Exames coprológicos                                                                                                                                   202109
-147004NASF 3                                                                                                                                                202109
-148004Fibrose cística                                                                                                                                       202109
-149004Pulmão                                                                                                                                                202109
-100004Atendimento em manicômio acima de 100 presos                                                                                                          202109
-101004Saúde da Família para a População Ribeirinha                                                                                                          202109
-104004Unidade de autorizações de TFD intermunicipais                                                                                                        202109
-105004Neurocirurgia vascular                                                                                                                                202109
-106004Assistência Domiciliar Terapêutica em AIDS-ADT                                                                                                        202109
-107004Diagnóstico em audiologia/otologia                                                                                                                    202109
-109004Unidade sócio-educativa com mais de 180 adolecentes                                                                                                   202109
-110004Vasectomia                                                                                                                                            202109
-112004Parto em gestação de alto risco                                                                                                                       202109
-113004Equipe Multidisciplinar de Apoio - EMAP                                                                                                               202109
-114004Moldagem/Manutenção                                                                                                                                   202109
-115004Serviço Residencial Terapêutico Tipo I - SRT tipo I                                                                                                   202109
-116004Cirurgia vascular                                                                                                                                     202109
-121004Ressonância magnética                                                                                                                                 202109
-122004Exame Eletroencefalográfico                                                                                                                           202109
-123004OPM oftalmológicas                                                                                                                                    202109
-152005Atenção Especializada a Populações Indígenas                                                                                                          202109
-122005Teste Ergométrico por Telemedicina                                                                                                                    202109
-162005DOENÇA CORONARIANA (UCO)                                                                                                                              202109
-164005Dispensação de OPM Auditiva                                                                                                                           202109
-165005Serviço de Referência para Atenção Integral à Saúde de Pessoas Idosas em Situação de Violência Sexual                                                 202109
-166005Alimentos                                                                                                                                             202109
-123005OPM em gastroenterologia                                                                                                                              202109
-125005Dispensação de medicamentos básicos                                                                                                                   202109
-126005Assistência fisioterapêutica nas disfunções músculo-esqueléticas (todas as origens)                                                                   202109
-130005Tratamento Diálitico Peritonial                                                                                                                       202109
-131005Diagnóstico em Oftalmologia por Telemedicina                                                                                                          202109
-132005Oncologia cirúrgica                                                                                                                                   202109
-134005Homeopatia                                                                                                                                            202109
-135005Reabiliatação Auditiva                                                                                                                                202109
-138005Diagnóstico e tratamento em membros inferiores                                                                                                        202109
-139005Acompanhamento a pacientes com diagnósticos de Hiperplasia Adrenal Congênita                                                                          202109
-140005Atendimento ao paciente com Acidente Vascular Cerebral (AVC)                                                                                          202109
-145005Exames de uroanálise                                                                                                                                  202109
-148005Cirúrgico / Diagnóstico                                                                                                                               202109
-149005Córnea / Esclera                                                                                                                                      202109
-101005Saúde da Família para a População Ribeirinha-Saúde Bucal MI                                                                                           202109
-103005Unidade de Suporte Básico de vida: Equipe Embarcação                                                                                                  202109
-104005Unidade de autorizações de TFD interestaduais                                                                                                         202109
-105005Tratamento neurocirúrgico da dor funcional                                                                                                            202109
-106005Unidade Dispensadora de Medicamentos - UDM                                                                                                            202109
-107005Implante Coclear                                                                                                                                      202109
-109005Atenção Básica à Adolescentes em Unidade Socioeducativa                                                                                               202109
-112005Centro de parto normal                                                                                                                                202109
-113005Equipe de cuidados domiciliares                                                                                                                       202109
-114005Cirurgia oral                                                                                                                                         202109
-115005Serviço Residencial Terapêutico Tipo II - SRT tipo II                                                                                                 202109
-116005Cardiologia intervencionista (hemodinâmica)                                                                                                           202109
-159005Saúde Bucal                                                                                                                                           202109
-159006Núcleo Ampliado de Saúde da Família e Atenção Primária                                                                                                202109
-122006Teste Holter por Telemedicina                                                                                                                         202109
-165006Serviço de referência para interrupção de gravidez nos casos previstos em LEI                                                                         202109
-166006Células, Tecidos e Órgãos                                                                                                                             202109
-123006OPM em urologia                                                                                                                                       202109
-125006Farmácia Hospitalar                                                                                                                                   202109
-126006Assistência fisioterapêutica em queimados                                                                                                             202109
-130006Tratamento em DRC                                                                                                                                     202109
-131006Projeto Olhar Brasil - Programa Saúde na Escola (PSE)                                                                                                 202109
-134006Termalismo/Crenoterapia                                                                                                                               202109
-139006Acompanhamento a pacientes com diagnósticos de Deficiência Biotinidase                                                                                202109
-140006Pronto Atendimento Clínico                                                                                                                            202109
-145006Exames hormonais                                                                                                                                      202109
-148006Acompanhamento pós-transplante de medula óssea                                                                                                        202109
-149006Fígado                                                                                                                                                202109
-101006Saúde da Família Fluvial                                                                                                                              202109
-103006Veículos de intervenção rápida                                                                                                                        202109
-104006Central Estadual de Regulação da Alta Complexidade                                                                                                    202109
-105006Investigação e cirurgia de epilepsia                                                                                                                  202109
-107006Triagem Auditiva Neonatal                                                                                                                             202109
-112006Casa da Gestante, Bebê e Puérpera                                                                                                                     202109
-114006Cirurgia buco-maxilo-facial                                                                                                                           202109
-115006UA Adulto                                                                                                                                             202109
-116006Cardiologia Endovascular Extracardíaco                                                                                                                202109
-121006Radiologia intervencionista                                                                                                                           202109
-164006Manutenção e Adaptação de OPM Auditiva                                                                                                                202109
-159007Atenção Primária para População Ribeirinha                                                                                                            202109
-122007Exame Eletrocardiografico por Telemedicina                                                                                                            202109
-165007Atenção Ambulatorial  ás Pessoas em Situação de Violência Sexual                                                                                      202109
-166007Medicamentos                                                                                                                                          202109
-123007OPM em odontologia                                                                                                                                    202109
-125007Farmácia Viva                                                                                                                                         202109
-126007Assistência fisioterapêutica nas alterações em neurologia                                                                                             202109
-131007Projeto Olhar Brasil - Programa Brasil Alfabetizado (PBA)                                                                                             202109
-134007Antroposofia Aplicada à Saúde                                                                                                                         202109
-135007Oficina Ortopédica Fixa                                                                                                                               202109
-140007Pronto Atendimento Pediátrico                                                                                                                         202109
-145007Exames de  vigilância epidemiológica e  ambiental                                                                                                     202109
-149007Pâncreas                                                                                                                                              202109
-101007Saúde da Família Fluvial com Saúde Bucal                                                                                                              202109
-103007Outros veículos                                                                                                                                       202109
-104007Regulação Nacional de Alta Complexidade                                                                                                               202109
-105007Tratamento endovascular                                                                                                                               202109
-107007Diagnóstico em Audiologia/Otologia por Telemedicina                                                                                                   202109
-114007Atendimento à pessoa com deficiência                                                                                                                  202109
-115007UA Infantojuvenil                                                                                                                                     202109
-116007Cardiologia Clínica                                                                                                                                   202109
-121007Radiologia por telemedicina                                                                                                                           202109
-164007Dispensação de OPM Oftalmológica                                                                                                                      202109
-152008Hospitalidade Indígena                                                                                                                                202109
-122008Exame Eletroencefalografico por Telemedicina                                                                                                          202109
-164008Manutenção e Adaptação de OPM Oftalmológica                                                                                                           202109
-165008Coleta de  Vestígios de Violência Sexual                                                                                                              202109
-166008Saneantes Domissanitários                                                                                                                             202109
-123008OPM buco-maxilo-facial                                                                                                                                202109
-126008Diagnóstico cinético funcional                                                                                                                        202109
-134008Práticas Expressivas                                                                                                                                  202109
-135008Oficina Ortopédica Intinerante Terrestre                                                                                                              202109
-140008Pronto Atendimento Obstétrico                                                                                                                         202109
-145008Exames toxicológicos ou de monitorização terapêutica                                                                                                  202109
-149008Retirada de orgãos                                                                                                                                    202109
-101008ESF Tipo I, II, III, IV ou Transitória                                                                                                                202109
-103008Ambulância de resgate                                                                                                                                 202109
-104008Regulação Ambulatorial de Média Complexidade                                                                                                          202109
-105008Neurocirurgia funcional estereotáxica                                                                                                                 202109
-107008Atenção Especializada às Pessoas com Deficiência Auditiva                                                                                             202109
-115008Unidade de Atenção em Regime Residencial                                                                                                              202109
-116008Serviço de Atenção Cardiovascular/Cardiologia Angiologia                                                                                              202109
-121008Ultra-sonografia por telemedicina                                                                                                                     202109
-159008Consultório na Rua                                                                                                                                    202109
-152009Gestão da Atenção e Saneamento à Populações Indígenas                                                                                                 202109
-122009Exame Eletroneuromiografia                                                                                                                            202109
-164009Substitução/Troca de OPM                                                                                                                              202109
-166009Produtos para a Saúde                                                                                                                                 202109
-123009Substituição/Troca em órteses/próteses                                                                                                                202109
-134009Ayurveda                                                                                                                                              202109
-135009Oficina Ortopédica Intinerante Fluvial                                                                                                                202109
-140009Pronto Atendimento Psiquiátrico                                                                                                                       202109
-145009Exames microbiológicos                                                                                                                                202109
-149009Pele                                                                                                                                                  202109
-101009ESF Tipo I, II, III, IV ou Transitória com Saúde Bucal MI                                                                                             202109
-104009Regulação do Acesso a Ações e Serviços de Saúde                                                                                                       202109
-105009Polissonografia                                                                                                                                       202109
-121009Tomografia computadorizada por telemedicina                                                                                                           202109
-159009Atenção Primária para População Prisional                                                                                                             202109
-134010Práticas Naturais                                                                                                                                     202109
-159010Atenção Primária para Adolescentes em Unidade Socioeducativa                                                                                          202109
-123010OPM em queimados                                                                                                                                      202109
-135010Atenção Fonoaudiológica                                                                                                                               202109
-152010Saúde Bucal à Populações Indígenas                                                                                                                    202109
-103010Motolância                                                                                                                                            202109
-164010OPM em gastroenterologia                                                                                                                              202109
-149010Válvulas cardíacas                                                                                                                                    202109
-121010Ressonância magnética por telemedicina                                                                                                                202109
-166010Cosméticos                                                                                                                                            202109
-145010Exames em outros líquidos biológicos                                                                                                                  202109
-140010Pronto Atendimento Oftalmológico                                                                                                                      202109
-122010Exame videoeletroencefalografia                                                                                                                       202109
-101010ESF Tipo I, II, III, IV ou Transitória com Saúde Bucal MII                                                                                            202109
-123011OPM em nefrologia                                                                                                                                     202109
-122011Potenciais Evocados                                                                                                                                   202109
-121011Radiologia intervencionista por telemedicina                                                                                                          202109
-103011Unidade de Suporte Avançado de vida: Equipe Embarcação                                                                                                202109
-101011ESF Transitória                                                                                                                                       202109
-166011Desinfestantes                                                                                                                                        202109
-164011OPM em Urologia                                                                                                                                       202109
-149011Osteocondroligamentos                                                                                                                                 202109
-145011Exames de genética                                                                                                                                    202109
-140011Pronto Atendimento Odontológico                                                                                                                       202109
-135011Atenção Fisioterapeutica                                                                                                                              202109
-134011Práticas Manuais                                                                                                                                      202109
-135012Atenção à Saúde das Pessoas Ostomizadas I                                                                                                             202109
-123012OPM - Projeto Olhar Brasil                                                                                                                            202109
-103012Equipe Aeromédico                                                                                                                                     202109
-145012Exames para triagem neonatal                                                                                                                          202109
-121012Mamografia                                                                                                                                            202109
-101012Saúde da Família para a População Ribeirinha - Saúde Bucal MII                                                                                        202109
-134012Práticas Psicodinâmicas                                                                                                                               202109
-122012Potenciais Evocados por Telemedicina                                                                                                                  202109
-140012Pronto Socorro Pediátrico                                                                                                                             202109
-166012Imunobiológicos                                                                                                                                       202109
-149012Separação, avaliação biomicroscópica e conservação da córnea/esclera                                                                                  202109
-123013OPM Projeto Olhar Brasil - Programa Saúde na Escola (PSE)                                                                                             202109
-101013ESB MI                                                                                                                                                202109
-140013Pronto Socorro Obstétrico                                                                                                                             202109
-166013Insumos Farmacêuticos                                                                                                                                 202109
-149013Contagem endotelial corneana                                                                                                                          202109
-121013Mamografia por Telemedicina                                                                                                                           202109
-135013Atenção à Saúde das Pessoas Ostomizadas II                                                                                                            202109
-145013Exames imunohematológicos                                                                                                                             202109
-134013Ozônioterapia                                                                                                                                         202109
-149014Acompanhamento de paciente transplantado                                                                                                              202109
-166014Material Biológico                                                                                                                                    202109
-140014Pronto Socorro Cardiovascular                                                                                                                         202109
-123014OPM Projeto Olhar Brasil - Programa Brasil Alfabetizado (PBA)                                                                                         202109
-134014Aromaterapia                                                                                                                                          202109
-101014ESB MII                                                                                                                                               202109
-140015Pronto Socorro Neurologia/Neurocirurgia                                                                                                               202109
-166015Sangue e Hemoderivados                                                                                                                                202109
-134015Imposição de Mãos                                                                                                                                     202109
-149015Ações para doação e captação de órgãos e tecidos                                                                                                      202109
-149016Retirada de globo ocular humano para transplante                                                                                                      202109
-166016Surtos de Toxinfecção                                                                                                                                 202109
-140016Pronto Socorro Traumato-Ortopédico                                                                                                                    202109
-166017Diversos                                                                                                                                              202109
-140017Pronto Socorro Odontológico                                                                                                                           202109
-140018Pronto Socorro Oftalmológico                                                                                                                          202109
-140019Pronto Socorro Geral/Clínico                                                                                                                          202109
+165001Referência para Atenção Integral às Pessoas em Situação de Violência Sexual                                                                           202111
+166001Água de Consumo                                                                                                                                       202111
+167001ODONTOLOGIA - PROJETO SAÚDE NA ESCOLA (PSE)                                                                                                           202111
+168001Atenção Especializada Em Doenças Raras                                                                                                                202111
+169001Urologia em Geral                                                                                                                                     202111
+170001Núcleo de Segurança do Paciente                                                                                                                       202111
+173001Recebimento e Inspeção                                                                                                                                202111
+174001Indivíduos em Geral                                                                                                                                   202111
+100001Atendimento em presídio até 100 presos                                                                                                                202111
+101001Saúde da família                                                                                                                                      202111
+102001Estratégia de Agentes Comunitários de Saúde - EACS                                                                                                    202111
+103001Ambulância de transporte                                                                                                                              202111
+104001Central de Regulação de Internações Hospitalares                                                                                                      202111
+105001Neurocirurgia do trauma e anomalias do desenvolvimento                                                                                                202111
+106001Testagem e aconselhamento                                                                                                                             202111
+107001Serviço de Atenção à Saúde Auditiva na Média Complexidade                                                                                             202111
+108001Atendimento/acompanhamento em saúde do trabalhador                                                                                                    202111
+109001Unidade sócio-educativa com até 40 adolecentes                                                                                                        202111
+110001Atenção à infertilidade                                                                                                                               202111
+111001Diagnóstico e tratamento                                                                                                                              202111
+112001Acompanhamento do pré-natal de risco habitual                                                                                                         202111
+113001Assitência Domiciliar                                                                                                                                 202111
+114001Dentística                                                                                                                                            202111
+115001Residência terapêutica em saúde mental                                                                                                                202111
+116001Eletrofisiologia                                                                                                                                      202111
+117001Tratamento da lipodistrofia do portador de HIV / AIDS                                                                                                 202111
+118001Cirurgia torácica                                                                                                                                     202111
+119001Abordagem e tratamento do fumante                                                                                                                     202111
+120001Exames anatomopatológicos                                                                                                                             202111
+121001Radiologia                                                                                                                                            202111
+122001Teste Ergométrico                                                                                                                                     202111
+123001OPM auxiliares de locomoção                                                                                                                           202111
+124001Diagnóstico/Tratamento das doenças endócrinas, metabólicas e nutricionais                                                                             202111
+125001Dispensação de Medicamentos do Componente Especializado da Assistência Farmaceutica.                                                                  202111
+126001Assistência fisioterapêutica em alterações obstétricas, neonatais e uroginecológicas                                                                  202111
+127001Tratamento clínico, cirúrgico, reparador e acompanhamento ao obeso                                                                                    202111
+128001Procedimentos destinados à obtenção do sangue para fins de assitência hemoterápica                                                                    202111
+129001Exames de histocompatibilidade por meio de sorologia                                                                                                  202111
+130001Tratamento Dialítico-Hemodiálise                                                                                                                      202111
+131001Diagnóstico em oftalmologia                                                                                                                           202111
+132001Oncologia pediátrica                                                                                                                                  202111
+133001Tratamento de Doenças das Vias Aéreas Inferiores                                                                                                      202111
+134001Acupuntura                                                                                                                                            202111
+135001Reabilitação Visual                                                                                                                                   202111
+136001Enteral                                                                                                                                               202111
+137001Exame eletrocardiográfico por telemedicina                                                                                                            202111
+138001Diagnóstico e tratamento em cintura escapular                                                                                                         202111
+139001Tratamento de recém-nascido com hipotireoidismo e fenilcetonuria                                                                                      202111
+141001Vigilância epidemiológica                                                                                                                             202111
+142001Do aparelho digestivo                                                                                                                                 202111
+143001Transporte terrestre                                                                                                                                  202111
+144001Coleta realizada fora das estrutura laboratorial                                                                                                      202111
+145001Exames Bioquimicos                                                                                                                                    202111
+146001Diagnóstica                                                                                                                                           202111
+147001NASF 1                                                                                                                                                202111
+148001Saúde mental                                                                                                                                          202111
+149001Rim                                                                                                                                                   202111
+150001Fístula arteriovenosa sem enxerto                                                                                                                     202111
+151001Medicina nuclear in vivo                                                                                                                              202111
+152001Atenção Básica à Populações Indígenas                                                                                                                 202111
+153001Acompanhamento Clínico, pré e pós operatório e hormonioterapia.                                                                                       202111
+154001Banco de valvula cardiaca humana                                                                                                                      202111
+155001Serviço de Traumatologia e Ortopedia                                                                                                                  202111
+156001Atenção as Pessoas Ostomizadas I                                                                                                                      202111
+157001Laboratorio Regional de Protese Dentaria                                                                                                              202111
+158001Serviço de Atenção Integral em Hanseniase Tipo I                                                                                                      202111
+159001Atenção Primária                                                                                                                                      202111
+160001Teleconsultoria Assíncrona                                                                                                                            202111
+161001Equipe de Consultório na Rua - Modalidade I                                                                                                           202111
+162001ADULTO                                                                                                                                                202111
+163001NEONATAL CONVENCIONAL                                                                                                                                 202111
+164001Dispensação de OPM Auxiliares de Locomoção                                                                                                            202111
+100002Atendimento em manicômio até 100 presos                                                                                                               202111
+174002Grupos Especiais                                                                                                                                      202111
+102002Estratégia de Agentes Comunitários de Saúde com Saúde Bucal - (modalidade I)                                                                          202111
+103002Unidade de suporte básico de vida terrestre (USB)                                                                                                     202111
+104002Cental de Regulação de Consultas e Exames                                                                                                             202111
+105002Coluna e nervos periféricos                                                                                                                           202111
+106002Diagnóstico e tratamento                                                                                                                              202111
+107002Serviço de Atenção à Saúde Auditiva na Alta Complexidade                                                                                              202111
+108002Centro de referência em saúde do trabalhador CEREST estadual                                                                                          202111
+109002Unidade sócio-educativa com de 41 a 100 adolecentes                                                                                                   202111
+110002Contracepção clínica                                                                                                                                  202111
+111002Tratamento multidrogas resistentes                                                                                                                    202111
+112002Acompanhamento do pré-natal de alto risco                                                                                                             202111
+113002Internação Domiciliar                                                                                                                                 202111
+114002Endodontia                                                                                                                                            202111
+115002Atendimento psicossocial                                                                                                                              202111
+116002Cirurgia cardiovascular (adulto)                                                                                                                      202111
+117002Tratamento em queimados                                                                                                                               202111
+120002Exames citopatológicos                                                                                                                                202111
+121002Ultra-sonografia                                                                                                                                      202111
+122002Teste de Holter                                                                                                                                       202111
+123002OPM ortopédicas                                                                                                                                       202111
+124002Cirurgia de glândulas endócrinas                                                                                                                      202111
+125002Farmácia Popular                                                                                                                                      202111
+126002Assistência fisioterapêutica em alterações oncológicas                                                                                                202111
+128002Diagnóstico em hemoterapia                                                                                                                            202111
+129002Exames de histocompatibilidade por sorologia e biologia                                                                                               202111
+131002Tratamento clínico do aparelho da visão                                                                                                               202111
+132002Hematologia                                                                                                                                           202111
+133002Diagnóstico em Pneumologia                                                                                                                            202111
+134002Fitoterapia                                                                                                                                           202111
+135002Reabilitação Intelectual                                                                                                                              202111
+136002Enteral/Parenteral                                                                                                                                    202111
+138002Diagnóstico e tratamento em membros superiores                                                                                                        202111
+139002Tratamento de recém-nascido com doenças falciformes                                                                                                   202111
+141002Vigilância sanitária                                                                                                                                  202111
+142002Do aparelho respiratório                                                                                                                              202111
+143002Transporte aéreo                                                                                                                                      202111
+145002Exames hematológicos e hemostasia                                                                                                                     202111
+146002Cirúrgica                                                                                                                                             202111
+147002NASF 2                                                                                                                                                202111
+148002AIDS                                                                                                                                                  202111
+149002Medula óssea                                                                                                                                          202111
+150002Fístula arteriovenosa com enxerto                                                                                                                     202111
+151002Medicina nuclear in vitro                                                                                                                             202111
+153002Cirurgia e Acompanhamento pré e pós oreratório                                                                                                        202111
+154002Banco de tecido musculo esqueletico                                                                                                                   202111
+155002Serviço de Traumatologia e Ortopedia Pediátrica (até 21 anos de idade)                                                                                202111
+156002Atenção as Pessoas Ostomizadas II                                                                                                                     202111
+158002Serviço de Atenção Integral em Hanseniase Tipo II                                                                                                     202111
+159002Atenção Básica com Saúde Bucal                                                                                                                        202111
+160002Teleconsultoria Síncrona                                                                                                                              202111
+161002Equipe de Consultório na Rua - Modalidade II                                                                                                          202111
+162002NEONATAL                                                                                                                                              202111
+163002NEONATAL CANGURU                                                                                                                                      202111
+164002Manutenção e Adaptação de OPM Auxiliares de Locomoção                                                                                                 202111
+165002Serviço de Referência para Atenção Integral à Saúde de Adolescentes em Situação de Violência Sexual                                                   202111
+166002Água de Ambiental                                                                                                                                     202111
+167002ODONTOLOGIA - PROJETO BRASIL ALFABETIZADO (PBA)                                                                                                       202111
+168002Referência em Doenças Raras                                                                                                                           202111
+169002Litotripsia                                                                                                                                           202111
+173002Armazenamento e Controle                                                                                                                              202111
+101002Saúde bucal MI                                                                                                                                        202111
+100003Atendimento em presídio acima de 100 presos                                                                                                           202111
+101003Saúde bucal MII                                                                                                                                       202111
+102003Estratégia de Agentes Comunitários de Saúde com Saúde Bucal - (modalidade II)                                                                         202111
+103003Unidade de suporte avançado de vida terrestre (USA)                                                                                                   202111
+104003Central de Regulação de Urgências                                                                                                                     202111
+105003Tumores do sistema nervoso                                                                                                                            202111
+106003Diagnóstico, tratamento e capacitação técnica                                                                                                         202111
+107003Terapia fonoaudiológica                                                                                                                               202111
+108003VIGILÂNCIA EM SAÚDE DO TRABALHADOR (VISAT)                                                                                                            202111
+109003Unidade sócio-educativa com de 101 a 180 adolecentes                                                                                                  202111
+110003Laqueadura                                                                                                                                            202111
+112003Parto em gestação de risco habitual                                                                                                                   202111
+113003Equipe Multidisciplinar de Atenção Domiciliar - EMAD                                                                                                  202111
+114003Periodontia clínica                                                                                                                                   202111
+115003Serviço Hospitalar para Atenção a Saúde Mental                                                                                                        202111
+116003Cirurgia cardiovascular (Pediátrico)                                                                                                                  202111
+117003Tratamento da lipoatrofia facial do portador de HIV / AIDS                                                                                            202111
+120003Monitoramento Externo da Qualidade dos Exames Citopatologicos do Colo do Útero                                                                        202111
+121003Tomografia computadorizada                                                                                                                            202111
+122003Exame Eletrocardiográfico                                                                                                                             202111
+123003OPM auditivas                                                                                                                                         202111
+125003Farmácia com manipulação homeopática                                                                                                                  202111
+126003Assistência fisioterapêutica em oftalmologia                                                                                                          202111
+128003Procedimentos especiais em hemoterapia                                                                                                                202111
+130003Confeccção/Intervenção de Acessos para Diálise                                                                                                        202111
+131003Tratamento cirúrgico do aparelho da visão                                                                                                             202111
+132003Oncologia clínica                                                                                                                                     202111
+133003Diagnóstico em Pneumologia por Telemedicina                                                                                                           202111
+134003Outras Práticas em Medicina Tradicional Chinesa                                                                                                       202111
+135003Reabilitação Física                                                                                                                                   202111
+136003Enteral/Parenteral, com manipulação/fabricação                                                                                                        202111
+138003Diagnóstico e tratamento em coluna vertebral e caixa torácica                                                                                         202111
+139003Tratamento de recém-nascido com fibrose cística                                                                                                       202111
+141003Vigilância ambiental                                                                                                                                  202111
+142003Do aparelho urinário                                                                                                                                  202111
+143003Transporte marítimo                                                                                                                                   202111
+145003Exames sorológicos e imunológicos                                                                                                                     202111
+147003NASF Intermunicipal                                                                                                                                   202111
+148003Geriátrico                                                                                                                                            202111
+149003Coração                                                                                                                                               202111
+151003Medicina nuclear in vivo por telemedicina                                                                                                             202111
+155003Serviço de Traumatologia e Ortopedia de Urgência                                                                                                      202111
+158003Serviço de Atenção Integral em Hanseniase Tipo III                                                                                                    202111
+159003Academia da Saúde                                                                                                                                     202111
+160003Segunda Opinião Formativa                                                                                                                             202111
+161003Equipe de Consultório na Rua - Modalidade III                                                                                                         202111
+162003PEDIÁTRICO                                                                                                                                            202111
+163003PEDIÁTRICO                                                                                                                                            202111
+164003Dispensação de OPM Ortopédica                                                                                                                         202111
+165003Serviço de Referência para Atenção Integral à Saúde de Crianças em Situação de Violência Sexual                                                       202111
+166003Água de Hemodiálise                                                                                                                                   202111
+167003OFTALMOLOGIA - PROJETO SAÚDE NA ESCOLA (PSE)                                                                                                          202111
+173003Distribuição                                                                                                                                          202111
+152004Saneamento a Populações Indígenas                                                                                                                     202111
+159004Estratégia de Saúde da Família                                                                                                                        202111
+162004QUEIMADOS                                                                                                                                             202111
+163004ADULTO                                                                                                                                                202111
+164004Manutenção e Adaptação de OPM Ortopédica                                                                                                              202111
+165004Serviço de Referência para Atenção Integral à Saúde de Homens em Situação de Violência Sexual                                                         202111
+166004Água Mineral                                                                                                                                          202111
+167004OFTALMOLOGIA - PROJETO BRASIL ALFABETIZADO (PBA)                                                                                                      202111
+173004Transporte                                                                                                                                            202111
+125004Dispensação de medicamentos estratégicos                                                                                                              202111
+126004Assistência fisioterapêutica cardiovasculares e pneumo-funcionais                                                                                     202111
+128004Medicina transfusional                                                                                                                                202111
+130004Tratamento Nefrologia em Geral                                                                                                                        202111
+131004Projeto Olhar Brasil                                                                                                                                  202111
+132004Radioterapia                                                                                                                                          202111
+134004Práticas Corpo-mente                                                                                                                                  202111
+135004Reabilitação visual/mental/múltiplas deficiências                                                                                                     202111
+138004Diagnóstico e tratamento em cintura pélvica                                                                                                           202111
+139004Tratamento de recém-nascido com outras doenças congênitas                                                                                             202111
+140004Estabilização de paciente crítico/grave                                                                                                               202111
+141004Núcleo de vigilância hospitalar                                                                                                                       202111
+142004Do aparelho ginecológico                                                                                                                              202111
+145004Exames coprológicos                                                                                                                                   202111
+147004NASF 3                                                                                                                                                202111
+148004Fibrose cística                                                                                                                                       202111
+149004Pulmão                                                                                                                                                202111
+100004Atendimento em manicômio acima de 100 presos                                                                                                          202111
+101004Saúde da Família para a População Ribeirinha                                                                                                          202111
+104004Unidade de autorizações de TFD intermunicipais                                                                                                        202111
+105004Neurocirurgia vascular                                                                                                                                202111
+106004Assistência Domiciliar Terapêutica em AIDS-ADT                                                                                                        202111
+107004Diagnóstico em audiologia/otologia                                                                                                                    202111
+109004Unidade sócio-educativa com mais de 180 adolecentes                                                                                                   202111
+110004Vasectomia                                                                                                                                            202111
+112004Parto em gestação de alto risco                                                                                                                       202111
+113004Equipe Multidisciplinar de Apoio - EMAP                                                                                                               202111
+114004Moldagem/Manutenção                                                                                                                                   202111
+115004Serviço Residencial Terapêutico Tipo I - SRT tipo I                                                                                                   202111
+116004Cirurgia vascular                                                                                                                                     202111
+121004Ressonância magnética                                                                                                                                 202111
+122004Exame Eletroencefalográfico                                                                                                                           202111
+123004OPM oftalmológicas                                                                                                                                    202111
+152005Atenção Especializada a Populações Indígenas                                                                                                          202111
+122005Teste Ergométrico por Telemedicina                                                                                                                    202111
+162005DOENÇA CORONARIANA (UCO)                                                                                                                              202111
+164005Dispensação de OPM Auditiva                                                                                                                           202111
+165005Serviço de Referência para Atenção Integral à Saúde de Pessoas Idosas em Situação de Violência Sexual                                                 202111
+166005Alimentos                                                                                                                                             202111
+123005OPM em gastroenterologia                                                                                                                              202111
+125005Dispensação de medicamentos básicos                                                                                                                   202111
+126005Assistência fisioterapêutica nas disfunções músculo-esqueléticas (todas as origens)                                                                   202111
+130005Tratamento Diálitico Peritonial                                                                                                                       202111
+131005Diagnóstico em Oftalmologia por Telemedicina                                                                                                          202111
+132005Oncologia cirúrgica                                                                                                                                   202111
+134005Homeopatia                                                                                                                                            202111
+135005Reabiliatação Auditiva                                                                                                                                202111
+138005Diagnóstico e tratamento em membros inferiores                                                                                                        202111
+139005Acompanhamento a pacientes com diagnósticos de Hiperplasia Adrenal Congênita                                                                          202111
+140005Atendimento ao paciente com Acidente Vascular Cerebral (AVC)                                                                                          202111
+145005Exames de uroanálise                                                                                                                                  202111
+148005Cirúrgico / Diagnóstico                                                                                                                               202111
+149005Córnea / Esclera                                                                                                                                      202111
+101005Saúde da Família para a População Ribeirinha-Saúde Bucal MI                                                                                           202111
+103005Unidade de Suporte Básico de vida: Equipe Embarcação                                                                                                  202111
+104005Unidade de autorizações de TFD interestaduais                                                                                                         202111
+105005Tratamento neurocirúrgico da dor funcional                                                                                                            202111
+106005Unidade Dispensadora de Medicamentos - UDM                                                                                                            202111
+107005Implante Coclear                                                                                                                                      202111
+109005Atenção Básica à Adolescentes em Unidade Socioeducativa                                                                                               202111
+112005Centro de parto normal                                                                                                                                202111
+113005Equipe de cuidados domiciliares                                                                                                                       202111
+114005Cirurgia oral                                                                                                                                         202111
+115005Serviço Residencial Terapêutico Tipo II - SRT tipo II                                                                                                 202111
+116005Cardiologia intervencionista (hemodinâmica)                                                                                                           202111
+159005Saúde Bucal                                                                                                                                           202111
+159006Núcleo Ampliado de Saúde da Família e Atenção Primária                                                                                                202111
+122006Teste Holter por Telemedicina                                                                                                                         202111
+165006Serviço de referência para interrupção de gravidez nos casos previstos em LEI                                                                         202111
+166006Células, Tecidos e Órgãos                                                                                                                             202111
+123006OPM em urologia                                                                                                                                       202111
+125006Farmácia Hospitalar                                                                                                                                   202111
+126006Assistência fisioterapêutica em queimados                                                                                                             202111
+130006Tratamento em DRC                                                                                                                                     202111
+131006Projeto Olhar Brasil - Programa Saúde na Escola (PSE)                                                                                                 202111
+134006Termalismo/Crenoterapia                                                                                                                               202111
+139006Acompanhamento a pacientes com diagnósticos de Deficiência Biotinidase                                                                                202111
+140006Pronto Atendimento Clínico                                                                                                                            202111
+145006Exames hormonais                                                                                                                                      202111
+148006Acompanhamento pós-transplante de medula óssea                                                                                                        202111
+149006Fígado                                                                                                                                                202111
+101006Saúde da Família Fluvial                                                                                                                              202111
+103006Veículos de intervenção rápida                                                                                                                        202111
+104006Central Estadual de Regulação da Alta Complexidade                                                                                                    202111
+105006Investigação e cirurgia de epilepsia                                                                                                                  202111
+107006Triagem Auditiva Neonatal                                                                                                                             202111
+112006Casa da Gestante, Bebê e Puérpera                                                                                                                     202111
+114006Cirurgia buco-maxilo-facial                                                                                                                           202111
+115006UA Adulto                                                                                                                                             202111
+116006Cardiologia Endovascular Extracardíaco                                                                                                                202111
+121006Radiologia intervencionista                                                                                                                           202111
+164006Manutenção e Adaptação de OPM Auditiva                                                                                                                202111
+159007Atenção Primária para População Ribeirinha                                                                                                            202111
+122007Exame Eletrocardiografico por Telemedicina                                                                                                            202111
+165007Atenção Ambulatorial  ás Pessoas em Situação de Violência Sexual                                                                                      202111
+166007Medicamentos                                                                                                                                          202111
+123007OPM em odontologia                                                                                                                                    202111
+125007Farmácia Viva                                                                                                                                         202111
+126007Assistência fisioterapêutica nas alterações em neurologia                                                                                             202111
+131007Projeto Olhar Brasil - Programa Brasil Alfabetizado (PBA)                                                                                             202111
+134007Antroposofia Aplicada à Saúde                                                                                                                         202111
+135007Oficina Ortopédica Fixa                                                                                                                               202111
+140007Pronto Atendimento Pediátrico                                                                                                                         202111
+145007Exames de  vigilância epidemiológica e  ambiental                                                                                                     202111
+149007Pâncreas                                                                                                                                              202111
+101007Saúde da Família Fluvial com Saúde Bucal                                                                                                              202111
+103007Outros veículos                                                                                                                                       202111
+104007Regulação Nacional de Alta Complexidade                                                                                                               202111
+105007Tratamento endovascular                                                                                                                               202111
+107007Diagnóstico em Audiologia/Otologia por Telemedicina                                                                                                   202111
+114007Atendimento à pessoa com deficiência                                                                                                                  202111
+115007UA Infantojuvenil                                                                                                                                     202111
+116007Cardiologia Clínica                                                                                                                                   202111
+121007Radiologia por telemedicina                                                                                                                           202111
+164007Dispensação de OPM Oftalmológica                                                                                                                      202111
+152008Hospitalidade Indígena                                                                                                                                202111
+122008Exame Eletroencefalografico por Telemedicina                                                                                                          202111
+164008Manutenção e Adaptação de OPM Oftalmológica                                                                                                           202111
+165008Coleta de  Vestígios de Violência Sexual                                                                                                              202111
+166008Saneantes Domissanitários                                                                                                                             202111
+123008OPM buco-maxilo-facial                                                                                                                                202111
+126008Diagnóstico cinético funcional                                                                                                                        202111
+134008Práticas Expressivas                                                                                                                                  202111
+135008Oficina Ortopédica Intinerante Terrestre                                                                                                              202111
+140008Pronto Atendimento Obstétrico                                                                                                                         202111
+145008Exames toxicológicos ou de monitorização terapêutica                                                                                                  202111
+149008Retirada de orgãos                                                                                                                                    202111
+101008ESF Tipo I, II, III, IV ou Transitória                                                                                                                202111
+103008Ambulância de resgate                                                                                                                                 202111
+104008Regulação Ambulatorial de Média Complexidade                                                                                                          202111
+105008Neurocirurgia funcional estereotáxica                                                                                                                 202111
+107008Atenção Especializada às Pessoas com Deficiência Auditiva                                                                                             202111
+115008Unidade de Atenção em Regime Residencial                                                                                                              202111
+116008Serviço de Atenção Cardiovascular/Cardiologia Angiologia                                                                                              202111
+121008Ultra-sonografia por telemedicina                                                                                                                     202111
+159008Consultório na Rua                                                                                                                                    202111
+152009Gestão da Atenção e Saneamento à Populações Indígenas                                                                                                 202111
+122009Exame Eletroneuromiografia                                                                                                                            202111
+164009Substitução/Troca de OPM                                                                                                                              202111
+166009Produtos para a Saúde                                                                                                                                 202111
+123009Substituição/Troca em órteses/próteses                                                                                                                202111
+134009Ayurveda                                                                                                                                              202111
+135009Oficina Ortopédica Intinerante Fluvial                                                                                                                202111
+140009Pronto Atendimento Psiquiátrico                                                                                                                       202111
+145009Exames microbiológicos                                                                                                                                202111
+149009Pele                                                                                                                                                  202111
+101009ESF Tipo I, II, III, IV ou Transitória com Saúde Bucal MI                                                                                             202111
+104009Regulação do Acesso a Ações e Serviços de Saúde                                                                                                       202111
+105009Polissonografia                                                                                                                                       202111
+121009Tomografia computadorizada por telemedicina                                                                                                           202111
+159009Atenção Primária para População Prisional                                                                                                             202111
+134010Práticas Naturais                                                                                                                                     202111
+159010Atenção Primária para Adolescentes em Unidade Socioeducativa                                                                                          202111
+123010OPM em queimados                                                                                                                                      202111
+135010Atenção Fonoaudiológica                                                                                                                               202111
+152010Saúde Bucal à Populações Indígenas                                                                                                                    202111
+103010Motolância                                                                                                                                            202111
+164010OPM em gastroenterologia                                                                                                                              202111
+149010Válvulas cardíacas                                                                                                                                    202111
+121010Ressonância magnética por telemedicina                                                                                                                202111
+166010Cosméticos                                                                                                                                            202111
+145010Exames em outros líquidos biológicos                                                                                                                  202111
+140010Pronto Atendimento Oftalmológico                                                                                                                      202111
+122010Exame videoeletroencefalografia                                                                                                                       202111
+101010ESF Tipo I, II, III, IV ou Transitória com Saúde Bucal MII                                                                                            202111
+123011OPM em nefrologia                                                                                                                                     202111
+122011Potenciais Evocados                                                                                                                                   202111
+121011Radiologia intervencionista por telemedicina                                                                                                          202111
+103011Unidade de Suporte Avançado de vida: Equipe Embarcação                                                                                                202111
+101011ESF Transitória                                                                                                                                       202111
+166011Desinfestantes                                                                                                                                        202111
+164011OPM em Urologia                                                                                                                                       202111
+149011Osteocondroligamentos                                                                                                                                 202111
+145011Exames de genética                                                                                                                                    202111
+140011Pronto Atendimento Odontológico                                                                                                                       202111
+135011Atenção Fisioterapeutica                                                                                                                              202111
+134011Práticas Manuais                                                                                                                                      202111
+135012Atenção à Saúde das Pessoas Ostomizadas I                                                                                                             202111
+123012OPM - Projeto Olhar Brasil                                                                                                                            202111
+103012Equipe Aeromédico                                                                                                                                     202111
+145012Exames para triagem neonatal                                                                                                                          202111
+121012Mamografia                                                                                                                                            202111
+101012Saúde da Família para a População Ribeirinha - Saúde Bucal MII                                                                                        202111
+134012Práticas Psicodinâmicas                                                                                                                               202111
+122012Potenciais Evocados por Telemedicina                                                                                                                  202111
+140012Pronto Socorro Pediátrico                                                                                                                             202111
+166012Imunobiológicos                                                                                                                                       202111
+149012Separação, avaliação biomicroscópica e conservação da córnea/esclera                                                                                  202111
+123013OPM Projeto Olhar Brasil - Programa Saúde na Escola (PSE)                                                                                             202111
+101013ESB MI                                                                                                                                                202111
+140013Pronto Socorro Obstétrico                                                                                                                             202111
+166013Insumos Farmacêuticos                                                                                                                                 202111
+149013Contagem endotelial corneana                                                                                                                          202111
+121013Mamografia por Telemedicina                                                                                                                           202111
+135013Atenção à Saúde das Pessoas Ostomizadas II                                                                                                            202111
+145013Exames imunohematológicos                                                                                                                             202111
+134013Ozônioterapia                                                                                                                                         202111
+149014Acompanhamento de paciente transplantado                                                                                                              202111
+166014Material Biológico                                                                                                                                    202111
+140014Pronto Socorro Cardiovascular                                                                                                                         202111
+123014OPM Projeto Olhar Brasil - Programa Brasil Alfabetizado (PBA)                                                                                         202111
+134014Aromaterapia                                                                                                                                          202111
+101014ESB MII                                                                                                                                               202111
+140015Pronto Socorro Neurologia/Neurocirurgia                                                                                                               202111
+166015Sangue e Hemoderivados                                                                                                                                202111
+134015Imposição de Mãos                                                                                                                                     202111
+149015Ações para doação e captação de órgãos e tecidos                                                                                                      202111
+149016Retirada de globo ocular humano para transplante                                                                                                      202111
+166016Surtos de Toxinfecção                                                                                                                                 202111
+140016Pronto Socorro Traumato-Ortopédico                                                                                                                    202111
+166017Diversos                                                                                                                                              202111
+140017Pronto Socorro Odontológico                                                                                                                           202111
+140018Pronto Socorro Oftalmológico                                                                                                                          202111
+140019Pronto Socorro Geral/Clínico                                                                                                                          202111
