@@ -16,8 +16,6 @@ public class Ocupacao {
 
 	private String nome;
 
-	/** Getters and setters */
-
 	public Long getId() {
 		return id;
 	}
