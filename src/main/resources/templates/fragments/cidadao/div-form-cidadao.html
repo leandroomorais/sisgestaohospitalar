@@ -48,7 +48,6 @@
 													informação</small>
 											</div>
 										</div>
-
 										<div class="col-md-6 col-lg-9">
 											<div class="form-group"
 												th:classappend="${#fields.hasErrors('nomePai')} ? has-error">
@@ -60,7 +59,6 @@
 													informação</small>
 											</div>
 										</div>
-
 										<div class="col-md-6 col-lg-4">
 											<div class="form-group"
 												th:classappend="${#fields.hasErrors('sexo')} ? has-error">
@@ -71,7 +69,6 @@
 												</select> <small id="small-sexo" class="form-text text-muted"></small>
 											</div>
 										</div>
-
 										<div class="col-md-6 col-lg-4">
 											<div class="form-group"
 												th:classappend="${#fields.hasErrors('codigoRaca')} ? has-error">
@@ -84,7 +81,6 @@
 													class="form-text text-muted"></small>
 											</div>
 										</div>
-
 										<div class="col-md-6 col-lg-3">
 											<div class="form-group"
 												th:classappend="${#fields.hasErrors('codigoNacionalidade')} ? has-error">
@@ -98,13 +94,12 @@
 													class="form-text text-muted"></small>
 											</div>
 										</div>
-
 										<div class="col-md-6 col-lg-4">
 											<div class="form-group"
 												th:classappend="${#fields.hasErrors('municipioNascimento')} ? has-error">
-												<label for="municipioNascimento">Naturalidade*</label> <input type="text"
-													name="municipioNascimentoNome" class="form-control ui-widget"
-													id="municipioNascimento"
+												<label for="municipioNascimento">Naturalidade*</label> <input
+													type="text" name="municipioNascimentoNome"
+													class="form-control ui-widget" id="municipioNascimento"
 													th:value="*{municipioNascimento} != null ? *{municipioNascimento.nomeMunicipioSiglaUF}">
 												<input type="hidden" name="municipioNascimento"
 													id="id-municipioNascimento"
@@ -113,7 +108,34 @@
 													class="form-text text-muted"></small>
 											</div>
 										</div>
-
+										<div class="col-md-6 col-lg-8">
+											<div class="form-group"
+												th:classappend="${#fields.hasErrors('estadoCivil')} ? has-error">
+												<div class="form-check">
+													<label>Estado Civil</label>
+													<div class="row">
+														<th:block th:each="estadoCivil : ${estadosCivil}">
+															<label th:for="${estadoCivil}" class="form-radio-label">
+																<input th:id="${estadoCivil}" th:value="${estadoCivil}"
+																	th:field="*{estadoCivil}" class="form-radio-input"
+																	type="radio"> <span class="form-radio-sign"
+																	th:text="${estadoCivil.nome}"></span>
+															</label>
+														</th:block>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="col-md-4 col-lg-4">
+											<div class="form-group"
+												th:classappend="${#fields.hasErrors('profissao')} ? has-error">
+												<label for="profissao">Profissão</label> <input type="text"
+													class="form-control" id="profissao" placeholder="Digite a profissão"
+													th:field="*{profissao}"> <small id="small-profissao"
+													class="form-text text-muted"></small>
+												<small>
+											</div>
+										</div>
 									</div>
 								</div>
 							</div>
@@ -174,8 +196,9 @@
 										<div class="col-md-6 col-lg-6">
 											<div class="form-group"
 												th:classappend="${#fields.hasErrors('endereco.municipio')} ? has-error">
-												<label for="nomemunicipio">Município*</label> <input name="nomemunicipio"
-													type="text" class="form-control" id="nomemunicipio"
+												<label for="nomemunicipio">Município*</label> <input
+													name="nomemunicipio" type="text" class="form-control"
+													id="nomemunicipio"
 													th:value="*{endereco.municipio} != null ? *{endereco.municipio.nomeMunicipio}">
 												<input type="hidden" id="endereco-municipio" name="endereco.municipio"
 													th:field=*{endereco.municipio}
@@ -243,9 +266,9 @@
 										<div class="col-md-6 col-lg-2">
 											<div class="form-group"
 												th:classappend="${#fields.hasErrors('endereco.numero')} ? has-error">
-												<label for="numeroendereco">Número*</label> <input name="endereco.numero"
-													type="text" class="form-control" id="endereco-numero" placeholder=""
-													th:field="*{endereco.numero}">
+												<label for="numeroendereco">Número*</label> <input
+													name="endereco.numero" type="text" class="form-control"
+													id="endereco-numero" placeholder="" th:field="*{endereco.numero}">
 												<small id="small-numero" class="form-text text-muted"></small>
 												<small><input type="checkbox" id="semNumero">
 													Sem número</small>
