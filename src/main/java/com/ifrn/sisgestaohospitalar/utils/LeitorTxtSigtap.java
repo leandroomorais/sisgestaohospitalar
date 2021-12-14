@@ -7,21 +7,26 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.ifrn.sisgestaohospitalar.model.Cid;
+import com.ifrn.sisgestaohospitalar.model.Detalhe;
 import com.ifrn.sisgestaohospitalar.model.Ocupacao;
 import com.ifrn.sisgestaohospitalar.model.Procedimento;
 import com.ifrn.sisgestaohospitalar.model.RegistroSigtap;
 import com.ifrn.sisgestaohospitalar.model.ProcedimentoCid;
+import com.ifrn.sisgestaohospitalar.model.ProcedimentoDetalhe;
 import com.ifrn.sisgestaohospitalar.model.ProcedimentoOcupacao;
+import com.ifrn.sisgestaohospitalar.model.ProcedimentoRegistroSigtap;
 import com.ifrn.sisgestaohospitalar.repository.CidRepository;
+import com.ifrn.sisgestaohospitalar.repository.DetalheRepository;
 import com.ifrn.sisgestaohospitalar.repository.OcupacaoRepository;
 import com.ifrn.sisgestaohospitalar.repository.ProcedimentoRepository;
 import com.ifrn.sisgestaohospitalar.repository.RegistroSigtapRepository;
 import com.ifrn.sisgestaohospitalar.repository.ProcedimentoCidRepository;
+import com.ifrn.sisgestaohospitalar.repository.ProcedimentoDetalheRepository;
 import com.ifrn.sisgestaohospitalar.repository.ProcedimentoOcupacaoRepository;
+import com.ifrn.sisgestaohospitalar.repository.ProcedimentoRegistroSigtapRepository;
 
 /**
  * A classe <code>LeitorTxtSigtap</code> é um utilitário que contém métodos para
@@ -47,12 +52,21 @@ public class LeitorTxtSigtap {
 
 	@Autowired
 	private OcupacaoRepository ocupacaoRepository;
-	
+
 	@Autowired
 	private ProcedimentoCidRepository procedimentoCidRepository;
-	
+
 	@Autowired
 	private ProcedimentoOcupacaoRepository procedimentoOcupacaoRepository;
+
+	@Autowired
+	private ProcedimentoRegistroSigtapRepository procedimentoRegistroSigtapRepository;
+
+	@Autowired
+	private DetalheRepository detalheRepository;
+
+	@Autowired
+	private ProcedimentoDetalheRepository procedimentoDetalheRepository;
 
 	/**
 	 * Este método realiza a leitura do arquivo TXT que contém o relacionamento
@@ -62,24 +76,24 @@ public class LeitorTxtSigtap {
 	 * @param arquivoRelacionamentoProcedimento_Registro
 	 * @throws IOException
 	 */
-	public void relacionamentoProcedimento_Registro(String arquivoRelacionamentoProcedimento_Registro)
+	public void lerRelacionamentoProcedimento_Registro(String arquivoRelacionamentoProcedimento_Registro)
 			throws IOException {
 		BufferedReader bufferedReader = Files.newBufferedReader(Paths.get(arquivoRelacionamentoProcedimento_Registro),
 				Charset.forName("ISO-8859-1"));
 		String linha;
+		List<ProcedimentoRegistroSigtap> procedimentoRegistroSigtaps = new ArrayList<>();
 		while ((linha = bufferedReader.readLine()) != null) {
 			String novaLinha = new String(linha.getBytes("UTF-8"));
-			Long CO_PROCEDIMENTO = Long.getLong(novaLinha.substring(0, 10));
+			Long CO_PROCEDIMENTO = Long.parseLong(novaLinha.substring(0, 10));
 			String CO_REGISTRO = novaLinha.substring(10, 12);
 			String DT_COMPETENCIA = novaLinha.substring(12, 18);
-			Procedimento procedimento = procedimentoRepository.findByCodigo(CO_PROCEDIMENTO);
-			RegistroSigtap registroSigtap = registroSigtapRepository.findByCodigo(CO_REGISTRO);
-			procedimento.getRegistros().add(registroSigtap);
-
-			if (procedimento.getDataCompetencia().equals(DT_COMPETENCIA)) {
-				procedimentoRepository.saveAndFlush(procedimento);
-			}
+			ProcedimentoRegistroSigtap procedimentoRegistroSigtap = new ProcedimentoRegistroSigtap();
+			procedimentoRegistroSigtap.setCodigoProcedimento(CO_PROCEDIMENTO);
+			procedimentoRegistroSigtap.setCodigoRegistro(CO_REGISTRO);
+			procedimentoRegistroSigtap.setCompetencia(DT_COMPETENCIA);
+			procedimentoRegistroSigtaps.add(procedimentoRegistroSigtap);
 		}
+		procedimentoRegistroSigtapRepository.saveAll(procedimentoRegistroSigtaps);
 	}
 
 	/**
@@ -94,9 +108,7 @@ public class LeitorTxtSigtap {
 		BufferedReader bufferedReader = Files.newBufferedReader(Paths.get(arquivoRelacionamentoProcedimento_Cid),
 				Charset.forName("ISO-8859-1"));
 		String linha;
-		
 		List<ProcedimentoCid> procedimentoCids = new ArrayList<>();
-		
 		while ((linha = bufferedReader.readLine()) != null) {
 			String novaLinha = new String(linha.getBytes("UTF-8"));
 			Long CO_PROCEDIMENTO = Long.parseLong(novaLinha.substring(0, 10));
@@ -118,29 +130,24 @@ public class LeitorTxtSigtap {
 	 * @param arquivoRelacionamentoProcedimento_Ocupacao
 	 * @throws IOException
 	 */
-	public void lerProcedimento_Ocupacao(String arquivoRelacionamentoProcedimento_Ocupacao)
-			throws IOException {
+	public void lerProcedimento_Ocupacao(String arquivoRelacionamentoProcedimento_Ocupacao) throws IOException {
 		BufferedReader bufferedReader = Files.newBufferedReader(Paths.get(arquivoRelacionamentoProcedimento_Ocupacao),
 				Charset.forName("ISO-8859-1"));
 		String linha;
-		
+		List<ProcedimentoOcupacao> procedimentoOcupacaos = new ArrayList<>();
 		while ((linha = bufferedReader.readLine()) != null) {
-			String novaLinha = new String(linha.getBytes("UTF-8"));
 
+			String novaLinha = new String(linha.getBytes("UTF-8"));
 			Long CO_PROCEDIMENTO = Long.parseLong(novaLinha.substring(0, 10));
 			String CO_OCUPACAO = novaLinha.substring(10, 16);
 			String DT_COMPETENCIA = novaLinha.substring(16, 22);
-			
 			ProcedimentoOcupacao procedimentoOcupacao = new ProcedimentoOcupacao();
 			procedimentoOcupacao.setCodigoProcedimento(CO_PROCEDIMENTO);
 			procedimentoOcupacao.setCodigoOcupacao(CO_OCUPACAO);
 			procedimentoOcupacao.setCompetencia(DT_COMPETENCIA);
-			
-			procedimentoOcupacaoRepository.save(procedimentoOcupacao);
-			
+			procedimentoOcupacaos.add(procedimentoOcupacao);
 		}
-		
-		
+		procedimentoOcupacaoRepository.saveAll(procedimentoOcupacaos);
 	}
 
 	/**
@@ -194,6 +201,47 @@ public class LeitorTxtSigtap {
 			procedimentos.add(procedimentoSigtap);
 		}
 		procedimentoRepository.saveAll(procedimentos);
+	}
+
+	public void lerTxtDetalhe(String arquivoTxtDetalhe) throws IOException {
+
+		BufferedReader bufferedReader = Files.newBufferedReader(Paths.get(arquivoTxtDetalhe),
+				Charset.forName("ISO-8859-1"));
+		String linha;
+		List<Detalhe> detalhes = new ArrayList<>();
+		while ((linha = bufferedReader.readLine()) != null) {
+			String novaLinha = new String(linha.getBytes("UTF-8"));
+			Detalhe detalhe = new Detalhe();
+			String CO_DETALHE = novaLinha.substring(0, 3);
+			String NO_DETALHE = novaLinha.substring(3, 103);
+			String COMPETENCIA = novaLinha.substring(103, 109);
+			detalhe.setCodigo(CO_DETALHE);
+			detalhe.setNome(NO_DETALHE);
+			detalhe.setCompetencia(COMPETENCIA);
+			detalhes.add(detalhe);
+		}
+		detalheRepository.saveAll(detalhes);
+	}
+
+	public void lerRelacionamentoProcedimento_Detalhe(String arquivoRelacionamentoProcedimento_Detalhe)
+			throws IOException {
+		BufferedReader bufferedReader = Files.newBufferedReader(Paths.get(arquivoRelacionamentoProcedimento_Detalhe),
+				Charset.forName("ISO-8859-1"));
+		String linha;
+		List<ProcedimentoDetalhe> procedimentoDetalhes = new ArrayList<>();
+		while ((linha = bufferedReader.readLine()) != null) {
+			String novaLinha = new String(linha.getBytes("UTF-8"));
+			Long CO_PROCEDIMENTO = Long.parseLong(novaLinha.substring(0, 10));
+			String CO_DETALHE = novaLinha.substring(10, 13);
+			String DT_COMPETENCIA = novaLinha.substring(13, 19);
+			ProcedimentoDetalhe procedimentoDetalhe = new ProcedimentoDetalhe();
+			procedimentoDetalhe.setCodigoProcedimento(CO_PROCEDIMENTO);
+			procedimentoDetalhe.setCodigoDetalhe(CO_DETALHE);
+			procedimentoDetalhe.setCompetencia(DT_COMPETENCIA);
+
+			procedimentoDetalhes.add(procedimentoDetalhe);
+		}
+		procedimentoDetalheRepository.saveAll(procedimentoDetalhes);
 	}
 
 	/**
@@ -268,15 +316,17 @@ public class LeitorTxtSigtap {
 				Charset.forName("ISO-8859-1"));
 		String linha = bufferedReader.readLine();
 		List<Ocupacao> ocupacaos = new ArrayList<>();
-		while ((bufferedReader.readLine()) != null) {
 
+		while ((linha = bufferedReader.readLine()) != null) {
 			StringBuilder novaLinha = new StringBuilder(linha);
 			String CO_OCUPACAO = novaLinha.substring(0, 6);
 			String NO_OCUPACAO = novaLinha.substring(6, 156);
 			Ocupacao ocupacaoSigtap = new Ocupacao();
 			ocupacaoSigtap.setCodigo(CO_OCUPACAO);
 			ocupacaoSigtap.setNome(NO_OCUPACAO);
+			ocupacaos.add(ocupacaoSigtap);
 		}
 		ocupacaoRepository.saveAll(ocupacaos);
 	}
+
 }
