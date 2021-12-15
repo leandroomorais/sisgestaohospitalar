@@ -396,10 +396,7 @@ function imprimirAtestado(data) {
 		: ''
 	const div = `
 	<div class="card">
-		<div class="card-header text-center">
-			<p>MINISTÉRIO DA SAÚDE<br> ESTADO DE RIO GRANDE DO NORTE<br> MUNICÍPIO DE SEVERIANO MELO<br> UNIDADE DE
-				SAÚDE Hospital Maternidade Municipal de Severiano Melo</p>
-		</div>
+		${header()}
 		<div class="card-body">
 			<div class="text-center">
 				<h1 class="strong">Atestado</h1>
@@ -409,7 +406,7 @@ function imprimirAtestado(data) {
             </div>
 			${innerHTML}
 			<div class="text-center">
-				<p>Antonio Almeida</p>
+				<p>${user.nome}</p>
 			</div>
 			<div class="text-center">
 				<p>Data: ${moment(dataRegistro).format("DD/MM/YYYY")}</p>

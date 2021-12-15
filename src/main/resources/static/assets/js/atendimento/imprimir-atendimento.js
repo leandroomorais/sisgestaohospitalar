@@ -1,6 +1,5 @@
 function imprimirAtendimento(){
     const div = document.getElementsByClassName('page-inner').item(1).children.item(0).children.item(0).children.item(2)
-    console.log(div)
     const doc = new Doc({ url: '', target: '', features: 'height=2970,width=2100' })
     const templateDoc = new TemplateDoc(doc)
     

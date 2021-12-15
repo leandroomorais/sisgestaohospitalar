@@ -544,24 +544,22 @@ function infoCardDataProfissional(date, nomeProfissional, crm) {
 
 function imprimirExame(data) {
 	const { procedimentos } = data
+	const idade = moment().diff(user.dataNascimento, 'years')
 	const div = `
 	<div class="card">
-		<div class="card-header text-center">
-			<p>MINISTÉRIO DA SAÚDE<br> ESTADO DE RIO GRANDE DO NORTE<br> MUNICÍPIO DE SEVERIANO MELO<br> UNIDADE DE
-				SAÚDE Hospital Maternidade Municipal de Severiano Melo</p>
-		</div>
+		${header()}
 		<div class="card-body">
 			<div class="text-center">
 				<h1 class="strong">Solicitação de Exames</h1>
 			</div>
 			<div class="text-left">
-				<p>Nome do Paciente: Antonio Almeida</p>
+				<p>Nome do Paciente: ${user.nome}</p>
 			</div>
 			<div class="text-left">
-				<p>CPF.: 000.000.000-00</p>
+				<p>CPF.: ${user.cpf}</p>
 			</div>
 			<div class="text-left">
-				<p>Idade.: 00</p>
+				<p>Idade.: ${idade > 1 ? idade + ' anos' : idade + ' ano'}</p>
 			</div>
 			<div class="text-left">
 				<p>Procedimentos solicitados</p>

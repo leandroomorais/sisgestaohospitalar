@@ -96,7 +96,9 @@ $("#semInfo-pai").click(function() {
 });
 
 $("#semNumero").click(function() {
-	if ($("#semNumero").prop("checked", true)) {
+	const isChecked = !$(this).attr('checked')
+	$(this).attr("checked", isChecked)
+	if (isChecked) {
 		$("#endereco-numero").val("S/N");
 	} else {
 		$("#endereco-numero").val("");
