@@ -27,25 +27,12 @@
 					</button>
 				</div>
 				<div class="page-header">
-					<h4 class="page-title">Recepção</h4>
-					<th:block th:switch="${edit}">
-						<ul th:case="false" class="breadcrumbs">
-							<li class="nav-home"><i class="flaticon-home"></i></li>
-							<li class="separator"><i class="flaticon-right-arrow"></i></li>
-							<li class="nav-item"><a th:href="@{/recepcao/adicionar-cidadao}">Adicionar Cidadão</a></li>
-							<li class="separator"><i class="flaticon-right-arrow"></i></li>
-							<li class="nav-item"><a>Dados Complementares</a></li>
-						</ul>
+					<h4 class="page-title">Cidadão</h4>
+					<ul class="breadcrumbs">
+						<li class="separator"></li>
+						<li class="nav-item"><a>Adicionar a lista de atendimento</a></li>
 
-						<ul th:case="true" class="breadcrumbs">
-							<li class="nav-home"><i class="flaticon-home"></i></li>
-							<li class="separator"><i class="flaticon-right-arrow"></i></li>
-							<li class="nav-item"><a th:href="@{/recepcao/listar-status}">Lista
-									de Atendimento</a></li>
-							<li class="separator"><i class="flaticon-right-arrow"></i></li>
-							<li class="nav-item"><a>Editar Atendimento</a></li>
-						</ul>
-					</th:block>
+					</ul>
 				</div>
 
 

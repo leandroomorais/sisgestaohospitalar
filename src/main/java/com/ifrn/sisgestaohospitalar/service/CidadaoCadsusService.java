@@ -41,10 +41,13 @@ public class CidadaoCadsusService {
 		try {
 			byte[] encoded = Files.readAllBytes(Paths.get(PATH_CONSULTACNS));
 			String arquivoXML = new String(encoded);
-			System.out.println(conexaoCadsus.requisicao(arquivoXML.replace(PARAMETRO, parametro)));
-			JSONObject jsonObject = XML
-					.toJSONObject(conexaoCadsus.requisicao(arquivoXML.replace(PARAMETRO, parametro)));
-			return jsonParaCidadao(jsonObject);
+			String requisicao = conexaoCadsus.requisicao(arquivoXML.replace(PARAMETRO, parametro));
+			if (requisicao != null) {
+				JSONObject jsonObject = XML.toJSONObject(requisicao);
+				return jsonParaCidadao(jsonObject);
+			} else {
+				return null;
+			}
 		} catch (IOException e) {
 			e.printStackTrace();
 			return null;
@@ -58,9 +61,13 @@ public class CidadaoCadsusService {
 		try {
 			byte[] encoded = Files.readAllBytes(Paths.get(PATH_CONSULTACPF));
 			String arquivoXML = new String(encoded);
-			JSONObject jsonObject = XML
-					.toJSONObject(conexaoCadsus.requisicao(arquivoXML.replace(PARAMETRO, parametro)));
-			return jsonParaCidadao(jsonObject);
+			String requisicao = conexaoCadsus.requisicao(arquivoXML.replace(PARAMETRO, parametro));
+			if (requisicao != null) {
+				JSONObject jsonObject = XML.toJSONObject(requisicao);
+				return jsonParaCidadao(jsonObject);
+			} else {
+				return null;
+			}
 
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -75,9 +82,14 @@ public class CidadaoCadsusService {
 		try {
 			byte[] encoded = Files.readAllBytes(Paths.get(PATH_CONSULTANOME_NASCIMENTO));
 			String arquivoXML = new String(encoded);
-			JSONObject jsonObject = XML.toJSONObject(conexaoCadsus.requisicao(
-					arquivoXML.replace(PARAMETRO_NOME, nome).replace(PARAMETRO_DT_NASCIMENTO, dataNascimento)));
-			return jsonParaCidadao(jsonObject);
+			String requisicao = conexaoCadsus.requisicao(
+					arquivoXML.replace(PARAMETRO_NOME, nome).replace(PARAMETRO_DT_NASCIMENTO, dataNascimento));
+			if (requisicao != null) {
+				JSONObject jsonObject = XML.toJSONObject(requisicao);
+				return jsonParaCidadao(jsonObject);
+			} else {
+				return null;
+			}
 
 		} catch (IOException e) {
 			e.printStackTrace();

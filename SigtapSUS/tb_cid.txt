@@ -9822,6 +9822,10 @@ T982Seqüelas de algumas complicações precoces de traumatismos                   
 T983Seqüelas de complicações dos cuidados médicos e cirúrgicos não classificados em outra parte         0IN0000
 U04 Síndrome respiratória aguda grave [severe acute respiratory syndrome SARS]                          2IN0000
 U049Síndrome respiratória aguda grave [Severe acute respiratory syndrome) [SARS], não especificada      2IN0000
+U09 Condição de saúde posterior à covid-19, não especificada                                            0IN0000
+U099Condição de saúde posterior à covid-19, não especificada                                            0IN0000
+U10 Síndrome inflamatória multissistêmica associada a covid-19 , não especificada                       0IN0000
+U109Síndrome inflamatória multissistêmica associada a covid-19 , não especificada                       0IN0000
 U80 Agente resistente à penicilina e antibióticos relacionados                                          0IN0000
 U800Agente resistente à penicilina                                                                      0IN0000
 U801Agente resistente à meticilina                                                                      0IN0000

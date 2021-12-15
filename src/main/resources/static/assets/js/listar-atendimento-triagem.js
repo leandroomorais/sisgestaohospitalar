@@ -68,7 +68,7 @@ function atualizarTabela() {
 			},
 			{
 				title: 'AÇÕES', data: 'id', mRender: function(data) {
-					var retorno = "<a class='btn btn-primary btn-sm' " + "href='/triagem/adicionar/" + data + "'><i class='fa fa-user-md'></i> Atender</a>"
+					var retorno = "<a class='btn btn-primary btn-sm' " + "href='/triagem/adicionar/" + data + "'><i class='fa fa-stethoscope'></i> Atender</a>"
 					return retorno;
 				}
 			}

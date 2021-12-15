@@ -73,6 +73,8 @@ public class Profissional {
 
 	@Enumerated(EnumType.STRING)
 	private TipoProfissional tipoProfissional;
+	
+	private String nomeOcupacao;
 
 	private boolean ativo;
 
@@ -124,14 +126,6 @@ public class Profissional {
 
 	public void setDataNascimento(String dataNascimento) {
 		this.dataNascimento = dataNascimento;
-	}
-
-	public TipoProfissional getTipoProfissional() {
-		return tipoProfissional;
-	}
-
-	public void setTipoProfissional(TipoProfissional tipoProfissional) {
-		this.tipoProfissional = tipoProfissional;
 	}
 
 	public String getSexo() {
@@ -190,6 +184,22 @@ public class Profissional {
 		this.nomeAbrev = nomeAbrev;
 	}
 
+	public TipoProfissional getTipoProfissional() {
+		return tipoProfissional;
+	}
+
+	public void setTipoProfissional(TipoProfissional tipoProfissional) {
+		this.tipoProfissional = tipoProfissional;
+	}
+
+	public String getNomeOcupacao() {
+		return nomeOcupacao;
+	}
+
+	public void setNomeOcupacao(String nomeOcupacao) {
+		this.nomeOcupacao = nomeOcupacao;
+	}
+
 	public boolean isAtivo() {
 		return ativo;
 	}
@@ -205,5 +215,4 @@ public class Profissional {
 	public void setLotacoes(List<Lotacao> lotacoes) {
 		this.lotacoes = lotacoes;
 	}
-
 }

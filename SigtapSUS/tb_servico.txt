@@ -1,73 +1,73 @@
-100Serviço de Atenção a Saúde no Sistema Penitenciário                                                                     202109
-101Estratégia de Saúde da Família                                                                                          202109
-102Estratégias de Agentes Comunitário de Saúde                                                                             202109
-103Serviço de Atendimento Móvel de Urgências                                                                               202109
-104Regulação Assistêncial dos Serviços de Saúde                                                                            202109
-105Serviço de Atenção em Neurologia/ Neurocirurgia                                                                         202109
-106Serviço de Atenção a DST/HIV/AIDS                                                                                       202109
-107Serviço de Atenção a Saúde Auditiva                                                                                     202109
-108Serviço de Atenção a Saúde do Trabalhador                                                                               202109
-109Serviço de Atenção a Saúde dos Adolecentes em Conflito com a Lei, em Regime de Internação e Internação Provisória       202109
-110Serviço de Atenção a Saúde Reprodutiva                                                                                  202109
-111Serviço de Atenção ao Paciente com Tuberculose                                                                          202109
-112Serviço de Atenção ao Pré-Natal, Parto e Nascimento                                                                     202109
-113Serviço de Atenção Domiciliar                                                                                           202109
-114Serviço de Atenção em Saúde Bucal                                                                                       202109
-115Serviço de Atenção Psicossocial                                                                                         202109
-116Serviço de Atenção Cardiovascular/Cardiologia                                                                           202109
-117Serviço de Cirurgia Reparadora                                                                                          202109
-118Serviço de Cirurgia Torácica                                                                                            202109
-119Serviço de Controle de Tabagismo                                                                                        202109
-120Serviço de Diagnóstico por Anatomia Patológica e/ou Citopatologia                                                       202109
-121Diagnóstico por Imagem                                                                                                  202109
-122Serviço de Diagnóstico por Métodos Gráficos/Dinâmicos                                                                   202109
-123Serviço de Dispensação de Órteses, Próteses e Materiais Especiais                                                       202109
-124Serviço de Endocrinologia                                                                                               202109
-125Serviço de Farmácia                                                                                                     202109
-126Serviço de Fisioterapia                                                                                                 202109
-127Serviço de Atenção à Obesidade                                                                                          202109
-128Serviço de Hemoterapia                                                                                                  202109
-129Servico de Laboratório de Histocompatibilidade                                                                          202109
-130Atenção à Doença Renal Crônica                                                                                          202109
-131Serviço de Oftalmologia                                                                                                 202109
-132Serviço de Oncologia                                                                                                    202109
-133Serviço de Pneumologia                                                                                                  202109
-134Serviço de Práticas Integrativas e Complementares                                                                       202109
-135Serviço de Reabilitação                                                                                                 202109
-136Serviço de Suporte Nutricional                                                                                          202109
-137Serviço de Telemedicina                                                                                                 202109
-138Serviço de Traumato-Ortopedia                                                                                           202109
-139Serviço de Triagem Neonatal                                                                                             202109
-140Serviço de Urgência e Emergência                                                                                        202109
-141Serviço de Vigilância em Saúde                                                                                          202109
-142Serviço de Endoscopia                                                                                                   202109
-143Serviço Móvel de Urgência (exceto SAMU)                                                                                 202109
-144Serviço Posto de Coleta de Materiais Biológicos                                                                         202109
-145Serviço de Diagnóstico por Laboratório Clínico                                                                          202109
-146Serviço de Videolaparoscopia                                                                                            202109
-147Serviço de Apoio a Saúde da Família                                                                                     202109
-148Hospital-Dia                                                                                                            202109
-149Transplante                                                                                                             202109
-150Cirurgia Vascular                                                                                                       202109
-151Medicina Nuclear                                                                                                        202109
-152Atenção à Saúde da População Indígena                                                                                   202109
-153Atenção Especializada no Processo Transexualizador                                                                      202109
-154Serviço de Banco de Tecidos                                                                                             202109
-155Serviço de Traumatologia  Ortopedia                                                                                     202109
-156Serviço de Atenção á Saúde das Pessoas Ostomizadas                                                                      202109
-157Serviço de Laboratorio de Protese Dentaria                                                                              202109
-158Serviço de Atenção Integral em Hanseniase                                                                               202109
-159Atenção Primária                                                                                                        202109
-160Teleconsultoria                                                                                                         202109
-161Consultório na Rua                                                                                                      202109
-162Serviço de Terapia Intensiva                                                                                            202109
-163Serviço de Cuidados Intermediários                                                                                      202109
-164Serviço de Órteses,Próteses e Materiais Especiais em Reabilitação                                                       202109
-165Atenção às Pessoas em Situação de Violência Sexual                                                                      202109
-166Serviço de  Análise Laboratorial  de Produtos Sujeitos á  Vigilância Sanitária                                          202109
-167Atendimento Itinerante de Asistência e Ensino em Saúde                                                                  202109
-168Atenção Às Pessoas com Doenças Raras                                                                                    202109
-169Serviço de Atenção em Urologia                                                                                          202109
-170Comissões e Comitês                                                                                                     202109
-173Logística de Imunobiológicos                                                                                            202109
-174Imunização                                                                                                              202109
+100Serviço de Atenção a Saúde no Sistema Penitenciário                                                                     202111
+101Estratégia de Saúde da Família                                                                                          202111
+102Estratégias de Agentes Comunitário de Saúde                                                                             202111
+103Serviço de Atendimento Móvel de Urgências                                                                               202111
+104Regulação Assistêncial dos Serviços de Saúde                                                                            202111
+105Serviço de Atenção em Neurologia/ Neurocirurgia                                                                         202111
+106Serviço de Atenção a DST/HIV/AIDS                                                                                       202111
+107Serviço de Atenção a Saúde Auditiva                                                                                     202111
+108Serviço de Atenção a Saúde do Trabalhador                                                                               202111
+109Serviço de Atenção a Saúde dos Adolecentes em Conflito com a Lei, em Regime de Internação e Internação Provisória       202111
+110Serviço de Atenção a Saúde Reprodutiva                                                                                  202111
+111Serviço de Atenção ao Paciente com Tuberculose                                                                          202111
+112Serviço de Atenção ao Pré-Natal, Parto e Nascimento                                                                     202111
+113Serviço de Atenção Domiciliar                                                                                           202111
+114Serviço de Atenção em Saúde Bucal                                                                                       202111
+115Serviço de Atenção Psicossocial                                                                                         202111
+116Serviço de Atenção Cardiovascular/Cardiologia                                                                           202111
+117Serviço de Cirurgia Reparadora                                                                                          202111
+118Serviço de Cirurgia Torácica                                                                                            202111
+119Serviço de Controle de Tabagismo                                                                                        202111
+120Serviço de Diagnóstico por Anatomia Patológica e/ou Citopatologia                                                       202111
+121Diagnóstico por Imagem                                                                                                  202111
+122Serviço de Diagnóstico por Métodos Gráficos/Dinâmicos                                                                   202111
+123Serviço de Dispensação de Órteses, Próteses e Materiais Especiais                                                       202111
+124Serviço de Endocrinologia                                                                                               202111
+125Serviço de Farmácia                                                                                                     202111
+126Serviço de Fisioterapia                                                                                                 202111
+127Serviço de Atenção à Obesidade                                                                                          202111
+128Serviço de Hemoterapia                                                                                                  202111
+129Servico de Laboratório de Histocompatibilidade                                                                          202111
+130Atenção à Doença Renal Crônica                                                                                          202111
+131Serviço de Oftalmologia                                                                                                 202111
+132Serviço de Oncologia                                                                                                    202111
+133Serviço de Pneumologia                                                                                                  202111
+134Serviço de Práticas Integrativas e Complementares                                                                       202111
+135Serviço de Reabilitação                                                                                                 202111
+136Serviço de Suporte Nutricional                                                                                          202111
+137Serviço de Telemedicina                                                                                                 202111
+138Serviço de Traumato-Ortopedia                                                                                           202111
+139Serviço de Triagem Neonatal                                                                                             202111
+140Serviço de Urgência e Emergência                                                                                        202111
+141Serviço de Vigilância em Saúde                                                                                          202111
+142Serviço de Endoscopia                                                                                                   202111
+143Serviço Móvel de Urgência (exceto SAMU)                                                                                 202111
+144Serviço Posto de Coleta de Materiais Biológicos                                                                         202111
+145Serviço de Diagnóstico por Laboratório Clínico                                                                          202111
+146Serviço de Videolaparoscopia                                                                                            202111
+147Serviço de Apoio a Saúde da Família                                                                                     202111
+148Hospital-Dia                                                                                                            202111
+149Transplante                                                                                                             202111
+150Cirurgia Vascular                                                                                                       202111
+151Medicina Nuclear                                                                                                        202111
+152Atenção à Saúde da População Indígena                                                                                   202111
+153Atenção Especializada no Processo Transexualizador                                                                      202111
+154Serviço de Banco de Tecidos                                                                                             202111
+155Serviço de Traumatologia  Ortopedia                                                                                     202111
+156Serviço de Atenção á Saúde das Pessoas Ostomizadas                                                                      202111
+157Serviço de Laboratorio de Protese Dentaria                                                                              202111
+158Serviço de Atenção Integral em Hanseniase                                                                               202111
+159Atenção Primária                                                                                                        202111
+160Teleconsultoria                                                                                                         202111
+161Consultório na Rua                                                                                                      202111
+162Serviço de Terapia Intensiva                                                                                            202111
+163Serviço de Cuidados Intermediários                                                                                      202111
+164Serviço de Órteses,Próteses e Materiais Especiais em Reabilitação                                                       202111
+165Atenção às Pessoas em Situação de Violência Sexual                                                                      202111
+166Serviço de  Análise Laboratorial  de Produtos Sujeitos á  Vigilância Sanitária                                          202111
+167Atendimento Itinerante de Asistência e Ensino em Saúde                                                                  202111
+168Atenção Às Pessoas com Doenças Raras                                                                                    202111
+169Serviço de Atenção em Urologia                                                                                          202111
+170Comissões e Comitês                                                                                                     202111
+173Logística de Imunobiológicos                                                                                            202111
+174Imunização                                                                                                              202111

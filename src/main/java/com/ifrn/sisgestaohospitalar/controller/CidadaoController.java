@@ -144,7 +144,6 @@ public class CidadaoController {
 		String nome = httpServletRequest.getParameter("nome");
 		String dataNascimento = httpServletRequest.getParameter("dataNascimento").replace("-", "");
 		if (cns.isEmpty() != true) {
-			System.out.println(cns);
 			Cidadao cidadao = cadsusService.consultaCNS(cns);
 			if (cidadao != null) {
 				return ResponseEntity.ok(cidadao);

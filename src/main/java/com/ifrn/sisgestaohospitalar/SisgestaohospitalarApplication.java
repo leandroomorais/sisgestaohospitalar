@@ -11,6 +11,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
 
+import com.ifrn.sisgestaohospitalar.model.ClassificacaoDeRisco;
 import com.ifrn.sisgestaohospitalar.model.ExameSimplificado;
 import com.ifrn.sisgestaohospitalar.model.Role;
 import com.ifrn.sisgestaohospitalar.model.TipoServico;
@@ -18,6 +19,7 @@ import com.ifrn.sisgestaohospitalar.model.TipoUsuario;
 import com.ifrn.sisgestaohospitalar.model.ViaAdministracao;
 import com.ifrn.sisgestaohospitalar.repository.Cep_IbgeRepository;
 import com.ifrn.sisgestaohospitalar.repository.CidRepository;
+import com.ifrn.sisgestaohospitalar.repository.ClassificacaoDeRiscoRepository;
 import com.ifrn.sisgestaohospitalar.repository.EstadoRepository;
 import com.ifrn.sisgestaohospitalar.repository.LogradouroRepository;
 import com.ifrn.sisgestaohospitalar.repository.MunicipioRepository;
@@ -74,33 +76,39 @@ public class SisgestaohospitalarApplication implements ApplicationListener<Conte
 	private TipoUsuarioRepository tipoUsuarioRepository;
 	@Autowired
 	private CidRepository cidRepository;
+	@Autowired
+	private ClassificacaoDeRiscoRepository classificacaoDeRiscoRepository;
 
 	public static void main(String[] args) {
 		SpringApplication.run(SisgestaohospitalarApplication.class, args);
 		System.out.println("Iniciando Projeto");
 	}
 
-	String fileMedicamento = System.getProperty("user.dir") + "/medicamento/medicamentos_rename.txt";
-	String fileFormaFarmaceutiva = System.getProperty("user.dir") + "/medicamento/formafarmaceutica.txt";
+	String userDir = System.getProperty("user.dir");
+
+	String fileMedicamento = userDir + "/medicamento/medicamentos_rename.txt";
+	String fileFormaFarmaceutiva = userDir + "/medicamento/formafarmaceutica.txt";
 	String cnes = "2380633";
-	String file = System.getProperty("user.dir") + "/uploads/XmlParaESUS21_241360.xml";
-	String urlProcedimentos = System.getProperty("user.dir") + "/SigtapSUS/tb_procedimento.txt";
-	String urlRegistros = System.getProperty("user.dir") + "/SigtapSUS/tb_registro.txt";
-	String urlCid = System.getProperty("user.dir") + "/SigtapSUS/tb_cid.txt";
-	String urlOcupacao = System.getProperty("user.dir") + "/SigtapSUS/tb_ocupacao.txt";
-	String urlRelationProced_Registro = System.getProperty("user.dir") + "/SigtapSUS/rl_procedimento_registro.txt";
-	String urlRelationProced_Cid = System.getProperty("user.dir") + "/SigtapSUS/rl_procedimento_cid.txt";
-	String urlRelationProced_Ocupacao = System.getProperty("user.dir") + "/SigtapSUS/rl_procedimento_ocupacao.txt";
-	String txtMedicamentos = System.getProperty("user.dir") + "/medicamento/medicamentos_rename.txt";
-	String txtFormaFarmaceutica = System.getProperty("user.dir") + "/medicamento/formafarmaceutica.txt";
-	String txtGruposExames = System.getProperty("user.dir") + "/exames/gruposExames.txt";
-	String txtExamesSimplificado = System.getProperty("user.dir") + "/exames/examesSimplificado.txt";
+	String file = userDir + "/uploads/XmlParaESUS21_241360.xml";
+	String urlProcedimentos = userDir + "/SigtapSUS/tb_procedimento.txt";
+	String urlRegistros = userDir + "/SigtapSUS/tb_registro.txt";
+	String urlCid = userDir + "/SigtapSUS/tb_cid.txt";
+	String urlOcupacao = userDir + "/SigtapSUS/tb_ocupacao.txt";
+	String urlRelationProced_Registro = userDir + "/SigtapSUS/rl_procedimento_registro.txt";
+	String urlRelationProced_Cid = userDir + "/SigtapSUS/rl_procedimento_cid.txt";
+	String urlRelationProced_Ocupacao = userDir + "/SigtapSUS/rl_procedimento_ocupacao.txt";
+	String txtMedicamentos = userDir + "/medicamento/medicamentos_rename.txt";
+	String txtFormaFarmaceutica = userDir + "/medicamento/formafarmaceutica.txt";
+	String txtGruposExames = userDir + "/exames/gruposExames.txt";
+	String txtExamesSimplificado = userDir + "/exames/examesSimplificado.txt";
+	String urlDetalhe = userDir + "/SigtapSus/tb_detalhe.txt";
+	String urlProcedimentoDetalheRelacionamento = userDir + "/SigtapSus/rl_procedimento_detalhe.txt";
 
 	@Override
 	public void onApplicationEvent(ContextRefreshedEvent event) {
 
 		// criaRolesETipoUsuario();
-		// lerSigtab();
+		lerSigtab();
 		// lerMedicamentosEFormaFarmaceutica();
 		// lerXmlEsus();
 		// lerEstadosMunicipios();
@@ -108,6 +116,7 @@ public class SisgestaohospitalarApplication implements ApplicationListener<Conte
 		// salvarTipoServico();
 		// LerExames();
 		// leitorTXTExames.atualizaGrupo();
+		// criaClassificacaoDeRisco();
 	}
 
 	public void salvarTipoServico() {
@@ -187,19 +196,31 @@ public class SisgestaohospitalarApplication implements ApplicationListener<Conte
 
 	public void lerSigtab() {
 		try {
-			leitorTxtSigtap.lerTxtCid(urlCid);
-			leitorTxtSigtap.lerTxtProcedimentos(urlProcedimentos);
-			leitorTxtSigtap.lerTxtRegistro(urlRegistros);
+			// OK
+			// leitorTxtSigtap.lerTxtCid(urlCid);
+
+			// OK
+			// leitorTxtSigtap.lerTxtProcedimentos(urlProcedimentos);
+
+			// OK
+			// leitorTxtSigtap.lerTxtRegistro(urlRegistros);
+
+			// OK
 			// leitorTxtSigtap.lerProcedimento_Cid(urlRelationProced_Cid);
+
+			// OK
 			// leitorTxtSigtap.lerProcedimento_Ocupacao(urlRelationProced_Ocupacao);
-			// leitorTxtSigtap.relacionamentoProcedimento_Registro(urlRelationProced_Registro);
+
+			// OK
+			// leitorTxtSigtap.lerRelacionamentoProcedimento_Registro(urlRelationProced_Registro);
+
+			// OK
 			// leitorTxtSigtap.lerTxtOcupacao(urlOcupacao);
 
-			// leitorTxtSigtap.relacionamentoProcedimento_Cid(urlRelationProced_Cid);
+			// OK
+			// leitorTxtSigtap.lerTxtDetalhe(urlDetalhe);
 
-			// leitorTxtSigtap.relacionamentoProcedimento_Cid(urlRelationProced_Cid);
-			// leitorTxtSigtap.relacionamentoProcedimento_Ocupacao(urlRelationProced_Ocupacao);
-			// leitorTxtSigtap.relacionamentoProcedimento_Registro(urlRelationProced_Registro);
+			leitorTxtSigtap.lerRelacionamentoProcedimento_Detalhe(urlProcedimentoDetalheRelacionamento);
 
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -253,6 +274,46 @@ public class SisgestaohospitalarApplication implements ApplicationListener<Conte
 		roleRepository.saveAndFlush(roleTecnico);
 		roleRepository.saveAndFlush(roleAuxiliar);
 		roleRepository.saveAndFlush(roleAdministrador);
+
+	}
+
+	public void criaClassificacaoDeRisco() {
+		ClassificacaoDeRisco vermelho = new ClassificacaoDeRisco();
+		vermelho.setNome("VERMELHO");
+		vermelho.setDescricao("Casos de emergência");
+		vermelho.setPrioridade(0);
+
+		ClassificacaoDeRisco laranja = new ClassificacaoDeRisco();
+		laranja.setNome("LARANJA");
+		laranja.setDescricao("Casos muito urgentes");
+		laranja.setPrioridade(1);
+
+		ClassificacaoDeRisco amarelo = new ClassificacaoDeRisco();
+		amarelo.setNome("AMARELO");
+		amarelo.setDescricao("Casos de urgência");
+		amarelo.setPrioridade(2);
+
+		ClassificacaoDeRisco verde = new ClassificacaoDeRisco();
+		verde.setNome("VERDE");
+		verde.setDescricao("Casos pouco urgentes");
+		verde.setPrioridade(3);
+
+		ClassificacaoDeRisco azul = new ClassificacaoDeRisco();
+		azul.setNome("AZUL");
+		azul.setDescricao("Casos não urgentes");
+		azul.setPrioridade(4);
+
+		ClassificacaoDeRisco naoInformada = new ClassificacaoDeRisco();
+		naoInformada.setNome("Não informada");
+		naoInformada.setDescricao("Risco não classificasdo");
+		naoInformada.setPrioridade(5);
+
+		classificacaoDeRiscoRepository.save(vermelho);
+		classificacaoDeRiscoRepository.save(laranja);
+		classificacaoDeRiscoRepository.save(amarelo);
+		classificacaoDeRiscoRepository.save(verde);
+		classificacaoDeRiscoRepository.save(azul);
+		classificacaoDeRiscoRepository.save(naoInformada);
 
 	}
 

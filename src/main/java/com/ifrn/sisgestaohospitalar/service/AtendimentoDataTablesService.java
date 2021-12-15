@@ -16,8 +16,8 @@ import com.ifrn.sisgestaohospitalar.repository.AtendimentoRepository;
 
 public class AtendimentoDataTablesService {
 
-	private String[] cols = { "dataEntrada", "cidadao.sexo", "cidadao.nome", "profissionalDestino.nome",
-			"tipoServicos", "status.descricao", "" };
+	private String[] cols = { "dataEntrada", "cidadao.sexo", "cidadao.nome", "profissionalDestino.nome", "tipoServicos",
+			"status.descricao", "" };
 
 	public Map<String, Object> execute(AtendimentoRepository repository, HttpServletRequest request) {
 
@@ -50,6 +50,7 @@ public class AtendimentoDataTablesService {
 		}
 		return repository.findByCidadaoOrProfissionalOrTipoServico(search, pageable);
 	}
+
 	private String searchBy(HttpServletRequest request) {
 		return request.getParameter("search[value]").isEmpty() ? "" : request.getParameter("search[value]");
 	}

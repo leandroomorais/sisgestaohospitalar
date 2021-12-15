@@ -19,7 +19,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-import com.ifrn.sisgestaohospitalar.enums.ClassificacaoDeRisco;
 import com.ifrn.sisgestaohospitalar.enums.CondutaCidadao;
 import com.ifrn.sisgestaohospitalar.enums.MomentoColeta;
 import com.ifrn.sisgestaohospitalar.enums.SituacaoCondicao;
@@ -28,6 +27,7 @@ import com.ifrn.sisgestaohospitalar.model.Atendimento;
 import com.ifrn.sisgestaohospitalar.model.Profissional;
 import com.ifrn.sisgestaohospitalar.model.Triagem;
 import com.ifrn.sisgestaohospitalar.repository.AtendimentoRepository;
+import com.ifrn.sisgestaohospitalar.repository.ClassificacaoDeRiscoRepository;
 import com.ifrn.sisgestaohospitalar.repository.ProfissionalRepository;
 import com.ifrn.sisgestaohospitalar.repository.TipoServicoRepository;
 import com.ifrn.sisgestaohospitalar.repository.UsuarioRepository;
@@ -53,11 +53,15 @@ public class TriagemController {
 	@Autowired
 	private HistoricoAtendimentoService historicoAtendimentoService;
 
+	@Autowired
+	private ClassificacaoDeRiscoRepository classificacaoDeRiscoRepository;
+
 	@RequestMapping("/verificar/{atendimentoId}")
 	public ResponseEntity<?> verificaTriagem(@PathVariable("atendimentoId") Long id) {
 		Atendimento atendimento = atendimentoRepository.getOne(id);
 		Triagem triagem = atendimento.getTriagem();
 		if (triagem != null) {
+			triagem.setClassificacaoDeRisco(atendimento.getClassificacaoDeRisco());
 			return ResponseEntity.ok().body(triagem);
 		}
 		return ResponseEntity.badRequest().build();
@@ -80,7 +84,7 @@ public class TriagemController {
 			ModelAndView mv = new ModelAndView("triagem/form-triagem");
 			mv.addObject("atendimento", triagem.getAtendimento());
 			mv.addObject("momentosColeta", MomentoColeta.values());
-			mv.addObject("classificacoesRisco", ClassificacaoDeRisco.values());
+			mv.addObject("classificacoesRisco", classificacaoDeRiscoRepository.findAll());
 			mv.addObject("situacoesCondicao", SituacaoCondicao.values());
 			mv.addObject("profissionais", profissionalRepository.findAll());
 			mv.addObject("tipoServicos", tipoServicoRepository.findAll());
@@ -109,6 +113,7 @@ public class TriagemController {
 			triagem.setProfissional(profissionalRepository.findByCpf(principal.getName()));
 			triagem.getSinaisVitais().setUltimaAtualizacao(LocalDateTime.now());
 			atendimento.setTriagem(triagem);
+			atendimento.setClassificacaoDeRisco(triagem.getClassificacaoDeRisco());
 			atendimentoRepository.saveAndFlush(atendimento);
 			return ResponseEntity.ok().build();
 		}

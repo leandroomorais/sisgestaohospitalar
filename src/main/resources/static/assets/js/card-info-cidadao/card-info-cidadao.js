@@ -17,7 +17,7 @@ function createCardInfoCidadao(data) {
 		cns(data.cidadao.cns) +
 		nascimentoIdadeSexo(data.cidadao.dataNascimento, data.cidadao.sexo) +
 		"</div><div class='col-md-4'>" +
-		classificacaoDeRisco(data.triagem) + "<br>" +
+		classificacaoDeRisco(data.classificacaoDeRisco) + "<br>" +
 		verificaSinaisVitais(data) +
 		"</div><div class='col-md-2'>" +
 		antropometria(data.cidadao.prontuario.antropometrias) +
@@ -96,28 +96,25 @@ function antropometria(antropometria) {
 	}
 }
 
-function classificacaoDeRisco(triagem) {
-	if (triagem == null) {
-		return "<span class='badge badge-info'> Sem classificação de risco </span>"
-	} else {
-		var classDeRisco = triagem.classificacaoDeRisco;
-		if (classDeRisco == 'AZUL') {
-			return "<span class='badge badge-primary'>AZUL</span>";
-		}
-		if (classDeRisco == 'VERDE') {
-			return "<span class='badge badge-success'>VERDE</span>";
-		}
-		if (classDeRisco == 'AMARELO') {
-			return "<span class='badge badge-warning'>AMARELO</span>";
-		}
-		if (classDeRisco == 'LARANJA') {
-			return "<span class='badge badge-warning'>LARANJA</span>";
-		}
-		if (classDeRisco == 'VERMELHO') {
-			return "<span class='badge badge-danger'>VERMELHO</span>";
-		}
+function classificacaoDeRisco(classDeRisco) {
 
-		return "";
+	if (classDeRisco.nome == 'AZUL') {
+		return "<span class='badge badge-primary'>AZUL</span>";
+	}
+	if (classDeRisco.nome == 'VERDE') {
+		return "<span class='badge badge-success'>VERDE</span>";
+	}
+	if (classDeRisco.nome == 'AMARELO') {
+		return "<span class='badge badge-amarelo'>AMARELO</span>";
+	}
+	if (classDeRisco.nome == 'LARANJA') {
+		return "<span class='badge badge-warning'>LARANJA</span>";
+	}
+	if (classDeRisco.nome == 'VERMELHO') {
+		return "<span class='badge badge-danger'>VERMELHO</span>";
+	}
+	if (classDeRisco.nome === "NÃO INFORMADA") {
+		return "<span class='badge badge-info'>Não informado</span>";
 	}
 }
 

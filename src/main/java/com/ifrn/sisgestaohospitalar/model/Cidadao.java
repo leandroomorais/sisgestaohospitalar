@@ -21,6 +21,7 @@ import javax.validation.constraints.Size;
 import org.hibernate.validator.constraints.br.CPF;
 
 import com.ifrn.sisgestaohospitalar.enums.CodigoRaca;
+import com.ifrn.sisgestaohospitalar.enums.EstadoCivil;
 import com.ifrn.sisgestaohospitalar.validation.Cns;
 
 @Entity
@@ -76,6 +77,10 @@ public class Cidadao implements Serializable {
 	@NotNull(message = "É necessário selecionar a NACIONALIDADE do Cidadão")
 	@Column(length = 3)
 	private int codigoNacionalidade;
+
+	private EstadoCivil estadoCivil;
+	
+	private String profissao;
 
 	private String telefone;
 
@@ -194,6 +199,22 @@ public class Cidadao implements Serializable {
 		this.codigoNacionalidade = codigoNacionalidade;
 	}
 
+	public EstadoCivil getEstadoCivil() {
+		return estadoCivil;
+	}
+
+	public void setEstadoCivil(EstadoCivil estadoCivil) {
+		this.estadoCivil = estadoCivil;
+	}
+
+	public String getProfissao() {
+		return profissao;
+	}
+
+	public void setProfissao(String profissao) {
+		this.profissao = profissao;
+	}
+
 	public String getTelefone() {
 		return telefone;
 	}
@@ -261,15 +282,6 @@ public class Cidadao implements Serializable {
 		} else if (!id.equals(other.id))
 			return false;
 		return true;
-	}
-
-	@Override
-	public String toString() {
-		return "Cidadao [id=" + id + ", cns=" + cns + ", cpf=" + cpf + ", sexo=" + sexo + ", nome=" + nome
-				+ ", nomeMae=" + nomeMae + ", nomePai=" + nomePai + ", dataNascimento=" + dataNascimento
-				+ ", codigoRaca=" + codigoRaca + ", etnia=" + etnia + ", codigoNacionalidade=" + codigoNacionalidade
-				+ ", telefone=" + telefone + ", email=" + email + ", municipioNascimento=" + municipioNascimento
-				+ ", endereco=" + endereco + ", prontuario=" + prontuario + "]";
 	}
 
 }
