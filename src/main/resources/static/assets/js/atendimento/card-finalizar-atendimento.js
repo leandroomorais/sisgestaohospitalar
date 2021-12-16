@@ -42,6 +42,7 @@ $("#form-finalizar-atendimento").submit(function(evt) {
 		method: 'post',
 		data: atendimentoDTO,
 		success: function(data) {
+			window.location.replace("/atendimento/listar-atendimentos");
 			$.notify({
 				// options
 				icon: 'flaticon-success',

@@ -108,7 +108,7 @@ public class SisgestaohospitalarApplication implements ApplicationListener<Conte
 	public void onApplicationEvent(ContextRefreshedEvent event) {
 
 		// criaRolesETipoUsuario();
-		lerSigtab();
+		//lerSigtab();
 		// lerMedicamentosEFormaFarmaceutica();
 		// lerXmlEsus();
 		// lerEstadosMunicipios();
