@@ -34,7 +34,6 @@ $(document).ready(function () {
         const {data} = response
         const {cidadao} = data
         user = cidadao
-        console.log(data)
     }, () => user = {})
     //cpf = ValidUtil.number(cpf)
     

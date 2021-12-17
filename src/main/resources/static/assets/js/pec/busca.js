@@ -75,6 +75,7 @@ function error(obj, value, len){
 function onConsult(date1, date2){
     const basic = "Basic c2doX3dlYl9iZXRhMC4xOnNnaF93ZWJfYmV0YTAuMQ=="
     switchSpinner("create")
+
     Req.getJSON({uri: `${baseUri}/receitamedicamentos/cpf/filter/`, headers: {
         Authorization: basic
     }, params: [user.cpf, date1, date2],
@@ -99,7 +100,7 @@ function onConsult(date1, date2){
     }, params: [user.cpf, date1, date2], 
         onSuccess: (data) => vacinasAplicadas = data, onError: (data) => error(vacinasAplicadas, data, 1)})
     Req.getJSON({uri: `${baseUri}/vacinacao/aprazamento/cpf/filter/`, headers: {
-        Authorization: basic
+        Authorization: basic,
     }, params: [user.cpf, date1, date2], 
         onSuccess: (data) => vacinasAgendadas = data, onError: (data) => error(vacinasAgendadas, data, 1)})
 }
