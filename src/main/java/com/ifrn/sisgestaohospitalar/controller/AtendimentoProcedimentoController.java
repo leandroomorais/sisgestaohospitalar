@@ -20,6 +20,7 @@ import com.ifrn.sisgestaohospitalar.model.AtendimentoProcedimento;
 import com.ifrn.sisgestaohospitalar.model.Profissional;
 import com.ifrn.sisgestaohospitalar.repository.AtendimentoRepository;
 import com.ifrn.sisgestaohospitalar.repository.ProfissionalRepository;
+import com.ifrn.sisgestaohospitalar.service.ProcedimentoOcupacapService;
 import com.ifrn.sisgestaohospitalar.repository.AtendimentoProcedimentoRepository;
 
 @Controller
@@ -32,6 +33,8 @@ public class AtendimentoProcedimentoController {
 	private AtendimentoProcedimentoRepository atendimentoProcedimentoRepository;
 	@Autowired
 	private ProfissionalRepository profissionalRepository;
+	@Autowired
+	private ProcedimentoOcupacapService procedimentoOcupacapService;
 
 	@PostMapping("/adicionar")
 	public ResponseEntity<?> adicionarProcedimentos(@Valid AtendimentoProcedimento atendimentoProcedimento,
@@ -47,8 +50,13 @@ public class AtendimentoProcedimentoController {
 		if (optional.isPresent()) {
 			Atendimento atendimento = optional.get();
 			Profissional profissional = profissionalRepository.findByCpf(principal.getName());
-
 			atendimentoProcedimento.setProfissional(profissional);
+
+			if (!procedimentoOcupacapService.verificaCboProcedimento(atendimentoProcedimento, profissional)) {
+				String message = "CBO incompatível para este procedimento!";
+				return ResponseEntity.status(HttpStatus.FORBIDDEN).body(message);
+			}
+
 			for (AtendimentoProcedimento atendimentoProcedimentoAux : atendimento.getAtendimentoProcedimentos()) {
 				if (atendimentoProcedimento.getProcedimento().getCodigo()
 						.equals(atendimentoProcedimentoAux.getProcedimento().getCodigo())
