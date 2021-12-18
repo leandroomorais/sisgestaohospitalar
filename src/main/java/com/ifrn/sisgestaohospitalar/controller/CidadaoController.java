@@ -17,6 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.ifrn.sisgestaohospitalar.enums.CodigoRaca;
+import com.ifrn.sisgestaohospitalar.enums.EstadoCivil;
 import com.ifrn.sisgestaohospitalar.model.Cidadao;
 import com.ifrn.sisgestaohospitalar.model.Prontuario;
 import com.ifrn.sisgestaohospitalar.repository.CidadaoRepository;
@@ -47,6 +48,7 @@ public class CidadaoController {
 		ModelMap mp = new ModelMap();
 		mp.put("racas", CodigoRaca.values());
 		mp.put("cidadao", cidadao);
+		mp.put("estadosCivil", EstadoCivil.values());
 		mp.put("user", usuarioRepository.findByUsername(principal.getName()));
 		mv.addAllObjects(mp);
 		return mv;
