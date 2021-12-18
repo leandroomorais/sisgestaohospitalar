@@ -8,86 +8,86 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class BPAIndividualizado {
-	
+public class LinhaBPAIndividualizado {
+
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
+
 	private String linhaIdenti;
-	
+
 	private String cnes;
-	
+
 	private String competencia;
-	
+
 	private String cnsProfissional;
-	
+
 	private String cboProfissional;
-	
+
 	private String dataAtendimento;
-	
+
 	private String numeroFolha;
-	
+
 	private String numeroLinha;
-	
+
 	private String codigoProcedimento;
-	
+
 	private String cnsPaciente;
-	
+
 	private String sexoPaciente;
-	
+
 	private String codigoIbge;
-	
+
 	private String cid;
-	
+
 	private String idade;
-	
+
 	private String qtdProcedimento;
-	
+
 	private String caraterAtendimento;
-	
+
 	private String numeroAutorizacao;
-	
+
 	private String origemInformacao;
-	
+
 	private String nomePaciente;
-	
+
 	private String dataNascimento;
-	
+
 	private String racaCor;
-	
+
 	private String etnia;
-	
+
 	private String nacionalidade;
-	
+
 	private String codigoServico;
-	
+
 	private String codigoClassificacao;
-	
+
 	private String codigoSequenciaEquipe;
-	
+
 	private String codigoAreaEquipe;
-	
+
 	private String codigoCnpjEmpresa;
-	
+
 	private String cepPaciente;
-	
+
 	private String logradouroPaciente;
-	
+
 	private String enderecoPaciente;
-	
+
 	private String complementoEndereco;
-	
+
 	private String numeroEndereco;
-	
+
 	private String bairroEndereco;
-	
+
 	private String telefonePaciente;
-	
+
 	private String emailPaciente;
-	
+
 	private String identificacaoEquipe;
-	
+
 	private String fim;
 
 	public Long getId() {
@@ -151,7 +151,7 @@ public class BPAIndividualizado {
 	}
 
 	public void setNumeroFolha(String numeroFolha) {
-		this.numeroFolha = String.format("%03d", new Object[] {Integer.parseInt(numeroFolha)});
+		this.numeroFolha = String.format("%03d", new Object[] { Integer.parseInt(numeroFolha) });
 	}
 
 	public String getNumeroLinha() {
@@ -159,7 +159,7 @@ public class BPAIndividualizado {
 	}
 
 	public void setNumeroLinha(String numeroLinha) {
-		this.numeroLinha = String.format("%02d", new Object[] {Integer.parseInt(numeroLinha)});
+		this.numeroLinha = String.format("%02d", new Object[] { Integer.parseInt(numeroLinha) });
 	}
 
 	public String getCodigoProcedimento() {
@@ -207,7 +207,7 @@ public class BPAIndividualizado {
 	}
 
 	public void setIdade(String idade) {
-		this.idade = String.format("%03d", new Object[] {Integer.parseInt(idade)});
+		this.idade = String.format("%03d", new Object[] { Integer.parseInt(idade) });
 	}
 
 	public String getQtdProcedimento() {
@@ -215,7 +215,7 @@ public class BPAIndividualizado {
 	}
 
 	public void setQtdProcedimento(String qtdProcedimento) {
-		this.qtdProcedimento = String.format("%06d", new Object[] {Integer.parseInt(qtdProcedimento)});
+		this.qtdProcedimento = String.format("%06d", new Object[] { Integer.parseInt(qtdProcedimento) });
 	}
 
 	public String getCaraterAtendimento() {
@@ -223,7 +223,7 @@ public class BPAIndividualizado {
 	}
 
 	public void setCaraterAtendimento(String caraterAtendimento) {
-		this.caraterAtendimento =  String.format("%02d", new Object[] {Integer.parseInt(caraterAtendimento)});
+		this.caraterAtendimento = String.format("%02d", new Object[] { Integer.parseInt(caraterAtendimento) });
 	}
 
 	public String getNumeroAutorizacao() {
@@ -263,7 +263,7 @@ public class BPAIndividualizado {
 	}
 
 	public void setRacaCor(String racaCor) {
-		this.racaCor = String.format("%02d", new Object[] {Integer.parseInt(racaCor)});
+		this.racaCor = String.format("%02d", new Object[] { Integer.parseInt(racaCor) });
 	}
 
 	public String getEtnia() {
@@ -279,7 +279,7 @@ public class BPAIndividualizado {
 	}
 
 	public void setNacionalidade(String nacionalidade) {
-		this.nacionalidade = String.format("%03d", new Object[] {Integer.parseInt(nacionalidade)});
+		this.nacionalidade = String.format("%03d", new Object[] { Integer.parseInt(nacionalidade) });
 	}
 
 	public String getCodigoServico() {
@@ -305,7 +305,6 @@ public class BPAIndividualizado {
 	public void setCodigoSequenciaEquipe(String codigoSequenciaEquipe) {
 		this.codigoSequenciaEquipe = String.format("%-8.8s", codigoSequenciaEquipe);
 	}
-	
 
 	public String getCodigoAreaEquipe() {
 		return codigoAreaEquipe;
@@ -336,7 +335,8 @@ public class BPAIndividualizado {
 	}
 
 	public void setLogradouroPaciente(String logradouroPaciente) {
-		this.logradouroPaciente = String.format("%03d", new Object[] {Integer.parseInt(logradouroPaciente)});;
+		this.logradouroPaciente = String.format("%03d", new Object[] { Integer.parseInt(logradouroPaciente) });
+		;
 	}
 
 	public String getEnderecoPaciente() {
@@ -402,26 +402,5 @@ public class BPAIndividualizado {
 	public void setFim(String fim) {
 		this.fim = String.format("%-2.2s", fim);
 	}
-
-	@Override
-	public String toString() {
-		return linhaIdenti + cnes + competencia  + cnsProfissional  + cboProfissional 
-				+ dataAtendimento  + numeroFolha  + numeroLinha  + codigoProcedimento + cnsPaciente
-				+ sexoPaciente + codigoIbge  + cid  + idade +  qtdProcedimento + caraterAtendimento + numeroAutorizacao + origemInformacao + nomePaciente
-				+ dataNascimento + racaCor + etnia + nacionalidade + codigoServico 
-				+ codigoClassificacao + codigoSequenciaEquipe + codigoAreaEquipe + codigoCnpjEmpresa
-				+ cepPaciente + logradouroPaciente + enderecoPaciente + complementoEndereco
-				+ numeroEndereco + bairroEndereco + telefonePaciente + emailPaciente 
-				+ identificacaoEquipe;
-	}
-	
-	
-	
-
-
-
-	
-	
-	
 
 }

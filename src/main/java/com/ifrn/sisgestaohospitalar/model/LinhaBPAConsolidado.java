@@ -6,32 +6,32 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class BPAConsolidado {
-	
+public class LinhaBPAConsolidado {
+
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
+
 	private String linhaIdenti;
-	
+
 	private String cnes;
-	
+
 	private String competencia;
-	
+
 	private String cboProfissional;
-	
+
 	private String numeroFolha;
-	
+
 	private String numeroLinha;
-	
+
 	private String codigoProcedimento;
-	
+
 	private String idade;
-	
+
 	private String quantidade;
-	
+
 	private String origem;
-	
+
 	private String fim;
 
 	public Long getId() {
@@ -55,7 +55,7 @@ public class BPAConsolidado {
 	}
 
 	public void setCnes(String cnes) {
-		this.cnes =  String.format("%-7.7s", cnes);
+		this.cnes = String.format("%-7.7s", cnes);
 	}
 
 	public String getCompetencia() {
@@ -71,7 +71,7 @@ public class BPAConsolidado {
 	}
 
 	public void setCboProfissional(String cboProfissional) {
-		this.cboProfissional =  String.format("%-6.6s", cboProfissional);
+		this.cboProfissional = String.format("%-6.6s", cboProfissional);
 	}
 
 	public String getNumeroFolha() {
@@ -79,7 +79,7 @@ public class BPAConsolidado {
 	}
 
 	public void setNumeroFolha(String numeroFolha) {
-		this.numeroFolha = String.format("%03d", new Object[] {Integer.parseInt(numeroFolha)});
+		this.numeroFolha = String.format("%03d", new Object[] { Integer.parseInt(numeroFolha) });
 	}
 
 	public String getNumeroLinha() {
@@ -87,7 +87,7 @@ public class BPAConsolidado {
 	}
 
 	public void setNumeroLinha(String numeroLinha) {
-		this.numeroLinha = String.format("%02d", new Object[] {Integer.parseInt(numeroLinha)});
+		this.numeroLinha = String.format("%02d", new Object[] { Integer.parseInt(numeroLinha) });
 	}
 
 	public String getCodigoProcedimento() {
@@ -103,7 +103,7 @@ public class BPAConsolidado {
 	}
 
 	public void setIdade(String idade) {
-		this.idade = String.format("%03d", new Object[] {Integer.parseInt(idade)});
+		this.idade = String.format("%03d", new Object[] { Integer.parseInt(idade) });
 	}
 
 	public String getQuantidade() {
@@ -111,7 +111,7 @@ public class BPAConsolidado {
 	}
 
 	public void setQuantidade(String quantidade) {
-		this.quantidade = String.format("%06d", new Object[] {Integer.parseInt(quantidade)});
+		this.quantidade = String.format("%06d", new Object[] { Integer.parseInt(quantidade) });
 	}
 
 	public String getOrigem() {
