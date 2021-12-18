@@ -140,7 +140,8 @@
 																		<option
 																			th:each="profissional : ${profissionais}"
 																			th:value="${profissional.id}"
-																			th:text="${profissional.nome}"></option>
+																			th:text="|${profissional.nome} - ${#strings.toUpperCase(profissional.nomeOcupacao)}|">
+																		</option>
 																	</select>
 																</div>
 															</div>
