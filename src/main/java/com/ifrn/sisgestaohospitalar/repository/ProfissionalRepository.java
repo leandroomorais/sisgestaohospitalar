@@ -23,7 +23,7 @@ public interface ProfissionalRepository extends JpaRepository<Profissional, Long
 	@Query(value = "select * from profissional p where p.nome " + " like concat('%', :name, '%')", nativeQuery = true)
 	Profissional findByNome(@Param("name") String nome);
 
-	@Query(nativeQuery = true, value = "select * from profissional p inner join profissional_lotacao pl on p.id = pl.profissional_id inner join lotacao lt on pl.lotacao_id = lt.id where (lt.codigocbo = '223505' or lt.codigocbo = '225125' or lt.codigocbo = '322205' or lt.codigocbo = '322230')")
+	@Query(nativeQuery = true, value = "select * from profissional p inner join profissional_lotacao pl on p.id = pl.profissional_id inner join lotacao lt on pl.lotacao_id = lt.id where (lt.codigocbo = '223505' or lt.codigocbo = '225125' or lt.codigocbo = '322205' or lt.codigocbo = '322230') group by p.id")
 	List<Profissional> searchSelectOptions();
 
 }

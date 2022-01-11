@@ -50,32 +50,26 @@ function alergias(alergias) {
 		var retorno;
 		var retornoConcat = "";
 		var classe;
-
 		$.each(alergias, function(index, item) {
 			if (item.situacaoCondicao == "ATIVA") {
 				classe = "badge badge-danger";
 			}
-
 			if (item.situacaoCondicao == "LATENTE") {
 				classe = "badge badge-warning";
 			}
-
 			if (item.situacaoCondicao == "CURADA") {
 				classe = "badge badge-success";
 			}
-
 			if (item.situacaoCondicao == "ATIVA" || item.situacaoCondicao == "LATENTE") {
 				retorno = "<span class='" + classe + "'>" + item.alergia.nome + "</span><br>";
 			} else {
 				retorno = "";
 			}
-
 			retornoConcat += retorno;
 		})
-
 		return "<div class='col-md-5 mt-2'><strong>Alergias: </strong><br>" + retornoConcat + "</div>";
 	} else {
-		return "<div class='col-md-5 mt-2'><strong>Alergias: </strong><div class='card-sub'><span class='badge badge-info'>Nenhum registro de Alergia cadastrado</span></div></div>";
+		return "<div class='col-md-5 mt-2'><strong>Alergias: </strong><span class='badge badge-info'>Nenhum registro de Alergia cadastrado</span></div>";
 	}
 
 }
@@ -98,6 +92,7 @@ function antropometria(antropometria) {
 
 function classificacaoDeRisco(classDeRisco) {
 
+
 	if (classDeRisco.nome == 'AZUL') {
 		return "<span class='badge badge-primary'>AZUL</span>";
 	}
@@ -113,8 +108,8 @@ function classificacaoDeRisco(classDeRisco) {
 	if (classDeRisco.nome == 'VERMELHO') {
 		return "<span class='badge badge-danger'>VERMELHO</span>";
 	}
-	if (classDeRisco.nome === "NÃO INFORMADA") {
-		return "<span class='badge badge-info'>Não informado</span>";
+	if (classDeRisco.nome === "Não informada") {
+		return "<span class='badge badge-info'>Classificação de risco não informada</span>";
 	}
 }
 

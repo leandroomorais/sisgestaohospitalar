@@ -16,6 +16,44 @@ $("input[name='atendimento.condutaCidadao']").click(function() {
 	}
 })
 
+$("#cancelar-atendimento").click(function() {
+	swal({
+		title: 'Tem certeza que deseja cancelar este atendimento?',
+		text: 'O cidadão retornará para a lista de atendimentos com o status "Aguardando atendimento". Os dados da consulta e diagnósticos serão apagados!',
+		icon: 'warning',
+		buttons: {
+			cancel: {
+				visible: true,
+				text: 'Não, retornar ao atendimento!',
+				className: 'btn btn-success btn-border'
+			},
+			confirm: {
+				text: 'Sim, cancelar!',
+				className: 'btn btn-success'
+			}
+		}
+	}).then((willDelete) => {
+		if (willDelete) {
+			swal("Infelizmente essa função ainda não foi implementada!", {
+				buttons: {
+					confirm: {
+						className: 'btn btn-success'
+					}
+				}
+			});
+		} else {
+			swal("Certo, não iremos excluir!", {
+				buttons: {
+					confirm: {
+						className: 'btn btn-success'
+					}
+				}
+			});
+		}
+	});
+	return false;
+})
+
 $("#form-finalizar-atendimento").submit(function(evt) {
 	evt.preventDefault();
 	var atendimentoDTO = {};

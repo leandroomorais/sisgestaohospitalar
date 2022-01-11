@@ -20,6 +20,10 @@ $(document).ready(function() {
 	$("#sinaisVitais-glicemiaCapilar").mask("000");
 	$("#sinaisVitais-saturacaoOxigenio").mask("000");
 
+	$("#peso").mask("#0.0", { reverse: true });
+	$("#altura").mask("000");
+	$("#perimetrocefalico").mask("000");
+	
 	$("#conduta-cidadao").hide();
 
 

@@ -107,13 +107,18 @@ function atualizaAntropometria() {
 		responsive: true,
 		paging: true,
 		searching: false,
+		order: [0, "asc"],
 		ordering: false,
-		order: [[5, "asc"]],
 		ajax: {
 			url: '/antropometria/listar/prontuario/' + idProntuario,
 			dataSrc: '',
 		},
 		columns: [
+			{
+				title: '',
+				visible: false,
+				data: 'dataCadastro',
+			},
 			{
 				title: 'PESO',
 				data: 'peso',
@@ -152,7 +157,21 @@ function atualizaAntropometria() {
 				data: 'imc',
 				mRender: function(data) {
 					if (data != null) {
-						return data;
+						if (data < 17) {
+							return "<span class='badge badge-danger'>" + data + "</span>";
+						} else if (data > 17 && data < 18.49) {
+							return "<span class='badge badge-warning'>" + data + "</span>";
+						} else if (data > 18.5 && data < 24.99) {
+							return "<span class='badge badge-success'>" + data + "</span>";
+						} else if (data > 25 && data < 29.99) {
+							return "<span class='badge badge-warning'>" + data + "</span>";
+						} else if (data > 30 && data < 34.99) {
+							return "<span class='badge badge-danger'>" + data + "</span>";
+						} else if (data > 35 && data < 39.99) {
+							return "<span class='badge badge-danger'>" + data + "</span>";
+						} else if (data > 40) {
+							return "<span class='badge badge-danger'>" + data + "</span>";
+						}
 					} else {
 						return "";
 					}

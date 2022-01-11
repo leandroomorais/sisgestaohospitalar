@@ -88,8 +88,8 @@ public class SisgestaohospitalarApplication implements ApplicationListener<Conte
 
 	String fileMedicamento = userDir + "/medicamento/medicamentos_rename.txt";
 	String fileFormaFarmaceutiva = userDir + "/medicamento/formafarmaceutica.txt";
-	String cnes = "2380633";
-	String file = userDir + "/uploads/XmlParaESUS21_241360.xml";
+	String cnes = "2380455";
+	String file = userDir + "/uploads/XmlParaESUS21_241380.xml";
 	String urlProcedimentos = userDir + "/SigtapSUS/tb_procedimento.txt";
 	String urlRegistros = userDir + "/SigtapSUS/tb_registro.txt";
 	String urlCid = userDir + "/SigtapSUS/tb_cid.txt";
@@ -107,16 +107,16 @@ public class SisgestaohospitalarApplication implements ApplicationListener<Conte
 	@Override
 	public void onApplicationEvent(ContextRefreshedEvent event) {
 
-		// criaRolesETipoUsuario();
+		//criaRolesETipoUsuario();
 		//lerSigtab();
-		// lerMedicamentosEFormaFarmaceutica();
-		// lerXmlEsus();
-		// lerEstadosMunicipios();
-		// salvarViaAdministracao();
-		// salvarTipoServico();
-		// LerExames();
-		// leitorTXTExames.atualizaGrupo();
-		// criaClassificacaoDeRisco();
+		//lerMedicamentosEFormaFarmaceutica();
+		//lerXmlEsus();
+		//lerEstadosMunicipios();
+		//salvarViaAdministracao();
+		//salvarTipoServico();
+		//LerExames();
+		//leitorTXTExames.atualizaGrupo();
+		//criaClassificacaoDeRisco();
 	}
 
 	public void salvarTipoServico() {
@@ -197,28 +197,28 @@ public class SisgestaohospitalarApplication implements ApplicationListener<Conte
 	public void lerSigtab() {
 		try {
 			// OK
-			// leitorTxtSigtap.lerTxtCid(urlCid);
+			leitorTxtSigtap.lerTxtCid(urlCid);
 
 			// OK
-			// leitorTxtSigtap.lerTxtProcedimentos(urlProcedimentos);
+			leitorTxtSigtap.lerTxtProcedimentos(urlProcedimentos);
 
 			// OK
-			// leitorTxtSigtap.lerTxtRegistro(urlRegistros);
+			leitorTxtSigtap.lerTxtRegistro(urlRegistros);
 
 			// OK
-			// leitorTxtSigtap.lerProcedimento_Cid(urlRelationProced_Cid);
+			leitorTxtSigtap.lerProcedimento_Cid(urlRelationProced_Cid);
 
 			// OK
-			// leitorTxtSigtap.lerProcedimento_Ocupacao(urlRelationProced_Ocupacao);
+			leitorTxtSigtap.lerProcedimento_Ocupacao(urlRelationProced_Ocupacao);
 
 			// OK
-			// leitorTxtSigtap.lerRelacionamentoProcedimento_Registro(urlRelationProced_Registro);
+			leitorTxtSigtap.lerRelacionamentoProcedimento_Registro(urlRelationProced_Registro);
 
 			// OK
-			// leitorTxtSigtap.lerTxtOcupacao(urlOcupacao);
+			leitorTxtSigtap.lerTxtOcupacao(urlOcupacao);
 
 			// OK
-			// leitorTxtSigtap.lerTxtDetalhe(urlDetalhe);
+			leitorTxtSigtap.lerTxtDetalhe(urlDetalhe);
 
 			leitorTxtSigtap.lerRelacionamentoProcedimento_Detalhe(urlProcedimentoDetalheRelacionamento);
 
