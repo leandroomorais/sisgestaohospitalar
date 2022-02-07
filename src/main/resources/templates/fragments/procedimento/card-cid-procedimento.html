@@ -1,0 +1,36 @@
+<div class="card"  id="card-cid-procedimento">
+	<div class="card-header">
+		<div class="card-title">
+			<a id="cid-procedimento-voltar" data-toggle="tooltipe" data-placement="top"
+				title="Voltar para tela anterior" class="btn btn-light"> <i
+				class="fa fa-flip-horizontal fa-share"></i>
+			</a>Cid Procedimento
+		</div>
+	</div>
+	<div class="card-body">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="form-group">
+					<label for="cid-procedimento">Adicionar CID Relacionado</label>
+					<div class="input-group">
+						<div class="input-group-prepend">
+							<button onclick="limpaInputCidProcedimento()" id="button-cid-procedimento" type="button"
+								class="btn btn-black btn-border">
+								<i id="i-cid-procedimento" class="fa fa-search"></i>
+							</button>
+						</div>
+						<input id="cid-procedimento" type="text" class="form-control"
+							placeholder="Pesquisa de Cid"> <input type="hidden"
+							id="id-cid-procedimento" name="cid-procedimento">
+					</div>
+					<small id="cid-procedimento-small-exame" class="form-text text-muted">Selecione
+						o CID para adicionar ao Procedimento</small>
+				</div>
+			</div>
+		</div>
+		<div class="text-right">
+			<button onclick="fechaFormularioCidProcedimento()" type="button"
+				class="btn btn-warning btn-sm">Voltar</button>
+		</div>
+	</div>
+</div>

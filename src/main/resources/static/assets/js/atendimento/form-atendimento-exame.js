@@ -682,6 +682,7 @@ function dataFormatadaJSComTraco(dataAtual) {
 }
 
 function adicionaProcedimentoaoExame(codigo) {
+	
 	$.ajax({
 		url: '/exame/procedimento/' + codigo,
 		method: 'get',

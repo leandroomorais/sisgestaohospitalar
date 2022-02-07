@@ -19,6 +19,7 @@ $(document).ready(function() {
 	$("#card-novo-atestado").hide();
 	$("#card-novo-exame").hide();
 	$("#card-novo-resultado-exame").hide();
+	$("#card-cid-procedimento").hide();
 
 	//Função que aplica máscara aos inputs 
 	$("#sinaisVitais-pressaoSistolica").mask('000');

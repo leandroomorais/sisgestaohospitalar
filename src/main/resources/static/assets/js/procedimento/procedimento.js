@@ -43,6 +43,10 @@ function submitProcedimento(idAtendimento, codigoProcedimento, tipoServico, quan
 	relAtendimentoProcedimento.quantidade = quantidade;
 	relAtendimentoProcedimento.tipoServico = tipoServico;
 
+	//REFAZER ESSA FUNÇÃO
+	//função que verifica se procedimento tem CID obrigatório
+	//verificaProcedimentoCid(codigoProcedimento);
+
 	$.ajax({
 		url: '/atendimento-procedimento/adicionar',
 		method: 'POST',
@@ -196,7 +200,7 @@ function atualizaProcedimento() {
 				data: 'procedimento.nome',
 			},
 			{
-				title: 'QUANTIDADE',
+				title: 'QTD',
 				data: 'quantidade',
 				mRender: function(data) {
 					return "<span class='badge badge-info'>" + data + "</span>"
@@ -207,6 +211,13 @@ function atualizaProcedimento() {
 				data: 'id',
 				mRender: function(data) {
 					return "<button type='button' class='btn btn-warning btn-sm' data-value='" + data + "' onclick='removeProcedimento(this)'><i class='fa fa-trash'></i> Excluir </button>"
+				}
+			},
+			{
+				title: 'CID',
+				data: 'procedimento.codigo',
+				mRender: function(data) {
+					return "<button type='button' class='btn btn-success btn-sm' onclick='adicionacidaoprocedimento(" + data+ ");'><i class='fa fa-plus'></i> Adicionar </button>"
 				}
 			}
 		]

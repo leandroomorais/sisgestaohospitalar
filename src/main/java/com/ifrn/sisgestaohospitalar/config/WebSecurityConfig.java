@@ -40,6 +40,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 				.hasAnyAuthority("MEDICO", "ENFERMEIRO", "ADMINISTRADOR", "TECNICO", "AUXILIAR")
 				.antMatchers("/atendimento/").hasAnyAuthority("MEDICO", "ENFERMEIRO", "TECNICO", "AUXILIAR")
 
+				.antMatchers("/procedimentocid/**").hasAnyAuthority("MEDICO", "ENFERMEIRO", "ADMINISTRADOR", "TECNICO", "AUXILIAR")
 				// permissoes para adicionar
 //		.antMatchers("/atendimento/**").hasAnyAuthority("MEDICO", "ENFERMEIRO", "ADMINISTRADOR", "TECNICO", "AUXILIAR")
 //		.antMatchers("/atendimento-procedimento/**").hasAnyAuthority("MEDICO", "ENFERMEIRO", "ADMINISTRADOR", "TECNICO", "AUXILIAR")

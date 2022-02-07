@@ -1,0 +1,117 @@
+package com.ifrn.sisgestaohospitalar.controller;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+
+import javax.validation.Valid;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.ifrn.sisgestaohospitalar.model.Cid;
+import com.ifrn.sisgestaohospitalar.model.ProcedimentoCid;
+import com.ifrn.sisgestaohospitalar.repository.CidRepository;
+import com.ifrn.sisgestaohospitalar.repository.ProcedimentoCidRepository;
+
+@Controller
+@RequestMapping("/procedimentocid")
+public class ProcedimentoCidController {
+
+	@Autowired
+	private ProcedimentoCidRepository procedimentocidRepository;
+	
+	@Autowired
+	private CidRepository cidRepository;
+	
+	public List<Cid> cidsglobal = new ArrayList<Cid>();
+	public List<Cid> listacidsselect = new ArrayList<Cid>();
+	
+	@GetMapping("/buscarid/{id}")
+	public ResponseEntity<?> findById(@PathVariable("id") Long id) {
+		Optional<ProcedimentoCid> optional = procedimentocidRepository.findById(id);
+		if(optional.isPresent()) {
+			return ResponseEntity.ok(optional.get());
+		}
+		return ResponseEntity.notFound().build();
+	}
+	
+	@GetMapping("/buscarcidsdoprocedimento/{codigoProcedimento}")
+	public ResponseEntity<?> findCidsByProcedimento(@PathVariable("codigoProcedimento") Long codigoProcedimento) {
+		
+		List<ProcedimentoCid> procedimentoscid = procedimentocidRepository.findByCodigoProcedimento(codigoProcedimento);
+		List<Cid> cids = new ArrayList<Cid>();
+		
+		if(!procedimentoscid.isEmpty()) {
+			cids = retornaListaCid(procedimentoscid);
+			
+			return ResponseEntity.ok(cids);
+		}
+		return ResponseEntity.notFound().build();
+	}
+	
+	@GetMapping("/buscarcodigoprocedimentocid/{codigoProcedimento}")
+	public ResponseEntity<?> findByCodigoProcedimentoCid(@PathVariable("codigoProcedimento") Long codigoProcedimento) {
+		List<ProcedimentoCid> procedimentoscid = procedimentocidRepository.findByCodigoProcedimento(codigoProcedimento);
+		List<Cid> cids = new ArrayList<Cid>();
+		
+		if(!procedimentoscid.isEmpty()) {
+			cids = retornaListaCid(procedimentoscid);
+			cidsglobal = cids;
+			
+			return ResponseEntity.ok(cids);
+		}
+		return ResponseEntity.notFound().build();
+	}
+	
+	@GetMapping("/buscarcid/")
+	public ResponseEntity<?> findBuscarCid() {
+		return ResponseEntity.ok(cidsglobal);
+	}
+	
+	
+	public List<Cid> retornaListaCid(List<ProcedimentoCid> procedimentoscids){
+		
+		List<Cid> cids = new ArrayList<Cid>();
+		
+		for(ProcedimentoCid procid : procedimentoscids) {
+			cids.add(cidRepository.findByCodigoIgnoreCaseContaining(procid.getCodigoCid()));
+		}
+		
+		return cids;
+	}
+	
+	@PostMapping("/")
+	public ResponseEntity<?> adicionarListaCidSelect(@Valid ProcedimentoCid procedimentocid, BindingResult result){
+		
+		Map<String, String> errors = new HashMap<>();
+		if (result.hasErrors()) {
+			for (FieldError error : result.getFieldErrors()) {
+				errors.put(error.getField(), error.getDefaultMessage());
+			}
+			return ResponseEntity.unprocessableEntity().body(errors);
+		}
+		
+		System.out.println("aqui");
+		listacidsselect.add(cidRepository.findByCodigoIgnoreCaseContaining(procedimentocid.getCodigoCid()));
+		
+
+		return ResponseEntity.ok().build();
+	}
+	
+	@GetMapping("/buscarcidselect/")
+	public ResponseEntity<?> findBuscarCidSelect(@Param("term") String term) {
+		return ResponseEntity.ok(listacidsselect);
+	}
+	
+}
