@@ -215,7 +215,7 @@ function atualizaProcedimento() {
 			},
 			{
 				title: 'CID',
-				data: 'procedimento.codigo',
+				data: 'id',
 				mRender: function(data) {
 					return "<button type='button' class='btn btn-success btn-sm' onclick='adicionacidaoprocedimento(" + data+ ");'><i class='fa fa-plus'></i> Adicionar </button>"
 				}

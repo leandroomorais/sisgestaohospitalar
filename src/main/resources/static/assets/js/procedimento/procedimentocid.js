@@ -2,18 +2,24 @@
 //######### Funções que verifica Procedimento Cid ###########
 
 // adiciona cid ao procedimento
-function adicionacidaoprocedimento(codigoProcedimento) {
+function adicionacidaoprocedimento(idProcedimentoCid) {
 
 	$("#card-procedimento").fadeOut(100);
 	$("#card-cid-procedimento").fadeIn(100);
 
 	$.ajax({
-		url: '/procedimentocid/buscarcidsdoprocedimento/'+ codigoProcedimento,
+		url: '/procedimentocid/buscarcidsdoprocedimento/'+ idProcedimentoCid,
 		method: 'get',
 		success: function (data) {
-			
+				
+		$("#optionselect-cid").empty();
+		$.each(data, function (key, item) {
+			$("#optionselect-cid").append("<option value=" + item.id + "><div class='h6'>" 
+			+ item.codigo + " - " + item.nome + "</div></option>");
+		})
+		
 		console.log("aqui --- ",data);
-			
+		
 		},
 		statusCode: {
 			400: function () {},
@@ -22,6 +28,11 @@ function adicionacidaoprocedimento(codigoProcedimento) {
 	})
 }
 
+
+function salvarCidProcedimento(){
+	console.log("cid - ", $("#optionselect-cid").val());
+	fechaFormularioCidProcedimento();
+}
 
 $("#cid-procedimento-voltar").click(function () {
 	fechaFormularioCidProcedimento();
@@ -52,22 +63,7 @@ function verificaProcedimentoCid(codigoProcedimento) {
 	})
 }
 
-function adicionarListaCidSelect(data){
 
-	for(var i = 0; i < data.size; i++){
-		$.ajax({
-			url: '/procedimentocid/',
-			method: 'post',
-			data: data[i],
-			beforeSend: function () {
-				//removeInvalidFedbackExame();
-			}
-		})
-	
-	}
-	
-	
-}
 
 //Função autocomplete CID 
 $("#procedimento-cid").autocomplete({

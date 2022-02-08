@@ -19,8 +19,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.ifrn.sisgestaohospitalar.model.AtendimentoProcedimento;
 import com.ifrn.sisgestaohospitalar.model.Cid;
 import com.ifrn.sisgestaohospitalar.model.ProcedimentoCid;
+import com.ifrn.sisgestaohospitalar.repository.AtendimentoProcedimentoRepository;
 import com.ifrn.sisgestaohospitalar.repository.CidRepository;
 import com.ifrn.sisgestaohospitalar.repository.ProcedimentoCidRepository;
 
@@ -30,6 +32,9 @@ public class ProcedimentoCidController {
 
 	@Autowired
 	private ProcedimentoCidRepository procedimentocidRepository;
+	
+	@Autowired
+	private AtendimentoProcedimentoRepository atendimentoProcedimentoRepository;
 	
 	@Autowired
 	private CidRepository cidRepository;
@@ -46,8 +51,11 @@ public class ProcedimentoCidController {
 		return ResponseEntity.notFound().build();
 	}
 	
-	@GetMapping("/buscarcidsdoprocedimento/{codigoProcedimento}")
-	public ResponseEntity<?> findCidsByProcedimento(@PathVariable("codigoProcedimento") Long codigoProcedimento) {
+	@GetMapping("/buscarcidsdoprocedimento/{idProcedimentoCid}")
+	public ResponseEntity<?> findCidsByProcedimento(@PathVariable("idProcedimentoCid") Long idProcedimentoCid) {
+		
+		Optional<AtendimentoProcedimento> atendProcedimento = atendimentoProcedimentoRepository.findById(idProcedimentoCid);
+		Long codigoProcedimento = atendProcedimento.get().getProcedimento().getCodigo();
 		
 		List<ProcedimentoCid> procedimentoscid = procedimentocidRepository.findByCodigoProcedimento(codigoProcedimento);
 		List<Cid> cids = new ArrayList<Cid>();
