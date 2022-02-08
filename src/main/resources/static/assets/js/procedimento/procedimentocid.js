@@ -1,9 +1,12 @@
 
 //######### Funções que verifica Procedimento Cid ###########
 
+var idAtendimentoProcedimento;
+
 // adiciona cid ao procedimento
 function adicionacidaoprocedimento(idProcedimentoCid) {
 
+	idAtendimentoProcedimento = idProcedimentoCid;
 	$("#card-procedimento").fadeOut(100);
 	$("#card-cid-procedimento").fadeIn(100);
 
@@ -11,27 +14,99 @@ function adicionacidaoprocedimento(idProcedimentoCid) {
 		url: '/procedimentocid/buscarcidsdoprocedimento/'+ idProcedimentoCid,
 		method: 'get',
 		success: function (data) {
-				
-		$("#optionselect-cid").empty();
-		$.each(data, function (key, item) {
-			$("#optionselect-cid").append("<option value=" + item.id + "><div class='h6'>" 
-			+ item.codigo + " - " + item.nome + "</div></option>");
-		})
-		
-		console.log("aqui --- ",data);
-		
+			$("#optionselect-cid").empty();
+			$.each(data, function (key, item) {
+				$("#optionselect-cid").append("<option value=" + item.id + "><div class='h6'>" 
+				+ item.codigo + " - " + item.nome + "</div></option>");
+			})		
 		},
 		statusCode: {
-			400: function () {},
-			404: function () {}
+			400: function () {
+			$.notify({
+					// options
+					icon: 'flaticon-exclamation',
+					title: 'ERRO',
+					message: 'Não foi possível processar sua solicitação!',
+					target: '_blank'
+				}, {
+					// settings
+					element: 'body',
+					type: "danger",
+					allow_dismiss: true,
+				});
+			},
+			404: function () {
+			$.notify({
+					// options
+					icon: 'flaticon-exclamation',
+					title: 'ERRO',
+					message: 'Não foi possível processar sua solicitação!',
+					target: '_blank'
+				}, {
+					// settings
+					element: 'body',
+					type: "danger",
+					allow_dismiss: true,
+				});
+			}
 		}
 	})
 }
 
 
-function salvarCidProcedimento(){
-	console.log("cid - ", $("#optionselect-cid").val());
-	fechaFormularioCidProcedimento();
+function adicionarCidAoAtendimentoProcedimento(){
+
+	var idCid = $("#optionselect-cid").val();
+	
+	$.ajax({
+		url: '/atendimento-procedimento/adicionarcidaoatendprocedimento/'+ idAtendimentoProcedimento +'/'+ idCid,
+		method: 'get',
+		success: function () {
+		$.notify({
+				// options
+				icon: 'flaticon-success',
+				title: 'SUCESSO',
+				message: 'O CID foi Adicionado ao Procedimento',
+				target: '_blank'
+			}, {
+				// settings
+				element: 'body',
+				type: "success",
+				allow_dismiss: true,
+			});
+			fechaFormularioCidProcedimento();
+		},
+		statusCode: {
+			400: function () {
+			$.notify({
+					// options
+					icon: 'flaticon-exclamation',
+					title: 'ERRO',
+					message: 'Não foi possível processar sua solicitação!',
+					target: '_blank'
+				}, {
+					// settings
+					element: 'body',
+					type: "danger",
+					allow_dismiss: true,
+				});
+			},
+			404: function () {
+			$.notify({
+					// options
+					icon: 'flaticon-exclamation',
+					title: 'ERRO',
+					message: 'Não foi possível processar sua solicitação!',
+					target: '_blank'
+				}, {
+					// settings
+					element: 'body',
+					type: "danger",
+					allow_dismiss: true,
+				});
+			}
+		}
+	})
 }
 
 $("#cid-procedimento-voltar").click(function () {
@@ -40,6 +115,7 @@ $("#cid-procedimento-voltar").click(function () {
 
 function fechaFormularioCidProcedimento() {
 	
+	idAtendimentoProcedimento = null;
 	$("#card-cid-procedimento").fadeOut(100);
 	$("#card-procedimento").fadeIn(100);
 }
@@ -61,47 +137,6 @@ function verificaProcedimentoCid(codigoProcedimento) {
 			404: function () {}
 		}
 	})
-}
-
-
-
-//Função autocomplete CID 
-$("#procedimento-cid").autocomplete({
-	source: "/procedimentocid/buscarcidselect",
-	focus: function (event, ui) {
-		$("#procedimento-cid").val(ui.item.codigo + " - " + ui.item.nome);
-		return false;
-	},
-	select: function (event, ui) {
-		$("#i-procedimento-cid").removeClass("fa fa-search").addClass("fa fa-times");
-		$("#id-procedimento-cid").val(ui.item.id);
-		console.log("cid", ui.item.nome);
-		return false;
-
-	}	
-}).autocomplete("instance")._renderItem = function (ul, item) {
-	return $("<li>")
-		.append("<div class='h6'>" + item.codigo + " - " + "<b>" + item.nome + "</b>" + "</div>")
-		.appendTo(ul);
-};
-
-function limpaInputCid(){
-	$("#procedimento-cid").val("");
-	$("#id-procedimento-cid").val("");
-	$("#i-procedimento-cid").removeClass("fa fa-times").addClass("fa fa-search");
-	return false;
-}
-
-
-function createCardModalSelecionaCid(data) {
-	return "<div class='card'><div class='card-body'><div class='col-md-12 row'><div class='col-md-12'>" +
-		"<strong>Selecionar Cid: </strong>" +
-		//"<br>" + descricaoResultadoExame(data) +
-		"</div><div class='col-md-12 row'><div class='col-md-6'><strong>Realizado: </strong>" +
-		//dataRealizacaoResultadoExame(data)
-		 "</div><div class='col-md-6'> <strong>Resultado: </strong>" +
-		//dataResultadoResultadoExame(data)
-		 "</div></div></div></div></div>";
 }
 
 

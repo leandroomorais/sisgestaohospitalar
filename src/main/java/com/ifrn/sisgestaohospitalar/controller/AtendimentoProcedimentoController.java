@@ -17,8 +17,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import com.ifrn.sisgestaohospitalar.model.Atendimento;
 import com.ifrn.sisgestaohospitalar.model.AtendimentoProcedimento;
+import com.ifrn.sisgestaohospitalar.model.Cid;
 import com.ifrn.sisgestaohospitalar.model.Profissional;
 import com.ifrn.sisgestaohospitalar.repository.AtendimentoRepository;
+import com.ifrn.sisgestaohospitalar.repository.CidRepository;
 import com.ifrn.sisgestaohospitalar.repository.ProfissionalRepository;
 import com.ifrn.sisgestaohospitalar.service.ProcedimentoOcupacapService;
 import com.ifrn.sisgestaohospitalar.repository.AtendimentoProcedimentoRepository;
@@ -35,7 +37,9 @@ public class AtendimentoProcedimentoController {
 	private ProfissionalRepository profissionalRepository;
 	@Autowired
 	private ProcedimentoOcupacapService procedimentoOcupacapService;
-
+	@Autowired
+	private CidRepository cidRepository;
+	
 	@PostMapping("/adicionar")
 	public ResponseEntity<?> adicionarProcedimentos(@Valid AtendimentoProcedimento atendimentoProcedimento,
 			BindingResult result, Principal principal) {
@@ -96,6 +100,22 @@ public class AtendimentoProcedimentoController {
 				return ResponseEntity.ok().build();
 			}
 			return ResponseEntity.badRequest().build();
+		}
+		return ResponseEntity.badRequest().build();
+	}
+	
+	@GetMapping("/adicionarcidaoatendprocedimento/{idAtendimentoProcedimento}/{idCid}")
+	public ResponseEntity<?> adicionarCidAoAtendProcedimento(@PathVariable("idAtendimentoProcedimento") Long idAtendimentoProcedimento,
+			@PathVariable("idCid") Long idCid, Principal principal) {
+		
+		Optional<Cid> optionalCid = cidRepository.findById(idCid);
+		Optional<AtendimentoProcedimento> optionalAtendimentoProcedimento = atendimentoProcedimentoRepository
+				.findById(idAtendimentoProcedimento);
+		
+		if(optionalCid.isPresent() && optionalAtendimentoProcedimento.isPresent()) {
+			optionalAtendimentoProcedimento.get().setCodigoCid(optionalCid.get().getCodigo());
+			atendimentoProcedimentoRepository.saveAndFlush(optionalAtendimentoProcedimento.get());
+			return ResponseEntity.ok().build();
 		}
 		return ResponseEntity.badRequest().build();
 	}
