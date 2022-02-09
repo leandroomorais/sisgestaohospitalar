@@ -10,6 +10,7 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -65,7 +66,19 @@ public class ProcedimentoCidController {
 			
 			return ResponseEntity.ok(cids);
 		}
-		return ResponseEntity.notFound().build();
+		String msg = "Esse procedimento não requer a adição de CID";
+		return ResponseEntity.status(HttpStatus.FORBIDDEN).body(msg);
+	}
+	
+	@GetMapping("/verificaprocedimentocidobrigatorio/{codigoProcedimento}")
+	public ResponseEntity<?> verificaCidObrigatorioAoProcedimento(@PathVariable("codigoProcedimento") Long codigoProcedimento) {
+
+		List<ProcedimentoCid> procedimentoscid = procedimentocidRepository.findByCodigoProcedimento(codigoProcedimento);		
+		
+		if(!procedimentoscid.isEmpty()) {			
+			return ResponseEntity.ok(true);
+		}
+		return ResponseEntity.ok(false);
 	}
 	
 	@GetMapping("/buscarcodigoprocedimentocid/{codigoProcedimento}")

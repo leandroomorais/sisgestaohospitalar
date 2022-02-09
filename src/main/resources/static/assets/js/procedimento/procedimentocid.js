@@ -21,6 +21,44 @@ function adicionacidaoprocedimento(idProcedimentoCid) {
 			})		
 		},
 		statusCode: {
+			403: function(xhr) {
+				$.notify({
+					// options
+					icon: 'flaticon-exclamation',
+					title: 'ATENÇÃO',
+					message: xhr.responseText,
+					target: '_blank'
+				}, {
+					// settings
+					element: 'body',
+					position: null,
+					type: "danger",
+					allow_dismiss: true,
+					newest_on_top: false,
+					showProgressbar: false,
+					placement: {
+						from: "top",
+						align: "right"
+					},
+					offset: 20,
+					spacing: 10,
+					z_index: 1031,
+					delay: 5000,
+					timer: 1000,
+					url_target: '_blank',
+					mouse_over: null,
+					animate: {
+						enter: 'animated fadeInDown',
+						exit: 'animated fadeOutUp'
+					},
+					onShow: null,
+					onShown: null,
+					onClose: null,
+					onClosed: null,
+					icon_type: 'class',
+				});
+				fechaFormularioCidProcedimento();
+			},
 			400: function () {
 			$.notify({
 					// options
@@ -53,8 +91,60 @@ function adicionacidaoprocedimento(idProcedimentoCid) {
 	})
 }
 
+function visualizaciddoprocedimento(idAtendimentoProcedimento){
+	
+	$.ajax({
+		url: '/atendimento-procedimento/buscarporid/'+ idAtendimentoProcedimento,
+		method: 'get',
+		success: function (data) {
+			swal("Ok! Detalhes do CID relacionado ao Procedimento: "+ data.codigo +" - "+ data.nome, {
+				icon: "success",
+				buttons: {
+					confirm: {
+						className: 'btn btn-primary'
+					}
+				}
+			});
+		},
+		statusCode: {
+			403: function () {
+				adicionacidaoprocedimento(idAtendimentoProcedimento);
+			},
+			400: function () {
+				$.notify({
+					// options
+					icon: 'flaticon-exclamation',
+					title: 'ERRO',
+					message: 'Não foi possível processar sua solicitação!',
+					target: '_blank'
+				}, {
+					// settings
+					element: 'body',
+					type: "danger",
+					allow_dismiss: true,
+				})				
+			},
+			404: function () {
+				$.notify({
+					// options
+					icon: 'flaticon-exclamation',
+					title: 'ERRO',
+					message: 'Não foi possível processar sua solicitação!',
+					target: '_blank'
+				}, {
+					// settings
+					element: 'body',
+					type: "danger",
+					allow_dismiss: true,
+				});
+				
+			}
+		}
+	})
 
-function adicionarCidAoAtendimentoProcedimento(){
+}
+
+function salvarCidAoAtendimentoProcedimento(){
 
 	var idCid = $("#optionselect-cid").val();
 	
@@ -78,7 +168,7 @@ function adicionarCidAoAtendimentoProcedimento(){
 		},
 		statusCode: {
 			400: function () {
-			$.notify({
+				$.notify({
 					// options
 					icon: 'flaticon-exclamation',
 					title: 'ERRO',
@@ -92,7 +182,7 @@ function adicionarCidAoAtendimentoProcedimento(){
 				});
 			},
 			404: function () {
-			$.notify({
+				$.notify({
 					// options
 					icon: 'flaticon-exclamation',
 					title: 'ERRO',
@@ -121,46 +211,52 @@ function fechaFormularioCidProcedimento() {
 }
 
 // verifica se o procedimento é obrigatório cid e se o cid não foi informado
-function verificaProcedimentoCid(codigoProcedimento) {
+function verificaProcedimentoObrigatorioCid(codigoProcedimento) {
 
 	$.ajax({
-		url: '/procedimentocid/buscarcodigoprocedimentocid/'+ codigoProcedimento,
+		url: '/procedimentocid/verificaprocedimentocidobrigatorio/'+ codigoProcedimento,
 		method: 'get',
 		success: function (data) {
-		adicionarListaCidSelect(data);		
-		console.log("aqui --- ",data);
-			//$("#divSelecionaCid").empty().append(createCardModalSelecionaCid(data));
-			$("#modalSelecionaCid").modal("show");
-		},
-		statusCode: {
-			400: function () {},
-			404: function () {}
-		}
-	})
-}
-
-
-function verificaCompatilidadeProcedimentoCid(codigoProcedimento) {
-
-	$.ajax({
-		url: '/procedimentocid/buscarcodigoprocedimentocid/'+ codigoProcedimento,
-		method: 'get',
-		success: function () {
-			swal("Atenção! Esse procedimento requer a adição de um CID compatível, por favor selecionar em seguida!", {
-				icon: "success",
-				buttons: {
-					confirm: {
-						className: 'btn btn-success'
+		
+			if(data == true){
+				swal("Atenção! Esse procedimento requer a adição de um CID compatível, por favor selecionar em seguida!", {
+					icon: "warning",
+					buttons: {
+						confirm: {
+							className: 'btn btn-primary'
+						}
 					}
-				}
-			});
+				});
+			}
 		},
 		statusCode: {
 			400: function () {
-				
+				$.notify({
+					// options
+					icon: 'flaticon-exclamation',
+					title: 'ERRO',
+					message: 'Não foi possível processar sua solicitação!',
+					target: '_blank'
+				}, {
+					// settings
+					element: 'body',
+					type: "danger",
+					allow_dismiss: true,
+				});
 			},
 			404: function () {
-				
+				$.notify({
+					// options
+					icon: 'flaticon-exclamation',
+					title: 'ERRO',
+					message: 'Não foi possível processar sua solicitação!',
+					target: '_blank'
+				}, {
+					// settings
+					element: 'body',
+					type: "danger",
+					allow_dismiss: true,
+				});
 			}
 		}
 	})
