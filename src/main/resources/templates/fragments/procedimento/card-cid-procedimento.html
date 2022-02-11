@@ -16,7 +16,7 @@
 						<label for="cids">Adicionar CID Relacionado:</label>
 						<div class="row" id="cid-procedimento">
 							<select id="optionselect-cid" class="form-control form-control">
-								<option value="-1">--- Clique aqui para selecionar ---</option>
+								<option value="-1">--- Clique para Selecionar ---</option>
 							</select>
 						</div>
 						<small id="cid-procedimento-small-exame"
@@ -27,10 +27,10 @@
 			</div>
 		</div>
 		<div class="text-right">
+			<button onclick="salvarCidAoAtendimentoProcedimento()" type="button"
+				class="btn btn-primary btn-sm">Salvar</button>
 			<button onclick="fechaFormularioCidProcedimento()" type="button"
 				class="btn btn-warning btn-sm">Voltar</button>
-				<button onclick="salvarCidAoAtendimentoProcedimento()" type="button"
-				class="btn btn-primary btn-sm">Salvar</button>
 		</div>
 	</div>
 </div>

@@ -317,7 +317,8 @@ function removeProcedimentoExame(item) {
 							confirm: {
 								className: 'btn btn-success'
 							}
-						}
+						},
+						timer: 1000
 					});
 					$("#table-procedimentos-exame").DataTable().ajax.reload();
 				},
@@ -330,6 +331,7 @@ function removeProcedimentoExame(item) {
 									className: 'btn btn-danger'
 								}
 							},
+							timer: 2000
 						});
 					}
 				}
@@ -340,7 +342,8 @@ function removeProcedimentoExame(item) {
 					confirm: {
 						className: 'btn btn-success'
 					}
-				}
+				},
+				timer: 1000
 			});
 		}
 	});
@@ -376,7 +379,8 @@ function excluirExame(item) {
 							confirm: {
 								className: 'btn btn-success'
 							}
-						}
+						},
+						timer: 1000
 					});
 					atualizaExames();
 					atualizaTodosExames();
@@ -390,9 +394,10 @@ function excluirExame(item) {
 									className: 'btn btn-danger'
 								}
 							},
+							timer: 2000
 						});
 					},
-					404: function () {
+					403: function () {
 						swal("Essa Solicitação de Exame não pode ser Excluida!", {
 							icon: "error",
 							buttons: {
@@ -400,6 +405,7 @@ function excluirExame(item) {
 									className: 'btn btn-danger'
 								}
 							},
+							timer: 2000
 						});
 					}
 				}
@@ -410,7 +416,8 @@ function excluirExame(item) {
 					confirm: {
 						className: 'btn btn-success'
 					}
-				}
+				},
+				timer: 1000
 			});
 		}
 	});

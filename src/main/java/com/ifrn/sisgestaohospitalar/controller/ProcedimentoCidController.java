@@ -61,8 +61,18 @@ public class ProcedimentoCidController {
 		List<ProcedimentoCid> procedimentoscid = procedimentocidRepository.findByCodigoProcedimento(codigoProcedimento);
 		List<Cid> cids = new ArrayList<Cid>();
 		
+		if(atendProcedimento.get().getCodigoCid() != null) {
+			Cid cid = cidRepository.findByCodigoIgnoreCaseContaining(atendProcedimento.get().getCodigoCid());
+			if(cid != null) {
+				cids.add(cid);
+			}
+		}
+		
 		if(!procedimentoscid.isEmpty()) {
-			cids = retornaListaCid(procedimentoscid);
+			
+			for(ProcedimentoCid procid : procedimentoscid) {
+				cids.add(cidRepository.findByCodigoIgnoreCaseContaining(procid.getCodigoCid()));
+			}
 			
 			return ResponseEntity.ok(cids);
 		}

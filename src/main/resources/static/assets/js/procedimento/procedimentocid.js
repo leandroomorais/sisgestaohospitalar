@@ -1,15 +1,15 @@
 
 //######### Funções que verifica Procedimento Cid ###########
 
-var idAtendimentoProcedimento;
+var idAtendimentoProcedimentoGlobal;
 
 // adiciona cid ao procedimento
 function adicionacidaoprocedimento(idProcedimentoCid) {
 
-	idAtendimentoProcedimento = idProcedimentoCid;
+	idAtendimentoProcedimentoGlobal = idProcedimentoCid;
 	$("#card-procedimento").fadeOut(100);
 	$("#card-cid-procedimento").fadeIn(100);
-
+	
 	$.ajax({
 		url: '/procedimentocid/buscarcidsdoprocedimento/'+ idProcedimentoCid,
 		method: 'get',
@@ -18,7 +18,8 @@ function adicionacidaoprocedimento(idProcedimentoCid) {
 			$.each(data, function (key, item) {
 				$("#optionselect-cid").append("<option value=" + item.id + "><div class='h6'>" 
 				+ item.codigo + " - " + item.nome + "</div></option>");
-			})		
+			})	
+			
 		},
 		statusCode: {
 			403: function(xhr) {
@@ -103,7 +104,8 @@ function visualizaciddoprocedimento(idAtendimentoProcedimento){
 					confirm: {
 						className: 'btn btn-primary'
 					}
-				}
+				},
+				timer: 3000
 			});
 		},
 		statusCode: {
@@ -149,7 +151,7 @@ function salvarCidAoAtendimentoProcedimento(){
 	var idCid = $("#optionselect-cid").val();
 	
 	$.ajax({
-		url: '/atendimento-procedimento/adicionarcidaoatendprocedimento/'+ idAtendimentoProcedimento +'/'+ idCid,
+		url: '/atendimento-procedimento/adicionarcidaoatendprocedimento/'+ idAtendimentoProcedimentoGlobal +'/'+ idCid,
 		method: 'get',
 		success: function () {
 		$.notify({
@@ -205,7 +207,7 @@ $("#cid-procedimento-voltar").click(function () {
 
 function fechaFormularioCidProcedimento() {
 	
-	idAtendimentoProcedimento = null;
+	idAtendimentoProcedimentoGlobal = null;
 	$("#card-cid-procedimento").fadeOut(100);
 	$("#card-procedimento").fadeIn(100);
 }
@@ -225,7 +227,8 @@ function verificaProcedimentoObrigatorioCid(codigoProcedimento) {
 						confirm: {
 							className: 'btn btn-primary'
 						}
-					}
+					},
+					timer: 2000
 				});
 			}
 		},

@@ -9,6 +9,7 @@ import java.util.Map;
 import java.util.Optional;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -143,7 +144,7 @@ public class ExameController {
 		Exame exame = exameRepository.getOne(id);
 
 		if(!exame.getResultados().isEmpty()) {
-			return ResponseEntity.notFound().build();
+			return ResponseEntity.status(HttpStatus.FORBIDDEN).build();
 		}
 		
 		Prontuario prontuario = prontuarioRepository.getOne(exame.getProntuario().getId());

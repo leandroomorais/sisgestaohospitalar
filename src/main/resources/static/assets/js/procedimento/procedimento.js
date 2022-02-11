@@ -256,7 +256,8 @@ function removeProcedimento(item) {
 							confirm: {
 								className: 'btn btn-success'
 							}
-						}
+						},
+						timer: 1000
 					});
 					$("#table-procedimentos").DataTable().ajax.reload();
 				},
@@ -270,6 +271,7 @@ function removeProcedimento(item) {
 									className: 'btn btn-danger'
 								}
 							},
+							timer: 2000
 						});
 					}
 				}
@@ -280,7 +282,8 @@ function removeProcedimento(item) {
 					confirm: {
 						className: 'btn btn-success'
 					}
-				}
+				},
+				timer: 1000
 			});
 		}
 	});
