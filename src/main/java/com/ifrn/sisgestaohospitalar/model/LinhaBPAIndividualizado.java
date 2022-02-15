@@ -254,8 +254,8 @@ public class LinhaBPAIndividualizado {
 		return dataNascimento;
 	}
 
-	public void setDataNascimento(LocalDate dataNascimento) {
-		this.dataNascimento = String.format("%-8.8s", dataNascimento.toString().replace("-", ""));
+	public void setDataNascimento(String dataNascimento) {
+		this.dataNascimento = String.format("%-8.8s", dataNascimento);
 	}
 
 	public String getRacaCor() {

@@ -55,12 +55,12 @@ public class ArquivoBPA {
 	private boolean gerado;
 
 	@ManyToMany(cascade = CascadeType.ALL)
-	@JoinTable(name = "arquivo_bpa_linhas_consolidado", joinColumns = @JoinColumn(name = "id_arquivo"), inverseJoinColumns = @JoinColumn(name = "id_linha"))
-	private List<LinhaBPAConsolidado> linhasBPAConsolidado;
+	@JoinTable(name = "arquivo_bpa_folha_consolidado", joinColumns = @JoinColumn(name = "id_arquivobpa"), inverseJoinColumns = @JoinColumn(name = "id_folha_bpa_consolidado"))
+	private List<FolhaBPAConsolidado> folhasBPAConsolidado;
 
 	@ManyToMany(cascade = CascadeType.ALL)
-	@JoinTable(name = "arquivo_bpa_linhas_individualizado", joinColumns = @JoinColumn(name = "id_arquivo"), inverseJoinColumns = @JoinColumn(name = "id_linha"))
-	private List<LinhaBPAIndividualizado> linhasBPAIndividualizado;
+	@JoinTable(name = "arquivo_bpa_folha_individualizado", joinColumns = @JoinColumn(name = "id_arquivobpa"), inverseJoinColumns = @JoinColumn(name = "id_folha_bpa_individualizado"))
+	private List<FolhaBPAIndividualizado> folhasBPAIndividualizado;
 
 	public Long getId() {
 		return id;
@@ -206,19 +206,20 @@ public class ArquivoBPA {
 		this.gerado = gerado;
 	}
 
-	public List<LinhaBPAConsolidado> getLinhasBPAConsolidado() {
-		return linhasBPAConsolidado;
+	public List<FolhaBPAConsolidado> getFolhasBPAConsolidado() {
+		return folhasBPAConsolidado;
 	}
 
-	public void setLinhasBPAConsolidado(List<LinhaBPAConsolidado> linhasBPAConsolidado) {
-		this.linhasBPAConsolidado = linhasBPAConsolidado;
+	public void setFolhasBPAConsolidado(List<FolhaBPAConsolidado> folhasBPAConsolidado) {
+		this.folhasBPAConsolidado = folhasBPAConsolidado;
 	}
 
-	public List<LinhaBPAIndividualizado> getLinhasBPAIndividualizado() {
-		return linhasBPAIndividualizado;
+	public List<FolhaBPAIndividualizado> getFolhasBPAIndividualizado() {
+		return folhasBPAIndividualizado;
 	}
 
-	public void setLinhasBPAIndividualizado(List<LinhaBPAIndividualizado> linhasBPAIndividualizado) {
-		this.linhasBPAIndividualizado = linhasBPAIndividualizado;
+	public void setFolhasBPAIndividualizado(List<FolhaBPAIndividualizado> folhasBPAIndividualizado) {
+		this.folhasBPAIndividualizado = folhasBPAIndividualizado;
 	}
+
 }
