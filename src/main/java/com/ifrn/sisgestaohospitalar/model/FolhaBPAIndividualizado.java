@@ -2,6 +2,7 @@ package com.ifrn.sisgestaohospitalar.model;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -18,7 +19,7 @@ public class FolhaBPAIndividualizado {
 
 	private int numero;
 
-	@ManyToMany
+	@ManyToMany(cascade = CascadeType.ALL)
 	@JoinTable(name = "folha_bpa_individualizado_linha_individualizado")
 	private List<LinhaBPAIndividualizado> linhasBPAIndividualizado;
 

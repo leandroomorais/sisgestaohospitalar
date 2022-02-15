@@ -2,20 +2,17 @@ package com.ifrn.sisgestaohospitalar.service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.ifrn.sisgestaohospitalar.model.ArquivoBPA;
 import com.ifrn.sisgestaohospitalar.model.Atendimento;
 import com.ifrn.sisgestaohospitalar.model.AtendimentoProcedimento;
-import com.ifrn.sisgestaohospitalar.model.Procedimento;
+import com.ifrn.sisgestaohospitalar.model.FolhaBPAIndividualizado;
+import com.ifrn.sisgestaohospitalar.model.LinhaBPAIndividualizado;
 import com.ifrn.sisgestaohospitalar.model.ProcedimentoRegistroSigtap;
-import com.ifrn.sisgestaohospitalar.model.RegistroSigtap;
 import com.ifrn.sisgestaohospitalar.repository.ArquivoBPARepository;
 import com.ifrn.sisgestaohospitalar.repository.AtendimentoRepository;
 import com.ifrn.sisgestaohospitalar.repository.ProcedimentoRegistroSigtapRepository;
-import com.ifrn.sisgestaohospitalar.repository.ProcedimentoRepository;
 
 /**
  * A classe <code>ArquivoBPAService</code> implementa os métodos da Interface
@@ -37,6 +34,9 @@ public class ArquivoBPAService {
 
 	@Autowired
 	private ProcedimentoRegistroSigtapRepository registroSigtapRepository;
+
+	@Autowired
+	private LinhaBPAIndividualizadoService linhaBpaIndividualizadoService;
 
 	private List<AtendimentoProcedimento> procedimentosConsolidados = new ArrayList<>();
 
@@ -121,6 +121,30 @@ public class ArquivoBPAService {
 			}
 		}
 		return false;
+	}
+
+	public void processarArquivoBPA(String mes) {
+		ArquivoBPA arquivoBPA = new ArquivoBPA();
+		FolhaBPAIndividualizado folhaBPAIndividualizado = new FolhaBPAIndividualizado();
+		folhaBPAIndividualizado.setLinhasBPAIndividualizado(new ArrayList<>());
+		int numeroFolha = 1;
+		int numeroLinha = 0;
+		for (LinhaBPAIndividualizado linhaBPAIndividualizado : linhaBpaIndividualizadoService
+				.getLinhasBPAIndividualizado(mes)) {
+			numeroLinha++;
+			folhaBPAIndividualizado.setNumero(numeroFolha);
+			linhaBPAIndividualizado.setNumeroFolha(Integer.toString(numeroFolha));
+			linhaBPAIndividualizado.setNumeroLinha(Integer.toString(numeroLinha));
+			folhaBPAIndividualizado.getLinhasBPAIndividualizado().add(linhaBPAIndividualizado);
+			if (numeroLinha == 20) {
+				numeroFolha++;
+				numeroLinha = 0;
+				folhaBPAIndividualizado = new FolhaBPAIndividualizado();
+			}
+			arquivoBPA.setFolhasBPAIndividualizado(new ArrayList<>());
+			arquivoBPA.getFolhasBPAIndividualizado().add(folhaBPAIndividualizado);
+		}
+		save(arquivoBPA);
 	}
 
 	public void save(ArquivoBPA arquivoBPA) {
