@@ -38,7 +38,7 @@ $("#submit-procedimento").click(function() {
 
 function submitProcedimento(idAtendimento, codigoProcedimento, tipoServico, quantidade) {
 	var relAtendimentoProcedimento = {};
-	relAtendimentoProcedimento.atendimento = idAtendimento;
+	relAtendimentoProcedimento.idAtendimento = idAtendimento;
 	relAtendimentoProcedimento['procedimento.codigo'] = codigoProcedimento;
 	relAtendimentoProcedimento.quantidade = quantidade;
 	relAtendimentoProcedimento.tipoServico = tipoServico;
