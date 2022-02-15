@@ -5,21 +5,20 @@ var idAtendimentoProcedimentoGlobal;
 
 // adiciona cid ao procedimento
 function adicionacidaoprocedimento(idProcedimentoCid) {
-
 	idAtendimentoProcedimentoGlobal = idProcedimentoCid;
 	$("#card-procedimento").fadeOut(100);
 	$("#card-cid-procedimento").fadeIn(100);
-	
+
 	$.ajax({
-		url: '/procedimentocid/buscarcidsdoprocedimento/'+ idProcedimentoCid,
+		url: '/procedimentocid/buscarcidsdoprocedimento/' + idProcedimentoCid,
 		method: 'get',
-		success: function (data) {
+		success: function(data) {
 			$("#optionselect-cid").empty();
-			$.each(data, function (key, item) {
-				$("#optionselect-cid").append("<option value=" + item.id + "><div class='h6'>" 
-				+ item.codigo + " - " + item.nome + "</div></option>");
-			})	
-			
+			$.each(data, function(key, item) {
+				$("#optionselect-cid").append("<option value=" + item.id + "><div class='h6'>"
+					+ item.codigo + " - " + item.nome + "</div></option>");
+			})
+
 		},
 		statusCode: {
 			403: function(xhr) {
@@ -60,8 +59,8 @@ function adicionacidaoprocedimento(idProcedimentoCid) {
 				});
 				fechaFormularioCidProcedimento();
 			},
-			400: function () {
-			$.notify({
+			400: function() {
+				$.notify({
 					// options
 					icon: 'flaticon-exclamation',
 					title: 'ERRO',
@@ -74,8 +73,8 @@ function adicionacidaoprocedimento(idProcedimentoCid) {
 					allow_dismiss: true,
 				});
 			},
-			404: function () {
-			$.notify({
+			404: function() {
+				$.notify({
 					// options
 					icon: 'flaticon-exclamation',
 					title: 'ERRO',
@@ -92,13 +91,13 @@ function adicionacidaoprocedimento(idProcedimentoCid) {
 	})
 }
 
-function visualizaciddoprocedimento(idAtendimentoProcedimento){
-	
+function visualizaciddoprocedimento(idAtendimentoProcedimento) {
+
 	$.ajax({
-		url: '/atendimento-procedimento/buscarporid/'+ idAtendimentoProcedimento,
+		url: '/atendimento-procedimento/buscarporid/' + idAtendimentoProcedimento,
 		method: 'get',
-		success: function (data) {
-			swal("Ok! Detalhes do CID relacionado ao Procedimento: "+ data.codigo +" - "+ data.nome, {
+		success: function(data) {
+			swal("Ok! Detalhes do CID relacionado ao Procedimento: " + data.codigo + " - " + data.nome, {
 				icon: "success",
 				buttons: {
 					confirm: {
@@ -109,10 +108,10 @@ function visualizaciddoprocedimento(idAtendimentoProcedimento){
 			});
 		},
 		statusCode: {
-			403: function () {
+			403: function() {
 				adicionacidaoprocedimento(idAtendimentoProcedimento);
 			},
-			400: function () {
+			400: function() {
 				$.notify({
 					// options
 					icon: 'flaticon-exclamation',
@@ -124,9 +123,9 @@ function visualizaciddoprocedimento(idAtendimentoProcedimento){
 					element: 'body',
 					type: "danger",
 					allow_dismiss: true,
-				})				
+				})
 			},
-			404: function () {
+			404: function() {
 				$.notify({
 					// options
 					icon: 'flaticon-exclamation',
@@ -139,22 +138,22 @@ function visualizaciddoprocedimento(idAtendimentoProcedimento){
 					type: "danger",
 					allow_dismiss: true,
 				});
-				
+
 			}
 		}
 	})
 
 }
 
-function salvarCidAoAtendimentoProcedimento(){
+function salvarCidAoAtendimentoProcedimento() {
 
 	var idCid = $("#optionselect-cid").val();
-	
+
 	$.ajax({
-		url: '/atendimento-procedimento/adicionarcidaoatendprocedimento/'+ idAtendimentoProcedimentoGlobal +'/'+ idCid,
+		url: '/atendimento-procedimento/adicionarcidaoatendprocedimento/' + idAtendimentoProcedimentoGlobal + '/' + idCid,
 		method: 'get',
-		success: function () {
-		$.notify({
+		success: function() {
+			$.notify({
 				// options
 				icon: 'flaticon-success',
 				title: 'SUCESSO',
@@ -169,7 +168,7 @@ function salvarCidAoAtendimentoProcedimento(){
 			fechaFormularioCidProcedimento();
 		},
 		statusCode: {
-			400: function () {
+			400: function() {
 				$.notify({
 					// options
 					icon: 'flaticon-exclamation',
@@ -183,7 +182,7 @@ function salvarCidAoAtendimentoProcedimento(){
 					allow_dismiss: true,
 				});
 			},
-			404: function () {
+			404: function() {
 				$.notify({
 					// options
 					icon: 'flaticon-exclamation',
@@ -201,12 +200,12 @@ function salvarCidAoAtendimentoProcedimento(){
 	})
 }
 
-$("#cid-procedimento-voltar").click(function () {
+$("#cid-procedimento-voltar").click(function() {
 	fechaFormularioCidProcedimento();
 })
 
 function fechaFormularioCidProcedimento() {
-	
+
 	idAtendimentoProcedimentoGlobal = null;
 	$("#card-cid-procedimento").fadeOut(100);
 	$("#card-procedimento").fadeIn(100);
@@ -216,24 +215,38 @@ function fechaFormularioCidProcedimento() {
 function verificaProcedimentoObrigatorioCid(codigoProcedimento) {
 
 	$.ajax({
-		url: '/procedimentocid/verificaprocedimentocidobrigatorio/'+ codigoProcedimento,
+		url: '/procedimentocid/verificaprocedimentocidobrigatorio/' + codigoProcedimento,
 		method: 'get',
-		success: function (data) {
-		
-			if(data == true){
-				swal("Atenção! Esse procedimento requer a adição de um CID compatível, por favor selecionar em seguida!", {
-					icon: "warning",
-					buttons: {
-						confirm: {
-							className: 'btn btn-primary'
-						}
-					},
-					timer: 2000
-				});
+		success: function(data) {
+			if (data == true) {
+				$("#exampleModalLong").modal("show");
+				$.ajax({
+					url: '/procedimentocid/buscarcidsdoprocedimento/' + codigoProcedimento,
+					method: 'get',
+					success: function(data) {
+						console.log("Chegue aqui !!!");
+						$("#optionselect-cid").empty();
+						$.each(data, function(key, item) {
+							$("#optionselect-cid").append("<option value=" + item.id + "><div class='h6'>"
+								+ item.codigo + " - " + item.nome + "</div></option>");
+						})
+
+					}
+				})
+
+				//				swal("Atenção! Esse procedimento requer a adição de um CID compatível, por favor selecionar em seguida!", {
+				//					icon: "warning",
+				//					buttons: {
+				//						confirm: {
+				//							className: 'btn btn-primary'
+				//						}
+				//					},
+				//					timer: 2000
+				//				});
 			}
 		},
 		statusCode: {
-			400: function () {
+			400: function() {
 				$.notify({
 					// options
 					icon: 'flaticon-exclamation',
@@ -247,7 +260,7 @@ function verificaProcedimentoObrigatorioCid(codigoProcedimento) {
 					allow_dismiss: true,
 				});
 			},
-			404: function () {
+			404: function() {
 				$.notify({
 					// options
 					icon: 'flaticon-exclamation',
