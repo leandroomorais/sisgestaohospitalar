@@ -18,7 +18,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.ifrn.sisgestaohospitalar.model.Atendimento;
 import com.ifrn.sisgestaohospitalar.model.AtendimentoProcedimento;
 import com.ifrn.sisgestaohospitalar.model.Cid;
-import com.ifrn.sisgestaohospitalar.model.ProcedimentoCid;
 import com.ifrn.sisgestaohospitalar.model.Profissional;
 import com.ifrn.sisgestaohospitalar.repository.AtendimentoRepository;
 import com.ifrn.sisgestaohospitalar.repository.CidRepository;
@@ -40,7 +39,7 @@ public class AtendimentoProcedimentoController {
 	private ProcedimentoOcupacapService procedimentoOcupacapService;
 	@Autowired
 	private CidRepository cidRepository;
-	
+
 	@PostMapping("/adicionar")
 	public ResponseEntity<?> adicionarProcedimentos(@Valid AtendimentoProcedimento atendimentoProcedimento,
 			BindingResult result, Principal principal) {
@@ -51,7 +50,8 @@ public class AtendimentoProcedimentoController {
 			}
 			return ResponseEntity.unprocessableEntity().body(errors);
 		}
-		Optional<Atendimento> optional = atendimentoRepository.findById(atendimentoProcedimento.getIdAtendimento());
+		Optional<Atendimento> optional = atendimentoRepository
+				.findById(atendimentoProcedimento.getAtendimento().getId());
 		if (optional.isPresent()) {
 			Atendimento atendimento = optional.get();
 			Profissional profissional = profissionalRepository.findByCpf(principal.getName());
@@ -104,36 +104,36 @@ public class AtendimentoProcedimentoController {
 		}
 		return ResponseEntity.badRequest().build();
 	}
-	
+
 	@GetMapping("/buscarporid/{id}")
 	public ResponseEntity<?> findById(@PathVariable("id") Long id) {
 		Optional<AtendimentoProcedimento> optional = atendimentoProcedimentoRepository.findById(id);
-		
-		
-		if(optional.get().getCodigoCid() != null) {
+
+		if (optional.get().getCodigoCid() != null) {
 			Cid cid = cidRepository.findByCodigoIgnoreCaseContaining(optional.get().getCodigoCid());
-			if(cid != null) {
+			if (cid != null) {
 				return ResponseEntity.ok(cid);
 			}
 			return ResponseEntity.badRequest().build();
 		}
 		return ResponseEntity.status(HttpStatus.FORBIDDEN).build();
 	}
-	
+
 	@GetMapping("/adicionarcidaoatendprocedimento/{idAtendimentoProcedimento}/{idCid}")
-	public ResponseEntity<?> adicionarCidAoAtendProcedimento(@PathVariable("idAtendimentoProcedimento") Long idAtendimentoProcedimento,
+	public ResponseEntity<?> adicionarCidAoAtendProcedimento(
+			@PathVariable("idAtendimentoProcedimento") Long idAtendimentoProcedimento,
 			@PathVariable("idCid") Long idCid, Principal principal) {
-		
+
 		Optional<Cid> optionalCid = cidRepository.findById(idCid);
 		Optional<AtendimentoProcedimento> optionalAtendimentoProcedimento = atendimentoProcedimentoRepository
 				.findById(idAtendimentoProcedimento);
-		
-			if(optionalCid.isPresent() && optionalAtendimentoProcedimento.isPresent()) {
-				optionalAtendimentoProcedimento.get().setCodigoCid(optionalCid.get().getCodigo());
-				atendimentoProcedimentoRepository.saveAndFlush(optionalAtendimentoProcedimento.get());
-				return ResponseEntity.ok().build();
-			}
-			return ResponseEntity.badRequest().build();
+
+		if (optionalCid.isPresent() && optionalAtendimentoProcedimento.isPresent()) {
+			optionalAtendimentoProcedimento.get().setCodigoCid(optionalCid.get().getCodigo());
+			atendimentoProcedimentoRepository.saveAndFlush(optionalAtendimentoProcedimento.get());
+			return ResponseEntity.ok().build();
+		}
+		return ResponseEntity.badRequest().build();
 	}
 
 }

@@ -2,10 +2,16 @@ package com.ifrn.sisgestaohospitalar.model;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 
 @Entity
 public class ArquivoBPA {
@@ -48,6 +54,14 @@ public class ArquivoBPA {
 
 	private boolean gerado;
 
+	@ManyToMany(cascade = CascadeType.ALL)
+	@JoinTable(name = "arquivo_bpa_linhas_consolidado", joinColumns = @JoinColumn(name = "id_arquivo"), inverseJoinColumns = @JoinColumn(name = "id_linha"))
+	private List<LinhaBPAConsolidado> linhasBPAConsolidado;
+
+	@ManyToMany(cascade = CascadeType.ALL)
+	@JoinTable(name = "arquivo_bpa_linhas_individualizado", joinColumns = @JoinColumn(name = "id_arquivo"), inverseJoinColumns = @JoinColumn(name = "id_linha"))
+	private List<LinhaBPAIndividualizado> linhasBPAIndividualizado;
+
 	public Long getId() {
 		return id;
 	}
@@ -85,7 +99,7 @@ public class ArquivoBPA {
 	}
 
 	public void setQtdLinhas(String qtdLinhas) {
-		this.qtdLinhas = String.format("%06d", new Object[] { Integer.parseInt(qtdLinhas) });
+		this.qtdLinhas = qtdLinhas;
 	}
 
 	public String getQtdFolhas() {
@@ -93,7 +107,7 @@ public class ArquivoBPA {
 	}
 
 	public void setQtdFolhas(String qtdFolhas) {
-		this.qtdFolhas = String.format("%06d", new Object[] { Integer.parseInt(qtdFolhas) });
+		this.qtdFolhas = qtdFolhas;
 	}
 
 	public String getControleDominio() {
@@ -109,7 +123,7 @@ public class ArquivoBPA {
 	}
 
 	public void setOrgaoResponsavel(String orgaoResponsavel) {
-		this.orgaoResponsavel = String.format("%-30.30s", orgaoResponsavel);
+		this.orgaoResponsavel = orgaoResponsavel;
 	}
 
 	public String getSiglaOrgaoResponsavel() {
@@ -117,7 +131,7 @@ public class ArquivoBPA {
 	}
 
 	public void setSiglaOrgaoResponsavel(String siglaOrgaoResponsavel) {
-		this.siglaOrgaoResponsavel = String.format("%-6.6s", siglaOrgaoResponsavel);
+		this.siglaOrgaoResponsavel = siglaOrgaoResponsavel;
 	}
 
 	public String getCnpjOrgaoResponsavel() {
@@ -125,7 +139,7 @@ public class ArquivoBPA {
 	}
 
 	public void setCnpjOrgaoResponsavel(String cnpjOrgaoResponsavel) {
-		this.cnpjOrgaoResponsavel = String.format("%-14.14s", cnpjOrgaoResponsavel);
+		this.cnpjOrgaoResponsavel = cnpjOrgaoResponsavel;
 	}
 
 	public String getOrgaoDestino() {
@@ -133,7 +147,7 @@ public class ArquivoBPA {
 	}
 
 	public void setOrgaoDestino(String orgaoDestino) {
-		this.orgaoDestino = String.format("%-40.40s", orgaoDestino);
+		this.orgaoDestino = orgaoDestino;
 	}
 
 	public String getIncadorOrgao() {
@@ -149,7 +163,7 @@ public class ArquivoBPA {
 	}
 
 	public void setVersaoSistema(String versaoSistema) {
-		this.versaoSistema = String.format("%-10.10s", versaoSistema);
+		this.versaoSistema = versaoSistema;
 	}
 
 	public LocalDate getDataGeracao() {
@@ -158,14 +172,6 @@ public class ArquivoBPA {
 
 	public void setDataGeracao(LocalDate dataGeracao) {
 		this.dataGeracao = dataGeracao;
-	}
-
-	public boolean isGerado() {
-		return gerado;
-	}
-
-	public void setGerado(boolean gerado) {
-		this.gerado = gerado;
 	}
 
 	public LocalDateTime getHoraGeracao() {
@@ -192,11 +198,27 @@ public class ArquivoBPA {
 		this.nomeArquivo = nomeArquivo;
 	}
 
-	@Override
-	public String toString() {
-		return cabecalhoHeader + indicadorHeader + competencia + qtdLinhas + qtdFolhas + controleDominio
-				+ orgaoResponsavel + siglaOrgaoResponsavel + cnpjOrgaoResponsavel + orgaoDestino + incadorOrgao
-				+ versaoSistema;
+	public boolean isGerado() {
+		return gerado;
 	}
 
+	public void setGerado(boolean gerado) {
+		this.gerado = gerado;
+	}
+
+	public List<LinhaBPAConsolidado> getLinhasBPAConsolidado() {
+		return linhasBPAConsolidado;
+	}
+
+	public void setLinhasBPAConsolidado(List<LinhaBPAConsolidado> linhasBPAConsolidado) {
+		this.linhasBPAConsolidado = linhasBPAConsolidado;
+	}
+
+	public List<LinhaBPAIndividualizado> getLinhasBPAIndividualizado() {
+		return linhasBPAIndividualizado;
+	}
+
+	public void setLinhasBPAIndividualizado(List<LinhaBPAIndividualizado> linhasBPAIndividualizado) {
+		this.linhasBPAIndividualizado = linhasBPAIndividualizado;
+	}
 }
