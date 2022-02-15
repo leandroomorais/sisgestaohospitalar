@@ -142,8 +142,8 @@ public class LinhaBPAIndividualizado {
 		return dataAtendimento;
 	}
 
-	public void setDataAtendimento(LocalDate dataAtendimento) {
-		this.dataAtendimento = String.format("%-8.8s", dataAtendimento.toString().replace("-", ""));
+	public void setDataAtendimento(String dataAtendimento) {
+		this.dataAtendimento = String.format("%-8.8s", dataAtendimento);
 	}
 
 	public String getNumeroFolha() {
@@ -254,8 +254,8 @@ public class LinhaBPAIndividualizado {
 		return dataNascimento;
 	}
 
-	public void setDataNascimento(LocalDate dataNascimento) {
-		this.dataNascimento = String.format("%-8.8s", dataNascimento.toString().replace("-", ""));
+	public void setDataNascimento(String dataNascimento) {
+		this.dataNascimento = String.format("%-8.8s", dataNascimento);
 	}
 
 	public String getRacaCor() {
@@ -401,6 +401,26 @@ public class LinhaBPAIndividualizado {
 
 	public void setFim(String fim) {
 		this.fim = String.format("%-2.2s", fim);
+	}
+
+	@Override
+	public String toString() {
+		return "LinhaBPAIndividualizado [linhaIdenti=" + linhaIdenti + ", cnes=" + cnes + ", competencia=" + competencia
+				+ ", cnsProfissional=" + cnsProfissional + ", cboProfissional=" + cboProfissional + ", dataAtendimento="
+				+ dataAtendimento + ", numeroFolha=" + numeroFolha + ", numeroLinha=" + numeroLinha
+				+ ", codigoProcedimento=" + codigoProcedimento + ", cnsPaciente=" + cnsPaciente + ", sexoPaciente="
+				+ sexoPaciente + ", codigoIbge=" + codigoIbge + ", cid=" + cid + ", idade=" + idade
+				+ ", qtdProcedimento=" + qtdProcedimento + ", caraterAtendimento=" + caraterAtendimento
+				+ ", numeroAutorizacao=" + numeroAutorizacao + ", origemInformacao=" + origemInformacao
+				+ ", nomePaciente=" + nomePaciente + ", dataNascimento=" + dataNascimento + ", racaCor=" + racaCor
+				+ ", etnia=" + etnia + ", nacionalidade=" + nacionalidade + ", codigoServico=" + codigoServico
+				+ ", codigoClassificacao=" + codigoClassificacao + ", codigoSequenciaEquipe=" + codigoSequenciaEquipe
+				+ ", codigoAreaEquipe=" + codigoAreaEquipe + ", codigoCnpjEmpresa=" + codigoCnpjEmpresa
+				+ ", cepPaciente=" + cepPaciente + ", logradouroPaciente=" + logradouroPaciente + ", enderecoPaciente="
+				+ enderecoPaciente + ", complementoEndereco=" + complementoEndereco + ", numeroEndereco="
+				+ numeroEndereco + ", bairroEndereco=" + bairroEndereco + ", telefonePaciente=" + telefonePaciente
+				+ ", emailPaciente=" + emailPaciente + ", identificacaoEquipe=" + identificacaoEquipe + ", fim=" + fim
+				+ "]";
 	}
 
 }

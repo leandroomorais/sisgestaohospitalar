@@ -5,27 +5,28 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
-import javax.persistence.Transient;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class AtendimentoProcedimento {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
-	@Transient
-	private Long idAtendimento;
-	
+
+	@JsonIgnore
+	@OneToOne
+	private Atendimento atendimento;
+
 	@OneToOne
 	private Procedimento procedimento;
-	
+
 	private int quantidade;
-	
+
 	@OneToOne
 	private Profissional profissional;
-	
+
 	private String codigoCid;
 
 	public Long getId() {
@@ -36,12 +37,12 @@ public class AtendimentoProcedimento {
 		this.id = id;
 	}
 
-	public Long getIdAtendimento() {
-		return idAtendimento;
+	public Atendimento getAtendimento() {
+		return atendimento;
 	}
 
-	public void setIdAtendimento(Long idAtendimento) {
-		this.idAtendimento = idAtendimento;
+	public void setAtendimento(Atendimento atendimento) {
+		this.atendimento = atendimento;
 	}
 
 	public Procedimento getProcedimento() {
@@ -68,7 +69,6 @@ public class AtendimentoProcedimento {
 		this.profissional = profissional;
 	}
 
-
 	public String getCodigoCid() {
 		return codigoCid;
 	}
@@ -76,5 +76,5 @@ public class AtendimentoProcedimento {
 	public void setCodigoCid(String codigoCid) {
 		this.codigoCid = codigoCid;
 	}
-	
+
 }
