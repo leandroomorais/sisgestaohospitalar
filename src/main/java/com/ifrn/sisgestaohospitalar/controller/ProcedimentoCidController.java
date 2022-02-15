@@ -69,13 +69,10 @@ public class ProcedimentoCidController {
 		}
 		
 		if(!procedimentoscid.isEmpty()) {
-			
-			for(ProcedimentoCid procid : procedimentoscid) {
-				cids.add(cidRepository.findByCodigoIgnoreCaseContaining(procid.getCodigoCid()));
-			}
-			
+			cids.addAll(cidRepository.findByCodigoProcedimentoCid(codigoProcedimento));
 			return ResponseEntity.ok(cids);
-		}
+		}		
+		
 		String msg = "Esse procedimento não requer a adição de CID";
 		return ResponseEntity.status(HttpStatus.FORBIDDEN).body(msg);
 	}
@@ -84,6 +81,11 @@ public class ProcedimentoCidController {
 	public ResponseEntity<?> verificaCidObrigatorioAoProcedimento(@PathVariable("codigoProcedimento") Long codigoProcedimento) {
 
 		List<ProcedimentoCid> procedimentoscid = procedimentocidRepository.findByCodigoProcedimento(codigoProcedimento);		
+		
+		if(codigoProcedimento == 203010035 | codigoProcedimento == 203020030) {
+			String msg = "O CID é obrigatório";
+			return ResponseEntity.status(HttpStatus.ACCEPTED).body(msg);
+		}
 		
 		if(!procedimentoscid.isEmpty()) {			
 			return ResponseEntity.ok(true);

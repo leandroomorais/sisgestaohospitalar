@@ -10,16 +10,20 @@ function adicionacidaoprocedimento(idProcedimentoCid) {
 	$("#card-procedimento").fadeOut(100);
 	$("#card-cid-procedimento").fadeIn(100);
 	
+	console.log(idProcedimentoCid, typeof(idProcedimentoCid));
+	console.log(typeof(203010035));
+	$("#optionselect-cid").empty();
+	
 	$.ajax({
 		url: '/procedimentocid/buscarcidsdoprocedimento/'+ idProcedimentoCid,
 		method: 'get',
 		success: function (data) {
-			$("#optionselect-cid").empty();
+			
 			$.each(data, function (key, item) {
 				$("#optionselect-cid").append("<option value=" + item.id + "><div class='h6'>" 
 				+ item.codigo + " - " + item.nome + "</div></option>");
 			})	
-			
+			console.log("aqui", data);
 		},
 		statusCode: {
 			403: function(xhr) {
@@ -90,6 +94,7 @@ function adicionacidaoprocedimento(idProcedimentoCid) {
 			}
 		}
 	})
+	
 }
 
 function visualizaciddoprocedimento(idAtendimentoProcedimento){
@@ -221,18 +226,29 @@ function verificaProcedimentoObrigatorioCid(codigoProcedimento) {
 		success: function (data) {
 		
 			if(data == true){
-				swal("Atenção! Esse procedimento requer a adição de um CID compatível, por favor selecionar em seguida!", {
+				swal("Observação! Para esse procedimento existe CID compatível. Caso deseje informar, selecione em seguida!", {
+					icon: "success",
+					buttons: {
+						confirm: {
+							className: 'btn btn-primary'
+						}
+					},
+					timer: 4000
+				});
+			}
+		},
+		statusCode: {
+			202: function(xhr) {
+					swal("Atenção! Esse procedimento é obrigatório a adição de um CID compatível. Por favor, selecionar em seguida!", xhr ,{
 					icon: "warning",
 					buttons: {
 						confirm: {
 							className: 'btn btn-primary'
 						}
 					},
-					timer: 2000
+					timer: 4000
 				});
-			}
-		},
-		statusCode: {
+			},
 			400: function () {
 				$.notify({
 					// options

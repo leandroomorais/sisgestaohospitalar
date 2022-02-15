@@ -4,11 +4,13 @@ import java.security.Principal;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -27,6 +29,7 @@ import com.ifrn.sisgestaohospitalar.enums.MomentoColeta;
 import com.ifrn.sisgestaohospitalar.enums.SituacaoCondicao;
 import com.ifrn.sisgestaohospitalar.enums.Status;
 import com.ifrn.sisgestaohospitalar.model.Atendimento;
+import com.ifrn.sisgestaohospitalar.model.AtendimentoProcedimento;
 import com.ifrn.sisgestaohospitalar.model.Cidadao;
 import com.ifrn.sisgestaohospitalar.model.HistoricoAtendimento;
 import com.ifrn.sisgestaohospitalar.repository.AtendimentoRepository;
@@ -181,6 +184,7 @@ public class AtendimentoController {
 			return ResponseEntity.unprocessableEntity().body(errors);
 		}
 
+		
 		if (atendimentoDTO.getCondutaCidadao() == null) {
 			errors.put("atendimento.condutaCidadao", "É necessário informar a conduta do cidadão");
 			return ResponseEntity.unprocessableEntity().body(errors);
@@ -202,8 +206,24 @@ public class AtendimentoController {
 			errors.put("atendimento.tipoAtendimento", "Selecione o tipo do atendimento");
 			return ResponseEntity.unprocessableEntity().body(errors);
 		}
+		
 
 		Optional<Atendimento> optional = atendimentoRepository.findById(atendimentoDTO.getId());
+		
+		if(!optional.get().getAtendimentoProcedimentos().isEmpty()) {
+			List<AtendimentoProcedimento> atendimentos = optional.get().getAtendimentoProcedimentos();
+			for(AtendimentoProcedimento a : atendimentos) {
+				if(a.getProcedimento().getCodigo() == 203010035 && a.getCodigoCid() == null) {
+					String msg = "O procedimento "+ a.getProcedimento().getNome() +" requer a adição de um CID compatível, retorne em Procedimentos para adicionar";
+					return ResponseEntity.status(HttpStatus.FORBIDDEN).body(msg);
+				}
+				if(a.getProcedimento().getCodigo() == 203020030 && a.getCodigoCid() == null) {
+					String msg = "O procedimento "+ a.getProcedimento().getNome() +" requer a adição de um CID compatível, retorne em Procedimentos para adicionar";
+					return ResponseEntity.status(HttpStatus.FORBIDDEN).body(msg);
+				}
+			}
+		}
+		
 		if (optional.isPresent()) {
 			Atendimento atendimento = optional.get();
 			atendimento.setTipoServicos(atendimentoDTO.getTipoServicos());

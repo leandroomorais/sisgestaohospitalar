@@ -118,6 +118,16 @@ $("#form-finalizar-atendimento").submit(function(evt) {
 			});
 		},
 		statusCode: {
+			403: function(xhr) {
+					swal("Atenção!", xhr.responseText,{
+					icon: "warning",
+					buttons: {
+						confirm: {
+							className: 'btn btn-primary'
+						}
+					}
+				});
+			},
 			422: function(xhr) {
 				var errors = $.parseJSON(xhr.responseText);
 				$.each(errors, function(key, val) {
@@ -162,7 +172,5 @@ $("#form-finalizar-atendimento").submit(function(evt) {
 				})
 			}
 		}
-
-
 	})
 })
