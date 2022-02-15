@@ -38,7 +38,7 @@ $("#submit-procedimento").click(function() {
 
 function submitProcedimento(idAtendimento, codigoProcedimento, tipoServico, quantidade) {
 	var relAtendimentoProcedimento = {};
-	relAtendimentoProcedimento.idAtendimento = idAtendimento;
+	relAtendimentoProcedimento.atendimento = idAtendimento;
 	relAtendimentoProcedimento['procedimento.codigo'] = codigoProcedimento;
 	relAtendimentoProcedimento.quantidade = quantidade;
 	relAtendimentoProcedimento.tipoServico = tipoServico;
@@ -216,14 +216,14 @@ function atualizaProcedimento() {
 				title: 'CID',
 				data: 'id',
 				mRender: function(data) {
-					return "<div><div class='row'><div class='col-md-6'><button type='button'class='btn btn-light btn-sm' onclick='adicionacidaoprocedimento("+ data +");'><i class='fa fa-pencil-square-o'></i></button></div>"	
-					+"<div class='col-md-6'><button type='button' class='btn btn-light btn-sm' onclick='visualizaciddoprocedimento("+ data +");'><i class='fa fa-search'></i></button></div></div></div>";
+					return "<div><div class='row'><div class='col-md-6'><button type='button'class='btn btn-light btn-sm' onclick='adicionacidaoprocedimento(" + data + ");'><i class='fa fa-pencil-square-o'></i></button></div>"
+						+ "<div class='col-md-6'><button type='button' class='btn btn-light btn-sm' onclick='visualizaciddoprocedimento(" + data + ");'><i class='fa fa-search'></i></button></div></div></div>";
 				}
 			}
 		]
 	})
 }
-		
+
 
 // Função para remover os Procedimentos da Tabela de Procedimentos
 function removeProcedimento(item) {
