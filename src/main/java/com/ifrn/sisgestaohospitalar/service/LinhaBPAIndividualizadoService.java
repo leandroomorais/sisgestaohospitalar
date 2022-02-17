@@ -108,7 +108,7 @@ public class LinhaBPAIndividualizadoService {
 	}
 
 	private String getIdade(LocalDate nascimentoPaciente, LocalDateTime dataAtendimento) {
-		int periodo = Period.between(nascimentoPaciente, nascimentoPaciente).getYears();
+		int periodo = Period.between(nascimentoPaciente, dataAtendimento.toLocalDate()).getYears();
 		return Integer.toString(periodo);
 	}
 
