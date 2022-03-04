@@ -44,6 +44,7 @@ public class ArquivoBPAService {
 
 	public List<AtendimentoProcedimento> getAtendimentoProcedimentos(String mes) {
 		List<AtendimentoProcedimento> atendimentoProcedimentos = new ArrayList<>();
+		atendimentoProcedimentos.clear();
 		List<Atendimento> atendimentos = atendimentoRepository.findByMes(mes);
 		if (atendimentos != null) {
 			for (Atendimento atendimento : atendimentos) {

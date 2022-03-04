@@ -13,7 +13,6 @@ import com.ifrn.sisgestaohospitalar.model.AtendimentoProcedimento;
 import com.ifrn.sisgestaohospitalar.model.Cidadao;
 import com.ifrn.sisgestaohospitalar.model.Endereco;
 import com.ifrn.sisgestaohospitalar.model.LinhaBPAIndividualizado;
-import com.ifrn.sisgestaohospitalar.model.Lotacao;
 import com.ifrn.sisgestaohospitalar.model.Procedimento;
 import com.ifrn.sisgestaohospitalar.model.Profissional;
 import com.ifrn.sisgestaohospitalar.repository.EstabelecimentoRepository;
@@ -28,6 +27,8 @@ public class LinhaBPAIndividualizadoService {
 	private EstabelecimentoRepository estabelecimentoRepository;
 	@Autowired
 	private ProcedimentoDetalheRepository procedimentoDetalheRepository;
+	@Autowired
+	private ProcedimentoOcupacapService procedimentoOcupacapService;
 
 	DateTimeFormatter formaterCompetencia = DateTimeFormatter.ofPattern("yyyyMM");
 	DateTimeFormatter formaterYYYYmmAA = DateTimeFormatter.ofPattern("yyyyMMdd");
@@ -47,7 +48,7 @@ public class LinhaBPAIndividualizadoService {
 			linhaBPAIndividualizado.setCnes(getCnes());
 			linhaBPAIndividualizado.setCompetencia(ATENDIMENTO.getDataEntrada().format(formaterCompetencia));
 			linhaBPAIndividualizado.setCnsProfissional(PROFISSIONAL.getCns());
-			linhaBPAIndividualizado.setCboProfissional(getCboProfissional(PROFISSIONAL));
+			linhaBPAIndividualizado.setCboProfissional(procedimentoOcupacapService.getOcupacao(PROFISSIONAL));
 			linhaBPAIndividualizado.setDataAtendimento(ATENDIMENTO.getDataEntrada().format(formaterYYYYmmAA));
 			linhaBPAIndividualizado.setCodigoProcedimento(
 					getCodigoProcedimento(atendimentoProcedimento.getProcedimento().getCodigo()));
@@ -95,16 +96,6 @@ public class LinhaBPAIndividualizadoService {
 
 	private String getCodigoProcedimento(Long codigoProcedimento) {
 		return "0" + codigoProcedimento.toString();
-	}
-
-	private String getCboProfissional(Profissional profissional) {
-		String cboProfissional = null;
-		for (Lotacao lotacao : profissional.getLotacoes()) {
-			if (lotacao.getCnes().equals(getCnes())) {
-				cboProfissional = lotacao.getCodigoCBO();
-			}
-		}
-		return cboProfissional;
 	}
 
 	private String getIdade(LocalDate nascimentoPaciente, LocalDateTime dataAtendimento) {

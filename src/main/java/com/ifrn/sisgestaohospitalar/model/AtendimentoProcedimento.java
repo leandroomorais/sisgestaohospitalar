@@ -23,6 +23,10 @@ public class AtendimentoProcedimento {
 	private Procedimento procedimento;
 
 	private int quantidade;
+	
+	private int idadeNoAtendimento;
+	
+	private String cboProfissional;
 
 	@OneToOne
 	private Profissional profissional;
@@ -61,6 +65,14 @@ public class AtendimentoProcedimento {
 		this.quantidade = quantidade;
 	}
 
+	public int getIdadeNoAtendimento() {
+		return idadeNoAtendimento;
+	}
+
+	public void setIdadeNoAtendimento(int idadeNoAtendimento) {
+		this.idadeNoAtendimento = idadeNoAtendimento;
+	}
+
 	public Profissional getProfissional() {
 		return profissional;
 	}
@@ -77,4 +89,12 @@ public class AtendimentoProcedimento {
 		this.codigoCid = codigoCid;
 	}
 
+	public String getCboProfissional() {
+		return cboProfissional;
+	}
+
+	public void setCboProfissional(String cboProfissional) {
+		this.cboProfissional = cboProfissional;
+	}
+	
 }

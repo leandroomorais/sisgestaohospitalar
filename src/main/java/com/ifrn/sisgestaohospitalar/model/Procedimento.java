@@ -1,6 +1,7 @@
 package com.ifrn.sisgestaohospitalar.model;
 
 import java.util.List;
+import java.util.Objects;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -204,5 +205,24 @@ public class Procedimento {
 	public void setRegistros(List<RegistroSigtap> registros) {
 		this.registros = registros;
 	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(codigo);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Procedimento other = (Procedimento) obj;
+		return Objects.equals(codigo, other.codigo);
+	}
+	
+	
 
 }

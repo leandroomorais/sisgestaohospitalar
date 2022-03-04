@@ -13,4 +13,7 @@ public interface ProcedimentoDetalheRepository extends JpaRepository<Procediment
 	@Query("select p from ProcedimentoDetalhe p where p.codigoProcedimento = :codigoProcedimento and p.codigoDetalhe = '048'")
 	ProcedimentoDetalhe exigeCid(@Param("codigoProcedimento") Long codigoProcedimento);
 
+	@Query("select p from ProcedimentoDetalhe p where p.codigoProcedimento = :codigoProcedimento and p.codigoDetalhe = '012'")
+	ProcedimentoDetalhe exigeIdade(@Param("codigoProcedimento") Long codigoProcedimento);
+
 }

@@ -21,7 +21,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
 import com.ifrn.sisgestaohospitalar.dto.AtendimentoDTO;
 import com.ifrn.sisgestaohospitalar.enums.CaraterAtendimento;
 import com.ifrn.sisgestaohospitalar.enums.CondutaCidadao;
@@ -48,7 +47,7 @@ import com.ifrn.sisgestaohospitalar.service.exception.CidadaoJaAdicionadoNaFilaE
 @Controller
 @RequestMapping("/atendimento")
 public class AtendimentoController {
-
+	
 	@Autowired
 	private CidadaoRepository cidadaoRepository;
 

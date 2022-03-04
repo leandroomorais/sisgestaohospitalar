@@ -95,7 +95,7 @@ public class LinhaBPAConsolidado {
 	}
 
 	public void setCodigoProcedimento(String codigoProcedimento) {
-		this.codigoProcedimento = String.format("%-10.10s", cboProfissional);
+		this.codigoProcedimento = String.format("%-10.10s", codigoProcedimento);
 	}
 
 	public String getIdade() {
