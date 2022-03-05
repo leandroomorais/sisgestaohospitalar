@@ -3,7 +3,6 @@ package com.ifrn.sisgestaohospitalar.service;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.Period;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,12 +16,11 @@ import com.ifrn.sisgestaohospitalar.model.Procedimento;
 import com.ifrn.sisgestaohospitalar.model.Profissional;
 import com.ifrn.sisgestaohospitalar.repository.EstabelecimentoRepository;
 import com.ifrn.sisgestaohospitalar.repository.ProcedimentoDetalheRepository;
+import com.ifrn.sisgestaohospitalar.utils.Datas;
 
 @Service
 public class LinhaBPAIndividualizadoService {
 
-	@Autowired
-	private ArquivoBPAService arquivoBPAService;
 	@Autowired
 	private EstabelecimentoRepository estabelecimentoRepository;
 	@Autowired
@@ -30,43 +28,40 @@ public class LinhaBPAIndividualizadoService {
 	@Autowired
 	private ProcedimentoOcupacapService procedimentoOcupacapService;
 
-	DateTimeFormatter formaterCompetencia = DateTimeFormatter.ofPattern("yyyyMM");
-	DateTimeFormatter formaterYYYYmmAA = DateTimeFormatter.ofPattern("yyyyMMdd");
+	Datas datas = new Datas();
 
-	public List<LinhaBPAIndividualizado> getLinhasBPAIndividualizado(String mes) {
+	public List<LinhaBPAIndividualizado> getLinhasBPAIndividualizado(
+			List<AtendimentoProcedimento> procedimentosIndividualizados) {
 		List<LinhaBPAIndividualizado> linhasBPAIndividualizado = new ArrayList<>();
-		arquivoBPAService.filtraProcedimentos(arquivoBPAService.getAtendimentoProcedimentos(mes));
-		for (AtendimentoProcedimento atendimentoProcedimento : arquivoBPAService.getProcedimentosIndividualizados()) {
+		String CNES = getCnes();
+		procedimentosIndividualizados.stream().forEach(a -> {
 			LinhaBPAIndividualizado linhaBPAIndividualizado = new LinhaBPAIndividualizado();
-
-			Atendimento ATENDIMENTO = atendimentoProcedimento.getAtendimento();
-			Cidadao DADOS_CIDADAO = atendimentoProcedimento.getAtendimento().getCidadao();
-			Endereco ENDERECO_CIDADAO = atendimentoProcedimento.getAtendimento().getCidadao().getEndereco();
-			Profissional PROFISSIONAL = atendimentoProcedimento.getProfissional();
-
+			Atendimento ATENDIMENTO = a.getAtendimento();
+			Cidadao DADOS_CIDADAO = a.getAtendimento().getCidadao();
+			Endereco ENDERECO_CIDADAO = a.getAtendimento().getCidadao().getEndereco();
+			Profissional PROFISSIONAL = a.getProfissional();
 			linhaBPAIndividualizado.setLinhaIdenti("3");
-			linhaBPAIndividualizado.setCnes(getCnes());
-			linhaBPAIndividualizado.setCompetencia(ATENDIMENTO.getDataEntrada().format(formaterCompetencia));
+			linhaBPAIndividualizado.setCnes(CNES);
+			linhaBPAIndividualizado.setCompetencia(ATENDIMENTO.getDataEntrada().format(datas.competencia()));
 			linhaBPAIndividualizado.setCnsProfissional(PROFISSIONAL.getCns());
 			linhaBPAIndividualizado.setCboProfissional(procedimentoOcupacapService.getOcupacao(PROFISSIONAL));
-			linhaBPAIndividualizado.setDataAtendimento(ATENDIMENTO.getDataEntrada().format(formaterYYYYmmAA));
-			linhaBPAIndividualizado.setCodigoProcedimento(
-					getCodigoProcedimento(atendimentoProcedimento.getProcedimento().getCodigo()));
+			linhaBPAIndividualizado.setDataAtendimento(ATENDIMENTO.getDataEntrada().format(datas.dataBpa()));
+			linhaBPAIndividualizado.setCodigoProcedimento(getCodigoProcedimento(a.getProcedimento().getCodigo()));
 			linhaBPAIndividualizado.setCnsPaciente(DADOS_CIDADAO.getCns());
 			linhaBPAIndividualizado.setSexoPaciente(DADOS_CIDADAO.getSexo());
 			linhaBPAIndividualizado.setCodigoIbge(ENDERECO_CIDADAO.getMunicipio().getCodigoIBGE().toString());
-			if (exigeCid(atendimentoProcedimento.getProcedimento())) {
-				linhaBPAIndividualizado.setCid(atendimentoProcedimento.getCodigoCid());
+			if (exigeCid(a.getProcedimento())) {
+				linhaBPAIndividualizado.setCid(a.getCodigoCid());
 			}
 			linhaBPAIndividualizado.setCid("");
 			linhaBPAIndividualizado.setIdade(getIdade(DADOS_CIDADAO.getDataNascimento(), ATENDIMENTO.getDataEntrada()));
-			linhaBPAIndividualizado.setQtdProcedimento(Integer.toString(atendimentoProcedimento.getQuantidade()));
+			linhaBPAIndividualizado.setQtdProcedimento(Integer.toString(a.getQuantidade()));
 			linhaBPAIndividualizado
 					.setCaraterAtendimento(Integer.toString(ATENDIMENTO.getCaraterAtendimento().getCodigo()));
 			linhaBPAIndividualizado.setOrigemInformacao("BPA");
 			linhaBPAIndividualizado.setNumeroAutorizacao("");
 			linhaBPAIndividualizado.setNomePaciente(DADOS_CIDADAO.getNome());
-			linhaBPAIndividualizado.setDataNascimento(DADOS_CIDADAO.getDataNascimento().format(formaterYYYYmmAA));
+			linhaBPAIndividualizado.setDataNascimento(DADOS_CIDADAO.getDataNascimento().format(datas.dataBpa()));
 			linhaBPAIndividualizado.setRacaCor(Integer.toString(DADOS_CIDADAO.getCodigoRaca().getCodigo()));
 			linhaBPAIndividualizado.setEtnia("");
 			linhaBPAIndividualizado.setNacionalidade(Integer.toString(DADOS_CIDADAO.getCodigoNacionalidade()));
@@ -86,8 +81,9 @@ public class LinhaBPAIndividualizadoService {
 			linhaBPAIndividualizado.setIdentificacaoEquipe("");
 			linhaBPAIndividualizado.setFim("");
 			linhasBPAIndividualizado.add(linhaBPAIndividualizado);
-		}
+		});
 		return linhasBPAIndividualizado;
+
 	}
 
 	private String getCnes() {

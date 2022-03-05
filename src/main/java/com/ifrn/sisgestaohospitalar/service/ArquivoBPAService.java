@@ -7,7 +7,9 @@ import org.springframework.stereotype.Service;
 import com.ifrn.sisgestaohospitalar.model.ArquivoBPA;
 import com.ifrn.sisgestaohospitalar.model.Atendimento;
 import com.ifrn.sisgestaohospitalar.model.AtendimentoProcedimento;
+import com.ifrn.sisgestaohospitalar.model.FolhaBPAConsolidado;
 import com.ifrn.sisgestaohospitalar.model.FolhaBPAIndividualizado;
+import com.ifrn.sisgestaohospitalar.model.LinhaBPAConsolidado;
 import com.ifrn.sisgestaohospitalar.model.LinhaBPAIndividualizado;
 import com.ifrn.sisgestaohospitalar.model.ProcedimentoRegistroSigtap;
 import com.ifrn.sisgestaohospitalar.repository.ArquivoBPARepository;
@@ -38,14 +40,17 @@ public class ArquivoBPAService {
 	@Autowired
 	private LinhaBPAIndividualizadoService linhaBpaIndividualizadoService;
 
+	@Autowired
+	private LinhaBPAConsolidadoService linhaBPAConsolidadoService;
+
 	private List<AtendimentoProcedimento> procedimentosConsolidados = new ArrayList<>();
 
 	private List<AtendimentoProcedimento> procedimentosIndividualizados = new ArrayList<>();
 
-	public List<AtendimentoProcedimento> getAtendimentoProcedimentos(String mes) {
+	public List<AtendimentoProcedimento> getAtendimentoProcedimentos(String ano, String mes) {
 		List<AtendimentoProcedimento> atendimentoProcedimentos = new ArrayList<>();
 		atendimentoProcedimentos.clear();
-		List<Atendimento> atendimentos = atendimentoRepository.findByMes(mes);
+		List<Atendimento> atendimentos = atendimentoRepository.findByMes(ano, mes);
 		if (atendimentos != null) {
 			for (Atendimento atendimento : atendimentos) {
 				atendimentoProcedimentos.addAll(atendimento.getAtendimentoProcedimentos());
@@ -83,6 +88,14 @@ public class ArquivoBPAService {
 
 	private void setProcedimentosIndividualizados(AtendimentoProcedimento atendimentoProcedimento) {
 		procedimentosIndividualizados.add(atendimentoProcedimento);
+	}
+
+	public void clearProcedimentosConsolidados() {
+		procedimentosConsolidados.clear();
+	}
+
+	public void clearProcedimentosIndividualizados() {
+		procedimentosIndividualizados.clear();
 	}
 
 	public List<AtendimentoProcedimento> getProcedimentosConsolidados() {
@@ -124,28 +137,74 @@ public class ArquivoBPAService {
 		return false;
 	}
 
-	public void processarArquivoBPA(String mes) {
+	public void processarArquivoBPA(String ano, String mes) {
+
 		ArquivoBPA arquivoBPA = new ArquivoBPA();
+		clearProcedimentosIndividualizados();
+		clearProcedimentosConsolidados();
+
+		filtraProcedimentos(getAtendimentoProcedimentos(ano, mes));
+
 		FolhaBPAIndividualizado folhaBPAIndividualizado = new FolhaBPAIndividualizado();
+		FolhaBPAConsolidado folhaBPAConsolidado = new FolhaBPAConsolidado();
+
 		folhaBPAIndividualizado.setLinhasBPAIndividualizado(new ArrayList<>());
-		int numeroFolha = 1;
-		int numeroLinha = 0;
+		folhaBPAConsolidado.setLinhasBPAConsolidado(new ArrayList<>());
+
+		int numeroFolhaConsolidado = 1;
+		int numeroLinhaConsolidado = 0;
+
+		int numeroFolhaIndividualizado = 1;
+		int numeroLinhaIndividualizado = 0;
+
+		for (LinhaBPAConsolidado linhaBPAConsolidado : linhaBPAConsolidadoService
+				.getLinhasBPAConsolidado(getProcedimentosConsolidados())) {
+			numeroLinhaConsolidado++;
+			folhaBPAConsolidado.setNumero(numeroFolhaConsolidado);
+			linhaBPAConsolidado.setNumeroFolha(Integer.toString(numeroLinhaIndividualizado));
+			linhaBPAConsolidado.setNumeroLinha(Integer.toString(numeroLinhaConsolidado));
+			folhaBPAConsolidado.getLinhasBPAConsolidado().add(linhaBPAConsolidado);
+			if (numeroLinhaConsolidado == 20) {
+				numeroFolhaConsolidado++;
+				numeroLinhaConsolidado = 0;
+				folhaBPAConsolidado = new FolhaBPAConsolidado();
+			}
+			arquivoBPA.setFolhasBPAConsolidado(new ArrayList<>());
+			arquivoBPA.getFolhasBPAConsolidado().add(folhaBPAConsolidado);
+		}
+
 		for (LinhaBPAIndividualizado linhaBPAIndividualizado : linhaBpaIndividualizadoService
-				.getLinhasBPAIndividualizado(mes)) {
-			numeroLinha++;
-			folhaBPAIndividualizado.setNumero(numeroFolha);
-			linhaBPAIndividualizado.setNumeroFolha(Integer.toString(numeroFolha));
-			linhaBPAIndividualizado.setNumeroLinha(Integer.toString(numeroLinha));
+				.getLinhasBPAIndividualizado(getProcedimentosIndividualizados())) {
+			numeroLinhaIndividualizado++;
+			folhaBPAIndividualizado.setNumero(numeroFolhaIndividualizado);
+			linhaBPAIndividualizado.setNumeroFolha(Integer.toString(numeroFolhaIndividualizado));
+			linhaBPAIndividualizado.setNumeroLinha(Integer.toString(numeroLinhaIndividualizado));
 			folhaBPAIndividualizado.getLinhasBPAIndividualizado().add(linhaBPAIndividualizado);
-			if (numeroLinha == 20) {
-				numeroFolha++;
-				numeroLinha = 0;
+			if (numeroLinhaIndividualizado == 20) {
+				numeroFolhaIndividualizado++;
+				numeroLinhaIndividualizado = 0;
 				folhaBPAIndividualizado = new FolhaBPAIndividualizado();
 			}
 			arquivoBPA.setFolhasBPAIndividualizado(new ArrayList<>());
 			arquivoBPA.getFolhasBPAIndividualizado().add(folhaBPAIndividualizado);
 		}
+
+		arquivoBPA.setQtdFolhas(Integer.toString(
+				arquivoBPA.getFolhasBPAIndividualizado().size() + arquivoBPA.getFolhasBPAConsolidado().size()));
+
 		save(arquivoBPA);
+	}
+
+	public List<LinhaBPAIndividualizado> retornoIndividualizado(String ano, String mes) {
+		clearProcedimentosIndividualizados();
+		filtraProcedimentos(getAtendimentoProcedimentos(ano, mes));
+		return linhaBpaIndividualizadoService.getLinhasBPAIndividualizado(getProcedimentosIndividualizados());
+	}
+
+	public List<LinhaBPAConsolidado> retornoConsolidado(String ano, String mes) {
+		clearProcedimentosConsolidados();
+		filtraProcedimentos(getAtendimentoProcedimentos(ano, mes));
+		return linhaBPAConsolidadoService.getLinhasBPAConsolidado(getProcedimentosConsolidados());
 	}
 
 	public void save(ArquivoBPA arquivoBPA) {

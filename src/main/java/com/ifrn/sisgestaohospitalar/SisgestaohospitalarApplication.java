@@ -107,16 +107,16 @@ public class SisgestaohospitalarApplication implements ApplicationListener<Conte
 	@Override
 	public void onApplicationEvent(ContextRefreshedEvent event) {
 
-		//criaRolesETipoUsuario();
-		//lerSigtab();
-		//lerMedicamentosEFormaFarmaceutica();
-		//lerXmlEsus();
-		//lerEstadosMunicipios();
-		//salvarViaAdministracao();
-		//salvarTipoServico();
-		//LerExames();
-		//leitorTXTExames.atualizaGrupo();
-		//criaClassificacaoDeRisco();
+		// criaRolesETipoUsuario();
+		// lerSigtab();
+		// lerMedicamentosEFormaFarmaceutica();
+		// lerXmlEsus();
+		// lerEstadosMunicipios();
+		// salvarViaAdministracao();
+		// salvarTipoServico();
+		// LerExames();
+		// leitorTXTExames.atualizaGrupo();
+		// criaClassificacaoDeRisco();
 	}
 
 	public void salvarTipoServico() {

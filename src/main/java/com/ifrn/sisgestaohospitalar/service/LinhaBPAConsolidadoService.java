@@ -1,6 +1,5 @@
 package com.ifrn.sisgestaohospitalar.service;
 
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -16,22 +15,14 @@ import com.ifrn.sisgestaohospitalar.repository.ProcedimentoDetalheRepository;
 public class LinhaBPAConsolidadoService {
 
 	@Autowired
-	private ArquivoBPAService arquivoBPAService;
-	@Autowired
 	private ProcedimentoDetalheRepository procedimentoDetalheRepository;
 	@Autowired
 	private EstabelecimentoRepository estabelecimentoRepository;
 
-	DateTimeFormatter formaterCompetencia = DateTimeFormatter.ofPattern("yyyyMM");
-	DateTimeFormatter formaterYYYYmmAA = DateTimeFormatter.ofPattern("yyyyMMdd");
-
-	public List<?> getLinhasBPAConsolidado(String mes) {
+	public List<LinhaBPAConsolidado> getLinhasBPAConsolidado(List<AtendimentoProcedimento> procedimentosConsolidados) {
 		List<LinhaBPAConsolidado> linhasBpaConsolidado = new ArrayList<>();
-		String cnes = getCnes();
-		arquivoBPAService.filtraProcedimentos(arquivoBPAService.getAtendimentoProcedimentos(mes));
-
-		arquivoBPAService.getProcedimentosConsolidados().stream()
-				.collect(Collectors.groupingBy(AtendimentoProcedimento::getProcedimento))
+		String CNES = getCnes();
+		procedimentosConsolidados.stream().collect(Collectors.groupingBy(AtendimentoProcedimento::getProcedimento))
 				.forEach((procedimento, lista) -> {
 					if (exigeIdade(procedimento)) {
 						lista.stream().collect(Collectors.groupingBy(AtendimentoProcedimento::getIdadeNoAtendimento))
@@ -41,14 +32,14 @@ public class LinhaBPAConsolidadoService {
 											.forEach((cbo, list) -> {
 												LinhaBPAConsolidado linhaBPAConsolidado = new LinhaBPAConsolidado();
 												linhaBPAConsolidado.setLinhaIdenti("02");
-												linhaBPAConsolidado.setCnes(cnes);
+												linhaBPAConsolidado.setCnes(CNES);
 												linhaBPAConsolidado.setCompetencia("202203"); // Lembrar de alterar
 												linhaBPAConsolidado.setCboProfissional(cbo);
 												linhaBPAConsolidado.setCodigoProcedimento(
 														getCodigoProcedimento(procedimento.getCodigo()));
 												linhaBPAConsolidado.setIdade(Integer.toString(k));
 												linhaBPAConsolidado
-														.setQuantidade(Integer.toString(getQuantidadeProcedimentos(v)));
+														.setQuantidade(Integer.toString(getQuantidadeProcedimentos(list)));
 												linhaBPAConsolidado.setOrigem("BPA");
 												linhaBPAConsolidado.setFim(" ");
 												linhasBpaConsolidado.add(linhaBPAConsolidado);
@@ -60,9 +51,8 @@ public class LinhaBPAConsolidadoService {
 								.forEach((k, v) -> {
 									LinhaBPAConsolidado linhaBPAConsolidado = new LinhaBPAConsolidado();
 									linhaBPAConsolidado.setLinhaIdenti("02");
-									linhaBPAConsolidado.setCnes(cnes);
+									linhaBPAConsolidado.setCnes(CNES);
 									linhaBPAConsolidado.setCompetencia("202203"); // Lembrar de alterar
-																					// depois
 									linhaBPAConsolidado.setCboProfissional(k);
 									linhaBPAConsolidado
 											.setCodigoProcedimento(getCodigoProcedimento(procedimento.getCodigo()));
@@ -70,7 +60,7 @@ public class LinhaBPAConsolidadoService {
 									linhaBPAConsolidado.setQuantidade(Integer.toString(getQuantidadeProcedimentos(v)));
 									linhaBPAConsolidado.setOrigem("BPA");
 									linhaBPAConsolidado.setFim(" ");
-									// linhasBpaConsolidado.add(linhaBPAConsolidado);
+									linhasBpaConsolidado.add(linhaBPAConsolidado);
 								});
 
 					}
@@ -80,10 +70,7 @@ public class LinhaBPAConsolidadoService {
 	}
 
 	private int getQuantidadeProcedimentos(List<AtendimentoProcedimento> atendimentoProcedimentos) {
-		int quantidade = 0;
-		quantidade = atendimentoProcedimentos.stream()
-				.collect(Collectors.summingInt(AtendimentoProcedimento::getQuantidade));
-		return quantidade;
+		return atendimentoProcedimentos.stream().collect(Collectors.summingInt(AtendimentoProcedimento::getQuantidade));
 	}
 
 	private String getCnes() {
