@@ -40,9 +40,11 @@ public class ArquivoBPA {
 
 	private String orgaoDestino;
 
-	private String incadorOrgao;
+	private char incadorOrgao;
 
 	private String versaoSistema;
+
+	private String fim;
 
 	private LocalDate dataGeracao;
 
@@ -91,7 +93,7 @@ public class ArquivoBPA {
 	}
 
 	public void setCompetencia(String competencia) {
-		this.competencia = competencia;
+		this.competencia = String.format("%-6.6s", competencia);
 	}
 
 	public String getQtdLinhas() {
@@ -99,7 +101,7 @@ public class ArquivoBPA {
 	}
 
 	public void setQtdLinhas(String qtdLinhas) {
-		this.qtdLinhas = qtdLinhas;
+		this.qtdLinhas = String.format("%06d", new Object[] { Integer.parseInt(qtdLinhas) });
 	}
 
 	public String getQtdFolhas() {
@@ -107,7 +109,7 @@ public class ArquivoBPA {
 	}
 
 	public void setQtdFolhas(String qtdFolhas) {
-		this.qtdFolhas = qtdFolhas;
+		this.qtdFolhas = String.format("%06d", new Object[] { Integer.parseInt(qtdFolhas) });
 	}
 
 	public String getControleDominio() {
@@ -115,7 +117,7 @@ public class ArquivoBPA {
 	}
 
 	public void setControleDominio(String controleDominio) {
-		this.controleDominio = controleDominio;
+		this.controleDominio = String.format("%-4.4s", controleDominio);
 	}
 
 	public String getOrgaoResponsavel() {
@@ -123,7 +125,7 @@ public class ArquivoBPA {
 	}
 
 	public void setOrgaoResponsavel(String orgaoResponsavel) {
-		this.orgaoResponsavel = orgaoResponsavel;
+		this.orgaoResponsavel = String.format("%-30.30s", orgaoResponsavel);
 	}
 
 	public String getSiglaOrgaoResponsavel() {
@@ -131,7 +133,7 @@ public class ArquivoBPA {
 	}
 
 	public void setSiglaOrgaoResponsavel(String siglaOrgaoResponsavel) {
-		this.siglaOrgaoResponsavel = siglaOrgaoResponsavel;
+		this.siglaOrgaoResponsavel = String.format("%-6.6s", siglaOrgaoResponsavel);
 	}
 
 	public String getCnpjOrgaoResponsavel() {
@@ -139,7 +141,7 @@ public class ArquivoBPA {
 	}
 
 	public void setCnpjOrgaoResponsavel(String cnpjOrgaoResponsavel) {
-		this.cnpjOrgaoResponsavel = cnpjOrgaoResponsavel;
+		this.cnpjOrgaoResponsavel = String.format("%-14.14s", cnpjOrgaoResponsavel);
 	}
 
 	public String getOrgaoDestino() {
@@ -147,14 +149,14 @@ public class ArquivoBPA {
 	}
 
 	public void setOrgaoDestino(String orgaoDestino) {
-		this.orgaoDestino = orgaoDestino;
+		this.orgaoDestino = String.format("%-40.40s", orgaoDestino);
 	}
 
-	public String getIncadorOrgao() {
+	public char getIncadorOrgao() {
 		return incadorOrgao;
 	}
 
-	public void setIncadorOrgao(String incadorOrgao) {
+	public void setIncadorOrgao(char incadorOrgao) {
 		this.incadorOrgao = incadorOrgao;
 	}
 
@@ -163,7 +165,15 @@ public class ArquivoBPA {
 	}
 
 	public void setVersaoSistema(String versaoSistema) {
-		this.versaoSistema = versaoSistema;
+		this.versaoSistema = String.format("%-10.10s", competencia);
+	}
+
+	public String getFim() {
+		return fim;
+	}
+
+	public void setFim(String fim) {
+		this.fim = String.format("%-2.2s", fim);
 	}
 
 	public LocalDate getDataGeracao() {

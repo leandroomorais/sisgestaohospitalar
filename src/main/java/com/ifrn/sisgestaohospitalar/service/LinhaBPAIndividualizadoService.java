@@ -40,7 +40,7 @@ public class LinhaBPAIndividualizadoService {
 			Cidadao DADOS_CIDADAO = a.getAtendimento().getCidadao();
 			Endereco ENDERECO_CIDADAO = a.getAtendimento().getCidadao().getEndereco();
 			Profissional PROFISSIONAL = a.getProfissional();
-			linhaBPAIndividualizado.setLinhaIdenti("3");
+			linhaBPAIndividualizado.setLinhaIdenti("03");
 			linhaBPAIndividualizado.setCnes(CNES);
 			linhaBPAIndividualizado.setCompetencia(ATENDIMENTO.getDataEntrada().format(datas.competencia()));
 			linhaBPAIndividualizado.setCnsProfissional(PROFISSIONAL.getCns());

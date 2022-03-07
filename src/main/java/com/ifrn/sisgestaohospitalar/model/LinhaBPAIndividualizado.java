@@ -101,7 +101,7 @@ public class LinhaBPAIndividualizado {
 	}
 
 	public void setLinhaIdenti(String linhaIdenti) {
-		this.linhaIdenti = String.format("%-2.2s", linhaIdenti);
+		this.linhaIdenti = linhaIdenti;
 	}
 
 	public String getCnes() {

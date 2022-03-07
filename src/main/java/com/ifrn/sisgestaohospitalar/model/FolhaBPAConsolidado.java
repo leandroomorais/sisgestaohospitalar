@@ -20,7 +20,7 @@ public class FolhaBPAConsolidado {
 	private int numero;
 
 	@ManyToMany(cascade = CascadeType.ALL)
-	@JoinTable(name = "folha_bpa_individualizado_linha_consolidado")
+	@JoinTable(name = "folha_bpa_consolidado_linha_consolidado")
 	private List<LinhaBPAConsolidado> linhasBPAConsolidado;
 
 	public Long getId() {

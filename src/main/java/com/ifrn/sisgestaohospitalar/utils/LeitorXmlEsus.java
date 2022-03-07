@@ -13,12 +13,14 @@ import com.ifrn.sisgestaohospitalar.model.Estabelecimento;
 import com.ifrn.sisgestaohospitalar.model.ImportarXmlEsus;
 import com.ifrn.sisgestaohospitalar.model.Lotacao;
 import com.ifrn.sisgestaohospitalar.model.Ocupacao;
+import com.ifrn.sisgestaohospitalar.model.OrgaoResponsavel;
 import com.ifrn.sisgestaohospitalar.model.Profissional;
 import com.ifrn.sisgestaohospitalar.model.Role;
 import com.ifrn.sisgestaohospitalar.model.TipoUsuario;
 import com.ifrn.sisgestaohospitalar.model.Usuario;
 import com.ifrn.sisgestaohospitalar.repository.EstabelecimentoRepository;
 import com.ifrn.sisgestaohospitalar.repository.OcupacaoRepository;
+import com.ifrn.sisgestaohospitalar.repository.OrgaoResponsavelRepository;
 import com.ifrn.sisgestaohospitalar.repository.ProfissionalRepository;
 import com.ifrn.sisgestaohospitalar.repository.RoleRepository;
 import com.ifrn.sisgestaohospitalar.repository.TipoUsuarioRepository;
@@ -49,6 +51,8 @@ public class LeitorXmlEsus {
 	private TipoUsuarioRepository tipoUsuarioRepository;
 	@Autowired
 	private OcupacaoRepository ocupacaoRepository;
+	@Autowired
+	private OrgaoResponsavelRepository orgaoResponsavelRepository;
 
 	SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
 
@@ -141,7 +145,45 @@ public class LeitorXmlEsus {
 					&& estabelecimentoRepository.findByCnes(estabelecimento.getCnes()) == null) {
 				estabelecimentoRepository.saveAndFlush(estabelecimento);
 			}
+			if (estabelecimento.getTipoUnidadeId().equals("68")) {
+				OrgaoResponsavel orgaoResponsavel = new OrgaoResponsavel();
+				orgaoResponsavel.setSigla(getSigla(estabelecimento.getNome()));
+				orgaoResponsavel.setNomeOrgao(getNome(orgaoResponsavel.getSigla(), estabelecimento.getNome()));
+				orgaoResponsavel.setCnpj(estabelecimento.getCnpj());
+				orgaoResponsavel.setIndicador('M');
+				orgaoResponsavelRepository.saveAndFlush(orgaoResponsavel);
+			}
 		}
+	}
+
+	private String getSigla(String nomeEstabelecimento) {
+		String sigla[] = nomeEstabelecimento.split(" ");
+		String siglaAux = "";
+		for (int i = 0; i < sigla.length; i++) {
+			if (sigla[i].equals("DE")) {
+				sigla[i] = "";
+			}
+			if (sigla[i].length() != 0) {
+				siglaAux += sigla[i].substring(0, 1);
+			}
+		}
+		return siglaAux;
+	}
+
+	private String getNome(String sigla, String nomeEstabelecimento) {
+		String nome[] = nomeEstabelecimento.split(" ");
+		String nomeAux = " ";
+		for (int i = 0; i < nome.length; i++) {
+			if (nome[i].equals("SECRETARIA") || nome[i].equals("MUNICIPAL") || nome[i].equals("DE")
+					|| nome[i].equals("SAUDE")) {
+				nome[i] = "";
+			}
+			if (nome[i].length() != 0) {
+				nomeAux += nome[i] + " ";
+			}
+		}
+		return sigla.substring(0, 3) + " DE" + nomeAux;
+
 	}
 
 }
