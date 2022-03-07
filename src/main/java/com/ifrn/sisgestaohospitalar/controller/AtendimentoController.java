@@ -205,7 +205,6 @@ public class AtendimentoController {
 			errors.put("atendimento.tipoAtendimento", "Selecione o tipo do atendimento");
 			return ResponseEntity.unprocessableEntity().body(errors);
 		}
-		
 
 		Optional<Atendimento> optional = atendimentoRepository.findById(atendimentoDTO.getId());
 		

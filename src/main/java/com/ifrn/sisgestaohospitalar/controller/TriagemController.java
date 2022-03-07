@@ -19,6 +19,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import com.ifrn.sisgestaohospitalar.enums.CaraterAtendimento;
 import com.ifrn.sisgestaohospitalar.enums.CondutaCidadao;
 import com.ifrn.sisgestaohospitalar.enums.MomentoColeta;
 import com.ifrn.sisgestaohospitalar.enums.SituacaoCondicao;
@@ -114,6 +116,7 @@ public class TriagemController {
 			triagem.getSinaisVitais().setUltimaAtualizacao(LocalDateTime.now());
 			atendimento.setTriagem(triagem);
 			atendimento.setClassificacaoDeRisco(triagem.getClassificacaoDeRisco());
+			atendimento.setCaraterAtendimento(CaraterAtendimento.ELETIVO);
 			atendimentoRepository.saveAndFlush(atendimento);
 			return ResponseEntity.ok().build();
 		}

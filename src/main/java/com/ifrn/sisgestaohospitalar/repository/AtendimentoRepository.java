@@ -29,7 +29,7 @@ public interface AtendimentoRepository extends JpaRepository<Atendimento, Long> 
 	@Query("select a from Atendimento a where a.cidadao.nome like %:search% or a.profissionalDestino like %:search%")
 	Page<Atendimento> findByCidadaoOrProfissionalOrTipoServico(@Param("search") String search, Pageable pageable);
 
-	@Query("select a from Atendimento a where year(a.dataEntrada) = 2022 and month(a.dataEntrada) = 3")
-	List<Atendimento> findByMes( @Param("ano") String ano, @Param("mes") String mes);
+	@Query("select a from Atendimento a where year(a.dataEntrada) = :ano and month(a.dataEntrada) = :mes")
+	List<Atendimento> findByMes(@Param("ano") int ano, @Param("mes") int mes);
 
 }
