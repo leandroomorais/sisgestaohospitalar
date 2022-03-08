@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html layout:decorate="~{/layouts/layout-admin}">
+<html layout:decorate="~{/layouts/layout-modulos}" lang="pt" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity"
+	xmlns:layout="http://ultraq.net.nz/thymeleaf/layout">
 <head>
 <meta charset="utf-8">
 <title>SGH - Bem Vindo!</title>
@@ -70,8 +72,8 @@
 												<div>
 													<h6 class="fw-bold text-uppercase text-success op-8">Tipo
 														da Unidade:</h6>
-													<h8 class="fw-bold"
-														th:text="${estabelecimento.descricaotipounidade}"></h8>
+<!-- 													<h8 class="fw-bold" -->
+<!-- 														th:text="${estabelecimento.descricaotipounidade}"></h8> -->
 												</div>
 											</div>
 										</div>
