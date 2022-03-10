@@ -1,5 +1,8 @@
 package com.ifrn.sisgestaohospitalar.model;
 
+import java.text.Normalizer;
+import java.util.regex.Pattern;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -245,7 +248,7 @@ public class LinhaBPAIndividualizado {
 	}
 
 	public void setNomePaciente(String nomePaciente) {
-		this.nomePaciente = String.format("%-30.30s", nomePaciente);
+		this.nomePaciente = String.format("%-30.30s", removeAcento(nomePaciente));
 	}
 
 	public String getDataNascimento() {
@@ -342,7 +345,7 @@ public class LinhaBPAIndividualizado {
 	}
 
 	public void setEnderecoPaciente(String enderecoPaciente) {
-		this.enderecoPaciente = String.format("%-30.30s", enderecoPaciente);
+		this.enderecoPaciente = String.format("%-30.30s", removeAcento(enderecoPaciente));
 	}
 
 	public String getComplementoEndereco() {
@@ -350,7 +353,7 @@ public class LinhaBPAIndividualizado {
 	}
 
 	public void setComplementoEndereco(String complementoEndereco) {
-		this.complementoEndereco = String.format("%-10.10s", complementoEndereco);
+		this.complementoEndereco = String.format("%-10.10s", removeAcento(complementoEndereco));
 	}
 
 	public String getNumeroEndereco() {
@@ -366,7 +369,7 @@ public class LinhaBPAIndividualizado {
 	}
 
 	public void setBairroEndereco(String bairroEndereco) {
-		this.bairroEndereco = String.format("%-30.30s", bairroEndereco);
+		this.bairroEndereco = String.format("%-30.30s", removeAcento(bairroEndereco));
 	}
 
 	public String getTelefonePaciente() {
@@ -382,7 +385,7 @@ public class LinhaBPAIndividualizado {
 	}
 
 	public void setEmailPaciente(String emailPaciente) {
-		this.emailPaciente = String.format("%-40.40s", emailPaciente);
+		this.emailPaciente = String.format("%-40.40s", removeAcento(emailPaciente));
 	}
 
 	public String getIdentificacaoEquipe() {
@@ -401,24 +404,21 @@ public class LinhaBPAIndividualizado {
 		this.fim = String.format("%-2.2s", fim);
 	}
 
+	private String removeAcento(String str) {
+		String nfdNormalizedString = Normalizer.normalize(str, Normalizer.Form.NFD);
+		Pattern pattern = Pattern.compile("\\p{InCombiningDiacriticalMarks}+");
+		return pattern.matcher(nfdNormalizedString).replaceAll("");
+	}
+
 	@Override
 	public String toString() {
-		return "LinhaBPAIndividualizado [linhaIdenti=" + linhaIdenti + ", cnes=" + cnes + ", competencia=" + competencia
-				+ ", cnsProfissional=" + cnsProfissional + ", cboProfissional=" + cboProfissional + ", dataAtendimento="
-				+ dataAtendimento + ", numeroFolha=" + numeroFolha + ", numeroLinha=" + numeroLinha
-				+ ", codigoProcedimento=" + codigoProcedimento + ", cnsPaciente=" + cnsPaciente + ", sexoPaciente="
-				+ sexoPaciente + ", codigoIbge=" + codigoIbge + ", cid=" + cid + ", idade=" + idade
-				+ ", qtdProcedimento=" + qtdProcedimento + ", caraterAtendimento=" + caraterAtendimento
-				+ ", numeroAutorizacao=" + numeroAutorizacao + ", origemInformacao=" + origemInformacao
-				+ ", nomePaciente=" + nomePaciente + ", dataNascimento=" + dataNascimento + ", racaCor=" + racaCor
-				+ ", etnia=" + etnia + ", nacionalidade=" + nacionalidade + ", codigoServico=" + codigoServico
-				+ ", codigoClassificacao=" + codigoClassificacao + ", codigoSequenciaEquipe=" + codigoSequenciaEquipe
-				+ ", codigoAreaEquipe=" + codigoAreaEquipe + ", codigoCnpjEmpresa=" + codigoCnpjEmpresa
-				+ ", cepPaciente=" + cepPaciente + ", logradouroPaciente=" + logradouroPaciente + ", enderecoPaciente="
-				+ enderecoPaciente + ", complementoEndereco=" + complementoEndereco + ", numeroEndereco="
-				+ numeroEndereco + ", bairroEndereco=" + bairroEndereco + ", telefonePaciente=" + telefonePaciente
-				+ ", emailPaciente=" + emailPaciente + ", identificacaoEquipe=" + identificacaoEquipe + ", fim=" + fim
-				+ "]";
+		return linhaIdenti + cnes + competencia + cnsProfissional + cboProfissional + dataAtendimento + numeroFolha
+				+ numeroLinha + codigoProcedimento + cnsPaciente + sexoPaciente + codigoIbge + cid + idade
+				+ qtdProcedimento + caraterAtendimento + numeroAutorizacao + origemInformacao + nomePaciente
+				+ dataNascimento + racaCor + etnia + nacionalidade + codigoServico + codigoClassificacao
+				+ codigoSequenciaEquipe + codigoAreaEquipe + codigoCnpjEmpresa + cepPaciente + logradouroPaciente
+				+ enderecoPaciente + complementoEndereco + numeroEndereco + bairroEndereco + telefonePaciente
+				+ emailPaciente + identificacaoEquipe;
 	}
 
 }

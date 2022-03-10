@@ -1,8 +1,9 @@
 package com.ifrn.sisgestaohospitalar.service;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.atomic.AtomicInteger;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,6 +20,7 @@ import com.ifrn.sisgestaohospitalar.repository.ArquivoBPARepository;
 import com.ifrn.sisgestaohospitalar.repository.AtendimentoRepository;
 import com.ifrn.sisgestaohospitalar.repository.OrgaoResponsavelRepository;
 import com.ifrn.sisgestaohospitalar.repository.ProcedimentoRegistroSigtapRepository;
+import com.ifrn.sisgestaohospitalar.utils.EscritorTXT;
 
 /**
  * A classe <code>ArquivoBPAService</code> implementa os métodos da Interface
@@ -54,6 +56,8 @@ public class ArquivoBPAService {
 
 	private List<AtendimentoProcedimento> procedimentosIndividualizados = new ArrayList<>();
 
+	EscritorTXT escritorTXT = new EscritorTXT();
+
 	public ArquivoBPA processarArquivoBPA(int ano, int mes) {
 		clearProcedimentosConsolidados();
 		clearProcedimentosIndividualizados();
@@ -75,12 +79,15 @@ public class ArquivoBPAService {
 			int numeroFolhaBpaIndividualizado = 1;
 			int numeroLinhaBpaIndividualizado = 0;
 
+			String cnes = null;
+
 			for (LinhaBPAConsolidado linha : linhaBPAConsolidadoService
 					.getLinhasBPAConsolidado(getProcedimentosConsolidados())) {
 				numerolinhaBpaConsolidado++;
 				folhaBPAConsolidado.setNumero(numerofolhaBpaConsolidado);
 				linha.setNumeroFolha(Integer.toString(numerofolhaBpaConsolidado));
 				linha.setNumeroLinha(Integer.toString(numerolinhaBpaConsolidado));
+				cnes = linha.getCnes();
 				linhasBPAConsolidados.add(linha);
 				if (numerolinhaBpaConsolidado == 20) {
 					numerofolhaBpaConsolidado++;
@@ -105,7 +112,7 @@ public class ArquivoBPAService {
 					folhaBPAIndividualizado = new FolhaBPAIndividualizado();
 				}
 			}
-			
+
 			folhaBPAIndividualizado.setLinhasBPAIndividualizado(linhasBPAIndividualizado);
 			arquivoBPA.getFolhasBPAIndividualizado().add(folhaBPAIndividualizado);
 
@@ -126,8 +133,11 @@ public class ArquivoBPAService {
 			arquivoBPA.setOrgaoDestino(orgaoResponsavel.getNomeOrgao());
 			arquivoBPA.setIncadorOrgao(orgaoResponsavel.getIndicador());
 			arquivoBPA.setVersaoSistema("SGH-1.0");
-			arquivoBPA.setFim(" ");
-			save(arquivoBPA);
+			arquivoBPA.setFim("");
+			arquivoBPA.setHoraGeracao(LocalDateTime.now());
+			arquivoBPA.setDataGeracao(LocalDate.now());
+			arquivoBPA.setGerado(true);
+			arquivoBPA.setCnes(cnes);
 			return arquivoBPA;
 		}
 	}
@@ -234,7 +244,7 @@ public class ArquivoBPAService {
 		for (FolhaBPAConsolidado folhaBPAConsolidado : folhasBPAConsolidado) {
 			qtdLinhas += folhaBPAConsolidado.getLinhasBPAConsolidado().size();
 		}
-		return qtdLinhas;
+		return qtdLinhas + 1;
 	}
 
 	private OrgaoResponsavel getOrgaoResponsavel() {
@@ -243,22 +253,22 @@ public class ArquivoBPAService {
 
 	private String getCampoControle(List<FolhaBPAIndividualizado> folhasBPAIndividualizado,
 			List<FolhaBPAConsolidado> folhasBPAConsolidado) {
-		int soma = 0;
+		Long soma = 0L;
 		for (FolhaBPAIndividualizado folhaBpaIndividualizado : folhasBPAIndividualizado) {
 			for (LinhaBPAIndividualizado linhaBPAIndividualizado : folhaBpaIndividualizado
 					.getLinhasBPAIndividualizado()) {
-				soma += Integer.parseInt(linhaBPAIndividualizado.getCodigoProcedimento());
-				soma += Integer.parseInt(linhaBPAIndividualizado.getQtdProcedimento());
+				soma += Long.parseLong(linhaBPAIndividualizado.getQtdProcedimento());
+				soma += Long.parseLong(linhaBPAIndividualizado.getCodigoProcedimento());
 			}
 		}
 		for (FolhaBPAConsolidado folhaBPAConsolidado : folhasBPAConsolidado) {
 			for (LinhaBPAConsolidado linhaBPAConsolidado : folhaBPAConsolidado.getLinhasBPAConsolidado()) {
-				soma += Integer.parseInt(linhaBPAConsolidado.getCodigoProcedimento());
-				soma += Integer.parseInt(linhaBPAConsolidado.getQuantidade());
+				soma += Long.parseLong(linhaBPAConsolidado.getCodigoProcedimento());
+				soma += Long.parseLong(linhaBPAConsolidado.getQuantidade());
 			}
 		}
-		int resto = soma % 1111;
-		return Integer.toString(resto + 1111);
+		Long resto = soma % 1111;
+		return Long.toString(Long.sum(resto, 1111));
 	}
 
 	public List<LinhaBPAIndividualizado> retornoIndividualizado(int ano, int mes) {

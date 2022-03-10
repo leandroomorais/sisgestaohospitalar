@@ -30,6 +30,7 @@ public class LinhaBPAConsolidadoService {
 			String CNES = getCnes();
 			procedimentosConsolidados.stream().collect(Collectors.groupingBy(AtendimentoProcedimento::getProcedimento))
 					.forEach((procedimento, lista) -> {
+						String COMPETENCIA = lista.get(0).getAtendimento().getDataEntrada().format(datas.competencia());
 						if (exigeIdade(procedimento)) {
 							lista.stream()
 									.collect(Collectors.groupingBy(AtendimentoProcedimento::getIdadeNoAtendimento))
@@ -38,8 +39,6 @@ public class LinhaBPAConsolidadoService {
 												.collect(Collectors
 														.groupingBy(AtendimentoProcedimento::getCboProfissional))
 												.forEach((cbo, list) -> {
-													String COMPETENCIA = list.get(0).getAtendimento().getDataEntrada()
-															.format(datas.competencia());
 													LinhaBPAConsolidado linhaBPAConsolidado = new LinhaBPAConsolidado();
 													linhaBPAConsolidado.setLinhaIdenti("02");
 													linhaBPAConsolidado.setCnes(CNES);
@@ -62,7 +61,7 @@ public class LinhaBPAConsolidadoService {
 										LinhaBPAConsolidado linhaBPAConsolidado = new LinhaBPAConsolidado();
 										linhaBPAConsolidado.setLinhaIdenti("02");
 										linhaBPAConsolidado.setCnes(CNES);
-										linhaBPAConsolidado.setCompetencia("202203"); // Lembrar de alterar
+										linhaBPAConsolidado.setCompetencia(COMPETENCIA);
 										linhaBPAConsolidado.setCboProfissional(k);
 										linhaBPAConsolidado
 												.setCodigoProcedimento(getCodigoProcedimento(procedimento.getCodigo()));
@@ -70,7 +69,7 @@ public class LinhaBPAConsolidadoService {
 										linhaBPAConsolidado
 												.setQuantidade(Integer.toString(getQuantidadeProcedimentos(v)));
 										linhaBPAConsolidado.setOrigem("BPA");
-										linhaBPAConsolidado.setFim(" ");
+										linhaBPAConsolidado.setFim("");
 										linhasBpaConsolidado.add(linhaBPAConsolidado);
 									});
 

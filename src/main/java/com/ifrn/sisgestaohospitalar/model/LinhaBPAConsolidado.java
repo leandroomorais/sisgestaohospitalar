@@ -130,4 +130,10 @@ public class LinhaBPAConsolidado {
 		this.fim = String.format("%-2.2s", fim);
 	}
 
+	@Override
+	public String toString() {
+		return linhaIdenti + cnes + competencia + cboProfissional + numeroFolha + numeroLinha + codigoProcedimento
+				+ idade + quantidade + origem;
+	}
+
 }

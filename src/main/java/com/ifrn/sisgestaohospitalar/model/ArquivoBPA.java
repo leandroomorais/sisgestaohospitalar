@@ -3,7 +3,6 @@ package com.ifrn.sisgestaohospitalar.model;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -56,6 +55,8 @@ public class ArquivoBPA {
 
 	private boolean gerado;
 
+	private String cnes;
+
 	@ManyToMany(cascade = CascadeType.ALL)
 	@JoinTable(name = "arquivo_bpa_folha_consolidado", joinColumns = @JoinColumn(name = "id_arquivobpa"), inverseJoinColumns = @JoinColumn(name = "id_folha_bpa_consolidado"))
 	private List<FolhaBPAConsolidado> folhasBPAConsolidado;
@@ -77,7 +78,7 @@ public class ArquivoBPA {
 	}
 
 	public void setCabecalhoHeader(String cabecalhoHeader) {
-		this.cabecalhoHeader = cabecalhoHeader;
+		this.cabecalhoHeader = String.format("%-2.2s", cabecalhoHeader);
 	}
 
 	public String getIndicadorHeader() {
@@ -85,7 +86,7 @@ public class ArquivoBPA {
 	}
 
 	public void setIndicadorHeader(String indicadorHeader) {
-		this.indicadorHeader = indicadorHeader;
+		this.indicadorHeader = String.format("%-5.5s", indicadorHeader);
 	}
 
 	public String getCompetencia() {
@@ -165,7 +166,7 @@ public class ArquivoBPA {
 	}
 
 	public void setVersaoSistema(String versaoSistema) {
-		this.versaoSistema = String.format("%-10.10s", competencia);
+		this.versaoSistema = String.format("%-10.10s", versaoSistema);
 	}
 
 	public String getFim() {
@@ -173,7 +174,7 @@ public class ArquivoBPA {
 	}
 
 	public void setFim(String fim) {
-		this.fim = String.format("%-2.2s", fim);
+		this.fim = fim;
 	}
 
 	public LocalDate getDataGeracao() {
@@ -231,5 +232,21 @@ public class ArquivoBPA {
 	public void setFolhasBPAIndividualizado(List<FolhaBPAIndividualizado> folhasBPAIndividualizado) {
 		this.folhasBPAIndividualizado = folhasBPAIndividualizado;
 	}
+
+	public String getCnes() {
+		return cnes;
+	}
+
+	public void setCnes(String cnes) {
+		this.cnes = cnes;
+	}
+
+	@Override
+	public String toString() {
+		return cabecalhoHeader + indicadorHeader + competencia + qtdLinhas + qtdFolhas + controleDominio
+				+ orgaoResponsavel + siglaOrgaoResponsavel + cnpjOrgaoResponsavel + orgaoDestino + incadorOrgao
+				+ versaoSistema;
+	}
+
 
 }
