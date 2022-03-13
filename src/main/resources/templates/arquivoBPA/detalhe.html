@@ -42,7 +42,7 @@
 					<h4 class="page-title">Produção Ambulatorial</h4>
 					<ul class="breadcrumbs">
 						<li class="separator"></li>
-						<li class="nav-item"><a th:href="@{#}">Prévia da competência atual</a></li>
+						<li class="nav-item"><a th:href="@{#}">Detalhes do Arquivo</a></li>
 					</ul>
 				</div>
 
@@ -50,41 +50,40 @@
 					<div class="col-md-12">
 						<div class="card">
 							<div class="card-header">
-								<div class="card-title">Prévia da competência atual</div>
+								<div class="card-title">Detalhes do arquivo</div>
 							</div>
-							<div class="card-body">
-								<div class="card-sub"> Os dados exibidos se referem a produção ambulatorial registrada
-									no sistema para a competência <span th:text="${previaProducao.competencia}"></span>
-								</div>
-								<div class="table-responsive">
-									<table id="table-previa" class="display table table table-hover">
-										<thead>
-											<tr>
-												<th scope="col">Código</th>
-												<th scope="col">Nome procedimento</th>
-												<th scope="col">Valor unitario</th>
-												<th scope="col">Qtd</th>
-												<th scope="col">Total</th>
-											</tr>
-										</thead>
-										<tbody>
-											<tr th:each="infoProducao : ${previaProducao.infoProducaoDTOs}">
-												<td th:text="${infoProducao.codigo}"></td>
-												<td th:text="${infoProducao.nomeProcedimento}"></td>
-												<td><span th:inline="text">R$ [[${infoProducao.valorUnitario}]]</span>
-												</td>
-												<td th:text="${infoProducao.qtd}"></td>
-												<td><span th:inline="text">R$ [[${infoProducao.valor}]]</span></td>
-											</tr>
-										</tbody>
-									</table>
-									<div class="card-sub">
-										<div class="text-right">
-											Valor total: <span class="h2" th:inline="text">R$
-												[[${previaProducao.valorTotal}]]</span>
+							<div class="card-footer">
+								<div class="row">
+									<div class="col-sm-7 col-md-7 mb-3 mb-md-0 transfer-to">
+										<h5 class="sub" th:text="${arquivoBPA.nomeArquivo}"></h5>
+										<div class="account-transfer">
+											<div><span>Órgão responsável: </span><span
+													th:text="${arquivoBPA.orgaoResponsavel}"></span></div>
+											<div><span>Data e hora da geração: </span><span
+													th:text="${#temporals.format(arquivoBPA.horaGeracao,'dd-MM-yyyy hh:mm:ss')}"></span>
+											</div>
+											<div><span>Competência: </span><span
+													th:text="${arquivoBPA.competencia}"></span></div>
+											<div><span>Qtd. de folhas : </span><span
+													th:text="${arquivoBPA.qtdFolhas}"></span></div>
+											<div><span>Registros gravados: </span><span
+													th:text="${arquivoBPA.qtdLinhas}"></span></div>
+											<div><span>Campo controle: </span><span
+													th:text="${arquivoBPA.controleDominio}"></span></div>
+											<div><span>Versão do sistema: </span><span
+													th:text="${arquivoBPA.versaoSistema}"></span></div>
 										</div>
 									</div>
+									<div class="col-sm-5 col-md-5 transfer-total">
+										<h5 class="sub">Valor total</h5>
+										<div class="price" th:inline="text">R$ [[${arquivoBPA.valorTotal}]]</div>
+									</div>
 								</div>
+							</div>
+							<div class="card-action">
+								<a th:href="@{/bpa/download/{id} (id=${arquivoBPA.id})}" class="btn btn-success">Fazer
+									download <i class="fas fa-download"></i>
+								</a>
 							</div>
 						</div>
 

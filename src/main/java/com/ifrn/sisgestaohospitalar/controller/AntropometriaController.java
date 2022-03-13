@@ -2,7 +2,6 @@ package com.ifrn.sisgestaohospitalar.controller;
 
 import java.security.Principal;
 import java.time.LocalDateTime;
-import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;

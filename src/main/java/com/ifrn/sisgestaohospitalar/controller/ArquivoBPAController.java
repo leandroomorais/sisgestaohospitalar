@@ -5,6 +5,8 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.security.Principal;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -102,6 +104,20 @@ public class ArquivoBPAController {
 			return mv;
 		}
 		return mv.addObject("warning", " Sem registros de produção");
+	}
+
+	@GetMapping("/detalhe/{id}")
+	public ModelAndView detalhe(@PathVariable("id") Long id, Principal principal) {
+		ModelAndView mv = new ModelAndView("arquivoBPA/detalhe");
+		Optional<ArquivoBPA> optional = arquivoBPARepository.findById(id);
+		mv.addObject("user", usuarioRepository.findByUsername(principal.getName()));
+		if (optional.isPresent()) {
+			mv.addObject("arquivoBPA", optional.get());
+			return mv;
+		}
+		mv.addObject("erro", " Arquivo não encontrado");
+		return mv;
+
 	}
 
 }
