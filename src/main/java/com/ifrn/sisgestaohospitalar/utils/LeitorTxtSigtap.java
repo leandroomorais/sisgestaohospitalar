@@ -2,6 +2,7 @@ package com.ifrn.sisgestaohospitalar.utils;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -174,9 +175,23 @@ public class LeitorTxtSigtap {
 			int QT_PONTOS = Integer.parseInt(novaLinha.substring(270, 274));
 			int VL_IDADE_MINIMA = Integer.parseInt(novaLinha.substring(274, 278));
 			int VL_IDADE_MAXIMA = Integer.parseInt(novaLinha.substring(278, 282));
-			int VL_SH = Integer.parseInt(novaLinha.substring(282, 292));
-			int VL_SA = Integer.parseInt(novaLinha.substring(292, 302));
-			int VL_SP = Integer.parseInt(novaLinha.substring(302, 312));
+
+			String valorSH = novaLinha.substring(282, 292);
+			String valorSA = novaLinha.substring(292, 302);
+			String valorSP = novaLinha.substring(302, 312);
+
+			StringBuilder stringValorSH = new StringBuilder(valorSH);
+			StringBuilder stringValorSA = new StringBuilder(valorSA);
+			StringBuilder stringValorSP = new StringBuilder(valorSP);
+
+			stringValorSH.insert(valorSH.length() - 2, '.');
+			stringValorSA.insert(valorSA.length() - 2, '.');
+			stringValorSP.insert(valorSP.length() - 2, '.');
+
+			BigDecimal VL_SH = new BigDecimal(stringValorSH.toString());
+			BigDecimal VL_SA = new BigDecimal(stringValorSA.toString());
+			BigDecimal VL_SP = new BigDecimal(stringValorSP.toString());
+
 			String CO_FINANCIAMENTO = novaLinha.substring(312, 314);
 			String CO_RUBRICA = novaLinha.substring(314, 320);
 			int QT_TEMPO_PERMANENCIA = Integer.parseInt(novaLinha.substring(320, 323));

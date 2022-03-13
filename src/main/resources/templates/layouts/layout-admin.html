@@ -44,25 +44,25 @@
 
 		<div th:replace="fragments/main-header::main-header-recepcao"></div>
 		<div layout:fragment="sidebar"></div>
-		<div th:replace="fragments/sidebar::sidebar"></div>
+		<div th:replace="fragments/sidebar::sidebar-admin"></div>
 		<div layout:fragment="main-panel"></div>
 
 	</div>
-
-
-
-
 
 	<!--   Core JS Files   -->
 	<script th:src="@{https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js}"></script>
 	<!-- 	<script th:src="@{/assets/js/core/jquery.3.2.1.min.js}"></script> -->
 	<script th:src="@{/assets/js/core/popper.min.js}"></script>
 	<script th:src="@{/assets/js/core/bootstrap.min.js}"></script>
+	<script th:src="@{/assets/js/tabs.js}"></script>
+
+	<!-- 	TinyMCE -->
+	<script th:src="@{/assets/js/plugin/tinymce/tinymce.min.js}"></script>
 
 	<!-- jQuery UI -->
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-	<!-- 		<script -->
-	<!-- 			th:src="@{/assets/js/plugin/jquery-ui-1.12.1.custom/jquery-ui.min.js}"></script> -->
+	<script th:src="@{/assets/js/plugin/jquery-ui-1.12.1.custom/teste.js}"></script>
+	<script th:src="@{/assets/js/plugin/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js}"></script>
+
 	<script th:src="@{/assets/js/plugin/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js}"></script>
 
 	<!-- Bootstrap Notify -->
@@ -106,22 +106,15 @@
 	<!-- Atlantis JS -->
 	<script th:src="@{/assets/js/atlantis.min.js}"></script>
 
-	<!-- Easy Auto complete -->
-	<script th:src="@{/assets/js/plugin/easyautocomplete/jquery.easy-autocomplete.js}"></script>
-
 	<script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.4.1/jspdf.debug.js}"
 		integrity="sha384-THVO/sM0mFD9h7dfSndI6TS0PgAGavwKvB5hAxRRvc0o9cPLohB0wb/PTA7LdUHs"
 		crossorigin="anonymous"></script>
-
-	<!-- My JS Files -->
-	<script th:src="@{/assets/js/mascaras.js}"></script>
-	<script th:src="@{/assets/js/datatables-admin.js}"></script>
-	<script th:src="@{/assets/js/buscar-atendimento.js}"></script>
-	<script th:src="@{/assets/js/pesquisa-cidadao-admin.js}"></script>
-
-	<div layout:fragment="scripts"></div>
-
-
+	<script th:src="@{/assets/js/libs/lib-view.js}"></script>
+	<script th:src="@{/assets/js/libs/lib-utils.js}"></script>
+	<script th:src="@{/assets/js/libs/lib-pdf.js}"></script>
+	<script th:src="@{/assets/js/atendimento/imprimir-atendimento.js}"></script>
+	<script th:src="@{/assets/js/cidadao/imprimir-cidadao.js}"></script>
+	<th:block layout:fragment="my-js-files"></th:block>
 </body>
 
 </html>

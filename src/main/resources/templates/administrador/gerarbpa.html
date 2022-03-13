@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html layout:decorate="~{/layouts/layout-modulos}" lang="pt" xmlns="http://www.w3.org/1999/xhtml"
+<html layout:decorate="~{/layouts/layout-admin}" lang="pt" xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity"
 	xmlns:layout="http://ultraq.net.nz/thymeleaf/layout">
 
@@ -46,19 +46,20 @@
 									<div class="card-title">Geração de Arquivo BPA/SIA-SUS</div>
 								</div>
 
-								<div class="col-md-4">
+								<div class="col-md-6">
 									<div class="card-body">
 										<div class="form-group">
 											<label for="email2">Selecione o Mês da Competência</label> <input
 												type="month" name="competencia" class="form-control" id="mes">
-											<small id="small-mes" class="form-text text-muted">Selecione
-												o mês para o qual deseja gerar a competência do BPA</small>
+											<small id="small-mes" class="form-text text-muted">Selecione o mês da
+												competência para a geração do arquivo de exportação da produção
+												ambulatorial</small>
 										</div>
 
 									</div>
 									<div class="card-action">
-										<button type="submit" class="btn btn-success">Gerar</button>
-										<button type="reset" class="btn btn-danger">Cancelar</button>
+										<button type="submit" class="btn btn-primary">Gerar</button>
+										<button type="reset" class="btn btn-warning btn-border">Cancelar</button>
 									</div>
 								</div>
 							</div>
@@ -67,19 +68,9 @@
 				</form>
 			</div>
 		</div>
+		<div th:replace="fragments/footer :: footer-layout"></div>
 	</div>
 
-	<footer class="footer">
-		<div class="container-fluid">
-			<nav class="pull-left">
-				<th:block th:each="estabelecimento : ${estabelecimento}">
-					<span class="text-primary" th:text="${estabelecimento.nome}"></span>
-				</th:block>
-			</nav>
-			<div class="copyright ml-auto">Sistema de Gestão Hospitalar,
-				2020.</div>
-		</div>
-	</footer>
 </body>
 
 </html>

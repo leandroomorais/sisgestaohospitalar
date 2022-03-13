@@ -1,5 +1,6 @@
 package com.ifrn.sisgestaohospitalar.controller;
 
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -24,18 +25,13 @@ import com.ifrn.sisgestaohospitalar.model.Profissional;
 import com.ifrn.sisgestaohospitalar.repository.ArquivoBPARepository;
 import com.ifrn.sisgestaohospitalar.repository.UsuarioRepository;
 import com.ifrn.sisgestaohospitalar.service.ArquivoBPAService;
-import com.ifrn.sisgestaohospitalar.service.CidadaoService;
 import com.ifrn.sisgestaohospitalar.service.EstabelecimentoService;
 import com.ifrn.sisgestaohospitalar.service.ProfissionalService;
-import com.ifrn.sisgestaohospitalar.service.TriagemService;
-import com.ifrn.sisgestaohospitalar.utils.LeitorXmlEsus;
+import com.ifrn.sisgestaohospitalar.utils.EscritorTXT;
 
 @Controller
 @RequestMapping("/administracao")
 public class AdministracaoController {
-	
-	@Autowired
-	private LeitorXmlEsus leitorXml;
 
 	@Autowired
 	private ProfissionalService profissionalService;
@@ -43,31 +39,23 @@ public class AdministracaoController {
 	@Autowired
 	private EstabelecimentoService estabelecimentoService;
 
-
-	
-	@Autowired
-	private CidadaoService cidadaoService;
-
-	
 	@Autowired
 	private ArquivoBPAService arquivoBpaService;
 
 	@Autowired
-	private TriagemService triagemService;
-	
-	@Autowired
 	private UsuarioRepository usuarioRepository;
-	
+
 	@Autowired
 	private ArquivoBPARepository arquivoBPARepository;
 
+	EscritorTXT escritorTXT = new EscritorTXT();
+
 	public static String uploadDirectory = System.getProperty("user.dir") + "/uploads/";
-	
+
 	@RequestMapping("/")
 	public ModelAndView inicio(Principal principal) {
 		ModelAndView mv = new ModelAndView("administrador/dashboard-admin");
 		String username = principal.getName();
-		
 		List<Profissional> profissionais = profissionalService.findAll();
 		mv.addObject("estabelecimentos", estabelecimentoService.findAll());
 		mv.addObject("user", usuarioRepository.findByUsername(principal.getName()));
@@ -75,13 +63,10 @@ public class AdministracaoController {
 		mv.addObject("medicos", profissionalService.findByTipoprofissional(TipoProfissional.MEDICO));
 		mv.addObject("enfermeiros", profissionalService.findByTipoprofissional(TipoProfissional.ENFERMEIRO));
 		mv.addObject("tecnicos", profissionalService.findByTipoprofissional(TipoProfissional.TECNICO));
-		//mv.addObject("dataatual", getDateTime());
-		//mv.addObject("totalatd", guiaatendimentoService.findByData(LocalDate.now()));
-		//mv.addObject("urgencias", getUrgencias());
 		return mv;
 
 	}
-	
+
 	@RequestMapping("/gerarbpa")
 	public ModelAndView gerarbpa(Principal principal) {
 		ModelAndView mv = new ModelAndView("administrador/gerarbpa");
@@ -90,19 +75,32 @@ public class AdministracaoController {
 	}
 
 	@GetMapping("/exportarbpa")
-	public ModelAndView exportarbpa(Principal principal, @RequestParam("mes") String mes) throws IOException {
+	public ModelAndView exportarbpa(Principal principal, @RequestParam("competencia") String competencia)
+			throws IOException {
 		ModelAndView mv = new ModelAndView("administrador/gerarbpa");
 		mv.addObject("user", usuarioRepository.findByUsername(principal.getName()));
-		if(arquivoBpaService.findByCompetencia(mes.replace("-", "")) != null) {
-			return mv.addObject("erro","O arquivo BPA para a competência selecionada já foi gerado.");
+		if (arquivoBpaService.findByCompetencia(competencia.replace("-", "")) != null) {
+			return mv.addObject("erro", "O arquivo BPA para a competência selecionada já foi gerado.");
 		}
-	//	geradorBpa.geradorBPA(mes, "2380633");
-		String[] periodo = mes.split("-");
-		arquivoBpaService.processarArquivoBPA(Integer.parseInt(periodo[0]), Integer.parseInt(periodo[1]));
-		mv.addObject("sucesso", "O arquivo BPA para o SIA SUS foi gerado.");
-		return listarBpa(principal);
+		String[] periodo = competencia.split("-");
+		ArquivoBPA arquivoBPA = arquivoBpaService.processarArquivoBPA(Integer.parseInt(periodo[0]),
+				Integer.parseInt(periodo[1]));
+		if (arquivoBPA != null) {
+			File file = escritorTXT.geraArquivo(arquivoBPA);
+			if (file != null) {
+				arquivoBPA.setNomeArquivo(file.getName());
+				arquivoBPA.setLink(file.getCanonicalPath());
+				arquivoBPARepository.save(arquivoBPA);
+				return listarBpa(principal).addObject("sucesso", "O arquivo BPA para o SIA SUS foi gerado.");
+			}
+			return mv.addObject("erro", "Ocorreu um erro ao tentar gerar");
+
+		}
+
+		return mv.addObject("erro", "Ocorreu um erro ao tentar gerar");
+
 	}
-	
+
 	@GetMapping("/listar-bpa")
 	public ModelAndView listarBpa(Principal principal) {
 		ModelAndView mv = new ModelAndView("administrador/list-arquivobpa");
@@ -110,16 +108,16 @@ public class AdministracaoController {
 		mv.addObject("arquivosBpa", arquivoBpaService.findAll());
 		return mv;
 	}
-	
+
 	@GetMapping("/download/{id}")
-	public HttpEntity<byte[]> download(@PathVariable("id") Long id) throws IOException{
+	public HttpEntity<byte[]> download(@PathVariable("id") Long id) throws IOException {
 		ArquivoBPA arquivoBPA = arquivoBpaService.findOne(id);
-		
+
 		byte[] arquivo = Files.readAllBytes(Paths.get(arquivoBPA.getLink()));
-	    HttpHeaders httpHeaders = new HttpHeaders();
-	    httpHeaders.add("Content-Disposition", "attachment;filename=\""+ arquivoBPA.getNomeArquivo() +"\"");
-	    HttpEntity<byte[]> entity = new HttpEntity<byte[]>(arquivo,httpHeaders);
-	    return entity;
+		HttpHeaders httpHeaders = new HttpHeaders();
+		httpHeaders.add("Content-Disposition", "attachment;filename=\"" + arquivoBPA.getNomeArquivo() + "\"");
+		HttpEntity<byte[]> entity = new HttpEntity<byte[]>(arquivo, httpHeaders);
+		return entity;
 	}
 
 	private String getDateTime() {
@@ -127,6 +125,5 @@ public class AdministracaoController {
 		LocalDate dataatual = LocalDate.now();
 		return dataatual.format(formatter);
 	}
-
 
 }

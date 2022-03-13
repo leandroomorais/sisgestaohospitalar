@@ -1,5 +1,6 @@
 package com.ifrn.sisgestaohospitalar.model;
 
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.Objects;
 
@@ -34,11 +35,11 @@ public class Procedimento {
 
 	private int vlIdadeMaxima;
 
-	private int vlsh;
+	private BigDecimal vlsh;
 
-	private int vlsa;
+	private BigDecimal vlsa;
 
-	private int vlsp;
+	private BigDecimal vlsp;
 
 	private String codigoFinanciamento;
 
@@ -134,27 +135,27 @@ public class Procedimento {
 		this.vlIdadeMaxima = vlIdadeMaxima;
 	}
 
-	public int getVlsh() {
+	public BigDecimal getVlsh() {
 		return vlsh;
 	}
 
-	public void setVlsh(int vlsh) {
+	public void setVlsh(BigDecimal vlsh) {
 		this.vlsh = vlsh;
 	}
 
-	public int getVlsa() {
+	public BigDecimal getVlsa() {
 		return vlsa;
 	}
 
-	public void setVlsa(int vlsa) {
+	public void setVlsa(BigDecimal vlsa) {
 		this.vlsa = vlsa;
 	}
 
-	public int getVlsp() {
+	public BigDecimal getVlsp() {
 		return vlsp;
 	}
 
-	public void setVlsp(int vlsp) {
+	public void setVlsp(BigDecimal vlsp) {
 		this.vlsp = vlsp;
 	}
 
@@ -222,6 +223,8 @@ public class Procedimento {
 		Procedimento other = (Procedimento) obj;
 		return Objects.equals(codigo, other.codigo);
 	}
+	
+	
 	
 	
 

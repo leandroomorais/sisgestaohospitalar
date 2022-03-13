@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html layout:decorate="~{/layouts/layout-modulos}" lang="pt" xmlns="http://www.w3.org/1999/xhtml"
+<html layout:decorate="~{/layouts/layout-admin}" lang="pt" xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity"
 	xmlns:layout="http://ultraq.net.nz/thymeleaf/layout">
 
@@ -62,7 +62,7 @@
 									<tbody>
 										<tr th:each="arquivoBpa : ${arquivosBpa}">
 											<td th:text="${arquivoBpa.competencia}"></td>
-											<td th:text="${arquivoBpa.dataGeracao}"></td>
+											<td th:text="${#temporals.format(arquivoBpa.horaGeracao,'dd-MM-yyyy hh:mm:ss')}"></td>
 											<td th:text="${arquivoBpa.nomeArquivo}"></td>
 											<td><a th:href="@{/administracao/download/{id} (id=${arquivoBpa.id})}"><i class="fas fa-download"></i></a></td>
 										</tr>
