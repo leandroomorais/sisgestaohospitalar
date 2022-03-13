@@ -1,5 +1,6 @@
 package com.ifrn.sisgestaohospitalar.model;
 
+import java.math.BigDecimal;
 import java.text.Normalizer;
 import java.util.regex.Pattern;
 
@@ -90,6 +91,8 @@ public class LinhaBPAIndividualizado {
 	private String identificacaoEquipe;
 
 	private String fim;
+
+	private BigDecimal valor;
 
 	public Long getId() {
 		return id;
@@ -408,6 +411,14 @@ public class LinhaBPAIndividualizado {
 		String nfdNormalizedString = Normalizer.normalize(str, Normalizer.Form.NFD);
 		Pattern pattern = Pattern.compile("\\p{InCombiningDiacriticalMarks}+");
 		return pattern.matcher(nfdNormalizedString).replaceAll("");
+	}
+
+	public BigDecimal getValor() {
+		return valor;
+	}
+
+	public void setValor(BigDecimal valor) {
+		this.valor = valor;
 	}
 
 	@Override

@@ -1,5 +1,6 @@
 package com.ifrn.sisgestaohospitalar.service;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -51,6 +52,9 @@ public class LinhaBPAConsolidadoService {
 															Integer.toString(getQuantidadeProcedimentos(list)));
 													linhaBPAConsolidado.setOrigem("BPA");
 													linhaBPAConsolidado.setFim(" ");
+													BigDecimal qtd = new BigDecimal(
+															Integer.parseInt(linhaBPAConsolidado.getQuantidade()));
+													linhaBPAConsolidado.setValor(procedimento.getVlsa().multiply(qtd));
 													linhasBpaConsolidado.add(linhaBPAConsolidado);
 
 												});
@@ -70,6 +74,9 @@ public class LinhaBPAConsolidadoService {
 												.setQuantidade(Integer.toString(getQuantidadeProcedimentos(v)));
 										linhaBPAConsolidado.setOrigem("BPA");
 										linhaBPAConsolidado.setFim("");
+										BigDecimal qtd = new BigDecimal(
+												Integer.parseInt(linhaBPAConsolidado.getQuantidade()));
+										linhaBPAConsolidado.setValor(procedimento.getVlsa().multiply(qtd));
 										linhasBpaConsolidado.add(linhaBPAConsolidado);
 									});
 

@@ -17,6 +17,16 @@
 						</button>
 					</div>
 				</div>
+				
+				<!-- DIV de Alerta -->
+				<div class="col-md-12" th:if="${warning}">
+					<div class="alert alert-warning alert-dismissible fade show" role="alert">
+						<strong>Atenção!</strong><a th:text="${warning}"></a>
+						<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+				</div>
 
 				<!-- DIV de Alerta de Erros -->
 				<div class="col-md-12" th:if="${erro}">
@@ -38,7 +48,7 @@
 					</ul>
 				</div>
 
-				<form th:action="@{/administracao/exportarbpa}" method="get">
+				<form th:action="@{/bpa/exportarbpa}" method="get">
 					<div class="row">
 						<div class="col-md-12">
 							<div class="card">

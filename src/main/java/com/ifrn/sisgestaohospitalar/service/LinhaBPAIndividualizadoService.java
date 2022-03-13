@@ -1,5 +1,6 @@
 package com.ifrn.sisgestaohospitalar.service;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.Period;
@@ -80,6 +81,8 @@ public class LinhaBPAIndividualizadoService {
 			linhaBPAIndividualizado.setEmailPaciente(DADOS_CIDADAO.getEmail());
 			linhaBPAIndividualizado.setIdentificacaoEquipe("");
 			linhaBPAIndividualizado.setFim("");
+			BigDecimal qtd = new BigDecimal(Integer.parseInt(linhaBPAIndividualizado.getQtdProcedimento()));
+			linhaBPAIndividualizado.setValor(a.getProcedimento().getVlsa().multiply(qtd));
 			linhasBPAIndividualizado.add(linhaBPAIndividualizado);
 		});
 		return linhasBPAIndividualizado;

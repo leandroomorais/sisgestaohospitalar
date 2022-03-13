@@ -64,7 +64,7 @@
 											<td th:text="${arquivoBpa.competencia}"></td>
 											<td th:text="${#temporals.format(arquivoBpa.horaGeracao,'dd-MM-yyyy hh:mm:ss')}"></td>
 											<td th:text="${arquivoBpa.nomeArquivo}"></td>
-											<td><a th:href="@{/administracao/download/{id} (id=${arquivoBpa.id})}"><i class="fas fa-download"></i></a></td>
+											<td><a th:href="@{/bpa/download/{id} (id=${arquivoBpa.id})}"><i class="fas fa-download"></i></a></td>
 										</tr>
 									</tbody>
 								</table>
@@ -77,18 +77,6 @@
 			</div>
 		</div>
 	</div>
-
-	<footer class="footer">
-		<div class="container-fluid">
-			<nav class="pull-left">
-				<th:block th:each="estabelecimento : ${estabelecimento}">
-					<span class="text-primary" th:text="${estabelecimento.nome}"></span>
-				</th:block>
-			</nav>
-			<div class="copyright ml-auto">Sistema de Gestão Hospitalar,
-				2020.</div>
-		</div>
-	</footer>
 </body>
 
 </html>

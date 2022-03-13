@@ -1,5 +1,6 @@
 package com.ifrn.sisgestaohospitalar.service;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -61,7 +62,6 @@ public class ArquivoBPAService {
 	public ArquivoBPA processarArquivoBPA(int ano, int mes) {
 		clearProcedimentosConsolidados();
 		clearProcedimentosIndividualizados();
-
 		List<AtendimentoProcedimento> atendimentosDoPeriodo = getAtendimentoProcedimentos(ano, mes);
 		if (atendimentosDoPeriodo == null || atendimentosDoPeriodo.isEmpty()) {
 			return null;
@@ -78,7 +78,6 @@ public class ArquivoBPAService {
 			int numerolinhaBpaConsolidado = 0;
 			int numeroFolhaBpaIndividualizado = 1;
 			int numeroLinhaBpaIndividualizado = 0;
-
 			String cnes = null;
 
 			for (LinhaBPAConsolidado linha : linhaBPAConsolidadoService
@@ -138,6 +137,7 @@ public class ArquivoBPAService {
 			arquivoBPA.setDataGeracao(LocalDate.now());
 			arquivoBPA.setGerado(true);
 			arquivoBPA.setCnes(cnes);
+			arquivoBPA.setValorTotal(getValorTotal(arquivoBPA));
 			return arquivoBPA;
 		}
 	}
@@ -202,6 +202,25 @@ public class ArquivoBPAService {
 
 	public List<AtendimentoProcedimento> getProcedimentosIndividualizados() {
 		return procedimentosIndividualizados;
+	}
+
+	private BigDecimal getValorTotal(ArquivoBPA arquivoBPA) {
+		List<LinhaBPAConsolidado> linhaBPAConsolidados = new ArrayList<>();
+		List<LinhaBPAIndividualizado> linhaBPAIndividualizados = new ArrayList<>();
+		arquivoBPA.getFolhasBPAConsolidado().forEach(f -> {
+			f.getLinhasBPAConsolidado().forEach(l -> {
+				linhaBPAConsolidados.add(l);
+			});
+		});
+		arquivoBPA.getFolhasBPAIndividualizado().forEach(f -> {
+			f.getLinhasBPAIndividualizado().forEach(l -> {
+				linhaBPAIndividualizados.add(l);
+			});
+		});
+
+		return linhaBPAConsolidados.stream().map(LinhaBPAConsolidado::getValor).reduce(BigDecimal.ZERO, BigDecimal::add)
+				.add(linhaBPAIndividualizados.stream().map(LinhaBPAIndividualizado::getValor).reduce(BigDecimal.ZERO,
+						BigDecimal::add));
 	}
 
 	private boolean individualizadoEConsolidado(Long codigoProcedimento) {

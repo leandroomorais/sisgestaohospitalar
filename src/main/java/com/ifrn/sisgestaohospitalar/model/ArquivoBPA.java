@@ -1,5 +1,6 @@
 package com.ifrn.sisgestaohospitalar.model;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -56,6 +57,8 @@ public class ArquivoBPA {
 	private boolean gerado;
 
 	private String cnes;
+
+	private BigDecimal valorTotal;
 
 	@ManyToMany(cascade = CascadeType.ALL)
 	@JoinTable(name = "arquivo_bpa_folha_consolidado", joinColumns = @JoinColumn(name = "id_arquivobpa"), inverseJoinColumns = @JoinColumn(name = "id_folha_bpa_consolidado"))
@@ -241,12 +244,19 @@ public class ArquivoBPA {
 		this.cnes = cnes;
 	}
 
+	public BigDecimal getValorTotal() {
+		return valorTotal;
+	}
+
+	public void setValorTotal(BigDecimal valorTotal) {
+		this.valorTotal = valorTotal;
+	}
+
 	@Override
 	public String toString() {
 		return cabecalhoHeader + indicadorHeader + competencia + qtdLinhas + qtdFolhas + controleDominio
 				+ orgaoResponsavel + siglaOrgaoResponsavel + cnpjOrgaoResponsavel + orgaoDestino + incadorOrgao
 				+ versaoSistema;
 	}
-
 
 }
