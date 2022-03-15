@@ -33,7 +33,6 @@ import com.ifrn.sisgestaohospitalar.repository.ClassificacaoDeRiscoRepository;
 import com.ifrn.sisgestaohospitalar.repository.ProfissionalRepository;
 import com.ifrn.sisgestaohospitalar.repository.TipoServicoRepository;
 import com.ifrn.sisgestaohospitalar.repository.UsuarioRepository;
-import com.ifrn.sisgestaohospitalar.service.HistoricoAtendimentoService;
 import com.ifrn.sisgestaohospitalar.service.TriagemDataTablesService;
 
 @Controller
@@ -51,9 +50,6 @@ public class TriagemController {
 
 	@Autowired
 	private UsuarioRepository usuarioRepository;
-
-	@Autowired
-	private HistoricoAtendimentoService historicoAtendimentoService;
 
 	@Autowired
 	private ClassificacaoDeRiscoRepository classificacaoDeRiscoRepository;
@@ -77,8 +73,6 @@ public class TriagemController {
 			Atendimento atendimento = optional.get();
 			Profissional profissional = profissionalRepository.findByCpf(principal.getName());
 			atendimento.setStatus(Status.EMATENDIMENTO);
-			atendimento.getHistoricosAtendimento().add(historicoAtendimentoService.criaHistoricoAtendimento(
-					"INICIO TRIAGEM", null, atendimento.getStatus(), null, null, null, profissional));
 			atendimentoRepository.saveAndFlush(atendimento);
 			triagem.setAtendimento(atendimento);
 			triagem.setInicioTriagem(LocalDateTime.now());

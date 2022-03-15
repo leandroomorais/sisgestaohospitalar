@@ -7,6 +7,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.ifrn.sisgestaohospitalar.enums.Acao;
 import com.ifrn.sisgestaohospitalar.enums.CondutaCidadao;
 import com.ifrn.sisgestaohospitalar.enums.Status;
 import com.ifrn.sisgestaohospitalar.model.HistoricoAtendimento;
@@ -20,7 +21,7 @@ public class HistoricoAtendimentoService {
 	@Autowired
 	private ProfissionalRepository profissionalRepository;
 
-	public HistoricoAtendimento criaHistoricoAtendimento(String descricao, CondutaCidadao condutaCidadao, Status status,
+	public HistoricoAtendimento criaHistoricoAtendimento(Acao acao, CondutaCidadao condutaCidadao, Status status,
 			List<TipoServico> tipoServicos, Principal principal, Profissional profissionalDestino,
 			Profissional profissionalResponsavel) {
 		HistoricoAtendimento historicoAtendimento = new HistoricoAtendimento();
@@ -30,7 +31,7 @@ public class HistoricoAtendimentoService {
 		} else {
 			historicoAtendimento.setProfissional(profissionalResponsavel);
 		}
-		historicoAtendimento.setDescricao(descricao);
+		historicoAtendimento.setDescricao(acao.getDescricao());
 		historicoAtendimento.setCondutaCidadao(condutaCidadao);
 		historicoAtendimento.setStatus(status);
 		historicoAtendimento.setTipoServicos(tipoServicos);

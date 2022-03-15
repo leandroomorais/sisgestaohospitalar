@@ -12,6 +12,9 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.PrePersist;
+import javax.persistence.PreUpdate;
+import javax.persistence.Transient;
 import javax.validation.constraints.NotBlank;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -19,7 +22,11 @@ import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElementWrapper;
 
+import org.hibernate.validator.constraints.br.CPF;
+
+import com.ifrn.sisgestaohospitalar.dto.LotacaoDTO;
 import com.ifrn.sisgestaohospitalar.enums.TipoProfissional;
+import com.ifrn.sisgestaohospitalar.validation.Cns;
 
 @Entity
 @XmlAccessorType(XmlAccessType.FIELD)
@@ -34,11 +41,13 @@ public class Profissional {
 	@NotBlank(message = "É necessário preencher o campo NOME")
 	private String nome;
 
+	@CPF(message = "Digite um CPF válido")
 	@XmlAttribute(name = "CPF_PROF")
 	@Column(nullable = false)
 	@NotBlank(message = "É necessário preencher o campo CPF")
 	private String cpf;
 
+	@Cns(message = "Digite um CNS válido")
 	@Column(nullable = false)
 	@NotBlank(message = "É necessário preencher o campo CNS")
 	@XmlAttribute(name = "CO_CNS")
@@ -73,10 +82,22 @@ public class Profissional {
 
 	@Enumerated(EnumType.STRING)
 	private TipoProfissional tipoProfissional;
-	
+
 	private String nomeOcupacao;
 
 	private boolean ativo;
+
+	@Transient
+	private LotacaoDTO lotacaoDTO;
+
+	@PrePersist
+	@PreUpdate
+	private void prePersistUpdate() {
+		cns.replaceAll("\\.|-|/", "");
+		cpf.replaceAll("\\.|-|/", "");
+		sexo.toUpperCase();
+		nome.toUpperCase();
+	}
 
 	/**
 	 * Relacionamento entre os objetos Profissional e Lotação
@@ -215,4 +236,13 @@ public class Profissional {
 	public void setLotacoes(List<Lotacao> lotacoes) {
 		this.lotacoes = lotacoes;
 	}
+
+	public LotacaoDTO getLotacaoDTO() {
+		return lotacaoDTO;
+	}
+
+	public void setLotacaoDTO(LotacaoDTO lotacaoDTO) {
+		this.lotacaoDTO = lotacaoDTO;
+	}
+
 }

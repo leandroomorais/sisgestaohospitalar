@@ -3,6 +3,9 @@ package com.ifrn.sisgestaohospitalar.utils;
 import java.io.File;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
@@ -71,12 +74,18 @@ public class LeitorXmlEsus {
 		Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
 		ImportarXmlEsus importarXmlEsus = (ImportarXmlEsus) unmarshaller.unmarshal(new File(file));
 
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+
 		for (Profissional profissional : importarXmlEsus.getIdentificacao().getProfissionais()) {
 			for (Lotacao lotacaoProfissional : profissional.getLotacoes()) {
 				if (lotacaoProfissional.getCnes().equals(cnes)) {
 					String[] name = profissional.getNome().split(" ");
 					String nomeAbrev = name[0].toString() + " " + name[1].toString();
 					profissional.setNomeAbrev(nomeAbrev);
+					if (profissional.getDataNascimento() != null || !profissional.getDataNascimento().isEmpty()) {
+						profissional.setDataNascimento(
+								LocalDate.parse(profissional.getDataNascimento(), formatter).toString());
+					}
 					profissional.setAtivo(true);
 					Usuario usuario = new Usuario();
 					usuario.setUsername(profissional.getCpf());

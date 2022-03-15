@@ -1,8 +1,6 @@
 <!DOCTYPE html>
-<html layout:decorate="~{/layouts/layout-admin}" lang="pt"
-	xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:th="http://www.thymeleaf.org"
-	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity"
+<html layout:decorate="~{/layouts/layout-admin}" lang="pt" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity"
 	xmlns:layout="http://ultraq.net.nz/thymeleaf/layout">
 
 <body>
@@ -10,190 +8,192 @@
 		<div class="container">
 			<div class="page-inner">
 				<div class="page-header">
-					<h4 class="page-title">Administração</h4>
+					<h4 class="page-title">Profissional</h4>
 					<ul class="breadcrumbs">
-						<li class="nav-home"><i class="flaticon-home"></i></li>
 						<li class="separator"><i class="flaticon-right-arrow"></i></li>
-						<li class="nav-item"><a th:href="@{#}">Cadastros</a></li>
-						<li class="separator"><i class="flaticon-right-arrow"></i></li>
-						<li class="nav-item"><a th:href="@{#}">Profissionais</a></li>
-
+						<li class="nav-item"><a th:href="@{#}">Cadastrar profissional</a></li>
 					</ul>
+				</div>
+
+				<div class="alert alert-warning alert-dismissible fade show" role="alert">
+					<strong>Atenção!</strong> Para evitar erros de inconsistência na importação do arquivo BPA, o
+					Profissional a ser cadastrado deverá também ser cadastrado no CNES.
+					<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
 				</div>
 				<div class="row">
 					<div class="col-md-12">
-						<!-- Formulário para preenchimento dos dados do Profissional -->
-						<form method="post"
-							th:action="@{/administracao/salvar-profissional}"
-							th:object="${profissional}">
-							<!-- Input responsável por guardar o ID -->
-							<input id="id" name="id" type="hidden" th:field="*{id}"
-								th:value="*{id}" />
+						<div class="card">
+							<div class="card-body">
+								<div class="page-inner">
+									<!-- Formulário para preenchimento dos dados do Profissional -->
+									<form method="post" th:action="@{/profissional/salvar}" th:object="${profissional}">
+										<!-- Input responsável por guardar o ID -->
+										<input id="id" name="id" type="hidden" th:field="*{id}" th:value="*{id}" />
 
-							<!-- div reponsável em mostrar os erros -->
-							<div id="errors" class="form-group row"
-								th:data-objeto="${hasErrors}">
-								<div class="col-sm-12 mb-3 mb-sm-0">
-									<div class="alert alert-danger alert-dismissible fade show"
-										data-valor="#fields.hasAnyErrors()" role="alert"
-										id="hasAnyErrors" th:if="${#fields.hasAnyErrors()}">
+										<!-- div reponsável em mostrar os erros -->
+										<div id="errors" class="form-group row" th:data-objeto="${hasErrors}">
+											<div class="col-sm-12 mb-3 mb-sm-0">
+												<div class="alert alert-danger alert-dismissible fade show"
+													data-valor="#fields.hasAnyErrors()" role="alert" id="hasAnyErrors"
+													th:if="${#fields.hasAnyErrors()}">
 
-										<button type="button" class="close" data-dismiss="alert"
-											aria-label="Close">
-											<span aria-hidden="true">&times;</span>
-										</button>
+													<button type="button" class="close" data-dismiss="alert"
+														aria-label="Close">
+														<span aria-hidden="true">&times;</span>
+													</button>
 
-										<div th:each="detailedError : ${#fields.detailedErrors()}">
-											<strong th:text="${detailedError.message}"> </strong>
+													<div th:each="detailedError : ${#fields.detailedErrors()}">
+														<strong th:text="${detailedError.message}"> </strong>
+													</div>
+												</div>
+											</div>
 										</div>
-									</div>
+
+										<div class="card">
+											<div class="card-header">
+												<div class="card-title">Dados do Profissional</div>
+											</div>
+											<div class="card-body">
+												<div class="row">
+													<div class="col-md-6 col-lg-6"
+														th:classappend="${#fields.hasErrors('nome')}? 'has-error'">
+														<div class="form-group">
+															<label for="nome">Nome</label> <input th:field="*{nome}"
+																type="text" class="form-control" id="nome"
+																placeholder="Digite o nome do Profissional"> <small
+																id="nome" class="form-text text-muted"></small>
+														</div>
+													</div>
+
+													<div class="col-md-6 col-lg-3">
+														<div class="form-group">
+															<label for="datanascimento">Data de Nascimento</label>
+															<input th:field="*{dataNascimento}" type="date"
+																class="form-control" id="datanascimento"> <small
+																id="dataNascimento"
+																class="form-text text-muted"></small>
+														</div>
+													</div>
+
+													<div class="col-md-6 col-lg-3"
+														th:classappend="${#fields.hasErrors('sexo')}? 'has-error'">
+														<div class="form-group">
+															<label for="sexo">Sexo</label> <select th:field="*{sexo}"
+																class="form-control" id="sexo">
+																<option th:value="M">MASCULINO</option>
+																<option th:value="F">FEMININO</option>
+															</select> <small id="sexo"
+																class="form-text text-muted"></small>
+														</div>
+													</div>
+
+													<div class="col-md-6 col-lg-6"
+														th:classappend="${#fields.hasErrors('email')}? 'has-error'">
+														<div class="form-group">
+															<label for="email">Email</label> <input class="form-control"
+																type="email" th:field="*{email}"> <small id="sexo"
+																class="form-text text-muted"></small>
+														</div>
+													</div>
+													<div class="col-md-6 col-lg-3"
+														th:classappend="${#fields.hasErrors('telefone')}? 'has-error'">
+														<div class="form-group">
+															<label for="telefone">Telefone</label> <input
+																class="form-control" type="tel" th:field="*{telefone}">
+															<small id="sexo" class="form-text text-muted"></small>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+
+										<div class="card">
+											<div class="card-header">
+												<div class="card-title">Documentação do Profissional</div>
+											</div>
+											<div class="card-body">
+												<div class="row">
+													<div id="div-cep" class="col-md-6 col-lg-4"
+														th:classappend="${#fields.hasErrors('cns')}? 'has-error'">
+														<div class="form-group">
+															<label for="cns">CNS</label> <input th:field="*{cns}"
+																type="text" class="form-control" id="cns"> <small id=""
+																class="form-text text-muted"></small>
+														</div>
+													</div>
+
+													<div class="col-md-6 col-lg-4"
+														th:classappend="${#fields.hasErrors('cpf')}? 'has-error'">
+														<div class="form-group">
+															<label for="cpf">CPF</label> <input th:field="*{cpf}"
+																type="text" class="form-control" id="cpf"> <small id=""
+																class="form-text text-muted"></small>
+														</div>
+													</div>
+
+													<div class="col-md-6 col-lg-4"
+														th:classappend="${#fields.hasErrors('numeroRegistro')}? 'has-error'">
+														<div class="form-group">
+															<label for="numeroregistro">Número de Registro no
+																Conselho</label> <input th:field="*{numeroRegistro}"
+																type="text" class="form-control" id="numeroRegistro">
+															<small id="" class="form-text text-muted"></small>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+
+										<div class="card">
+											<div class="card-header">
+												<div class="card-title">Dados da Lotação</div>
+											</div>
+											<div class="card-body">
+												<div class="row">
+													<div class="col-md-3 col-lg-3"
+														th:classappend="${#fields.hasErrors('lotacaoDTO.cnes')}? 'has-error'">
+														<div class="form-group">
+															<label for="cns">CNES do Estabelecimento</label> <input
+																th:field="*{lotacaoDTO.cnes}" name="cnes" type="text"
+																class="form-control" id="cnes">
+															<small id="" class="form-text text-muted"></small>
+														</div>
+													</div>
+
+													<div class="col-md-6 col-lg-6"
+														th:classappend="${#fields.hasErrors('lotacaoDTO.codigoCBO')}? 'has-error'">
+														<div class="form-group">
+															<label for="cpf">CBO</label>
+															<input th:field="*{lotacaoDTO.codigoCBO}" name="cbo"
+																type="text" class="form-control" id="cbo"> <small id=""
+																class="form-text text-muted"></small>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+
+										<!-- Botões de ação do Formulário-->
+										<div class="card-action">
+											<button type="submit" class="btn btn-primary">Cadastrar</button>
+											<button type="reset" class="btn btn-warning btn-border">Cancelar</button>
+										</div>
+										<!-- Fim dos Botões de ação do Formulário-->
+									</form>
+									<!-- Fim do Formulário para preenchimento dos dados do Cidadão -->
 								</div>
 							</div>
-
-							<div class="card">
-								<div class="card-header">
-									<div class="card-title">Dados do Profissional</div>
-								</div>
-								<div class="card-body">
-									<div class="row">
-										<div class="col-md-6 col-lg-6"
-											th:classappend="${#fields.hasErrors('nome')}? 'has-error'">
-											<div class="form-group">
-												<label for="nome">Nome</label> <input th:field="*{nome}"
-													type="text" class="form-control" id="nome"
-													placeholder="Digite o nome do Profissional"> <small
-													id="nome" class="form-text text-muted"></small>
-											</div>
-										</div>
-
-										<div class="col-md-6 col-lg-3">
-											<div class="form-group">
-												<label for="datanascimento">Data de Nascimento</label> <input
-													th:field="*{datanascimento}" type="date"
-													class="form-control" id="datanascimento"> <small
-													id="datanascimento" class="form-text text-muted"></small>
-											</div>
-										</div>
-
-										<div class="col-md-6 col-lg-3"
-											th:classappend="${#fields.hasErrors('sexo')}? 'has-error'">
-											<div class="form-group">
-												<label for="sexo">Sexo</label> <select th:field="*{sexo}"
-													class="form-control" id="sexo">
-													<option th:value="M">MASCULINO</option>
-													<option th:value="F">FEMININO</option>
-												</select> <small id="sexo" class="form-text text-muted"></small>
-											</div>
-										</div>
-
-										<div class="col-md-6 col-lg-6"
-											th:classappend="${#fields.hasErrors('email')}? 'has-error'">
-											<div class="form-group">
-												<label for="email">Email</label> <input class="form-control"
-													type="email" th:field="*{email}"> <small id="sexo"
-													class="form-text text-muted"></small>
-											</div>
-										</div>
-										<div class="col-md-6 col-lg-3"
-											th:classappend="${#fields.hasErrors('telefone')}? 'has-error'">
-											<div class="form-group">
-												<label for="telefone">Telefone</label> <input
-													class="form-control" type="tel" th:field="*{telefone}">
-												<small id="sexo" class="form-text text-muted"></small>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-
-							<div class="card">
-								<div class="card-header">
-									<div class="card-title">Documentação do Profissional</div>
-								</div>
-								<div class="card-body">
-									<div class="row">
-										<div id="div-cep" class="col-md-6 col-lg-4"
-											th:classappend="${#fields.hasErrors('cns')}? 'has-error'">
-											<div class="form-group">
-												<label for="cns">CNS</label> <input th:field="*{cns}"
-													type="text" class="form-control" id="cns"> <small
-													id="" class="form-text text-muted"></small>
-											</div>
-										</div>
-
-										<div class="col-md-6 col-lg-4"
-											th:classappend="${#fields.hasErrors('cpf')}? 'has-error'">
-											<div class="form-group">
-												<label for="cpf">CPF</label> <input th:field="*{cpf}"
-													type="text" class="form-control" id="cpf"> <small
-													id="" class="form-text text-muted"></small>
-											</div>
-										</div>
-
-										<div class="col-md-6 col-lg-4"
-											th:classappend="${#fields.hasErrors('numeroregistro')}? 'has-error'">
-											<div class="form-group">
-												<label for="numeroregistro">Número de Registro no
-													Conselho</label> <input th:field="*{numeroregistro}" type="text"
-													class="form-control" id="numeroregistro"> <small
-													id="" class="form-text text-muted"></small>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-
-							<div class="card">
-								<div class="card-header">
-									<div class="card-title">Dados da Lotação</div>
-								</div>
-								<div class="card-body">
-									<div class="row">
-										<div id="div-cep" class="col-md-6 col-lg-4">
-											<div class="form-group">
-												<label for="cns">CNES do Estabelecimento</label> <input
-													name="cnes" type="text" class="form-control" id="cnes">
-												<small id="" class="form-text text-muted"></small>
-											</div>
-										</div>
-
-										<div class="col-md-6 col-lg-3">
-											<div class="form-group">
-												<label for="cpf">CBO</label> <input name="cbo" type="text"
-													class="form-control" id="cpf"> <small id=""
-													class="form-text text-muted"></small>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-
-							<!-- Botões de ação do Formulário-->
-							<div class="card-action">
-								<button type="submit" class="btn btn-success">Cadastrar</button>
-								<button type="reset" class="btn btn-danger">Cancelar</button>
-							</div>
-							<!-- Fim dos Botões de ação do Formulário-->
-						</form>
-						<!-- Fim do Formulário para preenchimento dos dados do Cidadão -->
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-		<footer class="footer">
-			<div class="container-fluid">
-				<nav class="pull-left">
-					<th:block th:each="estabelecimento : ${estabelecimento}">
-						<span class="text-primary" th:text="${estabelecimento.nome}"></span>
-					</th:block>
-				</nav>
-				<div class="copyright ml-auto">Sistema de Gestão Hospitalar,
-					2020.</div>
-			</div>
-		</footer>
 	</div>
-
-
+	<th:block layout:fragment="my-js-files">
+		<script th:src="@{/assets/js/profissional/form-profissional.js}"></script>
+	</th:block>
 </body>
 
 </html>

@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.ifrn.sisgestaohospitalar.dto.AtendimentoDTO;
+import com.ifrn.sisgestaohospitalar.enums.Acao;
 import com.ifrn.sisgestaohospitalar.enums.CaraterAtendimento;
 import com.ifrn.sisgestaohospitalar.enums.CondutaCidadao;
 import com.ifrn.sisgestaohospitalar.enums.MomentoColeta;
@@ -47,7 +48,7 @@ import com.ifrn.sisgestaohospitalar.service.exception.CidadaoJaAdicionadoNaFilaE
 @Controller
 @RequestMapping("/atendimento")
 public class AtendimentoController {
-	
+
 	@Autowired
 	private CidadaoRepository cidadaoRepository;
 
@@ -128,7 +129,7 @@ public class AtendimentoController {
 			Atendimento atendimento = optional.get();
 			atendimento.setStatus(Status.EMATENDIMENTO);
 			atendimento.getHistoricosAtendimento().add(historicoAtendimentoService.criaHistoricoAtendimento(
-					"INICIO ATENDIMENTO", null, atendimento.getStatus(), null, principal, null, null));
+					Acao.ATENDIMENTO_INICIO, null, atendimento.getStatus(), null, principal, null, null));
 			atendimentoRepository.saveAndFlush(atendimento);
 		}
 		return mv;
@@ -157,7 +158,7 @@ public class AtendimentoController {
 			atendimento.setStatus(Status.AGUARDANDOATENDIMENTO);
 			atendimento.setHistoricosAtendimento(new ArrayList<HistoricoAtendimento>());
 			atendimento.getHistoricosAtendimento()
-					.add(historicoAtendimentoService.criaHistoricoAtendimento("ADICIONADO A LISTA DE ATENDIMENTOS",
+					.add(historicoAtendimentoService.criaHistoricoAtendimento(Acao.INSERIDO,
 							atendimento.getCondutaCidadao(), atendimento.getStatus(), atendimento.getTipoServicos(),
 							principal, atendimento.getProfissionalDestino(), null));
 			atendimentoService.save(atendimento);
@@ -183,7 +184,6 @@ public class AtendimentoController {
 			return ResponseEntity.unprocessableEntity().body(errors);
 		}
 
-		
 		if (atendimentoDTO.getCondutaCidadao() == null) {
 			errors.put("atendimento.condutaCidadao", "É necessário informar a conduta do cidadão");
 			return ResponseEntity.unprocessableEntity().body(errors);
@@ -207,21 +207,23 @@ public class AtendimentoController {
 		}
 
 		Optional<Atendimento> optional = atendimentoRepository.findById(atendimentoDTO.getId());
-		
-		if(!optional.get().getAtendimentoProcedimentos().isEmpty()) {
+
+		if (!optional.get().getAtendimentoProcedimentos().isEmpty()) {
 			List<AtendimentoProcedimento> atendimentos = optional.get().getAtendimentoProcedimentos();
-			for(AtendimentoProcedimento a : atendimentos) {
-				if(a.getProcedimento().getCodigo() == 203010035 && a.getCodigoCid() == null) {
-					String msg = "O procedimento "+ a.getProcedimento().getNome() +" requer a adição de um CID compatível, retorne em Procedimentos para adicionar";
+			for (AtendimentoProcedimento a : atendimentos) {
+				if (a.getProcedimento().getCodigo() == 203010035 && a.getCodigoCid() == null) {
+					String msg = "O procedimento " + a.getProcedimento().getNome()
+							+ " requer a adição de um CID compatível, retorne em Procedimentos para adicionar";
 					return ResponseEntity.status(HttpStatus.FORBIDDEN).body(msg);
 				}
-				if(a.getProcedimento().getCodigo() == 203020030 && a.getCodigoCid() == null) {
-					String msg = "O procedimento "+ a.getProcedimento().getNome() +" requer a adição de um CID compatível, retorne em Procedimentos para adicionar";
+				if (a.getProcedimento().getCodigo() == 203020030 && a.getCodigoCid() == null) {
+					String msg = "O procedimento " + a.getProcedimento().getNome()
+							+ " requer a adição de um CID compatível, retorne em Procedimentos para adicionar";
 					return ResponseEntity.status(HttpStatus.FORBIDDEN).body(msg);
 				}
 			}
 		}
-		
+
 		if (optional.isPresent()) {
 			Atendimento atendimento = optional.get();
 			atendimento.setTipoServicos(atendimentoDTO.getTipoServicos());
@@ -235,9 +237,18 @@ public class AtendimentoController {
 				atendimento.getTipoServicos().clear();
 				atendimento.getTipoServicos().add(tipoServicoRepository.findByNome("Inativo"));
 				atendimento.setStatus(Status.FINALIZADO);
+				atendimento.getHistoricosAtendimento()
+						.add(historicoAtendimentoService.criaHistoricoAtendimento(Acao.FINALIZADO,
+								atendimento.getCondutaCidadao(), atendimento.getStatus(), atendimento.getTipoServicos(),
+								principal, atendimento.getProfissionalDestino(), null));
+
 			}
 			if (atendimentoDTO.getCondutaCidadao().equals(CondutaCidadao.OBSERVACAO)) {
 				atendimento.setStatus(Status.OBSERVACAO);
+				atendimento.getHistoricosAtendimento()
+						.add(historicoAtendimentoService.criaHistoricoAtendimento(Acao.OBSERVACAO,
+								atendimento.getCondutaCidadao(), atendimento.getStatus(), atendimento.getTipoServicos(),
+								principal, atendimento.getProfissionalDestino(), null));
 			}
 			if (atendimentoDTO.getCondutaCidadao().equals(CondutaCidadao.ALTAEPISODIOAPOSPRESCRICAO)) {
 				atendimento.setStatus(Status.AGUARDANDOATENDIMENTO);
@@ -246,11 +257,12 @@ public class AtendimentoController {
 				atendimento.getTipoServicos().clear();
 				atendimento.getTipoServicos().add(tipoServicoRepository.findByNome("Inativo"));
 				atendimento.setStatus(Status.NAOAGUARDOU);
+				atendimento.getHistoricosAtendimento()
+						.add(historicoAtendimentoService.criaHistoricoAtendimento(Acao.NAOAGUARDOU,
+								atendimento.getCondutaCidadao(), atendimento.getStatus(), atendimento.getTipoServicos(),
+								principal, atendimento.getProfissionalDestino(), null));
 			}
-			atendimento.getHistoricosAtendimento()
-					.add(historicoAtendimentoService.criaHistoricoAtendimento("FIM ATENDIMENTO",
-							atendimento.getCondutaCidadao(), atendimento.getStatus(), atendimento.getTipoServicos(),
-							principal, atendimento.getProfissionalDestino(), null));
+
 			atendimentoRepository.saveAndFlush(atendimento);
 			return ResponseEntity.ok().build();
 		}
@@ -302,7 +314,7 @@ public class AtendimentoController {
 			}
 
 			atendimento.getHistoricosAtendimento()
-					.add(historicoAtendimentoService.criaHistoricoAtendimento("FIM TRIAGEM",
+					.add(historicoAtendimentoService.criaHistoricoAtendimento(Acao.TRIAGEM,
 							atendimento.getCondutaCidadao(), atendimento.getStatus(), atendimento.getTipoServicos(),
 							principal, atendimento.getProfissionalDestino(), null));
 
