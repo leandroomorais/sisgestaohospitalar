@@ -331,6 +331,7 @@ public class AtendimentoController {
 			ModelAndView mv = new ModelAndView("atendimento/detalhe-atendimento");
 			mv.addObject("user", usuarioRepository.findByUsername(principal.getName()));
 			mv.addObject("atendimento", optional.get());
+			mv.addObject("historicosAtendimento", optional.get().getHistoricosAtendimento());
 			return mv;
 		}
 		return listar(principal).addObject("erro", "Atendimento não localizado");

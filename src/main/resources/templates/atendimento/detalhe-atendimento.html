@@ -1,8 +1,6 @@
 <!DOCTYPE html>
-<html layout:decorate="~{/layouts/layout-modulos}" lang="pt"
-	xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:th="http://www.thymeleaf.org"
-	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity"
+<html layout:decorate="~{/layouts/layout-modulos}" lang="pt" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity"
 	xmlns:layout="http://ultraq.net.nz/thymeleaf/layout">
 
 <body>
@@ -12,9 +10,8 @@
 				<div class="page-header">
 					<h4 class="page-title">Recepção</h4>
 					<ul class="breadcrumbs">
-						<li class="nav-home"><a
-							th:href="@{/recepcao/adicionar-cidadao}"><i
-								class="flaticon-home"></i></a></li>
+						<li class="nav-home"><a th:href="@{/recepcao/adicionar-cidadao}"><i
+									class="flaticon-home"></i></a></li>
 						<li class="separator"><i class="flaticon-right-arrow"></i></li>
 						<li class="nav-item"><a th:href="@{/recepcao/listar-status}">Fila
 								de Atendimento</a></li>
@@ -42,8 +39,9 @@
 														</h4>
 													</div>
 													<div class="col-auto">
-														<a href="#" onclick="imprimirAtendimento()" class="btn btn-light btn-border"><i
-															class="fa fa-print"></i> Imprimir </a>
+														<a href="#" onclick="imprimirAtendimento()"
+															class="btn btn-light btn-border"><i class="fa fa-print"></i>
+															Imprimir </a>
 													</div>
 												</div>
 												<div class="page-divider"></div>
@@ -56,16 +54,15 @@
 																	<div class="col-md-3 info-invoice">
 																		<h5 class="sub">Data do Atendimento</h5>
 																		<p
-																			th:text="${#temporals.format(atendimento.dataEntrada, 'dd/MM/yyyy')}"></p>
+																			th:text="${#temporals.format(atendimento.dataEntrada, 'dd/MM/yyyy')}">
+																		</p>
 																	</div>
 																	<div class="col-md-4 info-invoice">
-																		<h5 class="sub">Horário de Entrada (Recepção)</h5>
+																		<h5 class="sub">Horário de Entrada (Recepção)
+																		</h5>
 																		<p
-																			th:text="${#temporals.format(atendimento.dataEntrada, 'hh:mm:ss')}"></p>
-																	</div>
-																	<div class="col-md-5 info-invoice">
-																		<h5 class="sub">Usuário</h5>
-																		<p>Nome profissional realizou</p>
+																			th:text="${#temporals.format(atendimento.dataEntrada, 'hh:mm:ss')}">
+																		</p>
 																	</div>
 																</div>
 															</div>
@@ -84,7 +81,8 @@
 																	</div>
 																</div>
 																<div class="row">
-																	<div class="col-sm-7 col-md-8 mb-3 mb-md-0 transfer-to">
+																	<div
+																		class="col-sm-7 col-md-8 mb-3 mb-md-0 transfer-to">
 																		<div class="account-transfer">
 																			<div>
 																				<span>NOME:</span><span
@@ -104,7 +102,8 @@
 																					th:text="${atendimento.cidadao.cns}"></span>
 																			</div>
 																			<div>
-																				<span>CPF:</span><span data-mask="000.000.000-00"
+																				<span>CPF:</span><span
+																					data-mask="000.000.000-00"
 																					th:text="${atendimento.cidadao.cpf}"></span>
 																			</div>
 																			<div>
@@ -121,7 +120,8 @@
 																					th:text="${atendimento.cidadao.endereco.enderecoCompleto}"></span>
 																			</div>
 																			<div>
-																				<span>CEP:</span><span data-mask="00000-000"
+																				<span>CEP:</span><span
+																					data-mask="00000-000"
 																					th:text="${atendimento.cidadao.endereco.cep}"></span>
 																			</div>
 																			<div>
@@ -138,12 +138,8 @@
 																	</div>
 																	<div
 																		class="col-sm-5 col-md-4 transfer-total text-center">
-																		<div class="price">
-																			<i class="fa fa-circle"
-																				th:classappend="|${atendimento.status.descricao == 'Aguardando Atendimento' ? 'aguardando-atendimento' : ''} ${atendimento.status.descricao == 'Em Atendimento' ? 'em-atendimento' : ''}
-										${atendimento.status.descricao == 'Paciente em observação' ? 'observacao' : ''} ${atendimento.status.descricao == 'Não aguardou atendimento' ? 'nao-aguardou-atendimento' : ''} ${atendimento.status.descricao == 'Finalizado' ? '' : ''}|"></i>
-																		</div>
-																		<span th:text="${atendimento.status.descricao}"></span>
+																		<span
+																			th:text="${atendimento.status.descricao}"></span>
 																	</div>
 																</div>
 																<div class="row">
@@ -151,7 +147,8 @@
 																		<div class="invoice-detail">
 																			<div class="invoice-top">
 																				<h3 class="title">
-																					<strong>Histórico do Atendimento</strong>
+																					<strong>Histórico do
+																						Atendimento</strong>
 																				</h3>
 																			</div>
 																			<div class="invoice-item"></div>
@@ -160,26 +157,29 @@
 																	</div>
 																</div>
 																<div>
-																	<table class="table">
-																		<thead>
-																			<tr>
-																				<th scope="col">Status</th>
-																				<th scope="col">Últ. atualização</th>
-																				<th scope="col">Tipo Serviço</th>
-																			</tr>
-																		</thead>
-																		<tbody>
-																			<tr th:each="historicoStatus : ${historicosStatus}">
-																				<td><i class="fa fa-circle"
-																					th:classappend="|${historicoStatus.status.descricao == 'Aguardando Atendimento' ? 'aguardando-atendimento' : ''} ${historicoStatus.status.descricao == 'Em Atendimento' ? 'em-atendimento' : ''}
-										${historicoStatus.status.descricao == 'Paciente em observação' ? 'observacao' : ''} ${historicoStatus.status.descricao == 'Não aguardou atendimento' ? 'nao-aguardou-atendimento' : ''} ${historicoStatus.status.descricao == 'Finalizado' ? '' : ''}|"></i>
-																					<span th:text=${historicoStatus.status.descricao}></span></td>
-																				<td
-																					th:text="${#temporals.format(historicoStatus.ultimaAtualizacao,'dd/MM/yyyy hh:mm:ss')}"></td>
-																			</tr>
-																		</tbody>
-																	</table>
-
+																	<ol class="activity-feed">
+																		<li class="feed-item feed-item-info" th:each="historicoAtendimento :
+																		${historicosAtendimento}">
+																			<time class="date"
+																				th:text="${#temporals.format(historicoAtendimento.localDateTime,'dd/MM/yyyy - hh:mm:ss')}"></time>
+																			<span class="badge badge-info"
+																				th:text="${historicoAtendimento.descricao}"></span><br>
+																			<span class=" text" th:inline="text">
+																				Responsável:
+																				[[${historicoAtendimento.profissional.nome}]]</span><br>
+																			<span class=" text" th:inline="text">
+																				Profissional destino:
+																				[[${historicoAtendimento.profissionalDestino.nome}]]</span><br>
+																			<span class=" text" th:inline="text">
+																				Status:
+																				[[${historicoAtendimento.status.descricao}]]</span><br>
+																			<span
+																				th:if="${historicoAtendimento.condutaCidadao != null}"
+																				class=" text" th:inline="text">
+																				Conduta:
+																				[[${historicoAtendimento.condutaCidadao.descricao}]]</span><br>
+																		</li>
+																	</ol>
 																</div>
 															</div>
 														</div>
@@ -189,11 +189,6 @@
 										</div>
 									</div>
 								</div>
-
-							</div>
-							<div class="card-action">
-								<a th:href="@{/atendimento/editar/{id} (id=${atendimento.id})}"
-									class="btn btn-primary"><i class="fa fa-pen"></i> Editar</a>
 							</div>
 						</div>
 					</div>

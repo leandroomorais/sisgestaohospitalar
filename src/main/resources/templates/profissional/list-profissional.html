@@ -64,7 +64,7 @@
 										<tbody>
 											<tr th:each="profissional : ${profissionais}">
 												<td th:text="${profissional.nome}"></td>
-												<td th:text="${profissional.cns}"></td>
+												<td data-mask="000.0000.0000.0000" th:text="${profissional.cns}"></td>
 												<td th:text="${profissional.nomeOcupacao}"></td>
 												<td><a class="btn btn-primary btn-sm"
 														th:href="@{/profissional/detalhe/{id} (id=${profissional.id})}">Detalhes</a>
