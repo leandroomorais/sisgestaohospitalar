@@ -1,26 +1,40 @@
 <!DOCTYPE html>
-<html layout:decorate="~{/layouts/layout-modulos}" lang="pt"
-	xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:th="http://www.thymeleaf.org"
-	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity"
+<html layout:decorate="~{/layouts/layout-admin}" lang="pt" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity"
 	xmlns:layout="http://ultraq.net.nz/thymeleaf/layout">
 
 <body>
 	<div class="main-panel" layout:fragment="main-panel">
 		<div class="container">
 			<div class="page-inner">
+
+				<!-- DIV de Alerta de Sucessos -->
+				<div class="col-md-12" th:if="${sucesso}">
+					<div class="alert alert-success alert-dismissible fade show" role="alert">
+						<strong>Sucesso!</strong><a th:text="${sucesso}"></a>
+						<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+				</div>
+
+				<!-- DIV de Alerta de Erros -->
+				<div class="col-md-12" th:if="${erro}">
+					<div class="alert alert-danger alert-dismissible fade show" role="alert">
+						<strong>Erro!</strong> <a th:text="${erro}"></a>
+						<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+				</div>
 				<div class="page-header">
-					<h4 class="page-title">Dados do Cidadão</h4>
+					<h4 class="page-title">Cidadão</h4>
 					<ul class="breadcrumbs">
-						<li class="nav-home"><a
-							th:href="@{/recepcao/adicionar-cidadao}"><i
-								class="flaticon-home"></i></a></li>
-						<li class="separator"><i class="flaticon-right-arrow"></i></li>
-						<li class="nav-item"><a th:href="@{/}">Cidadão</a></li>
-						<li class="separator"><i class="flaticon-right-arrow"></i></li>
-						<li class="nav-item"><a>Dados do Cidadão</a></li>
+						<li class="separator"></li>
+						<li class="nav-item"><a>Detalhes</a></li>
 					</ul>
 				</div>
+
 				<div class="row">
 					<div class="col-md-12">
 						<div class="card">
@@ -36,12 +50,14 @@
 													<div class="col">
 														<h6 class="page-pretitle">Cidadão</h6>
 														<h4 class="page-title">
-															Número do CPF: <span th:text="${cidadao.cpf}"></span>
+															Número do CPF: <span data-mask="000.000.000-00"
+																th:text="${cidadao.cpf}"></span>
 														</h4>
 													</div>
 													<div class="col-auto">
-														<a href="#" onclick="imprimirCidadao()" class="btn btn-light btn-border"><i
-															class="fa fa-print"></i> Imprimir</a>
+														<a href="#" onclick="imprimirCidadao()"
+															class="btn btn-light btn-border"><i class="fa fa-print"></i>
+															Imprimir</a>
 													</div>
 												</div>
 												<div class="page-divider"></div>
@@ -67,17 +83,20 @@
 															</div>
 															<div class="card-footer">
 																<div class="row">
-																	<div class="col-sm-6 col-md-6 mb-3 mb-md-0 transfer-to">
+																	<div
+																		class="col-sm-6 col-md-6 mb-3 mb-md-0 transfer-to">
 																		<div class="account-transfer">
 																			<div>
-																				<span>NOME:</span><span th:text="${cidadao.nome}"></span>
+																				<span>NOME:</span><span
+																					th:text="${cidadao.nome}"></span>
 																			</div>
 																			<div>
 																				<span>DT. NASCIMENTO:</span><span
 																					th:text="${#temporals.format(cidadao.dataNascimento, 'dd/MM/yyyy')}"></span>
 																			</div>
 																			<div>
-																				<span>SEXO: </span><span th:text="${cidadao.sexo}"></span>
+																				<span>SEXO: </span><span
+																					th:text="${cidadao.sexo}"></span>
 																			</div>
 																			<div>
 																				<span>CNS:</span><span
@@ -85,7 +104,8 @@
 																					th:text="${cidadao.cns}"></span>
 																			</div>
 																			<div>
-																				<span>CPF:</span><span data-mask="000.000.000-00"
+																				<span>CPF:</span><span
+																					data-mask="000.000.000-00"
 																					th:text="${cidadao.cpf}"></span>
 																			</div>
 																			<div>
@@ -103,7 +123,8 @@
 																					th:text="${cidadao.endereco.enderecoCompleto}"></span>
 																			</div>
 																			<div>
-																				<span>CEP:</span><span data-mask="00000-000"
+																				<span>CEP:</span><span
+																					data-mask="00000-000"
 																					th:text="${cidadao.endereco.cep}"></span>
 																			</div>
 																			<div>
@@ -111,13 +132,15 @@
 																					th:text="${cidadao.telefone}"></span>
 																			</div>
 																			<div>
-																				<span>EMAIL:</span><span th:text="${cidadao.email}"></span>
+																				<span>EMAIL:</span><span
+																					th:text="${cidadao.email}"></span>
 																			</div>
 																			<div class="separator-solid"></div>
 																		</div>
 																	</div>
 
-																	<div class="col-sm-6 col-md-6 mb-3 mb-md-0 transfer-to">
+																	<div
+																		class="col-sm-6 col-md-6 mb-3 mb-md-0 transfer-to">
 																		<div class="account-transfer">
 																			<div>
 																				<span>RAÇA:</span><span
@@ -143,16 +166,17 @@
 
 							</div>
 							<div class="card-action">
-								<a th:href="@{/cidadao/editar/{id} (id=${cidadao.id})}"
-									class="btn btn-primary"><i class="fa fa-pen"></i> Editar</a>
+								<a th:href="@{/cidadao/editar/{id} (id=${cidadao.id})}" class="btn btn-primary"><i
+										class="fa fa-pen"></i> Editar</a>
 							</div>
 						</div>
 					</div>
 
 				</div>
+
 			</div>
 		</div>
-		<div th:replace="fragments/footer :: footer-layout"></div>
 	</div>
 </body>
+
 </html>

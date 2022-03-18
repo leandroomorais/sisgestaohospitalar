@@ -32,4 +32,7 @@ public interface AtendimentoRepository extends JpaRepository<Atendimento, Long> 
 	@Query("select a from Atendimento a where year(a.dataEntrada) = :ano and month(a.dataEntrada) = :mes")
 	List<Atendimento> findByMes(@Param("ano") int ano, @Param("mes") int mes);
 
+	@Query(value = "SELECT * FROM atendimento a WHERE date(a.data_entrada) BETWEEN :data1 AND :data2", nativeQuery = true)
+	List<Atendimento> findByDataEntradaBetween(@Param("data1") String data1, @Param("data2") String data2);
+
 }

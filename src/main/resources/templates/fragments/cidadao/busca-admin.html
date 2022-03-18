@@ -1,0 +1,131 @@
+<div class="row">
+	<div class="col-md-12">
+		<div class="card">
+			<div class="card-header">
+				<div class="card-title">Consultar Cidadãos</div>
+			</div>
+
+			<div class="card-body">
+				<!-- Botões para escolha do Parâmetro de Pesquisa -->
+				<div class="form-group">
+					<strong class="form-text text-muted">Escolha o
+						parâmetro de pesquisa:
+						<button class="btn btn-primary btn-xs" id="pesquisa-cns">
+							<i class="fa fa-filter"></i> CNS
+						</button>
+						<button class="btn btn-primary btn-border btn-xs" id="pesquisa-cpf">
+							<i class="fa fa-filter"></i> CPF
+						</button>
+						<button class="btn btn-primary btn-border btn-xs" id="pesquisa-nome">
+							<i class="fa fa-filter"></i> NOME
+						</button>
+					</strong>
+				</div>
+				<!-- Fim dos Botões para escolha do Parâmetro de Pesquisa -->
+				<!-- Formulário para pesquisa -->
+				<form th:action="@{/cidadao/busca-admin}" method="get">
+					<div class="row" id="form-pesquisa-cns">
+						<div class="col-md-4">
+							<div class="form-group">
+								<label for="cns">CNS</label> <input name="cns" type="text" class="form-control"
+									id="cns"><small id="small-data" class="form-text text-muted">Digite
+									o CNS do Cidadão sem pontos, traços ou barras</small>
+							</div>
+						</div>
+						<div class="col-md-2 ">
+							<div class="form-group">
+								<label for="search">Pesquisar</label>
+								<div>
+									<button type="submit" id="button-pesquisa-cns"
+										class="btn btn-icon btn-round btn-primary">
+										<i id="fa-button" class="fa fa-search"></i>
+									</button>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row" id="form-pesquisa-cpf">
+						<div class="col-md-4">
+							<div class="form-group">
+								<label for="cpf">CPF</label> <input name="cpf" type="text" class="form-control"
+									id="cpf"><small id="small-cpf" class="form-text text-muted">Digite o CPF do
+									Cidadão sem pontos, traços ou barras.</small>
+							</div>
+						</div>
+						<div class="col-md-2 ">
+							<div class="form-group">
+								<label for="search">Pesquisar</label>
+								<div>
+									<button type="submit" id="button-pesquisaperiodo"
+										class="btn btn-icon btn-round btn-primary">
+										<i id="fa-button" class="fa fa-search"></i>
+									</button>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row" id="form-pesquisa-nome">
+						<div class="col-md-6">
+							<div class="form-group">
+								<label for="nome">NOME</label> <input name="nome" type="text" class="form-control"
+									id="nome"><small id="small-nome" class="form-text text-muted">Digite o nome do
+									Cidadão </small>
+							</div>
+						</div>
+						<div class="col-md-2 ">
+							<div class="form-group">
+								<label for="search">Pesquisar</label>
+								<div>
+									<button type="submit" id="button-pesquisaperiodo"
+										class="btn btn-icon btn-round btn-primary">
+										<i id="fa-button" class="fa fa-search"></i>
+									</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</form>
+				<!--Fim do Formulário para pesquisa -->
+				<div class="form-group">
+					<strong class="form-text text-muted">Listagem dos Cidadãos: </strong>
+				</div>
+				<div class="table-responsive">
+					<table id="table-list-cidadao" class="display table table table-hover">
+						<thead>
+							<tr>
+								<th>NOME DO CIDADÃO</th>
+								<th>CNS</th>
+								<th>CPF</th>
+								<th>AÇÕES</th>
+							</tr>
+						</thead>
+						<th:block th:if="${cidadao != null}">
+							<tbody>
+								<tr>
+									<td th:text="${cidadao.nome}"></td>
+									<td data-mask="000.0000.0000.0000" th:text="${cidadao.cns}"></td>
+									<td data-mask="000.000.000-00" th:text="${cidadao.cpf}"></td>
+									<td><a class="btn btn-primary btn-sm"
+											th:href="@{/cidadao/detalhe-admin/{id} (id = ${cidadao.id})}">Detalhes</a>
+									</td>
+								</tr>
+							</tbody>
+						</th:block>
+						<th:block th:if="${cidadaos != null}">
+							<tbody>
+								<tr th:each="cidadao : ${cidadaos}">
+									<td th:text="${cidadao.nome}"></td>
+									<td data-mask="000.0000.0000.0000" th:text="${cidadao.cns}"></td>
+									<td data-mask="000.000.000-00" th:text="${cidadao.cpf}"></td>
+									<td><a class="btn btn-primary btn-sm"
+											th:href="@{/cidadao/detalhe-admin/{id} (id = ${cidadao.id})}">Detalhes</a>
+									</td>
+								</tr>
+							</tbody>
+						</th:block>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

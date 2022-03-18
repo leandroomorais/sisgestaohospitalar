@@ -1,6 +1,7 @@
 package com.ifrn.sisgestaohospitalar.repository;
 
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -27,7 +28,9 @@ public interface CidadaoRepository extends JpaRepository<Cidadao, Long> {
 	 * @return Cidadao
 	 */
 	public Optional<Cidadao> findByNomeIgnoreCase(String nome);
-	
+
 	public Optional<Cidadao> findByNomeAndDataNascimento(String nome, LocalDate dataNascimento);
+
+	public List<Cidadao> findByNomeContainingIgnoreCase(String nome);
 
 }

@@ -1,6 +1,7 @@
 package com.ifrn.sisgestaohospitalar.controller;
 
 import java.security.Principal;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -10,6 +11,7 @@ import java.util.Optional;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -99,7 +101,7 @@ public class AtendimentoController {
 		return ResponseEntity.ok(data);
 	}
 
-	@RequestMapping("/adicionar/{cidadaoId}")
+	@GetMapping("/adicionar/{cidadaoId}")
 	public ModelAndView cadastrar(@PathVariable("cidadaoId") Long cidadaoId, Atendimento atendimento,
 			Principal principal) {
 		ModelAndView mv = new ModelAndView("atendimento/form-cadastrar");
@@ -112,7 +114,7 @@ public class AtendimentoController {
 		return mv;
 	}
 
-	@RequestMapping("/atender/{atendimentoId}")
+	@GetMapping("/atender/{atendimentoId}")
 	public ModelAndView atendimento(@PathVariable("atendimentoId") Long atendimentoId, Principal principal) {
 		Optional<Atendimento> optional = atendimentoRepository.findById(atendimentoId);
 		ModelAndView mv = new ModelAndView("atendimento/form-atendimento");
@@ -324,7 +326,7 @@ public class AtendimentoController {
 		return ResponseEntity.badRequest().build();
 	}
 
-	@RequestMapping("/detalhar/{id}")
+	@GetMapping("/detalhar/{id}")
 	public ModelAndView detalhar(@PathVariable("id") Long id, Principal principal) {
 		Optional<Atendimento> optional = atendimentoRepository.findById(id);
 		if (optional.isPresent()) {
@@ -337,13 +339,26 @@ public class AtendimentoController {
 		return listar(principal).addObject("erro", "Atendimento não localizado");
 	}
 
-	@RequestMapping("/editar/{id}")
+	@GetMapping("/detalhar-admin/{id}")
+	public ModelAndView detalharAdmin(@PathVariable("id") Long id, Principal principal) {
+		Optional<Atendimento> optional = atendimentoRepository.findById(id);
+		if (optional.isPresent()) {
+			ModelAndView mv = new ModelAndView("atendimento/detalhe-atendimento-admin");
+			mv.addObject("user", usuarioRepository.findByUsername(principal.getName()));
+			mv.addObject("atendimento", optional.get());
+			mv.addObject("historicosAtendimento", optional.get().getHistoricosAtendimento());
+			return mv;
+		}
+		return listar(principal).addObject("erro", "Atendimento não localizado");
+	}
+
+	@GetMapping("/editar/{id}")
 	public ModelAndView editar(@PathVariable("id") Long id, Principal principal) {
 		Optional<Atendimento> optional = atendimentoRepository.findById(id);
 		return cadastrar(optional.get().getCidadao().getId(), optional.get(), principal);
 	}
 
-	@RequestMapping("/listar")
+	@GetMapping("/listar")
 	public ModelAndView listar(Principal principal) {
 		ModelAndView mv = new ModelAndView("atendimento/listar-atendimento");
 		mv.addObject("user", usuarioRepository.findByUsername(principal.getName()));
@@ -351,11 +366,33 @@ public class AtendimentoController {
 		return mv;
 	}
 
-	@RequestMapping("/listar-atendimentos")
+	@GetMapping("/listar-atendimentos")
 	public ModelAndView listarPorRisco(Principal principal) {
 		ModelAndView mv = new ModelAndView("atendimento/listar-atendimento-risco");
 		mv.addObject("user", usuarioRepository.findByUsername(principal.getName()));
 		mv.addObject("statusAtendimentos", Status.values());
+		return mv;
+	}
+
+	@GetMapping("/buscar-admin")
+	public ModelAndView buscarAdmin(Principal principal, @Param("data1") LocalDate data1,
+			@Param("data2") LocalDate data2) {
+		ModelAndView mv = new ModelAndView("atendimento/busca-atendimento-admin");
+		mv.addObject("user", usuarioRepository.findByUsername(principal.getName()));
+		List<Atendimento> atendimentos = new ArrayList<Atendimento>();
+		if (data1 != null && data2 != null) {
+			if (data1.isAfter(data2)) {
+				return mv.addObject("erro", "A primeira data informada não pode ser maior que a segunda");
+			}
+			atendimentos = atendimentoRepository.findByDataEntradaBetween(data1.toString(), data2.toString());
+			if (atendimentos.isEmpty()) {
+				return mv.addObject("warning", "Nenhum atendimento encontrado para o período");
+			}
+		}
+		if (data1 != null && data2 == null || data1 == null && data2 != null) {
+			return mv.addObject("erro", "Informe o período desejado");
+		}
+		mv.addObject("atendimentos", atendimentos);
 		return mv;
 	}
 
