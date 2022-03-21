@@ -136,10 +136,13 @@
 																th:text="${#temporals.format(historicoAtendimento.localDateTime,'dd/MM/yyyy - HH:mm:ss')}"></time>
 															<span class="badge badge-info"
 																th:text="${historicoAtendimento.descricao}"></span><br>
-															<span class=" text" th:inline="text">
+															<span th:if="${historicoAtendimento.profissional != null}"
+																class=" text" th:inline="text">
 																Responsável:
 																[[${historicoAtendimento.profissional.nome}]]</span><br>
-															<span class=" text" th:inline="text">
+															<span
+																th:if="${historicoAtendimento.profissionalDestino != null}"
+																class=" text" th:inline="text">
 																Profissional destino:
 																[[${historicoAtendimento.profissionalDestino.nome}]]</span><br>
 															<span th:if="${historicoAtendimento.tipoServicos != null}"
