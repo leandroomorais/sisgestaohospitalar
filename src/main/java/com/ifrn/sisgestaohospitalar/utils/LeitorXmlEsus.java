@@ -92,7 +92,7 @@ public class LeitorXmlEsus {
 					usuario.setPassword(new BCryptPasswordEncoder().encode("sgh" + profissional.getCpf()));
 					usuario.setConcatName(profissional.getNomeAbrev());
 
-					if (lotacaoProfissional.getCodigoCBO().equals("225125")) {
+					if (lotacaoProfissional.getCodigoCBO().startsWith("225")) {
 						TipoUsuario tipoUsuario = tipoUsuarioRepository.findByNome("MEDICO");
 						Ocupacao ocupacao = ocupacaoRepository.findByCodigo(lotacaoProfissional.getCodigoCBO());
 						if (ocupacao != null) {

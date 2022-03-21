@@ -78,7 +78,7 @@ public class ProfissionalController {
 		profissional.setLotacoes(new ArrayList<>());
 		profissional.getLotacoes().add(lotacao);
 
-		if (profissional.getLotacaoDTO().getCodigoCBO().equals("225125")) {
+		if (profissional.getLotacaoDTO().getCodigoCBO().startsWith("225")) {
 			TipoUsuario tipoUsuario = tipoUsuarioRepository.findByNome("MEDICO");
 			Ocupacao ocupacao = ocupacaoRepository.findByCodigo(profissional.getLotacaoDTO().getCodigoCBO());
 			if (ocupacao != null) {
