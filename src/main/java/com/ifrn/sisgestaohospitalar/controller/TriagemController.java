@@ -82,7 +82,7 @@ public class TriagemController {
 			mv.addObject("momentosColeta", MomentoColeta.values());
 			mv.addObject("classificacoesRisco", classificacaoDeRiscoRepository.findAll());
 			mv.addObject("situacoesCondicao", SituacaoCondicao.values());
-			mv.addObject("profissionais", profissionalRepository.searchSelectOptions());
+			mv.addObject("profissionais", profissionalRepository.findAll());
 			mv.addObject("tipoServicos", tipoServicoRepository.findAll());
 			mv.addObject("condutasCidadao", CondutaCidadao.values());
 			mv.addObject("user", usuarioRepository.findByUsername(principal.getName()));

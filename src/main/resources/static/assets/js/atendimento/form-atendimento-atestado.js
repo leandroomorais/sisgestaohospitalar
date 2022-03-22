@@ -1,7 +1,7 @@
 var idAtendimento = $("#id-atendimento").val();
 var idProntuario = $("#id-prontuario").val();
 
-$("#form-atestado").submit(function (evt) {
+$("#form-atestado").submit(function(evt) {
 	evt.preventDefault();
 	var atestado = {};
 	atestado.texto = $("#conteudo-atestado").text();
@@ -14,7 +14,8 @@ $("#form-atestado").submit(function (evt) {
 		url: '/atestado/',
 		method: 'post',
 		data: atestado,
-		success: function () {
+		success: function() {
+			console.log(atestado.texto);
 			fechaFormularioAtestado();
 			atualizaAtestados();
 			$.notify({
@@ -55,7 +56,7 @@ $("#form-atestado").submit(function (evt) {
 		},
 
 		statusCode: {
-			400: function () {
+			400: function() {
 				$.notify({
 					// options
 					icon: 'flaticon-exclamation',
@@ -92,9 +93,9 @@ $("#form-atestado").submit(function (evt) {
 					icon_type: 'class',
 				});
 			},
-			422: function (xhr) {
+			422: function(xhr) {
 				var errors = $.parseJSON(xhr.responseText);
-				$.each(errors, function (key, val) {
+				$.each(errors, function(key, val) {
 					$.notify({
 						// options
 						icon: 'flaticon-exclamation',
@@ -137,22 +138,22 @@ $("#form-atestado").submit(function (evt) {
 	})
 })
 
-$("#cancelar-atestado").click(function () {
+$("#cancelar-atestado").click(function() {
 
 })
 
 //Função pesquisa de Cids
 $("#cid-atestado").autocomplete({
 	source: "/cid/buscar",
-	focus: function (event, ui) {
+	focus: function(event, ui) {
 		$("#cid-atestado").val(ui.item.codigo + " - " + ui.item.nome);
 		return false;
 	},
-	select: function (event, ui) {
+	select: function(event, ui) {
 		$.ajax({
 			url: '/atestado/cid/' + ui.item.id,
 			method: 'get',
-			success: function () {
+			success: function() {
 				$("#cid-atestado").val("");
 				$.notify({
 					// options
@@ -191,7 +192,7 @@ $("#cid-atestado").autocomplete({
 				});
 				$("#table-cids").DataTable().ajax.reload();
 			},
-			error: function () {
+			error: function() {
 				$("#cid-atestado").val("");
 				$.notify({
 					// options
@@ -232,13 +233,13 @@ $("#cid-atestado").autocomplete({
 		});
 		return false;
 	}
-}).autocomplete("instance")._renderItem = function (ul, item) {
+}).autocomplete("instance")._renderItem = function(ul, item) {
 	return $("<li>")
 		.append("<div class='h6'>" + item.codigo + " - " + item.nome + "</div>").appendTo(ul);
 }
 //Fim da função pesquisa Cids
 
-$("#periodo").on('change', function () {
+$("#periodo").on('change', function() {
 	$("#strong-periodo").text($(this).val());
 });
 
@@ -265,16 +266,16 @@ function atualizaAtestados() {
 	$.ajax({
 		url: '/atestado/listar/atendimento/' + idAtendimento,
 		method: 'get',
-		success: function (data) {
+		success: function(data) {
 			if (isEmpty(data)) {
 				$("#div-atestados").empty().append("<h5 class='card-title text-center'>Não existem atestados para este atendimento</h5><p class='card-text text-center'>Clique no botão Nova prescrição para cadastrar um.</p>");
 			} else {
-				$.each(data, function (key, item) {
+				$.each(data, function(key, item) {
 					$("#div-atestados").empty().append(creatCardAtestado(item));
 				})
 			}
 		},
-		error: function () {
+		error: function() {
 			$("#div-atestados").empty().append("<h5 class='card-title text-center'>Houve um erro ao recuperar os dados para este Atendimento</h5><p class='card-text text-center'>Clique no botão Nova prescrição para cadastrar um.</p>");
 		}
 	})
@@ -295,7 +296,7 @@ function atualizaCidAtestado() {
 			{
 				title: 'CÓDIGO',
 				data: 'codigo',
-				mRender: function (data) {
+				mRender: function(data) {
 					return "<span class='badge badge-info'>" + data + "</span>";
 				}
 			},
@@ -306,7 +307,7 @@ function atualizaCidAtestado() {
 			{
 				title: 'AÇÕES',
 				data: 'id',
-				mRender: function (data) {
+				mRender: function(data) {
 					return "<button type='button' class='btn btn-warning btn-sm' data-value='" + data + "' onclick='removeCid(this)'><i class='fa fa-trash'></i> Excluir </button>"
 				}
 			}
@@ -315,7 +316,7 @@ function atualizaCidAtestado() {
 	})
 }
 
-$("#novo-atestado-voltar").click(function () {
+$("#novo-atestado-voltar").click(function() {
 	excluirAtestadoFuncaoVoltar();
 })
 
@@ -341,7 +342,7 @@ function removeCid(item) {
 			$.ajax({
 				url: '/atestado/cid/excluir/' + idCid,
 				method: 'delete',
-				success: function () {
+				success: function() {
 					swal("Sucesso! O CID foi excluido!", {
 						icon: "success",
 						buttons: {
@@ -353,7 +354,7 @@ function removeCid(item) {
 					atualizaCidAtestado();
 				},
 				statusCode: {
-					403: function (xhr) {
+					403: function(xhr) {
 						swal("Houve um erro!", xrh.reponseText, {
 							icon: "error",
 							buttons: {
@@ -377,52 +378,52 @@ function removeCid(item) {
 	});
 }
 
-function imprimirAtestado(data) {
-	const {cids, profissional, texto, dataRegistro, autorizaImpressaoCid} = data
-	const innerHTML = autorizaImpressaoCid ? `
-	<div class="text-left">
-		<p class="strong">CIDS:</p>
-	</div>
-	<div class="row">
-		${ExtractPDF.extractMap(cids, (value, index) =>
-			`<span style="padding-left: 12px;"> 
-				<p>${value.codigo}</p>
-			</span>`
-		)}
-	</div>
-	<div class="text-center">
-		<p>Autorizo a listagem dos CIDS nesse atestado</p>
-	</div>` 
-		: ''
-	const div = `
-	<div class="card">
-		${header()}
-		<div class="card-body">
-			<div class="text-center">
-				<h1 class="strong">Atestado</h1>
-			</div>
-			<div class="text-justify">
-                <p>${texto}</p>
-            </div>
-			${innerHTML}
-			<div class="text-center">
-				<p>${user.nome}</p>
-			</div>
-			<div class="text-center">
-				<p>Data: ${moment(dataRegistro).format("DD/MM/YYYY")}</p>
-			</div>
-			<br/>
-			<div class="text-center">
-				<p>${profissional.nome}</p>
-				<span>CRM: ${profissional.numeroRegistro + " / " + profissional.siglaUfEmissao}</span>
-			</div>
-		</div>
-		<div class="card-footer">
-			<button class="btn btn-primary" onclick="window.print()">Imprimir</button>
-		</div>
-	</div>`
-	Docs.doc(div)
-}
+//function imprimirAtestado(data) {
+//	const { cids, profissional, texto, dataRegistro, autorizaImpressaoCid } = data
+//	const innerHTML = autorizaImpressaoCid ? `
+//	<div class="text-left">
+//		<p class="strong">CIDS:</p>
+//	</div>
+//	<div class="row">
+//		${ExtractPDF.extractMap(cids, (value, index) =>
+//		`<span style="padding-left: 12px;"> 
+//				<p>${value.codigo}</p>
+//			</span>`
+//	)}
+//	</div>
+//	<div class="text-center">
+//		<p>Autorizo a listagem dos CIDS nesse atestado</p>
+//	</div>`
+//		: ''
+//	const div = `
+//	<div class="card">
+//		${header()}
+//		<div class="card-body">
+//			<div class="text-center">
+//				<h1 class="strong">Atestado</h1>
+//			</div>
+//			<div class="text-justify">
+//                <p>${texto}</p>
+//            </div>
+//			${innerHTML}
+//			<div class="text-center">
+//				<p>${user.nome}</p>
+//			</div>
+//			<div class="text-center">
+//				<p>Data: ${moment(dataRegistro).format("DD/MM/YYYY")}</p>
+//			</div>
+//			<br/>
+//			<div class="text-center">
+//				<p>${profissional.nome}</p>
+//				<span>CRM: ${profissional.numeroRegistro + " / " + profissional.siglaUfEmissao}</span>
+//			</div>
+//		</div>
+//		<div class="card-footer">
+//			<button class="btn btn-primary" onclick="window.print()">Imprimir</button>
+//		</div>
+//	</div>`
+//	Docs.doc(div)
+//}
 
 function creatCardAtestado(data) {
 	return "<div class='card'><div class='card-body'><div class='col-md-12 row'><div class='col-md-8'>" +
@@ -431,7 +432,7 @@ function creatCardAtestado(data) {
 		"</div><div class='col-md-4 text-right'>" +
 		infoCardDataProfissional(data.dataRegistro, data.profissional.nome, data.profissional.numeroRegistro + " / " + data.profissional.siglaUfEmissao) +
 		"</div></div><div class='text-right'>" +
-		"<button type='button' class='btn btn-light btn-sm' data-value='" + data.id + "' onclick='imprimirAtestado("+ JSON.stringify(data) + ")'><i class='fa fa-print'></i> Imprimir</button>" +
+		"<a class='btn btn-light btn-sm' target='_blank' href='/relatorio/atestado/ " + data.id + "'><i class='fa fa-print'></i> Imprimir</a>" +
 		buttonExcluir(data) +
 		"</div></div></div>";
 }
@@ -471,7 +472,7 @@ function excluirAtestado(element) {
 			$.ajax({
 				url: '/atestado/excluir/' + idAtestado,
 				method: 'delete',
-				success: function () {
+				success: function() {
 					swal("Sucesso! O Atestado foi excluido!", {
 						icon: "success",
 						buttons: {
@@ -483,7 +484,7 @@ function excluirAtestado(element) {
 					atualizaAtestados();
 				},
 				statusCode: {
-					403: function (xhr) {
+					403: function(xhr) {
 						swal("Houve um erro!", xrh.reponseText, {
 							icon: "error",
 							buttons: {
@@ -516,7 +517,7 @@ function buttonExcluir(data) {
 	}
 }
 
-var my_date_format = function (d) {
+var my_date_format = function(d) {
 	var month = ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'];
 	var date = d.getDate() + " " + month[d.getMonth()] + ", " + d.getFullYear();
 	var time = d.toLocaleTimeString().toLowerCase();

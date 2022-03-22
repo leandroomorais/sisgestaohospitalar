@@ -110,7 +110,7 @@ public class AtendimentoController {
 		mv.addObject("user", usuarioRepository.findByUsername(principal.getName()));
 		mv.addObject("atendimento", atendimento);
 		mv.addObject("tipoServicos", tipoServicoRepository.findAll());
-		mv.addObject("profissionais", profissionalRepository.searchSelectOptions());
+		mv.addObject("profissionais", profissionalRepository.findAll());
 		return mv;
 	}
 
@@ -124,7 +124,7 @@ public class AtendimentoController {
 			mv.addObject("situacoesCondicao", SituacaoCondicao.values());
 			mv.addObject("tipoServicos", tipoServicoRepository.findAll());
 			mv.addObject("momentosColeta", MomentoColeta.values());
-			mv.addObject("profissionais", profissionalRepository.searchSelectOptions());
+			mv.addObject("profissionais", profissionalRepository.findAll());
 			mv.addObject("viasAdministracao", viaAdministracaoRepository.findAll());
 			mv.addObject("condutasCidadao", CondutaCidadao.values());
 			mv.addObject("tiposAtendimento", CaraterAtendimento.values());
