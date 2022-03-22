@@ -65,6 +65,10 @@ public class Prescricao {
 
 	@OneToOne
 	private Profissional profissional;
+	
+	@JsonIgnore
+	@OneToOne(mappedBy = "prescricao")
+	private PrescricaoExterna prescricaoExterna;
 
 	public Long getId() {
 		return id;
@@ -176,6 +180,14 @@ public class Prescricao {
 
 	public void setProfissional(Profissional profissional) {
 		this.profissional = profissional;
+	}
+
+	public PrescricaoExterna getPrescricaoExterna() {
+		return prescricaoExterna;
+	}
+
+	public void setPrescricaoExterna(PrescricaoExterna prescricaoExterna) {
+		this.prescricaoExterna = prescricaoExterna;
 	}
 
 }

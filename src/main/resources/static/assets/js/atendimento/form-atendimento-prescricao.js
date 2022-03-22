@@ -26,9 +26,9 @@ $("#administracaoRealizada").click(function () {
 
 $("#salva-procedimento-medicamento").click(function () {
 	var idAtendimento = $("#id-atendimento").val();
-	var procedimeto = $("#id-procedimento").val();
+	var procedimento = $("#id-procedimento").val();
 	var quantidade = $("#qtd-procedimento").val();
-	submitProcedimentoAutomatico(idAtendimento, procedimeto, null, quantidade);
+	submitProcedimentoAutomatico(idAtendimento, procedimento, null, quantidade);
 })
 
 function exibeFormularioPrescricao() {
@@ -250,7 +250,7 @@ $("#form-prescricao").submit(function (evt) {
 			console.log(prescricao);
 			removeInvalidFedbackPrescricao();
 		},
-		success: function () {
+		success: function (data) {
 			$.notify({
 				// options
 				icon: 'flaticon-success',
@@ -286,8 +286,16 @@ $("#form-prescricao").submit(function (evt) {
 				onClosed: null,
 				icon_type: 'class',
 			});
-			fechaFormularioPrescricao();
-			atualizaPrescricoes();
+			if(boolPrescricaoExterna == true){
+				//fechaFormularioPrescricao();
+				abrirFormularioPrescricaoExterna();
+				idPrescricaoAtual = data.id;
+				console.log("entrou", idPrescricaoAtual);
+			}else{			
+				fechaFormularioPrescricao();
+				atualizaPrescricoes();
+				//console.log("nao entrou", data.id);
+			}
 		},
 
 		statusCode: {
@@ -1095,4 +1103,191 @@ $("#medicamento-prescricao-dto").autocomplete({
 		.appendTo(ul);
 };
 
+// ******* PRESCRIÇÃO EXTERNA	******* 
 
+var boolPrescricaoExterna = false;
+var idPrescricaoAtual = null;
+
+function exibeFormularioPrescricaoExterna() {
+
+	boolPrescricaoExterna = true;
+	limpaPrescricao();
+	removeInvalidFedbackPrescricao();
+	$("#card-list-prescricoes").fadeOut(100);
+	$("#card-nova-prescricao").fadeIn(100);
+}	
+
+function limpaPrescricaoExterna() {
+	$("#medicamento-prescricao").val("").attr("disabled", false);
+	$("#id-medicamento").val("");
+	$("#concentracao").val("");
+	$("#forma").val("");
+	$("#posologia").val("");
+	$("#orientacao").val("");
+	$("#quantidade").val("");
+	$("#quantidade-small").text("");
+	$("#dose-unica").parent().removeClass().addClass("toggle btn btn-black off");
+	$("#uso-continuo").parent().removeClass().addClass("toggle btn btn-black off");
+	$("#administracao-no-atendimento").parent().removeClass().addClass("toggle btn btn-black off");
+}
+
+function abrirFormularioPrescricaoExterna() {
+	limpaPrescricao();
+	$("#card-nova-prescricao").fadeOut(100);
+	$("#card-nova-prescricao-externa").fadeIn(100);
+}
+//
+//function abrirFormularioPrescricaoExterna(){
+// cons
+//}
+
+$("#form-prescricao-externa").submit(function (evt) {
+	evt.preventDefault();
+	var prescricaoExterna = {};
+
+	prescricaoExterna['prescricao'] = idPrescricaoAtual;
+	prescricaoExterna.nomeProfissional = $("#nomeProfissional").val();
+	prescricaoExterna.nomeEstabelecimento = $("#nomeEstabelecimento").val();
+	
+	$.ajax({
+		url: '/prescricao/prescricao-externa/',
+		method: 'post',
+		data: prescricaoExterna,
+		beforeSend: function () {
+			console.log(prescricaoExterna);
+			removeInvalidFedbackPrescricao();
+		},
+		success: function (data) {
+			$.notify({
+				// options
+				icon: 'flaticon-success',
+				title: 'SUCESSO',
+				message: 'A prescrição externa foi salva',
+				target: '_blank'
+			}, {
+				// settings
+				element: 'body',
+				position: null,
+				type: "success",
+				allow_dismiss: true,
+				newest_on_top: false,
+				showProgressbar: false,
+				placement: {
+					from: "top",
+					align: "right"
+				},
+				offset: 20,
+				spacing: 10,
+				z_index: 1031,
+				delay: 5000,
+				timer: 1000,
+				url_target: '_blank',
+				mouse_over: null,
+				animate: {
+					enter: 'animated fadeInDown',
+					exit: 'animated fadeOutUp'
+				},
+				onShow: null,
+				onShown: null,
+				onClose: null,
+				onClosed: null,
+				icon_type: 'class',
+			});
+			exibeFormularioNovoRegistroPrescricaoExterna(data.id);
+			
+		},
+
+		statusCode: {
+			400: function () {
+				$.notify({
+					// options
+					icon: 'flaticon-exclamation',
+					title: 'ERRO',
+					message: 'Não foi possível processar sua solicitação',
+					target: '_blank'
+				}, {
+					// settings
+					element: 'body',
+					position: null,
+					type: "danger",
+					allow_dismiss: true,
+					newest_on_top: false,
+					showProgressbar: false,
+					placement: {
+						from: "top",
+						align: "right"
+					},
+					offset: 20,
+					spacing: 10,
+					z_index: 1031,
+					delay: 5000,
+					timer: 1000,
+					url_target: '_blank',
+					mouse_over: null,
+					animate: {
+						enter: 'animated fadeInDown',
+						exit: 'animated fadeOutUp'
+					},
+					onShow: null,
+					onShown: null,
+					onClose: null,
+					onClosed: null,
+					icon_type: 'class',
+				});
+			},
+			422: function (xhr) {
+				var errors = $.parseJSON(xhr.responseText);
+				$.each(errors, function (key, val) {
+					$.notify({
+						// options
+						icon: 'flaticon-exclamation',
+						title: 'ATENÇÃO',
+						message: val,
+						target: '_blank'
+					}, {
+						// settings
+						element: 'body',
+						position: null,
+						type: "danger",
+						allow_dismiss: true,
+						newest_on_top: false,
+						showProgressbar: false,
+						placement: {
+							from: "top",
+							align: "right"
+						},
+						offset: 20,
+						spacing: 10,
+						z_index: 1031,
+						delay: 5000,
+						timer: 1000,
+						url_target: '_blank',
+						mouse_over: null,
+						animate: {
+							enter: 'animated fadeInDown',
+							exit: 'animated fadeOutUp'
+						},
+						onShow: null,
+						onShown: null,
+						onClose: null,
+						onClosed: null,
+						icon_type: 'class',
+					});
+
+					$("input[name='" + key + "']").parent().parent().addClass("has-error has-feedback");
+
+				})
+			}
+		},
+
+	})
+})
+
+function exibeFormularioNovoRegistroPrescricaoExterna(element) {
+	var idPrescricao = element;
+	limpaNovoRegistro();
+	$("#card-nova-prescricao-externa").fadeOut(100);
+	$("#card-novo-registro-administracao").fadeIn(100);
+	$("#card-prescricao-administracao").empty().append(detalharPrescricao(idPrescricao));
+	$("#administracaoRealizada").attr("data-value", idPrescricao);
+}

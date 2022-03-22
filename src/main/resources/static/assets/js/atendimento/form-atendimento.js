@@ -13,6 +13,7 @@ $(document).ready(function() {
 	ocultarDoenca();
 
 	$("#card-nova-prescricao").hide();
+	$("#card-nova-prescricao-externa").hide();
 	$("#card-edit-prescricao").hide();
 	$("#card-list-registros-administracao").hide();
 	$("#card-novo-registro-administracao").hide();

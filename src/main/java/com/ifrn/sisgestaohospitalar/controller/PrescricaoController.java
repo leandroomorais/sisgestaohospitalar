@@ -21,8 +21,10 @@ import com.ifrn.sisgestaohospitalar.dto.PrescricaoDTO;
 import com.ifrn.sisgestaohospitalar.enums.Status;
 import com.ifrn.sisgestaohospitalar.model.Atendimento;
 import com.ifrn.sisgestaohospitalar.model.Prescricao;
+import com.ifrn.sisgestaohospitalar.model.PrescricaoExterna;
 import com.ifrn.sisgestaohospitalar.model.Prontuario;
 import com.ifrn.sisgestaohospitalar.repository.AtendimentoRepository;
+import com.ifrn.sisgestaohospitalar.repository.PrescricaoExternaRepository;
 import com.ifrn.sisgestaohospitalar.repository.PrescricaoRepository;
 import com.ifrn.sisgestaohospitalar.repository.ProfissionalRepository;
 import com.ifrn.sisgestaohospitalar.repository.ProntuarioRepository;
@@ -39,6 +41,8 @@ public class PrescricaoController {
 	private ProfissionalRepository profissionalRepository;
 	@Autowired
 	private ProntuarioRepository prontuarioRepository;
+	@Autowired
+	private PrescricaoExternaRepository prescricaoExternaRepository;
 
 	@PostMapping("/")
 	public ResponseEntity<?> prescricao(@Valid Prescricao prescricao, BindingResult result, Principal principal) {
@@ -55,9 +59,11 @@ public class PrescricaoController {
 			Prontuario prontuario = optional.get();
 			prescricao.setDataRegistro(LocalDateTime.now());
 			prescricao.setProfissional(profissionalRepository.findByCpf(principal.getName()));
-			prontuario.getPrescricoes().add(prescricao);
-			prontuarioRepository.saveAndFlush(prontuario);
-			return ResponseEntity.ok().build();
+			Prescricao novaPrescricao = prescricaoRepository.save(prescricao);
+			prontuario.getPrescricoes().add(novaPrescricao);
+			prontuarioRepository.save(prontuario);
+			
+			return ResponseEntity.ok().body(novaPrescricao);
 		}
 
 		return ResponseEntity.badRequest().build();
@@ -93,6 +99,7 @@ public class PrescricaoController {
 			return ResponseEntity.status(HttpStatus.FORBIDDEN).build();
 		}
 		prontuario.getPrescricoes().remove(prescricao);
+		prescricaoExternaRepository.delete(prescricao.getPrescricaoExterna());
 		prontuarioRepository.saveAndFlush(prontuario);
 		prescricaoRepository.delete(prescricao);
 		return ResponseEntity.ok().build();
@@ -137,6 +144,37 @@ public class PrescricaoController {
 			prescricao.setViaAdministracao(prescricaoDTO.getViaAdministracao());
 			prescricaoRepository.saveAndFlush(prescricao);
 			return ResponseEntity.ok().build();
+		}
+		return ResponseEntity.badRequest().build();
+	}
+	
+	@PostMapping("/prescricao-externa/")
+	public ResponseEntity<?> prescricaoexterna(@Valid PrescricaoExterna prescricaoExterna, BindingResult result, Principal principal) {
+		Map<String, String> errors = new HashMap<>();
+		if (result.hasErrors()) {
+			for (FieldError error : result.getFieldErrors()) {
+				errors.put(error.getField(), error.getDefaultMessage());
+			}
+			return ResponseEntity.unprocessableEntity().body(errors);
+		}
+		
+		Optional<Prescricao> optionalprescricao = prescricaoRepository.findById(prescricaoExterna.getPrescricao().getId());
+		if(optionalprescricao.isPresent()) {
+			Prescricao prescricao = optionalprescricao.get();
+			prescricaoExternaRepository.save(prescricaoExterna);
+			
+			Optional<Prontuario> optional = prontuarioRepository.findById(prescricao.getProntuario().getId());
+			if (optional.isPresent()) {
+				Prontuario prontuario = optional.get();
+				prescricao.setDataRegistro(LocalDateTime.now());
+				prescricao.setProfissional(profissionalRepository.findByCpf(principal.getName()));
+				Prescricao novaPrescricao = prescricaoRepository.save(prescricao);
+				prontuario.getPrescricoes().add(novaPrescricao);
+				prontuarioRepository.save(prontuario);
+				
+				return ResponseEntity.ok().body(novaPrescricao);
+			}
+			return ResponseEntity.badRequest().build();
 		}
 		return ResponseEntity.badRequest().build();
 	}
