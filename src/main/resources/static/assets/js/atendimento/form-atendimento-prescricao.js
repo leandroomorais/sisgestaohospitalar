@@ -792,47 +792,47 @@ function createCardDetalhePrescricao(data) {
 		"</div></div></div>";
 }
 
-function imprimirPrescricao(data) {
-	const { principioAtivo, concentracao, formaFarmaceutica } = data.medicamento
-	const div = `
-	<div class="card">
-		${header()}
-		<div class="card-body">
-			<div class="text-center">
-				<h1 class="strong">Receituário</h1>
-			</div>
-			<div class="text-left">
-				<p>Nome do Paciente: ${user.nome}</p>
-			</div>
-			<div class="text-left">
-				<p>CPF.: ${user.cpf}</p>
-			</div>
-			<div class="text-left">
-				<p>Medicamento</p>
-			</div>
-			<div class="card">
-				<div class="card-body">
-					<b>Princípio Ativo: </b><span>${principioAtivo}</span> | <b>Concentração: </b><span>${concentracao}</span> | <b>Quantidade: </b><span>${data.quantidade}</span> |
-					<b>Forma Farmacêutica: </b><span>${formaFarmaceutica.nome}</span> |
-					<b>Posologia: </b><span>${data.posologia}</span> <br/>
-					<b>Orientações: </b><span>${data.orientacoes}</span>
-				</div>   
-			</div>
-			<div class="text-center">
-				<p>Data: ${moment(new Date()).format("DD/MM/YYYY")}</p>
-			</div>
-			<br/>
-			<div class="text-center">
-				<p>${data.profissional.nome}</p>
-				<span>CRM: ${data.profissional.numeroRegistro + " / " + data.profissional.siglaUfEmissao}</span>
-			</div>
-		</div>
-		<div class="card-footer">
-			<button class="btn btn-primary" onclick="window.print()">Imprimir</button>
-		</div>
-	</div>`
-	Docs.doc(div)
-}
+//function imprimirPrescricao(data) {
+//	const { principioAtivo, concentracao, formaFarmaceutica } = data.medicamento
+//	const div = `
+//	<div class="card">
+//		${header()}
+//		<div class="card-body">
+//			<div class="text-center">
+//				<h1 class="strong">Receituário</h1>
+//			</div>
+//			<div class="text-left">
+//				<p>Nome do Paciente: ${user.nome}</p>
+//			</div>
+//			<div class="text-left">
+//				<p>CPF.: ${user.cpf}</p>
+//			</div>
+//			<div class="text-left">
+//				<p>Medicamento</p>
+//			</div>
+//			<div class="card">
+//				<div class="card-body">
+//					<b>Princípio Ativo: </b><span>${principioAtivo}</span> | <b>Concentração: </b><span>${concentracao}</span> | <b>Quantidade: </b><span>${data.quantidade}</span> |
+//					<b>Forma Farmacêutica: </b><span>${formaFarmaceutica.nome}</span> |
+//					<b>Posologia: </b><span>${data.posologia}</span> <br/>
+//					<b>Orientações: </b><span>${data.orientacoes}</span>
+//				</div>   
+//			</div>
+//			<div class="text-center">
+//				<p>Data: ${moment(new Date()).format("DD/MM/YYYY")}</p>
+//			</div>
+//			<br/>
+//			<div class="text-center">
+//				<p>${data.profissional.nome}</p>
+//				<span>CRM: ${data.profissional.numeroRegistro + " / " + data.profissional.siglaUfEmissao}</span>
+//			</div>
+//		</div>
+//		<div class="card-footer">
+//			<button class="btn btn-primary" onclick="window.print()">Imprimir</button>
+//		</div>
+//	</div>`
+//	Docs.doc(div)
+//}
 
 function createCardPrescricao(data) {
 	return "<div class='card'><div class='card-body'><div class='col-md-12 row'><div class='col-md-8'>" +
