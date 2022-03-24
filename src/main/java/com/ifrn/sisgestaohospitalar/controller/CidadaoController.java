@@ -77,8 +77,7 @@ public class CidadaoController {
 			result.rejectValue("dataNascimento", e.getMessage(), e.getMessage());
 			return cadastrar(cidadao, principal);
 		}
-
-		attributes.addFlashAttribute("success", "O Cidadão " + cidadao.getNome() + " foi cadastrado na Base Local");
+		attributes.addFlashAttribute("sucesso", "O Cidadão " + cidadao.getNome() + " foi cadastrado na Base Local");
 		return new ModelAndView("redirect:/atendimento/adicionar/" + cidadao.getId());
 	}
 

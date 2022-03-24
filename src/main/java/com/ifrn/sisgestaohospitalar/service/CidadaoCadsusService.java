@@ -125,7 +125,7 @@ public class CidadaoCadsusService {
 			// Verifica NACIONALIDADE
 			if (getPaciente.getJSONObject("patientPerson").getJSONObject("birthPlace").getJSONObject("addr")
 					.has("country")) {
-
+				
 				cidadao.setCodigoNacionalidade(getPaciente.getJSONObject("patientPerson").getJSONObject("birthPlace")
 						.getJSONObject("addr").getInt("country"));
 			}

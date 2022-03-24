@@ -11,17 +11,7 @@
 				<div class="row">
 					<div class="col-md-12 card-sub text-center">
 						<p id="conteudo-atestado" class="text-muted mb-0">
-							Atesto para os devidos fins que o cidadão <strong
-								th:text="${atendimento.cidadao.nome}"></strong>; registrado
-							no Cadastro de Pessoa Física, CPF.: nº <strong><span data-mask="000.000.000-00"
-									th:text="${atendimento.cidadao.cpf}"></span></strong>, residente e
-							domiciliado na <strong th:text="${atendimento.cidadao.endereco.enderecoCompleto}"></strong>
-							foi atendido
-							neste estabelecimento no dia <strong
-								th:text="${#temporals.format(atendimento.dataEntrada, 'dd/MM/yyyy')}"></strong> às
-							<strong th:text="${#temporals.format(atendimento.dataEntrada, 'hh:mm:ss')}"></strong>, e
-							deverá, a partir desta data, permancer afastado de suas atividades laborais ou estudantis
-							pelo período de <strong id="strong-periodo"></strong> dia(s).
+							Atesto para os devidos fins que o(a) cidadã(o) <strong th:text="${atendimento.cidadao.nome}"></strong>; registrado(a) no Cadastro de Pessoa Física, CPF.: nº <strong><span data-mask="000.000.000-00" th:text="${atendimento.cidadao.cpf}"></span></strong> foi atendido(a) neste estabelecimento no dia <strong th:text="${#temporals.format(atendimento.dataEntrada, 'dd/MM/yyyy')}"></strong> às <strong th:text="${#temporals.format(atendimento.dataEntrada, 'hh:mm:ss')}"></strong>, e deverá, a partir desta data, permanecer afastado(a) de suas atividades laborais ou estudantis pelo período de <strong id="strong-periodo"></strong> dia(s).
 						</p>
 					</div>
 
