@@ -96,8 +96,6 @@ public class AtendimentoController {
 	@GetMapping("/datatables-risco/server")
 	public ResponseEntity<?> dataTablesRisco(HttpServletRequest request) {
 		Map<String, Object> data = new AtendimentoRiscoDataTablesService().execute(atendimentoRepository, request);
-		System.out.println("Aqui");
-		System.out.println(new AtendimentoRiscoDataTablesService().execute(atendimentoRepository, request).toString());
 		return ResponseEntity.ok(data);
 	}
 
@@ -133,6 +131,8 @@ public class AtendimentoController {
 			atendimento.getHistoricosAtendimento().add(historicoAtendimentoService.criaHistoricoAtendimento(
 					Acao.ATENDIMENTO_INICIO, null, atendimento.getStatus(), null, principal, null, null));
 			atendimentoRepository.saveAndFlush(atendimento);
+		} else {
+			return listarPorRisco(principal).addObject("erro", "Atendimento não encontrado");
 		}
 		return mv;
 	}
@@ -169,8 +169,8 @@ public class AtendimentoController {
 			return cadastrar(atendimento.getCidadao().getId(), atendimento, principal);
 		}
 
-		attributes.addFlashAttribute("success",
-				"O Cidadão " + atendimento.getCidadao().getNome() + "foi adicionado a lista de atendimentos");
+		attributes.addFlashAttribute("sucesso",
+				"O Cidadão " + atendimento.getCidadao().getNome() + " foi adicionado a lista de atendimentos");
 		return new ModelAndView("redirect:/atendimento/listar");
 	}
 
