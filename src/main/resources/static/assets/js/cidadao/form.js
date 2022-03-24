@@ -1,6 +1,5 @@
 $(document).ready(
 	function() {
-
 		//Aplica máscaras aos inputs do Formulário
 		$("#cns").mask('000.0000.0000.0000');
 		$("#cpf").mask('000.000.000-00');
@@ -8,7 +7,6 @@ $(document).ready(
 		$("#cns-busca").mask('000.0000.0000.0000');
 		$("#telefone").mask('(00) 00000-0000');
 		$("#cep").mask('00000-000');
-
 		//Aplica uper case no input nome
 		$("#nome-busca").keyup(function() {
 			this.value = this.value.toUpperCase();
@@ -16,7 +14,6 @@ $(document).ready(
 		//Oculta o status da pesquisa
 		$("#status-pesquisa-cns").hide();
 		$("#status-pesquisa-cpf").hide();
-
 		//Oculta o formulário de pesquisa por CPF
 		$("#form-busca-cpf").hide();
 		//Oculta o formulário de pesquisa por NOME
@@ -29,47 +26,7 @@ $(document).ready(
 			$("#form-cidadao-div").show();
 		}
 		$("#svg-status").hide();
-
 		$("#info-cidadao").hide();
-
-		//Muda o formulário ao clicar no botão de pesquisa por CPF
-		$("#button-cpf").click(function() {
-			//Limpa o formulário
-			$("#form-busca").each(function() {
-				this.reset();
-			});
-			$("#form-busca-cns").hide();
-			$("#form-busca-nome").hide();
-			$("#form-busca-cpf").fadeIn(500);
-			$("#button-cpf").removeClass().addClass("btn btn-primary btn-xs");
-			$("#button-cns").removeClass().addClass("btn btn-primary btn-border btn-xs");
-			$("#button-nome").removeClass().addClass("btn btn-primary btn-border btn-xs");
-
-		});
-		//Muda o formulário ao clicar no botão de pesquisa por CNS
-		$("#button-cns").click(function() {
-			$("#form-busca").each(function() {
-				this.reset();
-			});
-			$("#form-busca-cpf").hide();
-			$("#form-busca-nome").hide();
-			$("#form-busca-cns").fadeIn(500);
-			$("#button-cns").removeClass().addClass("btn btn-primary btn-xs");
-			$("#button-cpf").removeClass().addClass("btn btn-primary btn-border btn-xs");
-			$("#button-nome").removeClass().addClass("btn btn-primary btn-border btn-xs");
-		});
-		//Muda o formulário ao clicar no botão de pesquisa por NOME
-		$("#button-nome").click(function() {
-			$("#form-busca").each(function() {
-				this.reset();
-			});
-			$("#form-busca-cpf").hide();
-			$("#form-busca-cns").hide();
-			$("#form-busca-nome").fadeIn(500);
-			$("#button-cpf").removeClass().addClass("btn btn-primary btn-border btn-xs");
-			$("#button-cns").removeClass().addClass("btn btn-primary btn-border btn-xs");
-			$("#button-nome").removeClass().addClass("btn btn-primary btn-xs");
-		});
 	}
 )
 
@@ -110,48 +67,26 @@ $("#semNumero").click(function() {
 $("#form-busca").submit(function(evt) {
 	evt.preventDefault();
 	var info = {};
-
 	info.cns = $("#cns-busca").val();
 	info.cpf = $("#cpf-busca").val();
 	info.nome = $("#nome-busca").val();
 	info.dataNascimento = $("#dataNascimentoBusca").val();
-
-	$("#form-cidadao").each(function() {
-		this.reset();
-	});
-
+	limparFormularioCidadao();
 	$.ajax({
 		method: "POST",
 		url: "/cidadao/busca-local",
 		data: info,
 		beforeSend: function() {
-			//Removendo mensagens de Erro
-			$("#svg-status").fadeIn(20);
-			$("#pesquisa-status").text("Buscando");
-			$("#info-cidadao").hide();
+			removeMsgErro();
 		},
 		success: function(data) {
-
 			idCidadao = data.id;
-
 			$("#form-cidadao-div").fadeOut(500);
-
-			$("#form-busca").each(function() {
-				this.reset();
-			});
-
+			limpaFormularioBusca();
 			$("#pesquisa-status").text("Cidadão encontrado na base Local");
-
-			$("#form-busca").each(function() {
-				this.reset();
-			});
-
+			limpaFormularioBusca();
 			$("#info-cidadao").fadeIn(500);
-
 			$("#card-info-cidadao").empty().append(creatCardDetalheCidadao(data));
-
-
-
 		},
 		statusCode: {
 			//Code Here
@@ -161,56 +96,43 @@ $("#form-busca").submit(function(evt) {
 					url: "/cidadao/busca-cadsus",
 					data: info,
 					beforSend: function() {
-						//Removendo Mensagens de erro
-						$("#svg-status").fadeIn(20);
-						$("#pesquisa-status").text("Buscando");
-						$("#info-cidadao").hide();
+						removeMsgErro();
 					},
 					success: function(data) {
-						$("#form-busca").each(function() {
-							this.reset();
-						});
-
+						limpaFormularioBusca();
 						$("#pesquisa-status").text("Cidadão encontrado na base do CADSUS");
-
 						$("#form-cidadao-div").fadeIn(500);
-
 						if (data.nome != null) {
 							$("#nome").val(data.nome);
 						} else {
-							preenchimentoObrigatorio($("#small-nome"));
+							preenchimentoObrigatorio($("#small-nome"), $('label[for="' + $("#nome").attr("id") + '"]').text());
 						}
-
 						if (data.dataNascimento != null) {
 							$("#datanascimento").val(data.dataNascimento);
 						} else {
-							preenchimentoObrigatorio($("#small-datanascimento"));
+							preenchimentoObrigatorio($("#small-dataNascimento"), $('label[for="' + $("#datanascimento").attr("id") + '"]').text());
 						}
-
 						if (data.nomeMae != null) {
 							$("#nomemae").val(data.nomeMae);
 							if (data.nomeMae == "SEM INFORMAÇÃO") {
 								$("#semInfo-mae").attr("checked", "checked");
 							}
 						} else {
-							preenchimentoObrigatorio($("#small-nomemae"));
+							preenchimentoObrigatorio($("#small-nomeMae"), $('label[for="' + $("#nomemae").attr("id") + '"]').text());
 						}
-
 						if (data.nomePai != null) {
 							$("#nomepai").val(data.nomePai);
 							if (data.nomePai == "SEM INFORMAÇÃO") {
 								$("#semInfo-pai").attr("checked", "checked");
 							}
 						} else {
-							preenchimentoObrigatorio($("#small-nomepai"));
+							preenchimentoObrigatorio($("#small-nomePai"), $('label[for="' + $("#nomepai").attr("id") + '"]').text());
 						}
-
 						if (data.sexo != null) {
 							$("#sexo").val(data.sexo).change();
 						} else {
-							preenchimentoObrigatorio($("#small-sexo"));
+							preenchimentoObrigatorio($("#small-sexo"), $('label[for="' + $("#sexo").attr("id") + '"]').text());
 						}
-
 						if (data.codigoRaca != null) {
 							if (data.codigoRaca == "BRANCA") {
 								$("#codigoraca").val(1).change();
@@ -231,60 +153,60 @@ $("#form-busca").submit(function(evt) {
 								$("#codigoraca").val(99).change();
 							}
 						} else {
-							preenchimentoObrigatorio($("#small-codigoraca"));
+							preenchimentoObrigatorio($("#small-codigoraca"), $('label[for="' + $("#codigoraca").attr("id") + '"]').text());
 						}
 
-						if (data.municipioNascimento.nomeMunicipioSiglaUF != null) {
+						if (data.municipioNascimento != null) {
 							$("#municipioNascimento").val(data.municipioNascimento.nomeMunicipioSiglaUF);
 							$("#id-municipioNascimento").val(data.municipioNascimento.id);
 						} else {
-							preenchimentoObrigatorio($("#small-municipioNascimento"));
+							preenchimentoObrigatorio($("#small-municipioNascimento"), $('label[for="' + $("#municipioNascimento").attr("id") + '"]').text());
 						}
 
 						if (data.codigoNacionalidade != null) {
 							$("#codigonacionalidade").val(data.codigoNacionalidade).change();
 						} else {
-							preenchimentoObrigatorio($("#small-codigonacionalidade"));
+							$("#codigonacionalidade").val(10).change();
 						}
 
 						if (data.cns != null) {
 							$("#cns").val(data.cns);
 						} else {
-							preenchimentoObrigatorio($("#small-cns"));
+							preenchimentoObrigatorio($("#small-cns"), $('label[for="' + $("#cns").attr("id") + '"]').text());
 						}
 
 						if (data.cpf != null) {
 							$("#cpf").val(data.cpf);
 						} else {
-							preenchimentoObrigatorio($("#small-cpf"));
+							preenchimentoObrigatorio($("#small-cpf"), $('label[for="' + $("#cpf").attr("id") + '"]').text());
 						}
 
 						if (data.endereco.cep != null) {
 							$("#cep").val(data.endereco.cep);
 							$("#nameCep").val(data.endereco.cep);
 						} else {
-							preenchimentoObrigatorio($("#small-endereco-cep"));
+							preenchimentoObrigatorio($("#small-endereco-cep"), $('label[for="' + $("#cep").attr("id") + '"]').text());
 						}
 
 						if (data.endereco.municipio.estado.nome != null) {
 							$("#nomeEstado").val(data.endereco.municipio.estado.nome);
 							$("#estadoId").val(data.endereco.municipio.estado.id);
 						} else {
-							preenchimentoObrigatorio($("#small-estado"));
+							preenchimentoObrigatorio($("#small-estado"), $('label[for="' + $("#nomeEstado").attr("id") + '"]').text());
 						}
 
 						if (data.endereco.municipio.nomeMunicipio != null) {
 							$("#nomemunicipio").val(data.endereco.municipio.nomeMunicipio);
 							$("#endereco-municipio").val(data.endereco.municipio.id);
 						} else {
-							preenchimentoObrigatorio($("#small-nomemunicipio"));
+							preenchimentoObrigatorio($("#small-nomemunicipio"), $('label[for="' + $("#nomemunicipio").attr("id") + '"]').text());
 						}
 
 						if (data.endereco.logradouro.descricao != null) {
 							$("#desc-logradouro").val(data.endereco.logradouro.descricao);
 							$("#endereco-logradouro").val(data.endereco.logradouro.codigo);
 						} else {
-							preenchimentoObrigatorio($("#small-endereco-logradouro"))
+							preenchimentoObrigatorio($("#small-endereco-logradouro"), $('label[for="' + $("#desc-logradouro").attr("id") + '"]').text())
 						}
 
 						if (data.endereco.nomeLogradouro != null) {
@@ -305,7 +227,7 @@ $("#form-busca").submit(function(evt) {
 						if (data.endereco.bairro != null) {
 							$("#endereco-bairro").val(data.endereco.bairro);
 						} else {
-							preenchimentoObrigatorio($("#small-bairro"));
+							preenchimentoObrigatorio($("#small-bairro"), $('label[for="' + $("#endereco-bairro").attr("id") + '"]').text());
 						}
 
 						if (data.endereco.complemento != null) {
@@ -328,17 +250,51 @@ $("#form-busca").submit(function(evt) {
 								$("#card-pesquisa").fadeOut(500);
 							})
 						},
-
 					}
 				})
 			}
 		},
-
-
 	})
 });
 
+//Muda o formulário ao clicar no botão de pesquisa por CPF
+$("#button-cpf").click(function() {
+	//Limpa o formulário
+	$("#form-busca").each(function() {
+		this.reset();
+	});
+	$("#form-busca-cns").hide();
+	$("#form-busca-nome").hide();
+	$("#form-busca-cpf").fadeIn(500);
+	$("#button-cpf").removeClass().addClass("btn btn-primary btn-xs");
+	$("#button-cns").removeClass().addClass("btn btn-primary btn-border btn-xs");
+	$("#button-nome").removeClass().addClass("btn btn-primary btn-border btn-xs");
 
+});
+//Muda o formulário ao clicar no botão de pesquisa por CNS
+$("#button-cns").click(function() {
+	$("#form-busca").each(function() {
+		this.reset();
+	});
+	$("#form-busca-cpf").hide();
+	$("#form-busca-nome").hide();
+	$("#form-busca-cns").fadeIn(500);
+	$("#button-cns").removeClass().addClass("btn btn-primary btn-xs");
+	$("#button-cpf").removeClass().addClass("btn btn-primary btn-border btn-xs");
+	$("#button-nome").removeClass().addClass("btn btn-primary btn-border btn-xs");
+});
+//Muda o formulário ao clicar no botão de pesquisa por NOME
+$("#button-nome").click(function() {
+	$("#form-busca").each(function() {
+		this.reset();
+	});
+	$("#form-busca-cpf").hide();
+	$("#form-busca-cns").hide();
+	$("#form-busca-nome").fadeIn(500);
+	$("#button-cpf").removeClass().addClass("btn btn-primary btn-border btn-xs");
+	$("#button-cns").removeClass().addClass("btn btn-primary btn-border btn-xs");
+	$("#button-nome").removeClass().addClass("btn btn-primary btn-xs");
+});
 
 //Função autocompletar município de nascimento
 $(function() {
@@ -384,11 +340,8 @@ $("#button-pesquisaCep").click(function(evt) {
 				//alert("Cidadão não encontrado");
 			},
 		}
-
 	})
-
 });
-
 
 //Função autocompletar Logradouro
 $(function() {
@@ -411,52 +364,26 @@ $(function() {
 
 //Função para exibir a mensagem CAMPO DE PREENCHIMENTO OBRIGATÓRIO
 //caso o serviço do CADSUS não retorne um parâmetro obrigatório
-function preenchimentoObrigatorio(small) {
+function preenchimentoObrigatorio(small, campo) {
 	small.text("Campo de preenchimento obrigatório");
 	small.removeClass().addClass("form-text text-danger");
+	notificacao('O campo ' + campo + " é obrigatório", 'Por favor preencha-o', 'top', 'right', 'warning', 'withicon', '#', '');
 };
 
 
 //Emite alerta ao clicar no botão de Cancelar
 $("#btn-cancelar-form-editar").click(function() {
-	alerta("/cidadao/adicionar")
+	cancelar('Deseja cancelar?', 'Se clicar em sim todos os dados serão apagados!', 'warning', '/cidadao/adicionar');
 });
 
 $("#btn-cancelar-form").click(function() {
-	alerta("/cidadao/adicionar")
+	cancelar('Deseja cancelar?', 'Se clicar em sim todos os dados serão apagados!', 'warning', '/cidadao/adicionar');
 });
 
 //Emite alerta ao clicar no botão de Cancelar
 $("#btn-cancelar-local").click(function() {
-	alerta("/cidadao/adicionar")
+	cancelar('Deseja cancelar?', 'Se clicar em sim todos os dados serão apagados!', 'warning', '/cidadao/adicionar');
 });
-
-function alerta(redirect) {
-	swal({
-		title: 'Tem certeza que deseja cancelar?',
-		text: "Se clicar em sim todos os dados serão apagados.",
-		type: 'warning',
-		buttons: {
-
-			cancel: {
-				text: 'Não, retornar!',
-				visible: true,
-				className: 'btn btn-success btn-border'
-			},
-
-			confirm: {
-				text: 'Sim, cancelar!',
-				className: 'btn btn-success'
-			},
-		}
-	}).then((confirm) => {
-		if (confirm) {
-			$(location).attr('href', redirect)
-		} else {
-			swal.close();
-		}
-	});
-};
 
 function creatCardDetalheCidadao(data) {
 	return "<div class='card'><div class='card-body'><div class='col-md-12 row'><div class='col-md-8'>" +
@@ -471,6 +398,25 @@ function creatCardDetalheCidadao(data) {
 		"<button type='button' onclick='detalhar()' class='btn btn-light btn-sm'><i class='fa fa-info-circle' aria-hidden='true'></i> Detalhar</button>" +
 		"<button type='button' onclick='editar()' class='btn btn-light btn-sm'><i class='fa fa-edit' aria-hidden='true'></i> Editar</button>" +
 		"</div></div></div>";
+}
+
+function removeMsgErro() {
+	//Removendo mensagens de Erro
+	$("#svg-status").fadeIn(20);
+	$("#pesquisa-status").text("Buscando");
+	$("#info-cidadao").hide();
+}
+
+function limpaFormularioBusca() {
+	$("#form-busca").each(function() {
+		this.reset();
+	});
+}
+
+function limparFormularioCidadao() {
+	$("#form-cidadao").each(function() {
+		this.reset();
+	});
 }
 
 function h5CardInfoCidadao(nomeCompleto, sexo) {
@@ -509,40 +455,11 @@ function detalhar() {
 function editar() {
 	$(location).attr('href', '/cidadao/editar/' + idCidadao);
 }
-
-
 $("#btn-adicionar-cidadao").click(function() {
 	$(location).attr('href', '/atendimento/adicionar/' + idCidadao);
 })
 
 
-
-//
-//$('#btn-mudar-status').click(function(e) {
-//	swal({
-//		title: 'Deseja remover o Cidadão da Fila de Atendimentos?',
-//		text: "Use esta opção para informar que o Cidadão não aguardou pelo atendimento.",
-//		type: 'warning',
-//		buttons: {
-//			confirm: {
-//				text: 'Sim, remover!',
-//				className: 'btn btn-primary'
-//			},
-//			cancel: {
-//				text:'Cancelar',
-//				visible: true,
-//				className: 'btn btn-warning'
-//			}
-//		}
-//	}).then((Delete) => {
-//		if (Delete) {
-//			$("#status-atendimento").val("NAOAGUARDOU");
-//			$("#submit-guia-atendimento").click();
-//		} else {
-//			swal.close();
-//		}
-//	});
-//});
 
 
 

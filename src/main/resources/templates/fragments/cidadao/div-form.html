@@ -30,7 +30,7 @@
 										<div class="col-md-6 col-lg-3">
 											<div class="form-group"
 												th:classappend="${#fields.hasErrors('dataNascimento')} ? has-error">
-												<label for="dataNascimento">Data de Nascimento*</label> <input
+												<label for="datanascimento">Data de Nascimento*</label> <input
 													name="dataNascimento" type="date" class="form-control"
 													id="datanascimento" th:field="*{dataNascimento}">
 												<small id="small-dataNascimento" class="form-text text-muted"></small>
@@ -40,7 +40,7 @@
 										<div class="col-md-6 col-lg-9">
 											<div class="form-group"
 												th:classappend="${#fields.hasErrors('nomeMae')} ? has-error">
-												<label for="nomeMae">Nome da mãe*</label> <input name="nomeMae"
+												<label for="nomemae">Nome da mãe*</label> <input name="nomeMae"
 													type="text" class="form-control" id="nomemae"
 													placeholder="Digite o nome da mãe" th:field="*{nomeMae}"> <small
 													id="small-nomeMae" class="form-text text-muted"></small>
@@ -51,7 +51,7 @@
 										<div class="col-md-6 col-lg-9">
 											<div class="form-group"
 												th:classappend="${#fields.hasErrors('nomePai')} ? has-error">
-												<label for="nomePai">Nome do pai*</label> <input name="nomePai"
+												<label for="nomepai">Nome do pai*</label> <input name="nomePai"
 													type="text" class="form-control" id="nomepai"
 													placeholder="Digite o nome do pai" th:field="*{nomePai}"> <small
 													id="small-nomePai" class="form-text text-muted"></small>
@@ -84,7 +84,7 @@
 										<div class="col-md-6 col-lg-3">
 											<div class="form-group"
 												th:classappend="${#fields.hasErrors('codigoNacionalidade')} ? has-error">
-												<label for="codigoNacionalidade">Nacionalidade*</label> <select
+												<label for="codigonacionalidade">Nacionalidade*</label> <select
 													name="codigoNacionalidade" class="form-control"
 													id="codigonacionalidade" th:field="*{codigoNacionalidade}">
 													<option th:value="010">BRASILEIRO</option>
@@ -150,8 +150,8 @@
 											<div class="form-group"
 												th:classappend="${#fields.hasErrors('cns')} ? has-error">
 												<label for="cns">CNS*</label> <input type="text" name="cns"
-													class="form-control" data-mask-reverse="true" id="cns"
-													placeholder="000.0000.0000.0000" th:field="*{cns}">
+													class="form-control" id="cns" placeholder="000.0000.0000.0000"
+													th:field="*{cns}">
 												<small id="small-cns" class="form-text text-muted"></small>
 											</div>
 										</div>
@@ -209,7 +209,7 @@
 
 										<div class="col-md-6 col-lg-4">
 											<div class="form-group">
-												<label for="estado">Estado*</label> <input type="text"
+												<label for="nomeEstado">Estado*</label> <input type="text"
 													class="form-control" id="nomeEstado"
 													th:value="*{endereco.municipio} != null ? *{endereco.municipio.estado.nome}">
 												<small id="small-endereco-municipio"
@@ -220,7 +220,7 @@
 										<div class="col-md-6 col-lg-3">
 											<div class="form-group"
 												th:classappend="${#fields.hasErrors('endereco.logradouro')} ? has-error">
-												<label for="codigologradouro">Logradouro*</label> <input type="text"
+												<label for="desc-logradouro">Logradouro*</label> <input type="text"
 													class="form-control" id="desc-logradouro" name="desc-logradouro"
 													th:value="*{endereco.logradouro} != null ? *{endereco.logradouro.descricao}">
 												<input type="hidden" id="endereco-logradouro" name="endereco.logradouro"
@@ -234,7 +234,7 @@
 										<div class="col-md-6 col-lg-4">
 											<div class="form-group"
 												th:classappend="${#fields.hasErrors('endereco.nomeLogradouro')} ? has-error">
-												<label for="endereco">Nome do Logradouro*</label> <input
+												<label for="endereco-nomeLogradouro">Nome do Logradouro*</label> <input
 													name="endereco.nomeLogradouro" th:field="*{endereco.nomeLogradouro}"
 													type="text" class="form-control" id="endereco-nomeLogradouro"
 													placeholder=""> <small id="small-endereco-nomeLogradouro"
@@ -245,9 +245,9 @@
 										<div class="col-md-6 col-lg-4">
 											<div class="form-group"
 												th:classappend="${#fields.hasErrors('endereco.bairro')} ? has-error">
-												<label for="bairro">Bairro*</label> <input name="endereco.bairro"
-													type="text" class="form-control" id="endereco-bairro" placeholder=""
-													th:field="*{endereco.bairro}">
+												<label for="endereco-bairro">Bairro*</label> <input
+													name="endereco.bairro" type="text" class="form-control"
+													id="endereco-bairro" placeholder="" th:field="*{endereco.bairro}">
 												<small id="small-endereco-bairro" class="form-text text-muted"></small>
 											</div>
 										</div>
@@ -266,7 +266,7 @@
 										<div class="col-md-6 col-lg-2">
 											<div class="form-group"
 												th:classappend="${#fields.hasErrors('endereco.numero')} ? has-error">
-												<label for="numeroendereco">Número*</label> <input
+												<label for="endereco-numero">Número*</label> <input
 													name="endereco.numero" type="text" class="form-control"
 													id="endereco-numero" placeholder="" th:field="*{endereco.numero}">
 												<small id="small-numero" class="form-text text-muted"></small>
