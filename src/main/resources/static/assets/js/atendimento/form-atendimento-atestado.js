@@ -138,9 +138,58 @@ $("#form-atestado").submit(function(evt) {
 	})
 })
 
-$("#cancelar-atestado").click(function() {
 
+function limpaFormularioAtestado() {
+	$("#periodo").val("");
+	$("#id-cid").val("");
+}
+
+function fechaFormularioAtestado() {
+	$("#card-novo-atestado").fadeOut(100);
+	$("#card-list-atestados").fadeIn(100);
+	idAtestado = null;
+	limpaFormularioAtestado();
+}
+
+function exibeFormularioAtestado() {
+	$("#card-list-atestados").fadeOut(100);
+	$("#card-novo-atestado").fadeIn(100);
+	atualizaCidAtestado();
+}
+
+$("#novo-atestado-voltar").click(function() {
+	//excluirAtestadoFuncaoVoltar();
+	limpaFormularioAtestado();
+	limpaAtestado();
+	$("#card-novo-atestado").fadeOut(100);
+	$("#card-list-atestados").fadeIn(100);
 })
+
+
+function limpaAtestado() {	
+	$("#conteudo-atestado").val("");
+	$("#strong-periodo").val("");
+	$("#autorizaImpressaoCid").parent().removeClass().addClass("toggle btn btn-black off");
+	
+	limparCidsAtestado();
+}
+
+function atestadoVoltar() {
+	limpaFormularioAtestado();
+	limpaAtestado();
+	$("#card-novo-atestado").fadeOut(100);
+	$("#card-list-atestados").fadeIn(100);
+
+}
+
+function limparCidsAtestado(){
+	
+	$.ajax({
+		url: '/atestado/limpar/cids/',
+		method: 'get',
+		success: function() { }
+	})
+}
 
 //Função pesquisa de Cids
 $("#cid-atestado").autocomplete({
@@ -243,23 +292,6 @@ $("#periodo").on('change', function() {
 	$("#strong-periodo").text($(this).val());
 });
 
-function limpaFormularioAtestado() {
-	$("#periodo").val("");
-	$("#id-cid").val("");
-}
-
-function fechaFormularioAtestado() {
-	$("#card-novo-atestado").fadeOut(100);
-	$("#card-list-atestados").fadeIn(100);
-	idAtestado = null;
-	limpaFormularioAtestado();
-}
-
-function exibeFormularioAtestado() {
-	$("#card-list-atestados").fadeOut(100);
-	$("#card-novo-atestado").fadeIn(100);
-	atualizaCidAtestado();
-}
 
 function atualizaAtestados() {
 	$("#div-prescricoes").empty();
@@ -316,9 +348,6 @@ function atualizaCidAtestado() {
 	})
 }
 
-$("#novo-atestado-voltar").click(function() {
-	excluirAtestadoFuncaoVoltar();
-})
 
 function removeCid(item) {
 	swal({

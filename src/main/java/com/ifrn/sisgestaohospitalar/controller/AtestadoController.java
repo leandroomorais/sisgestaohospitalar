@@ -138,6 +138,13 @@ public class AtestadoController {
 		}
 		return ResponseEntity.badRequest().build();
 	}
+	
+	@GetMapping("/limpar/cids/")
+	public ResponseEntity<?> limparCidAtestado() {
+		cidsAtestado.clear();
+		return ResponseEntity.ok().build();
+	}
+
 
 //	@DeleteMapping("/voltar/excluir/{id}")
 //	public ResponseEntity<?> excluirAtestadoFuncaoVoltar(@PathVariable("id") Long id) {
