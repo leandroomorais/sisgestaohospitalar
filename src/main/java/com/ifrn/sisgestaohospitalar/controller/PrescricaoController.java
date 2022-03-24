@@ -168,6 +168,7 @@ public class PrescricaoController {
 				Prontuario prontuario = optional.get();
 				prescricao.setDataRegistro(LocalDateTime.now());
 				prescricao.setProfissional(profissionalRepository.findByCpf(principal.getName()));
+				prescricao.setPrescricaoExternabool(true);
 				Prescricao novaPrescricao = prescricaoRepository.save(prescricao);
 				prontuario.getPrescricoes().add(novaPrescricao);
 				prontuarioRepository.save(prontuario);
@@ -175,6 +176,56 @@ public class PrescricaoController {
 				return ResponseEntity.ok().body(novaPrescricao);
 			}
 			return ResponseEntity.badRequest().build();
+		}
+		return ResponseEntity.badRequest().build();
+	}
+	
+	@GetMapping("/prescricao-externa/{id}")
+	public ResponseEntity<?> getPrescricaoExternaByIdPrescricao(@PathVariable("id") Long id) {
+		
+		Optional<Prescricao> prescricao = prescricaoRepository.findById(id);
+		
+		if(prescricao.isPresent()) {
+			PrescricaoExterna prescricaoexterna = prescricaoExternaRepository.findByPrescricao(prescricao.get());
+			if (prescricaoexterna != null) {
+				return ResponseEntity.ok().body(prescricaoexterna);
+			}
+		}
+		return ResponseEntity.badRequest().build();
+	}
+	
+	@GetMapping("/prescricao-externa-byid/{id}")
+	public ResponseEntity<?> getPrescricaoExternaById(@PathVariable("id") Long id) {
+		
+		Optional<PrescricaoExterna> prescricaoExterna = prescricaoExternaRepository.findById(id);
+		
+		if(prescricaoExterna.isPresent()) {
+			return ResponseEntity.ok().body(prescricaoExterna.get());
+			
+		}
+		return ResponseEntity.badRequest().build();
+	}
+	
+	@PostMapping("/prescricao-externa-editar/")
+	public ResponseEntity<?> prescricaoexternaeditar(@Valid PrescricaoExterna prescricaoExterna, BindingResult result, Principal principal) {
+		Map<String, String> errors = new HashMap<>();
+		if (result.hasErrors()) {
+			for (FieldError error : result.getFieldErrors()) {
+				errors.put(error.getField(), error.getDefaultMessage());
+			}
+			return ResponseEntity.unprocessableEntity().body(errors);
+		}
+		
+		Optional<PrescricaoExterna> optional = prescricaoExternaRepository.findById(prescricaoExterna.getId());
+		if(optional.isPresent()) {
+			
+			PrescricaoExterna pExterna = optional.get();
+			pExterna.setNomeProfissional(prescricaoExterna.getNomeProfissional());
+			pExterna.setNumeroRegistro(prescricaoExterna.getNumeroRegistro());
+			pExterna.setSiglaUfEmissao(prescricaoExterna.getSiglaUfEmissao());
+			pExterna.setDataSolicitacao(prescricaoExterna.getDataSolicitacao());
+			
+			return ResponseEntity.ok().body(prescricaoExternaRepository.save(pExterna));
 		}
 		return ResponseEntity.badRequest().build();
 	}

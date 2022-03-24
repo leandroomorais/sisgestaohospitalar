@@ -66,6 +66,8 @@ public class Prescricao {
 	@OneToOne
 	private Profissional profissional;
 	
+	private boolean prescricaoExternabool = false;
+	
 	@JsonIgnore
 	@OneToOne(mappedBy = "prescricao")
 	private PrescricaoExterna prescricaoExterna;
@@ -190,4 +192,13 @@ public class Prescricao {
 		this.prescricaoExterna = prescricaoExterna;
 	}
 
+	public boolean isPrescricaoExternabool() {
+		return prescricaoExternabool;
+	}
+
+	public void setPrescricaoExternabool(boolean prescricaoExternabool) {
+		this.prescricaoExternabool = prescricaoExternabool;
+	}
+
+	
 }

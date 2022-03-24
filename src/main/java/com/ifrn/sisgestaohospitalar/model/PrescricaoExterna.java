@@ -1,5 +1,7 @@
 package com.ifrn.sisgestaohospitalar.model;
 
+import java.time.LocalDate;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -14,7 +16,11 @@ public class PrescricaoExterna {
 	
 	private String nomeProfissional;
 	
-	private String nomeEstabelecimento;
+	private String numeroRegistro;
+	
+	private String siglaUfEmissao;
+	
+	private LocalDate dataSolicitacao;
 
 	@OneToOne
 	private Prescricao prescricao;
@@ -35,12 +41,28 @@ public class PrescricaoExterna {
 		this.nomeProfissional = nomeProfissional;
 	}
 
-	public String getNomeEstabelecimento() {
-		return nomeEstabelecimento;
+	public String getNumeroRegistro() {
+		return numeroRegistro;
 	}
 
-	public void setNomeEstabelecimento(String nomeEstabelecimento) {
-		this.nomeEstabelecimento = nomeEstabelecimento;
+	public void setNumeroRegistro(String numeroRegistro) {
+		this.numeroRegistro = numeroRegistro;
+	}
+
+	public String getSiglaUfEmissao() {
+		return siglaUfEmissao;
+	}
+
+	public void setSiglaUfEmissao(String siglaUfEmissao) {
+		this.siglaUfEmissao = siglaUfEmissao;
+	}
+
+	public LocalDate getDataSolicitacao() {
+		return dataSolicitacao;
+	}
+
+	public void setDataSolicitacao(LocalDate dataSolicitacao) {
+		this.dataSolicitacao = dataSolicitacao;
 	}
 
 	public Prescricao getPrescricao() {

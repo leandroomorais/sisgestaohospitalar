@@ -1,44 +1,97 @@
-<div sec:authorize="hasAnyAuthority('MEDICO')" id="card-nova-prescricao-externa" class="card">
+<div sec:authorize="hasAnyAuthority('MEDICO')"
+	id="card-nova-prescricao-externa" class="card">
 	<div class="card-header">
-		<div class="card-title"><a id="nova-prescricao-externa-voltar" data-toggle="tooltipe" data-placement="top"
-				title="Voltar para tela anterior" class="btn btn-light"> <i class="fa fa-flip-horizontal fa-share"></i>
-			</a> Nova Prescrição Externa</div>
+		<div class="card-title">
+			<a id="nova-prescricao-externa-voltar" data-toggle="tooltipe"
+				data-placement="top" title="Voltar para tela anterior"
+				class="btn btn-light"> <i class="fa fa-flip-horizontal fa-share"></i>
+			</a> Nova Prescrição Externa
+		</div>
 	</div>
 	<div class="card-body">
-		<div>
-			<div id="card-header" class="card-header">
-					<div class="card-title">Detalhes da Solicitção</div>
-				</div>
-			<form id="form-prescricao-externa" action="/atendimento/prescricao-externa" method="post">
-				<div class="col-md-12">
-					<div id="card-prescricao-administracao"></div>
-				</div>
-				
-				<div class="col-md-12">
-					<div class="form-group">
-						<label for="nomeProfissional">Nome do Profissional*</label>
-						<textarea class="form-control" name="nomeProfissional"
-							id="nomeProfissional" placeholder=""></textarea>
-						<small id="nomeProfissional-small" class="form-text text-muted"></small>
-					</div>
-				</div>
-				
-				<div class="col-md-12">
-					<div class="form-group">
-						<label for="nomeEstabelecimento">Nome do Estabelecimento*</label>
-						<textarea class="form-control" name="nomeEstabelecimento"
-							id="nomeEstabelecimento" placeholder=""></textarea>
-						<small id="nomeEstabelecimento-small" class="form-text text-muted"></small>
-					</div>
-				</div>
-				
-				<div class="text-right">
-					<button id="submit-prescricao-externa" type="submit" class="btn btn-primary btn-sm">Salvar</button>
-<!-- 					<button type="button" onclick="fechaFormularioNovoRegistro()" -->
-<!-- 						class="btn btn-warning btn-border btn-sm"> -->
-<!-- 						Cancelar</button> -->
-				</div>
-			</form>
+		<div id="card-header" class="card-header">
+			<div class="card-title">Detalhes da Solicitção</div>
 		</div>
+		<form id="form-prescricao-externa"
+			action="/atendimento/prescricao-externa" method="post">
+			<div class="col-md-12">
+				<div id="card-prescricao-administracao"></div>
+			</div>
+
+			<div class="col-md-12">
+				<div class="form-group">
+					<label for="nomeProfissional">Nome do Profissional*</label> <input
+						type="text" class="form-control" name="nomeProfissional"
+						id="nomeProfissional" placeholder=""> <small
+						id="nomeProfissional-small" class="form-text text-muted"></small>
+				</div>
+			</div>
+
+			<div class="col-md-12 row">
+				<div class="col-md-4">
+					<div class="form-group">
+						<label for="numeroRegistro">Registro CRM do Profissional*</label>
+						<input type="text" class="form-control" name="numeroRegistro"
+							id="numeroRegistro" placeholder=""> <small
+							id="numeroRegistro-small" class="form-text text-muted"></small>
+					</div>
+				</div>
+				<div class="col-md-2">
+					<div class="form-group">
+						<label for="siglaUfEmissao">UF do CRM:</label> <select
+							name="siglaUfEmissao" id="siglaUfEmissao"
+							class="form-control form-control">
+							<option value="">Selecione</option>
+							<option value="AC">AC</option>
+							<option value="AL">AL</option>
+							<option value="AP">AP</option>
+							<option value="AM">AM</option>
+							<option value="BA">BA</option>
+							<option value="CE">CE</option>
+							<option value="DF">DF</option>
+							<option value="ES">ES</option>
+							<option value="GO">GO</option>
+							<option value="MA">MA</option>
+							<option value="MS">MS</option>
+							<option value="MT">MT</option>
+							<option value="MG">MG</option>
+							<option value="PA">PA</option>
+							<option value="PB">PB</option>
+							<option value="PR">PR</option>
+							<option value="PE">PE</option>
+							<option value="PI">PI</option>
+							<option value="RJ">RJ</option>
+							<option value="RN">RN</option>
+							<option value="RS">RS</option>
+							<option value="RO">RO</option>
+							<option value="RR">RR</option>
+							<option value="SC">SC</option>
+							<option value="SP">SP</option>
+							<option value="SE">SE</option>
+							<option value="TO">TO</option>
+							<option value="EX">Estrangeiro</option>
+						</select>
+					</div>
+				</div>
+
+				<div class="col-md-6">
+					<div class="form-group">
+						<label for="dataSolicitacao">Data da Solicitção*</label> <input
+							type="date" class="form-control" name="dataSolicitacao"
+							id="dataSolicitacao"> <small id="dataSolicitacao-small"
+							class="form-text text-muted"></small>
+					</div>
+				</div>
+			</div>
+
+
+			<div class="text-right">
+				<button id="submit-prescricao-externa" type="submit"
+					class="btn btn-primary btn-sm">Salvar</button>
+				<!-- 					<button type="button" onclick="fechaFormularioNovoRegistro()" -->
+				<!-- 						class="btn btn-warning btn-border btn-sm"> -->
+				<!-- 						Cancelar</button> -->
+			</div>
+		</form>
 	</div>
 </div>

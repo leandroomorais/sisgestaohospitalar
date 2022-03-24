@@ -290,11 +290,11 @@ $("#form-prescricao").submit(function (evt) {
 				//fechaFormularioPrescricao();
 				abrirFormularioPrescricaoExterna();
 				idPrescricaoAtual = data.id;
-				console.log("entrou", idPrescricaoAtual);
+				boolPrescricaoExterna = false;
 			}else{			
 				fechaFormularioPrescricao();
 				atualizaPrescricoes();
-				//console.log("nao entrou", data.id);
+				
 			}
 		},
 
@@ -771,7 +771,17 @@ function atualizaPrescricoes() {
 				$("#div-prescricoes").append("<h5 class='card-title text-center'>Não existem prescrições para este atendimento</h5><p class='card-text text-center'>Clique no botão Nova prescrição para cadastrar uma.</p>");
 			} else {
 				$.each(data, function (key, item) {
-					$("#div-prescricoes").append(createCardPrescricao(item));
+					if(item.prescricaoExternabool == true){
+						$.ajax({
+							url: '/prescricao/prescricao-externa/' + item.id,
+							method: 'get',							
+							success: function (data) {		
+								$("#div-prescricoes").append(createCardPrescricaoExterna(item, data));						
+							}
+						})
+					}else{
+						$("#div-prescricoes").append(createCardPrescricao(item));
+					}
 				})
 			}
 
@@ -894,6 +904,9 @@ function infoCardDataProfissional(date, nomeProfissional, crm) {
 	return "<span class='text-warning'> " + date + " </span><br><span class='text-muted'> " + nomeProfissional + " </span><br><strong>CRM: </strong><span class='text-muted'> " + crm + " </span><br>"
 }
 
+
+
+
 function inforCardBooleans(data) {
 	var noAtendimento = "Não";
 	var usoContinuo = "Não";
@@ -936,6 +949,68 @@ function isSet(val) {
 	}
 	return false;
 };
+
+function createCardPrescricaoExterna(item, data) {
+	return "<div class='card'><div class='card-body'><div class='col-md-12 row'><div class='col-md-8'>" +
+		h5CarPrescricao(item.medicamento.principioAtivo, item.viaAdministracao.nome) + inforCardPrimary(item.medicamento.concentracao, item.medicamento.formaFarmaceutica.nome) +
+		infoCardQuantidade(item.quantidade, item.medicamento.unidadeFornecimento) +
+		infoCardPrescricao("Posologia: ", item.posologia) +
+		inforCardBooleans(item) +
+		infoCardPrescricao("Orientações: ", item.orientacoes) +
+		"</div><div class='col-md-4 text-right'>" +
+		infoCardPrescricaoExterna(data) +
+		"</div></div><div class='text-right'>" +
+		buttonEditarPrescricaoExterna() +
+		"<button type='button' class='btn btn-light btn-sm' data-value='" + item.id + "' onclick='imprimirPrescricao("+JSON.stringify(item)+")'><i class='fa fa-print'></i> Imprimir</button>" +
+		buttonRegistros()
+		+ buttonEditar()
+		+ buttonExcluir()
+		+ "</div></div></div>";
+
+	function buttonRegistros() {
+		if (item.administracaoNoAtendimento) {
+			return "<button type='button' class='btn btn-light btn-sm' data-value='" + item.id + "' onclick='exibeRegistros(this)'><i class='fa fa-check'></i> Registros de administração</button>";
+		} else {
+			return "";
+		}
+	}
+
+	function buttonEditar() {
+		var username = $("#nome-usuario").text();
+		if (item.profissional.cpf != username) {
+			return "";
+		} else if (item.profissional.cpf == username) {
+			return "<button type='button' class='btn btn-light btn-sm' data-value='" + item.id + "' onclick='editarPrescricao(this)'><i class='fa fa-edit'></i> Editar</button>";
+		}
+	}
+	
+	function buttonExcluir() {
+		var username = $("#nome-usuario").text();
+		if (item.profissional.cpf != username) {
+			return "";
+		} else if (item.profissional.cpf == username) {
+			return "<button type='button' class='btn btn-light btn-sm' data-value='" + item.id + "' onclick='excluirPrescricao(this)'><i class='fa fa-trash'></i> Excluir</button>";
+		}
+	}
+	
+	function buttonEditarPrescricaoExterna() {
+		var username = $("#nome-usuario").text();
+		if (item.profissional.cpf != username) {
+			return "";
+		} else if (item.profissional.cpf == username) {
+			return "<button type='button' class='btn btn-light btn-sm' data-value='" + data.id + "' onclick='editarPrescricaoExterna(" + data.id + ")'><i class='fa fa-edit' style='color:red'></i> Editar Prescrição Externa</button>";
+		}
+	}
+	
+}
+
+function infoCardPrescricaoExterna(data){
+	
+	return "<h5 class='text-danger text-uppercase pl-3'>Prescrição Externa</h5><span class='text-warning'> " + dataFormatadaJSPrescricaoExterna(data.dataSolicitacao)  + " </span><br><span class='text-muted'> " + data.nomeProfissional + " </span><br><strong>CRM: </strong><span class='text-muted'> " + data.numeroRegistro + " / " + data.siglaUfEmissao + " </span><br>"
+
+}
+
+
 
 function removeInvalidFedbackPrescricao() {
 	$("#form-prescricao input, #form-prescricao textarea").each(
@@ -1131,6 +1206,13 @@ function limpaPrescricaoExterna() {
 	$("#administracao-no-atendimento").parent().removeClass().addClass("toggle btn btn-black off");
 }
 
+function limpaPrescricaoExternaExternaDetalhes() {
+	$("#nomeProfissional").val("");
+	$("#numeroRegistro").val("");
+	$("#siglaUfEmissao").val("");
+	$("#dataSolicitacao").val("");
+}
+
 function abrirFormularioPrescricaoExterna() {
 	limpaPrescricao();
 	$("#card-nova-prescricao").fadeOut(100);
@@ -1143,58 +1225,339 @@ function abrirFormularioPrescricaoExterna() {
 
 $("#form-prescricao-externa").submit(function (evt) {
 	evt.preventDefault();
-	var prescricaoExterna = {};
-
-	prescricaoExterna['prescricao'] = idPrescricaoAtual;
-	prescricaoExterna.nomeProfissional = $("#nomeProfissional").val();
-	prescricaoExterna.nomeEstabelecimento = $("#nomeEstabelecimento").val();
 	
+	if(idEditarPrescricaoExterna == null){
+		
+		var prescricaoExterna = {};
+		
+		prescricaoExterna['prescricao'] = idPrescricaoAtual;
+		prescricaoExterna.nomeProfissional = $("#nomeProfissional").val();
+		prescricaoExterna.numeroRegistro = $("#numeroRegistro").val();
+		prescricaoExterna.siglaUfEmissao = $("#siglaUfEmissao").val();
+		prescricaoExterna.dataSolicitacao = $("#dataSolicitacao").val();
+		
+		$.ajax({
+			url: '/prescricao/prescricao-externa/',
+			method: 'post',
+			data: prescricaoExterna,
+			beforeSend: function () {
+				console.log(prescricaoExterna);
+				removeInvalidFedbackPrescricao();
+			},
+			success: function (data) {
+				$.notify({
+					// options
+					icon: 'flaticon-success',
+					title: 'SUCESSO',
+					message: 'A prescrição externa foi salva',
+					target: '_blank'
+				}, {
+					// settings
+					element: 'body',
+					position: null,
+					type: "success",
+					allow_dismiss: true,
+					newest_on_top: false,
+					showProgressbar: false,
+					placement: {
+						from: "top",
+						align: "right"
+					},
+					offset: 20,
+					spacing: 10,
+					z_index: 1031,
+					delay: 5000,
+					timer: 1000,
+					url_target: '_blank',
+					mouse_over: null,
+					animate: {
+						enter: 'animated fadeInDown',
+						exit: 'animated fadeOutUp'
+					},
+					onShow: null,
+					onShown: null,
+					onClose: null,
+					onClosed: null,
+					icon_type: 'class',
+				});
+				limpaPrescricaoExternaExternaDetalhes();
+				exibeRegistrosPrescricaoExterna(data.id);
+				
+			},
+		
+			statusCode: {
+				400: function () {
+					$.notify({
+						// options
+						icon: 'flaticon-exclamation',
+						title: 'ERRO',
+						message: 'Não foi possível processar sua solicitação',
+						target: '_blank'
+					}, {
+						// settings
+						element: 'body',
+						position: null,
+						type: "danger",
+						allow_dismiss: true,
+						newest_on_top: false,
+						showProgressbar: false,
+						placement: {
+							from: "top",
+							align: "right"
+						},
+						offset: 20,
+						spacing: 10,
+						z_index: 1031,
+						delay: 5000,
+						timer: 1000,
+						url_target: '_blank',
+						mouse_over: null,
+						animate: {
+							enter: 'animated fadeInDown',
+							exit: 'animated fadeOutUp'
+						},
+						onShow: null,
+						onShown: null,
+						onClose: null,
+						onClosed: null,
+						icon_type: 'class',
+					});
+				},
+				422: function (xhr) {
+					var errors = $.parseJSON(xhr.responseText);
+					$.each(errors, function (key, val) {
+						$.notify({
+							// options
+							icon: 'flaticon-exclamation',
+							title: 'ATENÇÃO',
+							message: val,
+							target: '_blank'
+						}, {
+							// settings
+							element: 'body',
+							position: null,
+							type: "danger",
+							allow_dismiss: true,
+							newest_on_top: false,
+							showProgressbar: false,
+							placement: {
+								from: "top",
+								align: "right"
+							},
+							offset: 20,
+							spacing: 10,
+							z_index: 1031,
+							delay: 5000,
+							timer: 1000,
+							url_target: '_blank',
+							mouse_over: null,
+							animate: {
+								enter: 'animated fadeInDown',
+								exit: 'animated fadeOutUp'
+							},
+							onShow: null,
+							onShown: null,
+							onClose: null,
+							onClosed: null,
+							icon_type: 'class',
+						});
+		
+						$("input[name='" + key + "']").parent().parent().addClass("has-error has-feedback");
+		
+					})
+				}
+			},
+		})
+	}else{
+		var prescricaoExterna = {};
+		
+		prescricaoExterna.id = idEditarPrescricaoExterna;
+		prescricaoExterna.nomeProfissional = $("#nomeProfissional").val();
+		prescricaoExterna.numeroRegistro = $("#numeroRegistro").val();
+		prescricaoExterna.siglaUfEmissao = $("#siglaUfEmissao").val();
+		prescricaoExterna.dataSolicitacao = $("#dataSolicitacao").val();
+		
+		$.ajax({
+			url: '/prescricao/prescricao-externa-editar/',
+			method: 'post',
+			data: prescricaoExterna,
+			beforeSend: function () {
+				console.log(prescricaoExterna);
+				removeInvalidFedbackPrescricao();
+			},
+			success: function (data) {
+				$.notify({
+					// options
+					icon: 'flaticon-success',
+					title: 'SUCESSO',
+					message: 'A prescrição externa foi salva',
+					target: '_blank'
+				}, {
+					// settings
+					element: 'body',
+					position: null,
+					type: "success",
+					allow_dismiss: true,
+					newest_on_top: false,
+					showProgressbar: false,
+					placement: {
+						from: "top",
+						align: "right"
+					},
+					offset: 20,
+					spacing: 10,
+					z_index: 1031,
+					delay: 5000,
+					timer: 1000,
+					url_target: '_blank',
+					mouse_over: null,
+					animate: {
+						enter: 'animated fadeInDown',
+						exit: 'animated fadeOutUp'
+					},
+					onShow: null,
+					onShown: null,
+					onClose: null,
+					onClosed: null,
+					icon_type: 'class',
+				});
+				
+				limpaPrescricaoExternaExternaDetalhes();
+				voltarParaListaPrescricoes();
+				idEditarPrescricaoExterna = null;
+			},
+		
+			statusCode: {
+				400: function () {
+					$.notify({
+						// options
+						icon: 'flaticon-exclamation',
+						title: 'ERRO',
+						message: 'Não foi possível processar sua solicitação',
+						target: '_blank'
+					}, {
+						// settings
+						element: 'body',
+						position: null,
+						type: "danger",
+						allow_dismiss: true,
+						newest_on_top: false,
+						showProgressbar: false,
+						placement: {
+							from: "top",
+							align: "right"
+						},
+						offset: 20,
+						spacing: 10,
+						z_index: 1031,
+						delay: 5000,
+						timer: 1000,
+						url_target: '_blank',
+						mouse_over: null,
+						animate: {
+							enter: 'animated fadeInDown',
+							exit: 'animated fadeOutUp'
+						},
+						onShow: null,
+						onShown: null,
+						onClose: null,
+						onClosed: null,
+						icon_type: 'class',
+					});
+				},
+				422: function (xhr) {
+					var errors = $.parseJSON(xhr.responseText);
+					$.each(errors, function (key, val) {
+						$.notify({
+							// options
+							icon: 'flaticon-exclamation',
+							title: 'ATENÇÃO',
+							message: val,
+							target: '_blank'
+						}, {
+							// settings
+							element: 'body',
+							position: null,
+							type: "danger",
+							allow_dismiss: true,
+							newest_on_top: false,
+							showProgressbar: false,
+							placement: {
+								from: "top",
+								align: "right"
+							},
+							offset: 20,
+							spacing: 10,
+							z_index: 1031,
+							delay: 5000,
+							timer: 1000,
+							url_target: '_blank',
+							mouse_over: null,
+							animate: {
+								enter: 'animated fadeInDown',
+								exit: 'animated fadeOutUp'
+							},
+							onShow: null,
+							onShown: null,
+							onClose: null,
+							onClosed: null,
+							icon_type: 'class',
+						});
+		
+						$("input[name='" + key + "']").parent().parent().addClass("has-error has-feedback");
+		
+					})
+				}
+			},
+		})
+		
+	}
+})
+
+function exibeRegistrosPrescricaoExterna(element) {
+	var idPrescricao = element;
+	$("#button-novo-registro").attr("data-value", idPrescricao);
+	//$("#card-list-prescricoes").fadeOut(100);
+	$("#card-nova-prescricao-externa").fadeOut(100);
+	$("#card-list-registros-administracao").fadeIn(100);
+	dataTableRegistro(idPrescricao);
+}
+
+function exibeFormularioNovoRegistroPrescricaoExterna(element) {
+	var idPrescricao = element;
+	limpaNovoRegistro();
+	$("#card-nova-prescricao-externa").fadeOut(100);
+	$("#card-novo-registro-administracao").fadeIn(100);
+	$("#card-prescricao-administracao").empty().append(detalharPrescricao(idPrescricao));
+	$("#administracaoRealizada").attr("data-value", idPrescricao);
+}
+
+function abrirFormularioEditarPrescricaoExterna() {
+	$("#card-list-prescricoes").fadeOut(100);
+	$("#card-nova-prescricao-externa").fadeIn(100);
+}
+
+function voltarParaListaPrescricoes(){
+	$("#card-nova-prescricao-externa").fadeOut(100);
+	$("#card-list-prescricoes").fadeIn(100);
+}
+
+var idEditarPrescricaoExterna = null;
+function editarPrescricaoExterna(element) {
+	
+	idEditarPrescricaoExterna = element;
+	var idPrescricaoExterna = element;
 	$.ajax({
-		url: '/prescricao/prescricao-externa/',
-		method: 'post',
-		data: prescricaoExterna,
-		beforeSend: function () {
-			console.log(prescricaoExterna);
-			removeInvalidFedbackPrescricao();
-		},
+		url: '/prescricao/prescricao-externa-byid/' + idPrescricaoExterna,
+		method: 'get',
 		success: function (data) {
-			$.notify({
-				// options
-				icon: 'flaticon-success',
-				title: 'SUCESSO',
-				message: 'A prescrição externa foi salva',
-				target: '_blank'
-			}, {
-				// settings
-				element: 'body',
-				position: null,
-				type: "success",
-				allow_dismiss: true,
-				newest_on_top: false,
-				showProgressbar: false,
-				placement: {
-					from: "top",
-					align: "right"
-				},
-				offset: 20,
-				spacing: 10,
-				z_index: 1031,
-				delay: 5000,
-				timer: 1000,
-				url_target: '_blank',
-				mouse_over: null,
-				animate: {
-					enter: 'animated fadeInDown',
-					exit: 'animated fadeOutUp'
-				},
-				onShow: null,
-				onShown: null,
-				onClose: null,
-				onClosed: null,
-				icon_type: 'class',
-			});
-			exibeFormularioNovoRegistroPrescricaoExterna(data.id);
+			abrirFormularioEditarPrescricaoExterna();
 			
+			//$("#id-prescricao").val(data.id);
+			$("#nomeProfissional").val(data.nomeProfissional);
+			$("#numeroRegistro").val(data.numeroRegistro);
+			$("#siglaUfEmissao").val(data.siglaUfEmissao);
+			$("#dataSolicitacao").val(data.dataSolicitacao);
 		},
 
 		statusCode: {
@@ -1235,59 +1598,55 @@ $("#form-prescricao-externa").submit(function (evt) {
 					icon_type: 'class',
 				});
 			},
-			422: function (xhr) {
-				var errors = $.parseJSON(xhr.responseText);
-				$.each(errors, function (key, val) {
-					$.notify({
-						// options
-						icon: 'flaticon-exclamation',
-						title: 'ATENÇÃO',
-						message: val,
-						target: '_blank'
-					}, {
-						// settings
-						element: 'body',
-						position: null,
-						type: "danger",
-						allow_dismiss: true,
-						newest_on_top: false,
-						showProgressbar: false,
-						placement: {
-							from: "top",
-							align: "right"
-						},
-						offset: 20,
-						spacing: 10,
-						z_index: 1031,
-						delay: 5000,
-						timer: 1000,
-						url_target: '_blank',
-						mouse_over: null,
-						animate: {
-							enter: 'animated fadeInDown',
-							exit: 'animated fadeOutUp'
-						},
-						onShow: null,
-						onShown: null,
-						onClose: null,
-						onClosed: null,
-						icon_type: 'class',
-					});
 
-					$("input[name='" + key + "']").parent().parent().addClass("has-error has-feedback");
 
-				})
+			403: function () {
+				$.notify({
+					// options
+					icon: 'flaticon-exclamation',
+					title: 'ERRO',
+					message: 'Não é possível editar esta prescrição, pois já existe um registro de administração cadastrado.',
+					target: '_blank'
+				}, {
+					// settings
+					element: 'body',
+					position: null,
+					type: "danger",
+					allow_dismiss: true,
+					newest_on_top: false,
+					showProgressbar: false,
+					placement: {
+						from: "top",
+						align: "right"
+					},
+					offset: 20,
+					spacing: 10,
+					z_index: 1031,
+					delay: 5000,
+					timer: 1000,
+					url_target: '_blank',
+					mouse_over: null,
+					animate: {
+						enter: 'animated fadeInDown',
+						exit: 'animated fadeOutUp'
+					},
+					onShow: null,
+					onShown: null,
+					onClose: null,
+					onClosed: null,
+					icon_type: 'class',
+				});
 			}
 		},
-
 	})
-})
 
-function exibeFormularioNovoRegistroPrescricaoExterna(element) {
-	var idPrescricao = element;
-	limpaNovoRegistro();
-	$("#card-nova-prescricao-externa").fadeOut(100);
-	$("#card-novo-registro-administracao").fadeIn(100);
-	$("#card-prescricao-administracao").empty().append(detalharPrescricao(idPrescricao));
-	$("#administracaoRealizada").attr("data-value", idPrescricao);
+}
+
+
+function dataFormatadaJSPrescricaoExterna(dataAtual) {
+	let data = new Date(dataAtual),
+		dia = (data.getDate() + 1).toString().padStart(2, '0'),
+		mes = (data.getMonth() + 1).toString().padStart(2, '0'),
+		ano = data.getFullYear();
+	return `${dia}/${mes}/${ano}`;
 }
