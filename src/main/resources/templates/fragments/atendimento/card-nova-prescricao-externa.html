@@ -3,27 +3,28 @@
 	<div class="card-header">
 		<div class="card-title">
 			<a id="nova-prescricao-externa-voltar" data-toggle="tooltipe"
-				data-placement="top" title="Voltar para tela anterior"
+				data-placement="top" title="Voltar para tela inicial"
 				class="btn btn-light"> <i class="fa fa-flip-horizontal fa-share"></i>
 			</a> Nova Prescrição Externa
 		</div>
 	</div>
 	<div class="card-body">
 		<div id="card-header" class="card-header">
-			<div class="card-title">Detalhes da Solicitção</div>
+			<div class="card-title">Detalhes da Solicitação</div>
 		</div>
 		<form id="form-prescricao-externa"
 			action="/atendimento/prescricao-externa" method="post">
 			<div class="col-md-12">
 				<div id="card-prescricao-administracao"></div>
 			</div>
-
-			<div class="col-md-12">
-				<div class="form-group">
-					<label for="nomeProfissional">Nome do Profissional*</label> <input
-						type="text" class="form-control" name="nomeProfissional"
-						id="nomeProfissional" placeholder=""> <small
-						id="nomeProfissional-small" class="form-text text-muted"></small>
+			<div class="col-md-12 row">
+				<div class="col-md-12">
+					<div class="form-group">
+						<label for="nomeProfissional">Nome do Profissional*</label> <input
+							type="text" class="form-control" name="nomeProfissional"
+							id="nomeProfissional" placeholder=""> <small
+							id="nomeProfissional-small" class="form-text text-muted"></small>
+					</div>
 				</div>
 			</div>
 
@@ -36,9 +37,9 @@
 							id="numeroRegistro-small" class="form-text text-muted"></small>
 					</div>
 				</div>
-				<div class="col-md-2">
+				<div class="col-md-3">
 					<div class="form-group">
-						<label for="siglaUfEmissao">UF do CRM:</label> <select
+						<label for="siglaUfEmissao">UF do CRM*</label> <select
 							name="siglaUfEmissao" id="siglaUfEmissao"
 							class="form-control form-control">
 							<option value="">Selecione</option>
@@ -74,7 +75,7 @@
 					</div>
 				</div>
 
-				<div class="col-md-6">
+				<div class="col-md-5">
 					<div class="form-group">
 						<label for="dataSolicitacao">Data da Solicitção*</label> <input
 							type="date" class="form-control" name="dataSolicitacao"
@@ -88,9 +89,9 @@
 			<div class="text-right">
 				<button id="submit-prescricao-externa" type="submit"
 					class="btn btn-primary btn-sm">Salvar</button>
-				<!-- 					<button type="button" onclick="fechaFormularioNovoRegistro()" -->
-				<!-- 						class="btn btn-warning btn-border btn-sm"> -->
-				<!-- 						Cancelar</button> -->
+				<button type="button" onclick="cancelarPrescricaoExterna()"
+					class="btn btn-warning btn-border btn-sm">
+					Cancelar</button>
 			</div>
 		</form>
 	</div>

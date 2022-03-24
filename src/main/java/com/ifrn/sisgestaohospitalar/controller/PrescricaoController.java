@@ -98,8 +98,10 @@ public class PrescricaoController {
 				|| !prescricao.getRegistrosAdministracao().isEmpty()) {
 			return ResponseEntity.status(HttpStatus.FORBIDDEN).build();
 		}
+		if(prescricao.getPrescricaoExterna() != null) {
+			prescricaoExternaRepository.delete(prescricao.getPrescricaoExterna());
+		}
 		prontuario.getPrescricoes().remove(prescricao);
-		prescricaoExternaRepository.delete(prescricao.getPrescricaoExterna());
 		prontuarioRepository.saveAndFlush(prontuario);
 		prescricaoRepository.delete(prescricao);
 		return ResponseEntity.ok().build();
