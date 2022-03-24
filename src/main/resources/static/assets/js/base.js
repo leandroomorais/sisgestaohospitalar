@@ -16,7 +16,7 @@ function notificacao(title, message, placementFrom, placementAlign, state, style
 			align: placementAlign
 		},
 		time: 1000,
-		delay: 0,
+		delay: 5000,
 	});
 }
 

@@ -460,7 +460,7 @@ function infoCardEndereco(endereco, cep) {
 }
 
 function detalhar() {
-	$(location).attr('href', '/cidadao/detalhar/' + idCidadao);
+	$(location).attr('href', '/cidadao/detalhe/' + idCidadao);
 }
 
 function editar() {
