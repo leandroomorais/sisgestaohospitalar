@@ -37,6 +37,8 @@ import com.ifrn.sisgestaohospitalar.utils.SalvarLogradouros;
 
 @SpringBootApplication
 public class SisgestaohospitalarApplication implements ApplicationListener<ContextRefreshedEvent> {
+	
+	//conflito commit
 
 	@Autowired
 	LeitorTXTExames leitorTXTExames;
