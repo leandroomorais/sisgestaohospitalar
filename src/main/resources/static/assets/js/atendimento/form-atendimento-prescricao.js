@@ -1110,7 +1110,7 @@ function dataTableRegistro(id) {
 
 function submitProcedimentoAutomatico(idAtendimento, codigoProcedimento, tipoServico, quantidade) {
 	var relAtendimentoProcedimento = {};
-	relAtendimentoProcedimento.idAtendimento = idAtendimento;
+	relAtendimentoProcedimento['atendimento'] = idAtendimento;
 	relAtendimentoProcedimento['procedimento.codigo'] = codigoProcedimento;
 	relAtendimentoProcedimento.quantidade = quantidade;
 	relAtendimentoProcedimento.tipoServico = tipoServico;
