@@ -7,6 +7,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 @Entity
 public class PrescricaoExterna {
 	
@@ -14,12 +16,16 @@ public class PrescricaoExterna {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
+	@NotBlank(message = "Informe o nome do profissional")
 	private String nomeProfissional;
 	
+	@NotBlank(message = "Informe o numero do registro CRM")
 	private String numeroRegistro;
 	
+	@NotBlank(message = "Informe o estado do CRM")
 	private String siglaUfEmissao;
 	
+	@NotNull(message = "Informe a data de solicitação")
 	private LocalDate dataSolicitacao;
 
 	@OneToOne

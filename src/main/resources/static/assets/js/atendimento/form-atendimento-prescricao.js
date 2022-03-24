@@ -1221,7 +1221,7 @@ function exibeFormularioPrescricaoExterna() {
 	removeInvalidFedbackPrescricao();
 	$("#card-list-prescricoes").fadeOut(100);
 	$("#card-nova-prescricao").fadeIn(100);
-	$("#administracao-no-atendimento").parent().removeClass().addClass("toggle btn btn-primary on");
+	//$("#administracao-no-atendimento").parent().removeClass().addClass("toggle btn btn-primary on");
 }	
 
 
@@ -1252,6 +1252,17 @@ function abrirFormularioPrescricaoExterna() {
 	$("#card-nova-prescricao-externa").fadeIn(100);
 }
 
+function removeInvalidFedbackPrescricaoExterna() {
+	$("#form-prescricao-externa input, #form-prescricao-externa textarea").each(
+		function(index) {
+			var str = $(this).parent().parent().attr("class");
+			if (str.match(/has-error/)) {
+				$(this).parent().parent().removeClass("has-error has-feedback");
+			}
+
+		}
+	);
+}
 
 $("#form-prescricao-externa").submit(function(evt) {
 	evt.preventDefault();
@@ -1272,7 +1283,7 @@ $("#form-prescricao-externa").submit(function(evt) {
 			data: prescricaoExterna,
 			beforeSend: function () {
 				//console.log(prescricaoExterna);
-				removeInvalidFedbackPrescricao();
+				removeInvalidFedbackPrescricaoExterna();
 			},
 			success: function (data) {
 				$.notify({
@@ -1414,7 +1425,7 @@ $("#form-prescricao-externa").submit(function(evt) {
 			data: prescricaoExterna,
 			beforeSend: function () {
 				console.log(prescricaoExterna);
-				removeInvalidFedbackPrescricao();
+				removeInvalidFedbackPrescricaoExterna();
 			},
 			success: function (data) {
 				$.notify({
@@ -1585,7 +1596,7 @@ function editarPrescricaoExterna(element) {
 		method: 'get',
 		success: function (data) {
 			abrirFormularioEditarPrescricaoExterna();
-			
+			removeInvalidFedbackPrescricaoExterna();
 			//$("#id-prescricao").val(data.id);
 			$("#nomeProfissional").val(data.nomeProfissional);
 			$("#numeroRegistro").val(data.numeroRegistro);
@@ -1710,3 +1721,24 @@ function dataFormatadaJSPrescricaoExterna(dataAtual) {
 		ano = data.getFullYear();
 	return `${dia}/${mes}/${ano}`;
 }
+
+
+
+
+$("#dataSolicitacao").on("change", function() {
+	var dataSolicitacao = $(this).val();
+	
+	var dataAtual = dataFormatadaJSComTraco(new Date());
+	
+	if (moment(dataSolicitacao).isAfter(dataAtual)) {
+
+		$("#dataSolicitacao").parent().parent().addClass("has-error");
+		$("#dataSolicitacao-small").removeClass().addClass("text-danger").text("A data da prescrição não pode ser maior que a data atual");
+		$("#dataSolicitacao").val("");
+	} else {
+		$("#dataSolicitacao").parent().parent().removeClass("has-error");
+		$("#dataSolicitacao-small").removeClass().text("");
+
+	}
+})
+
