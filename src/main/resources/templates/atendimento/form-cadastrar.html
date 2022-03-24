@@ -20,11 +20,7 @@
 						</div>
 					</th:block>
 				</div>
-				<div class="alert alert-success alert-dismissible fade show" role="alert" th:if="${success}">
-					<strong>Sucesso!</strong> <span th:text="${success}"></span>
-					<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
+				<div th:replace="fragments/alertas/alertas::success">
 				</div>
 				<div class="page-header">
 					<h4 class="page-title">Cidadão</h4>
@@ -38,11 +34,6 @@
 
 				<div class="card">
 					<form method="post" th:action="@{/atendimento/salvar}" th:object="${atendimento}">
-						<!-- 						<div th:switch="${edit}" class="card-header"> -->
-						<!-- 							<h4 th:case="true" class="card-title">Editar Atendimento</h4> -->
-						<!-- 							<h4 th:case="false" class="card-title">Adicionar a Lista de -->
-						<!-- 								Atendimento</h4> -->
-						<!-- 						</div> -->
 						<div class="card-body">
 							<div class="page-inner">
 								<div class="row justify-content-center">
