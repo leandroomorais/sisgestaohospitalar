@@ -35,21 +35,24 @@ var idCidadao = null;
 //Funções auxliares do Formulário de Cadastro do Cidadão
 
 $("#semInfo-mae").click(function() {
-	if ($("#semInfor-mae").prop("checked", "checked")) {
+	const isChecked = !$(this).attr('checked')
+	$(this).attr("checked", isChecked)
+	if (isChecked) {
 		$("#nomemae").val("SEM INFORMAÇÃO");
-	} else if ($("#semInfor-mae").prop("checked", false)) {
+	} else {
 		$("#nomemae").val("");
 	}
 
 });
 
 $("#semInfo-pai").click(function() {
-	if ($("#semInfor-pai").prop("checked", true)) {
+	const isChecked = !$(this).attr('checked')
+	$(this).attr("checked", isChecked)
+	if (isChecked) {
 		$("#nomepai").val("SEM INFORMAÇÃO");
-	} else if ($("#semInfor-pai").prop("checked", false)) {
+	} else {
 		$("#nomepai").val("");
 	}
-
 });
 
 $("#semNumero").click(function() {
@@ -307,25 +310,6 @@ $("#button-nome").click(function() {
 	$("#button-nome").removeClass().addClass("btn btn-primary btn-xs");
 });
 
-//Função autocompletar município de nascimento
-$(function() {
-	$("#municipioNascimento").on("keydown", function(event) {
-		$(this).autocomplete("instance")._renderItem = function(select, item) {
-			return $("<option  class='form-control'>").append("<div>"
-				+ item.nomeMunicipioSiglaUF
-				+ "</div>").appendTo(select);
-		};
-	}).autocomplete({
-		source: "/municipio",
-		select: function(event, ui) {
-			$("#municipioNascimento").val(ui.item.nomeMunicipioSiglaUF);
-			$("#id-municipioNascimento").val(ui.item.id);
-			return false;
-		},
-
-	})
-});
-
 //Função para autocompletar endereço por CEP
 $("#button-pesquisaCep").click(function(evt) {
 	evt.preventDefault();
@@ -354,24 +338,45 @@ $("#button-pesquisaCep").click(function(evt) {
 	})
 });
 
-//Função autocompletar Logradouro
-$(function() {
-	$("#desc-logradouro").on("keydown", function(event) {
-		$(this).autocomplete("instance")._renderItem = function(select, item) {
-			return $("<option  class='form-control'>").append("<div>"
-				+ item.descricao
-				+ "</div>").appendTo(select);
-		};
-	}).autocomplete({
-		source: "/logradouro",
-		select: function(event, ui) {
-			$("#desc-logradouro").val(ui.item.descricao);
-			$("#endereco-logradouro").val(ui.item.codigo);
-			return false;
-		},
+//Função autocompletar município de nascimento
+$("#municipioNascimento").autocomplete({
+	maxShowItems: 5,
+	source: "/municipio",
+	focus: function(event, ui) {
+		$(this).val(ui.item.nomeMunicipioSiglaUF);
+		return false;
+	},
+	select: function(event, ui) {
+		$("#municipioNascimento").val(ui.item.nomeMunicipioSiglaUF);
+		$("#id-municipioNascimento").val(ui.item.id);
+		return false;
+	}
+}).autocomplete("instance")._renderItem = function(ul, item) {
+	return $("<li>")
+		.append("<div class='h5'>" + item.nomeMunicipioSiglaUF + "</div>")
+		.appendTo(ul);
+}
 
-	})
-});
+
+//Função autocompletar Logradouro
+$("#desc-logradouro").autocomplete({
+	maxShowItems: 5,
+	source: "/logradouro",
+	focus: function(event, ui) {
+		$(this).val(ui.item.descricao);
+		return false;
+	},
+	select: function(event, ui) {
+		$("#desc-logradouro").val(ui.item.descricao);
+		$("#endereco-logradouro").val(ui.item.codigo);
+		return false;
+	},
+}).autocomplete("instance")._renderItem = function(ul, item) {
+	return $("<li>")
+		.append("<div class='h5'>" + item.descricao + "</div>")
+		.appendTo(ul);
+};
+
 
 //Função para exibir a mensagem CAMPO DE PREENCHIMENTO OBRIGATÓRIO
 //caso o serviço do CADSUS não retorne um parâmetro obrigatório
