@@ -35,7 +35,6 @@ public class ConexaoCadsus {
 			post.setEntity(entity);
 			HttpResponse httpResponse = client.execute(post);
 			String result = EntityUtils.toString(httpResponse.getEntity());
-			System.out.println(result);
 			return result;
 		} catch (Exception e) {
 			return null;
