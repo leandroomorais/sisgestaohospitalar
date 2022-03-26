@@ -97,6 +97,8 @@ public class CidadaoController {
 		Optional<Cidadao> optional = cidadaoRepository.findById(id);
 		mv.addObject("cidadao", optional.get());
 		mv.addObject("user", usuarioRepository.findByUsername(principal.getName()));
+		mv.addObject("racas", CodigoRaca.values());
+		mv.addObject("estadosCivil", EstadoCivil.values());
 		return mv;
 	}
 
