@@ -14,9 +14,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.ifrn.sisgestaohospitalar.model.Atestado;
+import com.ifrn.sisgestaohospitalar.model.Cidadao;
 import com.ifrn.sisgestaohospitalar.model.Exame;
 import com.ifrn.sisgestaohospitalar.model.Prescricao;
 import com.ifrn.sisgestaohospitalar.repository.AtestadoRepository;
+import com.ifrn.sisgestaohospitalar.repository.CidadaoRepository;
 import com.ifrn.sisgestaohospitalar.repository.ExameRepository;
 import com.ifrn.sisgestaohospitalar.repository.PrescricaoRepository;
 import com.ifrn.sisgestaohospitalar.repository.ProfissionalRepository;
@@ -40,6 +42,9 @@ public class RelatorioController {
 
 	@Autowired
 	private ExameRepository exameRepository;
+
+	@Autowired
+	private CidadaoRepository cidadaoRepository;
 
 	@GetMapping("/atestado/{id}")
 	public void imprimeAtestado(@PathVariable("id") Long id, HttpServletResponse response, Principal principal)
@@ -88,6 +93,21 @@ public class RelatorioController {
 			response.setContentType(MediaType.APPLICATION_PDF_VALUE);
 			response.setHeader("Content-disposition",
 					"inline; filename=solicitacao-" + optional.get().getAtendimento().getCidadao().getNome() + ".pdf");
+			response.getOutputStream().write(bytes);
+		}
+	}
+
+	@GetMapping("/cidadao/{id}")
+	public void imprimeCadastroCidadao(@PathVariable("id") Long id, HttpServletResponse response, Principal principal)
+			throws IOException {
+		Optional<Cidadao> optional = cidadaoRepository.findById(id);
+		if (optional.isPresent()) {
+			jasperService.addParams("ID_CIDADAO", id);
+			jasperService.addParams("USER_NAME", profissionalRepository.findByCpf(principal.getName()).getNome());
+			byte[] bytes = jasperService.exportarPDF("cidadao");
+			response.setContentType(MediaType.APPLICATION_PDF_VALUE);
+			response.setHeader("Content-disposition",
+					"inline; filename=cadastro-" + optional.get().getNome() + ".pdf");
 			response.getOutputStream().write(bytes);
 		}
 	}
