@@ -32,15 +32,15 @@
 				</li>
 
 				<li sec:authorize="hasAnyAuthority('TECNICO','ENFERMEIRO','MEDICO','AUXILIAR')" class="nav-item"><a
-						th:href="@{/cidadao/adicionar}"> <i class="fas fa-user-plus"></i>
+						th:href="@{/cidadao/adicionar}"> <i class="fas fa-user"></i>
 						<p>Cidadão</p> <span class="caret"></span>
 					</a></li>
 				<li sec:authorize="hasAnyAuthority('ENFERMEIRO','MEDICO')" class="nav-item"><a
-						th:href="@{/triagem/listar}"> <i class="fa fa-users"></i>
+						th:href="@{/triagem/listar}"> <i class="fa fa-heartbeat"></i>
 						<p>Triagem</p>
 					</a></li>
 				<li sec:authorize="hasAnyAuthority('MEDICO','ENFERMEIRO','TECNICO','AUXILIAR')" class="nav-item"><a
-						th:href="@{/atendimento/listar-atendimentos}"> <i class="fa fa-users"></i>
+						th:href="@{/atendimento/listar-atendimentos}"> <i class="fa fa-user-md"></i>
 						<p>Atendimentos</p>
 					</a></li>
 			</ul>

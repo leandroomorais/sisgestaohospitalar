@@ -40,7 +40,7 @@
 			<!-- Logo Header -->
 			<div class="logo-header" data-background-color="with">
 
-				<a class="logo"> <img width="100px" th:src="@{/assets/img/logosgh.png}" alt="navbar brand"
+				<a class="logo"> <img width="100px" th:src="@{/assets/img/logo-sgh-web.png}" alt="navbar brand"
 						class="navbar-brand">
 				</a>
 			</div>
@@ -84,10 +84,10 @@
 												sec:authorize="hasAnyAuthority('ADMINISTRADOR')">
 												<div class="card card-stats card-primary card-round">
 													<div class="card-body">
-														<div class="row">
+														<div class="row ml-2">
 															<div class="col-3">
 																<div class="icon-big text-center">
-																	<img th:src="@{assets/img/icons/admin-icon.png}"
+																	<img th:src="@{assets/img/icons/icon-admin.png}"
 																		alt="some text">
 																</div>
 															</div>
@@ -106,17 +106,17 @@
 												sec:authorize="hasAnyAuthority('ENFERMEIRO','TECNICO','AUXILIAR')">
 												<div class="card card-stats card-primary card-round">
 													<div class="card-body">
-														<div class="row">
+														<div class="row ml-2">
 															<div class="col-3">
 																<div class="icon-big text-center">
-																	<img th:src="@{assets/img/icons/recepcao-icon.png}"
+																	<img th:src="@{assets/img/icons/icon-cidadao.png}"
 																		alt="some text">
 																</div>
 															</div>
 															<div class="col-7 col-stats">
 																<div class="numbers">
-																	<a th:href="@{/atendimento/listar}"
-																		class="card-title">Recepção</a>
+																	<a th:href="@{/cidadao/adicionar}"
+																		class="card-title">Cidadão</a>
 																</div>
 															</div>
 														</div>
@@ -128,10 +128,10 @@
 												sec:authorize="hasAnyAuthority('ENFERMEIRO','MEDICO')">
 												<div class="card card-stats card-primary card-round">
 													<div class="card-body">
-														<div class="row">
+														<div class="row ml-2">
 															<div class="col-3">
 																<div class="icon-big text-center">
-																	<img th:src="@{assets/img/icons/triagem-icon.png}"
+																	<img th:src="@{assets/img/icons/icon-triagem.png}"
 																		alt="some text">
 																</div>
 															</div>
@@ -149,10 +149,10 @@
 												sec:authorize="hasAnyAuthority('MEDICO','ENFERMEIRO','TECNICO','AUXILIAR')">
 												<div class="card card-stats card-primary card-round">
 													<div class="card-body">
-														<div class="row">
+														<div class="row ml-2">
 															<div class="col-3">
 																<div class="icon-big text-center">
-																	<img th:src="@{assets/img/icons/atendimentomedico-icon.png}"
+																	<img th:src="@{assets/img/icons/icon-atendimentos.png}"
 																		alt="some text">
 																</div>
 															</div>
