@@ -327,9 +327,8 @@ function creatCardDetalheCidadao(data) {
 		itemCardCidadao("Nome da mãe: ", data.nomeMae) +
 		"</div><div class='col-md-4 text-right'>" +
 		infoCardEndereco(data.endereco.enderecoCompleto, data.endereco.cep) +
-		"</div></div><div class='text-right'>" +
-		"<button type='button' onclick='detalhar()' class='btn btn-light btn-sm'><i class='fa fa-info-circle' aria-hidden='true'></i> Detalhar</button>" +
-		"<button type='button' onclick='editar()' class='btn btn-light btn-sm'><i class='fa fa-edit' aria-hidden='true'></i> Editar</button>" +
+		"</div></div><div class='text-left'>" +
+		"<button type='button' onclick='detalhar()' class='btn btn-light'><i class='fa fa-info-circle' aria-hidden='true'></i> Detalhar</button>" +
 		"</div></div></div>";
 }
 

@@ -107,7 +107,7 @@ public class CidadaoController {
 			cidadao2.setNomePai(cidadao.getNomePai());
 			cidadao2.setProfissao(cidadao.getProfissao());
 			cidadao2.setSexo(cidadao.getSexo());
-			cidadao2.setTelefone(cidadao.getSexo());
+			cidadao2.setTelefone(cidadao.getTelefone());
 			cidadaoRepository.saveAndFlush(cidadao2);
 			return detalhes(cidadao.getId(), principal).addObject("sucesso", "Dados atualizados");
 		}

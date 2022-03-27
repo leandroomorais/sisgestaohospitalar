@@ -6,12 +6,9 @@ var idSinaisVitais;
 $(document).ready(function() {
 	idAtendimento = $("#id-atendimento").val();
 	idProntuario = $("#id-prontuario").val();
-
 	verificaTriagem();
-
 	ocultarAlergia();
 	ocultarDoenca();
-
 	$("#sinaisVitais-pressaoSistolica").mask('000');
 	$("#sinaisVitais-pressaoDiastolica").mask('000');
 	$("#sinaisVitais-frequenciaRespiratoria").mask("000");
@@ -19,13 +16,10 @@ $(document).ready(function() {
 	$("#sinaisVitais-temperaturaCorporal").mask("00.0");
 	$("#sinaisVitais-glicemiaCapilar").mask("000");
 	$("#sinaisVitais-saturacaoOxigenio").mask("000");
-
 	$("#peso").mask("#0.0", { reverse: true });
 	$("#altura").mask("000");
 	$("#perimetrocefalico").mask("000");
-	
 	$("#conduta-cidadao").hide();
-
 
 	//Função que inicia o TinyMCE
 	tinymce.init({
@@ -73,9 +67,7 @@ $(document).ready(function() {
 $("#form-triagem").submit(function(evt) {
 	//Bloqueia o comportamento padrão do submit
 	evt.preventDefault();
-
 	var triagem = {};
-
 	triagem.id = $("#idTriagem").val();
 	triagem.motivo = tinymce.get("motivo").getContent();
 	triagem.inicioTriagem = $("#inicioTriagem").val();
@@ -90,9 +82,6 @@ $("#form-triagem").submit(function(evt) {
 	triagem['sinaisVitais.glicemiaCapilar'] = $("#sinaisVitais-glicemiaCapilar").val();
 	triagem['sinaisVitais.momentoColeta'] = $("#sinaisVitais-momentoColeta option:selected").val();
 	triagem['atendimento'] = idAtendimento;
-
-	console.log(triagem);
-
 	$.ajax({
 		url: "/triagem/salvar",
 		method: "POST",
@@ -101,41 +90,7 @@ $("#form-triagem").submit(function(evt) {
 
 		},
 		success: function() {
-			$.notify({
-				// options
-				icon: 'flaticon-success',
-				title: 'SUCESSO',
-				message: 'A Triagem foi salva',
-				target: '_blank'
-			}, {
-				// settings
-				element: 'body',
-				position: null,
-				type: "success",
-				allow_dismiss: true,
-				newest_on_top: false,
-				showProgressbar: false,
-				placement: {
-					from: "top",
-					align: "right"
-				},
-				offset: 20,
-				spacing: 10,
-				z_index: 1031,
-				delay: 5000,
-				timer: 1000,
-				url_target: '_blank',
-				mouse_over: null,
-				animate: {
-					enter: 'animated fadeInDown',
-					exit: 'animated fadeOutUp'
-				},
-				onShow: null,
-				onShown: null,
-				onClose: null,
-				onClosed: null,
-				icon_type: 'class',
-			});
+			notificacao('Sucesso!', 'A Triagem foi salva', 'top', 'right', 'success', 'withicon', '#', '');
 			verificaTriagem();
 			cardInfoCidadao(idAtendimento);
 		},
@@ -144,92 +99,17 @@ $("#form-triagem").submit(function(evt) {
 			422: function(xhr) {
 				var errors = $.parseJSON(xhr.responseText);
 				$.each(errors, function(key, val) {
-					$.notify({
-						// options
-						icon: 'flaticon-exclamation',
-						title: 'ATENÇÃO',
-						message: val,
-						target: '_blank'
-					}, {
-						// settings
-						element: 'body',
-						position: null,
-						type: "danger",
-						allow_dismiss: true,
-						newest_on_top: false,
-						showProgressbar: false,
-						placement: {
-							from: "top",
-							align: "right"
-						},
-						offset: 20,
-						spacing: 10,
-						z_index: 1031,
-						delay: 5000,
-						timer: 1000,
-						url_target: '_blank',
-						mouse_over: null,
-						animate: {
-							enter: 'animated fadeInDown',
-							exit: 'animated fadeOutUp'
-						},
-						onShow: null,
-						onShown: null,
-						onClose: null,
-						onClosed: null,
-						icon_type: 'class',
-					});
-
+					notificacao('Atenção!', val, 'top', 'right', 'danger', 'withicon', '#', '');
 					$("input[name='" + key + "']").parent().parent().parent().addClass("has-error has-feedback");
-
 				})
 			},
-
 			error: function(xhr) {
-
-				$.notify({
-					// options
-					icon: 'flaticon-exclamation',
-					title: 'ERRO',
-					message: 'Não foi possível processar sua solicitação',
-					target: '_blank'
-				}, {
-					// settings
-					element: 'body',
-					position: null,
-					type: "danger",
-					allow_dismiss: true,
-					newest_on_top: false,
-					showProgressbar: false,
-					placement: {
-						from: "top",
-						align: "right"
-					},
-					offset: 20,
-					spacing: 10,
-					z_index: 1031,
-					delay: 5000,
-					timer: 1000,
-					url_target: '_blank',
-					mouse_over: null,
-					animate: {
-						enter: 'animated fadeInDown',
-						exit: 'animated fadeOutUp'
-					},
-					onShow: null,
-					onShown: null,
-					onClose: null,
-					onClosed: null,
-					icon_type: 'class',
-				});
-
+				notificacao('Atenção!', "Não foi possível processar a sua solicitação", 'top', 'right', 'danger', 'withicon', '#', '');
 			}
 		},
 		complete: function() {
 		}
 	})
-
-
 });
 //Fim do submit formulário triagem
 
@@ -253,33 +133,6 @@ $("#sinaisVitais-glicemiaCapilar").change(function() {
 	var quantidade = 1;
 	submitProcedimento(idAtendimento, 214010015, tipoServico, quantidade);
 })
-
-
-
-
-//Função para atualizar checkbox Habitos
-function atualizarHabitos(element) {
-	element.empty();
-	$.getJSON('/habito/listar', function(data) {
-		$.each(data, function(key, item) {
-			element.append("<div class='custom-control custom-checkbox'> <input type = 'checkbox' value ='" + item.id + "' name = '" + "habitos" + "' class= 'custom-control-input' id='habitos" + item.id + "'><label for='habitos" + item.id + "' class='custom-control-label'>" + item.nome + "</label></div>");
-		});
-	});
-}
-//Fim da função
-
-//Função para atualizar checkbox comorbidades
-function atualizarComorbidades(element) {
-	$.getJSON('/comorbidade/listar', function(data) {
-		$.each(data, function(key, item) {
-			element.append("<div class='custom-control custom-checkbox'> <input type = 'checkbox' value ='" + item.id + "' name = '" + "comorbidades" + "' class= 'custom-control-input' id='comorbidades" + item.id + "'><label for='comorbidades" + item.id + "' class='custom-control-label' data-togle='tooltip' data-placement='top' title='" + item.descricao + "'>" + item.nome + "</label></div>");
-		});
-	});
-}
-//Fim da função
-
-
-
 
 function verificaTriagem() {
 	$.ajax({
@@ -308,7 +161,6 @@ function verificaTriagem() {
 			tinymce.get("motivo").setMode('readonly');
 			$("#card-action").empty().append("<button type = 'button' onclick='editarTriagem()' class='btn btn-secondary'> Editar triagem </button>");
 		},
-
 		statusCode: {
 			400: function() {
 				$("#card-action").empty().append("<button type='submit' class='btn btn-primary'> Salvar triagem</button>");
@@ -322,7 +174,5 @@ function editarTriagem() {
 		$(this).find('input, textarea, select').attr('disabled', false);
 	});
 	tinymce.get("motivo").setMode('design');
-
-
 	$("#card-action").empty().append("<button type='submit' class='btn btn-primary'> Salvar triagem</button>");
 }

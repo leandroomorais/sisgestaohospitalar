@@ -7,6 +7,7 @@
 	<div class="main-panel" layout:fragment="main-panel">
 		<div class="container">
 			<div class="page-inner">
+				<div th:replace="fragments/alertas/alertas::success"></div>
 				<div class="alert alert-danger alert-dismissible" role="alert"
 					th:if="${#fields.hasErrors('${cidadao.*}')}">
 					<div id="hasErrors" hidden="true" th:text="${#fields.hasErrors('${cidadao.*}')}"></div>
@@ -30,8 +31,7 @@
 					</ul>
 				</div>
 				<div class="row">
-					<input id="edit" type="hidden" th:value="${edit}">
-					<div class="col-md-12">
+					<div class="col-md-12 col-lg-12">
 						<div th:replace="fragments/cidadao/card-pesquisa">
 						</div>
 					</div>

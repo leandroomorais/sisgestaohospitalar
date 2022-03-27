@@ -55,6 +55,7 @@ $("#form-antropometria").submit(function(evt) {
 				onClosed: null,
 				icon_type: 'class',
 			});
+			cardInfoCidadao(idAtendimento);
 		},
 		statusCode: {
 			422: function(xhr) {

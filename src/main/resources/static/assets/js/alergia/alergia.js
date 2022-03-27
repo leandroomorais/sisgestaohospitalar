@@ -63,6 +63,7 @@ $("#form-status-alergia").submit(function(evt) {
 				icon_type: 'class',
 			});
 			$("#table-alergias").DataTable().ajax.reload();
+			cardInfoCidadao(idAtendimento);
 		},
 
 		error: function() {
@@ -195,6 +196,7 @@ $("#form-status-alergia-edit").submit(function(evt) {
 				icon_type: 'class',
 			});
 			$("#table-alergias").DataTable().ajax.reload();
+			cardInfoCidadao(idAtendimento);
 		},
 
 		error: function() {

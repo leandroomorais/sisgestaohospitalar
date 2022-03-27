@@ -6,6 +6,7 @@ var idProntuario = $("#id-prontuario").val();
 
 //Função autocomplete Medicamentos
 $("#medicamento").autocomplete({
+	maxShowItems: 5,
 	source: "/medicamento/buscar",
 	focus: function(event, ui) {
 		$("#medicamento").val(ui.item.principioAtivo + " ; " + ui.item.concentracao + " ; " + ui.item.formaFarmaceutica.nome);
@@ -45,84 +46,13 @@ $("#form-uso-medicamento").submit(function(evt) {
 			limpaFormulario();
 			atulizaMedicamentoEmUso();
 			atulizaMedicamentoUsoContinuo();
-			$.notify({
-				// options
-				icon: 'flaticon-success',
-				title: 'SUCESSO',
-				message: 'Medicamento em uso salvo',
-				target: '_blank'
-			}, {
-				// settings
-				element: 'body',
-				position: null,
-				type: "success",
-				allow_dismiss: true,
-				newest_on_top: false,
-				showProgressbar: false,
-				placement: {
-					from: "top",
-					align: "right"
-				},
-				offset: 20,
-				spacing: 10,
-				z_index: 1031,
-				delay: 5000,
-				timer: 1000,
-				url_target: '_blank',
-				mouse_over: null,
-				animate: {
-					enter: 'animated fadeInDown',
-					exit: 'animated fadeOutUp'
-				},
-				onShow: null,
-				onShown: null,
-				onClose: null,
-				onClosed: null,
-				icon_type: 'class',
-			});
+			notificacao('Sucesso!', 'O medicamento em uso foi salvo', 'top', 'right', 'success', 'withicon', '#', '');
 		},
 
 		error: function() {
-			$.notify({
-				// options
-				icon: 'flaticon-exclamation',
-				title: 'ERRO',
-				message: 'Não foi possível processar sua solicitação',
-				target: '_blank'
-			}, {
-				// settings
-				element: 'body',
-				position: null,
-				type: "danger",
-				allow_dismiss: true,
-				newest_on_top: false,
-				showProgressbar: false,
-				placement: {
-					from: "top",
-					align: "right"
-				},
-				offset: 20,
-				spacing: 10,
-				z_index: 1031,
-				delay: 5000,
-				timer: 1000,
-				url_target: '_blank',
-				mouse_over: null,
-				animate: {
-					enter: 'animated fadeInDown',
-					exit: 'animated fadeOutUp'
-				},
-				onShow: null,
-				onShown: null,
-				onClose: null,
-				onClosed: null,
-				icon_type: 'class',
-			});
+			notificacao('Atenção!', 'Não foi possível processar a solicitação', 'top', 'right', 'danger', 'withicon', '#', '');
 		}
 	})
-
-
-
 })
 
 //Funções atualizar medicamentos
@@ -139,7 +69,6 @@ function atulizaMedicamentoUsoContinuo() {
 				$("#uso-continuo-lista").append("<li class='list-group-item'>" + value.medicamento.principioAtivo + " ; " + value.medicamento.concentracao + " ; " + value.medicamento.formaFarmaceutica.nome + " | " + value.nota + "</li>");
 			})
 		},
-
 		error: function() {
 			$("#uso-lista").append("<li class='list-group-item'> Sem dados para serem exibidos - Houve um erro ao recuperar as informações </li>")
 		}

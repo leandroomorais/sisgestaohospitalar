@@ -10,11 +10,10 @@ function cardInfoCidadao(idAtendimento) {
 		}
 	})
 }
-
 function createCardInfoCidadao(data) {
 	return "<div class='card'><div class='card-body'><div class='col-md-12 row'><div class='col-md-6'>" +
 		h5NomeCidadao(data.cidadao.nome) +
-		cns(data.cidadao.cns) +
+		cpf(data.cidadao.cpf) +
 		nascimentoIdadeSexo(data.cidadao.dataNascimento, data.cidadao.sexo) +
 		"</div><div class='col-md-4'>" +
 		classificacaoDeRisco(data.classificacaoDeRisco) + "<br>" +
@@ -74,8 +73,8 @@ function alergias(alergias) {
 
 }
 
-function cns(cns) {
-	return "<i class='fa fa-id-card' aria-hidden='true'></i><strong> CNS: </strong><span> " + formataCNS(cns) + " </span>";
+function cpf(cpf) {
+	return "<i class='fa fa-id-card' aria-hidden='true'></i><strong> CPF: </strong><span> " + formataCPF(cpf) + " </span>";
 }
 
 function antropometria(antropometria) {
@@ -92,24 +91,23 @@ function antropometria(antropometria) {
 
 function classificacaoDeRisco(classDeRisco) {
 
-
 	if (classDeRisco.nome == 'AZUL') {
-		return "<span class='badge badge-primary'>AZUL</span>";
+		return "<strong>C.R: </strong><span class='badge badge-primary'>AZUL</span>";
 	}
 	if (classDeRisco.nome == 'VERDE') {
-		return "<span class='badge badge-success'>VERDE</span>";
+		return "<strong>C.R: </strong><span class='badge badge-success'>VERDE</span>";
 	}
 	if (classDeRisco.nome == 'AMARELO') {
-		return "<span class='badge badge-amarelo'>AMARELO</span>";
+		return "<strong>C.R: </strong><span class='badge badge-amarelo'>AMARELO</span>";
 	}
 	if (classDeRisco.nome == 'LARANJA') {
-		return "<span class='badge badge-warning'>LARANJA</span>";
+		return "<strong>C.R: </strong><span class='badge badge-warning'>LARANJA</span>";
 	}
 	if (classDeRisco.nome == 'VERMELHO') {
-		return "<span class='badge badge-danger'>VERMELHO</span>";
+		return "<strong>C.R: </strong><span class='badge badge-danger'>VERMELHO</span>";
 	}
 	if (classDeRisco.nome === "Não informada") {
-		return "<span class='badge badge-info'>Classificação de risco não informada</span>";
+		return "<strong>C.R: </strong><span class='badge badge-info'>Classificação de risco não informada</span>";
 	}
 }
 
@@ -173,7 +171,6 @@ function verificaSinaisVitais(data) {
 }
 
 function infoAtdSinaisVitais(sinaisVitais) {
-
 	var spo2 = sinaisVitais.saturacao;
 	var paSistolica = sinaisVitais.pressaoSistolica;
 	var paDiastolica = sinaisVitais.pressaoDiastolica;
