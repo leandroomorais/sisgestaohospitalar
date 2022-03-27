@@ -84,11 +84,34 @@ public class CidadaoController {
 	@PostMapping("/atualizar")
 	public ModelAndView atualizaCidadao(@Valid Cidadao cidadao, BindingResult result, Principal principal,
 			RedirectAttributes attributes) {
+		cidadao.setCns(cidadao.getCns().replace(".", ""));
+		cidadao.setCpf(cidadao.getCpf().replace(".", "").replace("-", ""));
 		if (result.hasErrors()) {
-			return editar(cidadao.getId(), principal);
+			return detalhes(cidadao.getId(), principal);
 		}
-		cidadaoService.update(cidadao);
-		return new ModelAndView("redirect:/oi");
+		Optional<Cidadao> optional = cidadaoRepository.findById(cidadao.getId());
+		if (optional.isPresent()) {
+			Cidadao cidadao2 = optional.get();
+			cidadao2.setNome(cidadao.getNome());
+			cidadao2.setCns(cidadao.getCns());
+			cidadao2.setCodigoNacionalidade(cidadao.getCodigoNacionalidade());
+			cidadao2.setCodigoRaca(cidadao.getCodigoRaca());
+			cidadao2.setCpf(cidadao.getCpf());
+			cidadao2.setDataNascimento(cidadao.getDataNascimento());
+			cidadao2.setEmail(cidadao.getEmail());
+			cidadao2.setEndereco(cidadao.getEndereco());
+			cidadao2.setEstadoCivil(cidadao.getEstadoCivil());
+			cidadao2.setEtnia(cidadao.getEtnia());
+			cidadao2.setMunicipioNascimento(cidadao.getMunicipioNascimento());
+			cidadao2.setNomeMae(cidadao.getNomeMae());
+			cidadao2.setNomePai(cidadao.getNomePai());
+			cidadao2.setProfissao(cidadao.getProfissao());
+			cidadao2.setSexo(cidadao.getSexo());
+			cidadao2.setTelefone(cidadao.getSexo());
+			cidadaoRepository.saveAndFlush(cidadao2);
+			return detalhes(cidadao.getId(), principal).addObject("sucesso", "Dados atualizados");
+		}
+		return detalhes(cidadao.getId(), principal).addObject("erro", "Houve um erro");
 	}
 
 	@RequestMapping("/detalhe/{id}")
@@ -108,18 +131,6 @@ public class CidadaoController {
 		Optional<Cidadao> optional = cidadaoRepository.findById(id);
 		mv.addObject("cidadao", optional.get());
 		mv.addObject("user", usuarioRepository.findByUsername(principal.getName()));
-		return mv;
-	}
-
-	@RequestMapping("/editar/{id}")
-	public ModelAndView editar(@PathVariable("id") Long id, Principal principal) {
-		Optional<Cidadao> optional = cidadaoRepository.findById(id);
-		ModelAndView mv = new ModelAndView("cidadao/editar");
-		ModelMap mp = new ModelMap();
-		mp.put("racas", CodigoRaca.values());
-		mp.put("cidadao", optional.get());
-		mp.put("user", usuarioRepository.findByUsername(principal.getName()));
-		mv.addAllObjects(mp);
 		return mv;
 	}
 
@@ -215,15 +226,12 @@ public class CidadaoController {
 				}
 			}
 		}
-
 		Cidadao cidadao = null;
-
 		if (optional != null) {
 			if (optional.isPresent()) {
 				cidadao = optional.get();
 			}
 		}
-
 		mv.addObject("cidadao", cidadao);
 		mv.addObject("user", user);
 		return mv;
