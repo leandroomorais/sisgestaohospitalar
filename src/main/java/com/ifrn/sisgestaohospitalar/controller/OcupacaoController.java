@@ -23,7 +23,12 @@ public class OcupacaoController {
 
 	@GetMapping("/buscar-nome")
 	public ResponseEntity<?> searchNome(@Param("term") String term) {
-		return ResponseEntity.ok(ocupacaoRepository.findByCodigo(term));
+		return ResponseEntity.ok(ocupacaoRepository.findByNome(term));
+	}
+
+	@GetMapping("/autocomplete")
+	public ResponseEntity<?> autocomplete(@Param("term") String term) {
+		return ResponseEntity.ok(ocupacaoRepository.findByNomeAutocomplete(term));
 	}
 
 }
