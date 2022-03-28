@@ -72,7 +72,7 @@ $("#form-triagem").submit(function(evt) {
 	triagem.motivo = tinymce.get("motivo").getContent();
 	triagem.inicioTriagem = $("#inicioTriagem").val();
 	triagem['classificacaoDeRisco.id'] = $("input[name='classificacaoDeRisco']:checked").val();
-	triagem['sinaisVitais'] = $("#idSinaisVitais").val();
+	triagem['sinaisVitais'] = idSinaisVitais;
 	triagem['sinaisVitais.pressaoSistolica'] = $("#sinaisVitais-pressaoSistolica").val();
 	triagem['sinaisVitais.pressaoDiastolica'] = $("#sinaisVitais-pressaoDiastolica").val();
 	triagem['sinaisVitais.temperaturaCorporal'] = $("#sinaisVitais-temperaturaCorporal").val();
@@ -141,7 +141,7 @@ function verificaTriagem() {
 		success: function(data) {
 			$("#idTriagem").val(data.id);
 			if (data.sinaisVitais.id != null) {
-				$("#idSinaisVitais").val(data.sinaisVitais.id);
+				idSinaisVitais = data.sinaisVitais.id;
 			}
 			$("#inicioTriagem").val(data.inicioTriagem);
 			$("#motivo").html(data.motivo);

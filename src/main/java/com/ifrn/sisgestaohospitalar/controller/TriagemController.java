@@ -2,6 +2,7 @@ package com.ifrn.sisgestaohospitalar.controller;
 
 import java.security.Principal;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
@@ -102,15 +103,20 @@ public class TriagemController {
 			}
 			return ResponseEntity.unprocessableEntity().body(errors);
 		}
-
 		Atendimento atendimento = atendimentoRepository.getOne(triagem.getAtendimento().getId());
 		if (atendimento != null) {
 			triagem.setFimTriagem(LocalDateTime.now());
 			triagem.setProfissional(profissionalRepository.findByCpf(principal.getName()));
-			triagem.getSinaisVitais().setUltimaAtualizacao(LocalDateTime.now());
 			atendimento.setTriagem(triagem);
 			atendimento.setClassificacaoDeRisco(triagem.getClassificacaoDeRisco());
 			atendimento.setCaraterAtendimento(CaraterAtendimento.ELETIVO);
+			if (atendimento.getSinaisVitais().isEmpty()) {
+				atendimento.setSinaisVitais(new ArrayList<>());
+			}
+			triagem.getSinaisVitais().setUltimaAtualizacao(LocalDateTime.now());
+			if (!atendimento.getSinaisVitais().contains(triagem.getSinaisVitais())) {
+				atendimento.getSinaisVitais().add(triagem.getSinaisVitais());
+			}
 			atendimentoRepository.saveAndFlush(atendimento);
 			return ResponseEntity.ok().build();
 		}

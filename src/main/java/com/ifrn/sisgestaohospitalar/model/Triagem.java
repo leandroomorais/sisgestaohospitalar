@@ -27,7 +27,7 @@ public class Triagem {
 	private LocalDateTime fimTriagem;
 
 	@Valid
-	@OneToOne(cascade = CascadeType.ALL)
+	@OneToOne(cascade = CascadeType.REFRESH)
 	private SinaisVitais sinaisVitais;
 
 	@OneToOne
