@@ -441,6 +441,7 @@ function excluiAlergia(item) {
 //Função pesquisa de Alergias
 $("#alergia-nome").autocomplete({
 	source: "/alergia/buscar",
+	maxShowItems: 5,
 	focus: function(event, ui) {
 		$("#alergia-nome").val(ui.item.nome);
 		return false;
@@ -463,6 +464,7 @@ $("#alergia-nome").autocomplete({
 //Função pesquisa de Cids
 $("#alergia-cid").autocomplete({
 	source: "/cid/buscar",
+	maxShowItems: 5,
 	focus: function(event, ui) {
 		$("#alergia-cid").val(ui.item.codigo + " - " + ui.item.nome);
 		return false;
@@ -479,6 +481,7 @@ $("#alergia-cid").autocomplete({
 
 $("#alergia-cid-dto").autocomplete({
 	source: "/cid/buscar",
+	maxShowItems: 5,
 	focus: function(event, ui) {
 		$("#alergia-cid-dto").val(ui.item.codigo + " - " + ui.item.nome);
 		return false;
