@@ -171,7 +171,7 @@ public class AtendimentoController {
 
 		attributes.addFlashAttribute("sucesso",
 				"O Cidadão " + atendimento.getCidadao().getNome() + " foi adicionado a lista de atendimentos");
-		return new ModelAndView("redirect:/atendimento/listar");
+		return new ModelAndView("redirect:/cidadao/adicionar");
 	}
 
 	@PostMapping("/finalizar")
