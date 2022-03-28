@@ -6,41 +6,34 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.ifrn.sisgestaohospitalar.enums.MomentoColeta;
 import com.ifrn.sisgestaohospitalar.validation.Temperatura;
 
 @Entity
 public class SinaisVitais {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
+
 	private int pressaoSistolica;
-	
+
 	private int pressaoDiastolica;
-	
+
 	@Temperatura
 	private double temperaturaCorporal;
-	
-	private int frequenciaCardiaca;
-	
-	private int saturacao;
-	
-	private int frequenciaRespiratoria;
-	
-	private int glicemiaCapilar;
-	
+
+	private String frequenciaCardiaca;
+
+	private String saturacao;
+
+	private String frequenciaRespiratoria;
+
+	private String glicemiaCapilar;
+
 	private MomentoColeta momentoColeta;
-	
+
 	private LocalDateTime ultimaAtualizacao;
-	
-	@JsonIgnore
-	@ManyToOne
-	private Triagem triagem;
 
 	public Long getId() {
 		return id;
@@ -74,35 +67,35 @@ public class SinaisVitais {
 		this.temperaturaCorporal = temperaturaCorporal;
 	}
 
-	public int getFrequenciaCardiaca() {
+	public String getFrequenciaCardiaca() {
 		return frequenciaCardiaca;
 	}
 
-	public void setFrequenciaCardiaca(int frequenciaCardiaca) {
+	public void setFrequenciaCardiaca(String frequenciaCardiaca) {
 		this.frequenciaCardiaca = frequenciaCardiaca;
 	}
 
-	public int getSaturacao() {
+	public String getSaturacao() {
 		return saturacao;
 	}
 
-	public void setSaturacao(int saturacao) {
+	public void setSaturacao(String saturacao) {
 		this.saturacao = saturacao;
 	}
 
-	public int getFrequenciaRespiratoria() {
+	public String getFrequenciaRespiratoria() {
 		return frequenciaRespiratoria;
 	}
 
-	public void setFrequenciaRespiratoria(int frequenciaRespiratoria) {
+	public void setFrequenciaRespiratoria(String frequenciaRespiratoria) {
 		this.frequenciaRespiratoria = frequenciaRespiratoria;
 	}
 
-	public int getGlicemiaCapilar() {
+	public String getGlicemiaCapilar() {
 		return glicemiaCapilar;
 	}
 
-	public void setGlicemiaCapilar(int glicemiaCapilar) {
+	public void setGlicemiaCapilar(String glicemiaCapilar) {
 		this.glicemiaCapilar = glicemiaCapilar;
 	}
 
@@ -112,14 +105,6 @@ public class SinaisVitais {
 
 	public void setMomentoColeta(MomentoColeta momentoColeta) {
 		this.momentoColeta = momentoColeta;
-	}
-
-	public Triagem getTriagem() {
-		return triagem;
-	}
-
-	public void setTriagem(Triagem triagem) {
-		this.triagem = triagem;
 	}
 
 	public LocalDateTime getUltimaAtualizacao() {

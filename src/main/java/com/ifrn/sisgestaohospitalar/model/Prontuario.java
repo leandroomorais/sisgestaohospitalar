@@ -26,7 +26,7 @@ public class Prontuario {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
+
 	@JsonIgnore
 	@Valid
 	@NotNull(message = "É necessário Cadastrar um Cidadão")
@@ -64,10 +64,6 @@ public class Prontuario {
 	@ManyToMany(cascade = CascadeType.ALL)
 	@JoinTable(name = "prontuario_prescricoes", joinColumns = @JoinColumn(name = "id_prontuario"), inverseJoinColumns = @JoinColumn(name = "id_prescricao"))
 	private List<Prescricao> prescricoes;
-
-	@ManyToMany(cascade = CascadeType.ALL)
-	@JoinTable(name = "prontuario_diagnosticos", joinColumns = @JoinColumn(name = "id_prontuario"), inverseJoinColumns = @JoinColumn(name = "id_diagnostico"))
-	private List<Diagnostico> diagnostico;
 
 	@ManyToMany(cascade = CascadeType.ALL)
 	@JoinTable(name = "prontuario_atestados", joinColumns = @JoinColumn(name = "id_prontuario"), inverseJoinColumns = @JoinColumn(name = "id_atestado"))
@@ -158,14 +154,6 @@ public class Prontuario {
 		this.prescricoes = prescricoes;
 	}
 
-	public List<Diagnostico> getDiagnostico() {
-		return diagnostico;
-	}
-
-	public void setDiagnostico(List<Diagnostico> diagnostico) {
-		this.diagnostico = diagnostico;
-	}
-
 	public List<Atestado> getAtestados() {
 		return atestados;
 	}
@@ -181,6 +169,5 @@ public class Prontuario {
 	public void setExames(List<Exame> exames) {
 		this.exames = exames;
 	}
-	
 
 }

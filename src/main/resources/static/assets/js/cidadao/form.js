@@ -204,19 +204,30 @@ $("#form-busca").submit(function(evt) {
 						},
 						statusCode: {
 							404: function() {
-								$("#form-cidadao-div").fadeIn(500);
 								$("#pesquisa-status").text("Não encontrado");
 								swal("Não encontrado!", "Não localizamos o Cidadão em nossas bases. Por favor preencha os dados do formulário.", {
 									icon: "error",
 									buttons: {
+										cancel: {
+											visible: true,
+											text: 'Nova busca',
+											className: 'btn btn-primary'
+										},
 										confirm: {
-											className: 'btn btn-danger',
+											text: 'Continuar',
+											className: 'btn btn-success',
 
 										}
 									},
-								}).then(function() {
-									$("#card-pesquisa").fadeOut(500);
+								}).then((confirm) => {
+									if (confirm) {
+										$("#card-pesquisa").fadeOut(500);
+										$("#form-cidadao-div").fadeIn(500);
+									}else{
+										
+									}
 								})
+								
 							},
 						}
 					})
