@@ -2,25 +2,28 @@ package com.ifrn.sisgestaohospitalar.dto;
 
 import java.time.LocalDate;
 import javax.persistence.Transient;
+import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
 import com.ifrn.sisgestaohospitalar.enums.SituacaoCondicao;
 
 public class StatusDoencaDTO {
-	
+
 	private Long id;
-	
+
 	private String nota;
-	
+
 	private LocalDate dataInicio;
-	
+
 	private LocalDate dataFim;
-	
+
+	@NotNull(message = "É necessário selecionar a situação da Condição")
 	private SituacaoCondicao situacaoCondicao;
-	
+
+	@Valid
 	@NotNull
 	private DoencaDTO doenca;
-	
+
 	@Transient
 	private Long idProntuario;
 
@@ -86,6 +89,5 @@ public class StatusDoencaDTO {
 				+ ", situacaoCondicao=" + situacaoCondicao + ", doenca=" + doenca + ", idProntuario=" + idProntuario
 				+ "]";
 	}
-	
 
 }

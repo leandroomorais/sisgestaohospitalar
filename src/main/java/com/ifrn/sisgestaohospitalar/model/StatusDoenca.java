@@ -28,6 +28,7 @@ public class StatusDoenca {
 	
 	private LocalDate dataFim;
 	
+	@NotNull(message = "É necessário selecionar a situação da Condição")
 	private SituacaoCondicao situacaoCondicao;
 	
 	@Valid

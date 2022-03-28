@@ -28,80 +28,18 @@ $("#form-status-doenca").submit(function(evt) {
 		},
 		success: function() {
 			fechaFormularioDoenca();
-			$.notify({
-				// options
-				icon: 'flaticon-success',
-				title: 'SUCESSO',
-				message: 'A doenca foi salva',
-				target: '_blank'
-			}, {
-				// settings
-				element: 'body',
-				position: null,
-				type: "success",
-				allow_dismiss: true,
-				newest_on_top: false,
-				showProgressbar: false,
-				placement: {
-					from: "top",
-					align: "right"
-				},
-				offset: 20,
-				spacing: 10,
-				z_index: 1031,
-				delay: 5000,
-				timer: 1000,
-				url_target: '_blank',
-				mouse_over: null,
-				animate: {
-					enter: 'animated fadeInDown',
-					exit: 'animated fadeOutUp'
-				},
-				onShow: null,
-				onShown: null,
-				onClose: null,
-				onClosed: null,
-				icon_type: 'class',
-			});
+			notificacao('Sucesso!', 'A doença/comorbidade foi salva', 'top', 'right', 'success', 'withicon', '#', '');
 			$("#table-doencas").DataTable().ajax.reload();
 		},
 
-		error: function() {
-			$.notify({
-				// options
-				icon: 'flaticon-exclamation',
-				title: 'ERRO',
-				message: 'Houve um erro ao processar a solicitação',
-				target: '_blank'
-			}, {
-				// settings
-				element: 'body',
-				position: null,
-				type: "danger",
-				allow_dismiss: true,
-				newest_on_top: false,
-				showProgressbar: false,
-				placement: {
-					from: "top",
-					align: "right"
-				},
-				offset: 20,
-				spacing: 10,
-				z_index: 1031,
-				delay: 5000,
-				timer: 1000,
-				url_target: '_blank',
-				mouse_over: null,
-				animate: {
-					enter: 'animated fadeInDown',
-					exit: 'animated fadeOutUp'
-				},
-				onShow: null,
-				onShown: null,
-				onClose: null,
-				onClosed: null,
-				icon_type: 'class',
-			});
+		statusCode: {
+			422: function(xhr) {
+				var errors = $.parseJSON(xhr.responseText);
+				$.each(errors, function(key, val) {
+					notificacao('Atenção!', val, 'top', 'right', 'danger', 'withicon', '#', '');
+					$("input[name='" + key + "']").parent().parent().parent().addClass("has-error has-feedback");
+				})
+			},
 		}
 
 	})
@@ -122,6 +60,7 @@ $("#edit-doenca-voltar").click(function() {
 //Inicio da Função Editar Doenca
 $("#editar-nome-doenca").click(function() {
 	$("#doenca-nome-dto").prop("disabled", false);
+
 });
 
 $("#editar-cid-doenca").click(function() {
@@ -143,8 +82,6 @@ $("#form-status-doenca-edit").submit(function(evt) {
 	statusDoencaDTO.situacaoCondicao = $("#situacao-doenca-div").children().children("input[name = 'situacaoCondicao']:checked").val();
 	statusDoencaDTO.idProntuario = $("#id-prontuario").val();
 
-	console.log(statusDoencaDTO);
-
 	$.ajax({
 		url: '/status-doenca/editar',
 		method: 'post',
@@ -153,80 +90,18 @@ $("#form-status-doenca-edit").submit(function(evt) {
 		},
 		success: function() {
 			fechaFormularioEditDoenca();
-			$.notify({
-				// options
-				icon: 'flaticon-success',
-				title: 'SUCESSO',
-				message: 'A condição de saúde foi salva',
-				target: '_blank'
-			}, {
-				// settings
-				element: 'body',
-				position: null,
-				type: "success",
-				allow_dismiss: true,
-				newest_on_top: false,
-				showProgressbar: false,
-				placement: {
-					from: "top",
-					align: "right"
-				},
-				offset: 20,
-				spacing: 10,
-				z_index: 1031,
-				delay: 5000,
-				timer: 1000,
-				url_target: '_blank',
-				mouse_over: null,
-				animate: {
-					enter: 'animated fadeInDown',
-					exit: 'animated fadeOutUp'
-				},
-				onShow: null,
-				onShown: null,
-				onClose: null,
-				onClosed: null,
-				icon_type: 'class',
-			});
+			notificacao('Sucesso!', 'A doença/comorbidade foi salva', 'top', 'right', 'success', 'withicon', '#', '');
 			$("#table-doencas").DataTable().ajax.reload();
 		},
 
-		error: function() {
-			$.notify({
-				// options
-				icon: 'flaticon-exclamation',
-				title: 'ERRO',
-				message: 'Houve um erro ao processar a solicitação',
-				target: '_blank'
-			}, {
-				// settings
-				element: 'body',
-				position: null,
-				type: "danger",
-				allow_dismiss: true,
-				newest_on_top: false,
-				showProgressbar: false,
-				placement: {
-					from: "top",
-					align: "right"
-				},
-				offset: 20,
-				spacing: 10,
-				z_index: 1031,
-				delay: 5000,
-				timer: 1000,
-				url_target: '_blank',
-				mouse_over: null,
-				animate: {
-					enter: 'animated fadeInDown',
-					exit: 'animated fadeOutUp'
-				},
-				onShow: null,
-				onShown: null,
-				onClose: null,
-				onClosed: null,
-				icon_type: 'class',
-			});
+		statusCode: {
+			422: function(xhr) {
+				var errors = $.parseJSON(xhr.responseText);
+				$.each(errors, function(key, val) {
+					notificacao('Atenção!', val, 'top', 'right', 'danger', 'withicon', '#', '');
+					$("input[name='" + key + "']").parent().parent().parent().addClass("has-error has-feedback");
+				})
+			},
 		}
 
 	})
@@ -278,6 +153,7 @@ function fechaFormularioEditDoenca() {
 //Fim Função fecha formulário edit Doença
 
 function limpaFormDoenca() {
+	$("input").parent().parent().parent().removeClass("has-error has-feedback");
 	$("#form-status-doenca input[type='text']").val("");
 	$("#form-status-doenca input[type='hidden']").val("");
 	$("#form-status-doenca input[type='date']").val("");
@@ -285,6 +161,7 @@ function limpaFormDoenca() {
 }
 
 function limpaFormEditDoenca() {
+	$("input").parent().parent().parent().removeClass("has-error has-feedback");
 	$("#form-status-doenca-edit input[type='text']").val("");
 	$("#form-status-doenca-edit input[type='hidden']").val("");
 	$("#form-status-doenca-edit input[type='date']").val("");
@@ -354,7 +231,7 @@ function atualizaDoenca() {
 				data: 'id',
 				mRender: function(data) {
 					var retorno =
-						" <button class='btn btn-secondary btn-sm' data-value='" + data + "' onclick='editarDoenca(this)'><i class='fa fa-edit'></i> Editar </button>"
+						" <button class='btn btn-primary btn-sm' data-value='" + data + "' onclick='editarDoenca(this)'><i class='fa fa-edit'></i> Editar </button>"
 					return retorno;
 				}
 			}
@@ -370,7 +247,6 @@ function editarDoenca(item) {
 		method: "GET",
 		url: "/status-doenca/editar/" + statusDoencaId,
 		success: function(data) {
-			console.log(data);
 			exibeFormularioEditDoenca();
 			$("#id-status-doenca-dto").val(statusDoencaId);
 			$("#doenca-nome-dto").val(data.doenca.nome);
