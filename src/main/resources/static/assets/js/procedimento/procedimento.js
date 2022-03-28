@@ -2,22 +2,23 @@
 //Autocomplete Procedimentos
 
 $("#procedimentos-geral").autocomplete({
+	maxShowItems: 5,
 	source: "/procedimento/buscar",
 	focus: function(event, ui) {
-		$("#procedimentos-geral").val(ui.item.codigo + " - " + ui.item.nome);
+		$("#procedimentos-geral").val(ui.item.codigo + " - " + ui.item.nome.trim());
 		return false;
 	},
 	select: function(event, ui) {
 		$("#i-procedimento-geral").removeClass().addClass("fa fa-times");
 		$("#qtd-procedimento-geral").val(1);
-		$("#procedimentos-geral").val(ui.item.codigo + " - " + ui.item.nome).attr("disabled", true);
+		$("#procedimentos-geral").val(ui.item.codigo + " - " + ui.item.nome.trim()).attr("disabled", true);
 		$("#id-procedimento-geral").val(ui.item.codigo);
-		$("#nome-procedimento").val(ui.item.nome);
+		$("#nome-procedimento").val(ui.item.nome.trim());
 		return false;
 	}
 }).autocomplete("instance")._renderItem = function(ul, item) {
 	return $("<li></li>")
-		.append("<div class='h6'>" + item.codigo + " - " + item.nome + "</div>")
+		.append("<div class='h6'>" + item.codigo + " - " + item.nome.trim() + "</div>")
 		.appendTo(ul);
 };
 
@@ -28,7 +29,6 @@ $("#button-procedimento").click(function() {
 
 $("#submit-procedimento").click(function() {
 	var codigoProcedimento = $("#id-procedimento-geral").val();
-	//var tipoServico = "TRIAGEM";
 	var quantidade = $("#qtd-procedimento-geral").val();
 	submitProcedimento(idAtendimento, codigoProcedimento, null, quantidade);
 })
@@ -53,119 +53,13 @@ function submitProcedimento(idAtendimento, codigoProcedimento, tipoServico, quan
 		success: function() {
 			$("#i-procedimento-geral").removeClass().addClass("fa fa-search");
 			limpaInputsProcedimento();
-			$.notify({
-				// options
-				icon: 'flaticon-success',
-				title: 'SUCESSO',
-				message: 'O procedimento foi adicionado ao atendimento',
-				target: '_blank'
-			}, {
-				// settings
-				element: 'body',
-				position: null,
-				icon: "success",
-				allow_dismiss: true,
-				newest_on_top: false,
-				showProgressbar: false,
-				placement: {
-					from: "top",
-					align: "right"
-				},
-				offset: 20,
-				spacing: 10,
-				z_index: 1031,
-				delay: 5000,
-				timer: 1000,
-				url_target: '_blank',
-				mouse_over: null,
-				animate: {
-					enter: 'animated fadeInDown',
-					exit: 'animated fadeOutUp'
-				},
-				onShow: null,
-				onShown: null,
-				onClose: null,
-				onClosed: null,
-				icon_type: 'class',
-			});
+			notificacao('Sucesso!', 'Procedimento adicionado', 'top', 'right', 'success', 'withicon', '#', '');
 			$("#table-procedimentos").DataTable().ajax.reload();
 		},
 
-		error: function() {
-			$.notify({
-				// options
-				icon: 'flaticon-exclamation',
-				title: 'ERRO',
-				message: 'Houve um erro ao processar a solicitação',
-				target: '_blank'
-			}, {
-				// settings
-				element: 'body',
-				position: null,
-				type: "danger",
-				allow_dismiss: true,
-				newest_on_top: false,
-				showProgressbar: false,
-				placement: {
-					from: "top",
-					align: "right"
-				},
-				offset: 20,
-				spacing: 10,
-				z_index: 1031,
-				delay: 5000,
-				timer: 1000,
-				url_target: '_blank',
-				mouse_over: null,
-				animate: {
-					enter: 'animated fadeInDown',
-					exit: 'animated fadeOutUp'
-				},
-				onShow: null,
-				onShown: null,
-				onClose: null,
-				onClosed: null,
-				icon_type: 'class',
-			});
-
-		},
 		statusCode: {
 			403: function(xhr) {
-				$.notify({
-					// options
-					icon: 'flaticon-exclamation',
-					title: 'ERRO',
-					message: xhr.responseText,
-					target: '_blank'
-				}, {
-					// settings
-					element: 'body',
-					position: null,
-					type: "danger",
-					allow_dismiss: true,
-					newest_on_top: false,
-					showProgressbar: false,
-					placement: {
-						from: "top",
-						align: "right"
-					},
-					offset: 20,
-					spacing: 10,
-					z_index: 1031,
-					delay: 5000,
-					timer: 1000,
-					url_target: '_blank',
-					mouse_over: null,
-					animate: {
-						enter: 'animated fadeInDown',
-						exit: 'animated fadeOutUp'
-					},
-					onShow: null,
-					onShown: null,
-					onClose: null,
-					onClosed: null,
-					icon_type: 'class',
-				});
+				notificacao('Atenção!', xhr.responseText, 'top', 'right', 'warning', 'withicon', '#', '');
 			}
 		}
 	})
