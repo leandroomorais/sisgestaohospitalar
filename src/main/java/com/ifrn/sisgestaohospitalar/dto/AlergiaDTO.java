@@ -11,7 +11,7 @@ public class AlergiaDTO {
 	
 	private Long id;
 	
-	@NotBlank(message = "É necessário informar o nome")
+	@NotBlank(message = "É necessário informar o nome da alergia")
 	private String nome;
 	
 	private String descricao;

@@ -27,83 +27,20 @@ $("#form-status-alergia").submit(function(evt) {
 		},
 		success: function() {
 			fechaFormularioAlergia();
-			$.notify({
-				// options
-				icon: 'flaticon-success',
-				title: 'SUCESSO',
-				message: 'A alergia foi salva',
-				target: '_blank'
-			}, {
-				// settings
-				element: 'body',
-				position: null,
-				type: "success",
-				allow_dismiss: true,
-				newest_on_top: false,
-				showProgressbar: false,
-				placement: {
-					from: "top",
-					align: "right"
-				},
-				offset: 20,
-				spacing: 10,
-				z_index: 1031,
-				delay: 5000,
-				timer: 1000,
-				url_target: '_blank',
-				mouse_over: null,
-				animate: {
-					enter: 'animated fadeInDown',
-					exit: 'animated fadeOutUp'
-				},
-				onShow: null,
-				onShown: null,
-				onClose: null,
-				onClosed: null,
-				icon_type: 'class',
-			});
+			notificacao('Sucesso!', 'O registro de Alergia foi salvo', 'top', 'right', 'success', 'withicon', '#', '');
 			$("#table-alergias").DataTable().ajax.reload();
 			cardInfoCidadao(idAtendimento);
 		},
 
-		error: function() {
-			$.notify({
-				// options
-				icon: 'flaticon-exclamation',
-				title: 'ERRO',
-				message: 'Houve um erro ao processar a solicitação',
-				target: '_blank'
-			}, {
-				// settings
-				element: 'body',
-				position: null,
-				type: "danger",
-				allow_dismiss: true,
-				newest_on_top: false,
-				showProgressbar: false,
-				placement: {
-					from: "top",
-					align: "right"
-				},
-				offset: 20,
-				spacing: 10,
-				z_index: 1031,
-				delay: 5000,
-				timer: 1000,
-				url_target: '_blank',
-				mouse_over: null,
-				animate: {
-					enter: 'animated fadeInDown',
-					exit: 'animated fadeOutUp'
-				},
-				onShow: null,
-				onShown: null,
-				onClose: null,
-				onClosed: null,
-				icon_type: 'class',
-			});
+		statusCode: {
+			422: function(xhr) {
+				var errors = $.parseJSON(xhr.responseText);
+				$.each(errors, function(key, val) {
+					notificacao('Atenção!', val, 'top', 'right', 'danger', 'withicon', '#', '');
+					$("input[name='" + key + "']").parent().parent().parent().addClass("has-error has-feedback");
+				})
+			},
 		}
-
 	})
 
 
@@ -151,7 +88,6 @@ $("#form-status-alergia-edit").submit(function(evt) {
 	statusAlergiaDTO.situacaoCondicao = $("#div-situacao-edit").children().children("input[name = 'situacaoCondicao']:checked").val();
 	statusAlergiaDTO.idProntuario = $("#id-prontuario").val();
 
-
 	$.ajax({
 		url: '/status-alergia/editar',
 		method: 'post',
@@ -160,91 +96,26 @@ $("#form-status-alergia-edit").submit(function(evt) {
 		},
 		success: function() {
 			fechaFormularioEditAlergia();
-			$.notify({
-				// options
-				icon: 'flaticon-success',
-				title: 'SUCESSO',
-				message: 'A alergia foi salva',
-				target: '_blank'
-			}, {
-				// settings
-				element: 'body',
-				position: null,
-				type: "success",
-				allow_dismiss: true,
-				newest_on_top: false,
-				showProgressbar: false,
-				placement: {
-					from: "top",
-					align: "right"
-				},
-				offset: 20,
-				spacing: 10,
-				z_index: 1031,
-				delay: 5000,
-				timer: 1000,
-				url_target: '_blank',
-				mouse_over: null,
-				animate: {
-					enter: 'animated fadeInDown',
-					exit: 'animated fadeOutUp'
-				},
-				onShow: null,
-				onShown: null,
-				onClose: null,
-				onClosed: null,
-				icon_type: 'class',
-			});
+			notificacao('Sucesso!', 'O registro de Alergia foi salvo', 'top', 'right', 'success', 'withicon', '#', '');
 			$("#table-alergias").DataTable().ajax.reload();
 			cardInfoCidadao(idAtendimento);
 		},
-
-		error: function() {
-			$.notify({
-				// options
-				icon: 'flaticon-exclamation',
-				title: 'ERRO',
-				message: 'Houve um erro ao processar a solicitação',
-				target: '_blank'
-			}, {
-				// settings
-				element: 'body',
-				position: null,
-				type: "danger",
-				allow_dismiss: true,
-				newest_on_top: false,
-				showProgressbar: false,
-				placement: {
-					from: "top",
-					align: "right"
-				},
-				offset: 20,
-				spacing: 10,
-				z_index: 1031,
-				delay: 5000,
-				timer: 1000,
-				url_target: '_blank',
-				mouse_over: null,
-				animate: {
-					enter: 'animated fadeInDown',
-					exit: 'animated fadeOutUp'
-				},
-				onShow: null,
-				onShown: null,
-				onClose: null,
-				onClosed: null,
-				icon_type: 'class',
-			});
+		statusCode: {
+			422: function(xhr) {
+				var errors = $.parseJSON(xhr.responseText);
+				$.each(errors, function(key, val) {
+					notificacao('Atenção!', val, 'top', 'right', 'danger', 'withicon', '#', '');
+					$("input[name='" + key + "']").parent().parent().parent().addClass("has-error has-feedback");
+				})
+			},
 		}
-
 	})
-
-
 });
 //Fim da função editar alergia
 
 //Função exibe formulário Alergia
 function exibeFormularioAlergia() {
+	$("input").parent().parent().parent().removeClass("has-error has-feedback");
 	$("#form-status-alergia input[type='text']").val("");
 	$("#form-status-alergia input[type='hidden']").val("");
 	$("#form-status-alergia input[type='date']").val("");
@@ -255,6 +126,7 @@ function exibeFormularioAlergia() {
 
 //Função exibe formulário Alergia
 function exibeFormularioEditAlergia() {
+	$("input").parent().parent().parent().removeClass("has-error has-feedback");
 	$("#form-status-alergia-edit input[type='text']").val("");
 	$("#form-status-alergia-edit input[type='hidden']").val("");
 	$("#form-status-alergia-edit input[type='date']").val("");
@@ -289,7 +161,6 @@ function fechaFormularioEditAlergia() {
 function atualizaAlergia() {
 	var prontuarioId = $("#id-prontuario").val();
 	$("#table-alergias").DataTable({
-		responsive: true,
 		paging: false,
 		searching: false,
 		ordering: false,
@@ -349,7 +220,7 @@ function atualizaAlergia() {
 				data: 'id',
 				mRender: function(data) {
 					var retorno =
-						" <button class='btn btn-secondary btn-sm' data-value='" + data + "' onclick='editarAlergia(this)'><i class='fa fa-edit'></i> Editar </button>"
+						" <button class='btn btn-primary btn-sm' data-value='" + data + "' onclick='editarAlergia(this)'><i class='fa fa-edit'></i> Editar </button>"
 					return retorno;
 				}
 			}
@@ -371,7 +242,7 @@ function editarAlergia(item) {
 			$("#div-table-alergias").fadeOut(200);
 			$("#form-status-alergia-edit").fadeIn(200);
 			$("#alergia-nome-dto").val(data.alergia.nome);
-			$("#id-alergia-dto").val(data.alergia.id);
+			$("#id-alergia-dto").val(data.alergia.id).attr("disabled", true);
 			if (data.alergia.cid != null) {
 				$("#alergia-cid-dto").val(data.alergia.cid.codigo + " - " + data.alergia.cid.nome).attr("disabled", true);
 				$("#id-cid-dto").val(data.alergia.cid.id);
@@ -379,7 +250,12 @@ function editarAlergia(item) {
 				$("#alergia-cid-dto").val("");
 				$("#id-cid-dto").val("");
 			}
-
+			if (data.dataInicio != null) {
+				$("#dataInicio-dto").val(data.dataInicio);
+			}
+			if (data.dataFim != null) {
+				$("#dataFim-dto").val(data.dataFim)
+			}
 			$("input[value = '" + data.situacaoCondicao + "']").prop("checked", true);
 		}
 	})

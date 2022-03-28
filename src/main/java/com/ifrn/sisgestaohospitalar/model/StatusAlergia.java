@@ -13,29 +13,28 @@ import javax.persistence.Transient;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
-
 import com.ifrn.sisgestaohospitalar.enums.SituacaoCondicao;
-
 
 @Entity
 public class StatusAlergia {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
+
 	private LocalDate dataInicio;
-	
+
 	private LocalDate dataFim;
-	
+
+	@NotNull(message = "É necessário selecionar a situação da Condição")
 	private SituacaoCondicao situacaoCondicao;
-	
+
 	private LocalDateTime dataRegistro;
-	
+
 	@Valid
 	@OneToOne(cascade = CascadeType.DETACH)
 	@NotNull
 	private Alergia alergia;
-	
+
 	@Transient
 	private Long idProntuario;
 
@@ -94,5 +93,5 @@ public class StatusAlergia {
 	public void setIdProntuario(Long idProntuario) {
 		this.idProntuario = idProntuario;
 	}
-	
+
 }
