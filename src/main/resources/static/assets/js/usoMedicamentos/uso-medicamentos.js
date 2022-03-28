@@ -107,7 +107,7 @@ $("#button-medicamento").click(function() {
 function limpaFormulario() {
 	$("#id-medicamento").val("");
 	$("#nota-uso-medicamento").val("");
-	$("#usoContinuo").prop("checked", false);
+	$("#usoContinuo").parent().removeClass().addClass("toggle btn btn-black off");
 	$("#medicamento").val("");
 	$("#i-medicamento").removeClass().addClass("fa fa-search");
 	$("#medicamento").val("").attr("disabled", false);
