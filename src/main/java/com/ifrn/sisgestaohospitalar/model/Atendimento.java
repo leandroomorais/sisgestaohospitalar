@@ -76,8 +76,14 @@ public class Atendimento {
 	private Triagem triagem;
 
 	@Valid
-	@OneToOne(cascade = CascadeType.ALL)
-	private Consulta consulta;
+	@ManyToMany(cascade = CascadeType.ALL)
+	@JoinTable(name = "atendimento_consultas", joinColumns = @JoinColumn(name = "id_atendimento"), inverseJoinColumns = @JoinColumn(name = "id_consulta"))
+	private List<Consulta> consultas;
+
+	@Valid
+	@ManyToMany(cascade = CascadeType.ALL)
+	@JoinTable(name = "atendimento_vitais", joinColumns = @JoinColumn(name = "id_atendimento"), inverseJoinColumns = @JoinColumn(name = "id_sinaisVitais"))
+	private List<SinaisVitais> sinaisVitais;
 
 	public Long getId() {
 		return id;
@@ -207,12 +213,20 @@ public class Atendimento {
 		this.triagem = triagem;
 	}
 
-	public Consulta getConsulta() {
-		return consulta;
+	public List<Consulta> getConsultas() {
+		return consultas;
 	}
 
-	public void setConsulta(Consulta consulta) {
-		this.consulta = consulta;
+	public void setConsultas(List<Consulta> consultas) {
+		this.consultas = consultas;
+	}
+
+	public List<SinaisVitais> getSinaisVitais() {
+		return sinaisVitais;
+	}
+
+	public void setSinaisVitais(List<SinaisVitais> sinaisVitais) {
+		this.sinaisVitais = sinaisVitais;
 	}
 
 }

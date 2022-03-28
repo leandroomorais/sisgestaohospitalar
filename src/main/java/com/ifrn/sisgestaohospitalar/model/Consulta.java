@@ -1,7 +1,6 @@
 package com.ifrn.sisgestaohospitalar.model;
 
 import java.time.LocalDateTime;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,28 +9,38 @@ import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Consulta {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
+
 	@NotBlank(message = "É necessário preencher o campo sumário da história clínica")
 	private String historiaClinica;
-	
-	@Valid
-	@OneToOne(cascade = CascadeType.ALL)
-	private Avaliacao avaliacao;
-	
+
+	private String avaliacao;
+
+	private String conduta;
+
 	@JsonIgnore
 	@OneToOne
 	private Atendimento atendimento;
-	
+
 	private LocalDateTime dataRegistro;
+
+	@Valid
+	@OneToOne(cascade = CascadeType.REFRESH)
+	private SinaisVitais sinaisVitais;
+	
+	@OneToOne
+	private Profissional profissional;
+
+	private String diagnostico;
+
+	private String cids;
 
 	public Long getId() {
 		return id;
@@ -40,8 +49,7 @@ public class Consulta {
 	public void setId(Long id) {
 		this.id = id;
 	}
-	
-	
+
 	public String getHistoriaClinica() {
 		return historiaClinica;
 	}
@@ -50,11 +58,11 @@ public class Consulta {
 		this.historiaClinica = historiaClinica;
 	}
 
-	public Avaliacao getAvaliacao() {
+	public String getAvaliacao() {
 		return avaliacao;
 	}
 
-	public void setAvaliacao(Avaliacao avaliacao) {
+	public void setAvaliacao(String avaliacao) {
 		this.avaliacao = avaliacao;
 	}
 
@@ -74,5 +82,44 @@ public class Consulta {
 		this.dataRegistro = dataRegistro;
 	}
 
-	
+	public String getConduta() {
+		return conduta;
+	}
+
+	public void setConduta(String conduta) {
+		this.conduta = conduta;
+	}
+
+	public SinaisVitais getSinaisVitais() {
+		return sinaisVitais;
+	}
+
+	public void setSinaisVitais(SinaisVitais sinaisVitais) {
+		this.sinaisVitais = sinaisVitais;
+	}
+
+	public String getDiagnostico() {
+		return diagnostico;
+	}
+
+	public void setDiagnostico(String diagnostico) {
+		this.diagnostico = diagnostico;
+	}
+
+	public String getCids() {
+		return cids;
+	}
+
+	public void setCids(String cids) {
+		this.cids = cids;
+	}
+
+	public Profissional getProfissional() {
+		return profissional;
+	}
+
+	public void setProfissional(Profissional profissional) {
+		this.profissional = profissional;
+	}
+
 }
