@@ -132,7 +132,7 @@ public class LeitorXmlEsus {
 						usuario.setTipoUsuario(tipoUsuario);
 						Role role = roleRepository.findByNome(tipoUsuario.getNome());
 						usuario.getRole().add(role);
-					} else if (lotacaoProfissional.getCodigoCBO().equals("123105")) {
+					} else if (lotacaoProfissional.getCodigoCBO().equals("123105") || lotacaoProfissional.getCodigoCBO().equals("131205") ) {
 						TipoUsuario tipoUsuario = tipoUsuarioRepository.findByNome("ADMINISTRADOR");
 						Ocupacao ocupacao = ocupacaoRepository.findByCodigo(lotacaoProfissional.getCodigoCBO());
 						if (ocupacao != null) {
