@@ -136,10 +136,10 @@ function limpaPrescricaoDto() {
 	$("#concentracao-dto").val("");
 	$("#forma-dto").val("");
 	$("#quantidade-dto-small").text("");
-	$("#dose-unica-dto").parent().removeClass().addClass("toggle btn btn-black off");
-	$("#uso-continuo-dto").parent().removeClass().addClass("toggle btn btn-black off");
-	$("#administracao-no-atendimento-dto").parent().removeClass().addClass("toggle btn btn-black off");
-
+	$("#dose-unica-dto").prop("checked", false).parent().removeClass().addClass("toggle btn btn-black off");
+	$("#uso-continuo-dto").prop("checked", false).parent().removeClass().addClass("toggle btn btn-black off");
+	$("#administracao-no-atendimento-dto").prop("checked", false).parent().removeClass().addClass("toggle btn btn-black off");
+	
 }
 
 $("#form-confirma-administracao").submit(function(evt) {
@@ -604,13 +604,13 @@ function editarPrescricao(element) {
 			$("#quantidade-dto").val(data.quantidade);
 			$("#quantidade-dto-small").val(data.medicamento.unidadeFornecimento);
 			if (data.doseUnica) {
-				$("#dose-unica-dto").parent().removeClass().addClass("toggle btn btn-primary");
+				$("#dose-unica-dto").prop("checked", true).parent().removeClass().addClass("toggle btn btn-primary");
 			}
 			if (data.usoContinuo) {
-				$("#uso-continuo-dto").parent().removeClass().addClass("toggle btn btn-primary");
+				$("#uso-continuo-dto").prop("checked", true).parent().removeClass().addClass("toggle btn btn-primary");
 			}
 			if (data.administracaoNoAtendimento) {
-				$("#administracao-no-atendimento-dto").parent().removeClass().addClass("toggle btn btn-primary");
+				$("#administracao-no-atendimento-dto").prop("checked", true).parent().removeClass().addClass("toggle btn btn-primary");
 			}
 			$("#orientacao-dto").val(data.orientacoes);
 		},
