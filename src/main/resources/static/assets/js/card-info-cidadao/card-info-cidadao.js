@@ -80,8 +80,10 @@ function cpf(cpf) {
 function antropometria(antropometria) {
 	if (antropometria.length != 0) {
 		var registro;
+		moment.locale("pt-br");
 		$.each(antropometria, function(index, item) {
-			registro = createTextSinaisVitais("PESO: ", item.peso + " kg") + createTextSinaisVitais(" ALTURA: ", item.altura + " cm") + "<br>" + createTextSinaisVitais(" IMC: ", item.imc);
+			registro = createTextSinaisVitais("PESO: ", item.peso + " kg") + createTextSinaisVitais(" ALTURA: ", item.altura + " cm") + "<br>" + createTextSinaisVitais(" IMC: ", item.imc) +
+				"<br><p class='text-muted'>Em: " + moment(item.dataCadastro).format('DD/MM/YYYY') + "</p>";
 		})
 		return registro;
 	} else {
@@ -132,41 +134,15 @@ function nascimentoIdadeSexo(dtNascimento, sexo) {
 }
 
 function verificaSinaisVitais(data) {
-
-
-	var sinaisVitaisTriagem = null;
-	//	var sinaisVitaisAvaliacao = null;
+	var sinaisVitaisTriagem = null;//	var sinaisVitaisAvaliacao = null;
 	if (data.triagem != null) {
 		if (data.triagem.sinaisVitais != null) {
 			sinaisVitaisTriagem = data.triagem.sinaisVitais;
 		}
 	}
-	//	if (data.consulta != null) {
-	//		if (data.consulta.avaliacao != null) {
-	//			if (data.consulta.avaliacao.sinaisVitais != null) {
-	//				sinaisVitaisAvaliacao = data.consulta.avaliacao.sinaisVitais;
-	//			}
-	//		}
-	//	}
-	//
-	//	if (sinaisVitaisTriagem != null && sinaisVitaisAvaliacao != null) {
-	//		var ultimaAtualizacaoTriagem = sinaisVitaisTriagem.ultimaAtualizacao;
-	//		var ultimaAtualizacaoAvaliacao = sinaisVitaisAvaliacao.ultimaAtualizacao;
-	//		if (moment(ultimaAtualizacaoAvaliacao).isAfter(ultimaAtualizacaoTriagem, 'minute')) {
-	//			return infoAtdSinaisVitais(sinaisVitaisAvaliacao);
-	//		} else {
-	//			return infoAtdSinaisVitais(sinaisVitaisTriagem);
-	//		}
-	//	} else if (sinaisVitaisTriagem != null && sinaisVitaisAvaliacao == null) {
-	//		return infoAtdSinaisVitais(sinaisVitaisTriagem);
-	//	} else if (sinaisVitaisAvaliacao != null && sinaisVitaisTriagem == null) {
-	//		return infoAtdSinaisVitais(sinaisVitaisAvaliacao);
-	//	}
-
 	if (sinaisVitaisTriagem != null) {
 		return infoAtdSinaisVitais(sinaisVitaisTriagem);
 	}
-
 	return "<span class='badge badge-info'>Nenhum registro de sinais vitais cadastrado</span>";
 }
 
@@ -220,7 +196,7 @@ function infoAtdSinaisVitais(sinaisVitais) {
 	} else {
 		fc = "<strong>FC: </strong><span class='text-danger'><i class='fa fa-heart' aria-hidden='true'></i>" + fc + " bmp " + "</span>"
 	}
-	return createTextSinaisVitais("PA:", pressaoArterial + " ") + spo2 + temp + hgt + fc;
+	return createTextSinaisVitais("PA:", pressaoArterial + " ") + spo2 + temp + hgt + fc + "<br><p class='text-muted'>Em: " + moment(sinaisVitais.ultimaAtualizacao).format("DD/MM/YYYY , HH:mm:ss") + "</p>";
 }
 
 function createTextSinaisVitais(info, text) {
