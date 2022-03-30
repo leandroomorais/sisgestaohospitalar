@@ -28,7 +28,7 @@ $("#form-status-doenca").submit(function(evt) {
 		},
 		success: function() {
 			fechaFormularioDoenca();
-			notificacao('Sucesso!', 'A doença/comorbidade foi salva', 'top', 'right', 'success', 'withicon', '#', '');
+			notificacao('Sucesso!', 'A condição de saúde foi salva', 'top', 'right', 'success', 'withicon', '#', '');
 			$("#table-doencas").DataTable().ajax.reload();
 		},
 
@@ -90,7 +90,7 @@ $("#form-status-doenca-edit").submit(function(evt) {
 		},
 		success: function() {
 			fechaFormularioEditDoenca();
-			notificacao('Sucesso!', 'A doença/comorbidade foi salva', 'top', 'right', 'success', 'withicon', '#', '');
+			notificacao('Sucesso!', 'A condição de saúde foi salva', 'top', 'right', 'success', 'withicon', '#', '');
 			$("#table-doencas").DataTable().ajax.reload();
 		},
 
