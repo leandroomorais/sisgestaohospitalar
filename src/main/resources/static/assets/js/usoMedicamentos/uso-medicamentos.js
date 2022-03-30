@@ -1,8 +1,6 @@
 //######### Funções para Cadastro de Medicamentos ###########
-
 var idAtendimento = $("#id-atendimento").val();
 var idProntuario = $("#id-prontuario").val();
-
 
 //Função autocomplete Medicamentos
 $("#medicamento-uso").autocomplete({
