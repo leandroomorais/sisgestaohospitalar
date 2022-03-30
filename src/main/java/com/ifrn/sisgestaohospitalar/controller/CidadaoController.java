@@ -4,6 +4,7 @@ import java.security.Principal;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -134,27 +135,26 @@ public class CidadaoController {
 	}
 
 	@PostMapping("/busca-local")
-	public ResponseEntity<?> buscarCidadao(@RequestParam("cns") String cns, @RequestParam("cpf") String cpf,
-			@RequestParam("nome") String nome, @RequestParam("dataNascimento") String dataNascimento) {
-
-		String cnsFormat = cns.replace(".", "");
-		String cpfFormat = cpf.replace("-", "");
-		String dataNascimentoFormat = dataNascimento.replace("-", "");
-		if (cnsFormat.isEmpty() != true) {
-			Optional<Cidadao> cidadao = cidadaoRepository.findByCns(cnsFormat);
+	public ResponseEntity<?> buscarCidadao(HttpServletRequest httpServletRequest) {
+		String cns = httpServletRequest.getParameter("cns").replace(".", "");
+		String cpf = httpServletRequest.getParameter("cpf").replace(".", "").replace("-", "");
+		String nome = httpServletRequest.getParameter("nome");
+		String dataNascimento = httpServletRequest.getParameter("dataNascimento").replace("-", "");
+		if (cns.isEmpty() != true) {
+			Optional<Cidadao> cidadao = cidadaoRepository.findByCns(cns);
 			if (cidadao.isPresent()) {
 				return ResponseEntity.ok(cidadao.get());
 			}
 			return ResponseEntity.notFound().build();
 		}
-		if (cpfFormat.isEmpty() != true) {
-			Optional<Cidadao> cidadao = cidadaoRepository.findByCpf(cpfFormat);
+		if (cpf.isEmpty() != true) {
+			Optional<Cidadao> cidadao = cidadaoRepository.findByCpf(cpf);
 			if (cidadao.isPresent()) {
 				return ResponseEntity.ok(cidadao.get());
 			}
 			return ResponseEntity.notFound().build();
 		}
-		if (nome.isEmpty() != true && dataNascimentoFormat.isEmpty() != true) {
+		if (nome.isEmpty() != true && dataNascimento.isEmpty() != true) {
 			Optional<Cidadao> cidadao = cidadaoRepository.findByNomeIgnoreCase(nome);
 			if (cidadao.isPresent()) {
 				return ResponseEntity.ok(cidadao.get());
@@ -165,27 +165,27 @@ public class CidadaoController {
 	}
 
 	@PostMapping("/busca-cadsus")
-	public ResponseEntity<?> buscarCidadaoCadsus(@RequestParam("cns") String cns, @RequestParam("cpf") String cpf,
-			@RequestParam("nome") String nome, @RequestParam("dataNascimento") String dataNascimento) {
-		String cnsFormat = cns.replace(".", "");
-		String cpfFormat = cpf.replace("-", "");
-		String dataNascimentoFormat = dataNascimento.replace("-", "");
-		if (cnsFormat.isEmpty() != true) {
-			Cidadao cidadao = cadsusService.consultaCNS(cnsFormat);
+	public ResponseEntity<?> buscarCidadaoCadsus(HttpServletRequest httpServletRequest) {
+		String cns = httpServletRequest.getParameter("cns").replace(".", "");
+		String cpf = httpServletRequest.getParameter("cpf").replace(".", "").replace("-", "");
+		String nome = httpServletRequest.getParameter("nome");
+		String dataNascimento = httpServletRequest.getParameter("dataNascimento").replace("-", "");
+		if (cns.isEmpty() != true) {
+			Cidadao cidadao = cadsusService.consultaCNS(cns);
 			if (cidadao != null) {
 				return ResponseEntity.ok(cidadao);
 			}
 			return ResponseEntity.notFound().build();
 		}
-		if (cpfFormat.isEmpty() != true) {
-			Cidadao cidadao = cadsusService.consultaCPF(cpfFormat);
+		if (cpf.isEmpty() != true) {
+			Cidadao cidadao = cadsusService.consultaCPF(cpf);
 			if (cidadao != null) {
 				return ResponseEntity.ok(cidadao);
 			}
 			return ResponseEntity.notFound().build();
 		}
-		if (nome.isEmpty() != true && dataNascimentoFormat.isEmpty() != true) {
-			Cidadao cidadao = cadsusService.consultaNOMEeDN(nome, dataNascimentoFormat);
+		if (nome.isEmpty() != true && dataNascimento.isEmpty() != true) {
+			Cidadao cidadao = cadsusService.consultaNOMEeDN(nome, dataNascimento);
 			if (cidadao != null) {
 				return ResponseEntity.ok(cidadao);
 			}
