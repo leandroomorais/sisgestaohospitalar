@@ -5,19 +5,14 @@ var idProntuario = $("#id-prontuario").val();
 
 
 //Função autocomplete Medicamentos
-$("#medicamento").autocomplete({
+$("#medicamento-uso").autocomplete({
 	maxShowItems: 5,
 	source: "/medicamento/buscar",
-	focus: function(event, ui) {
-		$("#medicamento").val(ui.item.principioAtivo + " ; " + ui.item.concentracao + " ; " + ui.item.formaFarmaceutica.nome);
-		return false;
-	},
 	select: function(event, ui) {
-		$("#i-medicamento").removeClass("fa fa-search").addClass("fa fa-times");
-		$("#medicamento").val(ui.item.principioAtivo + " ; " + ui.item.concentracao + " ; " + ui.item.formaFarmaceutica.nome).attr("disabled", true);
-		$("#id-medicamento").val(ui.item.id);
+		$("#i-medicamento-uso").removeClass("fa fa-search").addClass("fa fa-times");
+		$(this).val(ui.item.principioAtivo + " ; " + ui.item.concentracao + " ; " + ui.item.formaFarmaceutica.nome).attr("disabled", true);
+		$("#id-medicamento-uso").val(ui.item.id);
 		return false;
-
 	}
 }).autocomplete("instance")._renderItem = function(ul, item) {
 	return $("<li>")
@@ -31,7 +26,7 @@ $("#medicamento").autocomplete({
 $("#form-uso-medicamento").submit(function(evt) {
 	evt.preventDefault();
 	var usoMedicamento = {};
-	usoMedicamento['medicamento.id'] = $("#id-medicamento").val();
+	usoMedicamento['medicamento.id'] = $("#id-medicamento-uso").val();
 	usoMedicamento.nota = $("#nota-uso-medicamento").val();
 	usoMedicamento.usoContinuo = $("#usoContinuo").prop("checked");
 	usoMedicamento.idProntuario = idProntuario;
@@ -41,7 +36,6 @@ $("#form-uso-medicamento").submit(function(evt) {
 		url: "/uso-medicamento/salvar",
 		method: "POST",
 		data: usoMedicamento,
-
 		success: function() {
 			limpaFormulario();
 			atulizaMedicamentoEmUso();
@@ -96,19 +90,20 @@ function atulizaMedicamentoEmUso() {
 }
 
 //Função Habilita pesquisa de Medicamentos
-$("#button-medicamento").click(function() {
-	$("#i-medicamento").removeClass().addClass("fa fa-search");
-	$("#medicamento").val("").attr("disabled", false);
+$("#button-medicamento-uso").click(function() {
+	limpaFormulario();
+	$("#i-medicamento-uso").removeClass().addClass("fa fa-search");
+	$("#medicamento-uso").val("").attr("disabled", false);
 })
 //Fim da função habilita pesquisa de Medicamentos
 //Fim submit dos medicamentos
 //######### Fim das Funções para Cadastro de Medicamentos ###########
 
 function limpaFormulario() {
-	$("#id-medicamento").val("");
+	$("#id-medicamento-uso").val("");
 	$("#nota-uso-medicamento").val("");
-	$("#usoContinuo").parent().removeClass().addClass("toggle btn btn-black off");
-	$("#medicamento").val("");
-	$("#i-medicamento").removeClass().addClass("fa fa-search");
-	$("#medicamento").val("").attr("disabled", false);
+	$("#usoContinuo").prop("checked", false).parent().removeClass().addClass("toggle btn btn-black off");
+	$("#medicamento-uso").val("");
+	$("#i-medicamento-uso").removeClass().addClass("fa fa-search");
+	$("#medicamento-uso").val("").attr("disabled", false);
 }
