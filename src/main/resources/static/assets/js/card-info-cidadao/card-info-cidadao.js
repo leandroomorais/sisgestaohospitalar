@@ -17,7 +17,7 @@ function createCardInfoCidadao(data) {
 		nascimentoIdadeSexo(data.cidadao.dataNascimento, data.cidadao.sexo) +
 		"</div><div class='col-md-4'>" +
 		classificacaoDeRisco(data.classificacaoDeRisco) + "<br>" +
-		verificaSinaisVitais(data) +
+		verificaSinaisVitais(data.sinaisVitais) +
 		"</div><div class='col-md-2'>" +
 		antropometria(data.cidadao.prontuario.antropometrias) +
 		"</div></div>" +
@@ -68,7 +68,7 @@ function alergias(alergias) {
 		})
 		return "<div class='col-md-5 mt-2'><strong>Alergias: </strong><br>" + retornoConcat + "</div>";
 	} else {
-		return "<div class='col-md-5 mt-2'><strong>Alergias: </strong><span class='badge badge-info'>Nenhum registro de Alergia cadastrado</span></div>";
+		return "<div class='col-md-5 mt-2'><strong>Alergias: </strong><span class='badge badge-info'>Sem alergias cadastradas</span></div>";
 	}
 
 }
@@ -133,17 +133,16 @@ function nascimentoIdadeSexo(dtNascimento, sexo) {
 		"</strong><span> " + sexo + " </span>";
 }
 
-function verificaSinaisVitais(data) {
-	var sinaisVitaisTriagem = null;//	var sinaisVitaisAvaliacao = null;
-	if (data.triagem != null) {
-		if (data.triagem.sinaisVitais != null) {
-			sinaisVitaisTriagem = data.triagem.sinaisVitais;
-		}
+function verificaSinaisVitais(sinaisVitais) {
+	if (sinaisVitais.length != 0) {
+		var registro;
+		$.each(sinaisVitais, function(index, item) {
+			registro = infoAtdSinaisVitais(item);
+		})
+		return registro;
+	} else {
+		return "<span class='badge badge-info'>Sem registro de sinais vitais</span>";
 	}
-	if (sinaisVitaisTriagem != null) {
-		return infoAtdSinaisVitais(sinaisVitaisTriagem);
-	}
-	return "<span class='badge badge-info'>Nenhum registro de sinais vitais cadastrado</span>";
 }
 
 function infoAtdSinaisVitais(sinaisVitais) {
