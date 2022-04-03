@@ -47,9 +47,9 @@ function createChecbox(exameSimplificados) {
 }
 
 //Função Habilita pesquisa de Medicamentos
-$("#button-procedimento").click(function() {
+$("#button-procedimento-exame").click(function() {
 	limpaExame();
-	$("#i-procedimento").removeClass().addClass("fa fa-search");
+	$("#i-procedimento-exame").removeClass().addClass("fa fa-search");
 })
 
 function exibeFormularioExame() {
@@ -58,10 +58,8 @@ function exibeFormularioExame() {
 	$("#card-list-exames").fadeOut(100);
 	$("#card-list-todos-exames").fadeOut(100);
 	$("#card-novo-exame").fadeIn(100);
-
 	$("#table-procedimentos-exame").DataTable().ajax.reload();
-
-	$("#i-procedimento").removeClass().addClass("fa fa-search");
+	$("#i-procedimento-exame").removeClass().addClass("fa fa-search");
 	$("#i-exame-cid").removeClass().addClass("fa fa-search");
 }
 
@@ -120,7 +118,7 @@ $("#form-exame").submit(function(evt) {
 	exame.observacoes = $("#observacoes").val();
 	exame['atendimento'] = $("#id-atendimento").val();
 	exame['prontuario'] = $("#id-prontuario").val();
-	exame['cid'] = $("#id-cid").val();
+	exame['cid'] = $("#id-cid-exame").val();
 
 	$.ajax({
 		url: '/exame/',
@@ -451,7 +449,7 @@ $("#exame-cid").autocomplete({
 	},
 	select: function(event, ui) {
 		$("#i-exame-cid").removeClass("fa fa-search").addClass("fa fa-times");
-		$("#id-cid").val(ui.item.id);
+		$("#id-cid-exame").val(ui.item.id);
 		return false;
 
 	}
@@ -463,7 +461,7 @@ $("#exame-cid").autocomplete({
 
 function limpaInputCid() {
 	$("#exame-cid").val("");
-	$("#id-cid").val("");
+	$("#id-cid-exame").val("");
 	$("#i-exame-cid").removeClass("fa fa-times").addClass("fa fa-search");
 	return false;
 }
