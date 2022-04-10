@@ -1,4 +1,4 @@
-<div sec:authorize="hasAnyAuthority('MEDICO')" id="card-nova-prescricao" class="card">
+<div sec:authorize="hasAnyAuthority('MEDICO','ENFERMEIRO','TECNICO','AUXILIAR')" id="card-nova-prescricao" class="card">
 	<div class="card-header">
 		<div class="card-title"><a id="nova-prescricao-voltar" data-toggle="tooltipe" data-placement="top"
 				title="Voltar para tela anterior" class="btn btn-light"> <i class="fa fa-flip-horizontal fa-share"></i>
@@ -14,7 +14,8 @@
 								Medicamentos*</label>
 							<div class="input-group">
 								<div class="input-group-prepend">
-									<button id="button-medicamento-prescricao" type="button" class="btn btn-black btn-border">
+									<button id="button-medicamento-prescricao" type="button"
+										class="btn btn-black btn-border">
 										<i id="i-medicamento-prescricao" class="fa fa-search"></i>
 									</button>
 								</div>
