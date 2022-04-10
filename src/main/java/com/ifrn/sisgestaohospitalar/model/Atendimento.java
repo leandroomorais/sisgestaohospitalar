@@ -2,6 +2,8 @@ package com.ifrn.sisgestaohospitalar.model;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Objects;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -227,6 +229,23 @@ public class Atendimento {
 
 	public void setSinaisVitais(List<SinaisVitais> sinaisVitais) {
 		this.sinaisVitais = sinaisVitais;
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(id);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Atendimento other = (Atendimento) obj;
+		return Objects.equals(id, other.id);
 	}
 
 }
