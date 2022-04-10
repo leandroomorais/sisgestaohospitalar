@@ -27,7 +27,6 @@ public class ConexaoCadsus {
 
 	public String requisicao(String xmlRequisicao) {
 		xmlRequisicao = configurarXml(xmlRequisicao);
-
 		try {
 			HttpClient client = HttpClientBuilder.create().build();
 			HttpPost post = new HttpPost(this.endpoint);
