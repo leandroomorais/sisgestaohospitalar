@@ -10,6 +10,7 @@
 				<div id="alert"></div>
 				<div class="page-header">
 					<h4 class="page-title">Atendimento</h4>
+					<input type="hidden" id="nomeOcupacao" th:value="${profissional.nomeOcupacao}">
 				</div>
 				<div class="card">
 					<div class="card-body">
@@ -179,6 +180,8 @@
 		<script th:src="@{/assets/js/historico-pdf.js}"></script>
 		<script type="text/javascript" th:inline="javascript"
 			th:src="@{/assets/js/atendimento/form-atendimento.js}"></script>
+		<script type="text/javascript" th:inline="javascript"
+			th:src="@{/assets/js/procedimento/procedimentos-automaticos.js}"></script>
 		<script type="text/javascript" th:inline="javascript"
 			th:src="@{/assets/js/procedimento/procedimento.js}"></script>
 		<script type="text/javascript" th:inline="javascript"

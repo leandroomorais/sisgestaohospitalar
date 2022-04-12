@@ -58,7 +58,6 @@ public class AtendimentoProcedimentoController {
 		if (optional.isPresent()) {
 			Atendimento atendimento = optional.get();
 			Profissional profissional = profissionalRepository.findByCpf(principal.getName());
-			atendimentoProcedimento.setProfissional(profissional);
 			atendimentoProcedimento.setIdadeNoAtendimento(datas.getIdade(atendimento.getCidadao().getDataNascimento(),
 					atendimento.getDataEntrada().toLocalDate()));
 			if (!procedimentoOcupacapService.verificaCboProcedimento(atendimentoProcedimento, profissional)) {
@@ -69,7 +68,7 @@ public class AtendimentoProcedimentoController {
 			for (AtendimentoProcedimento atendimentoProcedimentoAux : atendimento.getAtendimentoProcedimentos()) {
 				if (atendimentoProcedimento.getProcedimento().getCodigo()
 						.equals(atendimentoProcedimentoAux.getProcedimento().getCodigo())
-						&& atendimentoProcedimento.getProfissional().getCpf().equals(profissional.getCpf())) {
+						&& atendimentoProcedimentoAux.getProfissional().getCpf().equals(profissional.getCpf())) {
 					atendimentoProcedimentoAux.setQuantidade(
 							atendimentoProcedimentoAux.getQuantidade() + atendimentoProcedimento.getQuantidade());
 					atendimentoProcedimentoRepository.saveAndFlush(atendimentoProcedimentoAux);
@@ -77,6 +76,7 @@ public class AtendimentoProcedimentoController {
 
 				}
 			}
+			atendimentoProcedimento.setProfissional(profissional);
 			atendimento.getAtendimentoProcedimentos().add(atendimentoProcedimento);
 			atendimentoRepository.saveAndFlush(atendimento);
 			return ResponseEntity.ok().build();

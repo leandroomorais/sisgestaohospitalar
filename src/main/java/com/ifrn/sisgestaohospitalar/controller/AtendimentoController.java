@@ -118,6 +118,7 @@ public class AtendimentoController {
 		ModelAndView mv = new ModelAndView("atendimento/form-atendimento");
 		if (optional.isPresent()) {
 			mv.addObject("user", usuarioRepository.findByUsername(principal.getName()));
+			mv.addObject("profissional", profissionalRepository.findByCpf(principal.getName()));
 			mv.addObject("atendimento", optional.get());
 			mv.addObject("situacoesCondicao", SituacaoCondicao.values());
 			mv.addObject("tipoServicos", tipoServicoRepository.findAll());

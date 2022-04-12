@@ -1,10 +1,13 @@
 var idAtendimento;
 var idSinaisVitais;
 var inicioConsulta;
+var consultaExiste;
+var nomeOcupacao;
 //JS Form Atendimento
 $(document).ready(function() {
 
 	idAtendimento = $("#id-atendimento").val();
+	nomeOcupacao = $("#nomeOcupacao").val();
 	verificaConsulta();
 	ocultarAlergia();
 	ocultarDoenca();
@@ -103,6 +106,11 @@ $("#form-consulta").submit(function(evt) {
 		success: function() {
 			notificacao('Sucesso!', 'Consulta salva', 'top', 'right', 'success', 'withicon', '#', '');
 			cardInfoCidadao(idAtendimento);
+			if (!consultaExiste) {
+				if (!nomeOcupacao == "Médico clínico") {
+					submitProcedimento(idAtendimento, 301010072, null, 1);
+				}
+			}
 			verificaConsulta();
 		},
 
@@ -147,6 +155,7 @@ function verificaConsulta() {
 			tinymce.get("historia-clinica").setMode('readonly');
 			tinymce.get("avaliacao").setMode('readonly');
 			tinymce.get("conduta").setMode('readonly');
+			var consutaExiste = true;
 
 		},
 
