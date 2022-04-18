@@ -11,7 +11,7 @@ import org.apache.http.util.EntityUtils;
 public class ConexaoCadsus {
 
 	private static final String ENDPOINT_HOMOLOGACAO = "https://servicoshm.saude.gov.br/cadsus/PDQSupplier";
-	private static final String ENDPOINT_PRODUCAO = "https://servicoshm.saude.gov.br/cadsus/PDQSupplier";
+	private static final String ENDPOINT_PRODUCAO = "https://servicos.saude.gov.br/cadsus/PDQSupplier";
 	private static final String USUARIO_XML = "[[USUARIO]]";
 	private static final String SENHA_XML = "[[SENHA]]";
 
@@ -34,6 +34,7 @@ public class ConexaoCadsus {
 			post.setEntity(entity);
 			HttpResponse httpResponse = client.execute(post);
 			String result = EntityUtils.toString(httpResponse.getEntity());
+			System.out.println(result);
 			return result;
 		} catch (Exception e) {
 			return null;
