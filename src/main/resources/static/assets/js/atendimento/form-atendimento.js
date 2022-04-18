@@ -72,6 +72,8 @@ $(document).ready(function() {
 	//Chamada da Função
 	atulizaMedicamentoEmUso();
 	cardInfoCidadao(idAtendimento);
+	
+	listarAtendimentos();
 
 
 });
@@ -176,3 +178,38 @@ function editarConsulta() {
 	tinymce.get("conduta").setMode('design');
 	$("#card-action").empty().append("<button class='btn btn-primary'> Salvar</button>");
 }
+
+function listarAtendimentos() {
+	var prontuarioId = $("#id-prontuario").val();
+	$("#table-atendimentos").DataTable({
+		paging: false,
+		searching: false,
+		ordering: false,
+		ajax: {
+			url: '/atendimento/atendimentos/' + prontuarioId,
+			dataSrc: ''
+		},
+		columns: [
+			{
+				title: 'DATA',
+				data: 'dataEntrada',
+				mRender: function(data) {
+					return moment(data).format("DD/MM/YYYY");
+				}
+			},
+			{
+				title: 'CIDADÃO',
+				data: 'cidadao.nome',
+			},
+			{
+				title: 'AÇÕES',
+				data: 'id',
+				mRender: function(data) {
+					var retorno =
+						" <button class='btn btn-primary btn-sm' data-value='" + data + "' onclick='editarAlergia(this)'><i class='fa fa-edit'></i> Editar </button>"
+					return retorno;
+				}
+			}
+		]
+	})
+};

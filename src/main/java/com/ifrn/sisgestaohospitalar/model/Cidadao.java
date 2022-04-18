@@ -20,6 +20,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import org.hibernate.validator.constraints.br.CPF;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.ifrn.sisgestaohospitalar.enums.CodigoRaca;
 import com.ifrn.sisgestaohospitalar.enums.EstadoCivil;
 import com.ifrn.sisgestaohospitalar.validation.Cns;
@@ -96,7 +97,8 @@ public class Cidadao implements Serializable {
 	@OneToOne(cascade = CascadeType.ALL)
 	@Valid
 	private Endereco endereco;
-
+	
+	@JsonIgnore
 	@OneToOne(cascade = CascadeType.ALL)
 	private Prontuario prontuario;
 

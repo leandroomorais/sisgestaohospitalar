@@ -281,8 +281,8 @@ public class CidadaoCadsusService {
 			// Verifica códido da RAÇA
 			if (getPaciente.getJSONObject("patientPerson").getJSONObject("raceCode") != null) {
 				for (CodigoRaca codigoRaca : CodigoRaca.values()) {
-					if (codigoRaca.getCodigo() == Integer.parseInt(
-							getPaciente.getJSONObject("patientPerson").getJSONObject("raceCode").getString("code"))) {
+					if (codigoRaca.getCodigo() == getPaciente.getJSONObject("patientPerson").getJSONObject("raceCode")
+							.optInt("code")) {
 						cidadao.setCodigoRaca(codigoRaca);
 					}
 				}

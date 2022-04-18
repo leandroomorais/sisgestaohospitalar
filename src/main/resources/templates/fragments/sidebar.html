@@ -43,6 +43,10 @@
 						th:href="@{/atendimento/listar-atendimentos}"> <i class="fa fa-user-md"></i>
 						<p>Atendimentos</p>
 					</a></li>
+				<li sec:authorize="hasAnyAuthority('MEDICO','ENFERMEIRO','TECNICO','AUXILIAR')" class="nav-item"><a
+						th:href="@{/atendimento/listar}"> <i class="fa fa-search"></i>
+						<p>Realizados</p>
+					</a></li>
 			</ul>
 		</div>
 	</div>

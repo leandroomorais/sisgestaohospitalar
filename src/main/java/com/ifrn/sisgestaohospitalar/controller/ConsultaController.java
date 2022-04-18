@@ -17,15 +17,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import com.ifrn.sisgestaohospitalar.model.Atendimento;
-import com.ifrn.sisgestaohospitalar.model.AtendimentoProcedimento;
 import com.ifrn.sisgestaohospitalar.model.Consulta;
-import com.ifrn.sisgestaohospitalar.model.Lotacao;
 import com.ifrn.sisgestaohospitalar.model.Profissional;
 import com.ifrn.sisgestaohospitalar.repository.AtendimentoRepository;
-import com.ifrn.sisgestaohospitalar.repository.ConsultaRepository;
-import com.ifrn.sisgestaohospitalar.repository.ProcedimentoRepository;
 import com.ifrn.sisgestaohospitalar.repository.ProfissionalRepository;
-import com.ifrn.sisgestaohospitalar.utils.Datas;
 
 @Controller
 @RequestMapping("/consulta")
@@ -36,7 +31,6 @@ public class ConsultaController {
 
 	@Autowired
 	private ProfissionalRepository profissionalRepository;
-
 
 	@GetMapping("/verificar/{idAtendimento}")
 	public ResponseEntity<?> verificar(@PathVariable("idAtendimento") Long idAtendimento, Principal principal) {
