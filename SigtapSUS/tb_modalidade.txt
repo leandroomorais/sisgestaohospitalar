@@ -1,4 +1,4 @@
-01Ambulatorial                                                                                        202111
-02Hospitalar                                                                                          202111
-03Hospital Dia                                                                                        202111
-06Atenção Domiciliar                                                                                  202111
+01Ambulatorial                                                                                        202204
+02Hospitalar                                                                                          202204
+03Hospital Dia                                                                                        202204
+06Atenção Domiciliar                                                                                  202204
