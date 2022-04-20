@@ -30,12 +30,12 @@ public class CidadaoCadsusService {
 	private static final String PARAMETRO_NOME = "[[PARAMETRO_NOME]]";
 	private static final String PARAMETRO_DT_NASCIMENTO = "[[PARAMETRO_DT_NASCIMENTO]]";
 
-	ConexaoCadsus conexaoCadsus = new ConexaoCadsus("CADSUS.CNS.PDQ.PUBLICO", "kUXNmiiii#RDdlOELdoe00966", false);
-
 	@Autowired
 	private MunicipioRepository municipioRepository;
 	@Autowired
 	private LogradouroRepository logradouroRepository;
+
+	ConexaoCadsus conexaoCadsus = new ConexaoCadsus("CADSUS.CNS.PDQ.PUBLICO", "kUXNmiiii#RDdlOELdoe00966", false);
 
 	public Cidadao consultaCNS(String parametro) {
 		try {

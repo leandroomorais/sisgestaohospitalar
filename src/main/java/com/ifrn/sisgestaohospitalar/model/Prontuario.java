@@ -56,6 +56,7 @@ public class Prontuario {
 	@JoinTable(name = "prontuario_antropometria", joinColumns = @JoinColumn(name = "id_prontuario"), inverseJoinColumns = @JoinColumn(name = "id_antropometria"))
 	private List<Antropometria> antropometrias;
 
+	@JsonIgnore
 	@ManyToMany(cascade = CascadeType.ALL)
 	@JoinTable(name = "prontuario_atendimento", joinColumns = @JoinColumn(name = "id_prontuario"), inverseJoinColumns = @JoinColumn(name = "id_atendimento"))
 	private List<Atendimento> atendimentos;
