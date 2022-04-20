@@ -72,7 +72,7 @@ $(document).ready(function() {
 	//Chamada da Função
 	atulizaMedicamentoEmUso();
 	cardInfoCidadao(idAtendimento);
-	
+
 	listarAtendimentos();
 
 
@@ -206,7 +206,7 @@ function listarAtendimentos() {
 				data: 'id',
 				mRender: function(data) {
 					var retorno =
-						" <button class='btn btn-primary btn-sm' data-value='" + data + "' onclick='editarAlergia(this)'><i class='fa fa-edit'></i> Editar </button>"
+						"<a class='btn btn-primary btn-sm' href='/atendimento/detalhar/" + data + "' target='_blank'> Detalhar </a>"
 					return retorno;
 				}
 			}

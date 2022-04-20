@@ -11,7 +11,6 @@ import java.util.Optional;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Required;
 import org.springframework.data.repository.query.Param;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -37,8 +36,11 @@ import com.ifrn.sisgestaohospitalar.model.Cidadao;
 import com.ifrn.sisgestaohospitalar.model.HistoricoAtendimento;
 import com.ifrn.sisgestaohospitalar.model.Prontuario;
 import com.ifrn.sisgestaohospitalar.repository.AtendimentoRepository;
+import com.ifrn.sisgestaohospitalar.repository.AtestadoRepository;
 import com.ifrn.sisgestaohospitalar.repository.CidadaoRepository;
 import com.ifrn.sisgestaohospitalar.repository.ClassificacaoDeRiscoRepository;
+import com.ifrn.sisgestaohospitalar.repository.ExameRepository;
+import com.ifrn.sisgestaohospitalar.repository.PrescricaoRepository;
 import com.ifrn.sisgestaohospitalar.repository.ProfissionalRepository;
 import com.ifrn.sisgestaohospitalar.repository.ProntuarioRepository;
 import com.ifrn.sisgestaohospitalar.repository.TipoServicoRepository;
@@ -83,6 +85,15 @@ public class AtendimentoController {
 
 	@Autowired
 	private ProntuarioRepository prontuarioRepository;
+
+	@Autowired
+	private PrescricaoRepository prescricaoRepository;
+
+	@Autowired
+	private ExameRepository exameRepository;
+
+	@Autowired
+	private AtestadoRepository atestadoRepository;
 
 	@GetMapping("/{id}")
 	public ResponseEntity<?> atendimento(@PathVariable("id") Long id) {
@@ -337,7 +348,9 @@ public class AtendimentoController {
 			ModelAndView mv = new ModelAndView("atendimento/detalhe-atendimento");
 			mv.addObject("user", usuarioRepository.findByUsername(principal.getName()));
 			mv.addObject("atendimento", optional.get());
-			mv.addObject("historicosAtendimento", optional.get().getHistoricosAtendimento());
+			mv.addObject("prescricoes", prescricaoRepository.findByAtendimento(optional.get()));
+			mv.addObject("exames", exameRepository.findByAtendimento(optional.get()));
+			mv.addObject("atestados", atestadoRepository.findByAtendimento(optional.get()));
 			return mv;
 		}
 		return listar(principal).addObject("erro", "Atendimento não localizado");
@@ -350,7 +363,9 @@ public class AtendimentoController {
 			ModelAndView mv = new ModelAndView("atendimento/detalhe-atendimento-admin");
 			mv.addObject("user", usuarioRepository.findByUsername(principal.getName()));
 			mv.addObject("atendimento", optional.get());
-			mv.addObject("historicosAtendimento", optional.get().getHistoricosAtendimento());
+			mv.addObject("prescricoes", prescricaoRepository.findByAtendimento(optional.get()));
+			mv.addObject("exames", exameRepository.findByAtendimento(optional.get()));
+			mv.addObject("atestados", atestadoRepository.findByAtendimento(optional.get()));
 			return mv;
 		}
 		return listar(principal).addObject("erro", "Atendimento não localizado");
