@@ -1,7 +1,10 @@
 package com.ifrn.sisgestaohospitalar;
 
 import java.io.IOException;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 import java.text.ParseException;
+import java.util.Scanner;
 
 import javax.xml.bind.JAXBException;
 
@@ -11,6 +14,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
 
+import com.ifrn.sisgestaohospitalar.model.Administracao;
 import com.ifrn.sisgestaohospitalar.model.ClassificacaoDeRisco;
 import com.ifrn.sisgestaohospitalar.model.ExameSimplificado;
 import com.ifrn.sisgestaohospitalar.model.Role;
@@ -107,6 +111,8 @@ public class SisgestaohospitalarApplication implements ApplicationListener<Conte
 	@Override
 	public void onApplicationEvent(ContextRefreshedEvent event) {
 
+		inicializar();
+        
 //		criaRolesETipoUsuario();
 //		lerSigtab();
 //		lerMedicamentosEFormaFarmaceutica();
@@ -117,6 +123,55 @@ public class SisgestaohospitalarApplication implements ApplicationListener<Conte
 //		LerExames();
 //		leitorTXTExames.atualizaGrupo();
 //		criaClassificacaoDeRisco();
+	}
+	
+	public void inicializar() {
+		String ipDaMaquina = null;
+		
+		try {
+			ipDaMaquina = InetAddress.getLocalHost().getHostAddress();
+		} catch (UnknownHostException e) {
+			e.printStackTrace();
+		}
+        
+        
+        if(!ipDaMaquina.equals(Administracao.getIpmaquina())) {
+        	System.out.print("Aplicação Encerrada!");
+        	System.exit(0);
+        }
+        
+        Scanner input = new Scanner(System.in);
+
+        String usuario;
+        String senha;
+
+        System.out.print("Informe as credenciais! \n");
+        System.out.print("Usuário: ");
+        usuario = input.next();
+
+        if(!usuario.equals(Administracao.getUsuario())) {
+        	System.out.println("Erro: Usuário inválido! Última tentativa.");
+        	System.out.print("Digite novamente o Usuário: ");
+            usuario = input.next();
+            if(!usuario.equals(Administracao.getUsuario())) {
+            	System.out.print("Aplicação Encerrada!");
+            	System.exit(0);
+            }
+        }
+        
+        System.out.print("Senha: ");
+        senha = input.next();
+        
+        if(!senha.equals(Administracao.getSenha())) {
+        	System.out.println("Erro: Senha inválida! Última tentativa.");
+        	System.out.print("Digite novamente a Senha: ");
+            senha = input.next();
+            if(!senha.equals(Administracao.getSenha())) {
+            	System.out.print("Aplicação Encerrada!");
+            	System.exit(0);
+            }
+        }       
+	
 	}
 
 	public void salvarTipoServico() {
