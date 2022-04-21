@@ -1,6 +1,16 @@
 $(document).ready(
 	function() {
-		mascaraInputs();
+		//Aplica máscaras aos inputs do Formulário
+		$("#cns").mask('000.0000.0000.0000');
+		$("#cpf").mask('000.000.000-00');
+		$("#cpf-busca").mask('000.000.000-00');
+		$("#cns-busca").mask('000.0000.0000.0000');
+		$("#telefone").mask('(00) 00000-0000');
+		$("#cep").mask('00000-000');
+		//Aplica uper case no input nome
+		$("#nome-busca").keyup(function() {
+			this.value = this.value.toUpperCase();
+		});
 		//Oculta o status da pesquisa
 		$("#status-pesquisa-cns").hide();
 		$("#status-pesquisa-cpf").hide();
@@ -21,6 +31,37 @@ $(document).ready(
 )
 
 var idCidadao = null;
+
+//Funções auxliares do Formulário de Cadastro do Cidadão
+
+$("#semInfo-mae").click(function() {
+	if ($("#semInfor-mae").prop("checked", "checked")) {
+		$("#nomemae").val("SEM INFORMAÇÃO");
+	} else if ($("#semInfor-mae").prop("checked", false)) {
+		$("#nomemae").val("");
+	}
+
+});
+
+$("#semInfo-pai").click(function() {
+	if ($("#semInfor-pai").prop("checked", true)) {
+		$("#nomepai").val("SEM INFORMAÇÃO");
+	} else if ($("#semInfor-pai").prop("checked", false)) {
+		$("#nomepai").val("");
+	}
+
+});
+
+$("#semNumero").click(function() {
+	const isChecked = !$(this).attr('checked')
+	$(this).attr("checked", isChecked)
+	if (isChecked) {
+		$("#endereco-numero").val("S/N");
+	} else {
+		$("#endereco-numero").val("");
+	}
+});
+
 
 //Submit da função buscar Cidadão
 $("#form-busca").submit(function(evt) {
@@ -45,6 +86,7 @@ $("#form-busca").submit(function(evt) {
 			url: "/cidadao/busca-local",
 			data: info,
 			beforeSend: function() {
+				console.log(info);
 				removeMsgErro();
 			},
 			success: function(data) {
@@ -265,6 +307,25 @@ $("#button-nome").click(function() {
 	$("#button-nome").removeClass().addClass("btn btn-primary btn-xs");
 });
 
+//Função autocompletar município de nascimento
+$(function() {
+	$("#municipioNascimento").on("keydown", function(event) {
+		$(this).autocomplete("instance")._renderItem = function(select, item) {
+			return $("<option  class='form-control'>").append("<div>"
+				+ item.nomeMunicipioSiglaUF
+				+ "</div>").appendTo(select);
+		};
+	}).autocomplete({
+		source: "/municipio",
+		select: function(event, ui) {
+			$("#municipioNascimento").val(ui.item.nomeMunicipioSiglaUF);
+			$("#id-municipioNascimento").val(ui.item.id);
+			return false;
+		},
+
+	})
+});
+
 //Função para autocompletar endereço por CEP
 $("#button-pesquisaCep").click(function(evt) {
 	evt.preventDefault();
@@ -293,7 +354,24 @@ $("#button-pesquisaCep").click(function(evt) {
 	})
 });
 
+//Função autocompletar Logradouro
+$(function() {
+	$("#desc-logradouro").on("keydown", function(event) {
+		$(this).autocomplete("instance")._renderItem = function(select, item) {
+			return $("<option  class='form-control'>").append("<div>"
+				+ item.descricao
+				+ "</div>").appendTo(select);
+		};
+	}).autocomplete({
+		source: "/logradouro",
+		select: function(event, ui) {
+			$("#desc-logradouro").val(ui.item.descricao);
+			$("#endereco-logradouro").val(ui.item.codigo);
+			return false;
+		},
 
+	})
+});
 
 //Função para exibir a mensagem CAMPO DE PREENCHIMENTO OBRIGATÓRIO
 //caso o serviço do CADSUS não retorne um parâmetro obrigatório
@@ -327,8 +405,9 @@ function creatCardDetalheCidadao(data) {
 		itemCardCidadao("Nome da mãe: ", data.nomeMae) +
 		"</div><div class='col-md-4 text-right'>" +
 		infoCardEndereco(data.endereco.enderecoCompleto, data.endereco.cep) +
-		"</div></div><div class='text-left'>" +
-		"<button type='button' onclick='detalhar()' class='btn btn-light'><i class='fa fa-info-circle' aria-hidden='true'></i> Detalhar</button>" +
+		"</div></div><div class='text-right'>" +
+		"<button type='button' onclick='detalhar()' class='btn btn-light btn-sm'><i class='fa fa-info-circle' aria-hidden='true'></i> Detalhar</button>" +
+		"<button type='button' onclick='editar()' class='btn btn-light btn-sm'><i class='fa fa-edit' aria-hidden='true'></i> Editar</button>" +
 		"</div></div></div>";
 }
 
@@ -381,7 +460,7 @@ function infoCardEndereco(endereco, cep) {
 }
 
 function detalhar() {
-	$(location).attr('href', '/cidadao/detalhe/' + idCidadao);
+	$(location).attr('href', '/cidadao/detalhar/' + idCidadao);
 }
 
 function editar() {
@@ -390,11 +469,3 @@ function editar() {
 $("#btn-adicionar-cidadao").click(function() {
 	$(location).attr('href', '/atendimento/adicionar/' + idCidadao);
 })
-
-
-
-
-
-
-
-
