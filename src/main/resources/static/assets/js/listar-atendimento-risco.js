@@ -79,7 +79,7 @@ function atualizarTabela() {
 				}
 			},
 			{
-				title: 'C. RISCO',
+				title: 'C.R.',
 				orderable: false,
 				data: 'classificacaoDeRisco.nome', mRender: function(data) {
 					console.log(data);

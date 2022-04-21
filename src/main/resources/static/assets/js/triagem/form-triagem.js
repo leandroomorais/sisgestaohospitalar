@@ -116,22 +116,12 @@ $("#form-triagem").submit(function(evt) {
 
 //######### Fim das Funções do Formulário da Triagem ###########
 
-
-
 //######### Funções dos Procedimentos ###########
 
-//Funçao que adiciona Procedimentos automaticamente
-$("#sinaisVitais-pressaoDiastolica").change(function() {
-	var pressaoSistolica = $("#sinaisVitais-pressaoSistolica").val();
+$("input[name='classificacaoDeRisco']").change(function() {
 	var tipoServico = "TRIAGEM";
 	var quantidade = 1;
-	submitProcedimento(idAtendimento, 301100039, tipoServico, quantidade);
-})
-
-$("#sinaisVitais-glicemiaCapilar").change(function() {
-	var tipoServico = "TRIAGEM";
-	var quantidade = 1;
-	submitProcedimento(idAtendimento, 214010015, tipoServico, quantidade);
+	submitProcedimento(idAtendimento, 301060118, tipoServico, quantidade);
 })
 
 function verificaTriagem() {

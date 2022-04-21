@@ -1,14 +1,12 @@
 <div class="card" id="card-list-exames">
-	<div id="card-header" class="card-header">
+	<div class="card-header">
 		<div class="card-title">Solicitação de Exames</div>
 	</div>
 	<div class="card-body">
 		<div id="info-exames">
 			<div id="div-exames"></div>
-			<div sec:authorize="hasAnyAuthority('MEDICO')"
-				id="div-button-novo-exame" class="text-right">
-				<button type="button" onclick="exibeFormularioExame()"
-					class="btn btn-primary btn-sm">
+			<div sec:authorize="hasAnyAuthority('MEDICO')" id="div-button-novo-exame" class="text-right">
+				<button type="button" onclick="exibeFormularioExame()" class="btn btn-primary btn-sm">
 					<i class="fa fa-plus"></i> Nova solicitação
 				</button>
 			</div>
@@ -19,25 +17,21 @@
 </div>
 
 <div class="card" id="card-list-todos-exames">
-
-	<div id="card-header" class="card-header">
+	<div class="card-header">
 		<div class="card-title">Cadastrar ou Visualizar Resultados</div>
 	</div>
 	<div class="card-body">
 		<div id="div-todos-exames"></div>
 	</div>
-
 	<!-- Modal Exibe Resultado de Exame -->
-	<div class="modal fade" id="modalResultadoExame" tabindex="-1"
-		role="dialog" aria-labelledby="exampleModalCenterTitleResultadoExame"
-		aria-hidden="true">
+	<div class="modal fade" id="modalResultadoExame" tabindex="-1" role="dialog"
+		aria-labelledby="exampleModalCenterTitleResultadoExame" aria-hidden="true">
 		<div class="modal-dialog modal-dialog-centered" role="document">
 			<div class="modal-content">
 				<div class="modal-header">
 					<h5 class="modal-title" id="exampleModalLongTitleResultadoExame">Resultado
 						do Exame</h5>
-					<button type="button" class="close" data-dismiss="modal"
-						aria-label="Close">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 						<span aria-hidden="true">&times;</span>
 					</button>
 				</div>

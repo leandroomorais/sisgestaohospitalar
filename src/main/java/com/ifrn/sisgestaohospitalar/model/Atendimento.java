@@ -2,6 +2,8 @@ package com.ifrn.sisgestaohospitalar.model;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Objects;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -76,8 +78,14 @@ public class Atendimento {
 	private Triagem triagem;
 
 	@Valid
-	@OneToOne(cascade = CascadeType.ALL)
-	private Consulta consulta;
+	@ManyToMany(cascade = CascadeType.ALL)
+	@JoinTable(name = "atendimento_consultas", joinColumns = @JoinColumn(name = "id_atendimento"), inverseJoinColumns = @JoinColumn(name = "id_consulta"))
+	private List<Consulta> consultas;
+
+	@Valid
+	@ManyToMany(cascade = CascadeType.ALL)
+	@JoinTable(name = "atendimento_vitais", joinColumns = @JoinColumn(name = "id_atendimento"), inverseJoinColumns = @JoinColumn(name = "id_sinaisVitais"))
+	private List<SinaisVitais> sinaisVitais;
 
 	public Long getId() {
 		return id;
@@ -207,12 +215,37 @@ public class Atendimento {
 		this.triagem = triagem;
 	}
 
-	public Consulta getConsulta() {
-		return consulta;
+	public List<Consulta> getConsultas() {
+		return consultas;
 	}
 
-	public void setConsulta(Consulta consulta) {
-		this.consulta = consulta;
+	public void setConsultas(List<Consulta> consultas) {
+		this.consultas = consultas;
+	}
+
+	public List<SinaisVitais> getSinaisVitais() {
+		return sinaisVitais;
+	}
+
+	public void setSinaisVitais(List<SinaisVitais> sinaisVitais) {
+		this.sinaisVitais = sinaisVitais;
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(id);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Atendimento other = (Atendimento) obj;
+		return Objects.equals(id, other.id);
 	}
 
 }

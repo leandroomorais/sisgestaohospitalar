@@ -96,7 +96,7 @@ public class Cidadao implements Serializable {
 	@OneToOne(cascade = CascadeType.ALL)
 	@Valid
 	private Endereco endereco;
-
+	
 	@OneToOne(cascade = CascadeType.ALL)
 	private Prontuario prontuario;
 

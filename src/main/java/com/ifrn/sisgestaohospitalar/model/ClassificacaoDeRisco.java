@@ -5,8 +5,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.NotBlank;
-
-import groovyjarjarantlr4.v4.runtime.misc.NotNull;
+import javax.validation.constraints.NotNull;
 
 @Entity
 public class ClassificacaoDeRisco {
@@ -23,8 +22,6 @@ public class ClassificacaoDeRisco {
 	private int prioridade;
 
 	private int tempoMaximo;
-
-	
 
 	public Long getId() {
 		return id;

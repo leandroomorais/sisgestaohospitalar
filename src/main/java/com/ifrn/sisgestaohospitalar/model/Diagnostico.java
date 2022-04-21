@@ -7,7 +7,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
@@ -16,11 +15,11 @@ public class Diagnostico {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
+
 	@JsonIgnore
 	@OneToOne
 	private Prontuario prontuario;
-	
+
 	@OneToOne
 	private Cid cid;
 
@@ -28,9 +27,11 @@ public class Diagnostico {
 
 	private LocalDateTime dataRegistro;
 
+	private boolean definitivo;
+
 	@OneToOne
 	private Profissional profissional;
-	
+
 	@JsonIgnore
 	@OneToOne
 	private Atendimento atendimento;
@@ -73,6 +74,14 @@ public class Diagnostico {
 
 	public void setDataRegistro(LocalDateTime dataRegistro) {
 		this.dataRegistro = dataRegistro;
+	}
+
+	public boolean isDefinitivo() {
+		return definitivo;
+	}
+
+	public void setDefinitivo(boolean definitivo) {
+		this.definitivo = definitivo;
 	}
 
 	public Profissional getProfissional() {

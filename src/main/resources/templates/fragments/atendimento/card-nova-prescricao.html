@@ -1,4 +1,4 @@
-<div sec:authorize="hasAnyAuthority('MEDICO')" id="card-nova-prescricao" class="card">
+<div sec:authorize="hasAnyAuthority('MEDICO','ENFERMEIRO','TECNICO','AUXILIAR')" id="card-nova-prescricao" class="card">
 	<div class="card-header">
 		<div class="card-title"><a id="nova-prescricao-voltar" data-toggle="tooltipe" data-placement="top"
 				title="Voltar para tela anterior" class="btn btn-light"> <i class="fa fa-flip-horizontal fa-share"></i>
@@ -14,13 +14,14 @@
 								Medicamentos*</label>
 							<div class="input-group">
 								<div class="input-group-prepend">
-									<button id="button-medicamento" type="button" class="btn btn-black btn-border">
-										<i id="i-medicamento" class="fa fa-search"></i>
+									<button id="button-medicamento-prescricao" type="button"
+										class="btn btn-black btn-border">
+										<i id="i-medicamento-prescricao" class="fa fa-search"></i>
 									</button>
 								</div>
 								<input id="medicamento-prescricao" type="text" class="form-control"
 									placeholder="Pesquisa de medicamentos">
-								<input type="hidden" id="id-medicamento" name="medicamento">
+								<input type="hidden" id="id-medicamento-prescricao" name="medicamento">
 							</div>
 						</div>
 					</div>
@@ -97,7 +98,7 @@
 
 				</div>
 				<div class="text-right">
-					<button id="submit-prescricao" type="submit" class="btn btn-primary btn-sm">Salvar</button>
+					<button id="submit-prescricao-nova" type="submit" class="btn btn-primary btn-sm">Salvar</button>
 					<button onclick="fechaFormularioPrescricao()" type="button"
 						class="btn btn-warning btn-border btn-sm">
 						Cancelar</button>

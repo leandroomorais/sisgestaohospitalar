@@ -20,7 +20,6 @@
 				Respiratória</label> <input type="text" class="form-control" id="sinaisVitais-frequenciaRespiratoria"
 				name="sinaisVitais.frequenciaRespiratoria" placeholder=""><small
 				id="sinaisVitais-frequenciaRespitatoria-small" class="form-text text-muted">rpm</small>
-			<small id="sinaisVitais-frequenciaRespitatoria-error"></small>
 		</div>
 	</div>
 
@@ -30,8 +29,6 @@
 				Cardíaca</label> <input type="text" class="form-control" name="sinaisVitais.frequenciaCardiaca"
 				id="sinaisVitais-frequenciaCardiaca" placeholder="">
 			<small id="sinaisVitais-frequeciaCardiaca-small" class="form-text text-muted">bpm</small>
-			<small id="sinaisVitais-frequenciaCardiaca-error"></small>
-			<small id="sinaisVitais-frequenciaCardiaca-error"></small>
 		</div>
 	</div>
 
@@ -40,7 +37,6 @@
 			<label for="sinaisVitais-temperaturaCorporal">Temperatura</label>
 			<input type="text" class="form-control" id="sinaisVitais-temperaturaCorporal" placeholder="00.0">
 			<small id="temperaturacorporal-small" class="form-text text-muted">°C</small>
-			<small id="sinaisVitais-temperaturaCorporal-error"></small>
 		</div>
 	</div>
 	<div class="col-md-3">
@@ -50,7 +46,6 @@
 			</label> <input type="text" class="form-control" name="sinaisVitais.saturacaoOxigenio"
 				id="sinaisVitais-saturacaoOxigenio" placeholder="">
 			<small id="sinaisVitais-saturacaoOxigenio-small" class="form-text text-muted">%</small>
-			<small id="sinaisVitais-temperaturaCorporal-error"></small>
 		</div>
 	</div>
 	<div class="col-md-3">
@@ -69,7 +64,7 @@
 				<option th:each="momentoColeta : ${momentosColeta}" th:value="${momentoColeta}"
 					th:text="${momentoColeta.nome}">
 				</option>
-			</select> <small id="sinaisVitais-momentoColeta-small" class="form-text text-muted"></small>
+			</select>
 		</div>
 	</div>
 </div>

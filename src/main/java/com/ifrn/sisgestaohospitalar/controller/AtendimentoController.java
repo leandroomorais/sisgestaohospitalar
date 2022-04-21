@@ -34,14 +34,19 @@ import com.ifrn.sisgestaohospitalar.model.Atendimento;
 import com.ifrn.sisgestaohospitalar.model.AtendimentoProcedimento;
 import com.ifrn.sisgestaohospitalar.model.Cidadao;
 import com.ifrn.sisgestaohospitalar.model.HistoricoAtendimento;
+import com.ifrn.sisgestaohospitalar.model.Prontuario;
 import com.ifrn.sisgestaohospitalar.repository.AtendimentoRepository;
+import com.ifrn.sisgestaohospitalar.repository.AtestadoRepository;
 import com.ifrn.sisgestaohospitalar.repository.CidadaoRepository;
 import com.ifrn.sisgestaohospitalar.repository.ClassificacaoDeRiscoRepository;
+import com.ifrn.sisgestaohospitalar.repository.ExameRepository;
+import com.ifrn.sisgestaohospitalar.repository.PrescricaoRepository;
 import com.ifrn.sisgestaohospitalar.repository.ProfissionalRepository;
+import com.ifrn.sisgestaohospitalar.repository.ProntuarioRepository;
 import com.ifrn.sisgestaohospitalar.repository.TipoServicoRepository;
 import com.ifrn.sisgestaohospitalar.repository.UsuarioRepository;
 import com.ifrn.sisgestaohospitalar.repository.ViaAdministracaoRepository;
-import com.ifrn.sisgestaohospitalar.service.AtendimentoDataTablesService;
+//import com.ifrn.sisgestaohospitalar.service.AtendimentoDataTablesService;
 import com.ifrn.sisgestaohospitalar.service.AtendimentoRiscoDataTablesService;
 import com.ifrn.sisgestaohospitalar.service.AtendimentoService;
 import com.ifrn.sisgestaohospitalar.service.HistoricoAtendimentoService;
@@ -78,6 +83,18 @@ public class AtendimentoController {
 	@Autowired
 	private ClassificacaoDeRiscoRepository classificacaoDeRiscoRepository;
 
+	@Autowired
+	private ProntuarioRepository prontuarioRepository;
+
+	@Autowired
+	private PrescricaoRepository prescricaoRepository;
+
+	@Autowired
+	private ExameRepository exameRepository;
+
+	@Autowired
+	private AtestadoRepository atestadoRepository;
+
 	@GetMapping("/{id}")
 	public ResponseEntity<?> atendimento(@PathVariable("id") Long id) {
 		Optional<Atendimento> optional = atendimentoRepository.findById(id);
@@ -87,11 +104,11 @@ public class AtendimentoController {
 		return ResponseEntity.badRequest().build();
 	}
 
-	@GetMapping("/datatables/server")
-	public ResponseEntity<?> dataTables(HttpServletRequest request) {
-		Map<String, Object> data = new AtendimentoDataTablesService().execute(atendimentoRepository, request);
-		return ResponseEntity.ok(data);
-	}
+//	@GetMapping("/datatables/server")
+//	public ResponseEntity<?> dataTables(HttpServletRequest request) {
+//		Map<String, Object> data = new AtendimentoDataTablesService().execute(atendimentoRepository, request);
+//		return ResponseEntity.ok(data);
+//	}
 
 	@GetMapping("/datatables-risco/server")
 	public ResponseEntity<?> dataTablesRisco(HttpServletRequest request) {
@@ -118,6 +135,7 @@ public class AtendimentoController {
 		ModelAndView mv = new ModelAndView("atendimento/form-atendimento");
 		if (optional.isPresent()) {
 			mv.addObject("user", usuarioRepository.findByUsername(principal.getName()));
+			mv.addObject("profissional", profissionalRepository.findByCpf(principal.getName()));
 			mv.addObject("atendimento", optional.get());
 			mv.addObject("situacoesCondicao", SituacaoCondicao.values());
 			mv.addObject("tipoServicos", tipoServicoRepository.findAll());
@@ -264,7 +282,7 @@ public class AtendimentoController {
 								atendimento.getCondutaCidadao(), atendimento.getStatus(), atendimento.getTipoServicos(),
 								principal, atendimento.getProfissionalDestino(), null));
 			}
-
+			addAtdProntuario(atendimento);
 			atendimentoRepository.saveAndFlush(atendimento);
 			return ResponseEntity.ok().build();
 		}
@@ -301,7 +319,6 @@ public class AtendimentoController {
 					atendimento.getTipoServicos().add(tipoServicoRepository.findByNome("Inativo"));
 				}
 			}
-
 			if (atendimentoDTO.getCondutaCidadao() != null) {
 				if (atendimentoDTO.getCondutaCidadao().equals(CondutaCidadao.NAOAGUARDOUATENDIMENTO)) {
 					atendimento.setStatus(Status.NAOAGUARDOU);
@@ -309,17 +326,15 @@ public class AtendimentoController {
 					atendimento.getTipoServicos().add(tipoServicoRepository.findByNome("Inativo"));
 				}
 			}
-
 			if (atendimentoDTO.getTipoServicos() != null && !atendimentoDTO.getTipoServicos().isEmpty()
 					&& atendimentoDTO.getCondutaCidadao() == null) {
 				atendimento.setStatus(Status.AGUARDANDOATENDIMENTO);
 			}
-
 			atendimento.getHistoricosAtendimento()
 					.add(historicoAtendimentoService.criaHistoricoAtendimento(Acao.TRIAGEM,
 							atendimento.getCondutaCidadao(), atendimento.getStatus(), atendimento.getTipoServicos(),
 							principal, atendimento.getProfissionalDestino(), null));
-
+			addAtdProntuario(atendimento);
 			atendimentoRepository.saveAndFlush(atendimento);
 			return ResponseEntity.ok().build();
 		}
@@ -333,7 +348,9 @@ public class AtendimentoController {
 			ModelAndView mv = new ModelAndView("atendimento/detalhe-atendimento");
 			mv.addObject("user", usuarioRepository.findByUsername(principal.getName()));
 			mv.addObject("atendimento", optional.get());
-			mv.addObject("historicosAtendimento", optional.get().getHistoricosAtendimento());
+			mv.addObject("prescricoes", prescricaoRepository.findByAtendimento(optional.get()));
+			mv.addObject("exames", exameRepository.findByAtendimento(optional.get()));
+			mv.addObject("atestados", atestadoRepository.findByAtendimento(optional.get()));
 			return mv;
 		}
 		return listar(principal).addObject("erro", "Atendimento não localizado");
@@ -346,7 +363,9 @@ public class AtendimentoController {
 			ModelAndView mv = new ModelAndView("atendimento/detalhe-atendimento-admin");
 			mv.addObject("user", usuarioRepository.findByUsername(principal.getName()));
 			mv.addObject("atendimento", optional.get());
-			mv.addObject("historicosAtendimento", optional.get().getHistoricosAtendimento());
+			mv.addObject("prescricoes", prescricaoRepository.findByAtendimento(optional.get()));
+			mv.addObject("exames", exameRepository.findByAtendimento(optional.get()));
+			mv.addObject("atestados", atestadoRepository.findByAtendimento(optional.get()));
 			return mv;
 		}
 		return listar(principal).addObject("erro", "Atendimento não localizado");
@@ -394,6 +413,48 @@ public class AtendimentoController {
 		}
 		mv.addObject("atendimentos", atendimentos);
 		return mv;
+	}
+
+	@GetMapping("/buscar-data")
+	public ResponseEntity<?> buscar(Principal principal) {
+		List<Atendimento> atendimentos = atendimentoRepository.findByDataEntrada(LocalDate.now().toString());
+		return ResponseEntity.ok().body(atendimentos);
+	}
+
+	@GetMapping("/buscar")
+	public ResponseEntity<?> buscarData(Principal principal, @Param("data1") LocalDate data1,
+			@Param("data2") LocalDate data2) {
+		List<Atendimento> atendimentos = new ArrayList<>();
+		if (data1 != null && data2 != null) {
+			if (data1.isAfter(data2)) {
+				return ResponseEntity.badRequest().body("A primeira data informada não pode ser maior que a segunda");
+			}
+			atendimentos = atendimentoRepository.findByDataEntradaBetween(data1.toString(), data2.toString());
+		}
+		if ((data1 != null && data2 == null || data1 == null && data2 != null) || (data1 == null && data2 == null)) {
+			return ResponseEntity.badRequest().body("Informe o período desejado");
+		}
+		return ResponseEntity.ok().body(atendimentos);
+	}
+
+	@GetMapping("/atendimentos/{id}")
+	public ResponseEntity<?> dataTablesAtendimentos(@PathVariable("id") Long id) {
+		Optional<Prontuario> optional = prontuarioRepository.findById(id);
+		if (optional.isPresent()) {
+			return ResponseEntity.ok().body(optional.get().getAtendimentos());
+		}
+		return ResponseEntity.notFound().build();
+	}
+
+	private void addAtdProntuario(Atendimento atendimento) {
+		if (atendimento.getStatus().equals(Status.FINALIZADO) || atendimento.getStatus().equals(Status.NAOAGUARDOU)) {
+			Prontuario prontuario = atendimento.getCidadao().getProntuario();
+			if (prontuario.getAtendimentos().isEmpty()) {
+				prontuario.setAtendimentos(new ArrayList<>());
+			}
+			prontuario.getAtendimentos().add(atendimento);
+			prontuarioRepository.saveAndFlush(prontuario);
+		}
 	}
 
 }

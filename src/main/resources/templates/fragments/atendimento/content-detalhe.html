@@ -81,14 +81,6 @@
 																<span>CPF:</span><span data-mask="000.000.000-00"
 																	th:text="${atendimento.cidadao.cpf}"></span>
 															</div>
-															<div>
-																<span>NOME DA MÃE:</span><span
-																	th:text="${atendimento.cidadao.nomeMae}"></span>
-															</div>
-															<div>
-																<span>NOME DO PAI:</span><span
-																	th:text="${atendimento.cidadao.nomePai}"></span>
-															</div>
 															<div class="separator-solid"></div>
 															<div>
 																<span>ENDEREÇO:</span><span
@@ -119,6 +111,384 @@
 														<div class="invoice-detail">
 															<div class="invoice-top">
 																<h3 class="title">
+																	<strong>Triagem</strong>
+																</h3>
+															</div>
+														</div>
+														<div class="separator-solid  mb-3"></div>
+														<th:block th:switch="${atendimento.triagem}">
+															<div th:case="null" class="card">
+																<div class="col-md-12 row">
+																	<div class="col-md-8">
+																		<h5 class="text-uppercase fw-bold mb-1">
+																			Nenhuma triagem registrada neste
+																			atendimento
+																		</h5>
+																	</div>
+																</div>
+															</div>
+															<th:block th:case="*">
+																<div class="card">
+																	<div class="col-md-12 row">
+																		<div class="col-md-8">
+																			<strong>
+																				Motivo do atendimento:
+																			</strong><span
+																				th:utext="${atendimento.triagem.motivo}">
+																			</span><br>
+																			<strong> C.R.:</strong><span
+																				th:text="${atendimento.classificacaoDeRisco.nome}">
+																			</span>
+																		</div>
+																		<div class="col-md-4 text-right"><span
+																				class="text-warning"
+																				th:text="${#temporals.format(atendimento.triagem.fimTriagem, 'dd/MM/yyyy HH:mm:ss')}">
+																			</span><br><span class="text-muted"
+																				th:text="${atendimento.triagem.profissional.nome}">
+																			</span><br><strong>CRM: </strong><span
+																				class="text-muted"
+																				th:text="${atendimento.triagem.profissional.numeroRegistro}"></span>-<span
+																				class="text-muted"
+																				th:text="${atendimento.triagem.profissional.siglaUfEmissao}"></span><br>
+																		</div>
+																	</div>
+																</div>
+															</th:block>
+														</th:block>
+													</div>
+												</div>
+
+												<div class="row">
+													<div class="col-md-12">
+														<div class="invoice-detail">
+															<div class="invoice-top">
+																<h3 class="title">
+																	<strong>Consultas no Atendimento</strong>
+																</h3>
+															</div>
+														</div>
+														<div class="separator-solid  mb-3"></div>
+														<th:block th:switch="${#lists.size(atendimento.consultas)}">
+															<div th:case="'0'" class="card">
+																<div class="col-md-12 row">
+																	<div class="col-md-8">
+																		<h5 class="text-uppercase fw-bold mb-1">
+																			Nenhuma consulta registrada neste
+																			atendimento
+																		</h5>
+																	</div>
+																</div>
+															</div>
+															<th:block th:case="*">
+																<th:block th:each="consulta : ${atendimento.consultas}">
+																	<div class="card">
+																		<div class="col-md-12 row">
+																			<div class="col-md-8">
+																				<strong>
+																					Sumário da História Clínica:
+																				</strong><span
+																					th:utext="${consulta.historiaClinica}">
+																				</span>
+																				<strong> Avaliação:
+																				</strong><span
+																					th:utext="${consulta.avaliacao}">
+																				</span>
+																				<strong>Conduta terapêutica:
+																				</strong><span
+																					th:utext="${consulta.conduta}">
+																				</span>
+																				<strong>Sinais vitais:
+																				</strong><span
+																					th:text="${consulta.sinaisVitais.pressaoSistolica}">
+																				</span>
+																			</div>
+																			<div class="col-md-4 text-right"><span
+																					class="text-warning"
+																					th:text="${#temporals.format(consulta.dataRegistro, 'dd/MM/yyyy HH:mm:ss')}">
+																				</span><br><span class="text-muted"
+																					th:text="${consulta.profissional.nome}">
+																				</span><br><strong>CRM: </strong><span
+																					class="text-muted"
+																					th:text="${consulta.profissional.numeroRegistro}"></span>-<span
+																					class="text-muted"
+																					th:text="${consulta.profissional.siglaUfEmissao}"></span><br>
+																			</div>
+																		</div>
+																	</div>
+																</th:block>
+															</th:block>
+														</th:block>
+													</div>
+												</div>
+
+												<div class="row">
+													<div class="col-md-12">
+														<div class="invoice-detail">
+															<div class="invoice-top">
+																<h3 class="title">
+																	<strong>Procedimentos realizados</strong>
+																</h3>
+															</div>
+														</div>
+														<div class="separator-solid  mb-3"></div>
+														<th:block
+															th:switch="${#lists.size(atendimento.atendimentoProcedimentos)}">
+															<div th:case="'0'" class="card">
+																<div class="col-md-12 row">
+																	<div class="col-md-8">
+																		<h5 class="text-uppercase fw-bold mb-1">
+																			Nenhum procedimento registrado neste
+																			atendimento
+																		</h5>
+																	</div>
+																</div>
+															</div>
+															<th:block th:case="*">
+																<th:block>
+																	<div class="card">
+																		<div class="col-md-12 row">
+																			<table class="table table-hover">
+																				<thead>
+																					<tr>
+																						<th> Codigo </th>
+																						<th> Nome </th>
+																						<th> Qtd </th>
+																						<th> Profissional</th>
+																					</tr>
+																				</thead>
+																				<tbody>
+																					<tr
+																						th:each="atendimentoProcedimento : ${atendimento.atendimentoProcedimentos}">
+																						<td>0<span
+																								th:text="${atendimentoProcedimento.procedimento.codigo}"></span>
+																						</td>
+																						<td><span
+																								th:text="${atendimentoProcedimento.procedimento.nome}"></span>
+																						</td>
+																						<td><span
+																								th:text="${atendimentoProcedimento.quantidade}"></span>
+																						</td>
+																						<td><span
+																								th:text="${atendimentoProcedimento.profissional.nome}"></span>
+																						</td>
+																				</tbody>
+																			</table>
+																		</div>
+																	</div>
+																</th:block>
+															</th:block>
+														</th:block>
+													</div>
+												</div>
+
+												<div class="row">
+													<div class="col-md-12">
+														<div class="invoice-detail">
+															<div class="invoice-top">
+																<h3 class="title">
+																	<strong>Prescriçoes do Atendimento</strong>
+																</h3>
+															</div>
+														</div>
+														<div class="separator-solid  mb-3"></div>
+														<th:block th:switch="${#lists.size(prescricoes)}">
+															<div th:case="'0'" class="card">
+																<div class="col-md-12 row">
+																	<div class="col-md-8">
+																		<h5 class="text-uppercase fw-bold mb-1">
+																			Nenhuma prescrição registrada neste
+																			atendimento
+																		</h5>
+																	</div>
+																</div>
+															</div>
+															<th:block th:case="*">
+																<th:block th:each="prescricao : ${prescricoes}">
+																	<div class="card">
+																		<div class="col-md-12 row">
+																			<div class="col-md-8">
+																				<h5 class="text-uppercase fw-bold mb-1"
+																					th:text="${prescricao.medicamento.principioAtivo}">
+																					<span
+																						class="text-danger text-uppercase pl-3"
+																						th:text="${prescricao.viaAdministracao.nome}">
+																					</span>
+																				</h5><strong>
+																					Concentração: </strong><span
+																					th:text="${prescricao.medicamento.concentracao}">
+																				</span> | <strong> Forma
+																					farmacêutica:
+																				</strong><span
+																					th:text="${prescricao.medicamento.formaFarmaceutica.nome}">
+																				</span><br><strong>Quantidade a
+																					dispensar: </strong><span
+																					th:text="${prescricao.quantidade}">
+																				</span> <span
+																					th:text="${prescricao.medicamento.unidadeFornecimento}">
+																				</span><br><strong>Posologia:
+																				</strong><span
+																					th:text="${prescricao.posologia}"></span><br><strong>Admin.
+																					no
+																					atendimento: </strong><span
+																					th:text="${prescricao.administracaoNoAtendimento} ? 'Sim' : 'Não'">
+																				</span> | <strong>Uso
+																					contínuo:</strong><span
+																					th:text="${prescricao.usoContinuo} ? 'Sim' : 'Não'">
+																				</span>
+																				| <strong>Dose única: </strong><span
+																					th:text="${prescricao.doseUnica} ? 'Sim' : 'Não'">
+																				</span><br><strong>Orientações:
+																				</strong><span
+																					th:text="${prescricao.orientacoes}"></span><br>
+																			</div>
+																			<div class="col-md-4 text-right"><span
+																					class="text-warning"
+																					th:text="${#temporals.format(prescricao.dataRegistro, 'dd/MM/yyyy HH:mm:ss')}">
+																				</span><br><span class="text-muted"
+																					th:text="${prescricao.profissional.nome}">
+
+																				</span><br><strong>CRM: </strong><span
+																					class="text-muted"
+																					th:text="${prescricao.profissional.numeroRegistro}"></span>-<span
+																					class="text-muted"
+																					th:text="${prescricao.profissional.siglaUfEmissao}"></span><br>
+																			</div>
+																		</div>
+																	</div>
+																</th:block>
+															</th:block>
+														</th:block>
+													</div>
+												</div>
+
+												<div class="row">
+													<div class="col-md-12">
+														<div class="invoice-detail">
+															<div class="invoice-top">
+																<h3 class="title">
+																	<strong>Solicitações de Exames</strong>
+																</h3>
+															</div>
+														</div>
+														<div class="separator-solid  mb-3"></div>
+														<th:block th:switch="${#lists.size(exames)}">
+															<div th:case="'0'" class="card">
+																<div class="col-md-12 row">
+																	<div class="col-md-8">
+																		<h5 class="text-uppercase fw-bold mb-1">
+																			Nenhuma solicitação de exame registrada
+																			neste atendimento
+																		</h5>
+																	</div>
+																</div>
+															</div>
+															<th:block th:case="*">
+																<th:block th:each="exame : ${exames}">
+																	<div class="card">
+																		<div class="col-md-12 row">
+																			<div class="col-md-8"><strong>Procedimentos
+																					solicitados:
+																				</strong><br>
+																				<th:block
+																					th:each="procedimento : ${exame.procedimentos}">
+																					<span class="text-muted"
+																						th:text="${procedimento.codigo}"></span>
+																					-
+																					<span class="text-muted"
+																						th:text="${procedimento.nome}"></span><br>
+																				</th:block>
+
+																				<strong>CID Relacionado:
+																				</strong><span
+																					th:text="${exame.cid.codigo}">
+																				</span> - <span
+																					th:text="${exame.cid.nome}">
+																				</span><br><strong>Justificativa:
+																				</strong><span
+																					th:text="${exame.justificativa}">
+																				</span><br><strong>Observações:
+																				</strong><span
+																					th:text="${exame.observacoes}"></span><br>
+																			</div>
+																			<div class="col-md-4 text-right"><span
+																					class="text-warning"
+																					th:text="${#temporals.format(exame.dataSolicitacao, 'dd/MM/yyyy HH:mm:ss')}">
+																				</span><br><span class="text-muted"
+																					th:text="${exame.profissional.nome}">
+
+																				</span><br><strong>CRM: </strong><span
+																					class="text-muted"
+																					th:text="${exame.profissional.numeroRegistro}"></span>-<span
+																					class="text-muted"
+																					th:text="${exame.profissional.siglaUfEmissao}"></span><br>
+																			</div>
+																		</div>
+																	</div>
+																</th:block>
+															</th:block>
+														</th:block>
+													</div>
+												</div>
+
+												<div class="row">
+													<div class="col-md-12">
+														<div class="invoice-detail">
+															<div class="invoice-top">
+																<h3 class="title">
+																	<strong>Atestados do Atendimento</strong>
+																</h3>
+															</div>
+														</div>
+														<div class="separator-solid  mb-3"></div>
+														<th:block th:switch="${#lists.size(atestados)}">
+															<div th:case="'0'" class="card">
+																<div class="col-md-12 row">
+																	<div class="col-md-8">
+																		<h5 class="text-uppercase fw-bold mb-1">
+																			Nenhum atestado registrado neste
+																			atendimento
+																		</h5>
+																	</div>
+																</div>
+															</div>
+															<th:block th:case="*">
+																<th:block th:each="atestado : ${atestados}">
+																	<div class="card">
+																		<div class="col-md-12 row">
+																			<div class="col-md-6">
+																				<h5 class="text-uppercase fw-bold mb-1">
+																					ATESTADO <span
+																						class="text-danger text-uppercase pl-3"
+																						th:text="${atestado.periodo}">
+																					</span><span
+																						class="text-danger text-uppercase pl-3">
+																						dia(s)</span></h5><br>
+																			</div>
+																			<div class="col-md-6 text-right"><span
+																					class="text-warning"
+																					th:text="${#temporals.format(atestado.dataRegistro, 'dd/MM/yyyy HH:mm:ss')}">
+																				</span><br><span class="text-muted"
+																					th:text="${atestado.profissional.nome}">
+
+																				</span><br><strong>CRM: </strong><span
+																					class="text-muted"
+																					th:text="${atestado.profissional.numeroRegistro}"></span>-<span
+																					class="text-muted"
+																					th:text="${atestado.profissional.siglaUfEmissao}"></span><br>
+																			</div>
+																		</div>
+																	</div>
+																</th:block>
+															</th:block>
+														</th:block>
+													</div>
+												</div>
+
+												<div class="row">
+													<div class="col-md-12">
+														<div class="invoice-detail">
+															<div class="invoice-top">
+																<h3 class="title">
 																	<strong>Histórico do
 																		Atendimento</strong>
 																</h3>
@@ -131,7 +501,7 @@
 												<div>
 													<ol class="activity-feed">
 														<li class="feed-item feed-item-info" th:each="historicoAtendimento :
-																		${historicosAtendimento}">
+																		${atendimento.historicosAtendimento}">
 															<time class="date"
 																th:text="${#temporals.format(historicoAtendimento.localDateTime,'dd/MM/yyyy - HH:mm:ss')}"></time>
 															<span class="badge badge-info"

@@ -166,11 +166,11 @@ $("#novo-atestado-voltar").click(function() {
 })
 
 
-function limpaAtestado() {	
+function limpaAtestado() {
 	$("#conteudo-atestado").val("");
 	$("#strong-periodo").val("");
 	$("#autorizaImpressaoCid").parent().removeClass().addClass("toggle btn btn-black off");
-	
+
 	limparCidsAtestado();
 }
 
@@ -182,8 +182,8 @@ function atestadoVoltar() {
 
 }
 
-function limparCidsAtestado(){
-	
+function limparCidsAtestado() {
+
 	$.ajax({
 		url: '/atestado/limpar/cids/',
 		method: 'get',
@@ -302,8 +302,9 @@ function atualizaAtestados() {
 			if (isEmpty(data)) {
 				$("#div-atestados").empty().append("<h5 class='card-title text-center'>Não existem atestados para este atendimento</h5><p class='card-text text-center'>Clique no botão Nova prescrição para cadastrar um.</p>");
 			} else {
+				$("#div-atestados").empty();
 				$.each(data, function(key, item) {
-					$("#div-atestados").empty().append(creatCardAtestado(item));
+					$("#div-atestados").append(creatCardAtestado(item));
 				})
 			}
 		},

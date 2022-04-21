@@ -22,7 +22,7 @@ $("#procedimentos-geral").autocomplete({
 		.appendTo(ul);
 };
 
-$("#button-procedimento").click(function() {
+$("#button-procedimento-geral").click(function() {
 	$("#i-procedimento-geral").removeClass().addClass("fa fa-search");
 	limpaInputsProcedimento();
 })

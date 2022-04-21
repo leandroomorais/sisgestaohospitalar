@@ -10,6 +10,7 @@
 				<div id="alert"></div>
 				<div class="page-header">
 					<h4 class="page-title">Atendimento</h4>
+					<input type="hidden" id="nomeOcupacao" th:value="${profissional.nomeOcupacao}">
 				</div>
 				<div class="card">
 					<div class="card-body">
@@ -32,7 +33,7 @@
 												<a class="nav-link" id="v-pills-resumo-tab-nobd" data-toggle="pill"
 													href="#v-pills-resumo-nobd" role="tab"
 													aria-controls="v-pills-resumo-nobd"
-													aria-selected="true"><strong>RESUMO</strong></a>
+													aria-selected="true"><strong>PRONTUÁRIO</strong></a>
 												<a class="nav-link" id="v-pills-historico-tab-nobd" data-toggle="pill"
 													href="#v-pills-historico-nobd" role="tab"
 													aria-controls="v-pills-historico-nobd"
@@ -180,6 +181,8 @@
 		<script type="text/javascript" th:inline="javascript"
 			th:src="@{/assets/js/atendimento/form-atendimento.js}"></script>
 		<script type="text/javascript" th:inline="javascript"
+			th:src="@{/assets/js/procedimento/procedimentos-automaticos.js}"></script>
+		<script type="text/javascript" th:inline="javascript"
 			th:src="@{/assets/js/procedimento/procedimento.js}"></script>
 		<script type="text/javascript" th:inline="javascript"
 			th:src="@{/assets/js/procedimento/procedimentocid.js}"></script>
@@ -192,8 +195,6 @@
 		<script type="text/javascript" th:inline="javascript"
 			th:src="@{/assets/js/atendimento/form-atendimento-resultado-exame.js}"></script>
 		<script type="text/javascript" th:inline="javascript"
-			th:src="@{/assets/js/card-info-cidadao/card-info-cidadao.js}"></script>
-		<script type="text/javascript" th:inline="javascript"
 			th:src="@{/assets/js/usoMedicamentos/uso-medicamentos.js}"></script>
 		<script type="text/javascript" th:inline="javascript"
 			th:src="@{/assets/js/antropometria/antropometria.js}"></script>
@@ -202,6 +203,8 @@
 		<script type="text/javascript" th:inline="javascript" th:src="@{/assets/js/pec/busca.js}"></script>
 		<script type="text/javascript" th:inline="javascript" th:src="@{/assets/js/doenca/doenca.js}"></script>
 		<script type="text/javascript" th:inline="javascript" th:src="@{/assets/js/alergia/alergia.js}"></script>
+		<script type="text/javascript" th:inline="javascript"
+			th:src="@{/assets/js/card-info-cidadao/card-info-cidadao.js}"></script>
 	</th:block>
 </body>
 

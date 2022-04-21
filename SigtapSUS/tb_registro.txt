@@ -1,10 +1,10 @@
-01BPA (Consolidado)                                 202111
-02BPA (Individualizado)                             202111
-03AIH (Proc. Principal)                             202111
-04AIH (Proc. Especial)                              202111
-05AIH (Proc. Secundário)                            202111
-06APAC (Proc. Principal)                            202111
-07APAC (Proc. Secundário)                           202111
-08RAAS (Atenção Domiciliar)                         202111
-09RAAS (Atenção Psicossocial)                       202111
-10e-SUS APS (Atenção Primária à Saúde)              202111
+01BPA (Consolidado)                                 202204
+02BPA (Individualizado)                             202204
+03AIH (Proc. Principal)                             202204
+04AIH (Proc. Especial)                              202204
+05AIH (Proc. Secundário)                            202204
+06APAC (Proc. Principal)                            202204
+07APAC (Proc. Secundário)                           202204
+08RAAS (Atenção Domiciliar)                         202204
+09RAAS (Atenção Psicossocial)                       202204
+10e-SUS APS (Atenção Primária à Saúde)              202204

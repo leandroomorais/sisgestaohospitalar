@@ -440,6 +440,7 @@
 224125Técnico de desporto individual e coletivo (exceto futebol)                                                                                            
 224130Técnico de laboratório e fiscalização desportiva                                                                                                      
 224135Treinador profissional de futebol                                                                                                                     
+224140Profissional de educação física na saúde                                                                                                              
 225103Médico infectologista                                                                                                                                 
 225105Médico acupunturista                                                                                                                                  
 225106Médico legista                                                                                                                                        

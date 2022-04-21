@@ -1,21 +1,31 @@
 <div class="card" id="card-list-prescricoes">
-	<div id="card-header" class="card-header">
-		<div class="card-title">Prescrições do
-			Atendimento</div>
+	<div class="card-header">
+		<div class="col-12 col-lg-12 col-xl-12">
+			<div class="row align-items-center">
+				<div class="col">
+					<div class="card-title">Prescrições do
+						Atendimento</div>
+				</div>
+				<div class="col-auto">
+					<th:block sec:authorize="hasAnyAuthority('MEDICO')">
+						<button type="button" onclick="exibeFormularioPrescricao()" class="btn btn-primary btn-sm">
+							<i class="fa fa-plus"></i> Nova
+							prescrição
+						</button>
+					</th:block>
+					<th:block sec:authorize="hasAnyAuthority('MEDICO','ENFERMEIRO','TECNICO','AUXILIAR')">
+						<button type="button" onclick="exibeFormularioPrescricaoExterna()"
+							class="btn btn-primary btn-sm">
+							<i class="fa fa-plus"></i> Prescrição externa
+						</button>
+					</th:block>
+				</div>
+			</div>
+		</div>
 	</div>
 	<div class="card-body">
 		<div id="info-prescricoes">
 			<div id="div-prescricoes"></div>
-			<div sec:authorize="hasAnyAuthority('MEDICO')" id="div-button-nova-prescricao" class="text-right">
-				<button type="button" onclick="exibeFormularioPrescricao()" class="btn btn-primary btn-sm">
-					<i class="fa fa-plus"></i> Nova
-					prescrição
-				</button>
-				<button type="button" onclick="exibeFormularioPrescricaoExterna()" class="btn btn-primary btn-sm">
-					<i class="fa fa-plus"></i> Registro da administração de
-							prescrição externa
-				</button>
-			</div>
 		</div>
 	</div>
 </div>

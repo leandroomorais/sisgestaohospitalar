@@ -2,6 +2,7 @@ package com.ifrn.sisgestaohospitalar.controller;
 
 import java.security.Principal;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
@@ -17,7 +18,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import com.ifrn.sisgestaohospitalar.model.Atendimento;
 import com.ifrn.sisgestaohospitalar.model.Consulta;
+import com.ifrn.sisgestaohospitalar.model.Profissional;
 import com.ifrn.sisgestaohospitalar.repository.AtendimentoRepository;
+import com.ifrn.sisgestaohospitalar.repository.ProfissionalRepository;
 
 @Controller
 @RequestMapping("/consulta")
@@ -26,14 +29,18 @@ public class ConsultaController {
 	@Autowired
 	private AtendimentoRepository atendimentoRepository;
 
-	@GetMapping("/verificar/{id}")
-	public ResponseEntity<?> verificar(@PathVariable("id") Long id) {
-		Atendimento atendimento = atendimentoRepository.getOne(id);
-		Consulta consulta = atendimento.getConsulta();
-		if (consulta != null) {
-			return ResponseEntity.ok().body(consulta);
+	@Autowired
+	private ProfissionalRepository profissionalRepository;
+
+	@GetMapping("/verificar/{idAtendimento}")
+	public ResponseEntity<?> verificar(@PathVariable("idAtendimento") Long idAtendimento, Principal principal) {
+		Atendimento atendimento = atendimentoRepository.getOne(idAtendimento);
+		for (Consulta consulta : atendimento.getConsultas()) {
+			if (consulta.getProfissional().getCpf().equals(principal.getName())) {
+				return ResponseEntity.ok().body(consulta);
+			}
 		}
-		return ResponseEntity.badRequest().build();
+		return ResponseEntity.notFound().build();
 	}
 
 	@PostMapping("/")
@@ -48,9 +55,20 @@ public class ConsultaController {
 		Optional<Atendimento> optional = atendimentoRepository.findById(consulta.getAtendimento().getId());
 		if (optional.isPresent()) {
 			Atendimento atendimento = optional.get();
+			Profissional profissional = profissionalRepository.findByCpf(principal.getName());
+			consulta.setProfissional(profissional);
 			consulta.setDataRegistro(LocalDateTime.now());
-			consulta.getAvaliacao().getSinaisVitais().setUltimaAtualizacao(LocalDateTime.now());
-			atendimento.setConsulta(consulta);
+			if (atendimento.getSinaisVitais().isEmpty()) {
+				atendimento.setSinaisVitais(new ArrayList<>());
+			}
+			consulta.getSinaisVitais().setUltimaAtualizacao(LocalDateTime.now());
+			if (!atendimento.getSinaisVitais().contains(consulta.getSinaisVitais())) {
+				atendimento.getSinaisVitais().add(consulta.getSinaisVitais());
+			}
+			if (atendimento.getConsultas().isEmpty()) {
+				atendimento.setConsultas(new ArrayList<>());
+			}
+			atendimento.getConsultas().add(consulta);
 			atendimentoRepository.saveAndFlush(atendimento);
 			return ResponseEntity.ok().build();
 		}

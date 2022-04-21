@@ -10,27 +10,52 @@
 				<div th:replace="fragments/alertas/alertas::success"></div>
 				<div th:replace="fragments/alertas/alertas::error"></div>
 				<div class="page-header">
-					<h4 class="page-title">Recepção</h4>
+					<h4 class="page-title">Realizados</h4>
 					<ul class="breadcrumbs">
 						<li class="nav-home"><a th:href="@{/}"><i class="flaticon-home"></i></a></li>
 						<li class="separator"><i class="flaticon-right-arrow"></i></li>
-						<li class="nav-item"><a href="">Lista
-								de Atendimentos</a></li>
+						<li class="nav-item"><a href="">Atendimentos realizados</a></li>
 
 					</ul>
 				</div>
-
 				<div class="row">
 					<div class="col-md-12">
 						<div class="card">
 							<div class="card-header">
-								<h4 class="card-title">Lista de Atendimentos</h4>
+								<h4 class="card-title">Atendimentos realizados</h4>
 							</div>
 							<div class="card-body">
-								<div class="card-body text-right">
-									<a id="btn-atualizar-tabela" class="btn btn-light btn-sm"><i class="fa fa-sync"></i>
-										Atualizar dados</a>
-								</div>
+								<form method="get" action="/atendimento/buscar" id="atendimento-buscar">
+									<div class="col-md-12 col-lg-12 row">
+										<div class="form-group col-md-6 col-lg-6">
+											<label for="basic-url">Selecione o período</label>
+											<div class="input-group mb-3">
+												<div class="input-group-prepend">
+													<span class="input-group-text" id="data1"><i
+															class="fas fa-calendar"></i></span>
+												</div>
+												<input name="data1" type="date" class="form-control"
+													aria-describedby="data1" id="idData1">&nbsp
+												<div class="input-group-prepend">
+													<span class="input-group-text" id="data2"><i
+															class="fas fa-calendar"></i></span>
+												</div>
+												<input name="data2" type="date" class="form-control"
+													aria-describedby="data2" id="idData2">
+											</div>
+										</div>
+										<div class="col-md-2 ">
+											<div class="form-group">
+												<label for="search">Pesquisar</label>
+												<div>
+													<button type="submit" class="btn btn-icon btn-primary">
+														<i id="fa-button" class="fa fa-search"></i>
+													</button>
+												</div>
+											</div>
+										</div>
+									</div>
+								</form>
 
 								<div class="table-responsive">
 									<table id="table-server" class="display table table-hover dataTable" role="grid"

@@ -1,8 +1,8 @@
-01Ações de promoção e prevenção em saúde                                                              202111
-02Procedimentos com finalidade diagnóstica                                                            202111
-03Procedimentos clínicos                                                                              202111
-04Procedimentos cirúrgicos                                                                            202111
-05Transplantes de orgãos, tecidos e células                                                           202111
-06Medicamentos                                                                                        202111
-07Órteses, próteses e materiais especiais                                                             202111
-08Ações complementares da atenção à saúde                                                             202111
+01Ações de promoção e prevenção em saúde                                                              202204
+02Procedimentos com finalidade diagnóstica                                                            202204
+03Procedimentos clínicos                                                                              202204
+04Procedimentos cirúrgicos                                                                            202204
+05Transplantes de orgãos, tecidos e células                                                           202204
+06Medicamentos                                                                                        202204
+07Órteses, próteses e materiais especiais                                                             202204
+08Ações complementares da atenção à saúde                                                             202204
