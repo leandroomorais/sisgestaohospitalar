@@ -75,7 +75,7 @@ public class LeitorXmlEsus {
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 		for (Profissional profissional : importarXmlEsus.getIdentificacao().getProfissionais()) {
 			Profissional profissionalBD = profissionalRepository.findByCpf(profissional.getCpf());
-			if (profissionalBD != null) {
+			if (profissionalBD == null) {
 				for (Lotacao lotacaoProfissional : profissional.getLotacoes()) {
 					if (lotacaoProfissional.getCnes().equals(cnes)) {
 						String[] name = profissional.getNome().split(" ");
