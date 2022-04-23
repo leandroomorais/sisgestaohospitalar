@@ -1,6 +1,6 @@
 package com.ifrn.sisgestaohospitalar.utils;
 
-import java.io.File;
+import java.io.InputStream;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
@@ -68,83 +68,84 @@ public class LeitorXmlEsus {
 	 * @throws JAXBException
 	 * @throws ParseException
 	 */
-	public void lerXmlEsus(String file, String cnes) throws JAXBException, ParseException {
-
+	public void lerXmlEsus(InputStream inputStream, String cnes) throws JAXBException, ParseException {
 		JAXBContext jaxbContext = JAXBContext.newInstance(ImportarXmlEsus.class);
 		Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
-		ImportarXmlEsus importarXmlEsus = (ImportarXmlEsus) unmarshaller.unmarshal(new File(file));
-
+		ImportarXmlEsus importarXmlEsus = (ImportarXmlEsus) unmarshaller.unmarshal(inputStream);
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-
 		for (Profissional profissional : importarXmlEsus.getIdentificacao().getProfissionais()) {
-			for (Lotacao lotacaoProfissional : profissional.getLotacoes()) {
-				if (lotacaoProfissional.getCnes().equals(cnes)) {
-					String[] name = profissional.getNome().split(" ");
-					String nomeAbrev = name[0].toString() + " " + name[1].toString();
-					profissional.setNomeAbrev(nomeAbrev);
-					if (profissional.getDataNascimento() != null || !profissional.getDataNascimento().isEmpty()) {
-						profissional.setDataNascimento(
-								LocalDate.parse(profissional.getDataNascimento(), formatter).toString());
-					}
-					profissional.setAtivo(true);
-					Usuario usuario = new Usuario();
-					usuario.setUsername(profissional.getCpf());
-					usuario.setPassword(new BCryptPasswordEncoder().encode("sgh" + profissional.getCpf()));
-					usuario.setConcatName(profissional.getNomeAbrev());
+			Profissional profissionalBD = profissionalRepository.findByCpf(profissional.getCpf());
+			if (profissionalBD != null) {
+				for (Lotacao lotacaoProfissional : profissional.getLotacoes()) {
+					if (lotacaoProfissional.getCnes().equals(cnes)) {
+						String[] name = profissional.getNome().split(" ");
+						String nomeAbrev = name[0].toString() + " " + name[1].toString();
+						profissional.setNomeAbrev(nomeAbrev);
+						if (profissional.getDataNascimento() != null || !profissional.getDataNascimento().isEmpty()) {
+							profissional.setDataNascimento(
+									LocalDate.parse(profissional.getDataNascimento(), formatter).toString());
+						}
+						profissional.setAtivo(true);
+						Usuario usuario = new Usuario();
+						usuario.setUsername(profissional.getCpf());
+						usuario.setPassword(new BCryptPasswordEncoder().encode("sgh" + profissional.getCpf()));
+						usuario.setConcatName(profissional.getNomeAbrev());
 
-					if (lotacaoProfissional.getCodigoCBO().startsWith("225")) {
-						TipoUsuario tipoUsuario = tipoUsuarioRepository.findByNome("MEDICO");
-						Ocupacao ocupacao = ocupacaoRepository.findByCodigo(lotacaoProfissional.getCodigoCBO());
-						if (ocupacao != null) {
-							profissional.setNomeOcupacao(ocupacao.getNome());
+						if (lotacaoProfissional.getCodigoCBO().startsWith("225")) {
+							TipoUsuario tipoUsuario = tipoUsuarioRepository.findByNome("MEDICO");
+							Ocupacao ocupacao = ocupacaoRepository.findByCodigo(lotacaoProfissional.getCodigoCBO());
+							if (ocupacao != null) {
+								profissional.setNomeOcupacao(ocupacao.getNome());
+							}
+							usuario.setTipoUsuario(tipoUsuario);
+							usuario.setEnabled(profissional.isAtivo());
+							Role role = roleRepository.findByNome(tipoUsuario.getNome());
+							usuario.getRole().add(role);
+						} else if (lotacaoProfissional.getCodigoCBO().equals("223505")) {
+							TipoUsuario tipoUsuario = tipoUsuarioRepository.findByNome("ENFERMEIRO");
+							Ocupacao ocupacao = ocupacaoRepository.findByCodigo(lotacaoProfissional.getCodigoCBO());
+							if (ocupacao != null) {
+								profissional.setNomeOcupacao(ocupacao.getNome());
+							}
+							usuario.setTipoUsuario(tipoUsuario);
+							usuario.setEnabled(profissional.isAtivo());
+							Role role = roleRepository.findByNome(tipoUsuario.getNome());
+							usuario.getRole().add(role);
+						} else if (lotacaoProfissional.getCodigoCBO().equals("322205")) {
+							TipoUsuario tipoUsuario = tipoUsuarioRepository.findByNome("TECNICO");
+							Ocupacao ocupacao = ocupacaoRepository.findByCodigo(lotacaoProfissional.getCodigoCBO());
+							if (ocupacao != null) {
+								profissional.setNomeOcupacao(ocupacao.getNome());
+							}
+							usuario.setEnabled(profissional.isAtivo());
+							usuario.setTipoUsuario(tipoUsuario);
+							Role role = roleRepository.findByNome(tipoUsuario.getNome());
+							usuario.getRole().add(role);
+						} else if (lotacaoProfissional.getCodigoCBO().equals("322230")) {
+							TipoUsuario tipoUsuario = tipoUsuarioRepository.findByNome("AUXILIAR");
+							Ocupacao ocupacao = ocupacaoRepository.findByCodigo(lotacaoProfissional.getCodigoCBO());
+							if (ocupacao != null) {
+								profissional.setNomeOcupacao(ocupacao.getNome());
+							}
+							usuario.setEnabled(profissional.isAtivo());
+							usuario.setTipoUsuario(tipoUsuario);
+							Role role = roleRepository.findByNome(tipoUsuario.getNome());
+							usuario.getRole().add(role);
+						} else if (lotacaoProfissional.getCodigoCBO().equals("123105")
+								|| lotacaoProfissional.getCodigoCBO().equals("131205")) {
+							TipoUsuario tipoUsuario = tipoUsuarioRepository.findByNome("ADMINISTRADOR");
+							Ocupacao ocupacao = ocupacaoRepository.findByCodigo(lotacaoProfissional.getCodigoCBO());
+							if (ocupacao != null) {
+								profissional.setNomeOcupacao(ocupacao.getNome());
+							}
+							usuario.setEnabled(profissional.isAtivo());
+							usuario.setTipoUsuario(tipoUsuario);
+							Role role = roleRepository.findByNome(tipoUsuario.getNome());
+							usuario.getRole().add(role);
 						}
-						usuario.setTipoUsuario(tipoUsuario);
-						usuario.setEnabled(profissional.isAtivo());
-						Role role = roleRepository.findByNome(tipoUsuario.getNome());
-						usuario.getRole().add(role);
-					} else if (lotacaoProfissional.getCodigoCBO().equals("223505")) {
-						TipoUsuario tipoUsuario = tipoUsuarioRepository.findByNome("ENFERMEIRO");
-						Ocupacao ocupacao = ocupacaoRepository.findByCodigo(lotacaoProfissional.getCodigoCBO());
-						if (ocupacao != null) {
-							profissional.setNomeOcupacao(ocupacao.getNome());
-						}
-						usuario.setTipoUsuario(tipoUsuario);
-						usuario.setEnabled(profissional.isAtivo());
-						Role role = roleRepository.findByNome(tipoUsuario.getNome());
-						usuario.getRole().add(role);
-					} else if (lotacaoProfissional.getCodigoCBO().equals("322205")) {
-						TipoUsuario tipoUsuario = tipoUsuarioRepository.findByNome("TECNICO");
-						Ocupacao ocupacao = ocupacaoRepository.findByCodigo(lotacaoProfissional.getCodigoCBO());
-						if (ocupacao != null) {
-							profissional.setNomeOcupacao(ocupacao.getNome());
-						}
-						usuario.setEnabled(profissional.isAtivo());
-						usuario.setTipoUsuario(tipoUsuario);
-						Role role = roleRepository.findByNome(tipoUsuario.getNome());
-						usuario.getRole().add(role);
-					} else if (lotacaoProfissional.getCodigoCBO().equals("322230")) {
-						TipoUsuario tipoUsuario = tipoUsuarioRepository.findByNome("AUXILIAR");
-						Ocupacao ocupacao = ocupacaoRepository.findByCodigo(lotacaoProfissional.getCodigoCBO());
-						if (ocupacao != null) {
-							profissional.setNomeOcupacao(ocupacao.getNome());
-						}
-						usuario.setEnabled(profissional.isAtivo());
-						usuario.setTipoUsuario(tipoUsuario);
-						Role role = roleRepository.findByNome(tipoUsuario.getNome());
-						usuario.getRole().add(role);
-					} else if (lotacaoProfissional.getCodigoCBO().equals("123105") || lotacaoProfissional.getCodigoCBO().equals("131205") ) {
-						TipoUsuario tipoUsuario = tipoUsuarioRepository.findByNome("ADMINISTRADOR");
-						Ocupacao ocupacao = ocupacaoRepository.findByCodigo(lotacaoProfissional.getCodigoCBO());
-						if (ocupacao != null) {
-							profissional.setNomeOcupacao(ocupacao.getNome());
-						}
-						usuario.setEnabled(profissional.isAtivo());
-						usuario.setTipoUsuario(tipoUsuario);
-						Role role = roleRepository.findByNome(tipoUsuario.getNome());
-						usuario.getRole().add(role);
+						usuarioRepository.saveAndFlush(usuario);
+						profissionalRepository.saveAndFlush(profissional);
 					}
-					usuarioRepository.saveAndFlush(usuario);
-					profissionalRepository.saveAndFlush(profissional);
 				}
 			}
 		}

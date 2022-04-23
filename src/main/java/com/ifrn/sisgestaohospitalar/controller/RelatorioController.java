@@ -17,11 +17,13 @@ import com.ifrn.sisgestaohospitalar.model.Atestado;
 import com.ifrn.sisgestaohospitalar.model.Cidadao;
 import com.ifrn.sisgestaohospitalar.model.Exame;
 import com.ifrn.sisgestaohospitalar.model.Prescricao;
+import com.ifrn.sisgestaohospitalar.model.Prontuario;
 import com.ifrn.sisgestaohospitalar.repository.AtestadoRepository;
 import com.ifrn.sisgestaohospitalar.repository.CidadaoRepository;
 import com.ifrn.sisgestaohospitalar.repository.ExameRepository;
 import com.ifrn.sisgestaohospitalar.repository.PrescricaoRepository;
 import com.ifrn.sisgestaohospitalar.repository.ProfissionalRepository;
+import com.ifrn.sisgestaohospitalar.repository.ProntuarioRepository;
 import com.ifrn.sisgestaohospitalar.service.JasperService;
 
 @Controller
@@ -45,6 +47,9 @@ public class RelatorioController {
 
 	@Autowired
 	private CidadaoRepository cidadaoRepository;
+
+	@Autowired
+	private ProntuarioRepository prontuarioRepository;
 
 	@GetMapping("/atestado/{id}")
 	public void imprimeAtestado(@PathVariable("id") Long id, HttpServletResponse response, Principal principal)
@@ -106,9 +111,41 @@ public class RelatorioController {
 			jasperService.addParams("USER_NAME", profissionalRepository.findByCpf(principal.getName()).getNome());
 			byte[] bytes = jasperService.exportarPDF("cidadao");
 			response.setContentType(MediaType.APPLICATION_PDF_VALUE);
-			response.setHeader("Content-disposition",
-					"inline; filename=cadastro-" + optional.get().getNome() + ".pdf");
+			response.setHeader("Content-disposition", "inline; filename=cadastro-" + optional.get().getNome() + ".pdf");
 			response.getOutputStream().write(bytes);
+		}
+	}
+
+	@GetMapping("/prontuario/{id}")
+	public void imprimirProntuario(@PathVariable("id") Long id, HttpServletResponse response, Principal principal)
+			throws IOException {
+		Optional<Prontuario> optional = prontuarioRepository.findById(id);
+		if (optional.isPresent()) {
+			jasperService.addParams("ID_PRONTUARIO", id);
+			jasperService.addParams("SUB_ALERGIAS", jasperService.getJasperDiretorio() + "report-prontuario-alergia-sub"
+					+ jasperService.getJasperSufixo());
+			jasperService.addParams("SUB_CONDICOES", jasperService.getJasperDiretorio()
+					+ "report-prontuario-codicoes-sub" + jasperService.getJasperSufixo());
+			jasperService.addParams("SUB_ANTROPOMETRIA", jasperService.getJasperDiretorio()
+					+ "report-prontuario-antropometria-sub" + jasperService.getJasperSufixo());
+			jasperService.addParams("SUB_ATENDIMENTOS", jasperService.getJasperDiretorio()
+					+ "report-prontuario-antendimentos-sub" + jasperService.getJasperSufixo());
+			jasperService.addParams("SUB_PRESCRICOES", jasperService.getJasperDiretorio()
+					+ "report-prontuario-prescricoes" + jasperService.getJasperSufixo());
+			jasperService.addParams("SUB_EXAMES", jasperService.getJasperDiretorio()
+					+ "report-prontuario-antendimentos-exames" + jasperService.getJasperSufixo());
+			jasperService.addParams("SUB_ATESTADOS", jasperService.getJasperDiretorio() + "report-prontuario-atestados"
+					+ jasperService.getJasperSufixo());
+			jasperService.addParams("SUB_EXAMES_PROCEDIMENTOS", jasperService.getJasperDiretorio()
+					+ "report-prontuario-antendimentos-exames-procedimentos-sub" + jasperService.getJasperSufixo());
+
+			jasperService.addParams("USER_NAME", profissionalRepository.findByCpf(principal.getName()).getNome());
+
+			byte[] bytes = jasperService.exportarPDF("prontuario");
+			response.setContentType(MediaType.APPLICATION_PDF_VALUE);
+			response.setHeader("Content-disposition", "inline; filename=prontuario.pdf");
+			response.getOutputStream().write(bytes);
+
 		}
 	}
 

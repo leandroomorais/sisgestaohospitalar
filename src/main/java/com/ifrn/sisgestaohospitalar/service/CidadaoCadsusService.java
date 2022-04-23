@@ -5,13 +5,13 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.json.XML;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.Resource;
+import org.springframework.core.io.ResourceLoader;
 import org.springframework.stereotype.Service;
-
 import com.ifrn.sisgestaohospitalar.cadsus.ConexaoCadsus;
 import com.ifrn.sisgestaohospitalar.enums.CodigoRaca;
 import com.ifrn.sisgestaohospitalar.model.Cidadao;
@@ -22,10 +22,7 @@ import com.ifrn.sisgestaohospitalar.repository.MunicipioRepository;
 @Service
 public class CidadaoCadsusService {
 
-	private static final String URL_PATH = System.getProperty("user.dir") + "/src/main/resources/requests/";
-	private static final String PATH_CONSULTACNS = URL_PATH + "consultaCNS.xml";
-	private static final String PATH_CONSULTACPF = URL_PATH + "consultaCPF.xml";
-	private static final String PATH_CONSULTANOME_NASCIMENTO = URL_PATH + "consultaNOME_DTNASCIMENTO.xml";
+	private static final String URL_PATH = "classpath:requests/";
 	private static final String PARAMETRO = "[[PARAMETRO]]";
 	private static final String PARAMETRO_NOME = "[[PARAMETRO_NOME]]";
 	private static final String PARAMETRO_DT_NASCIMENTO = "[[PARAMETRO_DT_NASCIMENTO]]";
@@ -34,12 +31,16 @@ public class CidadaoCadsusService {
 	private MunicipioRepository municipioRepository;
 	@Autowired
 	private LogradouroRepository logradouroRepository;
+	@Autowired
+	ResourceLoader resourceLoader;
 
-	ConexaoCadsus conexaoCadsus = new ConexaoCadsus("CADSUS.CNS.PDQ.PUBLICO", "kUXNmiiii#RDdlOELdoe00966", false);
+	ConexaoCadsus conexaoCadsus = new ConexaoCadsus("sghtaboleirogrande", "Cx*Eau57nq", true);
 
 	public Cidadao consultaCNS(String parametro) {
 		try {
-			byte[] encoded = Files.readAllBytes(Paths.get(PATH_CONSULTACNS));
+			Resource resource = resourceLoader.getResource(URL_PATH.concat("consultaCNS.xml"));
+			byte[] encoded = Files.readAllBytes(Paths.get(resource.getURI()));
+			System.out.println(resource.getURI());
 			String arquivoXML = new String(encoded);
 			String requisicao = conexaoCadsus.requisicao(arquivoXML.replace(PARAMETRO, parametro));
 			if (requisicao != null) {
@@ -59,7 +60,9 @@ public class CidadaoCadsusService {
 
 	public Cidadao consultaCPF(String parametro) {
 		try {
-			byte[] encoded = Files.readAllBytes(Paths.get(PATH_CONSULTACPF));
+			Resource resource = resourceLoader.getResource(URL_PATH.concat("consultaCPF.xml"));
+			System.out.println(resource.getURI());
+			byte[] encoded = Files.readAllBytes(Paths.get(resource.getURI()));
 			String arquivoXML = new String(encoded);
 			String requisicao = conexaoCadsus.requisicao(arquivoXML.replace(PARAMETRO, parametro));
 			if (requisicao != null) {
@@ -80,7 +83,9 @@ public class CidadaoCadsusService {
 
 	public Cidadao consultaNOMEeDN(String nome, String dataNascimento) {
 		try {
-			byte[] encoded = Files.readAllBytes(Paths.get(PATH_CONSULTANOME_NASCIMENTO));
+			Resource resource = resourceLoader.getResource(URL_PATH.concat("consultaNOME_DTNASCIMENTO.xml"));
+			System.out.println(resource.getURI());
+			byte[] encoded = Files.readAllBytes(Paths.get(resource.getURI()));
 			String arquivoXML = new String(encoded);
 			String requisicao = conexaoCadsus.requisicao(
 					arquivoXML.replace(PARAMETRO_NOME, nome).replace(PARAMETRO_DT_NASCIMENTO, dataNascimento));

@@ -9,10 +9,8 @@ import com.ifrn.sisgestaohospitalar.model.ArquivoBPA;
 
 @Component
 public class EscritorTXT {
-
 	public File geraArquivo(ArquivoBPA arquivoBPA) {
-		String path = System.getProperty("user.dir") + "/Bpa/";
-
+		String path = "src/main/resources/Bpa/";
 		try {
 			File file = new File(path + "PA" + arquivoBPA.getCnes() + extensaoDoArquivo(arquivoBPA.getCompetencia()));
 			FileWriter writer = new FileWriter(file, false);
@@ -30,7 +28,6 @@ public class EscritorTXT {
 			});
 			printWriter.flush();
 			printWriter.close();
-
 			return file;
 
 		} catch (IOException e) {
@@ -68,5 +65,4 @@ public class EscritorTXT {
 		} else
 			return ".txt";
 	}
-
 }

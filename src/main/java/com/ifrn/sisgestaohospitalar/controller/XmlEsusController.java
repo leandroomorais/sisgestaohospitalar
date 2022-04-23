@@ -1,9 +1,6 @@
 package com.ifrn.sisgestaohospitalar.controller;
 
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.security.Principal;
 import java.text.ParseException;
 import javax.xml.bind.JAXBException;
@@ -19,8 +16,6 @@ import com.ifrn.sisgestaohospitalar.utils.LeitorXmlEsus;
 @RequestMapping("/xml-esus")
 @Controller
 public class XmlEsusController {
-
-	public static String uploadDirectory = System.getProperty("user.dir") + "/uploads/";
 
 	@Autowired
 	private LeitorXmlEsus leitorXmlEsus;
@@ -50,20 +45,9 @@ public class XmlEsusController {
 	@RequestMapping("/upload")
 	public ModelAndView upload(@RequestParam("file") MultipartFile file, @RequestParam("cnes") String cnes,
 			Principal principal) throws IOException, JAXBException, ParseException {
-
 		ModelAndView mv = formUpload(principal);
-
-		String arquivo = uploadDirectory + file.getOriginalFilename();
-		byte[] bytes = file.getBytes();
-		Path path = Paths.get(arquivo);
 		try {
-			Files.write(path, bytes);
-		} catch (IOException e) {
-
-		}
-
-		try {
-			leitorXmlEsus.lerXmlEsus(arquivo, cnes);
+			leitorXmlEsus.lerXmlEsus(file.getInputStream(), cnes);
 			mv.addObject("sucesso", "O arquivo " + file.getOriginalFilename() + " foi processado com sucesso!");
 
 		} catch (JAXBException e) {
@@ -71,5 +55,4 @@ public class XmlEsusController {
 		}
 		return mv;
 	}
-
 }

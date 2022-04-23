@@ -3,23 +3,23 @@ package com.ifrn.sisgestaohospitalar;
 import java.io.IOException;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
-import java.text.ParseException;
 import java.util.Scanner;
 
-import javax.xml.bind.JAXBException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import com.ifrn.sisgestaohospitalar.model.Administracao;
 import com.ifrn.sisgestaohospitalar.model.ClassificacaoDeRisco;
-import com.ifrn.sisgestaohospitalar.model.ExameSimplificado;
 import com.ifrn.sisgestaohospitalar.model.Role;
 import com.ifrn.sisgestaohospitalar.model.TipoServico;
 import com.ifrn.sisgestaohospitalar.model.TipoUsuario;
+import com.ifrn.sisgestaohospitalar.model.Usuario;
 import com.ifrn.sisgestaohospitalar.model.ViaAdministracao;
 import com.ifrn.sisgestaohospitalar.repository.Cep_IbgeRepository;
 import com.ifrn.sisgestaohospitalar.repository.CidRepository;
@@ -31,6 +31,7 @@ import com.ifrn.sisgestaohospitalar.repository.ProcedimentoRepository;
 import com.ifrn.sisgestaohospitalar.repository.RoleRepository;
 import com.ifrn.sisgestaohospitalar.repository.TipoServicoRepository;
 import com.ifrn.sisgestaohospitalar.repository.TipoUsuarioRepository;
+import com.ifrn.sisgestaohospitalar.repository.UsuarioRepository;
 import com.ifrn.sisgestaohospitalar.repository.ViaAdministracaoRepository;
 import com.ifrn.sisgestaohospitalar.utils.LeitorTXTExames;
 import com.ifrn.sisgestaohospitalar.utils.LeitorTXTMedicamentos;
@@ -40,7 +41,7 @@ import com.ifrn.sisgestaohospitalar.utils.SalvarEstadosEMunicipios;
 import com.ifrn.sisgestaohospitalar.utils.SalvarLogradouros;
 
 @SpringBootApplication
-public class SisgestaohospitalarApplication implements ApplicationListener<ContextRefreshedEvent> {
+public class SisgestaohospitalarApplication extends SpringBootServletInitializer implements ApplicationListener<ContextRefreshedEvent> {
 
 	@Autowired
 	LeitorTXTExames leitorTXTExames;
@@ -71,6 +72,9 @@ public class SisgestaohospitalarApplication implements ApplicationListener<Conte
 
 	@Autowired
 	private ViaAdministracaoRepository viaAdministracaoRepository;
+
+	@Autowired
+	private UsuarioRepository usuarioRepository;
 
 	@Autowired
 	private TipoServicoRepository tipoServicoRepository;
@@ -111,8 +115,8 @@ public class SisgestaohospitalarApplication implements ApplicationListener<Conte
 	@Override
 	public void onApplicationEvent(ContextRefreshedEvent event) {
 
-		inicializar();
-        
+		// inicializar();
+
 //		criaRolesETipoUsuario();
 //		lerSigtab();
 //		lerMedicamentosEFormaFarmaceutica();
@@ -123,55 +127,55 @@ public class SisgestaohospitalarApplication implements ApplicationListener<Conte
 //		LerExames();
 //		leitorTXTExames.atualizaGrupo();
 //		criaClassificacaoDeRisco();
+//		criaUserAdmin();
 	}
-	
+
 	public void inicializar() {
 		String ipDaMaquina = null;
-		
+
 		try {
 			ipDaMaquina = InetAddress.getLocalHost().getHostAddress();
 		} catch (UnknownHostException e) {
 			e.printStackTrace();
 		}
-        
-        
-        if(!ipDaMaquina.equals(Administracao.getIpmaquina())) {
-        	System.out.print("Aplicação Encerrada!");
-        	System.exit(0);
-        }
-        
-        Scanner input = new Scanner(System.in);
 
-        String usuario;
-        String senha;
+		if (!ipDaMaquina.equals(Administracao.getIpmaquina())) {
+			System.out.print("Aplicação Encerrada!");
+			System.exit(0);
+		}
 
-        System.out.print("Informe as credenciais! \n");
-        System.out.print("Usuário: ");
-        usuario = input.next();
+		Scanner input = new Scanner(System.in);
 
-        if(!usuario.equals(Administracao.getUsuario())) {
-        	System.out.println("Erro: Usuário inválido! Última tentativa.");
-        	System.out.print("Digite novamente o Usuário: ");
-            usuario = input.next();
-            if(!usuario.equals(Administracao.getUsuario())) {
-            	System.out.print("Aplicação Encerrada!");
-            	System.exit(0);
-            }
-        }
-        
-        System.out.print("Senha: ");
-        senha = input.next();
-        
-        if(!senha.equals(Administracao.getSenha())) {
-        	System.out.println("Erro: Senha inválida! Última tentativa.");
-        	System.out.print("Digite novamente a Senha: ");
-            senha = input.next();
-            if(!senha.equals(Administracao.getSenha())) {
-            	System.out.print("Aplicação Encerrada!");
-            	System.exit(0);
-            }
-        }       
-	
+		String usuario;
+		String senha;
+
+		System.out.print("Informe as credenciais! \n");
+		System.out.print("Usuário: ");
+		usuario = input.next();
+
+		if (!usuario.equals(Administracao.getUsuario())) {
+			System.out.println("Erro: Usuário inválido! Última tentativa.");
+			System.out.print("Digite novamente o Usuário: ");
+			usuario = input.next();
+			if (!usuario.equals(Administracao.getUsuario())) {
+				System.out.print("Aplicação Encerrada!");
+				System.exit(0);
+			}
+		}
+
+		System.out.print("Senha: ");
+		senha = input.next();
+
+		if (!senha.equals(Administracao.getSenha())) {
+			System.out.println("Erro: Senha inválida! Última tentativa.");
+			System.out.print("Digite novamente a Senha: ");
+			senha = input.next();
+			if (!senha.equals(Administracao.getSenha())) {
+				System.out.print("Aplicação Encerrada!");
+				System.exit(0);
+			}
+		}
+
 	}
 
 	public void salvarTipoServico() {
@@ -202,15 +206,15 @@ public class SisgestaohospitalarApplication implements ApplicationListener<Conte
 		ViaAdministracao topica = new ViaAdministracao();
 
 		oral.setNome("Oral");
-		oral.setProcedimento(procedimentoRepository.getOne(Long.parseLong("0301100217")));
+		oral.setProcedimento(procedimentoRepository.getOne(Long.parseLong("0301100012")));
 		parenteralIntramuscular.setNome("Intramuscular");
-		parenteralIntramuscular.setProcedimento(procedimentoRepository.getOne(Long.parseLong("0301100209")));
+		parenteralIntramuscular.setProcedimento(procedimentoRepository.getOne(Long.parseLong("0301100012")));
 		parenteralIntraVenosa.setNome("Endovenosa");
-		parenteralIntraVenosa.setProcedimento(procedimentoRepository.getOne(Long.parseLong("0301100195")));
+		parenteralIntraVenosa.setProcedimento(procedimentoRepository.getOne(Long.parseLong("0301100012")));
 		parenteralSubcultanea.setNome("Subcutânea");
-		parenteralSubcultanea.setProcedimento(procedimentoRepository.getOne(Long.parseLong("0301100225")));
+		parenteralSubcultanea.setProcedimento(procedimentoRepository.getOne(Long.parseLong("0301100012")));
 		topica.setNome("Tópica");
-		topica.setProcedimento(procedimentoRepository.getOne(Long.parseLong("0301100233")));
+		topica.setProcedimento(procedimentoRepository.getOne(Long.parseLong("0301100012")));
 
 		viaAdministracaoRepository.saveAndFlush(oral);
 		viaAdministracaoRepository.saveAndFlush(parenteralIntramuscular);
@@ -239,15 +243,6 @@ public class SisgestaohospitalarApplication implements ApplicationListener<Conte
 		}
 	}
 
-	public void lerXmlEsus() {
-		try {
-			leitorXmlEsus.lerXmlEsus(file, cnes);
-		} catch (JAXBException e) {
-			e.printStackTrace();
-		} catch (ParseException e) {
-			e.printStackTrace();
-		}
-	}
 
 	public void lerSigtab() {
 		try {
@@ -370,6 +365,17 @@ public class SisgestaohospitalarApplication implements ApplicationListener<Conte
 		classificacaoDeRiscoRepository.save(azul);
 		classificacaoDeRiscoRepository.save(naoInformada);
 
+	}
+
+	public void criaUserAdmin() {
+		Usuario usuario = new Usuario();
+		usuario.setUsername("09814354406");
+		usuario.setConcatName("LEANDRO MORAIS");
+		usuario.setEnabled(true);
+		usuario.setPassword(new BCryptPasswordEncoder().encode("leandro916774"));
+		usuario.setTipoUsuario(tipoUsuarioRepository.findByNome("ADMINISTRADOR"));
+		usuario.getRole().add(roleRepository.findByNome("ADMINISTRADOR"));
+		usuarioRepository.saveAndFlush(usuario);
 	}
 
 }
