@@ -8,6 +8,8 @@ import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import com.ifrn.sisgestaohospitalar.enums.CaraterAtendimento;
 import com.ifrn.sisgestaohospitalar.model.Atendimento;
 import com.ifrn.sisgestaohospitalar.model.AtendimentoProcedimento;
 import com.ifrn.sisgestaohospitalar.model.Cidadao;
@@ -57,8 +59,12 @@ public class LinhaBPAIndividualizadoService {
 			linhaBPAIndividualizado.setCid("");
 			linhaBPAIndividualizado.setIdade(getIdade(DADOS_CIDADAO.getDataNascimento(), ATENDIMENTO.getDataEntrada()));
 			linhaBPAIndividualizado.setQtdProcedimento(Integer.toString(a.getQuantidade()));
-			linhaBPAIndividualizado
-					.setCaraterAtendimento(Integer.toString(ATENDIMENTO.getCaraterAtendimento().getCodigo()));
+			if (ATENDIMENTO.getCaraterAtendimento() == null) {
+				linhaBPAIndividualizado.setCaraterAtendimento(Integer.toString(CaraterAtendimento.ELETIVO.getCodigo()));
+			} else {
+				linhaBPAIndividualizado
+						.setCaraterAtendimento(Integer.toString(ATENDIMENTO.getCaraterAtendimento().getCodigo()));
+			}
 			linhaBPAIndividualizado.setOrigemInformacao("BPA");
 			linhaBPAIndividualizado.setNumeroAutorizacao("");
 			linhaBPAIndividualizado.setNomePaciente(DADOS_CIDADAO.getNome());
