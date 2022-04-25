@@ -40,7 +40,6 @@ public class CidadaoCadsusService {
 		try {
 			Resource resource = resourceLoader.getResource(URL_PATH.concat("consultaCNS.xml"));
 			byte[] encoded = Files.readAllBytes(Paths.get(resource.getURI()));
-			System.out.println(resource.getURI());
 			String arquivoXML = new String(encoded);
 			String requisicao = conexaoCadsus.requisicao(arquivoXML.replace(PARAMETRO, parametro));
 			if (requisicao != null) {
@@ -61,7 +60,6 @@ public class CidadaoCadsusService {
 	public Cidadao consultaCPF(String parametro) {
 		try {
 			Resource resource = resourceLoader.getResource(URL_PATH.concat("consultaCPF.xml"));
-			System.out.println(resource.getURI());
 			byte[] encoded = Files.readAllBytes(Paths.get(resource.getURI()));
 			String arquivoXML = new String(encoded);
 			String requisicao = conexaoCadsus.requisicao(arquivoXML.replace(PARAMETRO, parametro));
@@ -84,7 +82,6 @@ public class CidadaoCadsusService {
 	public Cidadao consultaNOMEeDN(String nome, String dataNascimento) {
 		try {
 			Resource resource = resourceLoader.getResource(URL_PATH.concat("consultaNOME_DTNASCIMENTO.xml"));
-			System.out.println(resource.getURI());
 			byte[] encoded = Files.readAllBytes(Paths.get(resource.getURI()));
 			String arquivoXML = new String(encoded);
 			String requisicao = conexaoCadsus.requisicao(

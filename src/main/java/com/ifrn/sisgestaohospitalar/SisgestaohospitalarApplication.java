@@ -5,7 +5,6 @@ import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.util.Scanner;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -41,7 +40,8 @@ import com.ifrn.sisgestaohospitalar.utils.SalvarEstadosEMunicipios;
 import com.ifrn.sisgestaohospitalar.utils.SalvarLogradouros;
 
 @SpringBootApplication
-public class SisgestaohospitalarApplication extends SpringBootServletInitializer implements ApplicationListener<ContextRefreshedEvent> {
+public class SisgestaohospitalarApplication extends SpringBootServletInitializer
+		implements ApplicationListener<ContextRefreshedEvent> {
 
 	@Autowired
 	LeitorTXTExames leitorTXTExames;
@@ -120,7 +120,6 @@ public class SisgestaohospitalarApplication extends SpringBootServletInitializer
 //		criaRolesETipoUsuario();
 //		lerSigtab();
 //		lerMedicamentosEFormaFarmaceutica();
-//		lerXmlEsus();
 //		lerEstadosMunicipios();
 //		salvarViaAdministracao();
 //		salvarTipoServico();
@@ -199,6 +198,7 @@ public class SisgestaohospitalarApplication extends SpringBootServletInitializer
 	}
 
 	public void salvarViaAdministracao() {
+		ViaAdministracao selecione = new ViaAdministracao();
 		ViaAdministracao oral = new ViaAdministracao();
 		ViaAdministracao parenteralIntramuscular = new ViaAdministracao();
 		ViaAdministracao parenteralIntraVenosa = new ViaAdministracao();
@@ -215,12 +215,15 @@ public class SisgestaohospitalarApplication extends SpringBootServletInitializer
 		parenteralSubcultanea.setProcedimento(procedimentoRepository.getOne(Long.parseLong("0301100012")));
 		topica.setNome("Tópica");
 		topica.setProcedimento(procedimentoRepository.getOne(Long.parseLong("0301100012")));
+		selecione.setNome("Selecione a via de administração");
+		selecione.setProcedimento(null);
 
 		viaAdministracaoRepository.saveAndFlush(oral);
 		viaAdministracaoRepository.saveAndFlush(parenteralIntramuscular);
 		viaAdministracaoRepository.saveAndFlush(parenteralIntraVenosa);
 		viaAdministracaoRepository.saveAndFlush(parenteralSubcultanea);
 		viaAdministracaoRepository.saveAndFlush(topica);
+		viaAdministracaoRepository.saveAndFlush(selecione);
 	}
 
 	public void LerExames() {
@@ -242,7 +245,6 @@ public class SisgestaohospitalarApplication extends SpringBootServletInitializer
 			e.printStackTrace();
 		}
 	}
-
 
 	public void lerSigtab() {
 		try {

@@ -40,7 +40,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 				.hasAnyAuthority("MEDICO", "ENFERMEIRO", "ADMINISTRADOR", "TECNICO", "AUXILIAR")
 				.antMatchers("/atendimento/").hasAnyAuthority("MEDICO", "ENFERMEIRO", "TECNICO", "AUXILIAR")
 
-				.antMatchers("/procedimentocid/**").hasAnyAuthority("MEDICO", "ENFERMEIRO", "ADMINISTRADOR", "TECNICO", "AUXILIAR")
+				.antMatchers("/procedimentocid/**")
+				.hasAnyAuthority("MEDICO", "ENFERMEIRO", "ADMINISTRADOR", "TECNICO", "AUXILIAR")
 				// permissoes para adicionar
 //		.antMatchers("/atendimento/**").hasAnyAuthority("MEDICO", "ENFERMEIRO", "ADMINISTRADOR", "TECNICO", "AUXILIAR")
 //		.antMatchers("/atendimento-procedimento/**").hasAnyAuthority("MEDICO", "ENFERMEIRO", "ADMINISTRADOR", "TECNICO", "AUXILIAR")
@@ -56,7 +57,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 //		.antMatchers("/logradouro/**").hasAnyAuthority("MEDICO", "ENFERMEIRO", "ADMINISTRADOR", "TECNICO", "AUXILIAR")
 //		.antMatchers("/medicamento/**").hasAnyAuthority("MEDICO", "ENFERMEIRO", "ADMINISTRADOR", "TECNICO", "AUXILIAR")
 //		.antMatchers("/municipio/**").hasAnyAuthority("MEDICO", "ENFERMEIRO", "ADMINISTRADOR", "TECNICO", "AUXILIAR")
-//		.antMatchers("/prescricao/**").hasAnyAuthority("MEDICO", "ENFERMEIRO", "ADMINISTRADOR", "TECNICO", "AUXILIAR")
+				.antMatchers("/prescricao/**")
+				.hasAnyAuthority("MEDICO", "ENFERMEIRO", "ADMINISTRADOR", "TECNICO", "AUXILIAR")
 //		.antMatchers("/procedimento/**").hasAnyAuthority("MEDICO", "ENFERMEIRO", "ADMINISTRADOR", "TECNICO", "AUXILIAR")
 //		.antMatchers("/prontuario/**").hasAnyAuthority("MEDICO", "ENFERMEIRO", "ADMINISTRADOR", "TECNICO", "AUXILIAR")
 //		.antMatchers("/registro-administracao/**").hasAnyAuthority("MEDICO", "ENFERMEIRO", "ADMINISTRADOR", "TECNICO", "AUXILIAR")

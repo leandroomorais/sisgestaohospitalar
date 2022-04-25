@@ -819,6 +819,8 @@ $("#form-prescricao-externa").submit(function(evt) {
 		prescricaoExterna.numeroRegistro = $("#numeroRegistro").val();
 		prescricaoExterna.siglaUfEmissao = $("#siglaUfEmissao").val();
 		prescricaoExterna.dataSolicitacao = $("#dataSolicitacao").val();
+		
+		console.log(prescricaoExterna);
 
 		$.ajax({
 			url: '/prescricao/prescricao-externa/',

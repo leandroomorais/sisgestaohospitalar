@@ -1,4 +1,4 @@
-<div sec:authorize="hasAnyAuthority('MEDICO')" id="card-edit-prescricao" class="card">
+<div sec:authorize="hasAnyAuthority('MEDICO','AUXILIAR','TECNICO','ENFERMEIRO')" id="card-edit-prescricao" class="card">
 	<div class="card-header">
 		<div class="card-title"><a id="edit-prescricao-voltar" data-toggle="tooltipe" data-placement="top"
 				title="Voltar para tela anterior" class="btn btn-light"> <i class="fa fa-flip-horizontal fa-share"></i>
@@ -103,7 +103,8 @@
 				</div>
 				<div class="text-right">
 					<button id="submit-prescricao-edit" type="submit" class="btn btn-primary btn-sm">Salvar</button>
-					<button onclick="fechaFormularioEditPrescricao()" type="button" class="btn btn-warning btn-border btn-sm">
+					<button onclick="fechaFormularioEditPrescricao()" type="button"
+						class="btn btn-warning btn-border btn-sm">
 						Cancelar</button>
 				</div>
 			</form>
