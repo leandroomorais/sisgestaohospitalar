@@ -497,7 +497,7 @@ function createCardExame(data) {
 		"</div><div class='col-md-4 text-right'>" +
 		infoCardDataProfissional(data.dataSolicitacao, data.profissional.nome, data.profissional.numeroRegistro + " / " + data.profissional.siglaUfEmissao) +
 		"</div></div><div class='text-right'>" +
-		"<a class='btn btn-light btn-sm' target='_blank' href='/relatorio/exame/ " + data.id + "'><i class='fa fa-print'></i> Imprimir</a>" +
+		"<a class='btn btn-light btn-sm' target='_blank' href='/relatorio/exame/ " + data.id + "'><i class='fa fa-print'></i> Imprimir</a>" 
 		+ buttonExcluir()
 		+ "</div></div></div>";
 
