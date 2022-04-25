@@ -707,6 +707,7 @@ function submitProcedimentoAutomatico(idAtendimento, codigoProcedimento, tipoSer
 		success: function() {
 			$("#exampleModalCenter").modal("hide");
 			notificacao('Sucesso!', 'O procedimento foi adicionado ao atendimento', 'top', 'right', 'success', 'withicon', '#', '');
+			$("#table-procedimentos").DataTable().ajax.reload();
 		}
 	})
 }
