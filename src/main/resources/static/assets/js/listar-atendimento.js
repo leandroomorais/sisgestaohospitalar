@@ -69,8 +69,7 @@ $("#atendimento-buscar").submit(function(evt) {
 					},
 					{
 						title: 'AÇÕES', data: 'id', mRender: function(data) {
-							var retorno = "<a class='btn btn-primary btn-sm' " + "href='/atendimento/editar/" + data + "'>Editar</a> " +
-								"<a class='btn btn-primary btn-sm'" + "href='/atendimento/detalhar/" + data + "'>Detalhar</a>"
+							var retorno = "<a class='btn btn-primary btn-sm'" + "href='/atendimento/detalhar/" + data + "'>Detalhar</a>"
 							return retorno;
 						}
 					}
@@ -146,8 +145,7 @@ function atualizarTabela() {
 			},
 			{
 				title: 'AÇÕES', data: 'id', mRender: function(data) {
-					var retorno = "<a class='btn btn-primary btn-sm' " + "href='/atendimento/editar/" + data + "'>Editar</a> " +
-						"<a class='btn btn-primary btn-sm'" + "href='/atendimento/detalhar/" + data + "'>Detalhar</a>"
+					var retorno = "<a class='btn btn-primary btn-sm'" + "href='/atendimento/detalhar/" + data + "'>Detalhar</a>"
 					return retorno;
 				}
 			}
