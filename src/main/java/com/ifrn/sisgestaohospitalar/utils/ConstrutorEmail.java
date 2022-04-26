@@ -56,7 +56,7 @@ public class ConstrutorEmail {
 				email.setTo(profissional.getEmail());
 				email.setSubject("Redefinição de senha: " + profissional.getNomeAbrev());
 				email.setText(text, true);
-				email.setFrom(new InternetAddress("gestaoescolaronline1.0@gmail.com"));
+				email.setFrom(new InternetAddress("sishospweb@gmail.com"));
 
 			}
 		};

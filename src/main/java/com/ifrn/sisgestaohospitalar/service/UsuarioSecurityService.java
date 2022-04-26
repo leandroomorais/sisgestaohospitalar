@@ -6,7 +6,9 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+import com.ifrn.sisgestaohospitalar.model.PasswordResetToken;
 import com.ifrn.sisgestaohospitalar.model.Usuario;
+import com.ifrn.sisgestaohospitalar.repository.PasswordResetTokenRepository;
 import com.ifrn.sisgestaohospitalar.repository.UsuarioRepository;
 
 @Service
@@ -16,6 +18,9 @@ public class UsuarioSecurityService implements UserDetailsService {
 	@Autowired
 	private UsuarioRepository usuarioRepository;
 
+	@Autowired
+	private PasswordResetTokenRepository passwordResetTokenRepository;
+
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		Usuario usuario = usuarioRepository.findByUsername(username);
@@ -24,6 +29,11 @@ public class UsuarioSecurityService implements UserDetailsService {
 		}
 
 		return usuario;
+	}
+
+	public void gerarTokenRedefinicao(Usuario usuario, String token) {
+		PasswordResetToken passwordResetToken = new PasswordResetToken(token, usuario);
+		passwordResetTokenRepository.saveAndFlush(passwordResetToken);
 	}
 
 }
