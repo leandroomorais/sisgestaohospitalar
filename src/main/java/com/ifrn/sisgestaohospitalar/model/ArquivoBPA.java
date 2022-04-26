@@ -51,7 +51,7 @@ public class ArquivoBPA {
 	private LocalDateTime horaGeracao;
 
 	private String link;
-
+//  byte[]
 	private String nomeArquivo;
 
 	private boolean gerado;

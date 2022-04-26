@@ -10,9 +10,8 @@ import com.ifrn.sisgestaohospitalar.model.ArquivoBPA;
 @Component
 public class EscritorTXT {
 	public File geraArquivo(ArquivoBPA arquivoBPA) {
-		String path = "src/main/resources/Bpa/";
 		try {
-			File file = new File(path + "PA" + arquivoBPA.getCnes() + extensaoDoArquivo(arquivoBPA.getCompetencia()));
+			File file = new File("PA" + arquivoBPA.getCnes() + extensaoDoArquivo(arquivoBPA.getCompetencia()));
 			FileWriter writer = new FileWriter(file, false);
 			PrintWriter printWriter = new PrintWriter(writer);
 			printWriter.println(arquivoBPA.toString());

@@ -3,13 +3,12 @@ package com.ifrn.sisgestaohospitalar.controller;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.security.Principal;
 import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -56,6 +55,9 @@ public class ArquivoBPAController {
 			throws IOException {
 		ModelAndView mv = new ModelAndView("arquivoBPA/gerarbpa");
 		mv.addObject("user", usuarioRepository.findByUsername(principal.getName()));
+		if (competencia.isEmpty() || competencia == null) {
+			return mv.addObject("warning", "Selecione a competencia");
+		}
 		if (arquivoBpaService.findByCompetencia(competencia.replace("-", "")) != null) {
 			return mv.addObject("warning", "O arquivo BPA para a competência selecionada já foi gerado.");
 		}
@@ -63,14 +65,14 @@ public class ArquivoBPAController {
 		ArquivoBPA arquivoBPA = arquivoBpaService.processarArquivoBPA(Integer.parseInt(periodo[0]),
 				Integer.parseInt(periodo[1]));
 		if (arquivoBPA != null) {
-			File file = escritorTXT.geraArquivo(arquivoBPA);
-			if (file != null) {
-				arquivoBPA.setNomeArquivo(file.getName());
-				arquivoBPA.setLink(file.getCanonicalPath());
-				arquivoBPARepository.save(arquivoBPA);
-				return listarBpa(principal).addObject("sucesso", "O arquivo BPA para o SIA SUS foi gerado.");
-			}
-			return mv.addObject("erro", "Ocorreu um erro ao tentar gerar");
+			// File file = escritorTXT.geraArquivo(arquivoBPA);
+			// if (file != null) {
+			// arquivoBPA.setNomeArquivo(file.getName());
+			// arquivoBPA.setLink(file.getCanonicalPath());
+			arquivoBPARepository.save(arquivoBPA);
+			return listarBpa(principal).addObject("sucesso", "O arquivo BPA para o SIA SUS foi gerado.");
+			// }
+			// return mv.addObject("erro", "Ocorreu um erro ao tentar gerar");
 		}
 		return mv.addObject("warning", "Sem registro de produção ambulatorial para o período selecionado");
 	}
@@ -86,10 +88,10 @@ public class ArquivoBPAController {
 	@GetMapping("/download/{id}")
 	public HttpEntity<byte[]> download(@PathVariable("id") Long id) throws IOException {
 		ArquivoBPA arquivoBPA = arquivoBpaService.findOne(id);
-
-		byte[] arquivo = Files.readAllBytes(Paths.get(arquivoBPA.getLink()));
+		File file = escritorTXT.geraArquivo(arquivoBPA);
+		byte[] arquivo = Files.readAllBytes(file.toPath());
 		HttpHeaders httpHeaders = new HttpHeaders();
-		httpHeaders.add("Content-Disposition", "attachment;filename=\"" + arquivoBPA.getNomeArquivo() + "\"");
+		httpHeaders.add("Content-Disposition", "attachment;filename=\"" + file.getName() + "\"");
 		HttpEntity<byte[]> entity = new HttpEntity<byte[]>(arquivo, httpHeaders);
 		return entity;
 	}
@@ -118,6 +120,12 @@ public class ArquivoBPAController {
 		mv.addObject("erro", " Arquivo não encontrado");
 		return mv;
 
+	}
+
+	@GetMapping("/{id}")
+	public ResponseEntity<?> delete(@PathVariable("id") Long id) {
+		arquivoBPARepository.deleteById(id);
+		return ResponseEntity.ok().build();
 	}
 
 }
