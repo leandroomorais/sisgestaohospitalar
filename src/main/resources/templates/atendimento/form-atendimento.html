@@ -56,9 +56,13 @@
 																href="#dados-triagem"><strong>RESUMO</strong></a>
 														</li>
 													</ul>
-
 													<div class="tab-content">
 														<div id="dados-triagem" class="tab-pane fade show active">
+															<div class="text-right mt-2"><a
+																	th:href="@{/relatorio/prontuario/{id} (id=${atendimento.cidadao.prontuario.id})}"
+																	class="btn btn-light btn-border" target="_blank">
+																	<i class="fa fa-print"></i> Imprimir prontuário </a>
+															</div>
 															<div th:replace="fragments/atendimento/resumo-atendimento">
 															</div>
 														</div>
