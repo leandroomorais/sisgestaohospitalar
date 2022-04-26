@@ -17,9 +17,9 @@
 										</h4>
 									</div>
 									<div class="col-auto">
-<!--										<a href="#" onclick="imprimirAtendimento()" class="btn btn-light btn-border"><i-->
-<!--												class="fa fa-print"></i>-->
-<!--											Imprimir </a>-->
+										<!--										<a href="#" onclick="imprimirAtendimento()" class="btn btn-light btn-border"><i-->
+										<!--												class="fa fa-print"></i>-->
+										<!--											Imprimir </a>-->
 									</div>
 								</div>
 								<div class="page-divider"></div>
@@ -399,11 +399,14 @@
 																				</th:block>
 
 																				<strong>CID Relacionado:
-																				</strong><span
-																					th:text="${exame.cid.codigo}">
-																				</span> - <span
-																					th:text="${exame.cid.nome}">
-																				</span><br><strong>Justificativa:
+																				</strong>
+																				<th:block th:if="${exame.cid !=null}">
+																					<span th:text="${exame.cid.codigo}">
+																					</span> - <span
+																						th:text="${exame.cid.nome}">
+																					</span>
+																				</th:block>
+																				<br><strong>Justificativa:
 																				</strong><span
 																					th:text="${exame.justificativa}">
 																				</span><br><strong>Observações:
