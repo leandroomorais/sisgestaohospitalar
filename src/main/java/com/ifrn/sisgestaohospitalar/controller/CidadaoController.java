@@ -228,7 +228,7 @@ public class CidadaoController {
 	}
 
 	private void alert(ModelAndView mv, Optional<?> optional) {
-		if (optional.isEmpty()) {
+		if (!optional.isPresent()) {
 			mv.addObject("warning", "Nenhum resultado encontrado");
 		}
 	}
