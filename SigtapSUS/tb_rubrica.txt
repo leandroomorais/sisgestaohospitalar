@@ -1,23 +1,30 @@
-040009Atendimento/acompanhamento em reabilitação física, mental, visual, auditiva e múltiplas deficiências202111
-040013Atendimento/acompanhamento de diagnóstico de doenças endocrinas/metabólicas e nutricionais          202111
-040017Nefrologia                                                                                          202111
-040024Cirurgia do aparelho digestivo, orgãos anexos e parede abdominal(inclui pré e pós operatório)       202111
-040028Outras cirurgias plásticas/reparadoras                                                              202111
-040030Sequenciais                                                                                         202111
-040032Transplantes de orgãos, tecidos e células                                                           202111
-040033Medicamentos para transplante                                                                       202111
-040038OPM para transplantes                                                                               202111
-040041Central Nacional de Regulação de Alta Complexidade (CNRAC)                                          202111
-040044Redesignação e Acompanhamento                                                                       202111
-040049Implementar Cirg. CV Pediátrica                                                                     202111
-040055Transplante - Histocompatibilidade                                                                  202111
-040062Doenças Raras                                                                                       202111
-040063Cadeiras de Rodas                                                                                   202111
-040065Medicamentos em Urgência                                                                            202111
-040066Cirurgias Eletivas - Componente Único                                                               202111
-040067Atenção Especializada em Saúde Auditiva                                                             202111
-040068Terapias Especializadas em Angiologia                                                               202111
-040069Tratamento de Doença Macular                                                                        202111
-040070OPME Não Relacionados ao Ato Cirúrgico                                                              202111
-040071Diagnóstico/tratamento em oncologia                                                                 202111
-040072Diagnóstico de trombofilia em gestante                                                              202111
+040009Atendimento/acompanhamento em reabilitação física, mental, visual, auditiva e múltiplas deficiências202301
+040013Atendimento/acompanhamento de diagnóstico de doenças endocrinas/metabólicas e nutricionais          202301
+040017Nefrologia                                                                                          202301
+040024Cirurgia do aparelho digestivo, orgãos anexos e parede abdominal(inclui pré e pós operatório)       202301
+040028Outras cirurgias plásticas/reparadoras                                                              202301
+040030Sequenciais                                                                                         202301
+040032Transplantes de orgãos, tecidos e células                                                           202301
+040033Medicamentos para transplante                                                                       202301
+040038OPM para transplantes                                                                               202301
+040041Central Nacional de Regulação de Alta Complexidade (CNRAC)                                          202301
+040044Redesignação e Acompanhamento                                                                       202301
+040049Implementar Cirg. CV Pediátrica                                                                     202301
+040055Transplante - Histocompatibilidade                                                                  202301
+040062Doenças Raras                                                                                       202301
+040063Cadeiras de Rodas                                                                                   202301
+040065Medicamentos em Urgência                                                                            202301
+040066Cirurgias Eletivas - Componente Único                                                               202301
+040067Atenção Especializada em Saúde Auditiva                                                             202301
+040068Terapias Especializadas em Angiologia                                                               202301
+040069Tratamento de Doença Macular                                                                        202301
+040070OPME Não Relacionados ao Ato Cirúrgico                                                              202301
+040071Diagnóstico/tratamento em oncologia                                                                 202301
+040072Diagnóstico de trombofilia em gestante                                                              202301
+040073Reabilitação Pós-COVID-19                                                                           202301
+040074Telemedicina em Urgência                                                                            202301
+040075Fisioterapia Cardiovascular                                                                         202301
+040076Hemodinâmica em atendimento de urgência                                                             202301
+040077Exames Sorológicos e Imunológicos                                                                   202301
+040078QualiSUS Cardio.                                                                                    202301
+040079Pré-cirúrgico em Cirurgias Prioritárias                                                             202301

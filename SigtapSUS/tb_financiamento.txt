@@ -1,7 +1,7 @@
-01Atenção Básica (PAB)                                                                                202111
-02Assistência Farmacêutica                                                                            202111
-04Fundo de Ações Estratégicas e Compensações (FAEC)                                                   202111
-05Incentivo - MAC                                                                                     202111
-06Média e Alta Complexidade (MAC)                                                                     202111
-07Vigilância em Saúde                                                                                 202111
-08Gestão do SUS                                                                                       202111
+01Atenção Básica (PAB)                                                                                202301
+02Assistência Farmacêutica                                                                            202301
+04Fundo de Ações Estratégicas e Compensações (FAEC)                                                   202301
+05Incentivo - MAC                                                                                     202301
+06Média e Alta Complexidade (MAC)                                                                     202301
+07Vigilância em Saúde                                                                                 202301
+08Gestão do SUS                                                                                       202301

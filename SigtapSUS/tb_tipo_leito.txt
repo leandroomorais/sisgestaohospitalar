@@ -1,41 +1,41 @@
-01Cirúrgico                                                   202111
-02Obstétricos                                                 202111
-03Clínico                                                     202111
-04Crônicos                                                    202111
-05Psiquiatria                                                 202111
-06Pneumologia Sanitária (Tisiologia)                          202111
-07Pediátricos                                                 202111
-08Reabilitação                                                202111
-09Leito Dia / Cirúrgicos                                      202111
-10Leito Dia / Aids                                            202111
-11Leito Dia / Fibrose Cística                                 202111
-12Leito Dia / Intercorrência Pós-Transplante                  202111
-13Leito Dia / Geriatria                                       202111
-14Leito Dia / Saúde Mental                                    202111
-17Estabelecimento Exclusivo UTI SUS                           202111
-51UTI II ADULTO-SINDROME RESP. AGUDA GRAVE (SRAG)-COVID-19    202111
-52UTI II PEDIATRICO-SINDROME RESP. AGUDA GRAVE (SRAG)-COVID-19202111
-65Unidade Intermediária Neonatal                              202111
-74UTI I                                                       202111
-75UTI Adulto II                                               202111
-76UTI Adulto III                                              202111
-77UTI Infantil I                                              202111
-78UTI Infantil II                                             202111
-79UTI Infantil III                                            202111
-80UTI Neonatal I                                              202111
-81UTI Neonatal II                                             202111
-82UTI Neonatal III                                            202111
-83UTI Queimados                                               202111
-84Acolhimento Noturno                                         202111
-85UTI Coronariana-UCO tipo II                                 202111
-86UTI Coronariana-UCO tipo III                                202111
-87Saúde Mental (Clínico)                                      202111
-88Queimado Adulto (Clínico)                                   202111
-89Queimado Pediátrico (Clínico)                               202111
-90Queimado Adulto (Cirúrgico)                                 202111
-91Queimado Pediátrico (Cirúrgico)                             202111
-92UCI Unidade de Cuidados Intermediarios Neonatal Convencional202111
-93UCI Unidade de Cuidados Intermediarios Neonatal Canguru     202111
-94UCI Unidade de Cuidados Intermediarios Pediatrico           202111
-95UCI Unidade de Cuidados Intermediarios Adulto               202111
-96Suporte Ventilatório Pulmonar-COVID-19                      202111
+01Cirúrgico                                                   202301
+02Obstétricos                                                 202301
+03Clínico                                                     202301
+04Crônicos                                                    202301
+05Psiquiatria                                                 202301
+06Pneumologia Sanitária (Tisiologia)                          202301
+07Pediátricos                                                 202301
+08Reabilitação                                                202301
+09Leito Dia / Cirúrgicos                                      202301
+10Leito Dia / Aids                                            202301
+11Leito Dia / Fibrose Cística                                 202301
+12Leito Dia / Intercorrência Pós-Transplante                  202301
+13Leito Dia / Geriatria                                       202301
+14Leito Dia / Saúde Mental                                    202301
+17Estabelecimento Exclusivo UTI SUS                           202301
+51UTI II ADULTO-SINDROME RESP. AGUDA GRAVE (SRAG)-COVID-19    202301
+52UTI II PEDIATRICO-SINDROME RESP. AGUDA GRAVE (SRAG)-COVID-19202301
+65Unidade Intermediária Neonatal                              202301
+74UTI I                                                       202301
+75UTI Adulto II                                               202301
+76UTI Adulto III                                              202301
+77UTI Infantil I                                              202301
+78UTI Infantil II                                             202301
+79UTI Infantil III                                            202301
+80UTI Neonatal I                                              202301
+81UTI Neonatal II                                             202301
+82UTI Neonatal III                                            202301
+83UTI Queimados                                               202301
+84Acolhimento Noturno                                         202301
+85UTI Coronariana-UCO tipo II                                 202301
+86UTI Coronariana-UCO tipo III                                202301
+87Saúde Mental (Clínico)                                      202301
+88Queimado Adulto (Clínico)                                   202301
+89Queimado Pediátrico (Clínico)                               202301
+90Queimado Adulto (Cirúrgico)                                 202301
+91Queimado Pediátrico (Cirúrgico)                             202301
+92UCI Unidade de Cuidados Intermediarios Neonatal Convencional202301
+93UCI Unidade de Cuidados Intermediarios Neonatal Canguru     202301
+94UCI Unidade de Cuidados Intermediarios Pediatrico           202301
+95UCI Unidade de Cuidados Intermediarios Adulto               202301
+96Suporte Ventilatório Pulmonar-COVID-19                      202301

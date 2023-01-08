@@ -1,392 +1,395 @@
-010101Educação em saúde                                                                                   202111
-080301Deslocamento/Ajuda de custo                                                                         202111
-020101Coleta de material por meio de punção/biópsia                                                       202111
-020201Exames bioquimicos                                                                                  202111
-020301Exames citopatológicos                                                                              202111
-020401Exames radiológicos da cabeça e pescoço                                                             202111
-020501Ultra-sonografias do sistema circulatório (qualquer região anatômica)                               202111
-020601Tomografia da cabeça, pescoço e coluna vertebral                                                    202111
-020701RM da cabeça, pescoço e coluna vertebral                                                            202111
-020801Aparelho cardiovascular                                                                             202111
-020901Aparelho digestivo                                                                                  202111
-021001Exames radiológicos de vasos sangüíneos e linfáticos                                                202111
-021101Diagnóstico em angiologia                                                                           202111
-021201Exames do doador/receptor                                                                           202111
-021301Exames relacionados a doenças e agravos de notificação compulsória                                  202111
-021401Teste realizado fora da estrutura de laboratório                                                    202111
-030101Consultas médicas/outros profissionais  de nivel superior                                           202111
-030201Assistência fisioterapêutica em alterações obstétricas, neonatais e uroginecológicas                202111
-030301Tratamento de doenças infecciosas e parasitárias                                                    202111
-030401Radioterapia                                                                                        202111
-030501Tratamento dialítico                                                                                202111
-030601Procedimentos destinados a obtenção do sangue para fins de assistência hemoterapica                 202111
-030701Dentística                                                                                          202111
-030801Traumatismos                                                                                        202111
-030901Terapia nutricional                                                                                 202111
-031001Parto e nascimento                                                                                  202111
-040101Pequenas cirurgias                                                                                  202111
-040201Cirurgia de tireóide e paratireóide                                                                 202111
-040301Trauma e anomalias do desenvolvimento                                                               202111
-040401Cirurgia das vias aéreas superiores e do pescoço                                                    202111
-040501Palpebras e vias lacrimais                                                                          202111
-040601Cirurgia cardiovascular                                                                             202111
-040701Esôfago, estômago e duodeno                                                                         202111
-040801Cintura escapular                                                                                   202111
-040901Rim, ureter e bexiga                                                                                202111
-041001Mama                                                                                                202111
-041101Parto                                                                                               202111
-041201Traqueia e brônquios                                                                                202111
-041301Tratamento de queimados                                                                             202111
-041401Buco-maxilo-facial                                                                                  202111
-041501Múltiplas                                                                                           202111
-041601Urologia                                                                                            202111
-041701Anestesias                                                                                          202111
-041801Acessos para dialise                                                                                202111
-050101Coleta e exames para identificação de doador de células-tronco hematopoéticas (busca nacional)      202111
-050201Avaliação clínica de morte encefálica                                                               202111
-050301Ações relacionadas a doação de orgãos e tecidos para transpalnte                                    202111
-050401Processamento de córnea/esclera                                                                     202111
-050501Transplante de tecidos e células                                                                    202111
-050601Acompanhamento de paciente no pré e pós-transplante                                                 202111
-060101Agentes anticitocinas                                                                               202111
-060201Procoagulantes em coagulopatias hereditárias                                                        202111
-060301Antiinflamatórios                                                                                   202111
-060401Acido Aminosalicilico e Similares                                                                   202111
-070101OPM auxiliares da locomoção                                                                         202111
-070201OPM em neurocirurgia                                                                                202111
-080101Incentivos                                                                                          202111
-080201Diárias                                                                                             202111
-010201Vigilancia sanitária                                                                                202111
-010102Saúde bucal                                                                                         202111
-080202Outras ações                                                                                        202111
-020102Outras formas de coleta de material                                                                 202111
-020202Exames hematológicos e hemostasia                                                                   202111
-020302Exames anatomopatológicos                                                                           202111
-020402Exames radiológicos da coluna vertebral                                                             202111
-020502Ultra-sonografias dos demais sistemas                                                               202111
-020602Tomografia do torax e membros superiores                                                            202111
-020702RM do torax e membros superiores                                                                    202111
-020802Aparelho digestivo                                                                                  202111
-020902Aparelho urinário                                                                                   202111
-021002Vias biliares                                                                                       202111
-021102Diagnóstico em cardiologia                                                                          202111
-021202Procedimentos especiais em hemoterápica                                                             202111
-021302Exames relacionados ao meio ambiente                                                                202111
-030102Atendimento/Acompanhamento em saúde do trabalhador                                                  202111
-030202Assistência fisioterapêutica em alterações oncológicas                                              202111
-030302Tratamento de doenças do sangue, orgãos hematopoéticos e alguns transtornos imunitários             202111
-030402Quimioterapia paliativa - adulto                                                                    202111
-030502Tratamento em nefrologia em geral                                                                   202111
-030602Medicina transfusional                                                                              202111
-030702Endodontia                                                                                          202111
-030802Intoxicações e envenenamentos                                                                       202111
-030902Terapias em doenças alérgicas                                                                       202111
-040102Cirurgias de pele, tecido subcutâneo e mucosa                                                       202111
-040202Cirurgia da suprarrenal                                                                             202111
-040302Coluna e nervos periféricos                                                                         202111
-040402Cirurgia da face e do sistema estomatognático                                                       202111
-040502Músculos oculomotores                                                                               202111
-040602Cirurgia vascular                                                                                   202111
-040702Intestinos , reto e anus                                                                            202111
-040802Membros superiores                                                                                  202111
-040902Uretra                                                                                              202111
-041102Outras cirurgias relacionadas com o estado gestacional                                              202111
-041202Mediastino                                                                                          202111
-041302Reparadora em oncológica                                                                            202111
-041402Cirurgia oral                                                                                       202111
-041502Sequenciais                                                                                         202111
-041602Sistema linfático                                                                                   202111
-041802Intervençõess cirúrgicas em acessos para diálise                                                    202111
-050102Exames de histocompatibilidade para identificação de receptor de células-tronco hematopoéticas      202111
-050302Cirurgias para transplante - doador vivo                                                            202111
-050402Processamento de tecido ósteo-fascio-condro-ligamentoso humano                                      202111
-050502Transplante de orgãos                                                                               202111
-050602Intercorrência pós transplante                                                                      202111
-060102Antagonista do glutamato                                                                            202111
-060302Imunossupressores                                                                                   202111
-060402Agentes Quelantes de Ferro                                                                          202111
-070102OPM ortopédicas                                                                                     202111
-070202OPM em cirurgia buco-maxilo-facial                                                                  202111
-010202Vigilância em saúde do trabalhador                                                                  202111
-010103Visita domiciliar                                                                                   202111
-070203OPM em ortopedia                                                                                    202111
-020203Exames sorológicos e imunológicos                                                                   202111
-020403Exames radiológicos do torax e mediastino                                                           202111
-020603Tomografia do abdomen, pelve e membros inferiores                                                   202111
-020703RM do abdomen, pelve e membros inferiores                                                           202111
-020803Aparelho endócrino                                                                                  202111
-020903Aparelho ginecológico                                                                               202111
-021103Diagnóstico cinético funcional                                                                      202111
-030103Atendimento pré-hospitalar de urgência                                                              202111
-030203Assistência fisioterapêutica em oftalmologia                                                        202111
-030303Tratamento de doenças endocrinas, metabólicas e nutricionais                                        202111
-030403Quimioterapia para controle temporário de doença - adulto                                           202111
-030703Periodontia clínica                                                                                 202111
-030803Outras consequências de causas externas                                                             202111
-030903Terapias do aparelho geniturinário                                                                  202111
-040303Tumores do sistema nervoso                                                                          202111
-040403Anomalia Crânio e bucomaxilo facial                                                                 202111
-040503Corpo vítreo, retina, coróide e esclera                                                             202111
-040603Cardiologia intervencionista                                                                        202111
-040703Pancreas, baco, figado e vias biliares                                                              202111
-040803Coluna vertebral e caixa torácica                                                                   202111
-040903Próstata e vesicula seminal                                                                         202111
-041203Pleura                                                                                              202111
-041303Reparadora para lipodistrofia                                                                       202111
-041503Politraumatizados                                                                                   202111
-041603Cabeça e pescoço                                                                                    202111
-050103Coleta e exames para ident. de doador de célula-tronco hematopoéticas (busca internacional/nacional)202111
-050303Manutenção e retirada de orgãos e tecidos para transplante                                          202111
-050403Processamento de válvula/tubo valvado cardíaco humano                                               202111
-060103Antianêmicos não hormonais                                                                          202111
-060303Imunoterápicos                                                                                      202111
-060403Agonistas da Dopamina/inibidor da prolactina                                                        202111
-070103OPM em Otorrinolaringologia.                                                                        202111
-010203Vigilância epidemiológica - vacinas                                                                 202111
-010104Alimentação e nutrição                                                                              202111
-020204Exames coprológicos                                                                                 202111
-020404Exames radiológicos da cintura escapular e dos membros superiores                                   202111
-020804Aparelho geniturinário                                                                              202111
-020904Aparelho respiratório                                                                               202111
-021104Diagnóstico em ginecologia-obstetrícia                                                              202111
-030104Outros atendimentos realizados por profissionais de níveis superior                                 202111
-030204Assistência fisioterapêutica cardiovasculares e pneumo-funcionais                                   202111
-030304Tratamento de doenças do sistema nervoso central e periférico                                       202111
-030404Quimioterapia prévia (neoadjuvante/citorredutora)- adulto                                           202111
-030704Moldagem/Manutenção                                                                                 202111
-030804Complicações consequentes a procedimentos em saúde                                                  202111
-030904Terapias do aparelho cardiovascular                                                                 202111
-040304Neurocirurgias vasculares                                                                           202111
-040504Cavidade orbitária e globo ocular                                                                   202111
-040604Cirurgia endovascular                                                                               202111
-040704Parede e cavidade abdominal                                                                         202111
-040804Cintura pélvica                                                                                     202111
-040904Bolsa escrotal, testículos e cordão espermático                                                     202111
-041204Parede torácica                                                                                     202111
-041304Outras cirurgias plásticas/reparadoras                                                              202111
-041504Procedimentos cirúrgicos gerais                                                                     202111
-041604Esôfago-gastro duodenal e vísceras anexas e outros orgãos intra-abdominais                          202111
-050104Exames imunogenéticos/histocompatibilidade para identificação de doador de orgãos                   202111
-050304Açõess complementares destinadas a doação de orgãos, tecidos e células.                             202111
-050404Processamento de pele humana                                                                        202111
-060104Antianêmicos hormonais                                                                              202111
-060304Reguladores de atividade hormonal - inibidores da prolactina                                        202111
-060404Agonistas seletivos dos receptores beta 2 adrenérgicos                                              202111
-070104OPM oftalmológicas                                                                                  202111
-070204OPM em assistência cardiovascular                                                                   202111
-060305Antitrombóticos                                                                                     202111
-060105Antiasmáticos                                                                                       202111
-070105OPM em gastroenterologia                                                                            202111
-070205OPM comuns                                                                                          202111
-010105Praticas integrativas/complementares                                                                202111
-020205Exames de uroanálise                                                                                202111
-020405Exames radiológicos do abdomen e pelve                                                              202111
-020805Aparelho esquelético                                                                                202111
-021105Diagnóstico em neurologia                                                                           202111
-030105Atenção domiciliar                                                                                  202111
-030205Assistência fisioterapêutica nas disfunções musculo esqueleticas (todas as origens)                 202111
-030305Tratamento de doenças do aparelho da visão                                                          202111
-030405Quimioterapia adjuvante (profilática) - adulto                                                      202111
-030905Práticas integrativas e complementares                                                              202111
-040305Tratamento neurocirúrgico da dor funcional                                                          202111
-040505Conjuntiva, córnea, câmara anterior, íris, corpo ciliar e cristalino                                202111
-040605Eletrofisiologia                                                                                    202111
-040805Membros inferiores                                                                                  202111
-040905Pênis                                                                                               202111
-041205Pulmão                                                                                              202111
-041605Colo-proctologia                                                                                    202111
-050105Exames imunogenéticos/histocompatibilidade para identificação de receptor de orgãos                 202111
-060405Alcalóides naturais do ópio                                                                         202111
-060306Tensiolítico alveolar                                                                               202111
-060106Antibióticos                                                                                        202111
-070106OPM em urologia                                                                                     202111
-070206OPM em urologia                                                                                     202111
-020206Exames hormonais                                                                                    202111
-020406Exames radiológicos da cintura pélvica e dos membros inferiores                                     202111
-020806Aparelho nervoso                                                                                    202111
-021106Diagnóstico em oftalmologia                                                                         202111
-030106Consulta/Atendimento ás urgências (em geral)                                                        202111
-030206Assistência fisioterapêutica nas alterações em neurologia                                           202111
-030306Tratamento de doenças cardiovasculares                                                              202111
-030406Quimioterapia curativa - adulto                                                                     202111
-030906Acessos venosos                                                                                     202111
-040306Investigação e cirurgia da epilepsia                                                                202111
-040806Gerais                                                                                              202111
-040906Útero e anexos                                                                                      202111
-041606Ginecologia                                                                                         202111
-050106Exames gráficos ou por imagem para diagnóstico de morte encefálica                                  202111
-060406Alimentos dietéticos isentos de fenilalanina                                                        202111
-060307Hemoderivados                                                                                       202111
-060107Antiepiléticos                                                                                      202111
-070107OPM em odontologia                                                                                  202111
-070207OPM em cirurgias oftálmicas                                                                         202111
-020207Exames toxicológicos ou de monitorização terapêutica                                                202111
-020807Aparelho respiratório                                                                               202111
-021107Diagnóstico em otorrinolaringologia/fonoaudiologia                                                  202111
-030107Atendimento/acompanhamento em reabilitação física, mental, visual e múltiplas deficiências          202111
-030207Assistência fisioterapêutica em queimados                                                           202111
-030307Tratamento de doenças do aparelho digestivo                                                         202111
-030407Quimioterapia de tumores de crianca e adolescente                                                   202111
-030907Angiologia                                                                                          202111
-040307Tratamento neuro-endovascular                                                                       202111
-040907Vagina, vulva e períneo                                                                             202111
-041607Oftalmologia                                                                                        202111
-050107Outros exames complementares para doação de orgãos, tecidos e células                               202111
-060407Aminas Terciárias                                                                                   202111
-060308Medicamentos para transplante                                                                       202111
-060408Aminoquinolinas                                                                                     202111
-070108OPM de anomalias buco-maxilo-facial                                                                 202111
-070208OPM em cirurgia plástica/reparadora                                                                 202111
-020208Exames microbiológicos                                                                              202111
-020808Aparelho hematológico                                                                               202111
-060108Antiinflamatórios                                                                                   202111
-030108Atendimento/Acompanhamento psicossocial                                                             202111
-030308Tratamento de doenças da pele e do tecido  subcutâneo                                               202111
-030408Quimioterapia - procedimentos especiais                                                             202111
-040308Neurocirurgia funcional estereotáxica                                                               202111
-041608Pele e cirurgia plástica                                                                            202111
-050108Exames complementares para pacientes transplantados                                                 202111
-021108Diagnóstico em pneumologia                                                                          202111
-060109Antiinflamatórios intestinais                                                                       202111
-060409Análogos da mostarda nitrogenada                                                                    202111
-070109Substituição/Troca em órteses/próteses                                                              202111
-070209OPM em cirurgia de otorrinolaringologia                                                             202111
-020209Exames em outros líquidos biológicos                                                                202111
-020809Outros métodos de diagnóstico em medicina nuclear in vivo                                           202111
-021109Diagnóstico em urologia                                                                             202111
-030109Atendimento/Acompanhamento em saúde do idoso                                                        202111
-030309Tratamento de doenças do sistema osteomuscular e do tecido conjuntivo                               202111
-030409Medicina nuclear - terapêutica oncológica                                                           202111
-041609Ossos e partes moles                                                                                202111
-070110OPM em queimados                                                                                    202111
-030310Tratamento durante a gestação, parto e puerpério                                                    202111
-030410Gerais em oncologia                                                                                 202111
-021110Diagnóstico em psicologia-psiquiatria                                                               202111
-041610Neurocirurgia                                                                                       202111
-060410Vasopressina e Análogos                                                                             202111
-030110Atendimentos de enfermagem (em geral)                                                               202111
-070210OPM em nefrologia                                                                                   202111
-060110Antiparkinsonianos                                                                                  202111
-020210Exames de genética                                                                                  202111
-030311Tratamento de malformações congênitas, deformidades e anomalias cromossômicas                       202111
-030111Atendimento/Acompanhamento queimados                                                                202111
-021111Diagnóstico em cardiologia intervencionista                                                         202111
-020211Exames para triagem neonatal                                                                        202111
-070211OPM em queimados                                                                                    202111
-060411Análogos do hormônio liberador de gonadotrofina                                                     202111
-060111Antipsicóticos                                                                                      202111
-041611Cirurgia torácica                                                                                   202111
-020212Exames imunohematológicos                                                                           202111
-030112Atendimento/acompanhamento de diagnóstico de doenças endocrinas/metabolicas e nutricionais          202111
-021112Diagnóstico em traumato-ortopedia                                                                   202111
-030312Tratamentos por medicina nuclear in vivo                                                            202111
-060412Antiandrogênios                                                                                     202111
-060112Antivirais                                                                                          202111
-041612Mastologia                                                                                          202111
-070212OPM para transplantes                                                                               202111
-041613Otorrinolaringologia                                                                                202111
-030113Acompanhamento em outras especialidades                                                             202111
-030313Tratamento de pacientes sob cuidados prolongados                                                    202111
-060413Anticolinesterases                                                                                  202111
-060113Bloqueadores neuromusculares                                                                        202111
-060114Ceratolíticos sistêmicos                                                                            202111
-030114Cuidados Paliativos                                                                                 202111
-030314Tratamento de doenças do ouvido/apófise mastóide e vias aéreas                                      202111
-060414Antigonadotrofinas e agentes similares                                                              202111
-060415Barbitúricos e derivados                                                                            202111
-060115Complementos alimentares para fenilcetonúricos                                                      202111
-030315Tratamento das doenças do aparelho geniturinário                                                    202111
-030316Tratamento de algumas afecçõess originadas no período neonatal                                      202111
-060116Fatores de crescimento mielóides                                                                    202111
-060416Bisfosfonados                                                                                       202111
-030317Tratamento dos transtornos mentais e comportamentais                                                202111
-060117Hipnoanalgésicos                                                                                    202111
-060417Compostos de Alumínio                                                                               202111
-060418Derivados da benzodiazepina                                                                         202111
-060118Hipolipemiantes                                                                                     202111
-030318Tratamento HIV/Aids                                                                                 202111
-060419Derivados de ácidos graxos                                                                          202111
-030319Reabilitação                                                                                        202111
-060119Imunomoduladores                                                                                    202111
-060120Imunossupressores                                                                                   202111
-060420Derivados do adamantano                                                                             202111
-060121Imunoterapicos                                                                                      202111
-060421Derivados do indol                                                                                  202111
-060122Inibidores da acetilcolinesterase                                                                   202111
-060422Derivados da succinimida                                                                            202111
-060123Mucolíticos                                                                                         202111
-060423Diazepinas, oxazepinas e tiazepinas                                                                 202111
-060124Quelantes do ferro                                                                                  202111
-060424 Enzimas                                                                                            202111
-060125Outros quelantes                                                                                    202111
-060425Fatores de estimulação de colônias                                                                  202111
-060126Reguladores da atividade hormonal-agonistas da vasopressina                                         202111
-060426Ferro trivalente, preparações parenterais                                                           202111
-060127Reguladores da atividade hormonal-analogos do GNRH                                                  202111
-060427Fibratos, Acido Nicotínico e seus derivados                                                         202111
-060128Reguladores da atividade hormonal-antiandrogênicos                                                  202111
-060428Glicocorticóides                                                                                    202111
-060429Somatostatina e Análogos                                                                            202111
-060129Reguladores da atividade hormonal-inibidores das gonadotrofinas                                     202111
-060130Reguladores da atividade hormonal-inibidores do hormônio do crescimento                             202111
-060430 Imunoglobulinas específicas                                                                        202111
-060131Reguladores da atividade hormonal-inibidores de prolactina                                          202111
-060431Imunoglobulinas, humana normal                                                                      202111
-060132Reguladores da atividade hormonal-hormonios de crescimento                                          202111
-060432Imunossupressores seletivos                                                                         202111
-060433Inibidores da agregação plaquetária, excl. heparina                                                 202111
-060133Reguladores da atividade hormonal-hormonios tireoidianos                                            202111
-060134Reguladores da atividade hormonal-mineralocorticóides                                               202111
-060434Inibidores da calcineurina                                                                          202111
-060135Reguladores da homeostase do cálcio                                                                 202111
-060435Inibidores da fosfodiesterase                                                                       202111
-060136Repositores enzimáticos                                                                             202111
-060436Inibidores da HMG-CoA redutase                                                                      202111
-060437Inibidores da monoamino oxidase tipo b                                                              202111
-060438Inibidores do fator de necrose tumoral alfa (TNF-a)                                                 202111
-060439Interferonas                                                                                        202111
-060440Medicamentos para tratamento da hipercalemia e hiperfosfatemia                                      202111
-060441Medicamentos utilizados na dependência de opióides                                                  202111
-060442Mineralocorticóides                                                                                 202111
-060443Modulador seletivo de receptor de estrogênio                                                        202111
-060444Mucolíticos                                                                                         202111
-060445Nucleosídeo e nucleotídeo (excl. inibidores da transcriptase reversa)                               202111
-060446Nucleosídeo e nucleotídeo, Inibidor da transcriptase reversa                                        202111
-060447Outras preparações antianêmicas                                                                     202111
-060448Outros agentes citotóxicos                                                                          202111
-060449Outros agentes dopaminérgicos                                                                       202111
-060450Outros antiepilépticos                                                                              202111
-060451Outros antipsicóticos                                                                               202111
-060452Outros imunoestimulantes                                                                            202111
-060453Outros imunossupressores                                                                            202111
-060454Outros medicamentos do sistema nervoso                                                              202111
-060455Outros relaxantes musculares de ação periférica                                                     202111
-060456Penicilamina e agentes similares                                                                    202111
-060457Preparações de calcitonina                                                                          202111
-060458Preparações de enzimas                                                                              202111
-060459Retinóides para tratamento da acne                                                                  202111
-060460Retinóides para tratamento da psoríase                                                              202111
-060461Somatropina e agonistas da somatropina                                                              202111
-060462Vitamina D e análogos, incluido combinação dos dois                                                 202111
-060463Produtos diversos para o trato alimentar ou metabolismo                                             202111
-060464Inibidores de Protease                                                                              202111
-060465Análogos das Prostaglandinas                                                                        202111
-060466Inibidores da Anidrase Carbonica                                                                    202111
-060467Simpatomiméticos na Terapia de Glaucoma                                                             202111
-060468Anticorpos Monoclonais                                                                              202111
-060469Inibidores de Interleucinas                                                                         202111
-060470Outros Antipsoriaticos de Uso Tópico                                                                202111
-060471Corticoesteróides de Potência Muito Alta (Grupo IV)                                                 202111
-060472Derivados do Ácido Propriônico                                                                      202111
-060473Parassimpaticomiméticos                                                                             202111
-060474Agentes Beta Bloqueadores                                                                           202111
-060475Outros Anti-hipertensivos                                                                           202111
-060476Outros Antivirais                                                                                   202111
-060477Outros Agentes Antiparatireoide                                                                     202111
-060478Insulinas Análogas de Ação Rápida de Uso Injetável                                                  202111
-060479Outras Drogas para Desordem do Sistema Músculo Esquelético                                          202111
-060480Agentes antitrombóticos                                                                             202111
-060481Outros Aminoglicosídeos                                                                             202111
-060482Inibidores do co-transportador 2 de sódio-glicose (SGLT2)                                           202111
-060483Agentes que atuam no sistema renina- angiotensina                                                   202111
-060484Outras drogas sistêmicas para doenças respiratórias obstrutivas                                     202111
+010101Educação em saúde                                                                                   202301
+080301Deslocamento/Ajuda de custo                                                                         202301
+020101Coleta de material por meio de punção/biópsia                                                       202301
+020201Exames bioquimicos                                                                                  202301
+020301Exames citopatológicos                                                                              202301
+020401Exames radiológicos da cabeça e pescoço                                                             202301
+020501Ultra-sonografias do sistema circulatório (qualquer região anatômica)                               202301
+020601Tomografia da cabeça, pescoço e coluna vertebral                                                    202301
+020701RM da cabeça, pescoço e coluna vertebral                                                            202301
+020801Aparelho cardiovascular                                                                             202301
+020901Aparelho digestivo                                                                                  202301
+021001Exames radiológicos de vasos sangüíneos e linfáticos                                                202301
+021101Diagnóstico em angiologia                                                                           202301
+021201Exames do doador/receptor                                                                           202301
+021301Exames relacionados a doenças e agravos de notificação compulsória                                  202301
+021401Teste realizado fora da estrutura de laboratório                                                    202301
+030101Consultas médicas/outros profissionais  de nivel superior                                           202301
+030201Assistência fisioterapêutica em alterações obstétricas, neonatais e uroginecológicas                202301
+030301Tratamento de doenças infecciosas e parasitárias                                                    202301
+030401Radioterapia                                                                                        202301
+030501Tratamento dialítico                                                                                202301
+030601Procedimentos destinados a obtenção do sangue para fins de assistência hemoterapica                 202301
+030701Dentística                                                                                          202301
+030801Traumatismos                                                                                        202301
+030901Terapia nutricional                                                                                 202301
+031001Parto e nascimento                                                                                  202301
+040101Pequenas cirurgias                                                                                  202301
+040201Cirurgia de tireóide e paratireóide                                                                 202301
+040301Trauma e anomalias do desenvolvimento                                                               202301
+040401Cirurgia das vias aéreas superiores e do pescoço                                                    202301
+040501Palpebras e vias lacrimais                                                                          202301
+040601Cirurgia cardiovascular                                                                             202301
+040701Esôfago, estômago e duodeno                                                                         202301
+040801Cintura escapular                                                                                   202301
+040901Rim, ureter e bexiga                                                                                202301
+041001Mama                                                                                                202301
+041101Parto                                                                                               202301
+041201Traqueia e brônquios                                                                                202301
+041301Tratamento de queimados                                                                             202301
+041401Buco-maxilo-facial                                                                                  202301
+041501Múltiplas                                                                                           202301
+041601Urologia                                                                                            202301
+041701Anestesias                                                                                          202301
+041801Acessos para dialise                                                                                202301
+050101Coleta e exames para identificação de doador de células-tronco hematopoéticas (busca nacional)      202301
+050201Avaliação clínica de morte encefálica                                                               202301
+050301Ações relacionadas a doação de orgãos e tecidos para transpalnte                                    202301
+050401Processamento de córnea/esclera                                                                     202301
+050501Transplante de tecidos e células                                                                    202301
+050601Acompanhamento de paciente no pré e pós-transplante                                                 202301
+060101Agentes anticitocinas                                                                               202301
+060201Procoagulantes em coagulopatias hereditárias                                                        202301
+060301Antiinflamatórios                                                                                   202301
+060401Acido Aminosalicilico e Similares                                                                   202301
+070101OPM auxiliares da locomoção                                                                         202301
+070201OPM em neurocirurgia                                                                                202301
+080101Incentivos                                                                                          202301
+080201Diárias                                                                                             202301
+010201Vigilancia sanitária                                                                                202301
+010102Saúde bucal                                                                                         202301
+080202Outras ações                                                                                        202301
+020102Outras formas de coleta de material                                                                 202301
+020202Exames hematológicos e hemostasia                                                                   202301
+020302Exames anatomopatológicos                                                                           202301
+020402Exames radiológicos da coluna vertebral                                                             202301
+020502Ultra-sonografias dos demais sistemas                                                               202301
+020602Tomografia do torax e membros superiores                                                            202301
+020702RM do torax e membros superiores                                                                    202301
+020802Aparelho digestivo                                                                                  202301
+020902Aparelho urinário                                                                                   202301
+021002Vias biliares                                                                                       202301
+021102Diagnóstico em cardiologia                                                                          202301
+021202Procedimentos especiais em hemoterápica                                                             202301
+021302Exames relacionados ao meio ambiente                                                                202301
+030102Atendimento/Acompanhamento em saúde do trabalhador                                                  202301
+030202Assistência fisioterapêutica em alterações oncológicas                                              202301
+030302Tratamento de doenças do sangue, orgãos hematopoéticos e alguns transtornos imunitários             202301
+030402Quimioterapia paliativa - adulto                                                                    202301
+030502Tratamento em nefrologia em geral                                                                   202301
+030602Medicina transfusional                                                                              202301
+030702Endodontia                                                                                          202301
+030802Intoxicações e envenenamentos                                                                       202301
+030902Terapias em doenças alérgicas                                                                       202301
+040102Cirurgias de pele, tecido subcutâneo e mucosa                                                       202301
+040202Cirurgia da suprarrenal                                                                             202301
+040302Coluna e nervos periféricos                                                                         202301
+040402Cirurgia da face e do sistema estomatognático                                                       202301
+040502Músculos oculomotores                                                                               202301
+040602Cirurgia vascular                                                                                   202301
+040702Intestinos , reto e anus                                                                            202301
+040802Membros superiores                                                                                  202301
+040902Uretra                                                                                              202301
+041102Outras cirurgias relacionadas com o estado gestacional                                              202301
+041202Mediastino                                                                                          202301
+041302Reparadora em oncológica                                                                            202301
+041402Cirurgia oral                                                                                       202301
+041502Sequenciais                                                                                         202301
+041602Sistema linfático                                                                                   202301
+041802Intervençõess cirúrgicas em acessos para diálise                                                    202301
+050102Exames de histocompatibilidade para identificação de receptor de células-tronco hematopoéticas      202301
+050302Cirurgias para transplante - doador vivo                                                            202301
+050402Processamento de tecido ósteo-fascio-condro-ligamentoso humano                                      202301
+050502Transplante de orgãos                                                                               202301
+050602Intercorrência pós transplante                                                                      202301
+060102Antagonista do glutamato                                                                            202301
+060302Imunossupressores                                                                                   202301
+060402Agentes Quelantes de Ferro                                                                          202301
+070102OPM ortopédicas                                                                                     202301
+070202OPM em cirurgia buco-maxilo-facial                                                                  202301
+010202Vigilância em saúde do trabalhador                                                                  202301
+010103Visita domiciliar                                                                                   202301
+070203OPM em ortopedia                                                                                    202301
+020203Exames sorológicos e imunológicos                                                                   202301
+020403Exames radiológicos do torax e mediastino                                                           202301
+020603Tomografia do abdomen, pelve e membros inferiores                                                   202301
+020703RM do abdomen, pelve e membros inferiores                                                           202301
+020803Aparelho endócrino                                                                                  202301
+020903Aparelho ginecológico                                                                               202301
+021103Diagnóstico cinético funcional                                                                      202301
+030103Atendimento pré-hospitalar de urgência                                                              202301
+030203Assistência fisioterapêutica em oftalmologia                                                        202301
+030303Tratamento de doenças endocrinas, metabólicas e nutricionais                                        202301
+030403Quimioterapia para controle temporário de doença - adulto                                           202301
+030703Periodontia clínica                                                                                 202301
+030803Outras consequências de causas externas                                                             202301
+030903Terapias do aparelho geniturinário                                                                  202301
+040303Tumores do sistema nervoso                                                                          202301
+040403Anomalia Crânio e bucomaxilo facial                                                                 202301
+040503Corpo vítreo, retina, coróide e esclera                                                             202301
+040603Cardiologia intervencionista                                                                        202301
+040703Pancreas, baco, figado e vias biliares                                                              202301
+040803Coluna vertebral e caixa torácica                                                                   202301
+040903Próstata e vesicula seminal                                                                         202301
+041203Pleura                                                                                              202301
+041303Reparadora para lipodistrofia                                                                       202301
+041503Politraumatizados                                                                                   202301
+041603Cabeça e pescoço                                                                                    202301
+050103Coleta e exames para ident. de doador de célula-tronco hematopoéticas (busca internacional/nacional)202301
+050303Manutenção e retirada de orgãos e tecidos para transplante                                          202301
+050403Processamento de válvula/tubo valvado cardíaco humano                                               202301
+060103Antianêmicos não hormonais                                                                          202301
+060303Imunoterápicos                                                                                      202301
+060403Agonistas da Dopamina/inibidor da prolactina                                                        202301
+070103OPM em Otorrinolaringologia.                                                                        202301
+010203Vigilância epidemiológica - vacinas                                                                 202301
+010104Alimentação e nutrição                                                                              202301
+020204Exames coprológicos                                                                                 202301
+020404Exames radiológicos da cintura escapular e dos membros superiores                                   202301
+020804Aparelho geniturinário                                                                              202301
+020904Aparelho respiratório                                                                               202301
+021104Diagnóstico em ginecologia-obstetrícia                                                              202301
+030104Outros atendimentos realizados por profissionais de níveis superior                                 202301
+030204Assistência fisioterapêutica cardiovasculares e pneumo-funcionais                                   202301
+030304Tratamento de doenças do sistema nervoso central e periférico                                       202301
+030404Quimioterapia prévia (neoadjuvante/citorredutora)- adulto                                           202301
+030704Moldagem/Manutenção                                                                                 202301
+030804Complicações consequentes a procedimentos em saúde                                                  202301
+030904Terapias do aparelho cardiovascular                                                                 202301
+040304Neurocirurgias vasculares                                                                           202301
+040504Cavidade orbitária e globo ocular                                                                   202301
+040604Cirurgia endovascular                                                                               202301
+040704Parede e cavidade abdominal                                                                         202301
+040804Cintura pélvica                                                                                     202301
+040904Bolsa escrotal, testículos e cordão espermático                                                     202301
+041204Parede torácica                                                                                     202301
+041304Outras cirurgias plásticas/reparadoras                                                              202301
+041504Procedimentos cirúrgicos gerais                                                                     202301
+041604Esôfago-gastro duodenal e vísceras anexas e outros orgãos intra-abdominais                          202301
+050104Exames imunogenéticos/histocompatibilidade para identificação de doador de orgãos                   202301
+050304Açõess complementares destinadas a doação de orgãos, tecidos e células.                             202301
+050404Processamento de pele humana                                                                        202301
+060104Antianêmicos hormonais                                                                              202301
+060304Reguladores de atividade hormonal - inibidores da prolactina                                        202301
+060404Agonistas seletivos dos receptores beta 2 adrenérgicos                                              202301
+070104OPM oftalmológicas                                                                                  202301
+070204OPM em assistência cardiovascular                                                                   202301
+060305Antitrombóticos                                                                                     202301
+060105Antiasmáticos                                                                                       202301
+070105OPM em gastroenterologia                                                                            202301
+070205OPM comuns                                                                                          202301
+010105Praticas integrativas/complementares                                                                202301
+020205Exames de uroanálise                                                                                202301
+020405Exames radiológicos do abdomen e pelve                                                              202301
+020805Aparelho esquelético                                                                                202301
+021105Diagnóstico em neurologia                                                                           202301
+030105Atenção domiciliar                                                                                  202301
+030205Assistência fisioterapêutica nas disfunções musculo esqueleticas (todas as origens)                 202301
+030305Tratamento de doenças do aparelho da visão                                                          202301
+030405Quimioterapia adjuvante (profilática) - adulto                                                      202301
+030905Práticas integrativas e complementares                                                              202301
+040305Tratamento neurocirúrgico da dor funcional                                                          202301
+040505Conjuntiva, córnea, câmara anterior, íris, corpo ciliar e cristalino                                202301
+040605Eletrofisiologia                                                                                    202301
+040805Membros inferiores                                                                                  202301
+040905Pênis                                                                                               202301
+041205Pulmão                                                                                              202301
+041605Colo-proctologia                                                                                    202301
+050105Exames imunogenéticos/histocompatibilidade para identificação de receptor de orgãos                 202301
+060405Alcalóides naturais do ópio                                                                         202301
+060306Tensiolítico alveolar                                                                               202301
+060106Antibióticos                                                                                        202301
+070106OPM em urologia                                                                                     202301
+070206OPM em urologia                                                                                     202301
+020206Exames hormonais                                                                                    202301
+020406Exames radiológicos da cintura pélvica e dos membros inferiores                                     202301
+020806Aparelho nervoso                                                                                    202301
+021106Diagnóstico em oftalmologia                                                                         202301
+030106Consulta/Atendimento ás urgências (em geral)                                                        202301
+030206Assistência fisioterapêutica nas alterações em neurologia                                           202301
+030306Tratamento de doenças cardiovasculares                                                              202301
+030406Quimioterapia curativa - adulto                                                                     202301
+030906Acessos venosos                                                                                     202301
+040306Investigação e cirurgia da epilepsia                                                                202301
+040806Gerais                                                                                              202301
+040906Útero e anexos                                                                                      202301
+041606Ginecologia                                                                                         202301
+050106Exames gráficos ou por imagem para diagnóstico de morte encefálica                                  202301
+060406Alimentos dietéticos isentos de fenilalanina                                                        202301
+060307Hemoderivados                                                                                       202301
+060107Antiepiléticos                                                                                      202301
+070107OPM em odontologia                                                                                  202301
+070207OPM em cirurgias oftálmicas                                                                         202301
+020207Exames toxicológicos ou de monitorização terapêutica                                                202301
+020807Aparelho respiratório                                                                               202301
+021107Diagnóstico em otorrinolaringologia/fonoaudiologia                                                  202301
+030107Atendimento/acompanhamento em reabilitação física, mental, visual e múltiplas deficiências          202301
+030207Assistência fisioterapêutica em queimados                                                           202301
+030307Tratamento de doenças do aparelho digestivo                                                         202301
+030407Quimioterapia de tumores de crianca e adolescente                                                   202301
+030907Angiologia                                                                                          202301
+040307Tratamento neuro-endovascular                                                                       202301
+040907Vagina, vulva e períneo                                                                             202301
+041607Oftalmologia                                                                                        202301
+050107Outros exames complementares para doação de orgãos, tecidos e células                               202301
+060407Aminas Terciárias                                                                                   202301
+060308Medicamentos para transplante                                                                       202301
+060408Aminoquinolinas                                                                                     202301
+070108OPM de anomalias buco-maxilo-facial                                                                 202301
+070208OPM em cirurgia plástica/reparadora                                                                 202301
+020208Exames microbiológicos                                                                              202301
+020808Aparelho hematológico                                                                               202301
+060108Antiinflamatórios                                                                                   202301
+030108Atendimento/Acompanhamento psicossocial                                                             202301
+030308Tratamento de doenças da pele e do tecido  subcutâneo                                               202301
+030408Quimioterapia - procedimentos especiais                                                             202301
+040308Neurocirurgia funcional estereotáxica                                                               202301
+041608Pele e cirurgia plástica                                                                            202301
+050108Exames complementares para pacientes transplantados                                                 202301
+021108Diagnóstico em pneumologia                                                                          202301
+060109Antiinflamatórios intestinais                                                                       202301
+060409Análogos da mostarda nitrogenada                                                                    202301
+070109Substituição/Troca em órteses/próteses                                                              202301
+070209OPM em cirurgia de otorrinolaringologia                                                             202301
+020209Exames em outros líquidos biológicos                                                                202301
+020809Outros métodos de diagnóstico em medicina nuclear in vivo                                           202301
+021109Diagnóstico em urologia                                                                             202301
+030109Atendimento/Acompanhamento em saúde do idoso                                                        202301
+030309Tratamento de doenças do sistema osteomuscular e do tecido conjuntivo                               202301
+030409Medicina nuclear - terapêutica oncológica                                                           202301
+041609Ossos e partes moles                                                                                202301
+070110OPM em queimados                                                                                    202301
+030310Tratamento durante a gestação, parto e puerpério                                                    202301
+030410Gerais em oncologia                                                                                 202301
+021110Diagnóstico em psicologia-psiquiatria                                                               202301
+041610Neurocirurgia                                                                                       202301
+060410Vasopressina e Análogos                                                                             202301
+030110Atendimentos de enfermagem (em geral)                                                               202301
+070210OPM em nefrologia                                                                                   202301
+060110Antiparkinsonianos                                                                                  202301
+020210Exames de genética                                                                                  202301
+030311Tratamento de malformações congênitas, deformidades e anomalias cromossômicas                       202301
+030111Atendimento/Acompanhamento queimados                                                                202301
+021111Diagnóstico em cardiologia intervencionista                                                         202301
+020211Exames para triagem neonatal                                                                        202301
+070211OPM em queimados                                                                                    202301
+060411Análogos do hormônio liberador de gonadotrofina                                                     202301
+060111Antipsicóticos                                                                                      202301
+041611Cirurgia torácica                                                                                   202301
+020212Exames imunohematológicos                                                                           202301
+030112Atendimento/acompanhamento de diagnóstico de doenças endocrinas/metabolicas e nutricionais          202301
+021112Diagnóstico em traumato-ortopedia                                                                   202301
+030312Tratamentos por medicina nuclear in vivo                                                            202301
+060412Antiandrogênios                                                                                     202301
+060112Antivirais                                                                                          202301
+041612Mastologia                                                                                          202301
+070212OPM para transplantes                                                                               202301
+041613Otorrinolaringologia                                                                                202301
+030113Acompanhamento em outras especialidades                                                             202301
+030313Tratamento de pacientes sob cuidados prolongados                                                    202301
+060413Anticolinesterases                                                                                  202301
+060113Bloqueadores neuromusculares                                                                        202301
+060114Ceratolíticos sistêmicos                                                                            202301
+030114Cuidados Paliativos                                                                                 202301
+030314Tratamento de doenças do ouvido/apófise mastóide e vias aéreas                                      202301
+060414Antigonadotrofinas e agentes similares                                                              202301
+060415Barbitúricos e derivados                                                                            202301
+060115Complementos alimentares para fenilcetonúricos                                                      202301
+030315Tratamento das doenças do aparelho geniturinário                                                    202301
+030316Tratamento de algumas afecçõess originadas no período neonatal                                      202301
+060116Fatores de crescimento mielóides                                                                    202301
+060416Bisfosfonados                                                                                       202301
+030317Tratamento dos transtornos mentais e comportamentais                                                202301
+060117Hipnoanalgésicos                                                                                    202301
+060417Compostos de Alumínio                                                                               202301
+060418Derivados da benzodiazepina                                                                         202301
+060118Hipolipemiantes                                                                                     202301
+030318Tratamento HIV/Aids                                                                                 202301
+060419Derivados de ácidos graxos                                                                          202301
+030319Reabilitação                                                                                        202301
+060119Imunomoduladores                                                                                    202301
+060120Imunossupressores                                                                                   202301
+060420Derivados do adamantano                                                                             202301
+060121Imunoterapicos                                                                                      202301
+060421Derivados do indol                                                                                  202301
+060122Inibidores da acetilcolinesterase                                                                   202301
+060422Derivados da succinimida                                                                            202301
+060123Mucolíticos                                                                                         202301
+060423Diazepinas, oxazepinas e tiazepinas                                                                 202301
+060124Quelantes do ferro                                                                                  202301
+060424 Enzimas                                                                                            202301
+060125Outros quelantes                                                                                    202301
+060425Fatores de estimulação de colônias                                                                  202301
+060126Reguladores da atividade hormonal-agonistas da vasopressina                                         202301
+060426Ferro trivalente, preparações parenterais                                                           202301
+060127Reguladores da atividade hormonal-analogos do GNRH                                                  202301
+060427Fibratos, Acido Nicotínico e seus derivados                                                         202301
+060128Reguladores da atividade hormonal-antiandrogênicos                                                  202301
+060428Glicocorticóides                                                                                    202301
+060429Somatostatina e Análogos                                                                            202301
+060129Reguladores da atividade hormonal-inibidores das gonadotrofinas                                     202301
+060130Reguladores da atividade hormonal-inibidores do hormônio do crescimento                             202301
+060430 Imunoglobulinas específicas                                                                        202301
+060131Reguladores da atividade hormonal-inibidores de prolactina                                          202301
+060431Imunoglobulinas, humana normal                                                                      202301
+060132Reguladores da atividade hormonal-hormonios de crescimento                                          202301
+060432Imunossupressores seletivos                                                                         202301
+060433Inibidores da agregação plaquetária, excl. heparina                                                 202301
+060133Reguladores da atividade hormonal-hormonios tireoidianos                                            202301
+060134Reguladores da atividade hormonal-mineralocorticóides                                               202301
+060434Inibidores da calcineurina                                                                          202301
+060135Reguladores da homeostase do cálcio                                                                 202301
+060435Inibidores da fosfodiesterase                                                                       202301
+060136Repositores enzimáticos                                                                             202301
+060436Inibidores da HMG-CoA redutase                                                                      202301
+060437Inibidores da monoamino oxidase tipo b                                                              202301
+060438Inibidores do fator de necrose tumoral alfa (TNF-a)                                                 202301
+060439Interferonas                                                                                        202301
+060440Medicamentos para tratamento da hipercalemia e hiperfosfatemia                                      202301
+060441Medicamentos utilizados na dependência de opióides                                                  202301
+060442Mineralocorticóides                                                                                 202301
+060443Modulador seletivo de receptor de estrogênio                                                        202301
+060444Mucolíticos                                                                                         202301
+060445Nucleosídeo e nucleotídeo (excl. inibidores da transcriptase reversa)                               202301
+060446Nucleosídeo e nucleotídeo, Inibidor da transcriptase reversa                                        202301
+060447Outras preparações antianêmicas                                                                     202301
+060448Outros agentes citotóxicos                                                                          202301
+060449Outros agentes dopaminérgicos                                                                       202301
+060450Outros antiepilépticos                                                                              202301
+060451Outros antipsicóticos                                                                               202301
+060452Outros imunoestimulantes                                                                            202301
+060453Outros imunossupressores                                                                            202301
+060454Outros medicamentos do sistema nervoso                                                              202301
+060455Outros relaxantes musculares de ação periférica                                                     202301
+060456Penicilamina e agentes similares                                                                    202301
+060457Preparações de calcitonina                                                                          202301
+060458Preparações de enzimas                                                                              202301
+060459Retinóides para tratamento da acne                                                                  202301
+060460Retinóides para tratamento da psoríase                                                              202301
+060461Somatropina e agonistas da somatropina                                                              202301
+060462Vitamina D e análogos, incluido combinação dos dois                                                 202301
+060463Produtos diversos para o trato alimentar ou metabolismo                                             202301
+060464Inibidores de Protease                                                                              202301
+060465Análogos das Prostaglandinas                                                                        202301
+060466Inibidores da Anidrase Carbonica                                                                    202301
+060467Simpatomiméticos na Terapia de Glaucoma                                                             202301
+060468Anticorpos Monoclonais                                                                              202301
+060469Inibidores de Interleucinas                                                                         202301
+060470Outros Antipsoriaticos de Uso Tópico                                                                202301
+060471Corticoesteróides de Potência Muito Alta (Grupo IV)                                                 202301
+060472Derivados do Ácido Propriônico                                                                      202301
+060473Parassimpaticomiméticos                                                                             202301
+060474Agentes Beta Bloqueadores                                                                           202301
+060475Outros Anti-hipertensivos                                                                           202301
+060476Outros Antivirais                                                                                   202301
+060477Outros Agentes Antiparatireoide                                                                     202301
+060478Insulinas Análogas de Ação Rápida de Uso Injetável                                                  202301
+060479Outras Drogas para Desordem do Sistema Músculo Esquelético                                          202301
+060480Agentes antitrombóticos                                                                             202301
+060481Outros Aminoglicosídeos                                                                             202301
+060482Inibidores do co-transportador 2 de sódio-glicose (SGLT2)                                           202301
+060483Agentes que atuam no sistema renina- angiotensina                                                   202301
+060484Outras drogas sistêmicas para doenças respiratórias obstrutivas                                     202301
+060485Adrenérgicos em combinação com anticolinérgicos, incluídas combinações triplas com corticosteroides 202301
+060486Outros Produtos para o Sistema Respiratório.                                                        202301
+060487Outros medicamentos afetando a estrutura e a mineralização óssea                                    202301
