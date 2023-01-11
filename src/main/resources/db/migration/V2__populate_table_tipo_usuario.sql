@@ -1,0 +1,30 @@
+INSERT
+INTO
+  tipo_usuario
+  (nome)
+VALUES
+  ('MEDICO');
+INSERT
+INTO
+  tipo_usuario
+  (nome)
+VALUES
+  ('ENFERMEIRO');
+INSERT
+INTO
+  tipo_usuario
+  (nome)
+VALUES
+  ('TECNICO');
+INSERT
+INTO
+  tipo_usuario
+  (nome)
+  VALUES
+  ('AUXILIAR');
+INSERT
+INTO
+   tipo_usuario
+   (nome)
+   VALUES
+   ('ADMINISTRADOR');
