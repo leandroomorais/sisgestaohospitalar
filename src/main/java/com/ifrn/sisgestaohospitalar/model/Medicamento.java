@@ -14,10 +14,10 @@ public class Medicamento {
 	
 	private String concentracao;
 	
-	private String unidadeFornecimento;
-	
 	@OneToOne
 	private FormaFarmaceutica formaFarmaceutica;
+
+	private String unidadeFornecimento;
 
 	public Long getId() {
 		return id;
