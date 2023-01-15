@@ -1,24 +1,5 @@
 package com.ifrn.sisgestaohospitalar.controller;
 
-import java.security.Principal;
-import java.time.LocalDateTime;
-import java.util.List;
-import java.util.Optional;
-import javax.servlet.http.HttpServletRequest;
-import javax.validation.Valid;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
-import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
 import com.ifrn.sisgestaohospitalar.enums.CodigoRaca;
 import com.ifrn.sisgestaohospitalar.enums.EstadoCivil;
 import com.ifrn.sisgestaohospitalar.model.Cidadao;
@@ -29,6 +10,21 @@ import com.ifrn.sisgestaohospitalar.repository.UsuarioRepository;
 import com.ifrn.sisgestaohospitalar.service.CidadaoCadsusService;
 import com.ifrn.sisgestaohospitalar.service.CidadaoService;
 import com.ifrn.sisgestaohospitalar.service.exception.DataNascimentoMaiorQueDataAtualException;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
+import java.security.Principal;
+import java.time.LocalDateTime;
+import java.util.List;
+import java.util.Optional;
 
 @Controller
 @RequestMapping("/cidadao")
@@ -60,7 +56,7 @@ public class CidadaoController {
 
 	@PostMapping("/salvar")
 	public ModelAndView saveCidadao(@Valid Cidadao cidadao, BindingResult result, RedirectAttributes attributes,
-			Principal principal) {
+									Principal principal) {
 		cidadao.setCns(cidadao.getCns().replace(".", ""));
 		cidadao.setCpf(cidadao.getCpf().replace(".", "").replace("-", ""));
 		if (result.hasErrors()) {
@@ -83,7 +79,7 @@ public class CidadaoController {
 
 	@PostMapping("/atualizar")
 	public ModelAndView atualizaCidadao(@Valid Cidadao cidadao, BindingResult result, Principal principal,
-			RedirectAttributes attributes) {
+										RedirectAttributes attributes) {
 		cidadao.setCns(cidadao.getCns().replace(".", ""));
 		cidadao.setCpf(cidadao.getCpf().replace(".", "").replace("-", ""));
 		if (result.hasErrors()) {
@@ -196,8 +192,8 @@ public class CidadaoController {
 
 	@GetMapping("/busca-admin")
 	public ModelAndView buscarCidadao(Principal principal, @RequestParam(name = "cns", required = false) String cns,
-			@RequestParam(name = "cpf", required = false) String cpf,
-			@RequestParam(name = "nome", required = false) String nome) {
+									  @RequestParam(name = "cpf", required = false) String cpf,
+									  @RequestParam(name = "nome", required = false) String nome) {
 		ModelAndView mv = new ModelAndView("cidadao/busca-admin");
 		Usuario user = usuarioRepository.findByUsername(principal.getName());
 		Optional<Cidadao> optional = null;
@@ -238,7 +234,7 @@ public class CidadaoController {
 	}
 
 	private void alert(ModelAndView mv, Optional<?> optional) {
-		if (optional.isEmpty()) {
+		if (optional.isPresent()) {
 			mv.addObject("warning", "Nenhum resultado encontrado");
 		}
 	}
