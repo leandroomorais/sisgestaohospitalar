@@ -1,38 +1,38 @@
-001Inclui valor da anestesia                                                                           202204
-003Admite longa permanência                                                                            202204
-004Admite permanência à maior                                                                          202204
-005Admite liberação de quantidade na AIH                                                               202204
-006CNRAC                                                                                               202204
-007Permanência por dia                                                                                 202204
-008Não permite mudança de procedimento                                                                 202204
-009Exige CNS                                                                                           202204
-011Permite alta direta de UTI                                                                          202204
-012Exige idade no BPA (Consolidado)                                                                    202204
-013Verifica habilitação de terceiro                                                                    202204
-014Admite APAC de Continuidade                                                                         202204
-015Admitido apenas em Hosp.Espec/Psiquiatria                                                           202204
-017Exige Informação da OPM                                                                             202204
-020Monitoramento do CEO                                                                                202204
-021Não Exige CBO                                                                                       202204
-022Exige registro na APAC de dados complementares                                                      202204
-023Registro no SISCOLO                                                                                 202204
-024Registro no SISPRENATAL                                                                             202204
-025Registro no SISMAMA                                                                                 202204
-026Registro de Procedimentos Secundário Compativel                                                     202204
-029Admite período maior para a apresentação                                                            202204
-033APAC com validade fixa de 03 competências                                                           202204
-034Não exige CNS                                                                                       202204
-036Exige Autorização                                                                                   202204
-037Exige CNPJ do Fornecedor                                                                            202204
-038Exige Serviço/Classificação                                                                         202204
-040Registro no SISCAN                                                                                  202204
-041APAC com validade fixa de 12 competências                                                           202204
-042Não Admite Liberação de Crítica de Idade                                                            202204
-043Exige registro de CID de causas associadas                                                          202204
-044Cirurgias Eletivas                                                                                  202204
-045Diárias de Leitos Complementares                                                                    202204
-046Tratamento Ambulatorial de Doenças Crônicas                                                         202204
-047Autorização com limite máximo de 6 meses.                                                           202204
-048Exige CID                                                                                           202204
-049Permite Informação de Equipe Cirúrgica                                                              202204
-050Permite o Registro de Informações do CNS do(s) Recém-Nascido(s)                                     202204
+001Inclui valor da anestesia                                                                           202301
+003Admite longa permanência                                                                            202301
+004Admite permanência à maior                                                                          202301
+005Admite liberação de quantidade na AIH                                                               202301
+006CNRAC                                                                                               202301
+007Permanência por dia                                                                                 202301
+008Não permite mudança de procedimento                                                                 202301
+009Exige CNS                                                                                           202301
+011Permite alta direta de UTI                                                                          202301
+012Exige idade no BPA (Consolidado)                                                                    202301
+013Verifica habilitação de terceiro                                                                    202301
+014Admite APAC de Continuidade                                                                         202301
+015Admitido apenas em Hosp.Espec/Psiquiatria                                                           202301
+017Exige Informação da OPM                                                                             202301
+020Monitoramento do CEO                                                                                202301
+021Não Exige CBO                                                                                       202301
+022Exige registro na APAC de dados complementares                                                      202301
+023Registro no SISCOLO                                                                                 202301
+024Registro no SISPRENATAL                                                                             202301
+025Registro no SISMAMA                                                                                 202301
+026Registro de Procedimentos Secundário Compativel                                                     202301
+029Admite período maior para a apresentação                                                            202301
+033APAC com validade fixa de 03 competências                                                           202301
+034Não exige CNS                                                                                       202301
+036Exige Autorização                                                                                   202301
+037Exige CNPJ do Fornecedor                                                                            202301
+038Exige Serviço/Classificação                                                                         202301
+040Registro no SISCAN                                                                                  202301
+041APAC com validade fixa de 12 competências                                                           202301
+042Não Admite Liberação de Crítica de Idade                                                            202301
+043Exige registro de CID de causas associadas                                                          202301
+044Cirurgias Eletivas                                                                                  202301
+045Diárias de Leitos Complementares                                                                    202301
+046Tratamento Ambulatorial de Doenças Crônicas                                                         202301
+047Autorização com limite máximo de 6 meses.                                                           202301
+048Exige CID                                                                                           202301
+049Permite Informação de Equipe Cirúrgica                                                              202301
+050Permite o Registro de Informações do CNS do(s) Recém-Nascido(s)                                     202301

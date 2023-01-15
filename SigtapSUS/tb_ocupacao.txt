@@ -33,7 +33,7 @@
 111205Presidente da República                                                                                                                               
 111210Vice-Presidente da República                                                                                                                          
 111215Ministro de estado                                                                                                                                    
-111220Secretário-Executivo                                                                                                                                  
+111220Secretário executivo                                                                                                                                  
 111225Membro superior do poder executivo                                                                                                                    
 111230Governador de Estado                                                                                                                                  
 111235Governador do Distrito Federal                                                                                                                        
@@ -53,7 +53,7 @@
 111405Dirigente do serviço público federal                                                                                                                  
 111410Dirigente do serviço público estadual e distrital                                                                                                     
 111415Dirigente do serviço público municipal                                                                                                                
-111505Especialista de políticas públicas e gestão governamental - EPPGG                                                                                     
+111505Especialista de políticas públicas e gestão governamental ¿ EPPGG                                                                                     
 111510Analista de planejamento e orçamento - APO                                                                                                            
 113005Cacique                                                                                                                                               
 113010Líder de comunidade caiçara                                                                                                                           
@@ -100,7 +100,7 @@
 123310Diretor de marketing                                                                                                                                  
 123405Diretor de suprimentos                                                                                                                                
 123410Diretor de suprimentos no serviço público                                                                                                             
-123605Diretor de serviços de informática                                                                                                                    
+123605Diretor de tecnologia da informação                                                                                                                   
 123705Diretor de Pesquisa e Desenvolvimento (P&D)                                                                                                           
 123805Diretor de manutenção                                                                                                                                 
 131105Diretor de serviços culturais                                                                                                                         
@@ -112,6 +112,7 @@
 131210Gerente de serviços de saúde                                                                                                                          
 131215Tecnólogo em gestão hospitalar                                                                                                                        
 131220Gerontólogo                                                                                                                                           
+131225Sanitarista                                                                                                                                           
 131305Diretor de instituição educacional da área privada                                                                                                    
 131310Diretor de instituição educacional pública                                                                                                            
 131315Gerente de instituição educacional da área privada                                                                                                    
@@ -141,10 +142,19 @@
 141725Gerente de crédito imobiliário                                                                                                                        
 141730Gerente de crédito rural                                                                                                                              
 141735Gerente de recuperação de crédito                                                                                                                     
+141805Gerente de administração em aeroportos                                                                                                                
+141810Gerente de empresa aérea e empresa de serviços auxiliares ao transporte aéreo (ESATA) em aeroportos                                                   
+141815Gerente de operações em aeroportos                                                                                                                    
+141820Gerente de operações de cargas                                                                                                                        
+141825Gerente de segurança da aviação civil                                                                                                                 
+141830Gerente de segurança operacional (aviação civil)                                                                                                      
 142105Gerente administrativo                                                                                                                                
 142110Gerente de riscos                                                                                                                                     
 142115Gerente financeiro                                                                                                                                    
 142120Tecnólogo em gestão administrativo- financeira                                                                                                        
+142125Analista de compliance                                                                                                                                
+142130Analista de riscos                                                                                                                                    
+142135Oficial de proteção de dados pessoais (DPO)                                                                                                           
 142205Gerente de recursos humanos                                                                                                                           
 142210Gerente de departamento pessoal                                                                                                                       
 142305Gerente comercial                                                                                                                                     
@@ -155,14 +165,17 @@
 142330Analista de negócios                                                                                                                                  
 142335Analista de pesquisa de mercado                                                                                                                       
 142340Ouvidor                                                                                                                                               
+142345Profissional de relações institucionais e governamentais                                                                                              
+142350Profissional de relações internacionais                                                                                                               
+142355Analista de e-commerce                                                                                                                                
 142405Gerente de compras                                                                                                                                    
 142410Gerente de suprimentos                                                                                                                                
 142415Gerente de almoxarifado                                                                                                                               
-142505Gerente de rede                                                                                                                                       
+142505Gerente de infraestrutura de tecnologia da informação                                                                                                 
 142510Gerente de desenvolvimento de sistemas                                                                                                                
-142515Gerente de produção de tecnologia da informação                                                                                                       
+142515Gerente de operação de tecnologia da informação                                                                                                       
 142520Gerente de projetos de tecnologia da informação                                                                                                       
-142525Gerente de segurança de tecnologia da informação                                                                                                      
+142525Gerente de segurança da informação                                                                                                                    
 142530Gerente de suporte técnico de tecnologia da informação                                                                                                
 142535Tecnólogo em gestão da tecnologia da informação                                                                                                       
 142605Gerente de Pesquisa e Desenvolvimento (P&D)                                                                                                           
@@ -211,6 +224,7 @@
 203520Pesquisador em história                                                                                                                               
 203525Pesquisador em psicologia                                                                                                                             
 204105Perito criminal                                                                                                                                       
+204110Perito judicial                                                                                                                                       
 211105Atuário                                                                                                                                               
 211110Especialista em pesquisa operacional                                                                                                                  
 211115Matemático                                                                                                                                            
@@ -229,6 +243,8 @@
 212410Analista de redes e de comunicação de dados                                                                                                           
 212415Analista de sistemas de automação                                                                                                                     
 212420Analista de suporte computacional                                                                                                                     
+212425Arquiteto de soluções de tecnologia da informação                                                                                                     
+212430Analista de testes de tecnologia da informação                                                                                                        
 213105Físico                                                                                                                                                
 213110Físico (acústica)                                                                                                                                     
 213115Físico (atômica e molecular)                                                                                                                          
@@ -294,6 +310,8 @@
 214360Tecnólogo em eletricidade                                                                                                                             
 214365Tecnólogo em eletrônica                                                                                                                               
 214370Tecnólogo em telecomunicações                                                                                                                         
+214375Engenheiro de energia                                                                                                                                 
+214380Engenheiro biomédico                                                                                                                                  
 214405Engenheiro mecânico                                                                                                                                   
 214410Engenheiro mecânico automotivo                                                                                                                        
 214415Engenheiro mecânico (energia nuclear)                                                                                                                 
@@ -308,6 +326,7 @@
 214525Engenheiro químico (petróleo e borracha)                                                                                                              
 214530Engenheiro químico (utilidades e meio ambiente)                                                                                                       
 214535Tecnólogo em produção sulcroalcooleira                                                                                                                
+214540Engenheiro têxtil                                                                                                                                     
 214605Engenheiro de materiais                                                                                                                               
 214610Engenheiro metalurgista                                                                                                                               
 214615Tecnólogo em metalurgia                                                                                                                               
@@ -330,7 +349,8 @@
 214925Engenheiro de tempos e movimentos                                                                                                                     
 214930Tecnólogo em produção industrial                                                                                                                      
 214935Tecnólogo em segurança do trabalho                                                                                                                    
-214940Higiênista Ocupacional                                                                                                                                
+214940Higienista Ocupacional                                                                                                                                
+214945Engenheiro de logística                                                                                                                               
 215105Agente de manobra e docagem                                                                                                                           
 215110Capitão de manobra da Marinha Mercante                                                                                                                
 215115Comandante da Marinha Mercante                                                                                                                        
@@ -354,6 +374,7 @@
 222110Engenheiro agrônomo                                                                                                                                   
 222115Engenheiro de pesca                                                                                                                                   
 222120Engenheiro florestal                                                                                                                                  
+222125Tecnólogo em agronegócio                                                                                                                              
 222205Engenheiro de alimentos                                                                                                                               
 222215Tecnólogo em alimentos                                                                                                                                
 2231A1Médico broncoesofalogista                                                                                                                             
@@ -410,6 +431,7 @@
 223560Enfermeiro sanitarista                                                                                                                                
 223565Enfermeiro da estratégia de saúde da família                                                                                                          
 223570Perfusionista                                                                                                                                         
+223575Obstetriz                                                                                                                                             
 2236I1Técnico em orientação e mobilidade de cegos e deficientes visuais                                                                                     
 223605Fisioterapeuta geral                                                                                                                                  
 223625Fisioterapeuta respiratória                                                                                                                           
@@ -422,7 +444,7 @@
 223660Fisioterapeuta do trabalho                                                                                                                            
 223705Dietista                                                                                                                                              
 223710Nutricionista                                                                                                                                         
-223810Fonoaudiólogo                                                                                                                                         
+223810Fonoaudiólogo geral                                                                                                                                   
 223815Fonoaudiólogo educacional                                                                                                                             
 223820Fonoaudiólogo em audiologia                                                                                                                           
 223825Fonoaudiólogo em disfagia                                                                                                                             
@@ -432,6 +454,7 @@
 223845Fonoaudiólogo em voz                                                                                                                                  
 223905Terapeuta ocupacional                                                                                                                                 
 223910Ortoptista                                                                                                                                            
+223915Psicomotricista                                                                                                                                       
 2241E1Profissional de educação física na saúde                                                                                                              
 224105Avaliador físico                                                                                                                                      
 224110Ludomotricista                                                                                                                                        
@@ -545,7 +568,7 @@
 233135Professor de tecnologia e cálculo técnico                                                                                                             
 233205Instrutor de aprendizagem e treinamento agropecuário                                                                                                  
 233210Instrutor de aprendizagem e treinamento industrial                                                                                                    
-233215Professor de aprendizagem e treinamento comercial                                                                                                     
+233215Instrutor de aprendizagem e treinamento comercial                                                                                                     
 233220Professor instrutor de ensino e aprendizagem agroflorestal                                                                                            
 233225Professor instrutor de ensino e aprendizagem em serviços                                                                                              
 234105Professor de matemática aplicada (no ensino superior)                                                                                                 
@@ -576,7 +599,7 @@
 234510Professor de ensino superior na área de orientação educacional                                                                                        
 234515Professor de ensino superior na área de pesquisa educacional                                                                                          
 234520Professor de ensino superior na área de prática de ensino                                                                                             
-234604Professor de língua alema                                                                                                                             
+234604Professor de língua alemã                                                                                                                             
 234608Professor de língua italiana                                                                                                                          
 234612Professor de língua francesa                                                                                                                          
 234616Professor de língua inglesa                                                                                                                           
@@ -584,7 +607,7 @@
 234624Professor de língua portuguesa                                                                                                                        
 234628Professor de literatura brasileira                                                                                                                    
 234632Professor de literatura portuguesa                                                                                                                    
-234636Professor de literatura alema                                                                                                                         
+234636Professor de literatura alemã                                                                                                                         
 234640Professor de literatura comparada                                                                                                                     
 234644Professor de literatura espanhola                                                                                                                     
 234648Professor de literatura francesa                                                                                                                      
@@ -599,7 +622,7 @@
 234684Professor de teoria da literatura                                                                                                                     
 234705Professor de antropologia do ensino superior                                                                                                          
 234710Professor de arquivologia do ensino superior                                                                                                          
-234715Professor de biblioteconomia do ensio superior                                                                                                        
+234715Professor de biblioteconomia do ensino superior                                                                                                       
 234720Professor de ciência política do ensino superior                                                                                                      
 234725Professor de comunicação social do ensino superior                                                                                                    
 234730Professor de direito do ensino superior                                                                                                               
@@ -629,6 +652,8 @@
 239425Psicopedagogo                                                                                                                                         
 239430Supervisor de ensino                                                                                                                                  
 239435Designer educacional                                                                                                                                  
+239440Neuropsicopedagogo clínico                                                                                                                            
+239445Neuropsicopedagogo institucional                                                                                                                      
 241005Advogado                                                                                                                                              
 241010Advogado de empresa                                                                                                                                   
 241015Advogado (direito civil)                                                                                                                              
@@ -645,13 +670,14 @@
 241230Procurador Federal                                                                                                                                    
 241235Procurador fundacional                                                                                                                                
 241305Oficial de registro de contratos marítimos                                                                                                            
-241310Oficial do registro civil de pessoas juridicas                                                                                                        
+241310Oficial do registro civil de pessoas jurídicas                                                                                                        
 241315Oficial do registro civil de pessoas naturais                                                                                                         
 241320Oficial do registro de distribuições                                                                                                                  
 241325Oficial do registro de imóveis                                                                                                                        
 241330Oficial do registro de títulos e documentos                                                                                                           
 241335Tabelião de notas                                                                                                                                     
 241340Tabelião de protestos                                                                                                                                 
+241405Conselheiro julgador                                                                                                                                  
 242205Procurador da república                                                                                                                               
 242210Procurador de justiça                                                                                                                                 
 242215Procurador de justiça militar                                                                                                                         
@@ -697,7 +723,7 @@
 252205Auditor (contadores e afins)                                                                                                                          
 252210Contador                                                                                                                                              
 252215Perito contábil                                                                                                                                       
-252305Secretária executiva                                                                                                                                  
+252305Secretária(o) executiva(o)                                                                                                                            
 252310Secretário bilíngüe                                                                                                                                   
 252315Secretária trilíngüe                                                                                                                                  
 252320Tecnólogo em secretariado escolar                                                                                                                     
@@ -712,8 +738,13 @@
 252545Analista financeiro (instituições financeiras)                                                                                                        
 252550Profissional de Relações com Investidores                                                                                                             
 252605Gestor em segurança                                                                                                                                   
+252705Analista de PCP (programação e controle da produção)                                                                                                  
+252710Analista de planejamento de materiais                                                                                                                 
+252715Analista de logística                                                                                                                                 
+252720Analista de projetos logísticos                                                                                                                       
+252725Analista de gestão de estoque                                                                                                                         
 253110Redator de publicidade                                                                                                                                
-253115Agente publicitário                                                                                                                                   
+253115Publicitário                                                                                                                                          
 253130Diretor de Criação                                                                                                                                    
 253135Diretor de Contas (Publicidade)                                                                                                                       
 253140Agenciador de Propaganda                                                                                                                              
@@ -723,6 +754,8 @@
 253220Gerente de grandes contas (corporate)                                                                                                                 
 253225Operador de negócios                                                                                                                                  
 253305Corretor de valores, ativos financeiros, mercadorias e derivativos                                                                                    
+253405Analista de mídias sociais                                                                                                                            
+253410Influenciador digital                                                                                                                                 
 254105Auditor-fiscal da Receita Federal                                                                                                                     
 254110Técnico da Receita Federal                                                                                                                            
 254205Auditor-fiscal da previdência social                                                                                                                  
@@ -763,17 +796,19 @@
 261615Editor de mídia eletrônica                                                                                                                            
 261620Editor de revista                                                                                                                                     
 261625Editor de revista científica                                                                                                                          
-261705Ancora de rádio e televisão                                                                                                                           
-261710Comentarista de rádio e televisão                                                                                                                     
-261715Locutor de rádio e televisão                                                                                                                          
+261705Âncora de mídias audiovisuais                                                                                                                         
+261710Comentarista de mídias audiovisuais                                                                                                                   
+261715Locutor de mídias audiovisuais                                                                                                                        
 261720Locutor publicitário de rádio e televisão                                                                                                             
 261725Narrador em programas de rádio e televisão                                                                                                            
-261730Repórter de rádio e televisão                                                                                                                         
+261730Repórter de mídias audiovisuais                                                                                                                       
 261805Fotógrafo                                                                                                                                             
 261810Fotógrafo publicitário                                                                                                                                
 261815Fotógrafo retratista                                                                                                                                  
-261820Repóter fotográfico                                                                                                                                   
-262105Empresário de espetáculo                                                                                                                              
+261820Repórter fotográfico                                                                                                                                  
+261905Continuísta                                                                                                                                           
+261910Assistente de direção (TV)                                                                                                                            
+262105Produtor cultural                                                                                                                                     
 262110Produtor cinematográfico                                                                                                                              
 262115Produtor de rádio                                                                                                                                     
 262120Produtor de teatro                                                                                                                                    
@@ -784,6 +819,9 @@
 262210Diretor de programas de rádio                                                                                                                         
 262215Diretor de programas de televisão                                                                                                                     
 262220Diretor teatral                                                                                                                                       
+262225Diretor de programação                                                                                                                                
+262230Diretor de produção                                                                                                                                   
+262235Diretor artístico                                                                                                                                     
 262305Cenógrafo carnavalesco e festas populares                                                                                                             
 262310Cenógrafo de cinema                                                                                                                                   
 262315Cenógrafo de eventos                                                                                                                                  
@@ -791,7 +829,7 @@
 262325Cenógrafo de TV                                                                                                                                       
 262330Diretor de arte                                                                                                                                       
 262405Artista (artes visuais)                                                                                                                               
-262410Desenhista industrial (designer)                                                                                                                      
+262410Desenhista industrial gráfico (designer gráfico)                                                                                                      
 262415Conservador-restaurador de bens culturais                                                                                                             
 262420Desenhista industrial de produto (designer de produto)                                                                                                
 262425Desenhista industrial de produto de moda (designer de moda)                                                                                           
@@ -852,7 +890,7 @@
 312320Topógrafo                                                                                                                                             
 313105Eletrotécnico                                                                                                                                         
 313110Eletrotécnico (produção de energia)                                                                                                                   
-313115Eletroténico na fabricação, montagem e instalação de máquinas e equipamentos                                                                          
+313115Eletrotécnico na fabricação, montagem e instalação de máquinas e equipamentos                                                                         
 313120Técnico de manutenção elétrica                                                                                                                        
 313125Técnico de manutenção elétrica de máquina                                                                                                             
 313130Técnico eletricista                                                                                                                                   
@@ -905,12 +943,12 @@
 316330Técnico em planejamento de lavra de minas                                                                                                             
 316335Desincrustador (poços de petróleo)                                                                                                                    
 316340Cimentador (poços de petróleo)                                                                                                                        
-317105Programador de internet                                                                                                                               
-317110Programador de sistemas de informação                                                                                                                 
+317105Desenvolvedor web (técnico)                                                                                                                           
+317110Desenvolvedor de sistemas de tecnologia da informação (técnico)                                                                                       
 317115Programador de máquinas - ferramenta com comando numérico                                                                                             
-317120Programador de multimídia                                                                                                                             
-317205Operador de computador (inclusive microcomputador)                                                                                                    
-317210Técnico de apoio ao usuário de informática (helpdesk)                                                                                                 
+317120Desenvolvedor de multimídia                                                                                                                           
+317205Operador de computador                                                                                                                                
+317210Técnico de suporte ao usuário de tecnologia da informação                                                                                             
 318005Desenhista técnico                                                                                                                                    
 318010Desenhista copista                                                                                                                                    
 318015Desenhista detalhista                                                                                                                                 
@@ -968,6 +1006,7 @@
 322240Auxiliar de saúde (navegação marítima)                                                                                                                
 322245Técnico de enfermagem da estratégia de saúde da família                                                                                               
 322250Auxiliar de enfermagem da estratégia de saúde da família                                                                                              
+322255Técnico em agente comunitário de saúde                                                                                                                
 322305Técnico em óptica e optometria                                                                                                                        
 322405Técnico em saúde bucal                                                                                                                                
 322410Protético dentário                                                                                                                                    
@@ -982,8 +1021,10 @@
 324105Técnico em métodos eletrográficos em encefalografia                                                                                                   
 324110Técnico em métodos gráficos em cardiologia                                                                                                            
 324115Técnico em radiologia e imagenologia                                                                                                                  
-324120Técnólogo em radiologia                                                                                                                               
+324120Tecnólogo em radiologia                                                                                                                               
 324125Tecnólogo oftálmico                                                                                                                                   
+324130Técnico em espirometria                                                                                                                               
+324135Técnico em polissonografia                                                                                                                            
 324205Técnico em patologia clínica                                                                                                                          
 324210Auxiliar técnico em patologia clínica                                                                                                                 
 324215Citotécnico                                                                                                                                           
@@ -1022,8 +1063,12 @@
 341220Patrão de pesca de alto-mar                                                                                                                           
 341225Patrão de pesca na navegação interior                                                                                                                 
 341230Piloto fluvial                                                                                                                                        
-341305Condutor maquinista fluvial                                                                                                                           
-341310Condutor maquinista marítimo                                                                                                                          
+341235Técnico em sinalização náutica                                                                                                                        
+341240Técnicos em manobras em equipamentos de convés                                                                                                        
+341245Técnico em sinais navais                                                                                                                              
+341250Auxiliar técnico de sinalização náutica                                                                                                               
+341305Condutor maquinista motorista fluvial                                                                                                                 
+341310Condutor de máquinas                                                                                                                                  
 341315Eletricista de bordo                                                                                                                                  
 341320Condutor de Máquinas (bombeador)                                                                                                                      
 341325Condutor de Máquinas (mecânico)                                                                                                                       
@@ -1034,6 +1079,7 @@
 342125Tecnólogo em logística de transporte                                                                                                                  
 342205Ajudante de despachante aduaneiro                                                                                                                     
 342210Despachante aduaneiro                                                                                                                                 
+342215Analista de desembaraço aduaneiro                                                                                                                     
 342305Chefe de serviço de transporte rodoviário (passageiros e cargas)                                                                                      
 342310Inspetor de serviços de transportes rodoviários (passageiros e cargas)                                                                                
 342315Supervisor de carga e descarga                                                                                                                        
@@ -1049,6 +1095,8 @@
 342540Supervisor da administração de aeroportos                                                                                                             
 342545Supervisor de empresa aérea em aeroportos                                                                                                             
 342550Agente de proteção de aviação civil                                                                                                                   
+342555Fiscal de pista de aeroporto                                                                                                                          
+342560Líder de rampa (transporte aéreo)                                                                                                                     
 342605Chefe de estação portuária                                                                                                                            
 342610Supervisor de operações portuárias                                                                                                                    
 351105Técnico de contabilidade                                                                                                                              
@@ -1063,11 +1111,13 @@
 351420Escrivão de polícia                                                                                                                                   
 351425Oficial de justiça                                                                                                                                    
 351430Auxiliar de serviços jurídicos                                                                                                                        
+351435Mediador extrajudicial                                                                                                                                
+351440Árbitro extrajudicial                                                                                                                                 
 351505Técnico em secretariado                                                                                                                               
 351510Taquígrafo                                                                                                                                            
 351515Estenotipista                                                                                                                                         
-351605Técnico em segurança no trabalho                                                                                                                      
-351610Técnico em Higiene Ocupacional                                                                                                                        
+351605Técnico em segurança do trabalho                                                                                                                      
+351610Técnico em higiene ocupacional                                                                                                                        
 351705Analista de seguros (técnico)                                                                                                                         
 351710Analista de sinistros                                                                                                                                 
 351715Assistente comercial de seguros                                                                                                                       
@@ -1088,7 +1138,7 @@
 352315Agente fiscal metrológico                                                                                                                             
 352320Agente fiscal têxtil                                                                                                                                  
 352405Agente de direitos autorais                                                                                                                           
-352410Avaliador de produtos do meio de comunicação                                                                                                          
+352410Avaliador de produtos dos meios de comunicação                                                                                                        
 352420Técnico em direitos autorais                                                                                                                          
 353205Técnico de operações e serviços bancários - câmbio                                                                                                    
 353210Técnico de operações e serviços bancários - crédito imobiliário                                                                                       
@@ -1113,6 +1163,7 @@
 354415Avaliador de bens móveis                                                                                                                              
 354505Corretor de seguros                                                                                                                                   
 354605Corretor de imóveis                                                                                                                                   
+354610Corretor de grãos                                                                                                                                     
 354705Representante comercial autônomo                                                                                                                      
 354805Técnico em turismo                                                                                                                                    
 354810Operador de turismo                                                                                                                                   
@@ -1132,15 +1183,21 @@
 372115Operador de câmera de televisão                                                                                                                       
 372205Operador de rede de teleprocessamento                                                                                                                 
 372210Radiotelegrafista                                                                                                                                     
-373105Operador de áudio de continuidade (rádio)                                                                                                             
+373105Operador de mídia audiovisual                                                                                                                         
 373110Operador de central de rádio                                                                                                                          
 373115Operador de externa (rádio)                                                                                                                           
 373120Operador de gravação de rádio                                                                                                                         
 373125Operador de transmissor de rádio                                                                                                                      
+373130Técnico de sistemas audiovisuais                                                                                                                      
+373135Operador de controle mestre                                                                                                                           
+373140Coordenador de programação                                                                                                                            
+373145Assistente de operações audiovisuais                                                                                                                  
 373205Técnico em operação de equipamentos de produção para televisão e produtoras de vídeo                                                                  
 373210Técnico em operação de equipamento de exibição de televisão                                                                                           
 373215Técnico em operação de equipamentos de transmissão/recepção de televisão                                                                              
 373220Supervisor técnico operacional de sistemas de televisão e produtoras de vídeo                                                                         
+373225Supervisor de operações (mídias audiovisuais)                                                                                                         
+373230Supervisor técnico (mídias audiovisuais)                                                                                                              
 374105Técnico em gravação de áudio                                                                                                                          
 374110Técnico em instalação de equipamentos de áudio                                                                                                        
 374115Técnico em masterização de áudio                                                                                                                      
@@ -1150,19 +1207,24 @@
 374135Projetista de sistemas de áudio                                                                                                                       
 374140Microfonista                                                                                                                                          
 374145Dj (disc jockey)                                                                                                                                      
+374150Sonoplasta                                                                                                                                            
+374155Analista musical                                                                                                                                      
 374205Cenotécnico (cinema, vídeo, televisão, teatro e espetáculos)                                                                                          
 374210Maquinista de cinema e vídeo                                                                                                                          
 374215Maquinista de teatro e espetáculos                                                                                                                    
 374305Operador de projetor cinematográfico                                                                                                                  
 374310Operador-mantenedor de projetor cinematográfico                                                                                                       
-374405Editor de TV e vídeo                                                                                                                                  
+374405Editor de mídia audiovisual                                                                                                                           
 374410Finalizador de filmes                                                                                                                                 
 374415Finalizador de vídeo                                                                                                                                  
 374420Montador de filmes                                                                                                                                    
+374425Diretor de imagens (TV)                                                                                                                               
 375105Designer de interiores                                                                                                                                
 375110Designer de vitrines                                                                                                                                  
 375115Visual merchandiser                                                                                                                                   
 375120Decorador de eventos                                                                                                                                  
+375125Produtor de moda                                                                                                                                      
+375130Profissional de organização (personal organizer)                                                                                                      
 376105Dançarino tradicional                                                                                                                                 
 376110Dançarino popular                                                                                                                                     
 376205Acrobata                                                                                                                                              
@@ -1194,15 +1256,15 @@
 377135Piloto de competição automobilística                                                                                                                  
 377140Profissional de atletismo                                                                                                                             
 377145Pugilista                                                                                                                                             
-377205Arbitro desportivo                                                                                                                                    
-377210Arbitro de atletismo                                                                                                                                  
-377215Arbitro de basquete                                                                                                                                   
-377220Arbitro de futebol                                                                                                                                    
-377225Arbitro de futebol de salão                                                                                                                           
-377230Arbitro de judô                                                                                                                                       
-377235Arbitro de karatê                                                                                                                                     
-377240Arbitro de poló aquático                                                                                                                              
-377245Arbitro de vôlei                                                                                                                                      
+377205Árbitro desportivo                                                                                                                                    
+377210Árbitro de atletismo                                                                                                                                  
+377215Árbitro de basquete                                                                                                                                   
+377220Árbitro de futebol                                                                                                                                    
+377225Árbitro de futebol de salão                                                                                                                           
+377230Árbitro de judô                                                                                                                                       
+377235Árbitro de karatê                                                                                                                                     
+377240Árbitro de poló aquático                                                                                                                              
+377245Árbitro de vôlei                                                                                                                                      
 391105Cronoanalista                                                                                                                                         
 391110Cronometrista                                                                                                                                         
 391115Controlador de entrada e saída                                                                                                                        
@@ -1210,6 +1272,8 @@
 391125Técnico de planejamento de produção                                                                                                                   
 391130Técnico de planejamento e programação da manutenção                                                                                                   
 391135Técnico de matéria-prima e material                                                                                                                   
+391140Analista de manutenção (equipamentos aéreos)                                                                                                          
+391145Analista de planejamento de manutenção                                                                                                                
 391205Inspetor de qualidade                                                                                                                                 
 391210Técnico de garantia da qualidade                                                                                                                      
 391215Operador de inspeção de qualidade                                                                                                                     
@@ -1226,7 +1290,8 @@
 410225Supervisor de crédito e cobrança                                                                                                                      
 410230Supervisor de orçamento                                                                                                                               
 410235Supervisor de tesouraria                                                                                                                              
-411005Auxiliar de escritório, em geral                                                                                                                      
+410240Supervisor de logística                                                                                                                               
+411005Auxiliar de escritório                                                                                                                                
 411010Assistente administrativo                                                                                                                             
 411015Atendente de judiciário                                                                                                                               
 411020Auxiliar de judiciário                                                                                                                                
@@ -1236,6 +1301,7 @@
 411040Auxiliar de seguros                                                                                                                                   
 411045Auxiliar de serviços de importação e exportação                                                                                                       
 411050Agente de microcrédito                                                                                                                                
+411055Captador de recursos                                                                                                                                  
 412105Datilógrafo                                                                                                                                           
 412110Digitador                                                                                                                                             
 412115Operador de mensagens de telecomunicações (correios)                                                                                                  
@@ -1253,6 +1319,10 @@
 414105Almoxarife                                                                                                                                            
 414110Armazenista                                                                                                                                           
 414115Balanceiro                                                                                                                                            
+414120Conferente mercadoria (exceto carga e descarga)                                                                                                       
+414125Estoquista                                                                                                                                            
+414135Expedidor de mercadorias                                                                                                                              
+414140Auxiliar de logística                                                                                                                                 
 414205Apontador de mão-de-obra                                                                                                                              
 414210Apontador de produção                                                                                                                                 
 414215Conferente de carga e descarga                                                                                                                        
@@ -1263,7 +1333,9 @@
 415130Operador de máquina copiadora (exceto operador de gráfica rápida)                                                                                     
 415205Carteiro                                                                                                                                              
 415210Operador de triagem e transbordo                                                                                                                      
-415215Entregador de Publicações                                                                                                                             
+415215Entregador de publicações                                                                                                                             
+415305Registrador de câncer                                                                                                                                 
+415310Analista de informação em saúde                                                                                                                       
 420105Supervisor de caixas e bilheteiros (exceto caixa de banco)                                                                                            
 420110Supervisor de cobrança                                                                                                                                
 420115Supervisor de coletadores de apostas e de jogos                                                                                                       
@@ -1289,12 +1361,14 @@
 422130Concierge                                                                                                                                             
 422205Telefonista                                                                                                                                           
 422210Teleoperador                                                                                                                                          
-422215Monitor de teleatendimento                                                                                                                            
+422215Operador de Telemarketing Receptivo                                                                                                                   
 422220Operador de rádio-chamada                                                                                                                             
 422305Operador de telemarketing ativo                                                                                                                       
 422310Operador de telemarketing ativo e receptivo                                                                                                           
 422315Operador de telemarketing receptivo                                                                                                                   
 422320Operador de telemarketing técnico                                                                                                                     
+422330Teleatendente de emergência                                                                                                                           
+422335Monitor de teleatendimento                                                                                                                            
 423105Despachante documentalista                                                                                                                            
 423110Despachante de trânsito                                                                                                                               
 424105Entrevistador censitário e de pesquisas amostrais                                                                                                     
@@ -1303,6 +1377,8 @@
 424120Entrevistador de preços                                                                                                                               
 424125Escriturário em estatística                                                                                                                           
 424130Entrevistador Social                                                                                                                                  
+424205Coordenador de provas (concurso, avaliação, exame)                                                                                                    
+424210Aplicador de provas (concurso, avaliação, exame)                                                                                                      
 510105Supervisor de transportes                                                                                                                             
 510110Administrador de edifícios                                                                                                                            
 510115Supervisor de andar                                                                                                                                   
@@ -1334,13 +1410,13 @@
 513215Cozinheiro industrial                                                                                                                                 
 513220Cozinheiro de hospital                                                                                                                                
 513225Cozinheiro de embarcações                                                                                                                             
-513305Camareira de teatro                                                                                                                                   
-513310Camareira de televisão                                                                                                                                
+513305Camareiro de teatro                                                                                                                                   
+513310Camareiro de televisão                                                                                                                                
 513315Camareiro de hotel                                                                                                                                    
 513320Camareiro de embarcações                                                                                                                              
-513325Guarda-roupeira de cinema                                                                                                                             
+513325Guarda-roupeiro de cinema                                                                                                                             
 513405Garçom                                                                                                                                                
-513410Garçom (serviços de vinhos)                                                                                                                           
+513410Sommelier                                                                                                                                             
 513415Cumim                                                                                                                                                 
 513420Barman                                                                                                                                                
 513425Copeiro                                                                                                                                               
@@ -1385,6 +1461,7 @@
 515315Monitor de dependente químico                                                                                                                         
 515320Conselheiro tutelar                                                                                                                                   
 515325Sócioeducador                                                                                                                                         
+515330Monitor de ressocialização prisional                                                                                                                  
 516105Barbeiro                                                                                                                                              
 516110Cabeleireiro                                                                                                                                          
 516120Manicure                                                                                                                                              
@@ -1393,20 +1470,20 @@
 516140Pedicure                                                                                                                                              
 516205Babá                                                                                                                                                  
 516210Cuidador de idosos                                                                                                                                    
-516215Mae social                                                                                                                                            
+516215Mãe social                                                                                                                                            
 516220Cuidador em saúde                                                                                                                                     
 516305Lavadeiro, em geral                                                                                                                                   
 516310Lavador de roupas a maquina                                                                                                                           
 516315Lavador de artefatos de tapeçaria                                                                                                                     
-516320Limpador a seco, a máquina                                                                                                                            
+516320Limpador a seco, à máquina                                                                                                                            
 516325Passador de roupas em geral                                                                                                                           
 516330Tingidor de roupas                                                                                                                                    
 516335Conferente-expedidor de roupas (lavanderias)                                                                                                          
 516340Atendente de lavanderia                                                                                                                               
 516345Auxiliar de lavanderia                                                                                                                                
 516405Lavador de roupas                                                                                                                                     
-516410Limpador de roupas a seco, a mão                                                                                                                      
-516415Passador de roupas, a mão                                                                                                                             
+516410Limpador de roupas a seco, à mão                                                                                                                      
+516415Passador de roupas, à mão                                                                                                                             
 516505Agente funerário                                                                                                                                      
 516605Operador de forno (serviços funerários)                                                                                                               
 516610Sepultador                                                                                                                                            
@@ -1415,12 +1492,17 @@
 516805Esotérico                                                                                                                                             
 516810Paranormal                                                                                                                                            
 517105Bombeiro de aeródromo                                                                                                                                 
-517110Bombeiro de segurança do trabalho                                                                                                                     
+517110Bombeiro civil                                                                                                                                        
 517115Salva-vidas                                                                                                                                           
+517120Brigadista florestal                                                                                                                                  
+517125Chefe de brigada                                                                                                                                      
 517205Agente de polícia federal                                                                                                                             
 517210Policial rodoviário federal                                                                                                                           
 517215Guarda-civil municipal                                                                                                                                
 517220Agente de trânsito                                                                                                                                    
+517225Policial legislativo                                                                                                                                  
+517230Policial penal                                                                                                                                        
+517235Guarda portuário                                                                                                                                      
 517305Agente de proteção de aeroporto                                                                                                                       
 517310Agente de segurança                                                                                                                                   
 517315Agente de segurança penitenciária                                                                                                                     
@@ -1430,11 +1512,11 @@
 517335Guarda portuário                                                                                                                                      
 517405Porteiro (hotel)                                                                                                                                      
 517410Porteiro de edifícios                                                                                                                                 
-517415Porteiro de locais de diversão                                                                                                                        
+517415Agente de portaria                                                                                                                                    
 517420Vigia                                                                                                                                                 
-517425Fiscal de LOja                                                                                                                                        
+517425Fiscal de Loja                                                                                                                                        
 519105Ciclista mensageiro                                                                                                                                   
-519110Motociclista no transporte de documentos e pequenos volumes                                                                                           
+519110Motofretista                                                                                                                                          
 519115Mototaxista                                                                                                                                           
 519205Catador de material reciclável                                                                                                                        
 519210Selecionador de material reciclável                                                                                                                   
@@ -1466,12 +1548,15 @@
 523105Instalador de cortinas e persianas, portas sanfonadas e boxe                                                                                          
 523110Instalador de som e acessórios de veículos                                                                                                            
 523115Chaveiro                                                                                                                                              
+523120Aplicador de vinil autoadesivo                                                                                                                        
+523125Estampador de placa de identificação veicular (EPIV)                                                                                                  
 524105Vendedor em domicílio                                                                                                                                 
 524205Feirante                                                                                                                                              
 524210Jornaleiro (em banca de jornal)                                                                                                                       
 524215Vendedor permissionário                                                                                                                               
 524305Vendedor ambulante                                                                                                                                    
 524310Pipoqueiro ambulante                                                                                                                                  
+524315Baiana de acarajé                                                                                                                                     
 611005Produtor agropecuário, em geral                                                                                                                       
 612005Produtor agrícola polivalente                                                                                                                         
 612105Produtor de arroz                                                                                                                                     
@@ -1573,7 +1658,7 @@
 623010Inseminador                                                                                                                                           
 623015Trabalhador de pecuária polivalente                                                                                                                   
 623020Tratador de animais                                                                                                                                   
-623025Casqueador de Animais                                                                                                                                 
+623025Casqueador de animais                                                                                                                                 
 623105Trabalhador da pecuária (asininos e muares)                                                                                                           
 623110Trabalhador da pecuária (bovinos corte)                                                                                                               
 623115Trabalhador da pecuária (bovinos leite)                                                                                                               
@@ -1596,17 +1681,17 @@
 631005Catador de caranguejos e siris                                                                                                                        
 631010Catador de mariscos                                                                                                                                   
 631015Pescador artesanal de lagostas                                                                                                                        
-631020Pescador artesanal de peixes e camaroes                                                                                                               
+631020Pescador artesanal de peixes e camarões                                                                                                               
 631105Pescador artesanal de água doce                                                                                                                       
 631205Pescador industrial                                                                                                                                   
 631210Pescador profissional                                                                                                                                 
-631305Criador de camaroes                                                                                                                                   
+631305Criador de camarões                                                                                                                                   
 631310Criador de jacarés                                                                                                                                    
-631315Criador de mexilhoes                                                                                                                                  
+631315Criador de mexilhões                                                                                                                                  
 631320Criador de ostras                                                                                                                                     
 631325Criador de peixes                                                                                                                                     
 631330Criador de quelônios                                                                                                                                  
-631335Criador de ras                                                                                                                                        
+631335Criador de rãs                                                                                                                                        
 631405Gelador industrial                                                                                                                                    
 631410Gelador profissional                                                                                                                                  
 631415Proeiro                                                                                                                                               
@@ -1629,7 +1714,7 @@
 632325Trabalhador da exploração de carnaúba                                                                                                                 
 632330Trabalhador da exploração de coco-da-praia                                                                                                            
 632335Trabalhador da exploração de copaíba                                                                                                                  
-632340Trabalhador da exploração de malva (paina)                                                                                                            
+632340Trabalhador da exploração de malva (pãina)                                                                                                            
 632345Trabalhador da exploração de murumuru                                                                                                                 
 632350Trabalhador da exploração de oiticica                                                                                                                 
 632355Trabalhador da exploração de ouricuri                                                                                                                 
@@ -1726,6 +1811,7 @@
 715405Operador de betoneira                                                                                                                                 
 715410Operador de bomba de concreto                                                                                                                         
 715415Operador de central de concreto                                                                                                                       
+715420Operador de usina de asfalto                                                                                                                          
 715505Carpinteiro                                                                                                                                           
 715510Carpinteiro (esquadrias)                                                                                                                              
 715515Carpinteiro (cenários)                                                                                                                                
@@ -1743,24 +1829,25 @@
 715715Instalador de isolantes térmicos (refrigeração e climatização)                                                                                        
 715720Instalador de isolantes térmicos de caldeira e tubulações                                                                                             
 715725Instalador de material isolante, a mão (edificações)                                                                                                  
-715730Instalador de material isolante, a máquina (edificações)                                                                                              
+715730Instalador de material isolante, à máquina (edificações)                                                                                              
 716105Acabador de superfícies de concreto                                                                                                                   
 716110Revestidor de superfícies de concreto                                                                                                                 
-716205Telhador (telhas de argila e materias similares)                                                                                                      
+716205Telhador (telhas de argila e materiais similares)                                                                                                     
 716210Telhador (telhas de cimento-amianto)                                                                                                                  
 716215Telhador (telhas metálicas)                                                                                                                           
-716220Telhador (telhas pláticas)                                                                                                                            
+716220Telhador (telhas plásticas)                                                                                                                           
 716305Vidraceiro                                                                                                                                            
 716310Vidraceiro (edificações)                                                                                                                              
 716315Vidraceiro (vitrais)                                                                                                                                  
 716405Gesseiro                                                                                                                                              
 716505Assoalhador                                                                                                                                           
-716510Ladrilheiro                                                                                                                                           
+716510Assentador de revestimentos cerâmicos                                                                                                                 
 716515Pastilheiro                                                                                                                                           
 716520Lustrador de piso                                                                                                                                     
 716525Marmorista (construção)                                                                                                                               
 716530Mosaísta                                                                                                                                              
 716535Taqueiro                                                                                                                                              
+716540Rejuntador de revestimentos                                                                                                                           
 716605Calafetador                                                                                                                                           
 716610Pintor de obras                                                                                                                                       
 716615Revestidor de interiores (papel, material plástico e emborrachados)                                                                                   
@@ -1810,7 +1897,7 @@
 722205Fundidor de metais                                                                                                                                    
 722210Lingotador                                                                                                                                            
 722215Operador de acabamento de peças fundidas                                                                                                              
-722220Operador de máquina centrifugadora de fundição                                                                                                        
+722220Operador de máquina de fundição                                                                                                                       
 722225Operador de máquina de fundir sob pressão                                                                                                             
 722230Operador de vazamento (lingotamento)                                                                                                                  
 722235Preparador de panelas (lingotamento)                                                                                                                  
@@ -1822,7 +1909,7 @@
 722330Operador de máquina de moldar automatizada                                                                                                            
 722405Cableador                                                                                                                                             
 722410Estirador de tubos de metal sem costura                                                                                                               
-722415Trefilador de metais, a máquina                                                                                                                       
+722415Trefilador de metais, à máquina                                                                                                                       
 723105Cementador de metais                                                                                                                                  
 723110Normalizador de metais e de compósitos                                                                                                                
 723115Operador de equipamento para resfriamento                                                                                                             
@@ -1878,6 +1965,7 @@
 725015Ajustador mecânico (usinagem em bancada e em máquinas-ferramentas)                                                                                    
 725020Ajustador mecânico em bancada                                                                                                                         
 725025Ajustador naval (reparo e construção)                                                                                                                 
+725030Operador de manutenção e recarga de extintor de incêndio                                                                                              
 725105Montador de máquinas, motores e acessórios (montagem em série)                                                                                        
 725205Montador de máquinas                                                                                                                                  
 725210Montador de máquinas gráficas                                                                                                                         
@@ -1911,8 +1999,8 @@
 731150Montador de equipamentos eletrônicos                                                                                                                  
 731155Montador de equipamentos elétricos (elevadores e equipamentos similares)                                                                              
 731160Montador de equipamentos elétricos (transformadores)                                                                                                  
-731165Bobinador eletricista, a mão                                                                                                                          
-731170Bobinador eletricista, a máquina                                                                                                                      
+731165Bobinador eletricista, à mão                                                                                                                          
+731170Bobinador eletricista, à máquina                                                                                                                      
 731175Operador de linha de montagem (aparelhos elétricos)                                                                                                   
 731180Operador de linha de montagem (aparelhos eletrônicos)                                                                                                 
 731205Montador de equipamentos eletrônicos (estação de rádio, TV e equipamentos de radar)                                                                   
@@ -1925,10 +2013,11 @@
 732105Eletricista de manutenção de linhas elétricas, telefônicas e de comunicação de dados                                                                  
 732110Emendador de cabos elétricos e telefônicos (aéreos e subterrâneos)                                                                                    
 732115Examinador de cabos, linhas elétricas e telefônicas                                                                                                   
-732120Instalador de linhas elétricas de alta e baixa-tensão (rede aérea e subterrânea)                                                                      
+732120Instalador de linhas elétricas de alta e baixa tensão (rede aérea e subterrânea)                                                                      
 732125Instalador eletricista (tração de veículos)                                                                                                           
 732130Instalador-reparador de redes telefônicas e de comunicação de dados                                                                                   
 732135Ligador de linhas telefônicas                                                                                                                         
+732140Instalador de sistemas fotovoltaicos                                                                                                                  
 740105Supervisor da mecânica de precisão                                                                                                                    
 740110Supervisor de fabricação de instrumentos musicais                                                                                                     
 741105Ajustador de instrumentos de precisão                                                                                                                 
@@ -1942,7 +2031,7 @@
 742120Confeccionador de instrumentos de percussão (pele, couro ou plástico)                                                                                 
 742125Confeccionador de instrumentos de sopro (madeira)                                                                                                     
 742130Confeccionador de instrumentos de sopro (metal)                                                                                                       
-742135Confeccionador de orgão                                                                                                                               
+742135Confeccionador de órgão                                                                                                                               
 742140Confeccionador de piano                                                                                                                               
 750105Supervisor de joalheria                                                                                                                               
 750205Supervisor da indústria de minerais não metálicos (exceto os derivados de petróleo e carvão)                                                          
@@ -1992,7 +2081,7 @@
 760605Supervisor das artes gráficas (indústria editorial e gráfica)                                                                                         
 761005Operador polivalente da indústria têxtil                                                                                                              
 761105Classificador de fibras têxteis                                                                                                                       
-761110Lavador de la                                                                                                                                         
+761110Lavador de lã                                                                                                                                         
 761205Operador de abertura (fiação)                                                                                                                         
 761210Operador de binadeira                                                                                                                                 
 761215Operador de bobinadeira                                                                                                                               
@@ -2026,7 +2115,7 @@
 761357Operador de urdideira                                                                                                                                 
 761360Passamaneiro a máquina                                                                                                                                
 761363Remetedor de fios                                                                                                                                     
-761366Picotador de cartoes jacquard                                                                                                                         
+761366Picotador de cartões jacquard                                                                                                                         
 761405Alvejador (tecidos)                                                                                                                                   
 761410Estampador de tecido                                                                                                                                  
 761415Operador de calandras (tecidos)                                                                                                                       
@@ -2070,7 +2159,7 @@
 763210Costureiro na confecção em série                                                                                                                      
 763215Costureiro, a máquina na confecção em série                                                                                                           
 763305Arrematadeira                                                                                                                                         
-763310Bordador, a máquina                                                                                                                                   
+763310Bordador, à máquina                                                                                                                                   
 763315Marcador de peças confeccionadas para bordar                                                                                                          
 763320Operador de máquina de costura de acabamento                                                                                                          
 763325Passadeira de peças confeccionadas                                                                                                                    
@@ -2087,10 +2176,10 @@
 765015Boneleiro                                                                                                                                             
 765105Cortador de artefatos de couro (exceto roupas e calçados)                                                                                             
 765110Cortador de tapeçaria                                                                                                                                 
-765205Colchoeiro (confecção de colchoes)                                                                                                                    
+765205Colchoeiro (confecção de colchões)                                                                                                                    
 765215Confeccionador de brinquedos de pano                                                                                                                  
 765225Confeccionador de velas náuticas, barracas e toldos                                                                                                   
-765230Estofador de avioes                                                                                                                                   
+765230Estofador de aviões                                                                                                                                   
 765235Estofador de móveis                                                                                                                                   
 765310Costurador de artefatos de couro, a máquina (exceto roupas e calçados)                                                                                
 765315Montador de artefatos de couro (exceto roupas e calçados)                                                                                             
@@ -2126,7 +2215,7 @@
 766420Auxiliar de radiologia (revelação fotográfica)                                                                                                        
 768105Tecelão (tear manual)                                                                                                                                 
 768110Tecelão de tapetes, a mão                                                                                                                             
-768115Tricoteiro, a mão                                                                                                                                     
+768115Tricoteiro, à mão                                                                                                                                     
 768120Redeiro                                                                                                                                               
 768125Chapeleiro (chapéus de palha)                                                                                                                         
 768130Crocheteiro, a mão                                                                                                                                    
@@ -2143,7 +2232,7 @@
 768620Paginador                                                                                                                                             
 768625Pintor de letreiros                                                                                                                                   
 768630Confeccionador de carimbos de borracha                                                                                                                
-768705Gravador, a mão (encadernação)                                                                                                                        
+768705Gravador, à mão (encadernação)                                                                                                                        
 768710Restaurador de livros                                                                                                                                 
 770105Mestre (indústria de madeira e mobiliário)                                                                                                            
 770110Mestre carpinteiro                                                                                                                                    
@@ -2160,7 +2249,7 @@
 773120Serrador de madeira                                                                                                                                   
 773125Serrador de madeira (serra circular múltipla)                                                                                                         
 773130Serrador de madeira (serra de fita múltipla)                                                                                                          
-773205Operador de máquina intercaladora e placas (compensados)                                                                                              
+773205Operador de máquina intercaladora de placas (compensados)                                                                                             
 773210Prensista de aglomerados                                                                                                                              
 773215Prensista de compensados                                                                                                                              
 773220Preparador de aglomerantes                                                                                                                            
@@ -2176,7 +2265,7 @@
 773350Operador de tupia (usinagem de madeira)                                                                                                               
 773355Torneiro na usinagem convencional de madeira                                                                                                          
 773405Operador de máquina bordatriz                                                                                                                         
-773410Operador de máquina de cortina d#água (produção de móveis)                                                                                            
+773410Operador de máquina de cortina dágua (produção de móveis)                                                                                             
 773415Operador de máquina de usinagem de madeira (produção em série)                                                                                        
 773420Operador de prensa de alta freqüência na usinagem de madeira                                                                                          
 773505Operador de centro de usinagem de madeira (cnc)                                                                                                       
@@ -2201,6 +2290,7 @@
 781105Condutor de processos robotizados de pintura                                                                                                          
 781110Condutor de processos robotizados de soldagem                                                                                                         
 781305Operador de veículos subaquáticos controlados remotamente                                                                                             
+781310Operador de aeronaves não tripuladas                                                                                                                  
 781705Mergulhador profissional (raso e profundo)                                                                                                            
 782105Operador de draga                                                                                                                                     
 782110Operador de guindaste (fixo)                                                                                                                          
@@ -2236,7 +2326,7 @@
 782720Moço de máquinas (marítimo e fluviário)                                                                                                               
 782725Marinheiro de esporte e recreio                                                                                                                       
 782730Marinheiro Auxiliar de Convés (marítimo e aquaviário)                                                                                                 
-782735Marinheiro de Auxiliar de Máquinas (marítimo e aquaviário)                                                                                            
+782735Marinheiro Auxiliar de Máquinas (marítimo e aquaviário)                                                                                               
 782805Condutor de veículos de tração animal (ruas e estradas)                                                                                               
 782810Tropeiro                                                                                                                                              
 782815Boiadeiro                                                                                                                                             
@@ -2249,6 +2339,8 @@
 783220Estivador                                                                                                                                             
 783225Ajudante de motorista                                                                                                                                 
 783230Bloqueiro (trabalhador portuário)                                                                                                                     
+783235Trabalhador portuário de capatazia                                                                                                                    
+783240Amarrador e desamarrado de embarcações                                                                                                                
 784105Embalador, a mão                                                                                                                                      
 784110Embalador, a máquina                                                                                                                                  
 784115Operador de máquina de etiquetar                                                                                                                      
@@ -2319,7 +2411,7 @@
 811805Operador de máquina de produtos farmacêuticos                                                                                                         
 811810Drageador (medicamentos)                                                                                                                              
 811815Operador de máquina de fabricação de cosméticos                                                                                                       
-811820Operador de máquina de fabricação de produtos de higiene e limpeza (sabão, sabonete, detergente, absorvente, fraldas cotonetes e outros)              
+811820Operador de máquina de fabricação de produtos de higiene e limpeza (sabão, sabonete, detergente, absorvente, fraldas, cotonetes e outros              
 812105Pirotécnico                                                                                                                                           
 812110Trabalhador da fabricação de munição e explosivos                                                                                                     
 813105Cilindrista (petroquímica e afins)                                                                                                                    
@@ -2337,7 +2429,7 @@
 820125Mestre de laminação                                                                                                                                   
 820205Supervisor de fabricação de produtos cerâmicos, porcelanatos e afins                                                                                  
 820210Supervisor de fabricação de produtos de vidro                                                                                                         
-821105Operador de centro de controle                                                                                                                        
+821105Operador de centro de controle (sinterização)                                                                                                         
 821110Operador de máquina de sinterizar                                                                                                                     
 821205Forneiro e operador (alto-forno)                                                                                                                      
 821210Forneiro e operador (conversor a oxigênio)                                                                                                            
@@ -2458,14 +2550,14 @@
 841735Dessecador de malte                                                                                                                                   
 841740Vinagreiro                                                                                                                                            
 841745Xaropeiro                                                                                                                                             
-841805Operador de forno (fabricação de paes, biscoitos e similares)                                                                                         
+841805Operador de forno (fabricação de pães, biscoitos e similares)                                                                                         
 841810Operador de máquinas de fabricação de doces, salgados e massas alimentícias                                                                           
 841815Operador de máquinas de fabricação de chocolates e achocolatados                                                                                      
 842105Preparador de melado e essência de fumo                                                                                                               
 842110Processador de fumo                                                                                                                                   
 842115Classificador de fumo                                                                                                                                 
 842120Auxiliar de processamento de fumo                                                                                                                     
-842125Operador de máquina de fabricar cigarros                                                                                                              
+842125Operador de máquina (fabricação de cigarros)                                                                                                          
 842135Operador de máquina de preparação de matéria prima para produção de cigarros                                                                          
 842205Preparador de fumo na fabricação de charutos                                                                                                          
 842210Operador de máquina de fabricar charutos e cigarrilhas                                                                                                

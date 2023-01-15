@@ -1,275 +1,286 @@
-0101Centro de referência em atenção a saúde do idoso                                                                                                      202204
-0202Unidade de alta complexidade ao paciente portador de obesidade grave                                                                                  202204
-0203Assistência em Alta Complexidade ao individuo com Obesidade                                                                                           202204
-0301Centros/Núcleos para realização de implante coclear                                                                                                   202204
-0305Atenção Especializada às Pessoas com Deficiência Auditiva                                                                                             202204
-0401Centro de tratamento da má formação labio-palatal                                                                                                     202204
-0403Centro de Especialidade Odontológica - CEO Tipo I                                                                                                     202204
-0404Centro de Especialidade Odontológica - CEO Tipo II                                                                                                    202204
-0405Centro de Especialidade Odontológica - CEO Tipo III                                                                                                   202204
-0503Unidade de Atenção Especializada em Oftalmologia                                                                                                      202204
-0504Centro de Referência em Oftalmologia                                                                                                                  202204
-0505Projeto Olhar Brasil                                                                                                                                  202204
-0506Tratamento do Glaucoma com medicamentos no âmbito da Política Nacional de Atenção Oftalmológica                                                       202204
-0507Consultório Itinerante de Ensino em Oftalmologia                                                                                                      202204
-0508Tratamento do Glaucoma com medicamentos do Componente Especializado da Assistência Farmacêutica                                                       202204
-0601Psiquiatria - Classe I                                                                                                                                202204
-0602Psiquiatria - Classe II                                                                                                                               202204
-0603Psiquiatria - Classe III                                                                                                                              202204
-0604Psiquiatria - Classe IV                                                                                                                               202204
-0605Psiquiatria - Classe V                                                                                                                                202204
-0606Psiquiatria - Classe VI                                                                                                                               202204
-0607Psiquiatria - Classe VII                                                                                                                              202204
-0608Psiquiatria - Classe VIII                                                                                                                             202204
-0609Psiquiatria - Classe IX                                                                                                                               202204
-0610Psiquiatria - Classe X                                                                                                                                202204
-0611Psiquiatria - Classe XI                                                                                                                               202204
-0612Psiquiatria - Classe XII                                                                                                                              202204
-0613Psiquiatria - Classe XIII                                                                                                                             202204
-0614Psiquiatria - Classe XIV                                                                                                                              202204
-0615PNASS maior que 80%                                                                                                                                   202204
-0616Centro de Atenção Psicossocial - CAPS I                                                                                                               202204
-0617Centro de Atenção Psicossocial - CAPS II                                                                                                              202204
-0618Centro de Atenção Psicossocial - CAPS III                                                                                                             202204
-0619Centro de Atenção Psicossocial Álcool e Drogas - CAPSad                                                                                               202204
-0620Centro de Atenção Psicossocial Infantil - CAPSi                                                                                                       202204
-0621Serviço hospitalar de referência para a atenção integral aos usuários de álcool e outras drogas                                                       202204
-0622Psiquiatria Classe I - PT/GM nº251/02                                                                                                                 202204
-0623Psiquiatria Classe II - PT/GM nº251/02                                                                                                                202204
-0624Psiquiatria Classe III - PT/GM nº251/02                                                                                                               202204
-0625Psiquiatria Classe IV - PT/GM nº 251/02                                                                                                               202204
-0626Psiquiatria Classe V - PT/GM nº251/02                                                                                                                 202204
-0627Psiquiatria Classe VI - PT/GM nº251/02                                                                                                                202204
-0628Psiquiatria Classe VII - PT/GM nº251/02                                                                                                               202204
-0629Psiquiatria Classe VIII - PT/GM nº251/02                                                                                                              202204
-0630Psiquiatria III                                                                                                                                       202204
-0631Nível I                                                                                                                                               202204
-0632Nível II                                                                                                                                              202204
-0633Nível III                                                                                                                                             202204
-0634Nível IV                                                                                                                                              202204
-0635Centro de Atenção Psicossocial Álcool e Drogas - CAPS AD III                                                                                          202204
-0636Atenção a pessoas com sofrimento ou transtorno mental decorrente de alcool e outras drogas.                                                           202204
-0637CAPS AD IV                                                                                                                                            202204
-0801Unidade de assistência de alta complexidade cardiovascular                                                                                            202204
-0802Centro de referência em alta complexidade cardiovascular                                                                                              202204
-0803Cirurgia cardiovascular e procedimentos em cardiologia intervencionista                                                                               202204
-0804Cirurgia cardiovascular pediátrica                                                                                                                    202204
-0805Cirurgia vascular                                                                                                                                     202204
-0806Cirurgia vascular e procedimentos endovasculares extracardíacos                                                                                       202204
-0807Laboratório de eletrofisiologia, cirurgia cardiovascular e procedimentos de cardiologia intervencionista                                              202204
-0808Implante de marcapasso definitivo                                                                                                                     202204
-0809Cirurgia cardíaca                                                                                                                                     202204
-0810Laboratório eletrofisiológico e terapia intervencionista                                                                                              202204
-0901Cuidados prolongados - enfermidades cardiovasculares                                                                                                  202204
-0902Cuidados prolongados - enfermidades pneumológicas                                                                                                     202204
-0903Cuidados prolongados - enfermidades neurológicas                                                                                                      202204
-0904Cuidados prolongados - enfermidades osteomuscular e do tecido conjuntivo                                                                              202204
-0905Cuidados prolongados - enfermidades oncológicas                                                                                                       202204
-0906Cuidados prolongados - enfermidades decorrentes da AIDS                                                                                               202204
-0907Cuidados prolongados - enfermidades devido a causas externas                                                                                          202204
-1001Centro de referência no tratamento da dor crônica                                                                                                     202204
-1101Serviço hospitalar para tratamento AIDS                                                                                                               202204
-1102Laboratório Especializado em Contagem de Linfócitos T CD4+/CD8+ e HIV1 Quant. do RNA                                                                  202204
-1103Tratamento da lipoatrofia facial do portador de HIV/AIDS                                                                                              202204
-1104Tratamento da liopodistrofia do Portador de HIV/AIDS                                                                                                  202204
-1105Laboratório Especializado em Contagem de Linfócitos T CD4+/CD8+                                                                                       202204
-1106Laboratório Especializado em Quantificação do RNA do HIV1                                                                                             202204
-1201Fibrose cística - Hospital Dia                                                                                                                        202204
-1202Hospital Dia - Procedimentos cirúrgicos, diagnósticos ou terapêuticos                                                                                 202204
-1203Hospital Dia - AIDS                                                                                                                                   202204
-1204Hospital Dia em intercorrências pós-transplante de medula óssea e de outros precursores hematopoéticos                                                202204
-1205Hospital Dia - Geriatria                                                                                                                              202204
-1206Hospital Dia - Saúde Mental                                                                                                                           202204
-1301Internação domiciliar                                                                                                                                 202204
-1401Referência hospitalar em atendimento secundário a gestante de alto risco                                                                              202204
-1402Referência hospitalar em atendimento terciário a gestante de alto risco                                                                               202204
-1403Unidade que realiza assistência ao parto sem distócia por enfermeiro obstetra ou obstetriz                                                            202204
-1404Hospital Amigo da Criança                                                                                                                             202204
-1405Centro de referência em triagem neonatal/acompanhamento e tratamento de doenças congênitas - fenilcetonuria/hipotireoidismo congenito                 202204
-1406Centro de referência em triagem neonatal/acompanhamento e tratamento - doenças falciformes e outras hemoglobinopatias                                 202204
-1407Centro de referência em triagem neonatal/acompanhamento e tratamento - fibrose cística                                                                202204
-1408Triagem Neonatal Fase IV                                                                                                                              202204
-1409Diagnóse de Fibrose Cistica                                                                                                                           202204
-1410Unidade de Centro de Parto Normal Intra-Hospitalar Tipo I 3 PPP                                                                                       202204
-1411Unidade de Centro de Parto Normal Intra-Hospitalar Tipo I 5 PPP                                                                                       202204
-1412Unidade de Centro de Parto Normal Peri-Hospitalar 5 PPP                                                                                               202204
-1413Atenção Hospitalar de Referência à Gestação de Alto Risco Tipo 1                                                                                      202204
-1414Atenção Hospitalar de Referência à Gestação de Alto Risco Tipo 2                                                                                      202204
-1415Casa da Gestante, Bebê e Puérpera                                                                                                                     202204
-1416Hospital Amigo da Criança                                                                                                                             202204
-1417Unidade de Centro de Parto Normal Peri-Hospitalar 3 PPP                                                                                               202204
-1418Unidade de Centro de Parto Normal Intra-Hospitalar Tipo II 3 PPP                                                                                      202204
-1419Unidade de Centro de Parto Normal Intra-Hospitalar Tipo II 5 PPP                                                                                      202204
-1501Unidade de assistência de alta complexidade em nefrologia (serviço de nefrologia)                                                                     202204
-1502Centro de referência de alta complexidade em nefrologia                                                                                               202204
-1504Atenção Especializada em DRC com Hemodiálise                                                                                                          202204
-1505Atenção Especializada em DRC com Diálise Peritoneal                                                                                                   202204
-1506Atenção Especializada em DRC nos estágios 4 e 5-PréDialitico                                                                                          202204
-1507Unidade Especializada em DRC com TRS/Diálise Tipo I com Hemodiálise                                                                                   202204
-1508Unidade Especializada em DRC com TRS/Diálise Tipo I com Diálise Peritoneal                                                                            202204
-1509Unidade Especializada em DRC com TRS/Diálise Tipo II com Hemodiálise                                                                                  202204
-1510Unidade Especializada em DRC com TRS/Diálise Tipo II com Diálise Peritoneal                                                                           202204
-1511Unidade Especializada em DRC com TRS/Diálise Tipo III com Hemodiálise                                                                                 202204
-1512Unidade Especializada em DRC com TRS/Diálise Tipo III com Diálise Peritoneal                                                                          202204
-1513Unidade Especializada em DRC com TRS/Diálise Tipo IV com Hemodiálise                                                                                  202204
-1514Unidade Especializada em DRC com TRS/Diálise Tipo IV com Diálise Peritoneal                                                                           202204
-1601Unidade de assistência de alta complexidade em neurologia/neurocirurgia                                                                               202204
-1602Centro de referência de alta complexidade em neurologia/neurocirurgia                                                                                 202204
-1603Trauma e anomalias do desenvolvimento                                                                                                                 202204
-1604Coluna e dos nervos periféricos                                                                                                                       202204
-1605Tumores do sistema nervoso                                                                                                                            202204
-1606Neurocirurgia vascular                                                                                                                                202204
-1607Tratamento neurocirúrgico da dor e funcional                                                                                                          202204
-1608Investigação e cirurgia de epilepsia                                                                                                                  202204
-1609Tratamento neuro-endovascular                                                                                                                         202204
-1610Neurocirurgia funcional esteriotáxica                                                                                                                 202204
-1611Epilepsia                                                                                                                                             202204
-1612Neurocirurgia I                                                                                                                                       202204
-1613Neurocirurgia II                                                                                                                                      202204
-1614Neurocirurgia III                                                                                                                                     202204
-1615Centro de Atendimento de Urgência Tipo I aos Pacientes com AVC                                                                                        202204
-1616Centro de Atendimento de Urgência Tipo II aos Pacientes com AVC                                                                                       202204
-1617Centro de Atendimento de Urgência Tipo III aos Pacientes com AVC                                                                                      202204
-1704Serviço isolado de radioterapia                                                                                                                       202204
-1705Serviço isolado de quimioterapia                                                                                                                      202204
-1706UNACON                                                                                                                                                202204
-1707UNACON com serviço de radioterapia                                                                                                                    202204
-1708UNACON com serviço de hematologia                                                                                                                     202204
-1709UNACON com serviço de oncologia pediátrica                                                                                                            202204
-1710UNACON exclusiva de hematologia                                                                                                                       202204
-1711UNACON exclusiva de oncologia pediátrica                                                                                                              202204
-1712CACON                                                                                                                                                 202204
-1713CACON com serviço de oncologia pediátrica                                                                                                             202204
-1714Hospital Geral com cirurgia oncológica                                                                                                                202204
-1715Serviço de radioterapia de complexo hospitalar                                                                                                        202204
-1716Serviço de Oncologia Clínica de Complexo hospitalar                                                                                                   202204
-1717Oncologia Cirúrgica Hospital Porte A                                                                                                                  202204
-1718Oncologia Cirúrgica Hospital Porte B.                                                                                                                 202204
-1719Serviço de Referência P/Diagnóstico e Trat. de Lesões Precursoras do Câncer do Colo de Útero(SRC)                                                     202204
-1720Serviço de Referência para Diagnóstico de Câncer de Mama (SDM)                                                                                        202204
-1721Hospital Geral com Cirurgia de Câncer de Complexo Hospitalar                                                                                          202204
-1801Centro de referência de tratamento de osteogênesis imperfecta                                                                                         202204
-1901Laqueadura                                                                                                                                            202204
-1902Vasectomia                                                                                                                                            202204
-2001Programa de assistência ventilatoria não invasiva aos portadores de doenças neuromusculares                                                           202204
-2101Unidade de referência em assistência a queimados - média complexidade                                                                                 202204
-2102Centro de referência em assistência a queimados - alta complexidade                                                                                   202204
-2201Centro de referência de reabilitação em medicina fisica                                                                                               202204
-2202Centro de reabilitação fisica - nível intermediário                                                                                                   202204
-2203Centro de Reabilitação Visual                                                                                                                         202204
-2204Centro de Reabilitação Auditiva na Média Complexidade                                                                                                 202204
-2205Centro de Reabilitação Auditiva na Alta Complexidade                                                                                                  202204
-2206Centro de Reabilitação Intelectual                                                                                                                    202204
-2207Centro de Reabilitação dos Transtornos do Spectro do Autismo                                                                                          202204
-2208Centro Especializado em Reabilitação (CER) Modalidade Física                                                                                          202204
-2209Centro Especializado em Reabilitação (CER) Modalidade Intelectual                                                                                     202204
-2210Centro Especializado em Reabilitação (CER) Modalidade Auditiva                                                                                        202204
-2211Centro Especializado em Reabilitação (CER) Modalidade Visual                                                                                          202204
-2301Unidade de assistência de alta complexidade em terapia nutricional                                                                                    202204
-2302Centro de referência de alta complexidade em terapia nutricional                                                                                      202204
-2303Enteral                                                                                                                                               202204
-2304Enteral e parenteral                                                                                                                                  202204
-2305Enteral e parenteral com manipulação e fabricação da fórmula nutricional                                                                              202204
-2306Nutrição enteral                                                                                                                                      202204
-2401Transplante de medula óssea-autogênico                                                                                                                202204
-2402Transplante de medula óssea-alogênico aparentado                                                                                                      202204
-2403Transplante de medula óssea-alogênico não aparentado                                                                                                  202204
-2404Transplante de pâncreas isolado                                                                                                                       202204
-2405Transplante conjugado rim e pâncreas                                                                                                                  202204
-2407Transplante de córnea/esclera                                                                                                                         202204
-2408Transplante renal                                                                                                                                     202204
-2409Transplante de fígado                                                                                                                                 202204
-2410Transplante de pulmão                                                                                                                                 202204
-2411Transplante de coração                                                                                                                                202204
-2412Busca ativa de orgãos                                                                                                                                 202204
-2413Banco de tecido ocular humano                                                                                                                         202204
-2414Banco de válvulas cardíacas                                                                                                                           202204
-2415Banco de tecido músculo-esquelético                                                                                                                   202204
-2416Banco de sangue e cordão umbilical e placentário                                                                                                      202204
-2417Exames de histocompatibilidade atraves de sorologia - Tipo I                                                                                          202204
-2418Exames de histocompatibilidade atraves de sorologia e ou biologia molecular - Tipo II                                                                 202204
-2419Banco de Pele Humana                                                                                                                                  202204
-2420Retirada de Órgãos e Tecidos                                                                                                                          202204
-2421Banco de Multitecidos                                                                                                                                 202204
-2422Transplante de tecido músculo esquelético                                                                                                             202204
-2423Transplante da válvula cardíaca humana                                                                                                                202204
-2424Transplante de pele                                                                                                                                   202204
-2425Cadastramento de doadores voluntários de medula óssea e outros precursores hematopoéticos                                                             202204
-2426Estabelecimento de saúde de Nível A                                                                                                                   202204
-2427Estabelecimento de saúde de Nível B                                                                                                                   202204
-2428Estabelecimento de saúde de Nível C                                                                                                                   202204
-2429Estabelecimento de saúde de Nível D                                                                                                                   202204
-2430Transplante de figado- IHH por febre amarela                                                                                                          202204
-2501Unidade de atenção especializada em traumato-ortopedia                                                                                                202204
-2502Centro de referência de alta complexidade em traumato-ortopedia                                                                                       202204
-2503Coluna                                                                                                                                                202204
-2504Cintura escapular, ombro, braço e cotovelo                                                                                                            202204
-2505Antebraço, punho e mão                                                                                                                                202204
-2506Cintura pélvica, quadril, coxa                                                                                                                        202204
-2507Coxa, joelho e perna                                                                                                                                  202204
-2508Perna, tornozelo e pé                                                                                                                                 202204
-2509Ortopedia infantil                                                                                                                                    202204
-2510Traumatologia ortopédica de urgência                                                                                                                  202204
-2511Ortopedia - Coluna                                                                                                                                    202204
-2512Ortopedia - Ombro                                                                                                                                     202204
-2513Ortopedia - Mão                                                                                                                                       202204
-2514Ortopedia - Quadril                                                                                                                                   202204
-2515Ortopedia - Joelho                                                                                                                                    202204
-2516Ortopedia - Tumor Ósseo                                                                                                                               202204
-2517Outros segmentos ósseos                                                                                                                               202204
-2518Adesão á Estratégia de Aumento do Acesso aos Procedimentos-TOM                                                                                        202204
-2601UTI II - Adulto                                                                                                                                       202204
-2602UTI II - Neonatal                                                                                                                                     202204
-2603UTI II - Pediátrica                                                                                                                                   202204
-2604UTI III - Adulto                                                                                                                                      202204
-2605UTI III - Neonatal                                                                                                                                    202204
-2606UTI III - Pediátrica                                                                                                                                  202204
-2607UTI - Queimados                                                                                                                                       202204
-2608Unidade Terapia Intensiva Coronariana - UCO TIPO II                                                                                                   202204
-2609Unidade Terapia Intensiva Coronariana - UCO TIPO III                                                                                                  202204
-2610Unidade de Terapia Intensiva Neonatal Tipo II - UTIN II                                                                                               202204
-2611Unidade de Terapia Intensiva Neonatal Tipo III - UTIN III                                                                                             202204
-2612UTI II Adulto - Síndrome Respiratória Aguda Grave (SRAG) - COVID-19                                                                                   202204
-2613UTI II Pediátrica - Síndrome Respiratória Aguda Grave (SRAG) - COVID-19                                                                               202204
-2696UTI I Adulto                                                                                                                                          202204
-2697UTI I Neonatal                                                                                                                                        202204
-2698UTI I Pediatria                                                                                                                                       202204
-2699UTI I                                                                                                                                                 202204
-2701Hospital Tipo I em Urgência                                                                                                                           202204
-2702Hospital Tipo II em Urgência                                                                                                                          202204
-2703Hospital Tipo III em Urgência                                                                                                                         202204
-2711Administração Pré Hospitalar de Tenectoplase                                                                                                          202204
-2801Unidade de cuidados intermediários neonatal                                                                                                           202204
-2802Unidade de Cuidados Intermediários Neonatal Convencional (UCINCo)                                                                                     202204
-2803Unidade de Cuidados Intermediários Neonatal Canguru (UCINCa)                                                                                          202204
-2804Unidade de Cuidados Intermediários Adulto                                                                                                             202204
-2805Unidade de Cuidados Intermediários Pediátrica (UCI-P)                                                                                                 202204
-2806Leito de Suporte Ventilatório Pulmonar-COVID-19                                                                                                       202204
-2901Videocirurgia                                                                                                                                         202204
-3001Unidade de Atenção Especializada no Processo Transexualizador                                                                                         202204
-3002Atenção ao Pré e Pós Operatório (clínico) e Hormonioterapia no Processo Transexualizador                                                              202204
-3003Atenção ao Pré e Pós Operatório e Cirurgias no Processo Transexualizador                                                                              202204
-3101HPP- Hospital de Pequeno Porte                                                                                                                        202204
-3201Unidade de Mamografia Móvel                                                                                                                           202204
-3202Laboratório de Exames Citopatológico do Cólo do Últero-Tipo I                                                                                         202204
-3203Lab. Monitoramento Externo de Qualidade de Exame Citopatológico do Colo do Útero Tipo-II                                                              202204
-3401Centro de Trauma Tipo I                                                                                                                               202204
-3402Centro de Trauma Tipo II                                                                                                                              202204
-3403Centro de Trauma Tipo III                                                                                                                             202204
-3501Atenção Especializada Eixo I DR de Origem Genética: 1-Anomalias Congênitas ou de Manifestação Tardia                                                  202204
-3502Atenção Especializada Eixo I DR de Origem Genética:2-Deficiência Intelectual Associada à Doença Rara                                                  202204
-3503Atenção Especializada Eixo I DR de Origem Genética: 3-Erro Inato do Metabolismo (EIM)                                                                 202204
-3504Atenção Especializada Eixo II DR de Origem não Genética: 1-Doenças Raras Inflamatórias                                                                202204
-3505Atenção Especializada Eixo II DR de Origem não Genética: 2-Doenças Raras Infecciosas                                                                  202204
-3506Atenção Especializada Eixo II DR de Origem não Genética: 3-Doenças Raras Autoimunes                                                                   202204
-3507Serviço de Referência Eixo I DR de Origem Genética:1 Anomalias Congênitas ou de Manifestação Tardia                                                   202204
-3508Serviço de Referência Eixo I DR de Origem Genética:2-Deficiência Intelectual Associada à Doença Rara                                                  202204
-3509Serviço de Referência Eixo I DR de Origem Genética:3-Erro Inato do Metabolismo (EIM)                                                                  202204
-3510Serviço de Referência Eixo II DR de Origem não Genética:3-Doenças Raras Autoimunes                                                                    202204
-3511Serviço de Referência Eixo II DR de Origem não Genética:2-Doenças Raras Inflamatórias                                                                 202204
-3512Serviço de Referência Eixo II DR de Origem não Genética:1-Doenças Raras Infecciosas                                                                   202204
-3513Atenção Especializada Eixo II DR de Origem não Genética:4-Outras DR de Origem não Genética                                                            202204
-3514Serviço de Referência Eixo II DR de Origem não Genética:4-Outras DR de Origem não Genética                                                            202204
-3515Serviço de Aconselhamento Genético                                                                                                                    202204
-3601Sítio Testador de ácidos nucléicos (SIT-NAT)                                                                                                          202204
-3701Coleta de Vestígios de Violência Sexual                                                                                                               202204
+0101Centro de referência em atenção a saúde do idoso                                                                                                      202301
+0202Unidade de alta complexidade ao paciente portador de obesidade grave                                                                                  202301
+0203Assistência em Alta Complexidade ao individuo com Obesidade                                                                                           202301
+0301Centros/Núcleos para realização de implante coclear                                                                                                   202301
+0305Atenção Especializada às Pessoas com Deficiência Auditiva                                                                                             202301
+0401Centro de tratamento da má formação labio-palatal                                                                                                     202301
+0403Centro de Especialidade Odontológica - CEO Tipo I                                                                                                     202301
+0404Centro de Especialidade Odontológica - CEO Tipo II                                                                                                    202301
+0405Centro de Especialidade Odontológica - CEO Tipo III                                                                                                   202301
+0503Unidade de Atenção Especializada em Oftalmologia                                                                                                      202301
+0504Centro de Referência em Oftalmologia                                                                                                                  202301
+0505Projeto Olhar Brasil                                                                                                                                  202301
+0506Tratamento do Glaucoma com medicamentos no âmbito da Política Nacional de Atenção Oftalmológica                                                       202301
+0507Consultório Itinerante de Ensino em Oftalmologia                                                                                                      202301
+0508Tratamento do Glaucoma com medicamentos do Componente Especializado da Assistência Farmacêutica                                                       202301
+0601Psiquiatria - Classe I                                                                                                                                202301
+0602Psiquiatria - Classe II                                                                                                                               202301
+0603Psiquiatria - Classe III                                                                                                                              202301
+0604Psiquiatria - Classe IV                                                                                                                               202301
+0605Psiquiatria - Classe V                                                                                                                                202301
+0606Psiquiatria - Classe VI                                                                                                                               202301
+0607Psiquiatria - Classe VII                                                                                                                              202301
+0608Psiquiatria - Classe VIII                                                                                                                             202301
+0609Psiquiatria - Classe IX                                                                                                                               202301
+0610Psiquiatria - Classe X                                                                                                                                202301
+0611Psiquiatria - Classe XI                                                                                                                               202301
+0612Psiquiatria - Classe XII                                                                                                                              202301
+0613Psiquiatria - Classe XIII                                                                                                                             202301
+0614Psiquiatria - Classe XIV                                                                                                                              202301
+0615PNASS maior que 80%                                                                                                                                   202301
+0616Centro de Atenção Psicossocial - CAPS I                                                                                                               202301
+0617Centro de Atenção Psicossocial - CAPS II                                                                                                              202301
+0618Centro de Atenção Psicossocial - CAPS III                                                                                                             202301
+0619Centro de Atenção Psicossocial Álcool e Drogas - CAPSad                                                                                               202301
+0620Centro de Atenção Psicossocial Infantil - CAPSi                                                                                                       202301
+0621Serviço hospitalar de referência para a atenção integral aos usuários de álcool e outras drogas                                                       202301
+0622Psiquiatria Classe I - PT/GM nº251/02                                                                                                                 202301
+0623Psiquiatria Classe II - PT/GM nº251/02                                                                                                                202301
+0624Psiquiatria Classe III - PT/GM nº251/02                                                                                                               202301
+0625Psiquiatria Classe IV - PT/GM nº 251/02                                                                                                               202301
+0626Psiquiatria Classe V - PT/GM nº251/02                                                                                                                 202301
+0627Psiquiatria Classe VI - PT/GM nº251/02                                                                                                                202301
+0628Psiquiatria Classe VII - PT/GM nº251/02                                                                                                               202301
+0629Psiquiatria Classe VIII - PT/GM nº251/02                                                                                                              202301
+0630Psiquiatria III                                                                                                                                       202301
+0631Nível I                                                                                                                                               202301
+0632Nível II                                                                                                                                              202301
+0633Nível III                                                                                                                                             202301
+0634Nível IV                                                                                                                                              202301
+0635Centro de Atenção Psicossocial Álcool e Drogas - CAPS AD III                                                                                          202301
+0636Atenção a pessoas com sofrimento ou transtorno mental decorrente de alcool e outras drogas.                                                           202301
+0637CAPS AD IV                                                                                                                                            202301
+0801Unidade de assistência de alta complexidade cardiovascular                                                                                            202301
+0802Centro de referência em alta complexidade cardiovascular                                                                                              202301
+0803Cirurgia cardiovascular e procedimentos em cardiologia intervencionista                                                                               202301
+0804Cirurgia cardiovascular pediátrica                                                                                                                    202301
+0805Cirurgia vascular                                                                                                                                     202301
+0806Cirurgia vascular e procedimentos endovasculares extracardíacos                                                                                       202301
+0807Laboratório de eletrofisiologia, cirurgia cardiovascular e procedimentos de cardiologia intervencionista                                              202301
+0808Implante de marcapasso definitivo                                                                                                                     202301
+0809Cirurgia cardíaca                                                                                                                                     202301
+0810Laboratório eletrofisiológico e terapia intervencionista                                                                                              202301
+0811QualiSUS Cardio Nível A                                                                                                                               202301
+0812QualiSUS Cardio Nível B                                                                                                                               202301
+0813QualiSUS Cardio Nível C                                                                                                                               202301
+0814QualiSUS Cardio Nível D                                                                                                                               202301
+0815Implante Transcateter de válvula aórtica (ITVA)                                                                                                       202301
+0901Cuidados prolongados - enfermidades cardiovasculares                                                                                                  202301
+0902Cuidados prolongados - enfermidades pneumológicas                                                                                                     202301
+0903Cuidados prolongados - enfermidades neurológicas                                                                                                      202301
+0904Cuidados prolongados - enfermidades osteomuscular e do tecido conjuntivo                                                                              202301
+0905Cuidados prolongados - enfermidades oncológicas                                                                                                       202301
+0906Cuidados prolongados - enfermidades decorrentes da AIDS                                                                                               202301
+0907Cuidados prolongados - enfermidades devido a causas externas                                                                                          202301
+1001Centro de referência no tratamento da dor crônica                                                                                                     202301
+1101Serviço hospitalar para tratamento AIDS                                                                                                               202301
+1102Laboratório Especializado em Contagem de Linfócitos T CD4+/CD8+ e HIV1 Quant. do RNA                                                                  202301
+1103Tratamento da lipoatrofia facial do portador de HIV/AIDS                                                                                              202301
+1104Tratamento da liopodistrofia do Portador de HIV/AIDS                                                                                                  202301
+1105Laboratório Especializado em Contagem de Linfócitos T CD4+/CD8+                                                                                       202301
+1106Laboratório Especializado em Quantificação do RNA do HIV1                                                                                             202301
+1201Fibrose cística - Hospital Dia                                                                                                                        202301
+1202Hospital Dia - Procedimentos cirúrgicos, diagnósticos ou terapêuticos                                                                                 202301
+1203Hospital Dia - AIDS                                                                                                                                   202301
+1204Hospital Dia em intercorrências pós-transplante de medula óssea e de outros precursores hematopoéticos                                                202301
+1205Hospital Dia - Geriatria                                                                                                                              202301
+1206Hospital Dia - Saúde Mental                                                                                                                           202301
+1301Internação domiciliar                                                                                                                                 202301
+1401Referência hospitalar em atendimento secundário a gestante de alto risco                                                                              202301
+1402Referência hospitalar em atendimento terciário a gestante de alto risco                                                                               202301
+1403Unidade que realiza assistência ao parto sem distócia por enfermeiro obstetra ou obstetriz                                                            202301
+1404Hospital Amigo da Criança                                                                                                                             202301
+1405Centro de referência em triagem neonatal/acompanhamento e tratamento de doenças congênitas - fenilcetonuria/hipotireoidismo congenito                 202301
+1406Centro de referência em triagem neonatal/acompanhamento e tratamento - doenças falciformes e outras hemoglobinopatias                                 202301
+1407Centro de referência em triagem neonatal/acompanhamento e tratamento - fibrose cística                                                                202301
+1408Referência em Triagem Neonatal Etapa I                                                                                                                202301
+1409Diagnóse de Fibrose Cistica                                                                                                                           202301
+1410Unidade de Centro de Parto Normal Intra-Hospitalar Tipo I 3 PPP                                                                                       202301
+1411Unidade de Centro de Parto Normal Intra-Hospitalar Tipo I 5 PPP                                                                                       202301
+1412Unidade de Centro de Parto Normal Peri-Hospitalar 5 PPP                                                                                               202301
+1413Atenção Hospitalar de Referência à Gestação de Alto Risco Tipo 1                                                                                      202301
+1414Atenção Hospitalar de Referência à Gestação de Alto Risco Tipo 2                                                                                      202301
+1415Casa da Gestante, Bebê e Puérpera                                                                                                                     202301
+1416Hospital Amigo da Criança                                                                                                                             202301
+1417Unidade de Centro de Parto Normal Peri-Hospitalar 3 PPP                                                                                               202301
+1418Unidade de Centro de Parto Normal Intra-Hospitalar Tipo II 3 PPP                                                                                      202301
+1419Unidade de Centro de Parto Normal Intra-Hospitalar Tipo II 5 PPP                                                                                      202301
+1501Unidade de assistência de alta complexidade em nefrologia (serviço de nefrologia)                                                                     202301
+1502Centro de referência de alta complexidade em nefrologia                                                                                               202301
+1504Atenção Especializada em DRC com Hemodiálise                                                                                                          202301
+1505Atenção Especializada em DRC com Diálise Peritoneal                                                                                                   202301
+1506Atenção Especializada em DRC nos estágios 4 e 5-PréDialitico                                                                                          202301
+1507Unidade Especializada em DRC com TRS/Diálise Tipo I com Hemodiálise                                                                                   202301
+1508Unidade Especializada em DRC com TRS/Diálise Tipo I com Diálise Peritoneal                                                                            202301
+1509Unidade Especializada em DRC com TRS/Diálise Tipo II com Hemodiálise                                                                                  202301
+1510Unidade Especializada em DRC com TRS/Diálise Tipo II com Diálise Peritoneal                                                                           202301
+1511Unidade Especializada em DRC com TRS/Diálise Tipo III com Hemodiálise                                                                                 202301
+1512Unidade Especializada em DRC com TRS/Diálise Tipo III com Diálise Peritoneal                                                                          202301
+1513Unidade Especializada em DRC com TRS/Diálise Tipo IV com Hemodiálise                                                                                  202301
+1514Unidade Especializada em DRC com TRS/Diálise Tipo IV com Diálise Peritoneal                                                                           202301
+1601Unidade de assistência de alta complexidade em neurologia/neurocirurgia                                                                               202301
+1602Centro de referência de alta complexidade em neurologia/neurocirurgia                                                                                 202301
+1603Trauma e anomalias do desenvolvimento                                                                                                                 202301
+1604Coluna e dos nervos periféricos                                                                                                                       202301
+1605Tumores do sistema nervoso                                                                                                                            202301
+1606Neurocirurgia vascular                                                                                                                                202301
+1607Tratamento neurocirúrgico da dor e funcional                                                                                                          202301
+1608Investigação e cirurgia de epilepsia                                                                                                                  202301
+1609Tratamento neuro-endovascular                                                                                                                         202301
+1610Neurocirurgia funcional esteriotáxica                                                                                                                 202301
+1611Epilepsia                                                                                                                                             202301
+1612Neurocirurgia I                                                                                                                                       202301
+1613Neurocirurgia II                                                                                                                                      202301
+1614Neurocirurgia III                                                                                                                                     202301
+1615Centro de Atendimento de Urgência Tipo I aos Pacientes com AVC                                                                                        202301
+1616Centro de Atendimento de Urgência Tipo II aos Pacientes com AVC                                                                                       202301
+1617Centro de Atendimento de Urgência Tipo III aos Pacientes com AVC                                                                                      202301
+1704Serviço isolado de radioterapia                                                                                                                       202301
+1705Serviço isolado de quimioterapia                                                                                                                      202301
+1706UNACON                                                                                                                                                202301
+1707UNACON com serviço de radioterapia                                                                                                                    202301
+1708UNACON com serviço de hematologia                                                                                                                     202301
+1709UNACON com serviço de oncologia pediátrica                                                                                                            202301
+1710UNACON exclusiva de hematologia                                                                                                                       202301
+1711UNACON exclusiva de oncologia pediátrica                                                                                                              202301
+1712CACON                                                                                                                                                 202301
+1713CACON com serviço de oncologia pediátrica                                                                                                             202301
+1714Hospital Geral com cirurgia oncológica                                                                                                                202301
+1715Serviço de radioterapia de complexo hospitalar                                                                                                        202301
+1716Serviço de Oncologia Clínica de Complexo hospitalar                                                                                                   202301
+1717Oncologia Cirúrgica Hospital Porte A                                                                                                                  202301
+1718Oncologia Cirúrgica Hospital Porte B.                                                                                                                 202301
+1719Serviço de Referência P/Diagnóstico e Trat. de Lesões Precursoras do Câncer do Colo de Útero(SRC)                                                     202301
+1720Serviço de Referência para Diagnóstico de Câncer de Mama (SDM)                                                                                        202301
+1721Hospital Geral com Cirurgia de Câncer de Complexo Hospitalar                                                                                          202301
+1722Tratamentos Integrados Sincrônicos em Oncologia                                                                                                       202301
+1801Centro de referência de tratamento de osteogênesis imperfecta                                                                                         202301
+1901Laqueadura                                                                                                                                            202301
+1902Vasectomia                                                                                                                                            202301
+2001Programa de assistência ventilatoria não invasiva aos portadores de doenças neuromusculares                                                           202301
+2101Unidade de referência em assistência a queimados - média complexidade                                                                                 202301
+2102Centro de referência em assistência a queimados - alta complexidade                                                                                   202301
+2201Centro de referência de reabilitação em medicina fisica                                                                                               202301
+2202Centro de reabilitação fisica - nível intermediário                                                                                                   202301
+2203Centro de Reabilitação Visual                                                                                                                         202301
+2204Centro de Reabilitação Auditiva na Média Complexidade                                                                                                 202301
+2205Centro de Reabilitação Auditiva na Alta Complexidade                                                                                                  202301
+2206Centro de Reabilitação Intelectual                                                                                                                    202301
+2207Centro de Reabilitação dos Transtornos do Spectro do Autismo                                                                                          202301
+2208Centro Especializado em Reabilitação (CER) Modalidade Física                                                                                          202301
+2209Centro Especializado em Reabilitação (CER) Modalidade Intelectual                                                                                     202301
+2210Centro Especializado em Reabilitação (CER) Modalidade Auditiva                                                                                        202301
+2211Centro Especializado em Reabilitação (CER) Modalidade Visual                                                                                          202301
+2301Unidade de assistência de alta complexidade em terapia nutricional                                                                                    202301
+2302Centro de referência de alta complexidade em terapia nutricional                                                                                      202301
+2303Enteral                                                                                                                                               202301
+2304Enteral e parenteral                                                                                                                                  202301
+2305Enteral e parenteral com manipulação e fabricação da fórmula nutricional                                                                              202301
+2306Nutrição enteral                                                                                                                                      202301
+2401Transplante de medula óssea-autogênico                                                                                                                202301
+2402Transplante de medula óssea-alogênico aparentado                                                                                                      202301
+2403Transplante de medula óssea-alogênico não aparentado                                                                                                  202301
+2404Transplante de pâncreas isolado                                                                                                                       202301
+2405Transplante conjugado rim e pâncreas                                                                                                                  202301
+2407Transplante de córnea/esclera                                                                                                                         202301
+2408Transplante renal                                                                                                                                     202301
+2409Transplante de fígado                                                                                                                                 202301
+2410Transplante de pulmão                                                                                                                                 202301
+2411Transplante de coração                                                                                                                                202301
+2412Busca ativa de orgãos                                                                                                                                 202301
+2413Banco de tecido ocular humano                                                                                                                         202301
+2414Banco de válvulas cardíacas                                                                                                                           202301
+2415Banco de tecido músculo-esquelético                                                                                                                   202301
+2416Banco de sangue e cordão umbilical e placentário                                                                                                      202301
+2417Exames de histocompatibilidade atraves de sorologia - Tipo I                                                                                          202301
+2418Exames de histocompatibilidade atraves de sorologia e ou biologia molecular - Tipo II                                                                 202301
+2419Banco de Pele Humana                                                                                                                                  202301
+2420Retirada de Órgãos e Tecidos                                                                                                                          202301
+2421Banco de Multitecidos                                                                                                                                 202301
+2422Transplante de tecido músculo esquelético                                                                                                             202301
+2423Transplante da válvula cardíaca humana                                                                                                                202301
+2424Transplante de pele                                                                                                                                   202301
+2425Cadastramento de doadores voluntários de medula óssea e outros precursores hematopoéticos                                                             202301
+2426Estabelecimento de saúde de Nível A                                                                                                                   202301
+2427Estabelecimento de saúde de Nível B                                                                                                                   202301
+2428Estabelecimento de saúde de Nível C                                                                                                                   202301
+2429Estabelecimento de saúde de Nível D                                                                                                                   202301
+2430Transplante de figado- IHH por febre amarela                                                                                                          202301
+2431QUALIDOT Nível A                                                                                                                                      202301
+2432QUALIDOT Nível B                                                                                                                                      202301
+2433QUALIDOT Nível C                                                                                                                                      202301
+2434QUALIDOT Nível D                                                                                                                                      202301
+2435QUALIDOT Nível E                                                                                                                                      202301
+2501Unidade de atenção especializada em traumato-ortopedia                                                                                                202301
+2502Centro de referência de alta complexidade em traumato-ortopedia                                                                                       202301
+2503Coluna                                                                                                                                                202301
+2504Cintura escapular, ombro, braço e cotovelo                                                                                                            202301
+2505Antebraço, punho e mão                                                                                                                                202301
+2506Cintura pélvica, quadril, coxa                                                                                                                        202301
+2507Coxa, joelho e perna                                                                                                                                  202301
+2508Perna, tornozelo e pé                                                                                                                                 202301
+2509Ortopedia infantil                                                                                                                                    202301
+2510Traumatologia ortopédica de urgência                                                                                                                  202301
+2511Ortopedia - Coluna                                                                                                                                    202301
+2512Ortopedia - Ombro                                                                                                                                     202301
+2513Ortopedia - Mão                                                                                                                                       202301
+2514Ortopedia - Quadril                                                                                                                                   202301
+2515Ortopedia - Joelho                                                                                                                                    202301
+2516Ortopedia - Tumor Ósseo                                                                                                                               202301
+2517Outros segmentos ósseos                                                                                                                               202301
+2518Adesão á Estratégia de Aumento do Acesso aos Procedimentos-TOM                                                                                        202301
+2601UTI II - Adulto                                                                                                                                       202301
+2602UTI II - Neonatal                                                                                                                                     202301
+2603UTI II - Pediátrica                                                                                                                                   202301
+2604UTI III - Adulto                                                                                                                                      202301
+2605UTI III - Neonatal                                                                                                                                    202301
+2606UTI III - Pediátrica                                                                                                                                  202301
+2607UTI - Queimados                                                                                                                                       202301
+2608Unidade Terapia Intensiva Coronariana - UCO TIPO II                                                                                                   202301
+2609Unidade Terapia Intensiva Coronariana - UCO TIPO III                                                                                                  202301
+2610Unidade de Terapia Intensiva Neonatal Tipo II - UTIN II                                                                                               202301
+2611Unidade de Terapia Intensiva Neonatal Tipo III - UTIN III                                                                                             202301
+2612UTI II Adulto - Síndrome Respiratória Aguda Grave (SRAG) - COVID-19                                                                                   202301
+2613UTI II Pediátrica - Síndrome Respiratória Aguda Grave (SRAG) - COVID-19                                                                               202301
+2696UTI I Adulto                                                                                                                                          202301
+2697UTI I Neonatal                                                                                                                                        202301
+2698UTI I Pediatria                                                                                                                                       202301
+2699UTI I                                                                                                                                                 202301
+2701Hospital Tipo I em Urgência                                                                                                                           202301
+2702Hospital Tipo II em Urgência                                                                                                                          202301
+2703Hospital Tipo III em Urgência                                                                                                                         202301
+2711Administração Pré Hospitalar de Tenectoplase                                                                                                          202301
+2801Unidade de cuidados intermediários neonatal                                                                                                           202301
+2802Unidade de Cuidados Intermediários Neonatal Convencional (UCINCo)                                                                                     202301
+2803Unidade de Cuidados Intermediários Neonatal Canguru (UCINCa)                                                                                          202301
+2804Unidade de Cuidados Intermediários Adulto                                                                                                             202301
+2805Unidade de Cuidados Intermediários Pediátrica (UCI-P)                                                                                                 202301
+2806Leito de Suporte Ventilatório Pulmonar-COVID-19                                                                                                       202301
+2901Videocirurgia                                                                                                                                         202301
+3001Unidade de Atenção Especializada no Processo Transexualizador                                                                                         202301
+3002Atenção ao Pré e Pós Operatório (clínico) e Hormonioterapia no Processo Transexualizador                                                              202301
+3003Atenção ao Pré e Pós Operatório e Cirurgias no Processo Transexualizador                                                                              202301
+3101HPP- Hospital de Pequeno Porte                                                                                                                        202301
+3201Unidade de Mamografia Móvel                                                                                                                           202301
+3202Laboratório de Exames Citopatológico do Cólo do Últero-Tipo I                                                                                         202301
+3203Lab. Monitoramento Externo de Qualidade de Exame Citopatológico do Colo do Útero Tipo-II                                                              202301
+3401Centro de Trauma Tipo I                                                                                                                               202301
+3402Centro de Trauma Tipo II                                                                                                                              202301
+3403Centro de Trauma Tipo III                                                                                                                             202301
+3501Atenção Especializada Eixo I DR de Origem Genética: 1-Anomalias Congênitas ou de Manifestação Tardia                                                  202301
+3502Atenção Especializada Eixo I DR de Origem Genética:2-Deficiência Intelectual Associada à Doença Rara                                                  202301
+3503Atenção Especializada Eixo I DR de Origem Genética: 3-Erro Inato do Metabolismo (EIM)                                                                 202301
+3504Atenção Especializada Eixo II DR de Origem não Genética: 1-Doenças Raras Inflamatórias                                                                202301
+3505Atenção Especializada Eixo II DR de Origem não Genética: 2-Doenças Raras Infecciosas                                                                  202301
+3506Atenção Especializada Eixo II DR de Origem não Genética: 3-Doenças Raras Autoimunes                                                                   202301
+3507Serviço de Referência Eixo I DR de Origem Genética:1 Anomalias Congênitas ou de Manifestação Tardia                                                   202301
+3508Serviço de Referência Eixo I DR de Origem Genética:2-Deficiência Intelectual Associada à Doença Rara                                                  202301
+3509Serviço de Referência Eixo I DR de Origem Genética:3-Erro Inato do Metabolismo (EIM)                                                                  202301
+3510Serviço de Referência Eixo II DR de Origem não Genética:3-Doenças Raras Autoimunes                                                                    202301
+3511Serviço de Referência Eixo II DR de Origem não Genética:2-Doenças Raras Inflamatórias                                                                 202301
+3512Serviço de Referência Eixo II DR de Origem não Genética:1-Doenças Raras Infecciosas                                                                   202301
+3513Atenção Especializada Eixo II DR de Origem não Genética:4-Outras DR de Origem não Genética                                                            202301
+3514Serviço de Referência Eixo II DR de Origem não Genética:4-Outras DR de Origem não Genética                                                            202301
+3515Serviço de Aconselhamento Genético                                                                                                                    202301
+3601Sítio Testador de ácidos nucléicos (SIT-NAT)                                                                                                          202301
+3701Coleta de Vestígios de Violência Sexual                                                                                                               202301

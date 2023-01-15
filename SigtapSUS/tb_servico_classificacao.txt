@@ -1,411 +1,414 @@
-165001Referência para Atenção Integral às Pessoas em Situação de Violência Sexual                                                                           202204
-166001Água de Consumo                                                                                                                                       202204
-167001ODONTOLOGIA - PROJETO SAÚDE NA ESCOLA (PSE)                                                                                                           202204
-168001Atenção Especializada Em Doenças Raras                                                                                                                202204
-169001Urologia em Geral                                                                                                                                     202204
-170001Núcleo de Segurança do Paciente                                                                                                                       202204
-173001Recebimento e Inspeção                                                                                                                                202204
-174001Indivíduos em Geral                                                                                                                                   202204
-100001Atendimento em presídio até 100 presos                                                                                                                202204
-101001Saúde da família                                                                                                                                      202204
-102001Estratégia de Agentes Comunitários de Saúde - EACS                                                                                                    202204
-103001Ambulância de transporte                                                                                                                              202204
-104001Central de Regulação de Internações Hospitalares                                                                                                      202204
-105001Neurocirurgia do trauma e anomalias do desenvolvimento                                                                                                202204
-106001Testagem e aconselhamento                                                                                                                             202204
-107001Serviço de Atenção à Saúde Auditiva na Média Complexidade                                                                                             202204
-108001Atendimento/acompanhamento em saúde do trabalhador                                                                                                    202204
-109001Unidade sócio-educativa com até 40 adolecentes                                                                                                        202204
-110001Atenção à infertilidade                                                                                                                               202204
-111001Diagnóstico e tratamento                                                                                                                              202204
-112001Acompanhamento do pré-natal de risco habitual                                                                                                         202204
-113001Assitência Domiciliar                                                                                                                                 202204
-114001Dentística                                                                                                                                            202204
-115001Residência terapêutica em saúde mental                                                                                                                202204
-116001Eletrofisiologia                                                                                                                                      202204
-117001Tratamento da lipodistrofia do portador de HIV / AIDS                                                                                                 202204
-118001Cirurgia torácica                                                                                                                                     202204
-119001Abordagem e tratamento do fumante                                                                                                                     202204
-120001Exames anatomopatológicos                                                                                                                             202204
-121001Radiologia                                                                                                                                            202204
-122001Teste Ergométrico                                                                                                                                     202204
-123001OPM auxiliares de locomoção                                                                                                                           202204
-124001Diagnóstico/Tratamento das doenças endócrinas, metabólicas e nutricionais                                                                             202204
-125001Dispensação de Medicamentos do Componente Especializado da Assistência Farmaceutica.                                                                  202204
-126001Assistência fisioterapêutica em alterações obstétricas, neonatais e uroginecológicas                                                                  202204
-127001Tratamento clínico, cirúrgico, reparador e acompanhamento ao obeso                                                                                    202204
-128001Procedimentos destinados à obtenção do sangue para fins de assitência hemoterápica                                                                    202204
-129001Exames de histocompatibilidade por meio de sorologia                                                                                                  202204
-130001Tratamento Dialítico-Hemodiálise                                                                                                                      202204
-131001Diagnóstico em oftalmologia                                                                                                                           202204
-132001Oncologia pediátrica                                                                                                                                  202204
-133001Tratamento de Doenças das Vias Aéreas Inferiores                                                                                                      202204
-134001Acupuntura                                                                                                                                            202204
-135001Reabilitação Visual                                                                                                                                   202204
-136001Enteral                                                                                                                                               202204
-137001Exame eletrocardiográfico por telemedicina                                                                                                            202204
-138001Diagnóstico e tratamento em cintura escapular                                                                                                         202204
-139001Tratamento de recém-nascido com hipotireoidismo e fenilcetonuria                                                                                      202204
-141001Vigilância epidemiológica                                                                                                                             202204
-142001Do aparelho digestivo                                                                                                                                 202204
-143001Transporte terrestre                                                                                                                                  202204
-144001Coleta realizada fora das estrutura laboratorial                                                                                                      202204
-145001Exames Bioquimicos                                                                                                                                    202204
-146001Diagnóstica                                                                                                                                           202204
-147001NASF 1                                                                                                                                                202204
-148001Saúde mental                                                                                                                                          202204
-149001Rim                                                                                                                                                   202204
-150001Fístula arteriovenosa sem enxerto                                                                                                                     202204
-151001Medicina nuclear in vivo                                                                                                                              202204
-152001Atenção Básica à Populações Indígenas                                                                                                                 202204
-153001Acompanhamento Clínico, pré e pós operatório e hormonioterapia.                                                                                       202204
-154001Banco de valvula cardiaca humana                                                                                                                      202204
-155001Serviço de Traumatologia e Ortopedia                                                                                                                  202204
-156001Atenção as Pessoas Ostomizadas I                                                                                                                      202204
-157001Laboratorio Regional de Protese Dentaria                                                                                                              202204
-158001Serviço de Atenção Integral em Hanseniase Tipo I                                                                                                      202204
-159001Atenção Primária                                                                                                                                      202204
-160001Teleconsultoria Assíncrona                                                                                                                            202204
-161001Equipe de Consultório na Rua - Modalidade I                                                                                                           202204
-162001ADULTO                                                                                                                                                202204
-163001NEONATAL CONVENCIONAL                                                                                                                                 202204
-164001Dispensação de OPM Auxiliares de Locomoção                                                                                                            202204
-100002Atendimento em manicômio até 100 presos                                                                                                               202204
-174002Grupos Especiais                                                                                                                                      202204
-102002Estratégia de Agentes Comunitários de Saúde com Saúde Bucal - (modalidade I)                                                                          202204
-103002Unidade de suporte básico de vida terrestre (USB)                                                                                                     202204
-104002Cental de Regulação de Consultas e Exames                                                                                                             202204
-105002Coluna e nervos periféricos                                                                                                                           202204
-106002Diagnóstico e tratamento                                                                                                                              202204
-107002Serviço de Atenção à Saúde Auditiva na Alta Complexidade                                                                                              202204
-108002Centro de referência em saúde do trabalhador CEREST estadual                                                                                          202204
-109002Unidade sócio-educativa com de 41 a 100 adolecentes                                                                                                   202204
-110002Contracepção clínica                                                                                                                                  202204
-111002Tratamento multidrogas resistentes                                                                                                                    202204
-112002Acompanhamento do pré-natal de alto risco                                                                                                             202204
-113002Internação Domiciliar                                                                                                                                 202204
-114002Endodontia                                                                                                                                            202204
-115002Atendimento psicossocial                                                                                                                              202204
-116002Cirurgia cardiovascular (adulto)                                                                                                                      202204
-117002Tratamento em queimados                                                                                                                               202204
-120002Exames citopatológicos                                                                                                                                202204
-121002Ultra-sonografia                                                                                                                                      202204
-122002Teste de Holter                                                                                                                                       202204
-123002OPM ortopédicas                                                                                                                                       202204
-124002Cirurgia de glândulas endócrinas                                                                                                                      202204
-125002Farmácia Popular                                                                                                                                      202204
-126002Assistência fisioterapêutica em alterações oncológicas                                                                                                202204
-128002Diagnóstico em hemoterapia                                                                                                                            202204
-129002Exames de histocompatibilidade por sorologia e biologia                                                                                               202204
-131002Tratamento clínico do aparelho da visão                                                                                                               202204
-132002Hematologia                                                                                                                                           202204
-133002Diagnóstico em Pneumologia                                                                                                                            202204
-134002Fitoterapia                                                                                                                                           202204
-135002Reabilitação Intelectual                                                                                                                              202204
-136002Enteral/Parenteral                                                                                                                                    202204
-138002Diagnóstico e tratamento em membros superiores                                                                                                        202204
-139002Tratamento de recém-nascido com doenças falciformes                                                                                                   202204
-141002Vigilância sanitária                                                                                                                                  202204
-142002Do aparelho respiratório                                                                                                                              202204
-143002Transporte aéreo                                                                                                                                      202204
-145002Exames hematológicos e hemostasia                                                                                                                     202204
-146002Cirúrgica                                                                                                                                             202204
-147002NASF 2                                                                                                                                                202204
-148002AIDS                                                                                                                                                  202204
-149002Medula óssea                                                                                                                                          202204
-150002Fístula arteriovenosa com enxerto                                                                                                                     202204
-151002Medicina nuclear in vitro                                                                                                                             202204
-153002Cirurgia e Acompanhamento pré e pós oreratório                                                                                                        202204
-154002Banco de tecido musculo esqueletico                                                                                                                   202204
-155002Serviço de Traumatologia e Ortopedia Pediátrica (até 21 anos de idade)                                                                                202204
-156002Atenção as Pessoas Ostomizadas II                                                                                                                     202204
-158002Serviço de Atenção Integral em Hanseniase Tipo II                                                                                                     202204
-159002Atenção Básica com Saúde Bucal                                                                                                                        202204
-160002Teleconsultoria Síncrona                                                                                                                              202204
-161002Equipe de Consultório na Rua - Modalidade II                                                                                                          202204
-162002NEONATAL                                                                                                                                              202204
-163002NEONATAL CANGURU                                                                                                                                      202204
-164002Manutenção e Adaptação de OPM Auxiliares de Locomoção                                                                                                 202204
-165002Serviço de Referência para Atenção Integral à Saúde de Adolescentes em Situação de Violência Sexual                                                   202204
-166002Água de Ambiental                                                                                                                                     202204
-167002ODONTOLOGIA - PROJETO BRASIL ALFABETIZADO (PBA)                                                                                                       202204
-168002Referência em Doenças Raras                                                                                                                           202204
-169002Litotripsia                                                                                                                                           202204
-173002Armazenamento e Controle                                                                                                                              202204
-101002Saúde bucal MI                                                                                                                                        202204
-100003Atendimento em presídio acima de 100 presos                                                                                                           202204
-101003Saúde bucal MII                                                                                                                                       202204
-102003Estratégia de Agentes Comunitários de Saúde com Saúde Bucal - (modalidade II)                                                                         202204
-103003Unidade de suporte avançado de vida terrestre (USA)                                                                                                   202204
-104003Central de Regulação de Urgências                                                                                                                     202204
-105003Tumores do sistema nervoso                                                                                                                            202204
-106003Diagnóstico, tratamento e capacitação técnica                                                                                                         202204
-107003Terapia fonoaudiológica                                                                                                                               202204
-108003VIGILÂNCIA EM SAÚDE DO TRABALHADOR (VISAT)                                                                                                            202204
-109003Unidade sócio-educativa com de 101 a 180 adolecentes                                                                                                  202204
-110003Laqueadura                                                                                                                                            202204
-112003Parto em gestação de risco habitual                                                                                                                   202204
-113003Equipe Multidisciplinar de Atenção Domiciliar - EMAD                                                                                                  202204
-114003Periodontia clínica                                                                                                                                   202204
-115003Serviço Hospitalar para Atenção a Saúde Mental                                                                                                        202204
-116003Cirurgia cardiovascular (Pediátrico)                                                                                                                  202204
-117003Tratamento da lipoatrofia facial do portador de HIV / AIDS                                                                                            202204
-120003Monitoramento Externo da Qualidade dos Exames Citopatologicos do Colo do Útero                                                                        202204
-121003Tomografia computadorizada                                                                                                                            202204
-122003Exame Eletrocardiográfico                                                                                                                             202204
-123003OPM auditivas                                                                                                                                         202204
-125003Farmácia com manipulação homeopática                                                                                                                  202204
-126003Assistência fisioterapêutica em oftalmologia                                                                                                          202204
-128003Procedimentos especiais em hemoterapia                                                                                                                202204
-130003Confeccção/Intervenção de Acessos para Diálise                                                                                                        202204
-131003Tratamento cirúrgico do aparelho da visão                                                                                                             202204
-132003Oncologia clínica                                                                                                                                     202204
-133003Diagnóstico em Pneumologia por Telemedicina                                                                                                           202204
-134003Outras Práticas em Medicina Tradicional Chinesa                                                                                                       202204
-135003Reabilitação Física                                                                                                                                   202204
-136003Enteral/Parenteral, com manipulação/fabricação                                                                                                        202204
-138003Diagnóstico e tratamento em coluna vertebral e caixa torácica                                                                                         202204
-139003Tratamento de recém-nascido com fibrose cística                                                                                                       202204
-141003Vigilância ambiental                                                                                                                                  202204
-142003Do aparelho urinário                                                                                                                                  202204
-143003Transporte marítimo                                                                                                                                   202204
-145003Exames sorológicos e imunológicos                                                                                                                     202204
-147003NASF Intermunicipal                                                                                                                                   202204
-148003Geriátrico                                                                                                                                            202204
-149003Coração                                                                                                                                               202204
-151003Medicina nuclear in vivo por telemedicina                                                                                                             202204
-155003Serviço de Traumatologia e Ortopedia de Urgência                                                                                                      202204
-158003Serviço de Atenção Integral em Hanseniase Tipo III                                                                                                    202204
-159003Academia da Saúde                                                                                                                                     202204
-160003Segunda Opinião Formativa                                                                                                                             202204
-161003Equipe de Consultório na Rua - Modalidade III                                                                                                         202204
-162003PEDIÁTRICO                                                                                                                                            202204
-163003PEDIÁTRICO                                                                                                                                            202204
-164003Dispensação de OPM Ortopédica                                                                                                                         202204
-165003Serviço de Referência para Atenção Integral à Saúde de Crianças em Situação de Violência Sexual                                                       202204
-166003Água de Hemodiálise                                                                                                                                   202204
-167003OFTALMOLOGIA - PROJETO SAÚDE NA ESCOLA (PSE)                                                                                                          202204
-173003Distribuição                                                                                                                                          202204
-152004Saneamento a Populações Indígenas                                                                                                                     202204
-159004Estratégia de Saúde da Família                                                                                                                        202204
-162004QUEIMADOS                                                                                                                                             202204
-163004ADULTO                                                                                                                                                202204
-164004Manutenção e Adaptação de OPM Ortopédica                                                                                                              202204
-165004Serviço de Referência para Atenção Integral à Saúde de Homens em Situação de Violência Sexual                                                         202204
-166004Água Mineral                                                                                                                                          202204
-167004OFTALMOLOGIA - PROJETO BRASIL ALFABETIZADO (PBA)                                                                                                      202204
-173004Transporte                                                                                                                                            202204
-125004Dispensação de medicamentos estratégicos                                                                                                              202204
-126004Assistência fisioterapêutica cardiovasculares e pneumo-funcionais                                                                                     202204
-128004Medicina transfusional                                                                                                                                202204
-130004Tratamento Nefrologia em Geral                                                                                                                        202204
-131004Projeto Olhar Brasil                                                                                                                                  202204
-132004Radioterapia                                                                                                                                          202204
-134004Práticas Corpo-mente                                                                                                                                  202204
-135004Reabilitação visual/mental/múltiplas deficiências                                                                                                     202204
-138004Diagnóstico e tratamento em cintura pélvica                                                                                                           202204
-139004Tratamento de recém-nascido com outras doenças congênitas                                                                                             202204
-140004Estabilização de paciente crítico/grave                                                                                                               202204
-141004Núcleo de vigilância hospitalar                                                                                                                       202204
-142004Do aparelho ginecológico                                                                                                                              202204
-145004Exames coprológicos                                                                                                                                   202204
-147004NASF 3                                                                                                                                                202204
-148004Fibrose cística                                                                                                                                       202204
-149004Pulmão                                                                                                                                                202204
-100004Atendimento em manicômio acima de 100 presos                                                                                                          202204
-101004Saúde da Família para a População Ribeirinha                                                                                                          202204
-104004Unidade de autorizações de TFD intermunicipais                                                                                                        202204
-105004Neurocirurgia vascular                                                                                                                                202204
-106004Assistência Domiciliar Terapêutica em AIDS-ADT                                                                                                        202204
-107004Diagnóstico em audiologia/otologia                                                                                                                    202204
-109004Unidade sócio-educativa com mais de 180 adolecentes                                                                                                   202204
-110004Vasectomia                                                                                                                                            202204
-112004Parto em gestação de alto risco                                                                                                                       202204
-113004Equipe Multidisciplinar de Apoio - EMAP                                                                                                               202204
-114004Moldagem/Manutenção                                                                                                                                   202204
-115004Serviço Residencial Terapêutico Tipo I - SRT tipo I                                                                                                   202204
-116004Cirurgia vascular                                                                                                                                     202204
-121004Ressonância magnética                                                                                                                                 202204
-122004Exame Eletroencefalográfico                                                                                                                           202204
-123004OPM oftalmológicas                                                                                                                                    202204
-152005Atenção Especializada a Populações Indígenas                                                                                                          202204
-122005Teste Ergométrico por Telemedicina                                                                                                                    202204
-162005DOENÇA CORONARIANA (UCO)                                                                                                                              202204
-164005Dispensação de OPM Auditiva                                                                                                                           202204
-165005Serviço de Referência para Atenção Integral à Saúde de Pessoas Idosas em Situação de Violência Sexual                                                 202204
-166005Alimentos                                                                                                                                             202204
-123005OPM em gastroenterologia                                                                                                                              202204
-125005Dispensação de medicamentos básicos                                                                                                                   202204
-126005Assistência fisioterapêutica nas disfunções músculo-esqueléticas (todas as origens)                                                                   202204
-130005Tratamento Diálitico Peritonial                                                                                                                       202204
-131005Diagnóstico em Oftalmologia por Telemedicina                                                                                                          202204
-132005Oncologia cirúrgica                                                                                                                                   202204
-134005Homeopatia                                                                                                                                            202204
-135005Reabiliatação Auditiva                                                                                                                                202204
-138005Diagnóstico e tratamento em membros inferiores                                                                                                        202204
-139005Acompanhamento a pacientes com diagnósticos de Hiperplasia Adrenal Congênita                                                                          202204
-140005Atendimento ao paciente com Acidente Vascular Cerebral (AVC)                                                                                          202204
-145005Exames de uroanálise                                                                                                                                  202204
-148005Cirúrgico / Diagnóstico                                                                                                                               202204
-149005Córnea / Esclera                                                                                                                                      202204
-101005Saúde da Família para a População Ribeirinha-Saúde Bucal MI                                                                                           202204
-103005Unidade de Suporte Básico de vida: Equipe Embarcação                                                                                                  202204
-104005Unidade de autorizações de TFD interestaduais                                                                                                         202204
-105005Tratamento neurocirúrgico da dor funcional                                                                                                            202204
-106005Unidade Dispensadora de Medicamentos - UDM                                                                                                            202204
-107005Implante Coclear                                                                                                                                      202204
-109005Atenção Básica à Adolescentes em Unidade Socioeducativa                                                                                               202204
-112005Centro de parto normal                                                                                                                                202204
-113005Equipe de cuidados domiciliares                                                                                                                       202204
-114005Cirurgia oral                                                                                                                                         202204
-115005Serviço Residencial Terapêutico Tipo II - SRT tipo II                                                                                                 202204
-116005Cardiologia intervencionista (hemodinâmica)                                                                                                           202204
-159005Saúde Bucal                                                                                                                                           202204
-159006Núcleo Ampliado de Saúde da Família e Atenção Primária                                                                                                202204
-122006Teste Holter por Telemedicina                                                                                                                         202204
-165006Serviço de referência para interrupção de gravidez nos casos previstos em LEI                                                                         202204
-166006Células, Tecidos e Órgãos                                                                                                                             202204
-123006OPM em urologia                                                                                                                                       202204
-125006Farmácia Hospitalar                                                                                                                                   202204
-126006Assistência fisioterapêutica em queimados                                                                                                             202204
-130006Tratamento em DRC                                                                                                                                     202204
-131006Projeto Olhar Brasil - Programa Saúde na Escola (PSE)                                                                                                 202204
-134006Termalismo/Crenoterapia                                                                                                                               202204
-139006Acompanhamento a pacientes com diagnósticos de Deficiência Biotinidase                                                                                202204
-140006Pronto Atendimento Clínico                                                                                                                            202204
-145006Exames hormonais                                                                                                                                      202204
-148006Acompanhamento pós-transplante de medula óssea                                                                                                        202204
-149006Fígado                                                                                                                                                202204
-101006Saúde da Família Fluvial                                                                                                                              202204
-103006Veículos de intervenção rápida                                                                                                                        202204
-104006Central Estadual de Regulação da Alta Complexidade                                                                                                    202204
-105006Investigação e cirurgia de epilepsia                                                                                                                  202204
-107006Triagem Auditiva Neonatal                                                                                                                             202204
-112006Casa da Gestante, Bebê e Puérpera                                                                                                                     202204
-114006Cirurgia buco-maxilo-facial                                                                                                                           202204
-115006UA Adulto                                                                                                                                             202204
-116006Cardiologia Endovascular Extracardíaco                                                                                                                202204
-121006Radiologia intervencionista                                                                                                                           202204
-164006Manutenção e Adaptação de OPM Auditiva                                                                                                                202204
-159007Atenção Primária para População Ribeirinha                                                                                                            202204
-122007Exame Eletrocardiografico por Telemedicina                                                                                                            202204
-165007Atenção Ambulatorial  ás Pessoas em Situação de Violência Sexual                                                                                      202204
-166007Medicamentos                                                                                                                                          202204
-123007OPM em odontologia                                                                                                                                    202204
-125007Farmácia Viva                                                                                                                                         202204
-126007Assistência fisioterapêutica nas alterações em neurologia                                                                                             202204
-131007Projeto Olhar Brasil - Programa Brasil Alfabetizado (PBA)                                                                                             202204
-134007Antroposofia Aplicada à Saúde                                                                                                                         202204
-135007Oficina Ortopédica Fixa                                                                                                                               202204
-140007Pronto Atendimento Pediátrico                                                                                                                         202204
-145007Exames de  vigilância epidemiológica e  ambiental                                                                                                     202204
-149007Pâncreas                                                                                                                                              202204
-101007Saúde da Família Fluvial com Saúde Bucal                                                                                                              202204
-103007Outros veículos                                                                                                                                       202204
-104007Regulação Nacional de Alta Complexidade                                                                                                               202204
-105007Tratamento endovascular                                                                                                                               202204
-107007Diagnóstico em Audiologia/Otologia por Telemedicina                                                                                                   202204
-114007Atendimento à pessoa com deficiência                                                                                                                  202204
-115007UA Infantojuvenil                                                                                                                                     202204
-116007Cardiologia Clínica                                                                                                                                   202204
-121007Radiologia por telemedicina                                                                                                                           202204
-164007Dispensação de OPM Oftalmológica                                                                                                                      202204
-152008Hospitalidade Indígena                                                                                                                                202204
-122008Exame Eletroencefalografico por Telemedicina                                                                                                          202204
-164008Manutenção e Adaptação de OPM Oftalmológica                                                                                                           202204
-165008Coleta de  Vestígios de Violência Sexual                                                                                                              202204
-166008Saneantes Domissanitários                                                                                                                             202204
-123008OPM buco-maxilo-facial                                                                                                                                202204
-126008Diagnóstico cinético funcional                                                                                                                        202204
-134008Práticas Expressivas                                                                                                                                  202204
-135008Oficina Ortopédica Intinerante Terrestre                                                                                                              202204
-140008Pronto Atendimento Obstétrico                                                                                                                         202204
-145008Exames toxicológicos ou de monitorização terapêutica                                                                                                  202204
-149008Retirada de orgãos                                                                                                                                    202204
-101008ESF Tipo I, II, III, IV ou Transitória                                                                                                                202204
-103008Ambulância de resgate                                                                                                                                 202204
-104008Regulação Ambulatorial de Média Complexidade                                                                                                          202204
-105008Neurocirurgia funcional estereotáxica                                                                                                                 202204
-107008Atenção Especializada às Pessoas com Deficiência Auditiva                                                                                             202204
-115008Unidade de Atenção em Regime Residencial                                                                                                              202204
-116008Serviço de Atenção Cardiovascular/Cardiologia Angiologia                                                                                              202204
-121008Ultra-sonografia por telemedicina                                                                                                                     202204
-159008Consultório na Rua                                                                                                                                    202204
-152009Gestão da Atenção e Saneamento à Populações Indígenas                                                                                                 202204
-122009Exame Eletroneuromiografia                                                                                                                            202204
-164009Substitução/Troca de OPM                                                                                                                              202204
-166009Produtos para a Saúde                                                                                                                                 202204
-123009Substituição/Troca em órteses/próteses                                                                                                                202204
-134009Ayurveda                                                                                                                                              202204
-135009Oficina Ortopédica Intinerante Fluvial                                                                                                                202204
-140009Pronto Atendimento Psiquiátrico                                                                                                                       202204
-145009Exames microbiológicos                                                                                                                                202204
-149009Pele                                                                                                                                                  202204
-101009ESF Tipo I, II, III, IV ou Transitória com Saúde Bucal MI                                                                                             202204
-104009Regulação do Acesso a Ações e Serviços de Saúde                                                                                                       202204
-105009Polissonografia                                                                                                                                       202204
-121009Tomografia computadorizada por telemedicina                                                                                                           202204
-159009Atenção Primária para População Prisional                                                                                                             202204
-134010Práticas Naturais                                                                                                                                     202204
-159010Atenção Primária para Adolescentes em Unidade Socioeducativa                                                                                          202204
-123010OPM em queimados                                                                                                                                      202204
-135010Atenção Fonoaudiológica                                                                                                                               202204
-152010Saúde Bucal à Populações Indígenas                                                                                                                    202204
-103010Motolância                                                                                                                                            202204
-164010OPM em gastroenterologia                                                                                                                              202204
-149010Válvulas cardíacas                                                                                                                                    202204
-121010Ressonância magnética por telemedicina                                                                                                                202204
-166010Cosméticos                                                                                                                                            202204
-145010Exames em outros líquidos biológicos                                                                                                                  202204
-140010Pronto Atendimento Oftalmológico                                                                                                                      202204
-122010Exame videoeletroencefalografia                                                                                                                       202204
-101010ESF Tipo I, II, III, IV ou Transitória com Saúde Bucal MII                                                                                            202204
-123011OPM em nefrologia                                                                                                                                     202204
-122011Potenciais Evocados                                                                                                                                   202204
-121011Radiologia intervencionista por telemedicina                                                                                                          202204
-103011Unidade de Suporte Avançado de vida: Equipe Embarcação                                                                                                202204
-101011ESF Transitória                                                                                                                                       202204
-166011Desinfestantes                                                                                                                                        202204
-164011OPM em Urologia                                                                                                                                       202204
-149011Osteocondroligamentos                                                                                                                                 202204
-145011Exames de genética                                                                                                                                    202204
-140011Pronto Atendimento Odontológico                                                                                                                       202204
-135011Atenção Fisioterapeutica                                                                                                                              202204
-134011Práticas Manuais                                                                                                                                      202204
-135012Atenção à Saúde das Pessoas Ostomizadas I                                                                                                             202204
-123012OPM - Projeto Olhar Brasil                                                                                                                            202204
-103012Equipe Aeromédico                                                                                                                                     202204
-145012Exames para triagem neonatal                                                                                                                          202204
-121012Mamografia                                                                                                                                            202204
-101012Saúde da Família para a População Ribeirinha - Saúde Bucal MII                                                                                        202204
-134012Práticas Psicodinâmicas                                                                                                                               202204
-122012Potenciais Evocados por Telemedicina                                                                                                                  202204
-140012Pronto Socorro Pediátrico                                                                                                                             202204
-166012Imunobiológicos                                                                                                                                       202204
-149012Separação, avaliação biomicroscópica e conservação da córnea/esclera                                                                                  202204
-123013OPM Projeto Olhar Brasil - Programa Saúde na Escola (PSE)                                                                                             202204
-101013ESB MI                                                                                                                                                202204
-140013Pronto Socorro Obstétrico                                                                                                                             202204
-166013Insumos Farmacêuticos                                                                                                                                 202204
-149013Contagem endotelial corneana                                                                                                                          202204
-121013Mamografia por Telemedicina                                                                                                                           202204
-135013Atenção à Saúde das Pessoas Ostomizadas II                                                                                                            202204
-145013Exames imunohematológicos                                                                                                                             202204
-134013Ozônioterapia                                                                                                                                         202204
-149014Acompanhamento de paciente transplantado                                                                                                              202204
-166014Material Biológico                                                                                                                                    202204
-140014Pronto Socorro Cardiovascular                                                                                                                         202204
-123014OPM Projeto Olhar Brasil - Programa Brasil Alfabetizado (PBA)                                                                                         202204
-134014Aromaterapia                                                                                                                                          202204
-101014ESB MII                                                                                                                                               202204
-140015Pronto Socorro Neurologia/Neurocirurgia                                                                                                               202204
-166015Sangue e Hemoderivados                                                                                                                                202204
-134015Imposição de Mãos                                                                                                                                     202204
-149015Ações para doação e captação de órgãos e tecidos                                                                                                      202204
-149016Retirada de globo ocular humano para transplante                                                                                                      202204
-166016Surtos de Toxinfecção                                                                                                                                 202204
-140016Pronto Socorro Traumato-Ortopédico                                                                                                                    202204
-166017Diversos                                                                                                                                              202204
-140017Pronto Socorro Odontológico                                                                                                                           202204
-140018Pronto Socorro Oftalmológico                                                                                                                          202204
-140019Pronto Socorro Geral/Clínico                                                                                                                          202204
+165001Referência para Atenção Integral às Pessoas em Situação de Violência Sexual                                                                           202301
+166001Água de Consumo                                                                                                                                       202301
+167001ODONTOLOGIA - PROJETO SAÚDE NA ESCOLA (PSE)                                                                                                           202301
+168001Atenção Especializada Em Doenças Raras                                                                                                                202301
+169001Urologia em Geral                                                                                                                                     202301
+170001Núcleo de Segurança do Paciente                                                                                                                       202301
+173001Recebimento e Inspeção                                                                                                                                202301
+174001Indivíduos em Geral                                                                                                                                   202301
+100001Atendimento em presídio até 100 presos                                                                                                                202301
+101001Saúde da família                                                                                                                                      202301
+102001Estratégia de Agentes Comunitários de Saúde - EACS                                                                                                    202301
+103001Ambulância de transporte                                                                                                                              202301
+104001Central de Regulação de Internações Hospitalares                                                                                                      202301
+105001Neurocirurgia do trauma e anomalias do desenvolvimento                                                                                                202301
+106001Testagem e aconselhamento                                                                                                                             202301
+107001Serviço de Atenção à Saúde Auditiva na Média Complexidade                                                                                             202301
+108001Atendimento/acompanhamento em saúde do trabalhador                                                                                                    202301
+109001Unidade sócio-educativa com até 40 adolecentes                                                                                                        202301
+110001Atenção à infertilidade                                                                                                                               202301
+111001Diagnóstico e tratamento                                                                                                                              202301
+112001Acompanhamento do pré-natal de risco habitual                                                                                                         202301
+113001Assitência Domiciliar                                                                                                                                 202301
+114001Dentística                                                                                                                                            202301
+115001Residência terapêutica em saúde mental                                                                                                                202301
+116001Eletrofisiologia                                                                                                                                      202301
+117001Tratamento da lipodistrofia do portador de HIV / AIDS                                                                                                 202301
+118001Cirurgia torácica                                                                                                                                     202301
+119001Abordagem e tratamento do fumante                                                                                                                     202301
+120001Exames anatomopatológicos                                                                                                                             202301
+121001Radiologia                                                                                                                                            202301
+122001Teste Ergométrico                                                                                                                                     202301
+123001OPM auxiliares de locomoção                                                                                                                           202301
+124001Diagnóstico/Tratamento das doenças endócrinas, metabólicas e nutricionais                                                                             202301
+125001Dispensação de Medicamentos do Componente Especializado da Assistência Farmaceutica.                                                                  202301
+126001Assistência fisioterapêutica em alterações obstétricas, neonatais e uroginecológicas                                                                  202301
+127001Tratamento clínico, cirúrgico, reparador e acompanhamento ao obeso                                                                                    202301
+128001Procedimentos destinados à obtenção do sangue para fins de assitência hemoterápica                                                                    202301
+129001Exames de histocompatibilidade por meio de sorologia                                                                                                  202301
+130001Tratamento Dialítico-Hemodiálise                                                                                                                      202301
+131001Diagnóstico em oftalmologia                                                                                                                           202301
+132001Oncologia pediátrica                                                                                                                                  202301
+133001Tratamento de Doenças das Vias Aéreas Inferiores                                                                                                      202301
+134001Acupuntura                                                                                                                                            202301
+135001Reabilitação Visual                                                                                                                                   202301
+136001Enteral                                                                                                                                               202301
+137001Exame eletrocardiográfico por telemedicina                                                                                                            202301
+138001Diagnóstico e tratamento em cintura escapular                                                                                                         202301
+139001Tratamento de recém-nascido com hipotireoidismo e fenilcetonuria                                                                                      202301
+141001Vigilância epidemiológica                                                                                                                             202301
+142001Do aparelho digestivo                                                                                                                                 202301
+143001Transporte terrestre                                                                                                                                  202301
+144001Coleta realizada fora das estrutura laboratorial                                                                                                      202301
+145001Exames Bioquimicos                                                                                                                                    202301
+146001Diagnóstica                                                                                                                                           202301
+147001NASF 1                                                                                                                                                202301
+148001Saúde mental                                                                                                                                          202301
+149001Rim                                                                                                                                                   202301
+150001Fístula arteriovenosa sem enxerto                                                                                                                     202301
+151001Medicina nuclear in vivo                                                                                                                              202301
+152001Atenção Básica à Populações Indígenas                                                                                                                 202301
+153001Acompanhamento Clínico, pré e pós operatório e hormonioterapia.                                                                                       202301
+154001Banco de valvula cardiaca humana                                                                                                                      202301
+155001Serviço de Traumatologia e Ortopedia                                                                                                                  202301
+156001Atenção as Pessoas Ostomizadas I                                                                                                                      202301
+157001Laboratorio Regional de Protese Dentaria                                                                                                              202301
+158001Serviço de Atenção Integral em Hanseniase Tipo I                                                                                                      202301
+159001Atenção Primária                                                                                                                                      202301
+160001Teleconsultoria Assíncrona                                                                                                                            202301
+161001Equipe de Consultório na Rua - Modalidade I                                                                                                           202301
+162001ADULTO                                                                                                                                                202301
+163001NEONATAL CONVENCIONAL                                                                                                                                 202301
+164001Dispensação de OPM Auxiliares de Locomoção                                                                                                            202301
+100002Atendimento em manicômio até 100 presos                                                                                                               202301
+174002Grupos Especiais                                                                                                                                      202301
+102002Estratégia de Agentes Comunitários de Saúde com Saúde Bucal - (modalidade I)                                                                          202301
+103002Unidade de suporte básico de vida terrestre (USB)                                                                                                     202301
+104002Cental de Regulação de Consultas e Exames                                                                                                             202301
+105002Coluna e nervos periféricos                                                                                                                           202301
+106002Diagnóstico e tratamento                                                                                                                              202301
+107002Serviço de Atenção à Saúde Auditiva na Alta Complexidade                                                                                              202301
+108002Centro de referência em saúde do trabalhador CEREST estadual                                                                                          202301
+109002Unidade sócio-educativa com de 41 a 100 adolecentes                                                                                                   202301
+110002Contracepção clínica                                                                                                                                  202301
+111002Tratamento multidrogas resistentes                                                                                                                    202301
+112002Acompanhamento do pré-natal de alto risco                                                                                                             202301
+113002Internação Domiciliar                                                                                                                                 202301
+114002Endodontia                                                                                                                                            202301
+115002Atendimento psicossocial                                                                                                                              202301
+116002Cirurgia cardiovascular (adulto)                                                                                                                      202301
+117002Tratamento em queimados                                                                                                                               202301
+120002Exames citopatológicos                                                                                                                                202301
+121002Ultra-sonografia                                                                                                                                      202301
+122002Teste de Holter                                                                                                                                       202301
+123002OPM ortopédicas                                                                                                                                       202301
+124002Cirurgia de glândulas endócrinas                                                                                                                      202301
+125002Farmácia Popular                                                                                                                                      202301
+126002Assistência fisioterapêutica em alterações oncológicas                                                                                                202301
+128002Diagnóstico em hemoterapia                                                                                                                            202301
+129002Exames de histocompatibilidade por sorologia e biologia                                                                                               202301
+131002Tratamento clínico do aparelho da visão                                                                                                               202301
+132002Hematologia                                                                                                                                           202301
+133002Diagnóstico em Pneumologia                                                                                                                            202301
+134002Fitoterapia                                                                                                                                           202301
+135002Reabilitação Intelectual                                                                                                                              202301
+136002Enteral/Parenteral                                                                                                                                    202301
+138002Diagnóstico e tratamento em membros superiores                                                                                                        202301
+139002Tratamento de recém-nascido com doenças falciformes                                                                                                   202301
+141002Vigilância sanitária                                                                                                                                  202301
+142002Do aparelho respiratório                                                                                                                              202301
+143002Transporte aéreo                                                                                                                                      202301
+145002Exames hematológicos e hemostasia                                                                                                                     202301
+146002Cirúrgica                                                                                                                                             202301
+147002NASF 2                                                                                                                                                202301
+148002AIDS                                                                                                                                                  202301
+149002Medula óssea                                                                                                                                          202301
+150002Fístula arteriovenosa com enxerto                                                                                                                     202301
+151002Medicina nuclear in vitro                                                                                                                             202301
+153002Cirurgia e Acompanhamento pré e pós oreratório                                                                                                        202301
+154002Banco de tecido musculo esqueletico                                                                                                                   202301
+155002Serviço de Traumatologia e Ortopedia Pediátrica (até 21 anos de idade)                                                                                202301
+156002Atenção as Pessoas Ostomizadas II                                                                                                                     202301
+158002Serviço de Atenção Integral em Hanseniase Tipo II                                                                                                     202301
+159002Atenção Básica com Saúde Bucal                                                                                                                        202301
+160002Teleconsultoria Síncrona                                                                                                                              202301
+161002Equipe de Consultório na Rua - Modalidade II                                                                                                          202301
+162002NEONATAL                                                                                                                                              202301
+163002NEONATAL CANGURU                                                                                                                                      202301
+164002Manutenção e Adaptação de OPM Auxiliares de Locomoção                                                                                                 202301
+165002Serviço de Referência para Atenção Integral à Saúde de Adolescentes em Situação de Violência Sexual                                                   202301
+166002Água de Ambiental                                                                                                                                     202301
+167002ODONTOLOGIA - PROJETO BRASIL ALFABETIZADO (PBA)                                                                                                       202301
+168002Referência em Doenças Raras                                                                                                                           202301
+169002Litotripsia                                                                                                                                           202301
+173002Armazenamento e Controle                                                                                                                              202301
+101002Saúde bucal MI                                                                                                                                        202301
+100003Atendimento em presídio acima de 100 presos                                                                                                           202301
+173003Distribuição                                                                                                                                          202301
+102003Estratégia de Agentes Comunitários de Saúde com Saúde Bucal - (modalidade II)                                                                         202301
+103003Unidade de suporte avançado de vida terrestre (USA)                                                                                                   202301
+104003Central de Regulação de Urgências                                                                                                                     202301
+105003Tumores do sistema nervoso                                                                                                                            202301
+106003Diagnóstico, tratamento e capacitação técnica                                                                                                         202301
+107003Terapia fonoaudiológica                                                                                                                               202301
+108003VIGILÂNCIA EM SAÚDE DO TRABALHADOR (VISAT)                                                                                                            202301
+109003Unidade sócio-educativa com de 101 a 180 adolecentes                                                                                                  202301
+110003Laqueadura                                                                                                                                            202301
+112003Parto em gestação de risco habitual                                                                                                                   202301
+113003Equipe Multidisciplinar de Atenção Domiciliar - EMAD                                                                                                  202301
+114003Periodontia clínica                                                                                                                                   202301
+115003Serviço Hospitalar para Atenção a Saúde Mental                                                                                                        202301
+116003Cirurgia cardiovascular (Pediátrico)                                                                                                                  202301
+117003Tratamento da lipoatrofia facial do portador de HIV / AIDS                                                                                            202301
+120003Monitoramento Externo da Qualidade dos Exames Citopatologicos do Colo do Útero                                                                        202301
+121003Tomografia computadorizada                                                                                                                            202301
+122003Exame Eletrocardiográfico                                                                                                                             202301
+123003OPM auditivas                                                                                                                                         202301
+125003Farmácia com manipulação homeopática                                                                                                                  202301
+126003Assistência fisioterapêutica em oftalmologia                                                                                                          202301
+128003Procedimentos especiais em hemoterapia                                                                                                                202301
+130003Confeccção/Intervenção de Acessos para Diálise                                                                                                        202301
+131003Tratamento cirúrgico do aparelho da visão                                                                                                             202301
+132003Oncologia clínica                                                                                                                                     202301
+133003Diagnóstico em Pneumologia por Telemedicina                                                                                                           202301
+134003Outras Práticas em Medicina Tradicional Chinesa                                                                                                       202301
+135003Reabilitação Física                                                                                                                                   202301
+136003Enteral/Parenteral, com manipulação/fabricação                                                                                                        202301
+138003Diagnóstico e tratamento em coluna vertebral e caixa torácica                                                                                         202301
+139003Tratamento de recém-nascido com fibrose cística                                                                                                       202301
+141003Vigilância ambiental                                                                                                                                  202301
+142003Do aparelho urinário                                                                                                                                  202301
+143003Transporte marítimo                                                                                                                                   202301
+145003Exames sorológicos e imunológicos                                                                                                                     202301
+147003NASF Intermunicipal                                                                                                                                   202301
+148003Geriátrico                                                                                                                                            202301
+149003Coração                                                                                                                                               202301
+151003Medicina nuclear in vivo por telemedicina                                                                                                             202301
+155003Serviço de Traumatologia e Ortopedia de Urgência                                                                                                      202301
+158003Serviço de Atenção Integral em Hanseniase Tipo III                                                                                                    202301
+159003Academia da Saúde                                                                                                                                     202301
+160003Segunda Opinião Formativa                                                                                                                             202301
+161003Equipe de Consultório na Rua - Modalidade III                                                                                                         202301
+162003PEDIÁTRICO                                                                                                                                            202301
+163003PEDIÁTRICO                                                                                                                                            202301
+164003Dispensação de OPM Ortopédica                                                                                                                         202301
+165003Serviço de Referência para Atenção Integral à Saúde de Crianças em Situação de Violência Sexual                                                       202301
+166003Água de Hemodiálise                                                                                                                                   202301
+167003OFTALMOLOGIA - PROJETO SAÚDE NA ESCOLA (PSE)                                                                                                          202301
+101003Saúde bucal MII                                                                                                                                       202301
+100004Atendimento em manicômio acima de 100 presos                                                                                                          202301
+101004Saúde da Família para a População Ribeirinha                                                                                                          202301
+104004Unidade de autorizações de TFD intermunicipais                                                                                                        202301
+105004Neurocirurgia vascular                                                                                                                                202301
+106004Assistência Domiciliar Terapêutica em AIDS-ADT                                                                                                        202301
+107004Diagnóstico em audiologia/otologia                                                                                                                    202301
+109004Unidade sócio-educativa com mais de 180 adolecentes                                                                                                   202301
+110004Vasectomia                                                                                                                                            202301
+112004Parto em gestação de alto risco                                                                                                                       202301
+113004Equipe Multidisciplinar de Apoio - EMAP                                                                                                               202301
+114004Moldagem/Manutenção                                                                                                                                   202301
+115004Serviço Residencial Terapêutico Tipo I - SRT tipo I                                                                                                   202301
+116004Cirurgia vascular                                                                                                                                     202301
+121004Ressonância magnética                                                                                                                                 202301
+122004Exame Eletroencefalográfico                                                                                                                           202301
+123004OPM oftalmológicas                                                                                                                                    202301
+125004Dispensação de medicamentos estratégicos                                                                                                              202301
+126004Assistência fisioterapêutica cardiovasculares e pneumo-funcionais                                                                                     202301
+128004Medicina transfusional                                                                                                                                202301
+130004Tratamento Nefrologia em Geral                                                                                                                        202301
+131004Projeto Olhar Brasil                                                                                                                                  202301
+132004Radioterapia                                                                                                                                          202301
+134004Práticas Corpo-mente                                                                                                                                  202301
+135004Reabilitação visual/mental/múltiplas deficiências                                                                                                     202301
+138004Diagnóstico e tratamento em cintura pélvica                                                                                                           202301
+139004Tratamento de recém-nascido com outras doenças congênitas                                                                                             202301
+140004Estabilização de paciente crítico/grave                                                                                                               202301
+141004Núcleo de vigilância hospitalar                                                                                                                       202301
+142004Do aparelho ginecológico                                                                                                                              202301
+145004Exames coprológicos                                                                                                                                   202301
+147004NASF 3                                                                                                                                                202301
+148004Fibrose cística                                                                                                                                       202301
+149004Pulmão                                                                                                                                                202301
+152004Saneamento a Populações Indígenas                                                                                                                     202301
+159004Estratégia de Saúde da Família                                                                                                                        202301
+162004QUEIMADOS                                                                                                                                             202301
+163004ADULTO                                                                                                                                                202301
+164004Manutenção e Adaptação de OPM Ortopédica                                                                                                              202301
+165004Serviço de Referência para Atenção Integral à Saúde de Homens em Situação de Violência Sexual                                                         202301
+166004Água Mineral                                                                                                                                          202301
+167004OFTALMOLOGIA - PROJETO BRASIL ALFABETIZADO (PBA)                                                                                                      202301
+173004Transporte                                                                                                                                            202301
+131005Diagnóstico em Oftalmologia por Telemedicina                                                                                                          202301
+130005Tratamento Diálitico Peritonial                                                                                                                       202301
+134005Homeopatia                                                                                                                                            202301
+135005Reabiliatação Auditiva                                                                                                                                202301
+138005Diagnóstico e tratamento em membros inferiores                                                                                                        202301
+139005Acompanhamento a pacientes com diagnósticos de Hiperplasia Adrenal Congênita                                                                          202301
+140005Atendimento ao paciente com Acidente Vascular Cerebral (AVC)                                                                                          202301
+145005Exames de uroanálise                                                                                                                                  202301
+148005Cirúrgico / Diagnóstico                                                                                                                               202301
+149005Córnea / Esclera                                                                                                                                      202301
+152005Atenção Especializada a Populações Indígenas                                                                                                          202301
+159005Saúde Bucal                                                                                                                                           202301
+162005DOENÇA CORONARIANA (UCO)                                                                                                                              202301
+164005Dispensação de OPM Auditiva                                                                                                                           202301
+165005Serviço de Referência para Atenção Integral à Saúde de Pessoas Idosas em Situação de Violência Sexual                                                 202301
+166005Alimentos                                                                                                                                             202301
+101005Saúde da Família para a População Ribeirinha-Saúde Bucal MI                                                                                           202301
+103005Unidade de Suporte Básico de vida: Equipe Embarcação                                                                                                  202301
+104005Unidade de autorizações de TFD interestaduais                                                                                                         202301
+105005Tratamento neurocirúrgico da dor funcional                                                                                                            202301
+106005Unidade Dispensadora de Medicamentos - UDM                                                                                                            202301
+107005Implante Coclear                                                                                                                                      202301
+109005Atenção Básica à Adolescentes em Unidade Socioeducativa                                                                                               202301
+112005Centro de parto normal                                                                                                                                202301
+113005Equipe de cuidados domiciliares                                                                                                                       202301
+114005Cirurgia oral                                                                                                                                         202301
+115005Serviço Residencial Terapêutico Tipo II - SRT tipo II                                                                                                 202301
+116005Cardiologia intervencionista (hemodinâmica)                                                                                                           202301
+122005Teste Ergométrico por Telemedicina                                                                                                                    202301
+123005OPM em gastroenterologia                                                                                                                              202301
+125005Dispensação de medicamentos básicos                                                                                                                   202301
+126005Assistência fisioterapêutica nas disfunções músculo-esqueléticas (todas as origens)                                                                   202301
+132005Oncologia cirúrgica                                                                                                                                   202301
+130006Tratamento em DRC                                                                                                                                     202301
+131006Projeto Olhar Brasil - Programa Saúde na Escola (PSE)                                                                                                 202301
+134006Termalismo/Crenoterapia                                                                                                                               202301
+139006Acompanhamento a pacientes com diagnósticos de Deficiência Biotinidase                                                                                202301
+140006Pronto Atendimento Clínico                                                                                                                            202301
+145006Exames hormonais                                                                                                                                      202301
+148006Acompanhamento pós-transplante de medula óssea                                                                                                        202301
+149006Fígado                                                                                                                                                202301
+159006Núcleo Ampliado de Saúde da Família e Atenção Primária                                                                                                202301
+164006Manutenção e Adaptação de OPM Auditiva                                                                                                                202301
+165006Serviço de referência para interrupção de gravidez nos casos previstos em LEI                                                                         202301
+166006Células, Tecidos e Órgãos                                                                                                                             202301
+101006Saúde da Família Fluvial                                                                                                                              202301
+103006Veículos de intervenção rápida                                                                                                                        202301
+104006Central Estadual de Regulação da Alta Complexidade                                                                                                    202301
+105006Investigação e cirurgia de epilepsia                                                                                                                  202301
+107006Triagem Auditiva Neonatal                                                                                                                             202301
+112006Casa da Gestante, Bebê e Puérpera                                                                                                                     202301
+114006Cirurgia buco-maxilo-facial                                                                                                                           202301
+115006UA Adulto                                                                                                                                             202301
+116006Cardiologia Endovascular Extracardíaco                                                                                                                202301
+121006Radiologia intervencionista                                                                                                                           202301
+122006Teste Holter por Telemedicina                                                                                                                         202301
+123006OPM em urologia                                                                                                                                       202301
+125006Farmácia Hospitalar                                                                                                                                   202301
+126006Assistência fisioterapêutica em queimados                                                                                                             202301
+131007Projeto Olhar Brasil - Programa Brasil Alfabetizado (PBA)                                                                                             202301
+134007Antroposofia Aplicada à Saúde                                                                                                                         202301
+126007Assistência fisioterapêutica nas alterações em neurologia                                                                                             202301
+125007Farmácia Viva                                                                                                                                         202301
+123007OPM em odontologia                                                                                                                                    202301
+122007Exame Eletrocardiografico por Telemedicina                                                                                                            202301
+121007Radiologia por telemedicina                                                                                                                           202301
+116007Cardiologia Clínica                                                                                                                                   202301
+115007UA Infantojuvenil                                                                                                                                     202301
+114007Atendimento à pessoa com deficiência                                                                                                                  202301
+112007Atenção especializada ao seguimento do recém-nascido e crianças egressos de unidades neonatais (ANEO)                                                 202301
+107007Diagnóstico em Audiologia/Otologia por Telemedicina                                                                                                   202301
+105007Tratamento endovascular                                                                                                                               202301
+104007Regulação Nacional de Alta Complexidade                                                                                                               202301
+103007Outros veículos                                                                                                                                       202301
+101007Saúde da Família Fluvial com Saúde Bucal                                                                                                              202301
+166007Medicamentos                                                                                                                                          202301
+165007Atenção Ambulatorial  ás Pessoas em Situação de Violência Sexual                                                                                      202301
+164007Dispensação de OPM Oftalmológica                                                                                                                      202301
+159007Atenção Primária para População Ribeirinha                                                                                                            202301
+149007Pâncreas                                                                                                                                              202301
+145007Exames de  vigilância epidemiológica e  ambiental                                                                                                     202301
+140007Pronto Atendimento Pediátrico                                                                                                                         202301
+135007Oficina Ortopédica Fixa                                                                                                                               202301
+122008Exame Eletroencefalografico por Telemedicina                                                                                                          202301
+126008Diagnóstico cinético funcional                                                                                                                        202301
+115008Unidade de Atenção em Regime Residencial                                                                                                              202301
+166008Saneantes Domissanitários                                                                                                                             202301
+165008Coleta de  Vestígios de Violência Sexual                                                                                                              202301
+134008Práticas Expressivas                                                                                                                                  202301
+135008Oficina Ortopédica Intinerante Terrestre                                                                                                              202301
+121008Ultra-sonografia por telemedicina                                                                                                                     202301
+140008Pronto Atendimento Obstétrico                                                                                                                         202301
+107008Atenção Especializada às Pessoas com Deficiência Auditiva                                                                                             202301
+145008Exames toxicológicos ou de monitorização terapêutica                                                                                                  202301
+149008Retirada de orgãos                                                                                                                                    202301
+152008Hospitalidade Indígena                                                                                                                                202301
+112008Atenção especializada gestação de alto risco (AGAR)                                                                                                   202301
+159008Consultório na Rua                                                                                                                                    202301
+123008OPM buco-maxilo-facial                                                                                                                                202301
+164008Manutenção e Adaptação de OPM Oftalmológica                                                                                                           202301
+105008Neurocirurgia funcional estereotáxica                                                                                                                 202301
+104008Regulação Ambulatorial de Média Complexidade                                                                                                          202301
+116008Serviço de Atenção Cardiovascular/Cardiologia Angiologia                                                                                              202301
+101008ESF Tipo I, II, III, IV ou Transitória                                                                                                                202301
+103008Ambulância de resgate                                                                                                                                 202301
+105009Polissonografia                                                                                                                                       202301
+166009Produtos para a Saúde                                                                                                                                 202301
+145009Exames microbiológicos                                                                                                                                202301
+121009Tomografia computadorizada por telemedicina                                                                                                           202301
+164009Substitução/Troca de OPM                                                                                                                              202301
+134009Ayurveda                                                                                                                                              202301
+123009Substituição/Troca em órteses/próteses                                                                                                                202301
+104009Regulação do Acesso a Ações e Serviços de Saúde                                                                                                       202301
+149009Pele                                                                                                                                                  202301
+140009Pronto Atendimento Psiquiátrico                                                                                                                       202301
+152009Gestão da Atenção e Saneamento à Populações Indígenas                                                                                                 202301
+122009Exame Eletroneuromiografia                                                                                                                            202301
+101009ESF Tipo I, II, III, IV ou Transitória com Saúde Bucal MI                                                                                             202301
+135009Oficina Ortopédica Intinerante Fluvial                                                                                                                202301
+115009Tratamento em Regime de Internação para Transtornos Mentais e Dependência Química                                                                     202301
+159009Atenção Primária para População Prisional                                                                                                             202301
+134010Práticas Naturais                                                                                                                                     202301
+159010Atenção Primária para Adolescentes em Unidade Socioeducativa                                                                                          202301
+123010OPM em queimados                                                                                                                                      202301
+135010Atenção Fonoaudiológica                                                                                                                               202301
+152010Saúde Bucal à Populações Indígenas                                                                                                                    202301
+103010Motolância                                                                                                                                            202301
+164010OPM em gastroenterologia                                                                                                                              202301
+149010Válvulas cardíacas                                                                                                                                    202301
+121010Ressonância magnética por telemedicina                                                                                                                202301
+166010Cosméticos                                                                                                                                            202301
+145010Exames em outros líquidos biológicos                                                                                                                  202301
+140010Pronto Atendimento Oftalmológico                                                                                                                      202301
+122010Exame videoeletroencefalografia                                                                                                                       202301
+101010ESF Tipo I, II, III, IV ou Transitória com Saúde Bucal MII                                                                                            202301
+123011OPM em nefrologia                                                                                                                                     202301
+122011Potenciais Evocados                                                                                                                                   202301
+121011Radiologia intervencionista por telemedicina                                                                                                          202301
+103011Unidade de Suporte Avançado de vida: Equipe Embarcação                                                                                                202301
+101011ESF Transitória                                                                                                                                       202301
+166011Desinfestantes                                                                                                                                        202301
+164011OPM em Urologia                                                                                                                                       202301
+149011Osteocondroligamentos                                                                                                                                 202301
+145011Exames de genética                                                                                                                                    202301
+140011Pronto Atendimento Odontológico                                                                                                                       202301
+135011Atenção Fisioterapeutica                                                                                                                              202301
+134011Práticas Manuais                                                                                                                                      202301
+135012Atenção à Saúde das Pessoas Ostomizadas I                                                                                                             202301
+123012OPM - Projeto Olhar Brasil                                                                                                                            202301
+103012Equipe Aeromédico                                                                                                                                     202301
+145012Exames para triagem neonatal                                                                                                                          202301
+121012Mamografia                                                                                                                                            202301
+101012Saúde da Família para a População Ribeirinha - Saúde Bucal MII                                                                                        202301
+134012Práticas Psicodinâmicas                                                                                                                               202301
+122012Potenciais Evocados por Telemedicina                                                                                                                  202301
+140012Pronto Socorro Pediátrico                                                                                                                             202301
+166012Imunobiológicos                                                                                                                                       202301
+149012Separação, avaliação biomicroscópica e conservação da córnea/esclera                                                                                  202301
+123013OPM Projeto Olhar Brasil - Programa Saúde na Escola (PSE)                                                                                             202301
+101013ESB MI                                                                                                                                                202301
+140013Pronto Socorro Obstétrico                                                                                                                             202301
+166013Insumos Farmacêuticos                                                                                                                                 202301
+149013Contagem endotelial corneana                                                                                                                          202301
+121013Mamografia por Telemedicina                                                                                                                           202301
+135013Atenção à Saúde das Pessoas Ostomizadas II                                                                                                            202301
+145013Exames imunohematológicos                                                                                                                             202301
+134013Ozônioterapia                                                                                                                                         202301
+149014Acompanhamento de paciente transplantado                                                                                                              202301
+166014Material Biológico                                                                                                                                    202301
+140014Pronto Socorro Cardiovascular                                                                                                                         202301
+123014OPM Projeto Olhar Brasil - Programa Brasil Alfabetizado (PBA)                                                                                         202301
+134014Aromaterapia                                                                                                                                          202301
+101014ESB MII                                                                                                                                               202301
+140015Pronto Socorro Neurologia/Neurocirurgia                                                                                                               202301
+166015Sangue e Hemoderivados                                                                                                                                202301
+134015Imposição de Mãos                                                                                                                                     202301
+149015Ações para doação e captação de órgãos e tecidos                                                                                                      202301
+149016Retirada de globo ocular humano para transplante                                                                                                      202301
+166016Surtos de Toxinfecção                                                                                                                                 202301
+140016Pronto Socorro Traumato-Ortopédico                                                                                                                    202301
+166017Diversos                                                                                                                                              202301
+140017Pronto Socorro Odontológico                                                                                                                           202301
+140018Pronto Socorro Oftalmológico                                                                                                                          202301
+140019Pronto Socorro Geral/Clínico                                                                                                                          202301
