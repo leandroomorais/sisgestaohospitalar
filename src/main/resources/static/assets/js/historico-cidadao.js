@@ -8,7 +8,7 @@ var receitas = [];
 var avaliacoes = [];
 var profissional = {};
 
-const baseUri = "http://localhost:8082/api"
+const baseUri = "http://localhost:8082/pec/api"
 const uriVacinasAplicadas = baseUri + "/vacinacao/cpf/"
 const uriVacinasAgendadas = baseUri + "/vacinacao/aprazamentobycpf/"
 const uriSolicitations = baseUri + "/exames/cpf/solicitations/"
