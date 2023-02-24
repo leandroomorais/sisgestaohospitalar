@@ -1,38 +1,24 @@
 package com.ifrn.sisgestaohospitalar.utils;
 
+import com.ifrn.sisgestaohospitalar.model.*;
+import com.ifrn.sisgestaohospitalar.repository.*;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.stereotype.Service;
+
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.JAXBException;
+import javax.xml.bind.Unmarshaller;
 import java.io.InputStream;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.JAXBException;
-import javax.xml.bind.Unmarshaller;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.stereotype.Service;
-import com.ifrn.sisgestaohospitalar.model.Estabelecimento;
-import com.ifrn.sisgestaohospitalar.model.ImportarXmlEsus;
-import com.ifrn.sisgestaohospitalar.model.Lotacao;
-import com.ifrn.sisgestaohospitalar.model.Ocupacao;
-import com.ifrn.sisgestaohospitalar.model.OrgaoResponsavel;
-import com.ifrn.sisgestaohospitalar.model.Profissional;
-import com.ifrn.sisgestaohospitalar.model.Role;
-import com.ifrn.sisgestaohospitalar.model.TipoUsuario;
-import com.ifrn.sisgestaohospitalar.model.Usuario;
-import com.ifrn.sisgestaohospitalar.repository.EstabelecimentoRepository;
-import com.ifrn.sisgestaohospitalar.repository.OcupacaoRepository;
-import com.ifrn.sisgestaohospitalar.repository.OrgaoResponsavelRepository;
-import com.ifrn.sisgestaohospitalar.repository.ProfissionalRepository;
-import com.ifrn.sisgestaohospitalar.repository.RoleRepository;
-import com.ifrn.sisgestaohospitalar.repository.TipoUsuarioRepository;
-import com.ifrn.sisgestaohospitalar.repository.UsuarioRepository;
-
 /**
  * A classe <code>LeitorXmlEsus</code> é um utilitário que contém métodos para a
  * leitura e persistência de dados do arquivo XML do Sistema ESUS
- * 
+ *
  * @author Leandro Morais
  * @version 1.0, 02/11/2019
  *
@@ -62,7 +48,7 @@ public class LeitorXmlEsus {
 	/**
 	 * O método lerXmlEsus ler o arquivo XML ESUS e persiste as informações no Banco
 	 * de Dados
-	 * 
+	 *
 	 * @param file
 	 * @param cnes
 	 * @throws JAXBException
@@ -90,6 +76,7 @@ public class LeitorXmlEsus {
 						usuario.setUsername(profissional.getCpf());
 						usuario.setPassword(new BCryptPasswordEncoder().encode("sgh" + profissional.getCpf()));
 						usuario.setConcatName(profissional.getNomeAbrev());
+						usuario.setFirstAccess(true);
 
 						if (lotacaoProfissional.getCodigoCBO().startsWith("225")) {
 							TipoUsuario tipoUsuario = tipoUsuarioRepository.findByNome("MEDICO");

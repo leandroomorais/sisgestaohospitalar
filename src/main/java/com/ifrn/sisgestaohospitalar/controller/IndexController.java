@@ -1,12 +1,20 @@
 package com.ifrn.sisgestaohospitalar.controller;
 
-import java.util.Locale;
-import java.util.UUID;
-import javax.servlet.http.HttpServletRequest;
+import com.ifrn.sisgestaohospitalar.model.PasswordResetToken;
+import com.ifrn.sisgestaohospitalar.model.Profissional;
+import com.ifrn.sisgestaohospitalar.model.Usuario;
+import com.ifrn.sisgestaohospitalar.repository.PasswordResetTokenRepository;
+import com.ifrn.sisgestaohospitalar.repository.UsuarioRepository;
+import com.ifrn.sisgestaohospitalar.service.EstabelecimentoService;
+import com.ifrn.sisgestaohospitalar.service.ProfissionalService;
+import com.ifrn.sisgestaohospitalar.service.UsuarioSecurityService;
+import com.ifrn.sisgestaohospitalar.utils.ConstrutorEmail;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessagePreparator;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -14,15 +22,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
-import com.ifrn.sisgestaohospitalar.model.Usuario;
-import com.ifrn.sisgestaohospitalar.repository.PasswordResetTokenRepository;
-import com.ifrn.sisgestaohospitalar.repository.UsuarioRepository;
-import com.ifrn.sisgestaohospitalar.model.PasswordResetToken;
-import com.ifrn.sisgestaohospitalar.model.Profissional;
-import com.ifrn.sisgestaohospitalar.service.EstabelecimentoService;
-import com.ifrn.sisgestaohospitalar.service.ProfissionalService;
-import com.ifrn.sisgestaohospitalar.service.UsuarioSecurityService;
-import com.ifrn.sisgestaohospitalar.utils.ConstrutorEmail;
+
+import javax.servlet.http.HttpServletRequest;
+import java.util.Locale;
+import java.util.UUID;
 
 @Controller
 public class IndexController {
@@ -52,7 +55,7 @@ public class IndexController {
 
 	/**
 	 * Direciona o usuário para a Página de Login
-	 * 
+	 *
 	 * @return ModelAndView
 	 */
 	@RequestMapping(method = RequestMethod.GET, path = { "/entrar" })
@@ -63,12 +66,21 @@ public class IndexController {
 
 	/**
 	 * Direciona o usuário para a Página Principal
-	 * 
+	 *
 	 * @return ModelAndView
 	 */
 	@RequestMapping("/index")
 	public ModelAndView index() {
 		ModelAndView mv = new ModelAndView("index");
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		if(authentication != null && authentication.isAuthenticated()){
+			if(authentication.getPrincipal() instanceof Usuario){
+				Usuario usuario = usuarioRepository.findByUsername(((Usuario) authentication.getPrincipal()).getUsername());
+				if(usuario != null && usuario.isFirstAccess()){
+					return new ModelAndView("redirect:/primeiro-acesso");
+				}
+			}
+		}
 		mv.addObject("estabelecimento", estabelecimentoService.findAll());
 		return mv;
 	}
@@ -76,14 +88,14 @@ public class IndexController {
 	/**
 	 * Em caso de sucesso, envia para o usuário email contendo as instruções de
 	 * recuperação de senha, em caso de falha, exibe mensagem ao usuário.
-	 * 
+	 *
 	 * @param request
 	 * @param email
 	 * @return ModelAndView
 	 */
 	@RequestMapping("/recuperar-senha")
 	public ResponseEntity<Profissional> forgetPassword(HttpServletRequest request,
-			@RequestParam("email") String email) {
+													   @RequestParam("email") String email) {
 		Profissional profissional = profissionalService.findByEmail(email);
 		if (profissional == null) {
 			return ResponseEntity.badRequest().build();
@@ -107,7 +119,7 @@ public class IndexController {
 	/**
 	 * Se o usuário tiver Token válido, direciona para a página de criação de nova
 	 * senha, caso contrário exibe mensagem de erro de Token inválido
-	 * 
+	 *
 	 * @param locale
 	 * @param token
 	 * @return ModelAndView
@@ -126,9 +138,15 @@ public class IndexController {
 		return mv;
 	}
 
+	@RequestMapping("/primeiro-acesso")
+	public ModelAndView newPasswordFirstAccess(Locale locale) {
+		ModelAndView mv = new ModelAndView("entrar/nova-senha-email");
+		return mv;
+	}
+
 	/**
 	 * Atualiza a senha do usuário
-	 * 
+	 *
 	 * @param password
 	 * @param profissional
 	 * @throws Exception
@@ -144,6 +162,27 @@ public class IndexController {
 		usuarioRepository.saveAndFlush(usuario);
 		passwordResetTokenRepository.deleteById(passwordResetToken.getId());
 		mv.addObject("sucesso", " A nova senha foi cadastrada.");
+		return mv;
+	}
+
+	@PostMapping("/primeiro-acesso/senha")
+	public ModelAndView updatePasswordFirstAccess(@RequestParam("email") String email, @RequestParam("password") String password)
+			throws Exception {
+		ModelAndView mv = entrar();
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		if(authentication!= null && authentication.isAuthenticated()){
+			if(authentication.getPrincipal() instanceof Usuario){
+				Usuario usuario = usuarioRepository.findByUsername(((Usuario) authentication.getPrincipal()).getUsername());
+				usuario.setPassword(new BCryptPasswordEncoder().encode(password));
+				usuario.setFirstAccess(false);
+				Profissional profissional = profissionalService.findByCpf(usuario.getUsername());
+				profissional.setEmail(email);
+				profissionalService.save(profissional);
+				usuarioRepository.saveAndFlush(usuario);
+
+			}
+		}
+		mv.addObject("sucesso", " A nova senha foi cadastrada e o novo e-mail foi cadastrado.");
 		return mv;
 	}
 

@@ -1,27 +1,20 @@
 package com.ifrn.sisgestaohospitalar.model;
 
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.Set;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToMany;
-import javax.persistence.OneToOne;
-
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import javax.persistence.*;
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.Set;
+
 @Entity
 public class Usuario implements UserDetails {
 
 	/**
-	 * 
+	 *
 	 */
 	private static final long serialVersionUID = 1L;
 
@@ -44,6 +37,7 @@ public class Usuario implements UserDetails {
 
 	@OneToOne
 	private TipoUsuario tipoUsuario;
+	private boolean firstAccess;
 
 	public Long getId() {
 		return id;
@@ -99,6 +93,14 @@ public class Usuario implements UserDetails {
 
 	public void setEnabled(boolean enabled) {
 		this.enabled = enabled;
+	}
+
+	public boolean isFirstAccess() {
+		return firstAccess;
+	}
+
+	public void setFirstAccess(boolean firstAccess) {
+		this.firstAccess = firstAccess;
 	}
 
 	@Override
