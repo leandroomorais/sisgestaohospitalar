@@ -1,10 +1,8 @@
 package com.ifrn.sisgestaohospitalar;
 
-import java.io.IOException;
-import java.net.InetAddress;
-import java.net.UnknownHostException;
-import java.util.Scanner;
-
+import com.ifrn.sisgestaohospitalar.model.*;
+import com.ifrn.sisgestaohospitalar.repository.*;
+import com.ifrn.sisgestaohospitalar.utils.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -13,31 +11,10 @@ import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
-import com.ifrn.sisgestaohospitalar.model.Administracao;
-import com.ifrn.sisgestaohospitalar.model.ClassificacaoDeRisco;
-import com.ifrn.sisgestaohospitalar.model.Role;
-import com.ifrn.sisgestaohospitalar.model.TipoServico;
-import com.ifrn.sisgestaohospitalar.model.TipoUsuario;
-import com.ifrn.sisgestaohospitalar.model.Usuario;
-import com.ifrn.sisgestaohospitalar.model.ViaAdministracao;
-import com.ifrn.sisgestaohospitalar.repository.Cep_IbgeRepository;
-import com.ifrn.sisgestaohospitalar.repository.CidRepository;
-import com.ifrn.sisgestaohospitalar.repository.ClassificacaoDeRiscoRepository;
-import com.ifrn.sisgestaohospitalar.repository.EstadoRepository;
-import com.ifrn.sisgestaohospitalar.repository.LogradouroRepository;
-import com.ifrn.sisgestaohospitalar.repository.MunicipioRepository;
-import com.ifrn.sisgestaohospitalar.repository.ProcedimentoRepository;
-import com.ifrn.sisgestaohospitalar.repository.RoleRepository;
-import com.ifrn.sisgestaohospitalar.repository.TipoServicoRepository;
-import com.ifrn.sisgestaohospitalar.repository.TipoUsuarioRepository;
-import com.ifrn.sisgestaohospitalar.repository.UsuarioRepository;
-import com.ifrn.sisgestaohospitalar.repository.ViaAdministracaoRepository;
-import com.ifrn.sisgestaohospitalar.utils.LeitorTXTExames;
-import com.ifrn.sisgestaohospitalar.utils.LeitorTXTMedicamentos;
-import com.ifrn.sisgestaohospitalar.utils.LeitorTxtSigtap;
-import com.ifrn.sisgestaohospitalar.utils.LeitorXmlEsus;
-import com.ifrn.sisgestaohospitalar.utils.SalvarEstadosEMunicipios;
-import com.ifrn.sisgestaohospitalar.utils.SalvarLogradouros;
+import java.io.IOException;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
+import java.util.Scanner;
 
 @SpringBootApplication
 public class SisgestaohospitalarApplication extends SpringBootServletInitializer
@@ -86,7 +63,6 @@ public class SisgestaohospitalarApplication extends SpringBootServletInitializer
 	private CidRepository cidRepository;
 	@Autowired
 	private ClassificacaoDeRiscoRepository classificacaoDeRiscoRepository;
-
 	public static void main(String[] args) {
 		SpringApplication.run(SisgestaohospitalarApplication.class, args);
 		System.out.println("Iniciando Projeto");
@@ -111,22 +87,40 @@ public class SisgestaohospitalarApplication extends SpringBootServletInitializer
 	String txtExamesSimplificado = userDir + "/exames/examesSimplificado.txt";
 	String urlDetalhe = userDir + "/SigtapSus/tb_detalhe.txt";
 	String urlProcedimentoDetalheRelacionamento = userDir + "/SigtapSus/rl_procedimento_detalhe.txt";
+	@Autowired
+	private RegistroSigtapRepository registroSigtapRepository;
+	@Autowired
+	private ProcedimentoCidRepository procedimentoCidRepository;
+	@Autowired
+	private ProcedimentoOcupacaoRepository procedimentoOcupacaoRepository;
+	@Autowired
+	private ProcedimentoRegistroSigtapRepository procedimentoRegistroSigtapRepository;
+	@Autowired
+	private OcupacaoRepository ocupacaoRepository;
+	@Autowired
+	private DetalheRepository detalheRepository;
+	@Autowired
+	private ProcedimentoDetalheRepository procedimentoDetalheRepository;
+	@Autowired
+	private ExameRepository exameRepository;
+	@Autowired
+	private GrupoExameRepository grupoExameRepository;
 
 	@Override
 	public void onApplicationEvent(ContextRefreshedEvent event) {
 
-		// inicializar();
+		//inicializar();
 
-//		criaRolesETipoUsuario();
-//		lerSigtab();
-//		lerMedicamentosEFormaFarmaceutica();
-//		lerEstadosMunicipios();
-//		salvarViaAdministracao();
-//		salvarTipoServico();
-//		LerExames();
-//		leitorTXTExames.atualizaGrupo();
-//		criaClassificacaoDeRisco();
-//		criaUserAdmin();
+		//criaRolesETipoUsuario();
+		lerSigtab();
+		//lerMedicamentosEFormaFarmaceutica();
+		//lerEstadosMunicipios();
+		salvarViaAdministracao();
+		salvarTipoServico();
+		LerExames();
+		leitorTXTExames.atualizaGrupo();
+		criaClassificacaoDeRisco();
+		criaUserAdmin();
 	}
 
 	public void inicializar() {
@@ -190,11 +184,15 @@ public class SisgestaohospitalarApplication extends SpringBootServletInitializer
 		curativo.setNome("Curativo");
 		inativo.setNome("Inativo");
 
-		tipoServicoRepository.saveAndFlush(triagem);
-		tipoServicoRepository.saveAndFlush(consulta);
-		tipoServicoRepository.saveAndFlush(adminMedicamentos);
-		tipoServicoRepository.saveAndFlush(curativo);
-		tipoServicoRepository.saveAndFlush(inativo);
+		if(tipoServicoRepository.findAll().isEmpty()){
+			tipoServicoRepository.saveAndFlush(triagem);
+			tipoServicoRepository.saveAndFlush(consulta);
+			tipoServicoRepository.saveAndFlush(adminMedicamentos);
+			tipoServicoRepository.saveAndFlush(curativo);
+			tipoServicoRepository.saveAndFlush(inativo);
+		}
+
+
 	}
 
 	public void salvarViaAdministracao() {
@@ -218,18 +216,25 @@ public class SisgestaohospitalarApplication extends SpringBootServletInitializer
 		selecione.setNome("Selecione a via de administração");
 		selecione.setProcedimento(null);
 
-		viaAdministracaoRepository.saveAndFlush(oral);
-		viaAdministracaoRepository.saveAndFlush(parenteralIntramuscular);
-		viaAdministracaoRepository.saveAndFlush(parenteralIntraVenosa);
-		viaAdministracaoRepository.saveAndFlush(parenteralSubcultanea);
-		viaAdministracaoRepository.saveAndFlush(topica);
-		viaAdministracaoRepository.saveAndFlush(selecione);
+		if(viaAdministracaoRepository.findAll().isEmpty()){
+			viaAdministracaoRepository.saveAndFlush(oral);
+			viaAdministracaoRepository.saveAndFlush(parenteralIntramuscular);
+			viaAdministracaoRepository.saveAndFlush(parenteralIntraVenosa);
+			viaAdministracaoRepository.saveAndFlush(parenteralSubcultanea);
+			viaAdministracaoRepository.saveAndFlush(topica);
+			viaAdministracaoRepository.saveAndFlush(selecione);
+		}
 	}
 
 	public void LerExames() {
 		try {
-			leitorTXTExames.lerTXTFormaGrupos(txtGruposExames);
-			leitorTXTExames.lerTXTExames(txtExamesSimplificado);
+			if(exameRepository.findAll().isEmpty()){
+				if(grupoExameRepository.findAll().isEmpty()){
+					leitorTXTExames.lerTXTFormaGrupos(txtGruposExames);
+				}
+				leitorTXTExames.lerTXTExames(txtExamesSimplificado);
+			}
+
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -249,30 +254,53 @@ public class SisgestaohospitalarApplication extends SpringBootServletInitializer
 	public void lerSigtab() {
 		try {
 			// OK
-			leitorTxtSigtap.lerTxtCid(urlCid);
+			if(cidRepository.findAll().isEmpty()){
+				leitorTxtSigtap.lerTxtCid(urlCid);
+			}
+
 
 			// OK
-			leitorTxtSigtap.lerTxtProcedimentos(urlProcedimentos);
+			if(procedimentoRepository.findAll().isEmpty()){
+				leitorTxtSigtap.lerTxtProcedimentos(urlProcedimentos);
+			}
 
 			// OK
-			leitorTxtSigtap.lerTxtRegistro(urlRegistros);
+			if(registroSigtapRepository.findAll().isEmpty()){
+				leitorTxtSigtap.lerTxtRegistro(urlRegistros);
+			}
+
 
 			// OK
-			leitorTxtSigtap.lerProcedimento_Cid(urlRelationProced_Cid);
+			if(procedimentoCidRepository.findAll().isEmpty()){
+				leitorTxtSigtap.lerProcedimento_Cid(urlRelationProced_Cid);
+			}
+
 
 			// OK
-			leitorTxtSigtap.lerProcedimento_Ocupacao(urlRelationProced_Ocupacao);
+			if(procedimentoOcupacaoRepository.findAll().isEmpty()){
+				leitorTxtSigtap.lerProcedimento_Ocupacao(urlRelationProced_Ocupacao);
+			}
 
 			// OK
-			leitorTxtSigtap.lerRelacionamentoProcedimento_Registro(urlRelationProced_Registro);
+			if(procedimentoRegistroSigtapRepository.findAll().isEmpty()){
+				leitorTxtSigtap.lerRelacionamentoProcedimento_Registro(urlRelationProced_Registro);
+			}
+
 
 			// OK
-			leitorTxtSigtap.lerTxtOcupacao(urlOcupacao);
+			if(ocupacaoRepository.findAll().isEmpty()){
+				leitorTxtSigtap.lerTxtOcupacao(urlOcupacao);
+			}
+
 
 			// OK
-			leitorTxtSigtap.lerTxtDetalhe(urlDetalhe);
+			if(detalheRepository.findAll().isEmpty()){
+				leitorTxtSigtap.lerTxtDetalhe(urlDetalhe);
+			}
 
-			leitorTxtSigtap.lerRelacionamentoProcedimento_Detalhe(urlProcedimentoDetalheRelacionamento);
+			if(procedimentoDetalheRepository.findAll().isEmpty()){
+				leitorTxtSigtap.lerRelacionamentoProcedimento_Detalhe(urlProcedimentoDetalheRelacionamento);
+			}
 
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -360,24 +388,26 @@ public class SisgestaohospitalarApplication extends SpringBootServletInitializer
 		naoInformada.setDescricao("Risco não classificasdo");
 		naoInformada.setPrioridade(5);
 
-		classificacaoDeRiscoRepository.save(vermelho);
-		classificacaoDeRiscoRepository.save(laranja);
-		classificacaoDeRiscoRepository.save(amarelo);
-		classificacaoDeRiscoRepository.save(verde);
-		classificacaoDeRiscoRepository.save(azul);
-		classificacaoDeRiscoRepository.save(naoInformada);
-
+		if(classificacaoDeRiscoRepository.findAll().isEmpty()){
+			classificacaoDeRiscoRepository.save(vermelho);
+			classificacaoDeRiscoRepository.save(laranja);
+			classificacaoDeRiscoRepository.save(amarelo);
+			classificacaoDeRiscoRepository.save(verde);
+			classificacaoDeRiscoRepository.save(azul);
+			classificacaoDeRiscoRepository.save(naoInformada);
+		}
 	}
 
 	public void criaUserAdmin() {
-		Usuario usuario = new Usuario();
-		usuario.setUsername("09814354406");
-		usuario.setConcatName("LEANDRO MORAIS");
-		usuario.setEnabled(true);
-		usuario.setPassword(new BCryptPasswordEncoder().encode("leandro916774"));
-		usuario.setTipoUsuario(tipoUsuarioRepository.findByNome("ADMINISTRADOR"));
-		usuario.getRole().add(roleRepository.findByNome("ADMINISTRADOR"));
-		usuarioRepository.saveAndFlush(usuario);
+		if(usuarioRepository.findByUsername("09814354406") == null) {
+			Usuario usuario = new Usuario();
+			usuario.setUsername("09814354406");
+			usuario.setConcatName("LEANDRO MORAIS");
+			usuario.setEnabled(true);
+			usuario.setPassword(new BCryptPasswordEncoder().encode("leandro916774"));
+			usuario.setTipoUsuario(tipoUsuarioRepository.findByNome("ADMINISTRADOR"));
+			usuario.getRole().add(roleRepository.findByNome("ADMINISTRADOR"));
+			usuarioRepository.saveAndFlush(usuario);
+		}
 	}
-
 }
