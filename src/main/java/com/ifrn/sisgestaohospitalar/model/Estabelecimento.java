@@ -21,7 +21,7 @@ import javax.xml.bind.annotation.XmlElementWrapper;
 public class Estabelecimento {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
 	@XmlAttribute(name = "NM_FANTA")

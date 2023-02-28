@@ -33,7 +33,7 @@ import com.ifrn.sisgestaohospitalar.validation.Cns;
 public class Profissional {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
 	@XmlAttribute(name = "NM_PROF")

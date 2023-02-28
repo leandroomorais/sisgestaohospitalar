@@ -13,7 +13,7 @@ import javax.xml.bind.annotation.XmlAttribute;
 public class EnderecoEstabelecimento {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
 	@XmlAttribute(name = "CO_CEP")
