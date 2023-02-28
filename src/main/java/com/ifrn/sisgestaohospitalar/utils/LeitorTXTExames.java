@@ -1,5 +1,14 @@
 package com.ifrn.sisgestaohospitalar.utils;
 
+import com.ifrn.sisgestaohospitalar.model.ExameSimplificado;
+import com.ifrn.sisgestaohospitalar.model.GrupoExame;
+import com.ifrn.sisgestaohospitalar.model.Procedimento;
+import com.ifrn.sisgestaohospitalar.repository.ExameSimplificadoRepository;
+import com.ifrn.sisgestaohospitalar.repository.GrupoExameRepository;
+import com.ifrn.sisgestaohospitalar.repository.ProcedimentoRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.nio.charset.Charset;
@@ -7,16 +16,6 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
-import com.ifrn.sisgestaohospitalar.model.ExameSimplificado;
-import com.ifrn.sisgestaohospitalar.model.GrupoExame;
-import com.ifrn.sisgestaohospitalar.model.Procedimento;
-import com.ifrn.sisgestaohospitalar.repository.ExameSimplificadoRepository;
-import com.ifrn.sisgestaohospitalar.repository.GrupoExameRepository;
-import com.ifrn.sisgestaohospitalar.repository.ProcedimentoRepository;
 
 @Service
 public class LeitorTXTExames {
@@ -66,8 +65,10 @@ public class LeitorTXTExames {
 		for (ExameSimplificado exameSimplificado : exameSimplificadoRepository.findAll()) {
 			for (GrupoExame grupoExame : grupoExameRepository.findAll()) {
 				if (exameSimplificado.getGrupoExame().getId().equals(grupoExame.getId())) {
-					grupoExame.getExameSimplificados().add(exameSimplificado);
-					grupoExameRepository.saveAndFlush(grupoExame);
+					if(grupoExame.getExameSimplificados().isEmpty()){
+						grupoExame.getExameSimplificados().add(exameSimplificado);
+						grupoExameRepository.saveAndFlush(grupoExame);
+					}
 				}
 			}
 		}
