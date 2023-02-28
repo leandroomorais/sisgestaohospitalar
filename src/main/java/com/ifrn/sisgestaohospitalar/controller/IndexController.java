@@ -13,8 +13,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessagePreparator;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -72,14 +70,9 @@ public class IndexController {
 	@RequestMapping("/index")
 	public ModelAndView index() {
 		ModelAndView mv = new ModelAndView("index");
-		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-		if(authentication != null && authentication.isAuthenticated()){
-			if(authentication.getPrincipal() instanceof Usuario){
-				Usuario usuario = usuarioRepository.findByUsername(((Usuario) authentication.getPrincipal()).getUsername());
-				if(usuario != null && usuario.isFirstAccess()){
-					return new ModelAndView("redirect:/primeiro-acesso");
-				}
-			}
+		Usuario usuario = usuarioSecurityService.authenticathedUser();
+		if(usuario != null && usuario.isFirstAccess()){
+			return new ModelAndView("redirect:/primeiro-acesso");
 		}
 		mv.addObject("estabelecimento", estabelecimentoService.findAll());
 		return mv;
@@ -169,20 +162,14 @@ public class IndexController {
 	public ModelAndView updatePasswordFirstAccess(@RequestParam("email") String email, @RequestParam("password") String password)
 			throws Exception {
 		ModelAndView mv = entrar();
-		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-		if(authentication!= null && authentication.isAuthenticated()){
-			if(authentication.getPrincipal() instanceof Usuario){
-				Usuario usuario = usuarioRepository.findByUsername(((Usuario) authentication.getPrincipal()).getUsername());
-				usuario.setPassword(new BCryptPasswordEncoder().encode(password));
-				usuario.setFirstAccess(false);
-				Profissional profissional = profissionalService.findByCpf(usuario.getUsername());
-				profissional.setEmail(email);
-				profissionalService.save(profissional);
-				usuarioRepository.saveAndFlush(usuario);
-
-			}
-		}
-		mv.addObject("sucesso", " A nova senha foi cadastrada e o novo e-mail foi cadastrado.");
+		Usuario usuario = usuarioSecurityService.authenticathedUser();
+		usuario.setPassword(new BCryptPasswordEncoder().encode(password));
+		usuario.setFirstAccess(false);
+		Profissional profissional = profissionalService.findByCpf(usuario.getUsername());
+		profissional.setEmail(email);
+		profissionalService.save(profissional);
+		usuarioRepository.saveAndFlush(usuario);
+		mv.addObject("sucesso", " A nova senha e o novo e-mail foi cadastrado.");
 		return mv;
 	}
 

@@ -1,15 +1,17 @@
 package com.ifrn.sisgestaohospitalar.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Primary;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.stereotype.Service;
 import com.ifrn.sisgestaohospitalar.model.PasswordResetToken;
 import com.ifrn.sisgestaohospitalar.model.Usuario;
 import com.ifrn.sisgestaohospitalar.repository.PasswordResetTokenRepository;
 import com.ifrn.sisgestaohospitalar.repository.UsuarioRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Primary;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.stereotype.Service;
 
 @Service
 @Primary
@@ -34,6 +36,17 @@ public class UsuarioSecurityService implements UserDetailsService {
 	public void gerarTokenRedefinicao(Usuario usuario, String token) {
 		PasswordResetToken passwordResetToken = new PasswordResetToken(token, usuario);
 		passwordResetTokenRepository.saveAndFlush(passwordResetToken);
+	}
+
+	public Usuario authenticathedUser(){
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		if(authentication != null && authentication.isAuthenticated()){
+			if(authentication.getPrincipal() instanceof Usuario){
+				Usuario usuario = (Usuario) authentication.getPrincipal();
+				return usuarioRepository.findByUsername(usuario.getUsername());
+			}
+		}
+		return null;
 	}
 
 }
