@@ -1,3 +1,0 @@
-Coluna,Tamanho,Inicio,Fim,Tipo
-CO_TUSS,10,1,10,VARCHAR2
-NO_TUSS,450,11,460,VARCHAR2

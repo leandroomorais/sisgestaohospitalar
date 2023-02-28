@@ -1,0 +1,30 @@
+Glicose;1;202010473
+Uréia;1;202010694
+Creatinina;1;202010317
+Ferro sérico;1;202010392
+Triglicerídeos;1;202010678
+Colesterol total;1;202010295
+Colesterol HDL;1;202010279
+Colesterol LDL;1;202010287
+TGO (AST);1;202010643
+TGP (ALT);1;202010651
+Hemoglobina Glicosilada;1;202010503
+Hemograma completo;2;202020380
+Plaquetas;2;202020029
+Tempo de Sangramento (Duke);2;202020096
+Tempo de Sangramento (IVY);2;202020100
+Tempo de coagulação;2;202020070
+T3;3;202060390
+T4;3;202060373
+TSH;3;202060250
+Sangue oculto;4;202040143
+Parasitológico;4;202040089
+EAS;5;202050017
+Proteinúria 24h;5;202050114
+HBsAg;6;202030970
+HBC total;6;202030784
+HBC Igm;6;202030890
+Toxoplasmose-IgG/IgM;6;213010577
+Citomegalogavírus IgG;6;202030741
+Citomegalogavírus IgM;6;202030857
+Chagas;6;213010070

@@ -9,11 +9,15 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
+import org.springframework.core.io.Resource;
+import org.springframework.core.io.ResourceLoader;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import java.io.IOException;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Scanner;
 
 @SpringBootApplication
@@ -68,25 +72,33 @@ public class SisgestaohospitalarApplication extends SpringBootServletInitializer
 		System.out.println("Iniciando Projeto");
 	}
 
-	String userDir = System.getProperty("user.dir");
+	@Autowired
+	private ResourceLoader resourceLoader;
 
-	String fileMedicamento = userDir + "/medicamento/medicamentos_rename.txt";
-	String fileFormaFarmaceutiva = userDir + "/medicamento/formafarmaceutica.txt";
-	String cnes = "2380455";
-	String file = userDir + "/uploads/XmlParaESUS21_241380.xml";
-	String urlProcedimentos = userDir + "/SigtapSUS/tb_procedimento.txt";
-	String urlRegistros = userDir + "/SigtapSUS/tb_registro.txt";
-	String urlCid = userDir + "/SigtapSUS/tb_cid.txt";
-	String urlOcupacao = userDir + "/SigtapSUS/tb_ocupacao.txt";
-	String urlRelationProced_Registro = userDir + "/SigtapSUS/rl_procedimento_registro.txt";
-	String urlRelationProced_Cid = userDir + "/SigtapSUS/rl_procedimento_cid.txt";
-	String urlRelationProced_Ocupacao = userDir + "/SigtapSUS/rl_procedimento_ocupacao.txt";
-	String txtMedicamentos = userDir + "/medicamento/medicamentos_rename.txt";
-	String txtFormaFarmaceutica = userDir + "/medicamento/formafarmaceutica.txt";
-	String txtGruposExames = userDir + "/exames/gruposExames.txt";
-	String txtExamesSimplificado = userDir + "/exames/examesSimplificado.txt";
-	String urlDetalhe = userDir + "/SigtapSus/tb_detalhe.txt";
-	String urlProcedimentoDetalheRelacionamento = userDir + "/SigtapSus/rl_procedimento_detalhe.txt";
+	private static final String SIGTAP_DIR = "classpath:sigtapsus/";
+
+	private static final String MEDICAMENTOS_DIR = "classpath:medicamento/";
+
+	private static final String EXAME_DIR = "classpath:exames/";
+
+	private static final String FILE_MEDICAMENTO = "medicamentos_rename.txt";
+	private static final String FILE_FORMA_FARMACEUTIVA = "formafarmaceutica.txt";
+	private static final String CNES = "2380455";
+	//String file = userDir + "/uploads/XmlParaESUS21_241380.xml";
+	private static final String URL_PROCEDIMENTOS = "tb_procedimento.txt";
+	private static final String URL_REGISTROS = "tb_registro.txt";
+	private static final String URL_CID = "tb_cid.txt";
+	private static final String URL_OCUPACAO = "tb_ocupacao.txt";
+	private static final String URL_RELATION_PROCED_REGISTRO = "rl_procedimento_registro.txt";
+	private static final String URL_RELATION_PROCED_CID = "rl_procedimento_cid.txt";
+	private static final String URL_RELATION_PROCED_OCUPACAO ="rl_procedimento_ocupacao.txt";
+
+	private static final String TXT_MEDICAMENTOS = "medicamentos_rename.txt";
+	private static final String TXT_FORMA_FARMACEUTICA = "formafarmaceutica.txt";
+	private static final String TXT_GRUPOS_EXAMES = "gruposExames.txt";
+	private static final String TXT_EXAMES_SIMPLIFICADO = "examesSimplificado.txt";
+	private static final String URL_DETALHE = "tb_detalhe.txt";
+	private static final String URL_PROCEDIMENTO_DETALHE_RELACIONAMENTO = "rl_procedimento_detalhe.txt";
 	@Autowired
 	private RegistroSigtapRepository registroSigtapRepository;
 	@Autowired
@@ -110,7 +122,6 @@ public class SisgestaohospitalarApplication extends SpringBootServletInitializer
 	public void onApplicationEvent(ContextRefreshedEvent event) {
 
 		//inicializar();
-
 		//criaRolesETipoUsuario();
 		lerSigtab();
 		//lerMedicamentosEFormaFarmaceutica();
@@ -230,9 +241,11 @@ public class SisgestaohospitalarApplication extends SpringBootServletInitializer
 		try {
 			if(exameRepository.findAll().isEmpty()){
 				if(grupoExameRepository.findAll().isEmpty()){
-					leitorTXTExames.lerTXTFormaGrupos(txtGruposExames);
+					Resource resource = resourceLoader.getResource(EXAME_DIR.concat(TXT_GRUPOS_EXAMES));
+					leitorTXTExames.lerTXTFormaGrupos(getPath(resource));
 				}
-				leitorTXTExames.lerTXTExames(txtExamesSimplificado);
+				Resource resource = resourceLoader.getResource(EXAME_DIR.concat(TXT_EXAMES_SIMPLIFICADO));
+				leitorTXTExames.lerTXTExames(TXT_EXAMES_SIMPLIFICADO);
 			}
 
 		} catch (IOException e) {
@@ -242,8 +255,8 @@ public class SisgestaohospitalarApplication extends SpringBootServletInitializer
 
 	public void lerMedicamentosEFormaFarmaceutica() {
 		try {
-			leitorTXTMedicamentos.lerTXTFormaFarmaceutica(txtFormaFarmaceutica);
-			leitorTXTMedicamentos.lerTXTMedicamentos(fileMedicamento);
+			leitorTXTMedicamentos.lerTXTFormaFarmaceutica(TXT_FORMA_FARMACEUTICA);
+			leitorTXTMedicamentos.lerTXTMedicamentos(FILE_MEDICAMENTO);
 
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -255,51 +268,59 @@ public class SisgestaohospitalarApplication extends SpringBootServletInitializer
 		try {
 			// OK
 			if(cidRepository.findAll().isEmpty()){
-				leitorTxtSigtap.lerTxtCid(urlCid);
+				Resource resource = resourceLoader.getResource(SIGTAP_DIR.concat(URL_CID));
+				leitorTxtSigtap.lerTxtCid(getPath(resource));
 			}
-
 
 			// OK
 			if(procedimentoRepository.findAll().isEmpty()){
-				leitorTxtSigtap.lerTxtProcedimentos(urlProcedimentos);
+				Resource resource = resourceLoader.getResource(SIGTAP_DIR.concat(URL_PROCEDIMENTOS));
+				leitorTxtSigtap.lerTxtProcedimentos(getPath(resource));
 			}
 
 			// OK
 			if(registroSigtapRepository.findAll().isEmpty()){
-				leitorTxtSigtap.lerTxtRegistro(urlRegistros);
+				Resource resource = resourceLoader.getResource(SIGTAP_DIR.concat(URL_REGISTROS));
+				leitorTxtSigtap.lerTxtRegistro(getPath(resource));
 			}
 
 
 			// OK
 			if(procedimentoCidRepository.findAll().isEmpty()){
-				leitorTxtSigtap.lerProcedimento_Cid(urlRelationProced_Cid);
+				Resource resource = resourceLoader.getResource(SIGTAP_DIR.concat(URL_RELATION_PROCED_CID));
+				leitorTxtSigtap.lerProcedimento_Cid(getPath(resource));
 			}
 
 
 			// OK
 			if(procedimentoOcupacaoRepository.findAll().isEmpty()){
-				leitorTxtSigtap.lerProcedimento_Ocupacao(urlRelationProced_Ocupacao);
+				Resource resource = resourceLoader.getResource(SIGTAP_DIR.concat(URL_RELATION_PROCED_OCUPACAO));
+				leitorTxtSigtap.lerProcedimento_Ocupacao(getPath(resource));
 			}
 
 			// OK
 			if(procedimentoRegistroSigtapRepository.findAll().isEmpty()){
-				leitorTxtSigtap.lerRelacionamentoProcedimento_Registro(urlRelationProced_Registro);
+				Resource resource = resourceLoader.getResource(SIGTAP_DIR.concat(URL_RELATION_PROCED_REGISTRO));
+				leitorTxtSigtap.lerRelacionamentoProcedimento_Registro(getPath(resource));
 			}
 
 
 			// OK
 			if(ocupacaoRepository.findAll().isEmpty()){
-				leitorTxtSigtap.lerTxtOcupacao(urlOcupacao);
+				Resource resource = resourceLoader.getResource(SIGTAP_DIR.concat(URL_OCUPACAO));
+				leitorTxtSigtap.lerTxtOcupacao(getPath(resource));
 			}
 
 
 			// OK
 			if(detalheRepository.findAll().isEmpty()){
-				leitorTxtSigtap.lerTxtDetalhe(urlDetalhe);
+				Resource resource = resourceLoader.getResource(SIGTAP_DIR.concat(URL_DETALHE));
+				leitorTxtSigtap.lerTxtDetalhe(getPath(resource));
 			}
 
 			if(procedimentoDetalheRepository.findAll().isEmpty()){
-				leitorTxtSigtap.lerRelacionamentoProcedimento_Detalhe(urlProcedimentoDetalheRelacionamento);
+				Resource resource = resourceLoader.getResource(SIGTAP_DIR.concat(URL_PROCEDIMENTO_DETALHE_RELACIONAMENTO));
+				leitorTxtSigtap.lerRelacionamentoProcedimento_Detalhe(getPath(resource));
 			}
 
 		} catch (IOException e) {
@@ -409,5 +430,11 @@ public class SisgestaohospitalarApplication extends SpringBootServletInitializer
 			usuario.getRole().add(roleRepository.findByNome("ADMINISTRADOR"));
 			usuarioRepository.saveAndFlush(usuario);
 		}
+	}
+
+	public String getPath(Resource resource) throws IOException {
+		Path path = Paths.get(resource.getURI());
+		String filePath = path.toString();
+		return filePath;
 	}
 }

@@ -1,0 +1,2757 @@
+[
+  {
+    "principioAtivoDroga": "ABACAVIR",
+    "grupoFarmacoterapeutico": "ANTIVIRAIS DE AÇAO DIRETA \/ NUCLEOSIDEO E NUCLEOTIDEO, INIBIDOR DA TRANSCRIPTASE REVERSA",
+    "arquivo": "1.json",
+    "nomeComercialDroga": "ZIAGENAVIR"
+  },
+  {
+    "principioAtivoDroga": "ABATACEPTE",
+    "grupoFarmacoterapeutico": "IMUNOSSUPRESSORES SELETIVOS",
+    "arquivo": "2.json",
+    "nomeComercialDroga": "ORENCIA"
+  },
+  {
+    "principioAtivoDroga": "ABCIXIMABE",
+    "grupoFarmacoterapeutico": "AGENTES ANTITROMBOTICOS \/ INIBIDORES DA AGREGAÇAO PLAQUETARIA, EXCLUINDO HEPARINA",
+    "arquivo": "3.json",
+    "nomeComercialDroga": "REOPRO"
+  },
+  {
+    "principioAtivoDroga": "ACETATO DE BETAMETASONA + FOSFATO DISSODICO DE BETAMETASONA",
+    "grupoFarmacoterapeutico": "GLICOCORTICOIDES",
+    "arquivo": "4.json",
+    "nomeComercialDroga": "BETA LONG"
+  },
+  {
+    "principioAtivoDroga": "ACETATO DE SODIO ",
+    "grupoFarmacoterapeutico": "SOLUÇOES ELETROLITICAS",
+    "arquivo": "5.json",
+    "nomeComercialDroga": "ACETATO DE SODIO"
+  },
+  {
+    "principioAtivoDroga": "ACETAZOLAMIDA",
+    "grupoFarmacoterapeutico": "INIBIDORES DA ANIDRASE CARBONICA",
+    "arquivo": "6.json",
+    "nomeComercialDroga": "ZOLAMOX; DIAMOX"
+  },
+  {
+    "principioAtivoDroga": "ACICLOVIR",
+    "grupoFarmacoterapeutico": "ANTIVIRAIS",
+    "arquivo": "7.json",
+    "nomeComercialDroga": "VIROTIN; ACICLOFAR; ACIBIO; ANCLOMAX; ACIVERAL; CLOVIR; ACIVIRAX; ACICLOMED; HPVIR; ZOVIRAX; ACICLOR; HERPFAR; HECLIVIR; CICLAVIX; CICLOVIRAL; AVIRAL; DUCTOVIRAX; HERVIRAX; HERPESIL; EXAVIR; UNI-VIR; ZICLOVIR; ZYNVIR; ANTIVIRAX; EZOPEN; ZELNIN"
+  },
+  {
+    "principioAtivoDroga": "ACIDO ACETILSALICILICO",
+    "grupoFarmacoterapeutico": "INIBIDORES DA AGREGAÇAO PLAQUETARIA, EXCLUINDO HEPARINA",
+    "arquivo": "8.json",
+    "nomeComercialDroga": "AAS, ASPIRINA; ACETICIL; SALIPIRIN; SOMALGIN; SALICIN; ANALGESIN; AS-MED; SALICIL; ASETISIN; ANTIFEBRIN; AAS PROTECT; ACETILDOR; SEDALIVE; DORMEC; SALICETIL"
+  },
+  {
+    "principioAtivoDroga": "ACIDO FOLICO ",
+    "grupoFarmacoterapeutico": "PREPARAÇOES ANTIANEMICAS \/ ACIDO FOLICO E DERIVADOS",
+    "arquivo": "9.json",
+    "nomeComercialDroga": "FOLACIN; ACFOL; FOLIFOLIN; MATERFOLIC; HIPOFOL; PRE-FOLIC; AFOPIC; ENDOFOLIN; AFOLIC INFANTIL; NESH FOLICO; FOLIPUR; FOLANTINE"
+  },
+  {
+    "principioAtivoDroga": "ACIDO NICOTINICO",
+    "grupoFarmacoterapeutico": "AGENTES MODIFICADORES DE LIPIDIOS",
+    "arquivo": "10.json",
+    "nomeComercialDroga": "ACINIC; METRI"
+  },
+  {
+    "principioAtivoDroga": "ACIDO SALICILICO   ",
+    "grupoFarmacoterapeutico": "EMOLIENTES E PROTETORES",
+    "arquivo": "11.json",
+    "nomeComercialDroga": "ACIDO SALICILICO"
+  },
+  {
+    "principioAtivoDroga": "ACIDO TRANEXAMICO",
+    "grupoFarmacoterapeutico": "ANTIFIBRINOLITICOS",
+    "arquivo": "12.json",
+    "nomeComercialDroga": "HEMOBLOCK; TREXACONT; TRANSAMIN"
+  },
+  {
+    "principioAtivoDroga": "ACITRETINA",
+    "grupoFarmacoterapeutico": "RETINOIDES PARA TRATAMENTO DA PSORIASE",
+    "arquivo": "13.json",
+    "nomeComercialDroga": "NEOTIGASON"
+  },
+  {
+    "principioAtivoDroga": "ADALIMUMABE",
+    "grupoFarmacoterapeutico": "IMUNOSSUPRESSORES \/ INIBIDORES DO FATOR DE NECROSE TUMORAL ALFA",
+    "arquivo": "14.json",
+    "nomeComercialDroga": "HUMIRA"
+  },
+  {
+    "principioAtivoDroga": "ADEFOVIR",
+    "grupoFarmacoterapeutico": "ANTIVIRAIS DE ACAO DIRETA \/ NUCLEOSIDEO E NUCLEOTIDEO, INIBIDOR DA TRANSCRIPTASE REVERSA",
+    "arquivo": "15.json",
+    "nomeComercialDroga": "HEPSERA"
+  },
+  {
+    "principioAtivoDroga": "AGUA PARA INJECAO ",
+    "grupoFarmacoterapeutico": "AGENTES SOLVENTES E DE DILUIÇAO",
+    "arquivo": "16.json",
+    "nomeComercialDroga": "AGUA PARA INJETAVEL"
+  },
+  {
+    "principioAtivoDroga": "ALBENDAZOL ",
+    "grupoFarmacoterapeutico": "AGENTES ANTINEMATOIDES \/ DERIVADOS DO BENZIMIDAZOL",
+    "arquivo": "17.json",
+    "nomeComercialDroga": "PARASIN; ALZOBEN; VERMICLASE; MEBENIX; ALBEL; ZENTEL; BENZOL; ALBA 3; ALBAVERMIN; ALBENDY; VERMITAL; ALBENIX; NEO BENDAZOL; ALBENTEL; MONOZEN; MONOZOL; ALBENZONIL; VERDAZOL; ALIN; ALBENDROX; ZOLBEN; MONOZOL; ALBENIX"
+  },
+  {
+    "principioAtivoDroga": "ALBUMINA HUMANA ",
+    "grupoFarmacoterapeutico": "SUBSTITUTOS DO SANGUE E FRACOES PROTEICAS PLASMATICAS",
+    "arquivo": "18.json",
+    "nomeComercialDroga": "ALBUMINA SERICA HUMANA NORMAL; ALBUMINA HUMANA BAXTER AG; BLAUBIMAX; ALBUMAX; PLASBUMIN 20; ALBUMINAR; BERIBUMIN; ALBUREX 20; ALBUMINA HUMANA GRIFOLS; VIALEBEX; ZENALB; OCTALBIN"
+  },
+  {
+    "principioAtivoDroga": "ALCACHOFRA (CYNARA SCOLYMUS)",
+    "grupoFarmacoterapeutico": "FITOTERAPICO",
+    "arquivo": "19.json",
+    "nomeComercialDroga": "ALCACHOFRAX; ALCAFLOR UNO; ALCAGEST; ALCANATAN; ALCAHERB; LINEVIT"
+  },
+  {
+    "principioAtivoDroga": "ALCATRAO MINERAL ",
+    "grupoFarmacoterapeutico": "ANTIPSORIATICOS DE USO TOPICO",
+    "arquivo": "20.json",
+    "nomeComercialDroga": "ALCATRAO MINERAL"
+  },
+  {
+    "principioAtivoDroga": "ALCOOL ETILICO",
+    "grupoFarmacoterapeutico": "ANTISSEPTICOS E DESINFETANTES",
+    "arquivo": "21.json",
+    "nomeComercialDroga": "ALCOOL ETILICO"
+  },
+  {
+    "principioAtivoDroga": "ALENDRONATO DE SODIO ",
+    "grupoFarmacoterapeutico": "MEDICAMENTOS QUE AFETAM A ESTRUTURA OSSEA E A MINERALIZAÇAO \/ BISFOSFONADOS",
+    "arquivo": "22.json",
+    "nomeComercialDroga": "OSTEORAL; TEROST; BONALEN; ALENDOSSEO; OSTEOFORM; ALENDIL; ENDROSTAN; OSTEOFAR; OSSOMAX; BONAGRAN; OSTENAN; FOSAMAX; CLEVERON; MINUSORB; ALENOST; LEDAR; ALENDRUS; OSTELOX; OSTRAT"
+  },
+  {
+    "principioAtivoDroga": "ALFACALCIDOL",
+    "grupoFarmacoterapeutico": "VITAMINA D E ANALOGOS, INCLUINDO COMBINAÇOES DOS DOIS",
+    "arquivo": "23.json",
+    "nomeComercialDroga": "SIGMACALCIDOL"
+  },
+  {
+    "principioAtivoDroga": "ALFADORNASE",
+    "grupoFarmacoterapeutico": "EXPECTORANTES \/ MUCOLITICOS",
+    "arquivo": "24.json",
+    "nomeComercialDroga": "PULMOZYME"
+  },
+  {
+    "principioAtivoDroga": "ALFAEPOETINA",
+    "grupoFarmacoterapeutico": "PREPARAÇOES ANTIANEMICAS",
+    "arquivo": "25.json",
+    "nomeComercialDroga": "ERITROMAX; EPREX; HEMOPREX"
+  },
+  {
+    "principioAtivoDroga": "ALFAINTERFERONA 2B",
+    "grupoFarmacoterapeutico": "IMUNOESTIMULANTES \/ INTERFERONAS",
+    "arquivo": "26.json",
+    "nomeComercialDroga": "INTRON-A"
+  },
+  {
+    "principioAtivoDroga": "ALFAPEGINTERFERONA 2A",
+    "grupoFarmacoterapeutico": "IMUNOESTIMULANTES \/ INTERFERONAS",
+    "arquivo": "27.json",
+    "nomeComercialDroga": "PEGASYS"
+  },
+  {
+    "principioAtivoDroga": "ALFAPEGINTERFERONA 2B",
+    "grupoFarmacoterapeutico": "IMUNOESTIMULANTES \/ INTERFERONAS",
+    "arquivo": "28.json",
+    "nomeComercialDroga": "PEGINTRON"
+  },
+  {
+    "principioAtivoDroga": "ALFAVELAGLICERASE",
+    "grupoFarmacoterapeutico": "ENZIMAS",
+    "arquivo": "29.json",
+    "nomeComercialDroga": "VPRIV"
+  },
+  {
+    "principioAtivoDroga": "ALOPURINOL ",
+    "grupoFarmacoterapeutico": "INIBIDORES DA PRODUÇAO DE ACIDO URICO",
+    "arquivo": "30.json",
+    "nomeComercialDroga": "ZYLORIC; XANTUR; LOPURAX"
+  },
+  {
+    "principioAtivoDroga": "ALTEPLASE",
+    "grupoFarmacoterapeutico": "AGENTES ANTITROMBOTICOS",
+    "arquivo": "31.json",
+    "nomeComercialDroga": "ACTILYSE"
+  },
+  {
+    "principioAtivoDroga": "AMANTADINA",
+    "grupoFarmacoterapeutico": "AGENTES DOPAMINERGICOS \/ DERIVADOS DO ADAMANTANO",
+    "arquivo": "32.json",
+    "nomeComercialDroga": "MANTIDAN"
+  },
+  {
+    "principioAtivoDroga": "AMICACINA",
+    "grupoFarmacoterapeutico": "AMINOGLICOSIDEOS ANTIBACTERIANOS",
+    "arquivo": "33.json",
+    "nomeComercialDroga": "AMICILON; KLEBICIL; AMINOCINA"
+  },
+  {
+    "principioAtivoDroga": "AMIODARONA",
+    "grupoFarmacoterapeutico": "ANTIARRITIMICOS CLASSE III",
+    "arquivo": "34.json",
+    "nomeComercialDroga": "MIODARON; AMIORON; HIPERTERONA; MIODARID; CARDICORON; AMIOBAL; AMIRONA; ANCORON; COR MIO; ATLANSIL; ANGYTON"
+  },
+  {
+    "principioAtivoDroga": "AMITRIPTILINA",
+    "grupoFarmacoterapeutico": "ANTIDEPRESSIVOS",
+    "arquivo": "35.json",
+    "nomeComercialDroga": "AMYTRIL; NEUROTRYPT; PROTANOL; TRYPTANOL; TRISOMATOL"
+  },
+  {
+    "principioAtivoDroga": "AMOXICILINA",
+    "grupoFarmacoterapeutico": "PENICILINAS DE AMPLO ESPECTRO",
+    "arquivo": "36.json",
+    "nomeComercialDroga": "BIMOXIN; AMOXITAN; AMOXADENE; AMOXIMED; POLIMOXIL; AMOXIL; UNI AMOX; NEO MOXILIN; AMOXADENE; AXEPEN; AMOXACIN; AMOX; AMOXIPEN; BIAMOX; NOVOXIL; AMOXINA; NOVOCILIN; VELAMOX; HINCOMOX; OCYLIN; NEMOXIL; DUZIMICIN"
+  },
+  {
+    "principioAtivoDroga": "AMOXICILINA + CLAVULANATO DE POTASSIO",
+    "grupoFarmacoterapeutico": "COMBINAÇOES DE PENICILINAS, INCLUINDO INIBIDORES DE BETA-LACTAMASE",
+    "arquivo": "37.json",
+    "nomeComercialDroga": "TRIFAMOX; CLAVICIN; CLAVULIN; CLAVUTAM; NOVAMOX; AMPLAMOX AC; CLAVUTREX; SIGMA CLAV; CLAXAM; CLAV-AIR; POLICLAVUMOXIL; DOCLAXIN"
+  },
+  {
+    "principioAtivoDroga": "ANFOTERICINA B DESOXICOLATO",
+    "grupoFarmacoterapeutico": "ANTIMICOTICOS PARA USO SISTEMICO",
+    "arquivo": "38.json",
+    "nomeComercialDroga": "ANFORICIN B; FUNTEX B; UNIANF"
+  },
+  {
+    "principioAtivoDroga": "ANFOTERICINA B COMPLEXO LIPIDICO",
+    "grupoFarmacoterapeutico": "ANTIMICOTICOS PARA USO SISTEMICO",
+    "arquivo": "39.json",
+    "nomeComercialDroga": "ABELCET; AMPHOCIL"
+  },
+  {
+    "principioAtivoDroga": "ANFOTERICINA B LIPOSSOMAL",
+    "grupoFarmacoterapeutico": "ANTIMICOTICOS PARA USO SISTEMICO",
+    "arquivo": "40.json",
+    "nomeComercialDroga": "AMBISOME"
+  },
+  {
+    "principioAtivoDroga": "ANLODIPINO",
+    "grupoFarmacoterapeutico": "BLOQUEADORES SELETIVOS DOS CANAIS DE CALCIO COM EFEITOS PRINCIPALMENTE VASCULARES",
+    "arquivo": "41.json",
+    "nomeComercialDroga": "TENDIPINA; TENSODIN; PRESSAT; CORDAREX; NEMODINE; ANLO; BESILAPIN; TENSALIV; ANLODIBAL; NORVASC; AMELOVAS; NICORD; ROXFLAN; LODIPEN; AMLOVASC; AMLOCOR; AMLODIL; ALIVPRESS"
+  },
+  {
+    "principioAtivoDroga": "ANTIMONIATO DE MEGLUMINA ",
+    "grupoFarmacoterapeutico": "AGENTES CONTRA A LEISHMANIOSE E A TRIPANOSSOMIASE",
+    "arquivo": "42.json",
+    "nomeComercialDroga": "GLUCANTIME"
+  },
+  {
+    "principioAtivoDroga": "AROEIRA (SCHINUS TEREBINTHIFOLIUS)",
+    "grupoFarmacoterapeutico": "FITOTERAPICO",
+    "arquivo": "43.json",
+    "nomeComercialDroga": "KIOS"
+  },
+  {
+    "principioAtivoDroga": "ARTEMETER",
+    "grupoFarmacoterapeutico": "ANTIMALARICOS ",
+    "arquivo": "44.json",
+    "nomeComercialDroga": "ARTEMETER"
+  },
+  {
+    "principioAtivoDroga": "ARTEMETER + LUMEFANTRINA",
+    "grupoFarmacoterapeutico": "ANTIMALARICOS",
+    "arquivo": "45.json",
+    "nomeComercialDroga": "ARTEMETER + LUMEFANTRINA"
+  },
+  {
+    "principioAtivoDroga": "ARTESUNATO",
+    "grupoFarmacoterapeutico": "ANTIMALARICOS",
+    "arquivo": "46.json",
+    "nomeComercialDroga": "ARTESUNATO"
+  },
+  {
+    "principioAtivoDroga": "ARTESUNATO + MEFLOQUINA ",
+    "grupoFarmacoterapeutico": "ANTIMALARICOS",
+    "arquivo": "47.json",
+    "nomeComercialDroga": "ARTESUNATO + MEFLOQUINA "
+  },
+  {
+    "principioAtivoDroga": "ATAZANAVIR",
+    "grupoFarmacoterapeutico": "ANTIVIRAIS DE AÇAO DIRETA \/ INIBIDORES DE PROTEASE",
+    "arquivo": "48.json",
+    "nomeComercialDroga": "REYATAZ"
+  },
+  {
+    "principioAtivoDroga": "ATENOLOL ",
+    "grupoFarmacoterapeutico": "AGENTES BETA BLOQUEADORES SELETIVOS",
+    "arquivo": "49.json",
+    "nomeComercialDroga": "ATENOL; BIOTENOR; ABLOK; ANGIPRESS; ATECARD; TELOL; ATENUOL; REGULAPRESS; ANGITENS; ATENEO; ATENEUM; ATEPRESS; PLENACOR; ATENOBAL; ATENOLAB; ANGILESS; RITCOR; ATENOTON; ATENOPRESS; TENOLON"
+  },
+  {
+    "principioAtivoDroga": "ATORVASTATINA",
+    "grupoFarmacoterapeutico": "AGENTES MODIFICADORES DE LIPIDIOS \/ INIBIDORES DA HMG-COA REDUTASE",
+    "arquivo": "50.json",
+    "nomeComercialDroga": "ATEROMA; ATORLESS; ATORVASTEROL; CITALOR; CORASTORVA; KOLEVAS; LIPIGRAND; LIPISTAT; LIPITOR; LIPTHAL; OBVISO; TORVILIP; VAST; ZARATOR; VOLUNTA"
+  },
+  {
+    "principioAtivoDroga": "ATROPINA ",
+    "grupoFarmacoterapeutico": "BELADONA E DERIVADOS SIMPLES",
+    "arquivo": "51.json",
+    "nomeComercialDroga": "ATROPION; ATROFARMA; HYTROPIN; PASMODEX; NOVATON; SANTROPINA; ATROPINON"
+  },
+  {
+    "principioAtivoDroga": "AZATIOPRINA",
+    "grupoFarmacoterapeutico": "IMUNOSSUPRESSORES",
+    "arquivo": "52.json",
+    "nomeComercialDroga": "IMURAN; IMUNEN; IMUSSUPREX; ASEROPRIN"
+  },
+  {
+    "principioAtivoDroga": "AZITROMICINA ",
+    "grupoFarmacoterapeutico": "MACROLIDEOS",
+    "arquivo": "53.json",
+    "nomeComercialDroga": "AZIMIX; BIOZITROM; AZALIDE; AZIMED; EMS-MAX; AZITROGRAN; AZITRAX; AZITROMICIL; AZITRIN; ZOLPROX; ZITROMAX; SELIMAX; AZITROSOL; AZITROMED; CLINDAL AZ; AZITROLAB; ZITROMIL; AZIDROMIC; ZIMICINA; MAZITRON; ZITROBIOL; ZITRINA; ZITRONEO; ZIDIMAX; TROMIZIR; AZI; ASTRO; AZITROPHAR"
+  },
+  {
+    "principioAtivoDroga": "BABOSA (ALOE VERA)",
+    "grupoFarmacoterapeutico": "FITOTERAPICO",
+    "arquivo": "54.json",
+    "nomeComercialDroga": "BABOSA (ALOE VERA)"
+  },
+  {
+    "principioAtivoDroga": "BASILIXIMABE",
+    "grupoFarmacoterapeutico": "IMUNOSSUPRESSORES \/ INIBIDORES DA INTERLEUCINA",
+    "arquivo": "55.json",
+    "nomeComercialDroga": "SIMULECT"
+  },
+  {
+    "principioAtivoDroga": "BECLOMETASONA ",
+    "grupoFarmacoterapeutico": "GLICOCORTICOIDES",
+    "arquivo": "56.json",
+    "nomeComercialDroga": "CLENIL; ALERFIN; CLENIL HFA; BECLOSOL; BECLORT; MIFLASONA"
+  },
+  {
+    "principioAtivoDroga": "BENZILPENICILINA BENZATINA",
+    "grupoFarmacoterapeutico": "PENICILINAS BETA-LACTAMASE SENSIVEL",
+    "arquivo": "57.json",
+    "nomeComercialDroga": "BENZATRON; BENZETACIL; BEPEBEN; BIOZATIN"
+  },
+  {
+    "principioAtivoDroga": "BENZILPENICILINA POTASSICA",
+    "grupoFarmacoterapeutico": "PENICILINAS BETA-LACTAMASE SENSIVEL",
+    "arquivo": "58.json",
+    "nomeComercialDroga": "ARICILINA; BENZILPEN; CRISTALPEN; CRISTACILINA"
+  },
+  {
+    "principioAtivoDroga": "BENZILPENICILINA PROCAINA + BENZILPENICILINA POTASSICA",
+    "grupoFarmacoterapeutico": "PENICILINAS BETA-LACTAMASE SENSIVEL",
+    "arquivo": "59.json",
+    "nomeComercialDroga": "PENKARON; WYCILLIN; BENZAPEN G; WONILIN"
+  },
+  {
+    "principioAtivoDroga": "BENZNIDAZOL",
+    "grupoFarmacoterapeutico": "AGENTES CONTRA A LEISHMANIOSE E A TRIPANOSSOMIASE",
+    "arquivo": "60.json",
+    "nomeComercialDroga": "BENZNIDAZOL"
+  },
+  {
+    "principioAtivoDroga": "BETAINTERFERONA 1A",
+    "grupoFarmacoterapeutico": "IMUNOESTIMULANTES \/ INTERFERONAS",
+    "arquivo": "61.json",
+    "nomeComercialDroga": "AVONEX; REBIF"
+  },
+  {
+    "principioAtivoDroga": "BETAINTERFERONA 1B",
+    "grupoFarmacoterapeutico": "IMUNOESTIMULANTES \/ INTERFERONAS",
+    "arquivo": "62.json",
+    "nomeComercialDroga": "BETAFERON; EXTAVIA"
+  },
+  {
+    "principioAtivoDroga": "BEZAFIBRATO",
+    "grupoFarmacoterapeutico": "AGENTES MODIFICADORES DE LIPIDIOS \/ FIBRATOS",
+    "arquivo": "63.json",
+    "nomeComercialDroga": "CEDUR"
+  },
+  {
+    "principioAtivoDroga": "BICARBONATO DE SODIO ",
+    "grupoFarmacoterapeutico": "SOLUÇOES ELETROLITICAS",
+    "arquivo": "64.json",
+    "nomeComercialDroga": "NEFROSOL CPHD-FRACAO BASICA; FARMACART; CPHD ARMARIN; BIBAG; BICARBON; SOL-CART B; CPHD 35 BA"
+  },
+  {
+    "principioAtivoDroga": "BIMATOPROSTA",
+    "grupoFarmacoterapeutico": "AGENTES MODIFICADORES DE LIPIDIOS \/ FIBRATOS",
+    "arquivo": "65.json",
+    "nomeComercialDroga": "LUPTAS; LUMIGAN; BIMAGAN; GLAUCUR; LATISSE; GLAMIGAN"
+  },
+  {
+    "principioAtivoDroga": "BIPERIDENO",
+    "grupoFarmacoterapeutico": "AGENTES ANTICOLINERGICOS",
+    "arquivo": "66.json",
+    "nomeComercialDroga": "AKINETON; PARKINSOL; CINETOL; PROPARK"
+  },
+  {
+    "principioAtivoDroga": "BOCEPREVIR",
+    "grupoFarmacoterapeutico": "ANTIVIRAIS DE AÇAO DIRETA \/ INIBIDORES DE PROTEASE",
+    "arquivo": "67.json",
+    "nomeComercialDroga": "VICTRELIS"
+  },
+  {
+    "principioAtivoDroga": "BRIMONIDINA",
+    "grupoFarmacoterapeutico": "SIMPATOMIMETICOS NA TERAPIA DE GLAUCOMA",
+    "arquivo": "68.json",
+    "nomeComercialDroga": "ALPHAGAN; ALPHABRIN; ACCERA; GLAUB"
+  },
+  {
+    "principioAtivoDroga": "BRINZOLAMIDA",
+    "grupoFarmacoterapeutico": "INIBIDORES DA ANIDRASE CARBONICA",
+    "arquivo": "69.json",
+    "nomeComercialDroga": "AZOPT"
+  },
+  {
+    "principioAtivoDroga": "BROMETO DE IPRATROPIO ",
+    "grupoFarmacoterapeutico": "ANTICOLINERGICOS",
+    "arquivo": "70.json",
+    "nomeComercialDroga": "ATROVENT; BRONCOVENT; ASMALIV; ARES; IPRAVENT"
+  },
+  {
+    "principioAtivoDroga": "BROMOCRIPTINA",
+    "grupoFarmacoterapeutico": "AGONISTAS DA DOPAMINA \/ INIBIDOR DA PROLACTINA",
+    "arquivo": "71.json",
+    "nomeComercialDroga": "PARLODEL"
+  },
+  {
+    "principioAtivoDroga": "BUDESONIDA",
+    "grupoFarmacoterapeutico": "GLICOCORTICOIDES",
+    "arquivo": "72.json",
+    "nomeComercialDroga": "PULMICORT; BUDECORT AQUA; ENTOCORT; BUSONID; NOEX; MIFLONIDE"
+  },
+  {
+    "principioAtivoDroga": "BUPIVACAINA",
+    "grupoFarmacoterapeutico": "ANESTESICOS LOCAIS",
+    "arquivo": "73.json",
+    "nomeComercialDroga": "BUPICAN HEAVY; NEOCAINA SEM VASOCONSTRICTOR; NEOCAINA ISOBARICA; TRADINOL; BUPSTESIC"
+  },
+  {
+    "principioAtivoDroga": "BUPROPIONA ",
+    "grupoFarmacoterapeutico": "ANTIDEPRESSIVOS",
+    "arquivo": "74.json",
+    "nomeComercialDroga": "BUPIUM; INIP; WELLBUTRIN SR; WELLBUTRIN XL; ZYBAN; BUPOGRAN; ZETRON; NORADOP; BUP"
+  },
+  {
+    "principioAtivoDroga": "CABERGOLINA",
+    "grupoFarmacoterapeutico": "AGONISTAS DA DOPAMINA \/ INIBIDOR DA PROLACTINA",
+    "arquivo": "75.json",
+    "nomeComercialDroga": "DOSTINEX; CABERTRIX; CABEREDUX"
+  },
+  {
+    "principioAtivoDroga": "CALCIPOTRIOL",
+    "grupoFarmacoterapeutico": "ANTIPSORIATICOS PARA USO TOPICO",
+    "arquivo": "76.json",
+    "nomeComercialDroga": "DAIVONEX"
+  },
+  {
+    "principioAtivoDroga": "CALCITONINA",
+    "grupoFarmacoterapeutico": "AGENTES ANTIPARATIREOIDE",
+    "arquivo": "77.json",
+    "nomeComercialDroga": "SEACALCIT; MIACALCIC"
+  },
+  {
+    "principioAtivoDroga": "CALCITRIOL",
+    "grupoFarmacoterapeutico": "VITAMINA D E ANALOGOS",
+    "arquivo": "78.json",
+    "nomeComercialDroga": "CALCIJEX; OSTRIOL; SIGMATRIOL; ROCALTROL"
+  },
+  {
+    "principioAtivoDroga": "CAPTOPRIL ",
+    "grupoFarmacoterapeutico": "INIBIDORES DA ENZIMA CONVERSORA DE ANGIOTENSINA",
+    "arquivo": "79.json",
+    "nomeComercialDroga": "ABEPOTEN; REPRIL; CAPTOMIDO; CABIOTEN; CAPOTEN; CAPTOPIRIL; NORMAPRIL; CAPTOMED; CAPOX;  CAPTIL; HEMOPRESS; CAPTOCORD; CAPOTRINEO; CAPOBAL; LABOPRIL; VENOPRIL; HIPOTENSIL; PRESSTOPRIL; CAPTOLAB; CAPTOSEN; CAPTON; CAPTOTEC; HIPOTEN; ANTIPRESSIN; CAPOTRAT"
+  },
+  {
+    "principioAtivoDroga": "CARBAMAZEPINA",
+    "grupoFarmacoterapeutico": "ANTIEPILEPTICOS",
+    "arquivo": "80.json",
+    "nomeComercialDroga": "TEGREZIN; TEGRETARD; TEGREX; TEGRETOL; VATE; UNI CARBAMAZ"
+  },
+  {
+    "principioAtivoDroga": "CARBONATO DE CALCIO",
+    "grupoFarmacoterapeutico": "CALCIO",
+    "arquivo": "81.json",
+    "nomeComercialDroga": "CALCIO ZURITA; NUTRICAL D; MIRACAL; OSSEOPOR; CALSAN; OSCAL; FONTICAL"
+  },
+  {
+    "principioAtivoDroga": "CARBONATO DE CALCIO + COLECALCIFEROL",
+    "grupoFarmacoterapeutico": "CALCIO EM COMBINAÇAO COM VITAMINA D",
+    "arquivo": "82.json",
+    "nomeComercialDroga": "FEMME CALCIO D 400; CALDROX D; SUPRICAL D; MIRACALCIO VIT D; NEUTROCAL D; OSSOTRAT-D; FEMURID; REPOCAL D; CALDE; OSTEOFIX; CALCIUM D3; OSCAL D"
+  },
+  {
+    "principioAtivoDroga": "CARBONATO DE LITIO",
+    "grupoFarmacoterapeutico": "ANTIPSICOTICOS",
+    "arquivo": "83.json",
+    "nomeComercialDroga": "CARBOLIM; CARBOLITIUM"
+  },
+  {
+    "principioAtivoDroga": "CARVAO VEGETAL ATIVADO",
+    "grupoFarmacoterapeutico": "ADSORVENTES INTESTINAIS",
+    "arquivo": "84.json",
+    "nomeComercialDroga": "CARVAO VEGETAL ATIVADO"
+  },
+  {
+    "principioAtivoDroga": "CARVEDILOL",
+    "grupoFarmacoterapeutico": "AGENTES ALFA E BETA BLOQUEADORES",
+    "arquivo": "85.json",
+    "nomeComercialDroga": "CRONOCOR; ICTUS; CARVEDILAT; DIVELOL; CARVEGRAN; CARDILOL; BECARVE; COREG; COREDIOL; KARVIL; CARDBET"
+  },
+  {
+    "principioAtivoDroga": "CASCARA-SAGRADA (RHAMNUS PURSHIANA)",
+    "grupoFarmacoterapeutico": "FITOTERAPICO",
+    "arquivo": "86.json",
+    "nomeComercialDroga": "HEBLAX; LAXOHERB; PURGALAX; VERILAX"
+  },
+  {
+    "principioAtivoDroga": "CEFALEXINA",
+    "grupoFarmacoterapeutico": "CEFALOSPORINAS DE PRIMEIRA GERAÇAO",
+    "arquivo": "87.json",
+    "nomeComercialDroga": "CEFAXON; CELLEXINA; CEFANAL; CEFALEXOL; NEO CEFLEX; TOBILEX; UNI CEFALEXIN; KEFORAL; CEFABEN; CEFAGRAN; KEFLEX; CEFAGEL; KEFALEXIN; CEFACIMED; NEOCEFLEX; LEXIN; KEFLAXINA"
+  },
+  {
+    "principioAtivoDroga": "CEFOTAXIMA",
+    "grupoFarmacoterapeutico": "CEFALOSPORINAS DE TERCEIRA GERAÇAO",
+    "arquivo": "88.json",
+    "nomeComercialDroga": "CLAFORAN; KEFAXIM; CLAFORDIL; KEFOZIL; CETAZIMA; CEFORAN"
+  },
+  {
+    "principioAtivoDroga": "CEFTRIAXONA",
+    "grupoFarmacoterapeutico": "CEFALOSPORINAS DE TERCEIRA GERAÇAO",
+    "arquivo": "89.json",
+    "nomeComercialDroga": "CELLTRIAXON; TRIAXIN; TRIOXINA; TRIAXTON; TRIAXON; CEFTRIONA; CEFTRIAX; AMPLOSPEC; NEOCEFTRIONA; KEFTRON; ROCEFIN"
+  },
+  {
+    "principioAtivoDroga": "CERTOLIZUMABE PEGOL",
+    "grupoFarmacoterapeutico": "IMUNOSSUPRESSORES \/ INIBIDORES DO FATOR DE NECROSE TUMORAL ALFA",
+    "arquivo": "90.json",
+    "nomeComercialDroga": "CIMZIA"
+  },
+  {
+    "principioAtivoDroga": "CETOCONAZOL",
+    "grupoFarmacoterapeutico": "ANTIFUNGICOS DE USO TOPICO \/ DERIVADOS IMIDAZOLICOS E TRIAZOLICOS",
+    "arquivo": "91.json",
+    "nomeComercialDroga": "CANDORAL; CANDIDERM; CETOP; CETOZAZ; KETONAZOL; CETOZOL; CETONIN; CETOMED; CIMECORT; CLEARTOP; NORIDERM; ARCOLAN; ZOLMICOL; CETOMIZOL; CETOCOL; CETONEO ZANOC; NIZORAL; CETONAX; NIZONAZOL; DERMICASP; MICORAL; CETOMICOSS; LOZAN; KETOMICOL; FUNGONAZOL; CETONAT; NORONAL; TRICORTID; IZONAX; CETACONAL; SIOCONAZOL; CETOZAN; CETOPROX; CETODERM; DERMITRAT; ZANOC; MERADIZOL; ZOLMICOL"
+  },
+  {
+    "principioAtivoDroga": "CIANOCOBALAMINA",
+    "grupoFarmacoterapeutico": "VITAMINA B12 (CIANOCOBALAMINA E ANALOGOS)",
+    "arquivo": "92.json",
+    "nomeComercialDroga": "BEDOZIL; AMICORED; MEDAT"
+  },
+  {
+    "principioAtivoDroga": "CICLOFOSFAMIDA",
+    "grupoFarmacoterapeutico": "AGENTES ALQUILANTES",
+    "arquivo": "93.json",
+    "nomeComercialDroga": "GENUXAL"
+  },
+  {
+    "principioAtivoDroga": "CICLOSPORINA",
+    "grupoFarmacoterapeutico": "IMUNOSSUPRESSORES",
+    "arquivo": "94.json",
+    "nomeComercialDroga": "SIGMASPORIN; SANDIMMUN NEORAL"
+  },
+  {
+    "principioAtivoDroga": "CIPROFIBRATO",
+    "grupoFarmacoterapeutico": "AGENTES MODIFICADORES DE LIPIDIOS \/ FIBRATOS",
+    "arquivo": "95.json",
+    "nomeComercialDroga": "CIBRATO; CIPIDE; CIPROLIP; LIPLESS; OROXADIN"
+  },
+  {
+    "principioAtivoDroga": "CIPROFLOXACINO",
+    "grupoFarmacoterapeutico": "ANTIBACTERIANOS QUINOLONICOS",
+    "arquivo": "96.json",
+    "nomeComercialDroga": "FLOXEN; CIPROFLOXIL; CIPROFLAN; CIPROFLOXATRIN; CIPRONID; CIPROXAN; CIPRO; CIPROFLONAX; PROCSIM; FLOXOCIP; CICLATRY; CIPROBIOT; CIPROMIZIN; QUINOFLOX; CIFLOXATIL; CIPROCILIN; PROFLOX; CIPRIX; CIPROFLOX; CIPROFAR; TEUCIPROX; BESFLOX; PROXACIN; CIPROZER"
+  },
+  {
+    "principioAtivoDroga": "CIPROTERONA",
+    "grupoFarmacoterapeutico": "ANTIANDROGENIOS",
+    "arquivo": "97.json",
+    "nomeComercialDroga": "PROSTMAN; ANDROCUR; TESS; CIPROSTAT"
+  },
+  {
+    "principioAtivoDroga": "CLARITROMICINA",
+    "grupoFarmacoterapeutico": "MACROLIDEOS",
+    "arquivo": "98.json",
+    "nomeComercialDroga": "KLAROXIL; KLARICID; CLABIOSIN; CLARICINA; KLARITRIL; CLARINEO; CLARILIB "
+  },
+  {
+    "principioAtivoDroga": "CLINDAMICINA",
+    "grupoFarmacoterapeutico": "LINCOSAMIDAS",
+    "arquivo": "99.json",
+    "nomeComercialDroga": "CLINDAMIN-C; DALACIN C; CLINDARIX; CLINDACIN; HYCLIN; SENOCLIN"
+  },
+  {
+    "principioAtivoDroga": "CLOBAZAM",
+    "grupoFarmacoterapeutico": "ANSIOLITICOS",
+    "arquivo": "100.json",
+    "nomeComercialDroga": "URBANIL; FRISIUM"
+  },
+  {
+    "principioAtivoDroga": "CLOBETASOL",
+    "grupoFarmacoterapeutico": "CORTICOESTEROIDES DE POTENCIA MUITO ALTA - GRUPO IV",
+    "arquivo": "101.json",
+    "nomeComercialDroga": "CLOB-X; PSOREX; PSORIN; PROPIOSOL; CLOBESOL; TOPIREX; THERAPSOR"
+  },
+  {
+    "principioAtivoDroga": "CLOFAZIMINA",
+    "grupoFarmacoterapeutico": "MEDICAMENTOS USADOS NO TRATAMENTO DA HANSENIASE",
+    "arquivo": "102.json",
+    "nomeComercialDroga": "CLOFAZIMINA"
+  },
+  {
+    "principioAtivoDroga": "CLOMIPRAMINA ",
+    "grupoFarmacoterapeutico": "ANTIDEPRESSIVOS",
+    "arquivo": "103.json",
+    "nomeComercialDroga": "CLO; FENATIL; ANAFRANIL; CLOMIPRAN"
+  },
+  {
+    "principioAtivoDroga": "CLONAZEPAM ",
+    "grupoFarmacoterapeutico": "DERIVADOS BENZODIAZEPINICOS",
+    "arquivo": "104.json",
+    "nomeComercialDroga": "CLOPAM; NAVOTRAX; EPILEPTIL; RIVOTRIL; CLONOTRIL; UNI CLONAZEPAX"
+  },
+  {
+    "principioAtivoDroga": "CLOPIDOGREL",
+    "grupoFarmacoterapeutico": "AGENTES ANTITROMBOTICOS \/ INIBIDORES DA AGREGAÇAO PLAQUETARIA, EXCLUINDO HEPARINA",
+    "arquivo": "105.json",
+    "nomeComercialDroga": "CLOPIN; CLOPIDROR; ATEROGREL; CLOPIVIX; PLAQUEVIX; PLAQ; CLOPIDO-GRAN; LOPIGREL; PLAGREL; PLAVIX; ISCOVER; CLOPIPLAX; CUORE; PAQUETA; PLAQUETEL"
+  },
+  {
+    "principioAtivoDroga": "CLORANFENICOL",
+    "grupoFarmacoterapeutico": "ANFENICOIS",
+    "arquivo": "106.json",
+    "nomeComercialDroga": "QUEMICETINA"
+  },
+  {
+    "principioAtivoDroga": "CLORETO DE SODIO ",
+    "grupoFarmacoterapeutico": "SOLUÇOES ELETROLITICAS",
+    "arquivo": "107.json",
+    "nomeComercialDroga": "SOLUCAO FISIOLOGICA; JP FISIOLOGICO; CLORETO DE SODIO 0,9%; SOLUCAO DE CLORETO DE SODIO B.BRAUN; TEXON SOLUCAO DE CLORETO DE SODIO"
+  },
+  {
+    "principioAtivoDroga": "CLORETO DE SODIO ",
+    "grupoFarmacoterapeutico": "SOLUÇOES ELETROLITICAS",
+    "arquivo": "108.json",
+    "nomeComercialDroga": "SORINE H; SORINE SSC; DESCODRIN; NASOFAR AD; SNIF; SNIF SC; RINOSOFT S SOLUCAO; SOROFAR; NEO SORO INFANTIL; NASOJET; PRATSORIN"
+  },
+  {
+    "principioAtivoDroga": "CLOREXIDINA ",
+    "grupoFarmacoterapeutico": "ANTISSEPTICOS E DESINFETANTES",
+    "arquivo": "109.json",
+    "nomeComercialDroga": "MARCLORHEX; DUXIDINA"
+  },
+  {
+    "principioAtivoDroga": "CLOROQUINA",
+    "grupoFarmacoterapeutico": "ANTIMALARICOS",
+    "arquivo": "110.json",
+    "nomeComercialDroga": "CLOROQUINA"
+  },
+  {
+    "principioAtivoDroga": "CLORPROMAZINA ",
+    "grupoFarmacoterapeutico": "ANTIPSICOTICOS",
+    "arquivo": "111.json",
+    "nomeComercialDroga": "LONGACTIL; AMPLICTIL; CLORPROMAZ"
+  },
+  {
+    "principioAtivoDroga": "CLOZAPINA",
+    "grupoFarmacoterapeutico": "ANTIPSICOTICOS",
+    "arquivo": "112.json",
+    "nomeComercialDroga": "PINAZAN; LIFALCLOZAPINA; LEPONEX"
+  },
+  {
+    "principioAtivoDroga": "CODEINA",
+    "grupoFarmacoterapeutico": "OPIOIDES",
+    "arquivo": "113.json",
+    "nomeComercialDroga": "CODEIN"
+  },
+  {
+    "principioAtivoDroga": "COMPLEMENTO ALIMENTAR P\/ PACIENTE FENILCETONURICO MAIOR DE 1 ANO - FORMULA DE AMINOACIDOS ISENTA DE FENILALANINA",
+    "grupoFarmacoterapeutico": "FORMULAS INFANTIS \/ ALIMENTOS DIETETICOS ISENTOS DE FENILALANINA",
+    "arquivo": "114.json",
+    "nomeComercialDroga": "PKU; RILLA; PROFENIL"
+  },
+  {
+    "principioAtivoDroga": "COMPLEMENTO ALIMENTAR P\/ PACIENTE FENILCETONURICO MENOR DE 1 ANO - FORMULA DE AMINOACIDOS ISENTA DE FENILALANINA",
+    "grupoFarmacoterapeutico": "FORMULAS INFANTIS \/ ALIMENTOS DIETETICOS ISENTOS DE FENILALANINA",
+    "arquivo": "115.json",
+    "nomeComercialDroga": "PKU; RILLA; PROFENIL"
+  },
+  {
+    "principioAtivoDroga": "FATOR VII ATIVADO RECOMBINANTE",
+    "grupoFarmacoterapeutico": "FATORES DA COAGULAÇAO SANGUINEA",
+    "arquivo": "116.json",
+    "nomeComercialDroga": "NOVOSEVEN"
+  },
+  {
+    "principioAtivoDroga": "FATOR VIII PARA DOENCA DE VON WILLEBRAND ",
+    "grupoFarmacoterapeutico": "FATORES DA COAGULAÇAO SANGUINEA",
+    "arquivo": "117.json",
+    "nomeComercialDroga": "BIOSTATE; HAEMATE P; ALPHANATE; OPTIVATE"
+  },
+  {
+    "principioAtivoDroga": "FATOR VIII ASSOCIADO A FATOR DE VON WILLEBRAND PARA IMUNOTOLERANCIA",
+    "grupoFarmacoterapeutico": "FATORES DE COAGULAÇAO SANGUINEA",
+    "arquivo": "118.json",
+    "nomeComercialDroga": "OCTAVI-SD-OPTIMUM"
+  },
+  {
+    "principioAtivoDroga": "FATOR VIII RECOMBINANTE ",
+    "grupoFarmacoterapeutico": "FATORES DA COAGULAÇAO SANGUINEA",
+    "arquivo": "119.json",
+    "nomeComercialDroga": "RECOMBINATE; ADVATE; HEMO-8R; KOGENATE FS; IMMUNNATE S\/D"
+  },
+  {
+    "principioAtivoDroga": "FATOR IX DE COAGULACAO",
+    "grupoFarmacoterapeutico": "FATORES DA COAGULAÇAO SANGUINEA",
+    "arquivo": "120.json",
+    "nomeComercialDroga": "IMMUNINE; BERININ P; FATOR IX; REPLENINE-VF; OCTANINE F"
+  },
+  {
+    "principioAtivoDroga": "FATOR VIII DA COAGULACAO",
+    "grupoFarmacoterapeutico": "FATORES DA COAGULAÇAO SANGUINEA",
+    "arquivo": "121.json",
+    "nomeComercialDroga": "FANHDI; BERIATE P; HEMOFIL M; OCTAVI-SD-OPTIMUM; 8Y"
+  },
+  {
+    "principioAtivoDroga": "FATOR XIII DA COAGULACAO ",
+    "grupoFarmacoterapeutico": "FATORES DA COAGULAÇAO SANGUINEA",
+    "arquivo": "122.json",
+    "nomeComercialDroga": "FIBROGAMMIN-P"
+  },
+  {
+    "principioAtivoDroga": "FIBRINOGENIO (FATOR I)",
+    "grupoFarmacoterapeutico": "VITAMINA K E OUTROS HEMOSTATICOS \/ FIBRINOGENIO",
+    "arquivo": "123.json",
+    "nomeComercialDroga": "HAEMOCOMPLETTAN P        "
+  },
+  {
+    "principioAtivoDroga": "DACLIZUMABE",
+    "grupoFarmacoterapeutico": "IMUNOSSUPRESSORES \/ INIBIDORES DA INTERLEUCINA",
+    "arquivo": "124.json",
+    "nomeComercialDroga": "DACLIZUMABE"
+  },
+  {
+    "principioAtivoDroga": "DANAZOL",
+    "grupoFarmacoterapeutico": "ANTIGONADOTROFINAS E AGENTES SIMILARES",
+    "arquivo": "125.json",
+    "nomeComercialDroga": "LADOGAL"
+  },
+  {
+    "principioAtivoDroga": "DAPSONA ",
+    "grupoFarmacoterapeutico": "MEDICAMENTOS PARA TRATAMENTO DE HANSENIASE",
+    "arquivo": "126.json",
+    "nomeComercialDroga": "DAPSONA"
+  },
+  {
+    "principioAtivoDroga": "DARUNAVIR",
+    "grupoFarmacoterapeutico": "ANTIVIRAIS DE AÇAO DIRETA \/ INIBIDORES DE PROTEASE",
+    "arquivo": "127.json",
+    "nomeComercialDroga": "PREZISTA"
+  },
+  {
+    "principioAtivoDroga": "DEFERASIROX",
+    "grupoFarmacoterapeutico": "AGENTES QUELANTES DE FERRO",
+    "arquivo": "128.json",
+    "nomeComercialDroga": "EXJADE"
+  },
+  {
+    "principioAtivoDroga": "DEFERIPRONA",
+    "grupoFarmacoterapeutico": "AGENTES QUELANTES DE FERRO",
+    "arquivo": "129.json",
+    "nomeComercialDroga": "FERRIPROX"
+  },
+  {
+    "principioAtivoDroga": "DESFERROXAMINA ",
+    "grupoFarmacoterapeutico": "AGENTES QUELANTES DE FERRO",
+    "arquivo": "130.json",
+    "nomeComercialDroga": "DESFERAL"
+  },
+  {
+    "principioAtivoDroga": "DESMOPRESSINA",
+    "grupoFarmacoterapeutico": "VASOPRESSINA E ANALOGOS",
+    "arquivo": "131.json",
+    "nomeComercialDroga": "DESMURIN; DDAVP; D-VOID"
+  },
+  {
+    "principioAtivoDroga": "DEXAMETASONA",
+    "grupoFarmacoterapeutico": "GLICOCORTICOIDES",
+    "arquivo": "132.json",
+    "nomeComercialDroga": "MAXIDEX; DEXAGLOS; DEXMENE; DEXADEN; DEXAMESON; KOIDEXA; BEXETON; TRATALERG; NEODEX; DEXASON; CORTIDEX; ACETAZONA; DEXANOM; DEXAMEX; DECADRON; METADEX, CORTITOP, DEXADERMIL, LISODERME, CETADEX, DEXAGREEN, DEXAMETAX"
+  },
+  {
+    "principioAtivoDroga": "DEXCLORFENIRAMINA ",
+    "grupoFarmacoterapeutico": "ANTI-HISTAMINICOS PARA USO SISTEMICO",
+    "arquivo": "133.json",
+    "nomeComercialDroga": "POLAREN; CELESTAMED; DEXMINE; ALERGOMINE; HYSTIN; HISTAMIN; SOFTEZ; POLARYN; LASAMINE; POLARAMINE; FENIRAX; POLARADEX; ALERMINE; ALERGYO; POLARAX"
+  },
+  {
+    "principioAtivoDroga": "DIAFRAGMA",
+    "grupoFarmacoterapeutico": "CONTRACEPTIVOS PELO METODO DE BARREIRA",
+    "arquivo": "134.json",
+    "nomeComercialDroga": "DIAFRAGMA"
+  },
+  {
+    "principioAtivoDroga": "DIAZEPAM",
+    "grupoFarmacoterapeutico": "ANSIOLITICOS",
+    "arquivo": "135.json",
+    "nomeComercialDroga": "MENOSTRESS; PREST; RELAPAX; COMPAZ; DIAZEFAST; KIATRIUM; DIENZEPAX; CALMOCITENO; VALIUM; DIENPAX; SANTIAZEPAM; UNI DIAZEPAX"
+  },
+  {
+    "principioAtivoDroga": "DIDANOSINA ",
+    "grupoFarmacoterapeutico": "ANTIVIRAIS DE AÇAO DIRETA \/ NUCLEOSIDEO E NUCLEOTIDEO, INIBIDOR DA TRANSCRIPTASE REVERSA",
+    "arquivo": "136.json",
+    "nomeComercialDroga": "VIDEX EC"
+  },
+  {
+    "principioAtivoDroga": "DIETILCARBAMAZINA",
+    "grupoFarmacoterapeutico": "AGENTES ANTINEMATOIDES",
+    "arquivo": "137.json",
+    "nomeComercialDroga": "DIETILCARBAMAZINA"
+  },
+  {
+    "principioAtivoDroga": "DIGOXINA",
+    "grupoFarmacoterapeutico": "GLICOSIDEOS CARDIACOS",
+    "arquivo": "138.json",
+    "nomeComercialDroga": "DIGOBAL; DIGOX; CARDCOR "
+  },
+  {
+    "principioAtivoDroga": "ISOSSORBIDA (DINITRATO)",
+    "grupoFarmacoterapeutico": "VASODILATADORES USADOS EM DOENÇAS CARDIACAS",
+    "arquivo": "139.json",
+    "nomeComercialDroga": "ISORDIL; ISORDIL SL; ANGIL"
+  },
+  {
+    "principioAtivoDroga": "DIPIRONA SODICA ",
+    "grupoFarmacoterapeutico": "OUTROS ANALGESICOS E ANTIPIRETICOS",
+    "arquivo": "140.json",
+    "nomeComercialDroga": "MAXILIV; ABERALGINA; DIPIGINA; SALINDOR; ANADOR; TERMOPRIN; DIFEBRIL; MAGNOPYROL; MIRADOR; CONMEL; DIPIFARMA; DIPRIN; NOVAGREEN; NOVALEX; HYNALGIM; DS500; APIRON; DIPIROTERM; ZITALGIN; FINDOR; PIROFEBRAN; DORPIRONA; TERMOPIRONA; LOMDOR; ANFEBRIL; DORILAN; DIPIMED; MAXALGINA; DORFEBRIL; DORONA; NOVALDIP; NOVALGINA; SANTIDOR; DIPIDOR; ANALGEX C; DORALEX; NOFEBRIN; DORILAN; ALGIRONA; TOLOXIN"
+  },
+  {
+    "principioAtivoDroga": "DISPOSITIVO INTRAUTERINO MODELO T",
+    "grupoFarmacoterapeutico": "CONTRACEPTIVOS INTRAUTERINOS",
+    "arquivo": "141.json",
+    "nomeComercialDroga": "OPTIMA"
+  },
+  {
+    "principioAtivoDroga": "DOBUTAMINA ",
+    "grupoFarmacoterapeutico": "AGENTES ADRENERGICOS E DOPAMINERGICOS",
+    "arquivo": "142.json",
+    "nomeComercialDroga": "DOBUTARISTON; DOBUTANIL"
+  },
+  {
+    "principioAtivoDroga": "DONEPEZILA",
+    "grupoFarmacoterapeutico": "MEDICAMENTOS ANTIDEMENCIA \/ ANTICOLINESTERASES",
+    "arquivo": "143.json",
+    "nomeComercialDroga": "DONILA; NEPEZIL; LABREA; DANPEZIL; DONERA; ZILEDON; EPEZ; ERANZ; AROZEP; SENES"
+  },
+  {
+    "principioAtivoDroga": "DOPAMINA ",
+    "grupoFarmacoterapeutico": "AGENTES ADRENERGICOS E DOPAMINERGICOS",
+    "arquivo": "144.json",
+    "nomeComercialDroga": "DOPABANE; DOPACRIS; INOTROPISA; CONSTRICTION; DOPIMEX"
+  },
+  {
+    "principioAtivoDroga": "DORZOLAMIDA ",
+    "grupoFarmacoterapeutico": "PREPARAÇOES ANTIGLAUCOMA E MIOTICOS \/ INIBIDORES DA ANIDRASE CARBONICA",
+    "arquivo": "145.json",
+    "nomeComercialDroga": "TRUSOPT; OCUPRESS; STOMUP"
+  },
+  {
+    "principioAtivoDroga": "DOXAZOSINA",
+    "grupoFarmacoterapeutico": "ANTAGONISTAS DOS RECEPTORES ALFA-ADRENERGICOS",
+    "arquivo": "146.json",
+    "nomeComercialDroga": "UNOPROST; EUPROSTATIN; DUOMO; PROSTAFLUX; CARDURAN; MESIDOX; DOXURAN; DOXAPROST"
+  },
+  {
+    "principioAtivoDroga": "DOXICICLINA",
+    "grupoFarmacoterapeutico": "TETRACICLINAS",
+    "arquivo": "147.json",
+    "nomeComercialDroga": "DOXILEGRAND; NEO DOXICILIN; CLORDOX; VIBRAMICINA; DOXICLIN"
+  },
+  {
+    "principioAtivoDroga": "EFAVIRENZ",
+    "grupoFarmacoterapeutico": "ANTIVIRAIS DE AÇAO DIRETA \/ INIBIDORES DE TRANSCRIPTASE REVERSA NAO-NUCLEOSIDEOS",
+    "arquivo": "148.json",
+    "nomeComercialDroga": "STOCRIN; EFAVIRENZ"
+  },
+  {
+    "principioAtivoDroga": "ENALAPRIL ",
+    "grupoFarmacoterapeutico": "INIBIDORES DA ENZIMA CONVERSORA DE ANGIOTENSINA",
+    "arquivo": "149.json",
+    "nomeComercialDroga": "RENOPRIL; VASOPRIL; EUPRESSIN; RENIPRESS; ENALAMED; ANGIOPRIL; PRESSEL; MALENA; ATMOS; ENALATEC; ENATEC; RENALAPRIL; PRESSOTEC; GLIOTEN; ENALABAL; CARDIONATO; ENALPRESS; HIPERTIN; PRESSOMEDE; RENITEC; ENAPLEX; ENALPRINN; ENAPROTEC; VENALAPRIL; FLOSSOTEC; RENAPRIL; PRYLTEC"
+  },
+  {
+    "principioAtivoDroga": "ENANTATO DE NORETISTERONA + VALERATO DE ESTRADIOL ",
+    "grupoFarmacoterapeutico": "CONTRACEPTIVOS HORMONAIS PARA USO SISTEMICO",
+    "arquivo": "150.json",
+    "nomeComercialDroga": "MESIGYNA; NOREGYNA"
+  },
+  {
+    "principioAtivoDroga": "ENFUVIRTIDA",
+    "grupoFarmacoterapeutico": "ANTIVIRAIS DE AÇAO DIRETA",
+    "arquivo": "151.json",
+    "nomeComercialDroga": "FUZEON"
+  },
+  {
+    "principioAtivoDroga": "ENTACAPONA",
+    "grupoFarmacoterapeutico": "AGENTES DOPAMINERGICOS",
+    "arquivo": "152.json",
+    "nomeComercialDroga": "ENTARKIN; COMTAN"
+  },
+  {
+    "principioAtivoDroga": "ENTECAVIR",
+    "grupoFarmacoterapeutico": "ANTIVIRAIS DE AÇAO DIRETA \/ INIBIDOR DA TRANSCRIPTASE REVERSA",
+    "arquivo": "153.json",
+    "nomeComercialDroga": "BARACLUDE"
+  },
+  {
+    "principioAtivoDroga": "EPINEFRINA",
+    "grupoFarmacoterapeutico": "ANESTESICOS LOCAIS",
+    "arquivo": "154.json",
+    "nomeComercialDroga": "EFRINALIN; ADREN"
+  },
+  {
+    "principioAtivoDroga": "ERITROMICINA",
+    "grupoFarmacoterapeutico": "MACROLIDEOS",
+    "arquivo": "155.json",
+    "nomeComercialDroga": "ERIPAN; ERITREX; RUBROMICIN; ILOSONE; ERITAX"
+  },
+  {
+    "principioAtivoDroga": "ESPINHEIRA-SANTA (MAYTENUS ILICIFOLIA)",
+    "grupoFarmacoterapeutico": "FITOTERAPICO",
+    "arquivo": "156.json",
+    "nomeComercialDroga": "ULCERAZINE; GASTRILESS BIONATUS; GASTRINON; GASTROFIM; GASTROHERB; GASTRONAN; GASTROPLANTAS; GASTROSIL; MAYTEN"
+  },
+  {
+    "principioAtivoDroga": "ESPIRAMICINA ",
+    "grupoFarmacoterapeutico": "MACROLIDEOS",
+    "arquivo": "157.json",
+    "nomeComercialDroga": "ROVAMICINA"
+  },
+  {
+    "principioAtivoDroga": "ESPIRONOLACTONA",
+    "grupoFarmacoterapeutico": "AGENTES POUPADORES DE POTASSIO",
+    "arquivo": "158.json",
+    "nomeComercialDroga": "ALDOSTERIN; SPIROCTAN; ALDNEO; DIACQUA; ALDACTONE"
+  },
+  {
+    "principioAtivoDroga": "ESTAVUDINA",
+    "grupoFarmacoterapeutico": "ANTIVIRAIS DE AÇAO DIRETA \/ INIBIDOR DA TRANSCRIPTASE REVERSA",
+    "arquivo": "159.json",
+    "nomeComercialDroga": "ESTAVUDINA"
+  },
+  {
+    "principioAtivoDroga": "ESTREPTOMICINA ",
+    "grupoFarmacoterapeutico": "ANTIBACTERIANOS AMINOGLICOSIDEOS",
+    "arquivo": "160.json",
+    "nomeComercialDroga": "ESTREPTOMICINA"
+  },
+  {
+    "principioAtivoDroga": "ESTREPTOQUINASE",
+    "grupoFarmacoterapeutico": "AGENTES ANTITROMBOTICOS",
+    "arquivo": "161.json",
+    "nomeComercialDroga": "STREPTASE"
+  },
+  {
+    "principioAtivoDroga": "ESTRIOL",
+    "grupoFarmacoterapeutico": "ESTROGENIOS",
+    "arquivo": "162.json",
+    "nomeComercialDroga": "OVESTRION; STELE"
+  },
+  {
+    "principioAtivoDroga": "ESTROGENIOS CONJUGADOS",
+    "grupoFarmacoterapeutico": "ESTROGENIOS",
+    "arquivo": "163.json",
+    "nomeComercialDroga": "ESTROLIN; ESTRINOLON; REPOGEN; MENOPRIN; ESTRON; PREMARIN; PREMELLE"
+  },
+  {
+    "principioAtivoDroga": "ETAMBUTOL ",
+    "grupoFarmacoterapeutico": "TRATAMENTO DA TUBERCULOSE",
+    "arquivo": "164.json",
+    "nomeComercialDroga": "ETAMBUTOL"
+  },
+  {
+    "principioAtivoDroga": "ETANERCEPTE",
+    "grupoFarmacoterapeutico": "IMUNOSSUPRESSORES \/ INIBIDORES DO FATOR DE NECROSE TUMORAL ALFA",
+    "arquivo": "165.json",
+    "nomeComercialDroga": "ENBREL; ENBREL PFS"
+  },
+  {
+    "principioAtivoDroga": "ETINILESTRADIOL + LEVONORGESTREL ",
+    "grupoFarmacoterapeutico": "CONTRACEPTIVOS HORMONAIS PARA USO SISTEMICO",
+    "arquivo": "166.json",
+    "nomeComercialDroga": "MICROVLAR; GESTRELAN; NOCICLIN; CONCEPNOR; CICLOFEMME; CICLO 21; NORDETTE"
+  },
+  {
+    "principioAtivoDroga": "ETIONAMIDA",
+    "grupoFarmacoterapeutico": "MEDICAMENTOS PARA TRATAMENTO DA TUBERCULOSE",
+    "arquivo": "167.json",
+    "nomeComercialDroga": "ETIONAMIDA"
+  },
+  {
+    "principioAtivoDroga": "ETOFIBRATO",
+    "grupoFarmacoterapeutico": "AGENTES MODIFICADORES DE LIPIDIOS \/ FIBRATOS",
+    "arquivo": "168.json",
+    "nomeComercialDroga": "ETOFIBRATO"
+  },
+  {
+    "principioAtivoDroga": "ETOSSUXIMIDA",
+    "grupoFarmacoterapeutico": "ANTIEPILEPTICOS",
+    "arquivo": "169.json",
+    "nomeComercialDroga": "ETOXIN"
+  },
+  {
+    "principioAtivoDroga": "ETRAVIRINA",
+    "grupoFarmacoterapeutico": "ANTIVIRAIS DE AÇAO DIRETA \/ INIBIDORES DE TRANSCRIPTASE REVERSA NAO-NUCLEOSIDEOS",
+    "arquivo": "170.json",
+    "nomeComercialDroga": "INTELENCE"
+  },
+  {
+    "principioAtivoDroga": "EVEROLIMO",
+    "grupoFarmacoterapeutico": "IMUNOSSUPRESSORES SELETIVOS",
+    "arquivo": "171.json",
+    "nomeComercialDroga": "CERTICAN"
+  },
+  {
+    "principioAtivoDroga": "COMPLEXO PROTROMBINICO PARCIALMENTE ATIVADO (FATORES DE COAGULACAO II, VIIA, IX, X EM COMBINACAO) ",
+    "grupoFarmacoterapeutico": "FATORES DA COAGULAÇAO SANGUINEA",
+    "arquivo": "172.json",
+    "nomeComercialDroga": "FEIBA"
+  },
+  {
+    "principioAtivoDroga": "COMPLEXO PROTROMBINICO HUMANO (FATORES DE COAGULACAO II, VIIA, IX, X EM COMBINACAO)",
+    "grupoFarmacoterapeutico": "FATORES DA COAGULAÇAO SANGUINEA",
+    "arquivo": "173.json",
+    "nomeComercialDroga": "PROTHROMPLEX-T; BERIPLEX; OCTAPLEX"
+  },
+  {
+    "principioAtivoDroga": "FENITOINA SODICA",
+    "grupoFarmacoterapeutico": "ANTIEPILEPTICOS",
+    "arquivo": "174.json",
+    "nomeComercialDroga": "DANTALIN; EPELIN; UNIFENITOIN; HIDANTAL; FENITAL"
+  },
+  {
+    "principioAtivoDroga": "FENOBARBITAL",
+    "grupoFarmacoterapeutico": "ANTIEPILEPTICOS",
+    "arquivo": "175.json",
+    "nomeComercialDroga": "FENOCRIS; CARBITAL; GARDENAL; BARBITRON; UNIFENOBARB"
+  },
+  {
+    "principioAtivoDroga": "FENOFIBRATO ",
+    "grupoFarmacoterapeutico": "FIBRATOS",
+    "arquivo": "176.json",
+    "nomeComercialDroga": "LIPIDIL; LIPANON; REDUCOFEN; FENOBRATY; FENOFIBRATO MICRONIZADO; HIPOFITHY"
+  },
+  {
+    "principioAtivoDroga": "FENOTEROL",
+    "grupoFarmacoterapeutico": "AGONISTAS SELETIVOS DOS RECEPTORES BETA 2 ADRENERGICOS",
+    "arquivo": "177.json",
+    "nomeComercialDroga": "BEROTEC"
+  },
+  {
+    "principioAtivoDroga": "FENOXIMETILPENICILINA POTASSICA",
+    "grupoFarmacoterapeutico": "PENICILINAS BETA-LACTAMASE SENSIVEL",
+    "arquivo": "178.json",
+    "nomeComercialDroga": "PEN-VE-ORAL"
+  },
+  {
+    "principioAtivoDroga": "FILGRASTIM",
+    "grupoFarmacoterapeutico": "IMUNOESTIMULANTES",
+    "arquivo": "179.json",
+    "nomeComercialDroga": "FILGRASTINE; GRANOMAX; MYOGRAF; GRANULOKINE; TEVAGRASTIM"
+  },
+  {
+    "principioAtivoDroga": "FINASTERIDA",
+    "grupoFarmacoterapeutico": "INIBIDORES DE TESTOSTERONA 5-ALFA-REDUTASE",
+    "arquivo": "180.json",
+    "nomeComercialDroga": "FINASTIL; FINASTEC; FINARID; FLAXIN; PROSCAR; PRONASTERON"
+  },
+  {
+    "principioAtivoDroga": "FLUCONAZOL ",
+    "grupoFarmacoterapeutico": "ANTIMICOTICOS PARA USO SISTEMICO",
+    "arquivo": "181.json",
+    "nomeComercialDroga": "CANDIZOL; FLUCODAN; FUNGICIDEN; ZELIX; FLUCOL; FLUNAL; TRIAZOL; RICONAZOL; FLUCOZEN; FLUCOMED; EXOMAX; FLUCAZOL; PRONAZOL; FLUCOCIN; FRESOLCAN; GLYFLUCAN; FLOLTEC; HICONAZOL; FLUXOZOL; FLUCONEO; ZOLSTATIN; FLUCOLTRIX; FLUCOLCID; ZOLTREN; ZOLTEC; FLUXILASE; MONOCAN; FLUCONAL; FLUCOVIL; FARMAZOL; FLUCONAN; FLUCOTON; FLUTEC; ZOLSAN; FLUCONID"
+  },
+  {
+    "principioAtivoDroga": "FLUDROCORTISONA",
+    "grupoFarmacoterapeutico": "CORTICOSTEROIDES PARA USO SISTEMICO \/ MINERALOCORTICOIDES",
+    "arquivo": "182.json",
+    "nomeComercialDroga": "FLORINEFE"
+  },
+  {
+    "principioAtivoDroga": "FLUMAZENIL ",
+    "grupoFarmacoterapeutico": "ANTIDOTOS",
+    "arquivo": "183.json",
+    "nomeComercialDroga": "FLUMAZIL; FLUNEXIL; LANEXAT; FLUMAZEN"
+  },
+  {
+    "principioAtivoDroga": "FLUOXETINA ",
+    "grupoFarmacoterapeutico": "ANTIDEPRESSIVOS",
+    "arquivo": "184.json",
+    "nomeComercialDroga": "DEPRAX; FLUOXETIN; PROZAC; DAFORIN; FLUXENE; DEPOFLOX; PROZEN; PSIQUIAL; DEPRESS; ZYFLOXIN; VEROTINA; FLOZURA"
+  },
+  {
+    "principioAtivoDroga": "FLUVASTATINA",
+    "grupoFarmacoterapeutico": "AGENTES MODIFICADORES DE LIPIDIOS \/ INIBIDORES DA HMG-COA REDUTASE",
+    "arquivo": "185.json",
+    "nomeComercialDroga": "LESCOL XL"
+  },
+  {
+    "principioAtivoDroga": "FOLINATO DE CALCIO",
+    "grupoFarmacoterapeutico": "AGENTES DESITOXICANTES PARA TRATAMENTO CITOSTATICO",
+    "arquivo": "186.json",
+    "nomeComercialDroga": "PREVAX; FOLINAC; FOLICORIN"
+  },
+  {
+    "principioAtivoDroga": "FORMOTEROL",
+    "grupoFarmacoterapeutico": "AGONISTAS SELETIVOS DOS RECEPTORES BETA 2 ADRENERGICOS",
+    "arquivo": "187.json",
+    "nomeComercialDroga": "FORMOCAPS; FORMARE; FLUIR; FORADIL"
+  },
+  {
+    "principioAtivoDroga": "FORMOTEROL + BUDESONIDA",
+    "grupoFarmacoterapeutico": "AGONISTAS SELETIVOS DOS RECEPTORES BETA 2 ADRENERGICOS",
+    "arquivo": "188.json",
+    "nomeComercialDroga": "SYMBICORT TURBUHALER; FORASEQ; ALENIA; VANNAIR"
+  },
+  {
+    "principioAtivoDroga": "FOSAMPRENAVIR",
+    "grupoFarmacoterapeutico": "ANTIVIRAIS DE AÇAO DIRETA \/ INIBIDORES DE PROTEASE",
+    "arquivo": "189.json",
+    "nomeComercialDroga": "TELZIR"
+  },
+  {
+    "principioAtivoDroga": "FOSFATO DE POTASSIO MONOBASICO + FOSFATO DE POTASSIO DIBASICO",
+    "grupoFarmacoterapeutico": "SOLUÇOES ELETROLITICAS",
+    "arquivo": "190.json",
+    "nomeComercialDroga": "FOSFATO DE POTASSIO"
+  },
+  {
+    "principioAtivoDroga": "FOSFATO DISSODICO DE DEXAMETASONA ",
+    "grupoFarmacoterapeutico": "GLICOCORTICOIDES",
+    "arquivo": "191.json",
+    "nomeComercialDroga": "METAXON; DECADRON; DEXANIL; CORTICOIDEX"
+  },
+  {
+    "principioAtivoDroga": "FUROSEMIDA ",
+    "grupoFarmacoterapeutico": "DIURETICOS DE ALTA POTENCIA",
+    "arquivo": "192.json",
+    "nomeComercialDroga": "FUROSETRON; FUROMIDA; BIOSEMIDE; FUROZIX; DIRETIF TM; FUROSEFARMA; DIUREMIDA; URASIX; NEOSEMID; FLUXIL; DIURIT; FUROSEN; LASIX"
+  },
+  {
+    "principioAtivoDroga": "GABAPENTINA",
+    "grupoFarmacoterapeutico": "ANTIEPILEPTICOS",
+    "arquivo": "193.json",
+    "nomeComercialDroga": "GAMIBETAL; GABANEURIN; NEURONTIN; GABATIN"
+  },
+  {
+    "principioAtivoDroga": "GALANTAMINA",
+    "grupoFarmacoterapeutico": "MEDICAMENTOS ANTIDEMENCIA \/ ANTICOLINESTERASES",
+    "arquivo": "194.json",
+    "nomeComercialDroga": "REMINYL ER"
+  },
+  {
+    "principioAtivoDroga": "GARRA-DO-DIABO (HARPAGOPHYTUM PROCUMBENS)",
+    "grupoFarmacoterapeutico": "FITOTERAPICO",
+    "arquivo": "195.json",
+    "nomeComercialDroga": "CYRD; REUMALIV; RUBOREN; ARPADOL; ARPYNFLAN; BIOFLAN; GARRA DO DIABO HERBARIUM; GARRA EC; PERMEAR; REUMASIL BIONATUS"
+  },
+  {
+    "principioAtivoDroga": "GEL LUBRIFICANTE",
+    "grupoFarmacoterapeutico": "LUBRIFICANTES",
+    "arquivo": "196.json",
+    "nomeComercialDroga": "GEL LUBRIFICANTE"
+  },
+  {
+    "principioAtivoDroga": "GENFIBROZILA",
+    "grupoFarmacoterapeutico": "AGENTES MODIFICADORES DE LIPIDIOS \/ FIBRATOS",
+    "arquivo": "197.json",
+    "nomeComercialDroga": "LOZIL; LOPID"
+  },
+  {
+    "principioAtivoDroga": "GENTAMICINA ",
+    "grupoFarmacoterapeutico": "ANTI-INFECCIOSOS \/ ANTIBIOTICOS",
+    "arquivo": "198.json",
+    "nomeComercialDroga": "GENTAGRAN; GENTAMICIL; NEO GENTAMICIN; GARAMICINA; GENTAMIL; GENTAMICIN; GENTAMISAN"
+  },
+  {
+    "principioAtivoDroga": "GLATIRAMER",
+    "grupoFarmacoterapeutico": "IMUNOESTIMULANTES",
+    "arquivo": "199.json",
+    "nomeComercialDroga": "COPAXONE"
+  },
+  {
+    "principioAtivoDroga": "GLIBENCLAMIDA",
+    "grupoFarmacoterapeutico": "MEDICAMENTOS HIPOGLICEMIANTES, EXCLUINDO INSULINAS",
+    "arquivo": "200.json",
+    "nomeComercialDroga": "GLIBENDIAB; GLICAMIN; GLIONIL; CLAMIBEN; GLICONIL; GLIBENECK; GLIBEXIL; DAONIL"
+  },
+  {
+    "principioAtivoDroga": "GLICEROL ",
+    "grupoFarmacoterapeutico": "LAXATIVOS",
+    "arquivo": "201.json",
+    "nomeComercialDroga": "GLICENAX; GLICERINA; CLISTEROL"
+  },
+  {
+    "principioAtivoDroga": "GLICLAZIDA ",
+    "grupoFarmacoterapeutico": "MEDICAMENTOS HIPOGLICEMIANTES, EXCLUINDO INSULINAS",
+    "arquivo": "202.json",
+    "nomeComercialDroga": "EROWGLIZ; GLICARON; DIAMICRON MR; TEZARA MR; AZUKON MR; UNI-GLIC"
+  },
+  {
+    "principioAtivoDroga": "GLICOSE",
+    "grupoFarmacoterapeutico": "SOLUÇOES PARA NUTRIÇAO PARENTERAL",
+    "arquivo": "203.json",
+    "nomeComercialDroga": "GLICOSE"
+  },
+  {
+    "principioAtivoDroga": "GLUTARAL",
+    "grupoFarmacoterapeutico": "ANTISSEPTICOS E DESINFETANTES",
+    "arquivo": "204.json",
+    "nomeComercialDroga": "CIDEX, GLUTALABOR, GLUTARON, GLUTARASTER, LMGLUT, LM GLUT-PO ATIVADOR, GLUTACIDE II"
+  },
+  {
+    "principioAtivoDroga": "GOLIMUMABE",
+    "grupoFarmacoterapeutico": "IMUNOSSUPRESSORES \/ INIBIDORES DO FATOR DE NECROSE TUMORAL ALFA",
+    "arquivo": "205.json",
+    "nomeComercialDroga": "SIMPONI"
+  },
+  {
+    "principioAtivoDroga": "GOSSERRELINA",
+    "grupoFarmacoterapeutico": "ANALOGOS DO HORMONIO LIBERADOR DE GONADOTROFINA",
+    "arquivo": "206.json",
+    "nomeComercialDroga": "ZOLADEX; ZOLADEX LA"
+  },
+  {
+    "principioAtivoDroga": "GUACO (MIKANIA GLOMERATA)",
+    "grupoFarmacoterapeutico": "FITOTERAPICO",
+    "arquivo": "207.json",
+    "nomeComercialDroga": "APIGUACO; BIOEXPECTO; BIOTOSS EDULITO; BLUMEL GUACO; EXPECTRAT; FIMATOSAN MGS; FINETOSS; GUACO EDULITO HERBARIUM; GUACONAT; GUACOPLEX; GUAX; LIVTOS; PEITORAL MARTEL"
+  },
+  {
+    "principioAtivoDroga": "HALOPERIDOL",
+    "grupoFarmacoterapeutico": "ANTIPSICOTICOS",
+    "arquivo": "208.json",
+    "nomeComercialDroga": "HALO; HALDOL; HALOPER; LOPERIDOL; UNI HALOPER; HALO DECANOATO; HALDOL DECANOATO; DECAN HALOPER"
+  },
+  {
+    "principioAtivoDroga": "HEPARINA SODICA",
+    "grupoFarmacoterapeutico": "AGENTES ANTITROMBOTICOS",
+    "arquivo": "209.json",
+    "nomeComercialDroga": "DISOTRON; HEPAMAX-S; ALIMAX; HEMOFOL"
+  },
+  {
+    "principioAtivoDroga": "HIDRALAZINA",
+    "grupoFarmacoterapeutico": "AGENTES QUE ATUAM NO MUSCULO LISO ARTERIOLAR",
+    "arquivo": "210.json",
+    "nomeComercialDroga": "APRESOLINA"
+  },
+  {
+    "principioAtivoDroga": "HIDROCLOROTIAZIDA ",
+    "grupoFarmacoterapeutico": "DIURETICOS DE BAIXA POTENCIA",
+    "arquivo": "211.json",
+    "nomeComercialDroga": "HIDROSAN; HIDROBIO; DIUREZIN; HIDROMED; HIDROLAN; NEO HIDROCLOR; HIDRAZIN; HIDROTIAZIDA; DIURIX; DRENOL; HIDROFLUX; HIDROLESS; DIURETIC; CLORANA; UNIAZIDA; DIURECLOR"
+  },
+  {
+    "principioAtivoDroga": "HIDROCORTISONA (ACETATO)",
+    "grupoFarmacoterapeutico": "GLICOCORTICOIDES",
+    "arquivo": "212.json",
+    "nomeComercialDroga": "THERASONA; BERLISON"
+  },
+  {
+    "principioAtivoDroga": "HIDROCORTISONA (SUCCINATO SODICO)",
+    "grupoFarmacoterapeutico": "GLICOCORTICOIDES",
+    "arquivo": "213.json",
+    "nomeComercialDroga": "ARISCORTEN; HIDROSONE; BENZENIL; ANDROCORTIL; SOLU-CORTEF"
+  },
+  {
+    "principioAtivoDroga": "HIDROXICLOROQUINA ",
+    "grupoFarmacoterapeutico": "ANTIMALARICOS",
+    "arquivo": "214.json",
+    "nomeComercialDroga": "REUQUINOL; PLAQUINOL"
+  },
+  {
+    "principioAtivoDroga": "HIDROXIDO DE ALUMINIO",
+    "grupoFarmacoterapeutico": "ANTIACIDOS",
+    "arquivo": "215.json",
+    "nomeComercialDroga": "BIODROX; GASTROX;  DUCTOGEL; PEPSAMAR; ALUDROXIL; GASTROMAX"
+  },
+  {
+    "principioAtivoDroga": "HIDROXIUREIA",
+    "grupoFarmacoterapeutico": "AGENTES CITOTOXICOS",
+    "arquivo": "216.json",
+    "nomeComercialDroga": "HYDREA"
+  },
+  {
+    "principioAtivoDroga": "HIPOCLORITO DE SODIO",
+    "grupoFarmacoterapeutico": "ANTISSEPTICOS E DESINFETANTES",
+    "arquivo": "217.json",
+    "nomeComercialDroga": "HIPOCLORITO DE SODIO"
+  },
+  {
+    "principioAtivoDroga": "HIPROMELOSE ",
+    "grupoFarmacoterapeutico": "ADJUVANTES CIRURGICOS \/ SUBSTANCIAS VISCOELASTICAS",
+    "arquivo": "218.json",
+    "nomeComercialDroga": "FILMCEL; GENTEAL"
+  },
+  {
+    "principioAtivoDroga": "HORTELA (MENTHA X PIPERITA)",
+    "grupoFarmacoterapeutico": "FITOTERAPICO",
+    "arquivo": "219.json",
+    "nomeComercialDroga": ""
+  },
+  {
+    "principioAtivoDroga": "IBUPROFENO",
+    "grupoFarmacoterapeutico": "PRODUTOS ANTI-INFLAMATORIOS NAO ESTEROIDAIS",
+    "arquivo": "220.json",
+    "nomeComercialDroga": "DALSY; DORALIV; BUSCOFEM; TERMIX; IBUFRAN; IBUPROFAN; PARARTRIN; ALGIFLEX; IBULIV; IBUVIX; ALGI-REUMATRIL; LOMBALGINA; IBUPRIL; MOTRIN; IBUFLEX; DORAPLAX; ALIVIUM; FEBSEN; IBUPROMED; BUPROVIL; IBUPROTRAT; VANTIL; CAPSFEN; NOVALFEM; UNIPROFEN; ALGY-FLANDERIL; ADVIL"
+  },
+  {
+    "principioAtivoDroga": "ILOPROSTA",
+    "grupoFarmacoterapeutico": "AGENTES ANTITROMBOTICOS \/ INIBIDORES DA AGREGAÇAO PLAQUETARIA, EXCLUINDO HEPARINA",
+    "arquivo": "221.json",
+    "nomeComercialDroga": "VENTAVIS"
+  },
+  {
+    "principioAtivoDroga": "IMIGLUCERASE",
+    "grupoFarmacoterapeutico": "ENZIMAS",
+    "arquivo": "222.json",
+    "nomeComercialDroga": "CEREZYME"
+  },
+  {
+    "principioAtivoDroga": "IMUNOGLOBULINA ANTI-HEPATITE B",
+    "grupoFarmacoterapeutico": "IMUNOGLOBULINAS",
+    "arquivo": "223.json",
+    "nomeComercialDroga": "HEPATECT CP; GAMA ANTI-HEPATITE B GRIFOLS"
+  },
+  {
+    "principioAtivoDroga": "IMUNOGLOBULINA ANTI-RH (D)",
+    "grupoFarmacoterapeutico": "IMUNOGLOBULINAS",
+    "arquivo": "224.json",
+    "nomeComercialDroga": "GAMA ANTI-D GRIFOLS; PARTOGAMA SDF; RHOPHYLAC; RHESONATIV; KAMRHO D"
+  },
+  {
+    "principioAtivoDroga": "IMUNOGLOBULINA ANTIRRABICA",
+    "grupoFarmacoterapeutico": "IMUNOGLOBULINAS",
+    "arquivo": "225.json",
+    "nomeComercialDroga": "IMUNOGLOBULINA ANTIRRABICA"
+  },
+  {
+    "principioAtivoDroga": "IMUNOGLOBULINA ANTITETANICA ",
+    "grupoFarmacoterapeutico": "IMUNOGLOBULINAS",
+    "arquivo": "226.json",
+    "nomeComercialDroga": "TETANOGAMMA; GAMA ANTI-TETANO GRIFOLS"
+  },
+  {
+    "principioAtivoDroga": "IMUNOGLOBULINA ANTIVARICELA ZOSTER",
+    "grupoFarmacoterapeutico": "IMUNOGLOBULINAS",
+    "arquivo": "227.json",
+    "nomeComercialDroga": "IMUNOGLOBULINA ANTIVARICELA ZOSTER"
+  },
+  {
+    "principioAtivoDroga": "IMUNOGLOBULINA EQUINA ANTITIMOCITOS HUMANOS",
+    "grupoFarmacoterapeutico": "IMUNOSSUPRESSORES SELETIVOS",
+    "arquivo": "228.json",
+    "nomeComercialDroga": "THYMOGLOBULINE"
+  },
+  {
+    "principioAtivoDroga": "IMUNOGLOBULINA G",
+    "grupoFarmacoterapeutico": "IMUNOGLOBULINAS, HUMANA NORMAL",
+    "arquivo": "229.json",
+    "nomeComercialDroga": "ENDOBULIN S\/D; ENDOBULIN KIOVIG; IMUNOGLOBULIN; BLAUIMUNO; BERIGLOBINA; RHOPHYLAC; SANDOGLOBULINA"
+  },
+  {
+    "principioAtivoDroga": "IMUNOGLOBULINA HIPERIMUNE ANTI-HBS",
+    "grupoFarmacoterapeutico": "IMUNOGLOBULINAS",
+    "arquivo": "230.json",
+    "nomeComercialDroga": "IMUNOGLOBULINA HIPERIMUNE ANTI-HBS"
+  },
+  {
+    "principioAtivoDroga": "IMUNOGLOBULINA HUMANA",
+    "grupoFarmacoterapeutico": "IMUNOGLOBULINAS, HUMANA NORMAL",
+    "arquivo": "231.json",
+    "nomeComercialDroga": "INTRAGLOBON F; GAMUNEX. OCTAGAM; FLOBOGAMMA; VIGAM LIQUID; SANDOGLOBULINA; GAMMAPLEX; GAMAGLOBULINA IM GRIFOLS; TEGELINE"
+  },
+  {
+    "principioAtivoDroga": "IMUNOGLOBULINA OBTIDA \/ COELHO ANTITIMOCITOS",
+    "grupoFarmacoterapeutico": "IMUNOSSUPRESSORES SELETIVOS",
+    "arquivo": "232.json",
+    "nomeComercialDroga": "THYMOGLOBULINE"
+  },
+  {
+    "principioAtivoDroga": "INFLIXIMABE",
+    "grupoFarmacoterapeutico": "IMUNOSSUPRESSORES \/ INIBIDORES DO FATOR DE NECROSE TUMORAL ALFA",
+    "arquivo": "233.json",
+    "nomeComercialDroga": "REMICADE"
+  },
+  {
+    "principioAtivoDroga": "INSULINA HUMANA NPH E INSULINA HUMANA REGULAR ",
+    "grupoFarmacoterapeutico": "INSULINAS E ANALOGOS",
+    "arquivo": "234.json",
+    "nomeComercialDroga": "INSUNORM R; INSUNORM N; HUMULIN N; HUMULIN R; WOSULIN R; NOVOLIN R; NOVOLIN N"
+  },
+  {
+    "principioAtivoDroga": "IODO + IODETO DE POTASSIO (COMPOSTO PARA TESTE DE SCHILLER) ",
+    "grupoFarmacoterapeutico": "OUTROS AGENTES DIAGNOSTICOS",
+    "arquivo": "235.json",
+    "nomeComercialDroga": "LUGOL"
+  },
+  {
+    "principioAtivoDroga": "ISETIONATO DE PENTAMIDINA ",
+    "grupoFarmacoterapeutico": "AGENTES CONTRA A LEISHMANIOSE E A TRIPANOSSOMIASE",
+    "arquivo": "236.json",
+    "nomeComercialDroga": "SIDERON"
+  },
+  {
+    "principioAtivoDroga": "ISOFLAVONA-DE-SOJA (GLYCINE MAX)",
+    "grupoFarmacoterapeutico": "FITOTERAPICO",
+    "arquivo": "237.json",
+    "nomeComercialDroga": "ISOVIT; MENOP; BUONA; SOYFEMME; HIZOFITO; ISOFLAVINE; ISOVIT; SOYFIT; SOYNATI"
+  },
+  {
+    "principioAtivoDroga": "ISONIAZIDA",
+    "grupoFarmacoterapeutico": "MEDICAMENTOS PARA TRATAMENTO DA TUBERCULOSE",
+    "arquivo": "238.json",
+    "nomeComercialDroga": "ISONIAZIDA"
+  },
+  {
+    "principioAtivoDroga": "RIFAMPICINA + ISONIAZIDA ",
+    "grupoFarmacoterapeutico": "MEDICAMENTOS PARA TRATAMENTO DA TUBERCULOSE",
+    "arquivo": "239.json",
+    "nomeComercialDroga": "RIFAMPICINA + ISONIAZIDA "
+  },
+  {
+    "principioAtivoDroga": "ISOTRETINOINA",
+    "grupoFarmacoterapeutico": "RETINOIDES PARA TRATAMENTO DA ACNE",
+    "arquivo": "240.json",
+    "nomeComercialDroga": "ACNOVA; ISOTRAT; ROACUTAN"
+  },
+  {
+    "principioAtivoDroga": "ITRACONAZOL ",
+    "grupoFarmacoterapeutico": "ANTIMICOTICOS PARA USO SISTEMICO",
+    "arquivo": "241.json",
+    "nomeComercialDroga": "TRACONAL; BIOTRAZOL; MICONAL; ITRACONOL; ITRASPOR; TRAXONOL; ESTIRANOX; SPOZOL; SPORANOX; GLOBO ITRACONAZOL; NEO ITRAX; FUNGONAX; TRACONAX; TRACNOX; ITRACOTAN"
+  },
+  {
+    "principioAtivoDroga": "IVERMECTINA ",
+    "grupoFarmacoterapeutico": "AGENTES ANTINEMATOIDES",
+    "arquivo": "242.json",
+    "nomeComercialDroga": "REVECTINA; PLURIMEC;LEVERCTIN; VERMECTIL; IVERMEC"
+  },
+  {
+    "principioAtivoDroga": "LACTULOSE ",
+    "grupoFarmacoterapeutico": "LAXATIVOS DE AÇAO OSMOTICA",
+    "arquivo": "243.json",
+    "nomeComercialDroga": "DUPHALAC; COLONAC; FARLAC; LACTULONA; NORMOLAX; INLACT; LACNAX; LACTULIV; PENTALAC"
+  },
+  {
+    "principioAtivoDroga": "LAMIVUDINA ",
+    "grupoFarmacoterapeutico": "ANTIVIRAIS DE AÇAO DIRETA \/ NUCLEOSIDEO E NUCLEOTIDEO, INIBIDOR DA TRANSCRIPTASE REVERSA",
+    "arquivo": "244.json",
+    "nomeComercialDroga": "VUDIRAX; LAMI; EPIVIR"
+  },
+  {
+    "principioAtivoDroga": "LAMOTRIGINA",
+    "grupoFarmacoterapeutico": "ANTIEPILEPTICOS",
+    "arquivo": "245.json",
+    "nomeComercialDroga": "LAMOTRIX; NEURAL; LEPTICO; LAMICTAL; LIFALLAMOTRIGINA; LAMOCTRIL; LAMORGIN; NORTRIGIN; BIPOGINE; LAMITOR"
+  },
+  {
+    "principioAtivoDroga": "LANREOTIDA",
+    "grupoFarmacoterapeutico": "HORMONIOS HIPOTALAMICOS",
+    "arquivo": "246.json",
+    "nomeComercialDroga": "SOMATULINE AUTOGEL"
+  },
+  {
+    "principioAtivoDroga": "LATANOPROSTA",
+    "grupoFarmacoterapeutico": "PREPARAÇOES ANTIGLAUCOMA E MIOTICOS \/ ANALOGOS DAS PROSTAGLANDINAS",
+    "arquivo": "247.json",
+    "nomeComercialDroga": "XALOFTAL; DRENATAN; XALATAN; NOLAPROST"
+  },
+  {
+    "principioAtivoDroga": "LEFLUNOMIDA",
+    "grupoFarmacoterapeutico": "IMUNOSSUPRESSORES SELETIVOS",
+    "arquivo": "248.json",
+    "nomeComercialDroga": "REUMIAN; ARAVA"
+  },
+  {
+    "principioAtivoDroga": "LEUPRORRELINA",
+    "grupoFarmacoterapeutico": "ANALOGOS DO HORMONIO LIBERADOR DE GONADOTROFINA",
+    "arquivo": "249.json",
+    "nomeComercialDroga": "LUPRON DEPOT; LUPRON; LECTRUM"
+  },
+  {
+    "principioAtivoDroga": "LEVODOPA + BENSERAZIDA",
+    "grupoFarmacoterapeutico": "AGENTES DOPAMINERGICOS",
+    "arquivo": "250.json",
+    "nomeComercialDroga": "EKSON; PROLOPA"
+  },
+  {
+    "principioAtivoDroga": "LEVODOPA + CARBIDOPA ",
+    "grupoFarmacoterapeutico": "AGENTES DOPAMINERGICOS",
+    "arquivo": "251.json",
+    "nomeComercialDroga": "PARKIDOPA; LEVOCARB; CARBIDOL; CRONOMET; SINEMET"
+  },
+  {
+    "principioAtivoDroga": "LEVOFLOXACINO",
+    "grupoFarmacoterapeutico": "ANTIBACTERIANOS QUINOLONICOS",
+    "arquivo": "252.json",
+    "nomeComercialDroga": "LEVOXIN; QUINOLEVI; LEVOTAC; TAVAFLOX; TAMIRAM; VONAX; LEVAQUIN; TAVAGRAN; TAVANIC; LEVOBIOT; LIVEPAX"
+  },
+  {
+    "principioAtivoDroga": "LEVONORGESTREL",
+    "grupoFarmacoterapeutico": "CONTRACEPTIVOS HORMONAIS PARA USO SISTEMICO \/ CONTRACEPTIVOS DE EMERGENCIA",
+    "arquivo": "253.json",
+    "nomeComercialDroga": "POSTINOR-2; POSTINOR UNO; DIAD; PREVYOL-2; PREVIDEZ-2; DOPO; HORA H; POZATO UNI; POSLOV; PILEM"
+  },
+  {
+    "principioAtivoDroga": "LEVOTIROXINA SODICA",
+    "grupoFarmacoterapeutico": "HORMONIOS TIREOIDEANOS",
+    "arquivo": "254.json",
+    "nomeComercialDroga": "SYNTHROID; LEVOID; LEVOTROID; TIROIDIN; EUTHYROX; PURAN T4"
+  },
+  {
+    "principioAtivoDroga": "LIDOCAINA",
+    "grupoFarmacoterapeutico": "ANESTESICOS LOCAIS",
+    "arquivo": "255.json",
+    "nomeComercialDroga": "LIDOSTON; SENSINIL TM; LIDOSTESIM S.V; LABCAINA; XYLESTESIN ISOBARICO"
+  },
+  {
+    "principioAtivoDroga": "LIDOCAINA + EPINEFRINA ",
+    "grupoFarmacoterapeutico": "ANESTESICOS LOCAIS",
+    "arquivo": "256.json",
+    "nomeComercialDroga": "ALPHACAINA; XYLOCAINA"
+  },
+  {
+    "principioAtivoDroga": "LIDOCAINA + GLICOSE ",
+    "grupoFarmacoterapeutico": "ANESTESICOS LOCAIS",
+    "arquivo": "257.json",
+    "nomeComercialDroga": "XYLESTESIN"
+  },
+  {
+    "principioAtivoDroga": "LINEZOLIDA",
+    "grupoFarmacoterapeutico": "MEDICAMENTOS PARA O TRATAMENTO DA TUBERCULOSE",
+    "arquivo": "258.json",
+    "nomeComercialDroga": "ZYVOX"
+  },
+  {
+    "principioAtivoDroga": "LOPINAVIR + RITONAVIR",
+    "grupoFarmacoterapeutico": "ANTIVIRAIS DE AÇAO DIRETA \/ ANTIVIRAIS PARA TRATAMENTO DE INFECÇOES POR HIV, COMBINAÇOES",
+    "arquivo": "259.json",
+    "nomeComercialDroga": "KALETRA"
+  },
+  {
+    "principioAtivoDroga": "LORATADINA ",
+    "grupoFarmacoterapeutico": "ANTI-HISTAMINICOS PARA USO SISTEMICO",
+    "arquivo": "260.json",
+    "nomeComercialDroga": "LOREMIX; NEO LORATADIN; LORATAMED; LORALERG; ATINAC; CLORATADD; LORITIL; ALERGALIV; CLISTIN; HISTAMIX; LERGITEC; LORADINE; CLARILERG; LORASLIV"
+  },
+  {
+    "principioAtivoDroga": "LOSARTANA POTASSICA ",
+    "grupoFarmacoterapeutico": "ANTAGONISTAS DA ANGIOTENSINA II SIMPLES",
+    "arquivo": "261.json",
+    "nomeComercialDroga": "ARADOIS; CORUS; ZAARPRESS; ZART; ARARTAN; LOTANOL; CARDVITA; LOSARTEC; VALTRIAN; LOSARTION; COZAAR; LOSAPRIN; LORSACOR; TORLOS; LOSACORON; LANZACOR"
+  },
+  {
+    "principioAtivoDroga": "LOVASTATINA",
+    "grupoFarmacoterapeutico": "AGENTES MODIFICADORES DE LIPIDIOS \/ INIBIDORES DA HMG-COA REDUTASE",
+    "arquivo": "262.json",
+    "nomeComercialDroga": "REDUSTATIN; LIPOCLIN; LOVATON"
+  },
+  {
+    "principioAtivoDroga": "MAGNESIO ",
+    "grupoFarmacoterapeutico": "LAXATIVOS DE AÇAO OSMOTICA \/ SOLUÇOES ELETROLITICAS",
+    "arquivo": "263.json",
+    "nomeComercialDroga": "MAGNOSTON; HYPOMAGNE"
+  },
+  {
+    "principioAtivoDroga": "MEDICAMENTOS HOMEOPATICOS",
+    "grupoFarmacoterapeutico": "",
+    "arquivo": "264.json",
+    "nomeComercialDroga": "Consultar nomes cientIficos ou clAssicos da Homeopatia na Farmacopeia HomeopAtica Brasileira \u2013 3ª edicAo."
+  },
+  {
+    "principioAtivoDroga": "MEDICAMENTOS ONCOLOGICOS",
+    "grupoFarmacoterapeutico": "",
+    "arquivo": "265.json",
+    "nomeComercialDroga": ""
+  },
+  {
+    "principioAtivoDroga": "MEDROXIPROGESTERONA",
+    "grupoFarmacoterapeutico": "CONTRACEPTIVOS HORMONAIS PARA USO SISTEMICO",
+    "arquivo": "266.json",
+    "nomeComercialDroga": "MEDROGEST; ACEMEDROX; ACETOFLUX; FARLUTAL; PROVERA; DEPO PROVERA; DEMEDROX; CONTRACEPT"
+  },
+  {
+    "principioAtivoDroga": "MESALAZINA",
+    "grupoFarmacoterapeutico": "AGENTES ANTIINFLAMATORIOS INTESTINAIS",
+    "arquivo": "267.json",
+    "nomeComercialDroga": "CHRON-ASA 5; MESANEO; PENTASA; ASALIT; MESACOL"
+  },
+  {
+    "principioAtivoDroga": "METADONA",
+    "grupoFarmacoterapeutico": "MEDICAMENTOS UTILIZADOS NA DEPENDENCIA DE OPIOIDES",
+    "arquivo": "268.json",
+    "nomeComercialDroga": "MYTEDOM"
+  },
+  {
+    "principioAtivoDroga": "METFORMINA",
+    "grupoFarmacoterapeutico": "HIPOGLICEMIANTES",
+    "arquivo": "269.json",
+    "nomeComercialDroga": "GLUCOFORMIN; GLIFAGE; FORMYN; TEUTOFORMIN; MEGUANIN; DIAFORMIN; GLICOMET; GLIFORMIL; TRIFORMIN; METFORDIN; FORMET; GLICEFOR"
+  },
+  {
+    "principioAtivoDroga": "METILDOPA ",
+    "grupoFarmacoterapeutico": "ANTIADRENERGICOS DE AÇAO CENTRAL",
+    "arquivo": "270.json",
+    "nomeComercialDroga": "ALDOMET; METILBIO; ALFUZINA; METILPRESS; ETILDOPANAN; METILVITA; METILCORD; CARDIODOPA; TENSIOVAL; VENOPRESSIN"
+  },
+  {
+    "principioAtivoDroga": "METILPREDNISOLONA ",
+    "grupoFarmacoterapeutico": "GLICOCORTICOIDES",
+    "arquivo": "271.json",
+    "nomeComercialDroga": "SOLU-PRED;  SOLUPREN; SOLU MEDROL; UNIMEDROL"
+  },
+  {
+    "principioAtivoDroga": "METOCLOPRAMIDA",
+    "grupoFarmacoterapeutico": "PROPULSIVOS",
+    "arquivo": "272.json",
+    "nomeComercialDroga": "ARISTOPRAMIDA; PLAMIVON; PLAVOM; EMINIL TM; METROFARMA; PRAMIL; NOPROSIL; NEOLASIL; FLUCCIL; PLAGEX; VOMISTOP; HEMETIL; NAUMETRON; PLASIL; METOCLOSANTISA; PLABEL; NOVOSIL"
+  },
+  {
+    "principioAtivoDroga": "METOPROLOL ",
+    "grupoFarmacoterapeutico": "AGENTES BETA BLOQUEADORES SELETIVOS",
+    "arquivo": "273.json",
+    "nomeComercialDroga": "SELOKEN; SELOZOK; MICLOX; LOPRESSOR; METACOROL"
+  },
+  {
+    "principioAtivoDroga": "METOTREXATO",
+    "grupoFarmacoterapeutico": "IMUNOESTIMULANTES \/ OUTROS IMUNOSSUPRESSORES",
+    "arquivo": "274.json",
+    "nomeComercialDroga": "HYTAS; BIOMETROX; MIANTREX CS; LEXATO; FAULDMETRO; TEVAMETHO; TECNOMET"
+  },
+  {
+    "principioAtivoDroga": "METRONIDAZOL",
+    "grupoFarmacoterapeutico": "AGENTES CONTRA AMEBIASE E OUTRAS DOENÇAS PROTOZOARIAS",
+    "arquivo": "275.json",
+    "nomeComercialDroga": "METRIZOL; METROTIX; CANDERM; ENDONIDAZOL; ROZEX; TRINODAZOL; CANDIFEN; NEO METRODAZOL; METRONIDAZOL BENZ; HELMIZOL; MINEGYL; COLPLEN; FLAGYL; FLAGIMAX; POLIBIOTIC"
+  },
+  {
+    "principioAtivoDroga": "MICOFENOLATO DE MOFETILA",
+    "grupoFarmacoterapeutico": "IMUNOSSUPRESSORES SELETIVOS",
+    "arquivo": "276.json",
+    "nomeComercialDroga": "MICOIMMUN; MOFILEN; CELLCEPT"
+  },
+  {
+    "principioAtivoDroga": "MICOFENOLATO DE SODIO",
+    "grupoFarmacoterapeutico": "IMUNOSSUPRESSORES SELETIVOS",
+    "arquivo": "277.json",
+    "nomeComercialDroga": "MYFORTIC"
+  },
+  {
+    "principioAtivoDroga": "MICONAZOL",
+    "grupoFarmacoterapeutico": "ANTIFUNGICOS PARA USO TOPICO",
+    "arquivo": "278.json",
+    "nomeComercialDroga": "AMICOZOL; COLPADAK; MICOZOL; BIODOL; ANFUGITARIN; GINOTARIN; VOLNAC; CICONAZOL; DERMALINA; DAKGRAN; MIZONOL; GINO MIZONOL; MICOFIM; MICOGYN; MICOSTYL; DAKNAX; GYNO-DAKNAX; MICONIL; VODOL"
+  },
+  {
+    "principioAtivoDroga": "MIDAZOLAM",
+    "grupoFarmacoterapeutico": "DERIVADOS BENZODIAZEPINICOS",
+    "arquivo": "279.json",
+    "nomeComercialDroga": "DORMIRE"
+  },
+  {
+    "principioAtivoDroga": "MIGLUSTATE",
+    "grupoFarmacoterapeutico": "PRODUTOS DIVERSOS PARA O TRATO ALIMENTAR OU METABOLISMO",
+    "arquivo": "280.json",
+    "nomeComercialDroga": "ZAVESCA"
+  },
+  {
+    "principioAtivoDroga": "MINOCICLINA",
+    "grupoFarmacoterapeutico": "TETRACICLINAS",
+    "arquivo": "281.json",
+    "nomeComercialDroga": "MINODERM"
+  },
+  {
+    "principioAtivoDroga": "MISOPROSTOL ",
+    "grupoFarmacoterapeutico": "OCITOCICOS \/ PROSTAGLANDINAS",
+    "arquivo": "282.json",
+    "nomeComercialDroga": "PROSTOKOS"
+  },
+  {
+    "principioAtivoDroga": "MOLGRAMOSTIM",
+    "grupoFarmacoterapeutico": "IMUNOESTIMULANTES \/ FATORES DE ESTIMULAÇAO DE COLONIAS",
+    "arquivo": "283.json",
+    "nomeComercialDroga": "EUMOSTIN"
+  },
+  {
+    "principioAtivoDroga": "ISOSSORBIDA (MONONITRATO)",
+    "grupoFarmacoterapeutico": "VASODILATADORES USADOS EM DOENÇAS CARDIACAS \/ NITRATOS ORGANICOS",
+    "arquivo": "284.json",
+    "nomeComercialDroga": "CORONAR; CINCORDIL; MONOCORDIL"
+  },
+  {
+    "principioAtivoDroga": "MORFINA ",
+    "grupoFarmacoterapeutico": "OPIOIDES",
+    "arquivo": "285.json",
+    "nomeComercialDroga": "DIMORF; DIMORF LC; MORFENIL; DOLO MOFF"
+  },
+  {
+    "principioAtivoDroga": "MOXIFLOXACINO",
+    "grupoFarmacoterapeutico": "ANTIBACTERIANOS QUINOLONICOS",
+    "arquivo": "286.json",
+    "nomeComercialDroga": "PROMIRA; AVALOX; MOXOF; IMOFLOX"
+  },
+  {
+    "principioAtivoDroga": "MUROMONABE CD3",
+    "grupoFarmacoterapeutico": "IMUNOSSUPRESSORES SELETIVOS",
+    "arquivo": "287.json",
+    "nomeComercialDroga": "MUROMONABE CD3"
+  },
+  {
+    "principioAtivoDroga": "NALOXONA ",
+    "grupoFarmacoterapeutico": "ANTIDOTOS",
+    "arquivo": "288.json",
+    "nomeComercialDroga": "NARCAN"
+  },
+  {
+    "principioAtivoDroga": "NAPROXENO",
+    "grupoFarmacoterapeutico": "PRODUTOS ANTI-INFLAMATORIOS NAO ESTEROIDAIS E ANTIRREUMATICOS",
+    "arquivo": "289.json",
+    "nomeComercialDroga": "NAPROSYN; NAXOTEC; NAPROX; NAPROFLEN"
+  },
+  {
+    "principioAtivoDroga": "NATALIZUMABE",
+    "grupoFarmacoterapeutico": "IMUNOSSUPRESSORES SELETIVOS",
+    "arquivo": "290.json",
+    "nomeComercialDroga": "TYSABRI"
+  },
+  {
+    "principioAtivoDroga": "NEVIRAPINA  ",
+    "grupoFarmacoterapeutico": "ANTIVIRAIS DE AÇAO DIRETA \/ INIBIDORES DE TRANSCRIPTASE REVERSA NAO-NUCLEOSIDEOS",
+    "arquivo": "291.json",
+    "nomeComercialDroga": "VIRAMUNE"
+  },
+  {
+    "principioAtivoDroga": "NICOTINA ",
+    "grupoFarmacoterapeutico": "MEDICAMENTOS USADOS EM DEPENDENCIA DE NICOTINA",
+    "arquivo": "292.json",
+    "nomeComercialDroga": "NIQUITIN; NICORETTE; NICORETTE FRESHFRUIT; NICOTINELL"
+  },
+  {
+    "principioAtivoDroga": "NIFEDIPINO ",
+    "grupoFarmacoterapeutico": "BLOQUEADORES SELETIVOS DOS CANAIS DE CALCIO COM EFEITOS\nPRINCIPALMENTE VASCULARES",
+    "arquivo": "293.json",
+    "nomeComercialDroga": "ADALAT; OXCORD RETARD; OXCORD; LONCORD; ADALEX RETARD; NEO FEDIPINA; PRENILAN; DILAFLUX RETARD; NIFEDIPRESS; NIOXIL"
+  },
+  {
+    "principioAtivoDroga": "NISTATINA",
+    "grupoFarmacoterapeutico": "AGENTES ANTI-INFECCIOSOS \/ ANTIBIOTICOS",
+    "arquivo": "294.json",
+    "nomeComercialDroga": "NICOSTAT; NEO MISTATIN; NEOSTATIN; KOLPAZOL; KANDISTAT; INOFUNGIN; CANDITRAT; NISTAX; FUNGISTATINA; MICOSTALAB; NISTAMAX; VAGISTATINA; MICOSTATIN; NIDAZOLIN; NIFATIN"
+  },
+  {
+    "principioAtivoDroga": "NITROFURANTOINA",
+    "grupoFarmacoterapeutico": "OUTROS ANTIBACTERIANOS \/ DERIVADOS DO NITROFURANO",
+    "arquivo": "295.json",
+    "nomeComercialDroga": "NITROFEN; MACRODANTINA; TROFURIM"
+  },
+  {
+    "principioAtivoDroga": "NOREPINEFRINA",
+    "grupoFarmacoterapeutico": "AGENTES ADRENERGICOS E DOPAMINERGICOS",
+    "arquivo": "296.json",
+    "nomeComercialDroga": "HYPONOR; NOVANOR; NOREPINE"
+  },
+  {
+    "principioAtivoDroga": "NORETISTERONA",
+    "grupoFarmacoterapeutico": "CONTRACEPTIVOS HORMONAIS PARA USO SISTEMICO",
+    "arquivo": "297.json",
+    "nomeComercialDroga": "NORESTIN; MICRONOR"
+  },
+  {
+    "principioAtivoDroga": "NORTRIPTILINA",
+    "grupoFarmacoterapeutico": "ANTIDEPRESSIVOS",
+    "arquivo": "298.json",
+    "nomeComercialDroga": "NORTRIP; PAMELOR"
+  },
+  {
+    "principioAtivoDroga": "OCTREOTIDA",
+    "grupoFarmacoterapeutico": "HORMONIOS HIPOTALAMICOS",
+    "arquivo": "299.json",
+    "nomeComercialDroga": "SANDOSTATIN LAR; OCTRIDE; SANDOSTATIN"
+  },
+  {
+    "principioAtivoDroga": "OFLOXACINO",
+    "grupoFarmacoterapeutico": "ANTIBACTERIANOS QUINOLONICOS",
+    "arquivo": "300.json",
+    "nomeComercialDroga": "FLOGIRAX"
+  },
+  {
+    "principioAtivoDroga": "OLANZAPINA",
+    "grupoFarmacoterapeutico": "ANTIPSICOTICOS",
+    "arquivo": "301.json",
+    "nomeComercialDroga": "AXONIUM; ZAP"
+  },
+  {
+    "principioAtivoDroga": "OLEO MINERAL ",
+    "grupoFarmacoterapeutico": "EMOLIENTES E PROTETORES \/ PRODUTOS GORDUROSOS E PARAFINA",
+    "arquivo": "302.json",
+    "nomeComercialDroga": "OLEO MINERAL"
+  },
+  {
+    "principioAtivoDroga": "OMEPRAZOL",
+    "grupoFarmacoterapeutico": "INIBIDORES DA BOMBA DE PROTONS",
+    "arquivo": "303.json",
+    "nomeComercialDroga": "GASTRIUM; ABEDOSEC; OPRAZON; OMOPREL; MACROZOL; GASPIREN; NEOPRAZOL; ESTOMEPE; MEPRAZAN; EUPEPT; OMEPRAMED; VICTRIX; OMENAX; PRAZOLEX; OMEZOLON; LOSAR; ULCECAPS; OMEPRAZOLEX; NOVOPRAZOL; LOPRAZOL; OMEPAMP; PEPRAZOL; LOSAPROL; LOZEPREL; NEPRAZOL ; MEGASTROL; ELPRAZOL; PRATIPRAZOL; MESOPRAN; OMEPROTEC; UNIPRAZOL; OMEPRAZIN; LOSEC; LOSEC MUPS"
+  },
+  {
+    "principioAtivoDroga": "ONDANSETRONA",
+    "grupoFarmacoterapeutico": "ANTIEMETICOS E ANTINAUSEANTES",
+    "arquivo": "304.json",
+    "nomeComercialDroga": "VONAU; NAUSEDRON; ZOFRAN; LISTO"
+  },
+  {
+    "principioAtivoDroga": "OSELTAMIVIR",
+    "grupoFarmacoterapeutico": "ANTIVIRAIS DE AÇAO DIRETA \/ INIBIDORES DE PROTEASE",
+    "arquivo": "305.json",
+    "nomeComercialDroga": "TAMIFLU"
+  },
+  {
+    "principioAtivoDroga": "OXAMNIQUINA ",
+    "grupoFarmacoterapeutico": "ANTITREMATOIDES",
+    "arquivo": "306.json",
+    "nomeComercialDroga": "MANSIL"
+  },
+  {
+    "principioAtivoDroga": "PAMIDRONATO",
+    "grupoFarmacoterapeutico": "FARMACOS QUE AFETAM A ESTRUTURA OSSEA E A MINERALIZAÇAO",
+    "arquivo": "307.json",
+    "nomeComercialDroga": "PAMIDROM; PAMIRED; FAULDPAMI; MELIDRONATO; PALICRED"
+  },
+  {
+    "principioAtivoDroga": "PANCREATINA",
+    "grupoFarmacoterapeutico": "ENZIMAS DIGESTIVAS",
+    "arquivo": "308.json",
+    "nomeComercialDroga": "CREON"
+  },
+  {
+    "principioAtivoDroga": "PANCRELIPASE",
+    "grupoFarmacoterapeutico": "ENZIMAS DIGESTIVAS",
+    "arquivo": "309.json",
+    "nomeComercialDroga": "ULTRASE"
+  },
+  {
+    "principioAtivoDroga": "PARACETAMOL ",
+    "grupoFarmacoterapeutico": "ANALGESICOS E ANTIPIRETICOS",
+    "arquivo": "310.json",
+    "nomeComercialDroga": "ZUPLYN; PARAMOL; TYNEO; TYFLEN; DORFEN; CYFENOL; CIMEGRIPE; DIN; PARALGEN; TYLALGIN; SONRIDOR; PARACEN; TYLENOL; TRIFEN; RESFENOL THERMUS; PIRAMIN; CEFABRINA; TYLIDOL; PACEMOL; THYLOM; PARALGEN; CETAFRIN; TYLAFLEX; DORSANOL; TYLEMAX; ELCODRIX; PARAFLAN; TYLOL; PARACETREX; DORICO; ANALGISEN; TERMOL; DORFENOL; TYFLEN; TILENATI; PARATERMOL"
+  },
+  {
+    "principioAtivoDroga": "PASTA D´AGUA ",
+    "grupoFarmacoterapeutico": "EMOLIENTES E PROTETORES \/ PRODUTOS COM ZINCO",
+    "arquivo": "311.json",
+    "nomeComercialDroga": "PASTA D´AGUA "
+  },
+  {
+    "principioAtivoDroga": "PENICILAMINA",
+    "grupoFarmacoterapeutico": "PENICILAMINA E AGENTES SIMILARES",
+    "arquivo": "312.json",
+    "nomeComercialDroga": "CUPRIMINE"
+  },
+  {
+    "principioAtivoDroga": "PENTOXIFILINA",
+    "grupoFarmacoterapeutico": "VASODILATADORES PERIFERICOS",
+    "arquivo": "313.json",
+    "nomeComercialDroga": "PENTRAL; TRENTAFILINA; PENTRAT; TRENTAL; TRENTOFIL; VASCER"
+  },
+  {
+    "principioAtivoDroga": "PERMANGANATO DE POTASSIO ",
+    "grupoFarmacoterapeutico": "ANTISSEPTICOS E DESINFETANTES",
+    "arquivo": "314.json",
+    "nomeComercialDroga": "PERMANGANATO DE POTASSIO "
+  },
+  {
+    "principioAtivoDroga": "PERMETRINA ",
+    "grupoFarmacoterapeutico": "ECTOPARASITICIDAS, INCLUINDO ESCABICIDAS",
+    "arquivo": "315.json",
+    "nomeComercialDroga": "PIOSAN; PIOSIDIM; PIODREX; PEDILETAN; KWELL; PIOLETAL; PIO SECTO; CLEAN HAIR; NEDAX; TINDAL; KELTRINA; PERMENATI; KEPIOS"
+  },
+  {
+    "principioAtivoDroga": "PEROXIDO DE BENZOILA",
+    "grupoFarmacoterapeutico": "PREPARAÇOES ANTIACNEICAS PARA USO TOPICO",
+    "arquivo": "316.json",
+    "nomeComercialDroga": "BENZAC AC; PANOXYL; SOLUGEL"
+  },
+  {
+    "principioAtivoDroga": "PILOCARPINA",
+    "grupoFarmacoterapeutico": "PARASSIMPATICOMIMETICOS",
+    "arquivo": "317.json",
+    "nomeComercialDroga": "PILOCAN; PILOSOL"
+  },
+  {
+    "principioAtivoDroga": "PIRAZINAMIDA",
+    "grupoFarmacoterapeutico": "MEDICAMENTOS PARA TRATAMENTO DA TUBERCULOSE",
+    "arquivo": "318.json",
+    "nomeComercialDroga": "PIRAZINAMIDA"
+  },
+  {
+    "principioAtivoDroga": "PIRIDOSTIGMINA",
+    "grupoFarmacoterapeutico": "ANTICOLINESTERASES",
+    "arquivo": "319.json",
+    "nomeComercialDroga": "MESTINON"
+  },
+  {
+    "principioAtivoDroga": "PIRIDOXINA ",
+    "grupoFarmacoterapeutico": "OUTRAS PREPARAÇOES VITAMINICAS MONODROGA",
+    "arquivo": "320.json",
+    "nomeComercialDroga": "SEIS-B; FONTO-VIT"
+  },
+  {
+    "principioAtivoDroga": "PIRIMETAMINA",
+    "grupoFarmacoterapeutico": "ANTIMALARICOS",
+    "arquivo": "321.json",
+    "nomeComercialDroga": "DARAPRIM"
+  },
+  {
+    "principioAtivoDroga": "PLANTAGO OVATA (PLANTAGO OVATA FORSSK)",
+    "grupoFarmacoterapeutico": "FITOTERAPICO",
+    "arquivo": "322.json",
+    "nomeComercialDroga": "FIBRALIN; FIBRAY; PLANTABEN; PLANTACIL; PLANTAGO VITAMED; PLANTALYVE; PLANTOLAXY; METAMUCIL"
+  },
+  {
+    "principioAtivoDroga": "PODOFILINA",
+    "grupoFarmacoterapeutico": "PREPARAÇOES ANTIVERRUGA E ANTICALOSIDADE",
+    "arquivo": "323.json",
+    "nomeComercialDroga": "WARTEC"
+  },
+  {
+    "principioAtivoDroga": "PRALIDOXIMA ",
+    "grupoFarmacoterapeutico": "ANTIDOTOS",
+    "arquivo": "324.json",
+    "nomeComercialDroga": "CONTRATHION"
+  },
+  {
+    "principioAtivoDroga": "PRAMIPEXOL",
+    "grupoFarmacoterapeutico": "AGONISTAS DA DOPAMINA\/INIBIDOR DA PROLACTINA",
+    "arquivo": "325.json",
+    "nomeComercialDroga": "STABIL; PRAMIPEZAN; SIFROL; LIVIPARK; AGAMIR"
+  },
+  {
+    "principioAtivoDroga": "PRAVASTATINA",
+    "grupoFarmacoterapeutico": "AGENTES MODIFICADORES DE LIPIDIOS \/ INIBIDORES DA HMG-COA REDUTASE",
+    "arquivo": "326.json",
+    "nomeComercialDroga": "PRAVACOL; LENITRAL"
+  },
+  {
+    "principioAtivoDroga": "PRAZIQUANTEL ",
+    "grupoFarmacoterapeutico": "ANTITREMATOIDES",
+    "arquivo": "327.json",
+    "nomeComercialDroga": "CESTOX; CISTICID"
+  },
+  {
+    "principioAtivoDroga": "PREDNISOLONA",
+    "grupoFarmacoterapeutico": "GLICOCORTICOIDES",
+    "arquivo": "328.json",
+    "nomeComercialDroga": "ORALPRED; PREDISOLON; PREDSIM; PREDSIGMA; PRENISOL; PREDIPED; PREDNISOLON; REDZOL"
+  },
+  {
+    "principioAtivoDroga": "PREDNISONA",
+    "grupoFarmacoterapeutico": "GLICOCORTICOIDES",
+    "arquivo": "329.json",
+    "nomeComercialDroga": "ALERGCORTEM; PREDCORT; PREDINIS; PREDNAX; CRISPED; ARTINIZONA; METICORTEN; PREDNIS; LAMACORTEN; CORTICORTEN"
+  },
+  {
+    "principioAtivoDroga": "PRESERVATIVO FEMININO",
+    "grupoFarmacoterapeutico": "CONTRACEPTIVOS PELO METODO DE BARREIRA",
+    "arquivo": "330.json",
+    "nomeComercialDroga": "PRESERVATIVO FEMININO"
+  },
+  {
+    "principioAtivoDroga": "PRESERVATIVO MASCULINO",
+    "grupoFarmacoterapeutico": "CONTRACEPTIVOS PELO METODO DE BARREIRA",
+    "arquivo": "331.json",
+    "nomeComercialDroga": "PRESERVATIVO MASCULINO"
+  },
+  {
+    "principioAtivoDroga": "PRILOCAINA + FELIPRESSINA",
+    "grupoFarmacoterapeutico": "ANESTESICOS LOCAIS",
+    "arquivo": "332.json",
+    "nomeComercialDroga": "PRILONEST"
+  },
+  {
+    "principioAtivoDroga": "PRIMAQUINA",
+    "grupoFarmacoterapeutico": "ANTIMALARICOS",
+    "arquivo": "333.json",
+    "nomeComercialDroga": "PRIMAQUINA"
+  },
+  {
+    "principioAtivoDroga": "PRIMIDONA",
+    "grupoFarmacoterapeutico": "ANTIEPILEPTICOS \/ BARBITURICOS E DERIVADOS",
+    "arquivo": "334.json",
+    "nomeComercialDroga": "PRIMID"
+  },
+  {
+    "principioAtivoDroga": "PROMETAZINA ",
+    "grupoFarmacoterapeutico": "ANTI-HISTAMINICOS PARA USO SISTEMICO",
+    "arquivo": "335.json",
+    "nomeComercialDroga": "PROMERGAN; PAMERGAN; PROMECLOR; PROFERGAN; FENERGAN; CREMEFENERGAN; PROMETAZOL"
+  },
+  {
+    "principioAtivoDroga": "PROPAFENONA",
+    "grupoFarmacoterapeutico": "ANTIARRITIMICOS CLASSE I",
+    "arquivo": "336.json",
+    "nomeComercialDroga": "RITMONORM"
+  },
+  {
+    "principioAtivoDroga": "PROPILTIOURACILA",
+    "grupoFarmacoterapeutico": "PREPARAÇOES ANTITIREOIDEANAS",
+    "arquivo": "337.json",
+    "nomeComercialDroga": "PROPILRACIL; PROPIL"
+  },
+  {
+    "principioAtivoDroga": "PROPRANOLOL",
+    "grupoFarmacoterapeutico": "AGENTES BETA BLOQUEADORES",
+    "arquivo": "338.json",
+    "nomeComercialDroga": "INDERAL; PROPARIL; PROPACOR; PRANOLAL; REBATEN LA; POLOL; PROPALOL; HIPERNOLOL; PROPRANOLOM; PRESSOFLUX; CARDIX; PRADINOLOL; PHARNOLOL; PROPANOX; SANPRONOL; UNI PROPRALOL; AMPRAX; PROPRAMED"
+  },
+  {
+    "principioAtivoDroga": "PROTAMINA ",
+    "grupoFarmacoterapeutico": "ANTIDOTOS",
+    "arquivo": "339.json",
+    "nomeComercialDroga": "PROTAMINA"
+  },
+  {
+    "principioAtivoDroga": "QUETIAPINA",
+    "grupoFarmacoterapeutico": "ANTIPSICOTICOS",
+    "arquivo": "340.json",
+    "nomeComercialDroga": "DUOQUEL; KITAPEN; NEOTIAPIM; NEUROQUEL; QUEOPINE; QUEROK; QUEROPAX; QUETIBUX; QUETIEL; QUETIPIN; QUETROS; SEROQUEL; SEROQUEL XRO."
+  },
+  {
+    "principioAtivoDroga": "QUININA",
+    "grupoFarmacoterapeutico": "ANTIMALARICOS",
+    "arquivo": "341.json",
+    "nomeComercialDroga": "QUININA"
+  },
+  {
+    "principioAtivoDroga": "RALOXIFENO",
+    "grupoFarmacoterapeutico": "MODULADOR SELETIVO DE RECEPTOR DE ESTROGENIO",
+    "arquivo": "342.json",
+    "nomeComercialDroga": "EVISTA"
+  },
+  {
+    "principioAtivoDroga": "RALTEGRAVIR",
+    "grupoFarmacoterapeutico": "ANTIVIRAIS DE AÇAO DIRETA \/ OUTROS ANTIVIRAIS",
+    "arquivo": "343.json",
+    "nomeComercialDroga": "ISENTRESS"
+  },
+  {
+    "principioAtivoDroga": "RANITIDINA ",
+    "grupoFarmacoterapeutico": "ANTAGONISTAS DE RECEPTOR H2",
+    "arquivo": "344.json",
+    "nomeComercialDroga": "LABEL; ULCEROCIN; ZYLIUM; RANITIL; ULTIDIN; ANTAK; RANIDINE; RANYTISAN; NEOSAC; ANTIDIN; PEP RANI 300 MG; ULCOREN; RANITIDIL; RANIMAX; RANITZEN; RANITION; TEKADIN; RANIDIN; PEPTAK; RANIFLEX; RABIODINA"
+  },
+  {
+    "principioAtivoDroga": "RETINOL ",
+    "grupoFarmacoterapeutico": "VITAMINA A SIMPLES",
+    "arquivo": "345.json",
+    "nomeComercialDroga": "VITAMINA A; AROVIT; AROVIT VITA"
+  },
+  {
+    "principioAtivoDroga": "RIBAVIRINA",
+    "grupoFarmacoterapeutico": "ANTIVIRAIS DE AÇAO DIRETA \/ NUCLEOSIDEO E NUCLEOTIDEO (EXCLUINDO INIBIDORES DA TRANSCRIPTASE REVERSA)",
+    "arquivo": "346.json",
+    "nomeComercialDroga": "RIBAVIRIN; VIRAZOLE"
+  },
+  {
+    "principioAtivoDroga": "RIFABUTINA",
+    "grupoFarmacoterapeutico": "MEDICAMENTOS PARA TRATAMENTO DA TUBERCULOSE",
+    "arquivo": "347.json",
+    "nomeComercialDroga": "MYCOBUTIN"
+  },
+  {
+    "principioAtivoDroga": "RIFAMPICINA",
+    "grupoFarmacoterapeutico": "MEDICAMENTOS PARA TRATAMENTO DA TUBERCULOSE",
+    "arquivo": "348.json",
+    "nomeComercialDroga": "RIFACIN; RIFALDIN"
+  },
+  {
+    "principioAtivoDroga": "RIFAMPICINA, DAPSONA E CLOFAZIMINA (ESQUEMA MULTIBACILAR ADULTO)",
+    "grupoFarmacoterapeutico": "MEDICAMENTOS PARA TRATAMENTO DE HANSENIASE",
+    "arquivo": "349.json",
+    "nomeComercialDroga": "RIFAMPICINA, DAPSONA + CLOFAZIMINA (ESQUEMA MULTIBACILAR ADULTO)"
+  },
+  {
+    "principioAtivoDroga": "RIFAMPICINA, DAPSONA E CLOFAZIMINA (ESQUEMA MULTIBACILAR PEDIATRICO)",
+    "grupoFarmacoterapeutico": "MEDICAMENTOS PARA TRATAMENTO DE HANSENIASE",
+    "arquivo": "350.json",
+    "nomeComercialDroga": "RIFAMPICINA, DAPSONA + CLOFAZIMINA (ESQUEMA MULTIBACILAR PEDIATRICO)"
+  },
+  {
+    "principioAtivoDroga": "RIFAMPICINA E DAPSONA (ESQUEMA PAUCIBACILAR ADULTO)",
+    "grupoFarmacoterapeutico": "MEDICAMENTOS PARA TRATAMENTO DE HANSENIASE",
+    "arquivo": "351.json",
+    "nomeComercialDroga": "RIFAMPICINA + DAPSONA (ESQUEMA PAUCIBACILAR ADULTO)"
+  },
+  {
+    "principioAtivoDroga": "RIFAMPICINA E DAPSONA (ESQUEMA PAUCIBACILAR PEDIATRICO)",
+    "grupoFarmacoterapeutico": "MEDICAMENTOS PARA TRATAMENTO DE HANSENIASE",
+    "arquivo": "352.json",
+    "nomeComercialDroga": "RIFAMPICINA + DAPSONA (ESQUEMA PAUCIBACILAR PEDIATRICO)"
+  },
+  {
+    "principioAtivoDroga": "RIFAMPICINA + ISONIAZIDA + PIRAZINAMIDA + ETAMBUTOL ",
+    "grupoFarmacoterapeutico": "MEDICAMENTOS PARA TRATAMENTO DA TUBERCULOSE",
+    "arquivo": "353.json",
+    "nomeComercialDroga": "RIFAMPICINA + ISONIAZIDA + PIRAZINAMIDA + ETAMBUTOL "
+  },
+  {
+    "principioAtivoDroga": "RILUZOL",
+    "grupoFarmacoterapeutico": "OUTROS MEDICAMENTOS DO SISTEMA NERVOSO",
+    "arquivo": "354.json",
+    "nomeComercialDroga": "TEKZOR; RILUTEK; RILOTOL"
+  },
+  {
+    "principioAtivoDroga": "RISEDRONATO",
+    "grupoFarmacoterapeutico": "BISFOSFONADOS",
+    "arquivo": "355.json",
+    "nomeComercialDroga": "OSTEOTRAT; RISONATO; RISEDROSS; RISEDRONEL; OSTEOBLOCK; ACTONEL"
+  },
+  {
+    "principioAtivoDroga": "RISPERIDONA",
+    "grupoFarmacoterapeutico": "OUTROS ANTIPSICOTICOS",
+    "arquivo": "356.json",
+    "nomeComercialDroga": "RISPERAC; RISLEPTIC; ZARGUS; RISPERIDON; RIPEVIL; RISS; RISPERDAL; ESQUIDON; RISPALUM; RESPIDON; VIVERDAL"
+  },
+  {
+    "principioAtivoDroga": "RITONAVIR",
+    "grupoFarmacoterapeutico": "ANTIVIRAIS DE AÇAO DIRETA \/ INIBIDORES DE PROTEASE",
+    "arquivo": "357.json",
+    "nomeComercialDroga": "NORVIR; RITOVIR"
+  },
+  {
+    "principioAtivoDroga": "RITUXIMABE",
+    "grupoFarmacoterapeutico": "OUTROS AGENTES ANTINEOPLASICOS \/ ANTICORPOS MONOCLONAIS",
+    "arquivo": "358.json",
+    "nomeComercialDroga": "MABTHERA"
+  },
+  {
+    "principioAtivoDroga": "RIVASTIGMINA",
+    "grupoFarmacoterapeutico": "MEDICAMENTOS ANTIDEMENCIA \/ ANTICOLINESTERASES",
+    "arquivo": "359.json",
+    "nomeComercialDroga": "VIVENCIA; VASTIGMA; TIGMA; ASTIG; EXELON"
+  },
+  {
+    "principioAtivoDroga": "SACARATO DE HIDROXIDO FERRICO",
+    "grupoFarmacoterapeutico": "FERRO TRIVALENTE, PREPARAÇOES PARENTERAIS",
+    "arquivo": "360.json",
+    "nomeComercialDroga": "SUCROFER; SUPRAFEN; NORIPURUM EV"
+  },
+  {
+    "principioAtivoDroga": "SAIS PARA REIDRATACAO ORAL ",
+    "grupoFarmacoterapeutico": "ELETROLITOS COM CARBOIDRATOS",
+    "arquivo": "361.json",
+    "nomeComercialDroga": "HIDRALYTE; SAISTRAT; POLYDRAT; REHIDRAT; REIDRAMAX; REIDRATANTE; REHITRYON 75; REHIDRAZOL; PEDIALYTE 45 ZINCO; PEDIALYTE 60 ZINCO; HIDRAFIX; FLORALYTE; HIDRAPLUS; EMIDRAT; ORALDRAX"
+  },
+  {
+    "principioAtivoDroga": "SALBUTAMOL ",
+    "grupoFarmacoterapeutico": "ADRENERGICOS INALATORIOS",
+    "arquivo": "362.json",
+    "nomeComercialDroga": "AEROLIN; AEROLIN SPRAY; AEROLIN NEBULES; AEROGOLD; AERODINI; AEROFRIN"
+  },
+  {
+    "principioAtivoDroga": "SALGUEIRO (SALIX ALBA)",
+    "grupoFarmacoterapeutico": "FITOTERAPICO",
+    "arquivo": "363.json",
+    "nomeComercialDroga": "CEPHALIX, GALENOGAL ELIXIR"
+  },
+  {
+    "principioAtivoDroga": "SALMETEROL",
+    "grupoFarmacoterapeutico": "AGONISTAS SELETIVOS DOS RECEPTORES BETA 2 ADRENERGICOS",
+    "arquivo": "364.json",
+    "nomeComercialDroga": "SEREVENT"
+  },
+  {
+    "principioAtivoDroga": "SAPROPTERINA",
+    "grupoFarmacoterapeutico": "PRODUTOS DIVERSOS PARA O TRATO ALIMENTAR OU METABOLISMO",
+    "arquivo": "365.json",
+    "nomeComercialDroga": "KUVAN"
+  },
+  {
+    "principioAtivoDroga": "SAQUINAVIR ",
+    "grupoFarmacoterapeutico": "ANTIVIRAIS DE AÇAO DIRETA \/ INIBIDORES DE PROTEASE",
+    "arquivo": "366.json",
+    "nomeComercialDroga": "INVIRASE, SVIR"
+  },
+  {
+    "principioAtivoDroga": "SELANTE DE FIBRINA",
+    "grupoFarmacoterapeutico": "HEMOSTATICOS LOCAIS",
+    "arquivo": "367.json",
+    "nomeComercialDroga": "SELANTE DE FIBRINA"
+  },
+  {
+    "principioAtivoDroga": "SELEGILINA",
+    "grupoFarmacoterapeutico": "AGENTES DOPAMINERGICOS \/ INIBIDORES DA MONOAMINO OXIDASE TIPO B",
+    "arquivo": "368.json",
+    "nomeComercialDroga": "DEPRILAN; JUMEXIL; PARKEXIN; NIAR"
+  },
+  {
+    "principioAtivoDroga": "SEVELAMER",
+    "grupoFarmacoterapeutico": "MEDICAMENTOS PARA TRATAMENTO DA HIPERCALEMIA E HIPERFOSFATEMIA",
+    "arquivo": "369.json",
+    "nomeComercialDroga": "RENVELA; HEMOSEV; RENAGEL; FOSLAMER"
+  },
+  {
+    "principioAtivoDroga": "SILDENAFILA",
+    "grupoFarmacoterapeutico": "ESTIMULANTES CARDIACOS, EXCLUINDO GLICOSIDEOS CARDIACOS \/ INIBIDORES DA FOSFODIESTERASE",
+    "arquivo": "370.json",
+    "nomeComercialDroga": "SOLLEVARE; SUVVIA; DEJAVU; VASIFIL; VIRINEO; VIASIL; VIAGRA; REVATIO; AH-ZUL; ESCITAN; VIDENFIL; HAVANTE; TANTRIX; BLUPILL; REFREN"
+  },
+  {
+    "principioAtivoDroga": "SINVASTATINA ",
+    "grupoFarmacoterapeutico": "HIPOLIPEMIANTES SIMPLES",
+    "arquivo": "371.json",
+    "nomeComercialDroga": "VASLIP; SINVANE; SINVASTAMED; CORDIRON; SINVATROX; SINVALIP; SINVAX; LIPISTATINA; SINVASMAX; REVASTIN; SINVASCOR; MEVILIP; VASTATIL; LIPOTEX; CLINFAR; ZOCOR; MENOCOL; SINVASTIN; SINVASTACOR; SINVASTON; LIPTRAT"
+  },
+  {
+    "principioAtivoDroga": "SIROLIMO",
+    "grupoFarmacoterapeutico": "IMUNOSSUPRESSORES SELETIVOS",
+    "arquivo": "372.json",
+    "nomeComercialDroga": "RAPAMUNE"
+  },
+  {
+    "principioAtivoDroga": "SOLUCAO DE RINGER + LACTATO",
+    "grupoFarmacoterapeutico": "SOLUÇOES ELETROLITICAS",
+    "arquivo": "373.json",
+    "nomeComercialDroga": "SOLUCAO DE RINGER + LACTATO"
+  },
+  {
+    "principioAtivoDroga": "SOMATROPINA",
+    "grupoFarmacoterapeutico": "SOMATROPINA E AGONISTAS DA SOMATROPINA",
+    "arquivo": "374.json",
+    "nomeComercialDroga": "EUTROPIN; HORMOTROP; SAIZEN"
+  },
+  {
+    "principioAtivoDroga": "SORO ANTIARACNIDICO (LOXOSCELES E PHONEUTRIA) E ANTIESCORPIONICO (TITYUS)",
+    "grupoFarmacoterapeutico": "SOROS IMUNES",
+    "arquivo": "375.json",
+    "nomeComercialDroga": "SORO ANTIARACNIDICO (LOXOSCELES E PHONEUTRIA) E ANTIESCORPIONICO (TITYUS)"
+  },
+  {
+    "principioAtivoDroga": "SORO ANTIBOTROPICO (PENTAVALENTE)",
+    "grupoFarmacoterapeutico": "SOROS IMUNES",
+    "arquivo": "376.json",
+    "nomeComercialDroga": "SORO ANTIBOTROPICO (PENTAVALENTE)"
+  },
+  {
+    "principioAtivoDroga": "SORO ANTIBOTROPICO (PENTAVALENTE) E ANTICROTALICO",
+    "grupoFarmacoterapeutico": "SOROS IMUNES",
+    "arquivo": "377.json",
+    "nomeComercialDroga": "SORO ANTIBOTROPICO (PENTAVALENTE) E ANTICROTALICO"
+  },
+  {
+    "principioAtivoDroga": "SORO ANTIBOTULINICO AB (BIVALENTE) ",
+    "grupoFarmacoterapeutico": "SOROS IMUNES",
+    "arquivo": "378.json",
+    "nomeComercialDroga": "SORO ANTIBOTULINICO AB (BIVALENTE) "
+  },
+  {
+    "principioAtivoDroga": "SORO ANTICROTALICO",
+    "grupoFarmacoterapeutico": "SOROS IMUNES",
+    "arquivo": "379.json",
+    "nomeComercialDroga": "SORO ANTICROTALICO"
+  },
+  {
+    "principioAtivoDroga": "SORO ANTILONOMICO",
+    "grupoFarmacoterapeutico": "SOROS IMUNES",
+    "arquivo": "380.json",
+    "nomeComercialDroga": "SORO ANTILONOMICO "
+  },
+  {
+    "principioAtivoDroga": "SORO ANTILOXOSCELICO (TRIVALENTE)",
+    "grupoFarmacoterapeutico": "SOROS IMUNES",
+    "arquivo": "381.json",
+    "nomeComercialDroga": "SORO ANTILOXOSCELICO"
+  },
+  {
+    "principioAtivoDroga": "SORO ANTIRRABICO",
+    "grupoFarmacoterapeutico": "SOROS IMUNES",
+    "arquivo": "382.json",
+    "nomeComercialDroga": "SORO ANTIRRABICO"
+  },
+  {
+    "principioAtivoDroga": "SORO ANTIBOTROPICO (PENTAVALENTE) E ANTILAQUETICO ",
+    "grupoFarmacoterapeutico": "SOROS IMUNES",
+    "arquivo": "383.json",
+    "nomeComercialDroga": "SORO ANTIBOTROPICO (PENTAVALENTE) E ANTILAQUETICO "
+  },
+  {
+    "principioAtivoDroga": "SORO ANTIDIFTERICO",
+    "grupoFarmacoterapeutico": "SOROS IMUNES",
+    "arquivo": "384.json",
+    "nomeComercialDroga": "SORO ANTIDIFTERICO"
+  },
+  {
+    "principioAtivoDroga": "SORO ANTIELAPIDICO (BIVALENTE)",
+    "grupoFarmacoterapeutico": "SOROS IMUNES",
+    "arquivo": "385.json",
+    "nomeComercialDroga": "SORO ANTIELAPIDICO (BIVALENTE)"
+  },
+  {
+    "principioAtivoDroga": "SORO ANTITETANICO",
+    "grupoFarmacoterapeutico": "SOROS IMUNES",
+    "arquivo": "386.json",
+    "nomeComercialDroga": "SORO ANTITETANICO"
+  },
+  {
+    "principioAtivoDroga": "SULFADIAZINA",
+    "grupoFarmacoterapeutico": "SULFONAMIDAS DE AÇAO INTERMEDIARIA",
+    "arquivo": "387.json",
+    "nomeComercialDroga": "SULADRIN; SULFAZINA"
+  },
+  {
+    "principioAtivoDroga": "SULFADIAZINA DE PRATA ",
+    "grupoFarmacoterapeutico": "SULFONAMIDAS",
+    "arquivo": "388.json",
+    "nomeComercialDroga": "SILGLOS; AG DERM; PRATAZINE; ALIVIDERM; GINO ATADERM; DERMAZINE; GINO-DERMAZINE; AZIPRATA; VITADIAZIN"
+  },
+  {
+    "principioAtivoDroga": "SULFAMETOXAZOL + TRIMETOPRIMA ",
+    "grupoFarmacoterapeutico": "SULFONAMIDAS E TRIMETOPRIMAS",
+    "arquivo": "389.json",
+    "nomeComercialDroga": "BACFAR; ECTRIN; BACTERACIN; BELFACTRIM; TRIMEZOL; INFECTRIN; INFECTRIN F; METOPRIN; BACTROPIN; DIAZOL; SULFA+TRI; TRICBAN; ST400; MAPITRIM; NEOTRIN; BAC-SULFITRIN; LASATRIM; BENECTRIN; BENECTRIN F; MEDTRIM; ESPECTROPRIMA; BACTRIM IV; BACTRIM; BACTRIM F; ROYTRIN; QIFTRIM; QIFTRIM F; BACTRISAN; BACSULFAPRIN; BACSULFAPRIM"
+  },
+  {
+    "principioAtivoDroga": "SULFASSALAZINA ",
+    "grupoFarmacoterapeutico": "AGENTES ANTIINFLAMATORIOS INTESTINAIS",
+    "arquivo": "390.json",
+    "nomeComercialDroga": "AZULFIN; SALAZOPRIN"
+  },
+  {
+    "principioAtivoDroga": "SULFATO FERROSO",
+    "grupoFarmacoterapeutico": "PREPARAÇOES COM FERRO",
+    "arquivo": "391.json",
+    "nomeComercialDroga": "ECTRIN; BACTERACIN; BELFACTRIM; TRIMEZOL; INFECTRIN; INFECTRIN F; METOPRIN; BACTROPIN; DIAZOL; TRICBAN; ST400; NEOTRIN; BAC-SULFITRIN; LASATRIM; BENECTRIN; BENECTRIN F; MEDTRIM; ESPECTROPRIMA; BACTRIM IV; BACTRIM; BACTRIM F; ROYTRIN; QIFTRIM; QIFTRIM F; BACTRISAN; BACSULFAPRIM"
+  },
+  {
+    "principioAtivoDroga": "TACROLIMO",
+    "grupoFarmacoterapeutico": "IMUNOSSUPRESSORES \/ INIBIDORES DA CALCINEURINA",
+    "arquivo": "392.json",
+    "nomeComercialDroga": "TACROLIL; PROGRAF; LIFALTACROLIMUS; TARFIC; TACROFORT"
+  },
+  {
+    "principioAtivoDroga": "TALIDOMIDA ",
+    "grupoFarmacoterapeutico": "IMUNOSSUPRESSORES",
+    "arquivo": "393.json",
+    "nomeComercialDroga": "TALIDOMIDA"
+  },
+  {
+    "principioAtivoDroga": "ALFATALIGLICERASE",
+    "grupoFarmacoterapeutico": "ENZIMAS",
+    "arquivo": "394.json",
+    "nomeComercialDroga": "UPLYSO"
+  },
+  {
+    "principioAtivoDroga": "TECLOZANA ",
+    "grupoFarmacoterapeutico": "AGENTES CONTRA AMEBIASE E OUTRAS DOENÇAS PROTOZOARIAS",
+    "arquivo": "395.json",
+    "nomeComercialDroga": "FALMONOX"
+  },
+  {
+    "principioAtivoDroga": "TELAPREVIR",
+    "grupoFarmacoterapeutico": "ANTIVIRAIS DE AÇAO DIRETA \/ INIBIDORES DE PROTEASE",
+    "arquivo": "396.json",
+    "nomeComercialDroga": "INCIVO"
+  },
+  {
+    "principioAtivoDroga": "TENECTEPLASE",
+    "grupoFarmacoterapeutico": "ENZIMAS",
+    "arquivo": "397.json",
+    "nomeComercialDroga": "METALYSE"
+  },
+  {
+    "principioAtivoDroga": "TENOFOVIR",
+    "grupoFarmacoterapeutico": "ANTIVIRAIS DE AÇAO DIRETA \/ NUCLEOSIDEO E NUCLEOTIDEO, INIBIDOR DA TRANSCRIPTASE REVERSA",
+    "arquivo": "398.json",
+    "nomeComercialDroga": "VIREAD"
+  },
+  {
+    "principioAtivoDroga": "TERIZIDONA",
+    "grupoFarmacoterapeutico": "MEDICAMENTOS PARA TRATAMENTO DA TUBERCULOSE",
+    "arquivo": "399.json",
+    "nomeComercialDroga": "TERIZIDONA"
+  },
+  {
+    "principioAtivoDroga": "TETRACICLINA",
+    "grupoFarmacoterapeutico": "TETRACICLINAS",
+    "arquivo": "400.json",
+    "nomeComercialDroga": "TELEXIN; TETRACINA; CINATREX; TETRACILIL; COMBITREX; TETRACLIN; LASATREX; PARENZYME; TETRAMED; MULTIGRAN"
+  },
+  {
+    "principioAtivoDroga": "TIAMINA",
+    "grupoFarmacoterapeutico": "VITAMINA B1 SIMPLES",
+    "arquivo": "401.json",
+    "nomeComercialDroga": "BENERVA; NERVEN; ACESYL; NEURIVIT; BEUM; VITAUM; THIAMINOSE; VITAMINA B1; BENEUM; BEVITER; DIETAMINA; NERVAMIN; FONTI B1"
+  },
+  {
+    "principioAtivoDroga": "TIMOLOL ",
+    "grupoFarmacoterapeutico": "PREPARAÇOES ANTIGLAUCOMA E MIOTICOS",
+    "arquivo": "402.json",
+    "nomeComercialDroga": "GLAUTIMOL; TIMONEO; TENOFTAL; TIMOPTOL; GLAUCOTRAT"
+  },
+  {
+    "principioAtivoDroga": "TIPRANAVIR",
+    "grupoFarmacoterapeutico": "ANTIVIRAIS DE AÇAO DIRETA \/ INIBIDORES DE PROTEASE",
+    "arquivo": "403.json",
+    "nomeComercialDroga": "ELODIUS"
+  },
+  {
+    "principioAtivoDroga": "TIROFIBANA",
+    "grupoFarmacoterapeutico": "AGENTES ANTITROMBOTICOS \/ INIBIDORES DA AGREGAÇAO PLAQUETARIA, EXCLUINDO HEPARINA",
+    "arquivo": "404.json",
+    "nomeComercialDroga": "AGRASTAT"
+  },
+  {
+    "principioAtivoDroga": "TOCILIZUMABE",
+    "grupoFarmacoterapeutico": "IMUNOSSUPRESSORES \/ INIBIDORES DE INTERLEUCINAS",
+    "arquivo": "405.json",
+    "nomeComercialDroga": "ACTEMRA"
+  },
+  {
+    "principioAtivoDroga": "TOLCAPONA",
+    "grupoFarmacoterapeutico": "AGENTES DOPAMINERGICOS",
+    "arquivo": "406.json",
+    "nomeComercialDroga": "TASMAR"
+  },
+  {
+    "principioAtivoDroga": "TOPIRAMATO",
+    "grupoFarmacoterapeutico": "OUTROS ANTIEPILEPTICOS",
+    "arquivo": "407.json",
+    "nomeComercialDroga": "ARASID; SIGMAX; AMATO; TOPAMAX; TEMAX; EGIDE; TOPIT; TOPTIL; VIDMAX"
+  },
+  {
+    "principioAtivoDroga": "TOXINA BOTULINICA TIPO A",
+    "grupoFarmacoterapeutico": "RELAXANTES MUSCULARES DE AÇAO PERIFERICA",
+    "arquivo": "408.json",
+    "nomeComercialDroga": "BOTOX; DYSPORT; XEOMIN; PROSIGNE; BOTULIFT"
+  },
+  {
+    "principioAtivoDroga": "TRAVOPROSTA",
+    "grupoFarmacoterapeutico": "PREPARAÇOES ANTIGLAUCOMA E MIOTICOS \/ ANALOGOS DAS PROSTAGLANDINAS",
+    "arquivo": "409.json",
+    "nomeComercialDroga": "TRAVATAN; TRAVOP; ANTIGLAU; TRAVAMED; TRAVAPRESS; TEGASER; TROVOPTIC"
+  },
+  {
+    "principioAtivoDroga": "TRIEXIFENIDIL",
+    "grupoFarmacoterapeutico": "AGENTES ANTICOLINERGICOS \/ AMINAS TERCIARIAS",
+    "arquivo": "410.json",
+    "nomeComercialDroga": "ARTANE"
+  },
+  {
+    "principioAtivoDroga": "TRIPTORRELINA",
+    "grupoFarmacoterapeutico": "ANALOGOS DO HORMONIO LIBERADOR DE GONADOTROFINA",
+    "arquivo": "411.json",
+    "nomeComercialDroga": "NEO DECAPEPTYL; NEO DECAPEPTYL LP; GONAPEPTYL DEPOT"
+  },
+  {
+    "principioAtivoDroga": "UNHA-DE-GATO (UNCARIA TOMENTOSA)",
+    "grupoFarmacoterapeutico": "FITOTERAPICO",
+    "arquivo": "412.json",
+    "nomeComercialDroga": "ARTRINON; IMUNOMAX GEL"
+  },
+  {
+    "principioAtivoDroga": "VACINA ADSORVIDA DIFTERIA E TETANO ADULTO",
+    "grupoFarmacoterapeutico": "VACINAS BACTERIANAS",
+    "arquivo": "413.json",
+    "nomeComercialDroga": "VACINA ADSORVIDA DIFTERIA E TETANO ADULTO"
+  },
+  {
+    "principioAtivoDroga": "VACINA ADSORVIDA DIFTERIA, TETANO, PERTUSSIS, HEPATITE B (RECOMBINANTE) e HAEMOPHILUS INFLUENZAE B (CONJUGADA)",
+    "grupoFarmacoterapeutico": "VACINAS CONJUGADAS",
+    "arquivo": "414.json",
+    "nomeComercialDroga": "VACINA ADSORVIDA DIFTERIA, TETANO, PERTUSSIS, HEPATITE B (RECOMBINANTE) e HAEMOPHILUS INFLUENZAE B (CONJUGADA)"
+  },
+  {
+    "principioAtivoDroga": "VACINA ADSORVIDA HEPATITE A (INATIVADA) ADULTO",
+    "grupoFarmacoterapeutico": "VACINAS VIRAIS",
+    "arquivo": "415.json",
+    "nomeComercialDroga": "VACINA ADSORVIDA HEPATITE A (INATIVADA) ADULTO"
+  },
+  {
+    "principioAtivoDroga": "VACINA ADSORVIDA HEPATITE A (INATIVADA) INFANTIL",
+    "grupoFarmacoterapeutico": "VACINAS VIRAIS",
+    "arquivo": "416.json",
+    "nomeComercialDroga": "VACINA ADSORVIDA HEPATITE A (INATIVADA) INFANTIL"
+  },
+  {
+    "principioAtivoDroga": "VACINA BCG",
+    "grupoFarmacoterapeutico": "VACINAS BACTERIANAS",
+    "arquivo": "417.json",
+    "nomeComercialDroga": "VACINA BCG"
+  },
+  {
+    "principioAtivoDroga": "VACINA ADSORVIDA DIFTERIA E TETANO INFANTIL",
+    "grupoFarmacoterapeutico": "VACINAS BACTERIANAS",
+    "arquivo": "418.json",
+    "nomeComercialDroga": "VACINA ADSORVIDA DIFTERIA E TETANO INFANTIL"
+  },
+  {
+    "principioAtivoDroga": "VACINA FEBRE AMARELA (ATENUADA) ",
+    "grupoFarmacoterapeutico": "VACINAS VIRAIS",
+    "arquivo": "419.json",
+    "nomeComercialDroga": "VACINA FEBRE AMARELA (ATENUADA) "
+  },
+  {
+    "principioAtivoDroga": "VACINA FEBRE TIFOIDE (POLISSACARIDICA)",
+    "grupoFarmacoterapeutico": "VACINAS BACTERIANAS",
+    "arquivo": "420.json",
+    "nomeComercialDroga": "VACINA FEBRE TIFOIDE (POLISSACARIDICA)"
+  },
+  {
+    "principioAtivoDroga": "VACINA HAEMOPHILUS INFLUENZAE B (CONJUGADA)",
+    "grupoFarmacoterapeutico": "VACINAS VIRAIS",
+    "arquivo": "421.json",
+    "nomeComercialDroga": "VACINA HAEMOPHILUS INFLUENZAE B (CONJUGADA)"
+  },
+  {
+    "principioAtivoDroga": "VACINA HEPATITE B (RECOMBINANTE)",
+    "grupoFarmacoterapeutico": "VACINAS VIRAIS",
+    "arquivo": "422.json",
+    "nomeComercialDroga": "VACINA HEPATITE B (RECOMBINANTE)"
+  },
+  {
+    "principioAtivoDroga": "VACINA INFLUENZA (FRACIONADA, INATIVADA)",
+    "grupoFarmacoterapeutico": "VACINAS VIRAIS",
+    "arquivo": "423.json",
+    "nomeComercialDroga": "VACINA INFLUENZA (FRACIONADA, INATIVADA)"
+  },
+  {
+    "principioAtivoDroga": "VACINA MENINGOCOCICA C (CONJUGADA)",
+    "grupoFarmacoterapeutico": "VACINAS BACTERIANAS",
+    "arquivo": "424.json",
+    "nomeComercialDroga": "VACINA MENINGOCOCICA C (CONJUGADA)"
+  },
+  {
+    "principioAtivoDroga": "VACINA PNEUMOCOCICA 10 \u2013 VALENTE (CONJUGADA)",
+    "grupoFarmacoterapeutico": "VACINAS BACTERIANAS",
+    "arquivo": "425.json",
+    "nomeComercialDroga": "VACINA PNEUMOCOCICA 10-VALENTE (CONJUGADA)"
+  },
+  {
+    "principioAtivoDroga": "VACINA PNEUMOCOCICA 23 \u2013 VALENTE (POLISSACARIDICA)",
+    "grupoFarmacoterapeutico": "VACINAS BACTERIANAS",
+    "arquivo": "426.json",
+    "nomeComercialDroga": "VACINA PNEUMOCOCICA 23-VALENTE (POLISSACARIDICA)"
+  },
+  {
+    "principioAtivoDroga": "VACINA POLIOMIELITE 1, 2 E 3 (INATIVADA)",
+    "grupoFarmacoterapeutico": "VACINAS VIRAIS",
+    "arquivo": "427.json",
+    "nomeComercialDroga": "VACINA POLIOMIELITE 1, 2 E 3 (INATIVADA)"
+  },
+  {
+    "principioAtivoDroga": "VACINA POLIOMIELITE 1, 2 E 3 (ATENUADA)",
+    "grupoFarmacoterapeutico": "VACINAS VIRAIS",
+    "arquivo": "428.json",
+    "nomeComercialDroga": "VACINA POLIOMIELITE 1, 2 E 3 (ATENUADA)"
+  },
+  {
+    "principioAtivoDroga": "VACINA RAIVA (INATIVADA) ",
+    "grupoFarmacoterapeutico": "VACINAS VIRAIS",
+    "arquivo": "429.json",
+    "nomeComercialDroga": "VACINA RAIVA (INATIVADA) "
+  },
+  {
+    "principioAtivoDroga": "VACINA ROTAVIRUS HUMANO G1P1[8] (ATENUADA)",
+    "grupoFarmacoterapeutico": "VACINAS VIRAIS",
+    "arquivo": "430.json",
+    "nomeComercialDroga": "VACINA ROTAVIRUS HUMANO G1P1[8] (ATENUADA)"
+  },
+  {
+    "principioAtivoDroga": "VACINA SARAMPO, CAXUMBA, RUBEOLA ",
+    "grupoFarmacoterapeutico": "VACINAS VIRAIS",
+    "arquivo": "431.json",
+    "nomeComercialDroga": "VACINA SARAMPO, CAXUMBA, RUBEOLA "
+  },
+  {
+    "principioAtivoDroga": "VACINA VARICELA (ATENUADA)",
+    "grupoFarmacoterapeutico": "VACINAS VIRAIS",
+    "arquivo": "432.json",
+    "nomeComercialDroga": "VACINA VARICELA (ATENUADA)"
+  },
+  {
+    "principioAtivoDroga": "VALPROATO DE SODIO OU ACIDO VALPROICO ",
+    "grupoFarmacoterapeutico": "ANTIEPILEPTICOS",
+    "arquivo": "433.json",
+    "nomeComercialDroga": "DEPAKENE; EPILENIL; VALPRENE; VALPAKINE; TORVAL CR"
+  },
+  {
+    "principioAtivoDroga": "VARFARINA SODICA ",
+    "grupoFarmacoterapeutico": "AGENTES ANTITROMBOTICOS",
+    "arquivo": "434.json",
+    "nomeComercialDroga": "COUMADIN; MAREVAN; MARFARIM; WARFARIN"
+  },
+  {
+    "principioAtivoDroga": "VERAPAMIL",
+    "grupoFarmacoterapeutico": "BLOQUEADORES SELETIVOS DOS CANAIS DE CALCIO COM EFEITOS CARDIACOS DIRETOS",
+    "arquivo": "435.json",
+    "nomeComercialDroga": "SALONFER; SULFERROL; VITAFER; SULFERRO; FERSIL; ANEMIPLUS; FERRONIL; LOMFER; HEMATOFER; MEDTOM; MASFEROL; ANEMIFER; TONICO BLUMEN; PARATONICO"
+  },
+  {
+    "principioAtivoDroga": "VIGABATRINA",
+    "grupoFarmacoterapeutico": "ANTIEPILEPTICOS \/ DERIVADOS DE ACIDOS GRAXOS",
+    "arquivo": "436.json",
+    "nomeComercialDroga": "SABRIL"
+  },
+  {
+    "principioAtivoDroga": "ZANAMIVIR",
+    "grupoFarmacoterapeutico": "ANTIVIRAIS DE AÇAO DIRETA \/ INIBIDORES DE PROTEASE",
+    "arquivo": "437.json",
+    "nomeComercialDroga": "RELENZA"
+  },
+  {
+    "principioAtivoDroga": "ZIDOVUDINA",
+    "grupoFarmacoterapeutico": "ANTIVIRAIS DE AÇAO DIRETA \/ NUCLEOSIDEO E NUCLEOTIDEO, INIBIDOR DA TRANSCRIPTASE REVERSA",
+    "arquivo": "438.json",
+    "nomeComercialDroga": "REVIRAX"
+  },
+  {
+    "principioAtivoDroga": "ZIDOVUDINA + LAMIVUDINA ",
+    "grupoFarmacoterapeutico": "ANTIVIRAIS DE AÇAO DIRETA \/ ANTIVIRAIS PARA TRATAMENTO DE INFECÇOES POR HIV, COMBINAÇOES",
+    "arquivo": "439.json",
+    "nomeComercialDroga": "BIOVIR"
+  },
+  {
+    "principioAtivoDroga": "ZINCO ",
+    "grupoFarmacoterapeutico": "SOLUÇOES ELETROLITICAS \/ SUPLEMENTOS MINERAIS",
+    "arquivo": "440.json",
+    "nomeComercialDroga": "ZINC"
+  },
+  {
+    "principioAtivoDroga": "ZIPRASIDONA",
+    "grupoFarmacoterapeutico": "ANTIPSICOTICOS \/ DERIVADOS DO INDOL",
+    "arquivo": "441.json",
+    "nomeComercialDroga": "GEODON"
+  },
+  {
+    "principioAtivoDroga": "MARAVIROQUE",
+    "grupoFarmacoterapeutico": "ANTIVIRAIS DE AÇAO DIRETA. OUTROS ANTIVIRAIS",
+    "arquivo": "442.json",
+    "nomeComercialDroga": "CELSENTRI"
+  },
+  {
+    "principioAtivoDroga": "FINGOLIMODE",
+    "grupoFarmacoterapeutico": "IMUNOSSUPRESSORES SELETIVOS",
+    "arquivo": "443.json",
+    "nomeComercialDroga": "GILENYA"
+  },
+  {
+    "principioAtivoDroga": "MICRONUTRIENTES",
+    "grupoFarmacoterapeutico": "OUTRAS COMBINAÇOES DE NUTRIENTES",
+    "arquivo": "444.json",
+    "nomeComercialDroga": "MICRONUTRIENTES"
+  },
+  {
+    "principioAtivoDroga": "VACINA ADSORVIDA DIFTERIA, TETANO E PERTUSSIS (ACELULAR) ADULTO",
+    "grupoFarmacoterapeutico": "VACINAS BACTERIANAS",
+    "arquivo": "445.json",
+    "nomeComercialDroga": "VACINA ADSORVIDA DIFTERIA, TETANO E PERTUSSIS (ACELULAR) ADULTO"
+  },
+  {
+    "principioAtivoDroga": "VACINA ADSORVIDA DIFTERIA, TETANO E PERTUSSIS (ACELULAR) INFANTIL",
+    "grupoFarmacoterapeutico": "VACINAS BACTERIANAS",
+    "arquivo": "446.json",
+    "nomeComercialDroga": "VACINA ADSORVIDA DIFTERIA, TETANO E PERTUSSIS (ACELULAR) INFANTIL"
+  },
+  {
+    "principioAtivoDroga": "VACINA ADSORVIDA DIFTERIA, TETANO E PERTUSSIS",
+    "grupoFarmacoterapeutico": "VACINAS BACTERIANAS",
+    "arquivo": "447.json",
+    "nomeComercialDroga": "VACINA ADSORVIDA DIFTERIA, TETANO E PERTUSSIS"
+  },
+  {
+    "principioAtivoDroga": "VACINA PAPILOMAVIRUS HUMANO SOROTIPOS 6, 11, 16 E 18 (RECOMBINANTE)",
+    "grupoFarmacoterapeutico": "VACINAS VIRAIS",
+    "arquivo": "448.json",
+    "nomeComercialDroga": "VACINA PAPILOMAVIRUS HUMANO SOROTIPOS 6, 11, 16 E 18 (RECOMBINANTE)"
+  },
+  {
+    "principioAtivoDroga": "VACINA SARAMPO, CAXUMBA, RUBEOLA E VARICELA (ATENUADA)",
+    "grupoFarmacoterapeutico": "VACINAS VIRAIS",
+    "arquivo": "449.json",
+    "nomeComercialDroga": "VACINA SARAMPO, CAXUMBA, RUBEOLA E VARICELA (ATENUADA)"
+  },
+  {
+    "principioAtivoDroga": "CAPREOMICINA",
+    "grupoFarmacoterapeutico": "MEDICAMENTOS PARA TRATAMENTO DA TUBERCULOSE",
+    "arquivo": "450.json",
+    "nomeComercialDroga": "CAPREOMICINA"
+  },
+  {
+    "principioAtivoDroga": "ACIDO PARAMINOSSALICILICO",
+    "grupoFarmacoterapeutico": "MEDICAMENTOS PARA TRATAMENTO DA TUBERCULOSE",
+    "arquivo": "451.json",
+    "nomeComercialDroga": "ACIDO PARAMINOSSALICILICO"
+  },
+  {
+    "principioAtivoDroga": "TENOFOVIR + LAMIVUDINA",
+    "grupoFarmacoterapeutico": "ANTIVIRAIS PARA TRATAMENTO DE INFECÇOES POR HIV, COMBINAÇOES",
+    "arquivo": "452.json",
+    "nomeComercialDroga": "DUPLIVIR"
+  },
+  {
+    "principioAtivoDroga": "TENOFOVIR + LAMIVUDINA + EFAVIRENZ",
+    "grupoFarmacoterapeutico": "ANTIVIRAIS PARA TRATAMENTO DE INFECÇOES POR HIV, COMBINAÇOES",
+    "arquivo": "453.json",
+    "nomeComercialDroga": "TENOFOVIR + LAMIVUDINA + EFAVIRENZ"
+  },
+  {
+    "principioAtivoDroga": "VACINA COLERA (INATIVADA)",
+    "grupoFarmacoterapeutico": "VACINAS BACTERIANAS",
+    "arquivo": "454.json",
+    "nomeComercialDroga": "VACINA COLERA (INATIVADA)"
+  },
+  {
+    "principioAtivoDroga": "PALIVIZUMABE",
+    "grupoFarmacoterapeutico": "IMUNOGLOBULINAS ESPECIFICAS",
+    "arquivo": "455.json",
+    "nomeComercialDroga": "SYNAGIS"
+  },
+  {
+    "principioAtivoDroga": "SORO ANTIESCORPIONICO",
+    "grupoFarmacoterapeutico": "SOROS IMUNES",
+    "arquivo": "456.json",
+    "nomeComercialDroga": "SORO ANTIESCORPIONICO"
+  },
+  {
+    "principioAtivoDroga": "AMBRISENTANA",
+    "grupoFarmacoterapeutico": "OUTROS ANTI-HIPERTENSIVOS ",
+    "arquivo": "457.json",
+    "nomeComercialDroga": "VOLIBRIS"
+  },
+  {
+    "principioAtivoDroga": "BOSENTANA",
+    "grupoFarmacoterapeutico": "OUTROS ANTI-HIPERTENSIVOS ",
+    "arquivo": "458.json",
+    "nomeComercialDroga": "TRACLEER"
+  },
+  {
+    "principioAtivoDroga": "CLORETO DE POTASSIO",
+    "grupoFarmacoterapeutico": "SOLUÇOES ELETROLITICAS",
+    "arquivo": "459.json",
+    "nomeComercialDroga": "CLORETO DE POTASSIO"
+  }
+]
+
