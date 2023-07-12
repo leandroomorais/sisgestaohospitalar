@@ -35,6 +35,9 @@ import com.ifrn.sisgestaohospitalar.utils.EscritorTXT;
 @Service
 public class ArquivoBPAService {
 
+    private static final String SIGTAP_REGISTER_CONSOLIDATED = "01";
+    private static final String SIGTAP_REGISTER_INDIVIDUALIZED = "02";
+
 	@Autowired
 	private ArquivoBPARepository repository;
 
@@ -185,7 +188,7 @@ public class ArquivoBPAService {
 	}
 
 	private String getCompetencia(int ano, int mes) {
-		return Integer.toString(ano) + String.format("%02d", new Object[] { mes });
+		return ano + String.format("%02d", new Object[] { mes });
 	}
 
 	public void clearProcedimentosConsolidados() {
@@ -207,50 +210,40 @@ public class ArquivoBPAService {
 	private BigDecimal getValorTotal(ArquivoBPA arquivoBPA) {
 		List<LinhaBPAConsolidado> linhaBPAConsolidados = new ArrayList<>();
 		List<LinhaBPAIndividualizado> linhaBPAIndividualizados = new ArrayList<>();
-		arquivoBPA.getFolhasBPAConsolidado().forEach(f -> {
-			f.getLinhasBPAConsolidado().forEach(l -> {
-				linhaBPAConsolidados.add(l);
-			});
-		});
-		arquivoBPA.getFolhasBPAIndividualizado().forEach(f -> {
-			f.getLinhasBPAIndividualizado().forEach(l -> {
-				linhaBPAIndividualizados.add(l);
-			});
-		});
+		arquivoBPA.getFolhasBPAConsolidado().forEach(f -> linhaBPAConsolidados.addAll(f.getLinhasBPAConsolidado()));
+		arquivoBPA.getFolhasBPAIndividualizado().forEach(f -> linhaBPAIndividualizados.addAll(f.getLinhasBPAIndividualizado()));
 
-		return linhaBPAConsolidados.stream().map(LinhaBPAConsolidado::getValor).reduce(BigDecimal.ZERO, BigDecimal::add)
-				.add(linhaBPAIndividualizados.stream().map(LinhaBPAIndividualizado::getValor).reduce(BigDecimal.ZERO,
-						BigDecimal::add));
+		return linhaBPAConsolidados.stream()
+                .map(LinhaBPAConsolidado::getValor)
+                .reduce(BigDecimal.ZERO, BigDecimal::add)
+				.add(linhaBPAIndividualizados.stream()
+                        .map(LinhaBPAIndividualizado::getValor)
+                        .reduce(BigDecimal.ZERO, BigDecimal::add));
 	}
 
 	private boolean individualizadoEConsolidado(Long codigoProcedimento) {
-		List<ProcedimentoRegistroSigtap> procedimentoRegistroSigtaps = registroSigtapRepository
-				.buscaTipoRegistroBPA(codigoProcedimento);
-		if (procedimentoRegistroSigtaps.size() == 2) {
-			return true;
-		}
-		return false;
+		List<ProcedimentoRegistroSigtap> procedimentoRegistroSigtaps = registroSigtapRepository.buscaTipoRegistroBPA(codigoProcedimento);
+		boolean isConsolidated = procedimentoRegistroSigtaps.stream().anyMatch(prs -> prs.getCodigoRegistro().equals(SIGTAP_REGISTER_CONSOLIDATED));
+		boolean isIndividualized = procedimentoRegistroSigtaps.stream().anyMatch(prs -> prs.getCodigoRegistro().equals(SIGTAP_REGISTER_INDIVIDUALIZED));
+
+		return isConsolidated && isIndividualized;
 	}
 
 	private boolean consolidado(Long codigoProcedimento) {
-		List<ProcedimentoRegistroSigtap> procedimentoRegistroSigtaps = registroSigtapRepository
-				.buscaTipoRegistroBPA(codigoProcedimento);
-		if (procedimentoRegistroSigtaps.size() == 1) {
-			if (procedimentoRegistroSigtaps.iterator().next().getCodigoRegistro().equals("01")) {
-				return true;
-			}
-		}
+		List<ProcedimentoRegistroSigtap> procedimentoRegistroSigtaps = registroSigtapRepository.buscaTipoRegistroBPA(codigoProcedimento);
+
+		if (procedimentoRegistroSigtaps.size() == 1)
+			return procedimentoRegistroSigtaps.iterator().next().getCodigoRegistro().equals(SIGTAP_REGISTER_CONSOLIDATED);
+
 		return false;
 	}
 
 	private boolean individualizado(Long codigoProcedimento) {
-		List<ProcedimentoRegistroSigtap> procedimentoRegistroSigtaps = registroSigtapRepository
-				.buscaTipoRegistroBPA(codigoProcedimento);
-		if (procedimentoRegistroSigtaps.size() == 1) {
-			if (procedimentoRegistroSigtaps.iterator().next().getCodigoRegistro().equals("02")) {
-				return true;
-			}
-		}
+		List<ProcedimentoRegistroSigtap> procedimentoRegistroSigtaps = registroSigtapRepository.buscaTipoRegistroBPA(codigoProcedimento);
+
+		if (procedimentoRegistroSigtaps.size() == 1)
+			return procedimentoRegistroSigtaps.iterator().next().getCodigoRegistro().equals(SIGTAP_REGISTER_INDIVIDUALIZED);
+
 		return false;
 	}
 
